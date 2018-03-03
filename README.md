@@ -3,8 +3,8 @@
 ## Corebox is combination of some common desktop apps with bookmark support. It's like a window manager for coreapps.
 
 <img src="docs/screenshots/coreaction.png" width="300">
-<img src="docs/screenshots/start.png" width="300">
-<img src="docs/screenshots/corefm.png" width="300">
+<img src="docs/screenshots/start.png" width="500">
+<img src="docs/screenshots/corefm.png" width="500">
 
 
 * Download the sources
