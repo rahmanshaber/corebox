@@ -18,3 +18,7 @@
 
 ### Known Bugs
 * Cheack the To-Do.txt in doc folder for known bugs.
+
+### Help Us
+* We need to add package for this app.Appimage is in top priority.so if any one could guide us how to do that it will be helpful.
+* see the Help Us page in Help app of corebox for more.
