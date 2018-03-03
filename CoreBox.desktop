@@ -1,0 +1,19 @@
+[Desktop Entry]
+GenericName=CoreBox
+Type=Application
+Name=CoreBox
+Name[de]=Dateimanager CoreBox
+Name[sr]=CoreBox
+Name[sr@ijekavian]=CoreBox
+Name[sr@latin]=CoreBox
+Name[sr@ijekavianlatin]=CoreBox
+Name[zh_TW]=CoreBox
+Categories=Qt;Utility
+Name[en_US.utf8]=CoreBox
+
+Comment=A bunch of applications
+Exec=coreBox
+Icon=coreBox.svg
+Path=
+Terminal=false
+StartupNotify=false
