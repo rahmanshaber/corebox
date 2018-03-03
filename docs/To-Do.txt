@@ -1,0 +1,76 @@
+version 2
+
+corebox
+ - update the app when clicked from tab.(only corboxapps)
+ - close function in corebox is not closing corepaint properly.it is doing that problem what the corepad did earlier.
+ - if bookmark is booked it shouldshow a message if it exists and show the section it was booked.
+ - separate process for per app
+ - limit the openable tab.
+ - tab text ailing left
+
+bookmarks
+ - one click to open all the bookmark in one section(only first 8 of them)
+ - one button to bookmark all the opened tabs.
+ - two icon .folder and file .in bookmarklist list
+
+dashboard
+ - remove unwanted pertition
+ - selected drive will show only it's pertition.
+ - mount specific pertition on corebox startup
+ - add drive frame in drive view
+
+corepaint
+ - set all the instrument cursor.
+ - open screenshot folder pushbutton which show the screenshot folder. 
+
+Search
+ - dobule click will also point the file in coerce.
+ - if path is given find is not working.but locate is working. 
+
+corefm
+ - preview is not working properly.
+ - remove the demon in corefm
+ - ctrl + wheel = zoom.
+ - multiple file's combined size.
+ - add trash in on_actionTrash_it_triggered .
+ - right button paste is not working .but button is working.
+ - arrange item crashing the app.
+ - hidden in collect from settings but not show there.
+ - add app engine.
+ - send a file to a drive.
+ - there is a problem when the selection changed after clicking copy.
+
+messageengine
+ - file moved message.
+ - finished copying message.
+ - file deleted & delete failed message.
+
+core time
+ - add to settings AM or PM
+
+corepad 
+ - limit the openable tab.
+ - add tab widget to corepad.like corepaint.
+
+setting
+ - add a button stop the recent closed app.
+    
+start
+ - new background
+ - recently close collecting, but not specific corefm path.
+
+coreimage
+ - ctrl + wheel = zoom
+ - mouse wheel >>next image not working sometimes
+
+coreplayer
+ - stop clicked >> seekbar position not changing.
+ - play by open file function automatically play button is clicked.
+
+coreshot
+ - add active window at screenshot
+ - on left mouse click at screenshot when a screenshot is taken it save a file to tmp folder
+
+
+*remove unwanted function from all cpp files.
+*code merge
