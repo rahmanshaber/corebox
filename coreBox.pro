@@ -7,15 +7,6 @@ TARGET   = coreBox
 TEMPLATE = app
 LIBS += -lmagic
 
-target.path = $$BINDIR
-sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS *.pro
-sources.path = .
-desktop.files += CoreBox.desktop
-desktop.path = /usr/share/applications
-icon.files += coreBox.svg
-icon.path = $$DATADIR/icons
-INSTALLS += target desktop icon
-
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
@@ -235,4 +226,37 @@ RESOURCES += \
     icons.qrc \
 
 
+# install
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+ 
+isEmpty(BINDIR) {
+    BINDIR = $$PREFIX/bin
+}
+ 
+isEmpty(DATADIR) {
+    DATADIR = $$PREFIX/share
+}
+
+isEmpty(ETCDIR) {
+    ETCDIR = /etc
+}
+
+isEmpty(LIBDIR) {
+    LIBDIR = $$PREFIX/lib
+}
+
+target.path = $$BINDIR
+
+sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS *.pro
+sources.path = .
+
+desktop.files += CoreBox.desktop
+desktop.path = /usr/share/applications
+
+icon.files += coreBox.svg
+icon.path = $$DATADIR/icons
+
+INSTALLS += target desktop icon
 
