@@ -253,7 +253,7 @@ sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS *.pro
 sources.path = .
 
 desktop.files += CoreBox.desktop
-desktop.path = /usr/share/applications
+desktop.path = $$DATADIR/applications
 
 icon.files += coreBox.svg
 icon.path = $$DATADIR/icons
