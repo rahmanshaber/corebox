@@ -2,6 +2,9 @@
 
 ## Corebox is combination of some common desktop apps with bookmark support. It's like a window manager for coreapps.
 
+
+![](docs/screenshots/coreaction.png)
+
 * Download the sources
    - Git: `git clone https://github.com/rahmanshaber/corebox`
 * Enter `coreBox`
