@@ -7,11 +7,13 @@ TARGET   = coreBox
 TEMPLATE = app
 LIBS += -lmagic
 
-target.path = /usr/bin
+target.path = $$BINDIR
+sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS *.pro
+sources.path = .
 desktop.files += CoreBox.desktop
-desktop.path += /usr/share/applications
-icon.files += images/coreBox.svg
-icon.path += /usr/share/pixmaps
+desktop.path = $$DATADIR/applications
+icon.files += coreBox.svg
+icon.path = $$DATADIR/icons
 INSTALLS += target desktop icon
 
 DEFINES += QT_DEPRECATED_WARNINGS
