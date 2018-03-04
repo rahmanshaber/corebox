@@ -1,0 +1,34 @@
+#Build from the source
+
+* Download the sources
+   - Git: `git clone https://github.com/rahmanshaber/corebox`
+* Enter `coreBox`
+* Open the terminal and type: `qmake && make`
+* To install, as root type: `make install`
+
+
+#Build a package for Arch (.pkg.tar.xz)
+
+* copy the PKGBUILD to a new folder.
+* open terminal in that folder
+* type "makepkg -sc PKGBUILD"
+* it will download the letest source from github and package it.
+
+#Build a AppImage package.
+
+* go to "https://github.com/probonopd/linuxdeployqt/releases"
+* download "linuxdeployqt-continuous-x86_64.AppImage"
+* copy it in a new folder "appimage".
+* #Build from the source
+* open terminal in appimage folder.
+* type "./linuxdeployqt-continuous-x86_64.AppImage /build-coreBox-Desktop-Debug"
+* after that type "./linuxdeployqt-continuous-x86_64.AppImage /build-coreBox-Desktop-Debug -appimage"
+* see this video tutorial "https://www.youtube.com/watch?v=PDzlT_ODpM8&t=694s"
+
+#Build a Snap package.
+
+* we don't know how.if you know let us know the steps.
+
+#Build a Flatpack Package.
+
+* we don't know how.if you know let us know the steps.

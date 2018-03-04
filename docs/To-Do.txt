@@ -12,6 +12,7 @@ bookmarks
  - one click to open all the bookmark in one section(only first 8 of them)
  - one button to bookmark all the opened tabs.
  - two icon .folder and file .in bookmarklist list
+ - bookmark file location is not correct.
 
 dashboard
  - remove unwanted pertition
@@ -24,10 +25,13 @@ corepaint
  - open screenshot folder pushbutton which show the screenshot folder. 
 
 Search
+ - add button to set folder
  - dobule click will also point the file in coerce.
  - if path is given find is not working.but locate is working. 
 
 corefm
+ - 
+ - properties - option to make file executable(chmod a+x filepath)
  - preview is not working properly.
  - remove the demon in corefm
  - ctrl + wheel = zoom.

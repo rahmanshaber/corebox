@@ -77,6 +77,8 @@ coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
     mRunning = false;
     mTotalTime = 0;
     ui->lapText->clear();
+    ui->lapTime->setEnabled(0);
+    ui->lapTime->setEnabled(0);
     forStopWatch = new QTimer();
     connect(forStopWatch, SIGNAL(timeout()), this, SLOT(counting()));
 

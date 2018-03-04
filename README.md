@@ -6,12 +6,8 @@
 <img src="docs/screenshots/start.png" width="500">
 <img src="docs/screenshots/corefm.png" width="500">
 
-
-* Download the sources
-   - Git: `git clone https://github.com/rahmanshaber/corebox`
-* Enter `coreBox`
-* Open the terminal and type: `qmake && make`
-* To install, as root type: `make install`
+##Build
+To build see the buidinfo.txt in doc folder
 
 ### Dependencies:
 * qt5

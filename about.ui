@@ -199,7 +199,7 @@ border-radius: 10px;
          <item row="2" column="1">
           <widget class="QLabel" name="label_10">
            <property name="text">
-            <string>Based on Qt 5.10.0 (GCC 7.2.1 20171128, 64 bit)</string>
+            <string>Build with Qt 5.10.1 (GCC 7.2.1 20171128, 64 bit)</string>
            </property>
           </widget>
          </item>

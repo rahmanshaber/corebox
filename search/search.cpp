@@ -41,6 +41,8 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
     ui->results->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     ui->folderPath->setVisible(0);
     ui->typeframe->setEnabled(false);
+    ui->findCMD->setEnabled(0);
+    ui->locateCMD->setEnabled(0);
     shotcuts();
 }
 
@@ -324,12 +326,15 @@ void search::on_more_clicked(bool checked)
 void search::on_searchFF_currentTextChanged(const QString &arg1)
 {
     if(arg1.isEmpty()){
+        ui->findCMD->setEnabled(0);
+        ui->locateCMD->setEnabled(0);
         ui->typeframe->setEnabled(false);
         ui->typeframe->setFocusPolicy(Qt::NoFocus);
     }
     else{
+        ui->findCMD->setEnabled(1);
+        ui->locateCMD->setEnabled(1);
         ui->typeframe->setEnabled(true); ;
         ui->typeframe->setFocusPolicy(Qt::NoFocus);
     }
-
 }
