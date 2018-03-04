@@ -8,12 +8,11 @@ Name[sr@ijekavian]=CoreBox
 Name[sr@latin]=CoreBox
 Name[sr@ijekavianlatin]=CoreBox
 Name[zh_TW]=CoreBox
-Categories=Qt;Utility
+Categories=Qt;Utility;
 Name[en_US.utf8]=CoreBox
 
 Comment=A bunch of common desktop application
 Exec=coreBox
-Icon=coreBox.svg
-Path=
+Icon=coreBox
 Terminal=false
 StartupNotify=false
