@@ -9,6 +9,8 @@ before_install:
 
 install:
   - sudo apt-get -y install qt59base
+  - sudo apt-get build-dep qtmultimedia5-dev
+  - sudo apt install libqt5charts5 libqt5charts5-dev
   - source /opt/qt*/bin/qt*-env.sh
 
 script:
