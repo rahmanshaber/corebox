@@ -24,6 +24,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDebug>
 #include <QTreeWidgetItem>
 
+
 #include "corebox.h"
 #include "corefm/mimeutils.h"
 #include "corefm/fileutils.h"
@@ -446,42 +447,42 @@ void settings::on_ok_clicked()
     on_cancel_clicked();
 }
 
-void settings::on_corebox_clicked(bool checked)
+void settings::on_browseF_clicked()
 {
-    if(checked){
-        ui->selectedsection->setText("CoreBox");
-        ui->pages->setCurrentIndex(0);
-        ui->corefm->setChecked(false);
-        ui->corescrshot->setChecked(false);
-    }
+    ui->startPath->setText(QFileDialog::getExistingDirectory(this, "Select Startup Path for CoreFM"));
 }
 
-void settings::on_corefm_clicked(bool checked)
-{
-    if(checked){
-        ui->selectedsection->setText("CoreFM");
-        ui->pages->setCurrentIndex(1);
-        ui->corescrshot->setChecked(false);
-        ui->corebox->setChecked(false);
-    }
-}
-
-void settings::on_corescrshot_clicked(bool checked)
-{
-    if(checked){
-        ui->selectedsection->setText("CoreScreenShot");
-        ui->pages->setCurrentIndex(2);
-        ui->corefm->setChecked(false);
-        ui->corebox->setChecked(false);
-    }
-}
-
-void settings::on_browse_clicked()
+void settings::on_browseS_clicked()
 {
     ui->ssLocation->setText(QFileDialog::getExistingDirectory(this, "Select Save Location for Screenshot"));
 }
 
-void settings::on_browse_2_clicked()
+void settings::pageClick(QPushButton *btn, int i, QString title)
 {
-    ui->startPath->setText(QFileDialog::getExistingDirectory(this, "Select Startup Path for CoreFM"));
+    // all button checked false
+    for (QPushButton *b : ui->shortcut->findChildren<QPushButton*>())
+        b->setChecked(false);
+    btn->setChecked(true);
+    ui->selectedsection->setText(title);
+    ui->pages->setCurrentIndex(i);
+}
+
+void settings::on_corebox_clicked()
+{
+    pageClick(ui->corebox,0, tr("CoreBox"));
+}
+
+void settings::on_coreaction_clicked()
+{
+    pageClick(ui->coreaction,1, tr("CoreAction"));
+}
+
+void settings::on_corefm_clicked()
+{
+    pageClick(ui->corefm,2, tr("CoreFM"));
+}
+
+void settings::on_corescrshot_clicked()
+{
+    pageClick(ui->corescrshot,3, tr("CoreScreenShot"));
 }

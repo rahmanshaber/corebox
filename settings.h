@@ -19,6 +19,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QWidget>
 #include <QTreeWidgetItem>
+#include <QPushButton>
 
 #include "settingsmanage.h"
 
@@ -50,11 +51,13 @@ private slots:
     void on_cancel_clicked();
     void on_ok_clicked();
     void on_terminals_currentIndexChanged(const QString &arg1);
-    void on_corescrshot_clicked(bool checked);
-    void on_corefm_clicked(bool checked);
-    void on_corebox_clicked(bool checked);
-    void on_browse_clicked();
-    void on_browse_2_clicked();
+    void on_browseF_clicked();
+    void on_browseS_clicked();
+    void pageClick(QPushButton *btn, int i, QString title);
+    void on_corebox_clicked();
+    void on_coreaction_clicked();
+    void on_corefm_clicked();
+    void on_corescrshot_clicked();
 
 private:
     Ui::settings *ui;

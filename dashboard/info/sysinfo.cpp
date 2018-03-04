@@ -62,18 +62,23 @@ void sysinfo::init()
 
 void sysinfo::systemInformationInit()
 {
+    QDesktopWidget dw;
+
+    QString scr = QString::number(dw.width()) + " x " + QString::number(dw.height()) + " px";
+
     // get system information
     SystemInfo sysInfo;
 
     QStringList infos;
     infos
-        << tr("Hostname       : %1").arg(sysInfo.getHostname())
+        << tr("UserName       : %1").arg(sysInfo.getHostname())
         << tr("Platform       : %1").arg(sysInfo.getPlatform())
         << tr("Distribution   : %1").arg(sysInfo.getDistribution())
         << tr("Kernel Release : %1").arg(sysInfo.getKernel())
         << tr("CPU Model      : %1").arg(sysInfo.getCpuModel())
         << tr("CPU Speed      : %1 (Mhz)").arg(sysInfo.getCpuSpeed())
-        << tr("CPU Core       : %1").arg(sysInfo.getCpuCore());
+        << tr("CPU Core       : %1").arg(sysInfo.getCpuCore())
+        << tr("Display Size   : %1").arg(scr);
 
     QStringListModel *systemInfoModel = new QStringListModel(infos);
 

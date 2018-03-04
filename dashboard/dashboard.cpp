@@ -77,6 +77,9 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
     }
 
     ui->batteriesList->setCurrentIndex(0);
+    ui->mm->setText("Select a partition to ");
+    ui->mount_2->setEnabled(0);
+    ui->unmount_2->setEnabled(0);
 
     for (int i = 0; i < ui->pages->count(); i++) {
         ui->pages->removeWidget(ui->pages->widget(i));
@@ -101,16 +104,22 @@ dashboard::~dashboard()
 void dashboard::on_drives_currentTextChanged(const QString &currentText)
 {
     auto dr = disks->drive(currentText);
-    ui->name->setText("Name : " + dr->toStringToSeperate(1));
-    ui->size->setText("Size : " + dr->toStringToSeperate(2));
-    ui->vendorORDev->setText("Vendor : " + dr->toStringToSeperate(3));
-    ui->modelORDrive->setText("Model : " + dr->toStringToSeperate(4));
-    ui->serialORType->setText("Serial : " + dr->toStringToSeperate(5));
-    ui->id->setText("Id : " + dr->toStringToSeperate(6));
-    ui->mediaORReadOnly->setText("Media : " + dr->toStringToSeperate(7));
-    ui->opticalORUsage->setText("Optical : " + dr->toStringToSeperate(8));
-    ui->removalORMountPoint->setText("Removable : " + dr->toStringToSeperate(9));
-    ui->availableOROverview->setText("Available : " + dr->toStringToSeperate(10));
+    QStringList infos;
+    infos
+        << tr("Name : %1")       . arg(dr->toStringToSeperate(1))
+        << tr("Size : %1")       . arg(dr->toStringToSeperate(2))
+        << tr("Dev : %1")        . arg(dr->toStringToSeperate(3))
+        << tr("Drive : %1")      . arg(dr->toStringToSeperate(4))
+        << tr("Type : %1")       . arg(dr->toStringToSeperate(5))
+        << tr("Id : %1 (Mhz)")   . arg(dr->toStringToSeperate(6))
+        << tr("Read Only : %1")  . arg(dr->toStringToSeperate(7))
+        << tr("Usage : %1")      . arg(dr->toStringToSeperate(8))
+        << tr("Mount Point : %1"). arg(dr->toStringToSeperate(9))
+        << tr("Overview : %1")   . arg(dr->toStringToSeperate(10));
+
+    QStringListModel *systemInfoModel = new QStringListModel(infos);
+
+    ui->info->setModel(systemInfoModel);
 }
 
 void dashboard::on_blocks_currentTextChanged(const QString &currentText)
@@ -119,19 +128,24 @@ void dashboard::on_blocks_currentTextChanged(const QString &currentText)
     if (t){
         auto block = disks->blockDevice(currentText);
 
-        QString str = t->mountPoints().join("");
-        QString size = getDriveInfo(str);
+        QString path = t->mountPoints().join("");
 
-        ui->name->setText("Name : " + block->toStringToSeperate(1));
-        ui->size->setText("Size : " + block->toStringToSeperate(2));
-        ui->vendorORDev->setText("Dev : " + block->toStringToSeperate(3));
-        ui->modelORDrive->setText("Drive : " + block->toStringToSeperate(4));
-        ui->serialORType->setText("Type : " + block->toStringToSeperate(5));
-        ui->id->setText("Id : " + block->toStringToSeperate(6));
-        ui->mediaORReadOnly->setText("Read Only : " + block->toStringToSeperate(7));
-        ui->opticalORUsage->setText("Usage : " + block->toStringToSeperate(8));
-        ui->removalORMountPoint->setText("Mount Point : " + str);
-        ui->availableOROverview->setText("Overview : " + size);
+        QStringList infos;
+        infos
+            << tr("Name : %1")        . arg(block->toStringToSeperate(1))
+            << tr("Size : %1")        . arg(block->toStringToSeperate(2))
+            << tr("Dev : %1")         . arg(block->toStringToSeperate(3))
+            << tr("Drive : %1")       . arg(block->toStringToSeperate(4))
+            << tr("Type : %1")        . arg(block->toStringToSeperate(5))
+            << tr("Id : %1 (Mhz)")    . arg(block->toStringToSeperate(6))
+            << tr("Read Only : %1")   . arg(block->toStringToSeperate(7))
+            << tr("Usage : %1")       . arg(block->toStringToSeperate(8))
+            << tr("Mount Point : %1") . arg(path)
+            << tr("Overview : %1")    . arg(getDriveInfo(path));
+
+        QStringListModel *systemInfoModel = new QStringListModel(infos);
+
+        ui->info->setModel(systemInfoModel);
     }
 }
 
@@ -187,6 +201,27 @@ void dashboard::udisks2_filesystemChanged(const QString &node)
     ui->msgs->addItem("Block " + node + " changed its filesystem");
 }
 
+void dashboard::on_mount_2_clicked()
+{
+    if (ui->blocks->currentItem()->text().isNull())
+        return;
+
+    auto fs = disks->blockDevice(ui->blocks->currentItem()->text())->fileSystem();
+
+    if (fs)
+        messageEngine("Directory '" + fs->mount() + "' mounted.", "Info");
+}
+
+void dashboard::on_unmount_2_clicked()
+{
+    if (!ui->blocks->currentItem())
+        return;
+    auto fs = disks->blockDevice(ui->blocks->currentItem()->text())->fileSystem();
+    if (fs) {
+        fs->unmount();
+        messageEngine("Partition '" + fs->name + "' unmounted.", "Info");
+    }
+}
 
 QString dashboard::getDriveInfo(QString path)
 {
@@ -198,6 +233,22 @@ QString dashboard::getDriveInfo(QString path)
     return QString("%1  /  %2  (%3%)").arg(formatSize((qint64) (info.f_blocks - info.f_bavail)*info.f_bsize))
                        .arg(formatSize((qint64) info.f_blocks*info.f_bsize))
                        .arg((info.f_blocks - info.f_bavail)*100/info.f_blocks);
+}
+
+void dashboard::on_blocks_itemSelectionChanged()
+{
+    ui->mm->setText("Selected partition");
+    ui->mount_2->setEnabled(1);
+    ui->unmount_2->setEnabled(1);
+    ui->drives->clearSelection();
+}
+
+void dashboard::on_drives_itemSelectionChanged()
+{
+    ui->mm->setText("Select a partition to ");
+    ui->mount_2->setEnabled(0);
+    ui->unmount_2->setEnabled(0);
+    ui->blocks->clearSelection();
 }
 
 void dashboard::on_batteriesList_currentIndexChanged(int index)
@@ -265,28 +316,6 @@ void dashboard::on_refresh_clicked()
     on_batteriesList_currentIndexChanged(ui->batteriesList->currentIndex());
 }
 
-void dashboard::on_mount_2_clicked()
-{
-    if (ui->blocks->currentItem()->text().isNull())
-        return;
-
-    auto fs = disks->blockDevice(ui->blocks->currentItem()->text())->fileSystem();
-
-    if (fs)
-        messageEngine("Directory '" + fs->mount() + "' mounted.", "Info");
-}
-
-void dashboard::on_unmount_2_clicked()
-{
-    if (!ui->blocks->currentItem())
-        return;
-    auto fs = disks->blockDevice(ui->blocks->currentItem()->text())->fileSystem();
-    if (fs) {
-        fs->unmount();
-        messageEngine("Partition '" + fs->name + "' unmounted.", "Info");
-    }
-}
-
 void dashboard::pageClick(QPushButton *btn, int i, QString title)
 {
     // all button checked false
@@ -316,3 +345,5 @@ void dashboard::on_Bgeneral_clicked()
 {
     pageClick(ui->Bgeneral, 0, tr("General"));
 }
+
+

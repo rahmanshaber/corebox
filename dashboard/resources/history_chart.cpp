@@ -55,11 +55,11 @@ void HistoryChart::init()
     ui->verticalLayout->addWidget(chartView);
 
     chart->axisX()->setLabelsColor("#308CC6");
-    chart->axisX()->setGridLineColor("#8A7F2C");
+    chart->axisX()->setGridLineColor("#91989D");
     chart->axisY()->setLabelsColor("#308CC6");
-    chart->axisY()->setGridLineColor("#8A7F2C");
-    chart->setBackgroundBrush(QColor("#92BD6C"));
-    chart->legend()->setLabelColor("#FCDA46");
+    chart->axisY()->setGridLineColor("#91989D");
+    chart->setBackgroundBrush(QColor("#212F3C"));
+    chart->legend()->setLabelColor("#91989D");
 }
 
 void HistoryChart::setYMax(const int &value)

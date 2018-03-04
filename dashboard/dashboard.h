@@ -67,6 +67,11 @@ private slots:
     void on_Bbattery_clicked();
     void on_Bgeneral_clicked();
 
+    void on_blocks_itemSelectionChanged();
+
+
+    void on_drives_itemSelectionChanged();
+
 public:
     explicit dashboard(QWidget *parent = 0);
     ~dashboard();

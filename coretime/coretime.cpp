@@ -52,6 +52,7 @@ coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
 
     ui->txtSoundPath->setText("");
     ui->CustEdit->setDate(QDate::currentDate());
+    ui->timerDuration->setVisible(0);
     SetupClock();
 
 
@@ -504,11 +505,13 @@ void coretime::on_addTimer_clicked()
 {
     ui->timerText->setText(ui->setTimer->text());
     ui->timerDuration->setVisible(true);
+    ui->startstopTimer->setText("Pause");
     ui->startstopTimer->setChecked(true);
     ui->timerSet->setVisible(false);
     forTimer = new QTimer();
     forTimer->start(1000);
     connect(forTimer, SIGNAL(timeout()), this, SLOT(updateStopwatch()));
+    ui->timerDuration->setVisible(1);
 }
 
 void coretime::on_startstopTimer_clicked(bool checked)

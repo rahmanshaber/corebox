@@ -47,6 +47,8 @@ messageengine
 
 core time
  - add to settings AM or PM
+ - remove settings
+ - fix the timer start/pause button .
 
 corepad 
  - limit the openable tab.

@@ -44,7 +44,12 @@
       </sizepolicy>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">QWidget{
+background-color:#1F2B38;
+color:#ffffff;
+}
+
+</string>
      </property>
      <layout class="QVBoxLayout" name="chartLayout">
       <property name="spacing">
@@ -64,6 +69,13 @@
       </property>
       <item alignment="Qt::AlignHCenter|Qt::AlignTop">
        <widget class="QLabel" name="chartTitle">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>

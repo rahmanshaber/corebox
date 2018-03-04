@@ -38,7 +38,18 @@
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">QCheckBox::indicator {
+    width: 30px;
+    height: 30px;
+}
+
+QCheckBox::indicator:checked {
+    image:url(:/icons/fullexit_w.svg);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/fullscreen_w.svg);
+}</string>
      </property>
      <property name="text">
       <string notr="true">Chart Title</string>
