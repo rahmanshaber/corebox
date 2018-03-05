@@ -60,7 +60,8 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     loadsettings();
     tryicon();
     batteryCheck();
-    showTime();    
+    showTime();
+    messageEngine("CoreAction Started.\nPlease click icon in System Tray", "Info");
 }
 
 coreaction::~coreaction()
