@@ -1,18 +1,10 @@
 [Desktop Entry]
-GenericName=CoreBox
-Type=Application
 Name=CoreBox
-Name[de]=CoreBox
-Name[sr]=CoreBox
-Name[sr@ijekavian]=CoreBox
-Name[sr@latin]=CoreBox
-Name[sr@ijekavianlatin]=CoreBox
-Name[zh_TW]=CoreBox
-Categories=Qt;Utility;
-Name[en_US.utf8]=CoreBox
-
-Comment=A bunch of common desktop application
+GenericName=CoreBox
+Comment=A bunch of common desktop app with bookmark support
 Exec=coreBox
 Icon=coreBox
+Type=Application
+Categories=Utility;FileTools;
 Terminal=false
 StartupNotify=false
