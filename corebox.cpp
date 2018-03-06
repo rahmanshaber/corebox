@@ -230,6 +230,8 @@ void CoreBox::on_windows_currentChanged(int index)
 {
     QString title = ui->windows->tabText(index);
     this->setWindowTitle(title);
+
+    this->setWindowIcon(QIcon(appsIconPath(title)));
 }
 
 void CoreBox::closeCurrentTab() {
@@ -407,4 +409,9 @@ void CoreBox::on_corepad_clicked()
     int n = ui->windows->count();
     ui->windows->insertTab(n,new corepad,QIcon(":/icons/CorePad.svg"),"Core Pad");
     ui->windows->setCurrentIndex(n);
+}
+
+void CoreBox::on_box_clicked()
+{
+    messageEngine("Thanks for using CoreBox", "Info");
 }

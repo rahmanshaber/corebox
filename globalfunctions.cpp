@@ -2,6 +2,7 @@
 #include "settingsmanage.h"
 
 #include <QProcess>
+#include <QDebug>
 
 bool moveToTrash(QString fileName)
 {
@@ -13,40 +14,47 @@ bool moveToTrash(QString fileName)
         } else {
             QFile::remove(fileName);
         }
-    } else {
-    QDir trash = QDir::home();
-    trash.cd(".local/share/");
-    trash.mkdir("Trash");
-    trash.cd("Trash");
-    trash.mkdir("files");
-    trash.mkdir("info");
-
-    QFile directorySizes(trash.path() + "/directorysizes");
-    directorySizes.open(QFile::Append);
-
-    QMessageBox::StandardButton reply;
-    reply = QMessageBox::warning(qApp->activeWindow(), "Warning!", "Do you want to Trash the '" + fileName + "' ?", QMessageBox::Yes | QMessageBox::No);
-    if (reply == QMessageBox::Yes) {
-        QString fileLocation = fileName;
-        if (QFile(fileLocation).exists()) {
-            //copyops.append(new copy(QStringList() << currentDir.path() + "/" + item->text(), trash.path() + "/files/", true));
-            QFile(fileLocation).rename(trash.path() + "/files/" + QFileInfo(fileName).fileName());
-        } else {
-            //QDir dirToRemove(currentDir);
-            //dirToRemove.cd(item->text());
-            QDir(QFileInfo(fileName).path()).rename(QFileInfo(fileName).fileName(), trash.path() + "/files/ " + QFileInfo(fileName).fileName());
-            //copyops.append(new copy(QStringList() << dirToRemove.path(), trash.path() + "/files/", true));
-        }
-
-        QFile trashinfo(trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo");
-        trashinfo.open(QFile::WriteOnly);
-        trashinfo.write(QString("[Trash Info]\n").toUtf8());
-        trashinfo.write(QString("Path=" + fileLocation + "\n").toUtf8());
-        trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());
-        trashinfo.close();
-
-        messageEngine("File Moved to Trash", "Info");
     }
+    else {
+        QDir trash = QDir::home();
+        trash.cd(".local/share/");
+        trash.mkdir("Trash");
+        trash.cd("Trash");
+        trash.mkdir("files");
+        trash.mkdir("info");
+
+        QFile directorySizes(trash.path() + "/directorysizes");
+        directorySizes.open(QFile::Append);
+
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::warning(qApp->activeWindow(), "Warning!", "Do you want to Trash the '" + fileName + "' ?", QMessageBox::Yes | QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            QString fileLocation = fileName;
+            qDebug()<<  fileLocation ;
+            if (QFile(fileLocation).exists()) {
+                //copyops.append(new copy(QStringList() << currentDir.path() + "/" + item->text(), trash.path() + "/files/", true));
+                QFile(fileLocation).rename(trash.path() + "/files/" + QFileInfo(fileName).fileName());
+                qDebug()<< QFileInfo(fileName).fileName()  ;
+            } else {
+                //QDir dirToRemove(currentDir);
+                //dirToRemove.cd(item->text());
+                QDir(QFileInfo(fileName).path()).rename(QFileInfo(fileName).fileName(), trash.path() + "/files/ " + QFileInfo(fileName).fileName());
+                qDebug()<<  QFileInfo(fileName).fileName() ;
+                //copyops.append(new copy(QStringList() << dirToRemove.path(), trash.path() + "/files/", true));
+            }
+            qDebug()<<  trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo" ;
+            QFile trashinfo(trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo");
+            trashinfo.open(QFile::WriteOnly);
+            trashinfo.write(QString("[Trash Info]\n").toUtf8());
+            qDebug()<<  QString("[Trash Info]\n").toUtf8() ;
+            trashinfo.write(QString("Path=" + fileLocation + "\n").toUtf8());
+            qDebug()<<  QString("Path=" + fileLocation + "\n").toUtf8() ;
+            trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());
+            qDebug()<<  QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8();
+            trashinfo.close();
+
+            messageEngine("File Moved to Trash", "Info");
+        }
     return true;
     }
 }
@@ -79,11 +87,11 @@ void messageEngine(QString message, QString messageType)
     bi->addWidget(l);
     bi->setContentsMargins(6, 6, 6, 6);
     if (messageType == "Info") {
-        mbox->setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A;padding: 5px 5px 5px 5px;}");
+        mbox->setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A; border-radius: 2px; padding: 5px 5px 5px 5px;}");
     } else if (messageType == "Warning") {
-        mbox->setStyleSheet("QWidget{background-color: red;color: #ffffff;border: 1px #2A2A2A;padding: 5px 5px 5px 5px;}");
+        mbox->setStyleSheet("QWidget{background-color: red;color: #ffffff;border: 1px #2A2A2A; border-radius: 2px; padding: 5px 5px 5px 5px;}");
     } else if (messageType == "Tips") {
-        mbox->setStyleSheet("QWidget{background-color: blue;color: #ffffff;border: 1px #2A2A2A;padding: 5px 5px 5px 5px;}");
+        mbox->setStyleSheet("QWidget{background-color: blue;color: #ffffff;border: 1px #2A2A2A; border-radius: 2px; padding: 5px 5px 5px 5px;}");
     } else {
         return;
     }
@@ -94,7 +102,7 @@ void messageEngine(QString message, QString messageType)
     int sh = QApplication::desktop()->availableGeometry().height() - (mbox->height() + 20);
 
     mbox->move(sw,sh);
-    QTimer::singleShot(6000, mbox, SLOT(close()));
+    QTimer::singleShot(3000, mbox, SLOT(close()));
 
 }
 

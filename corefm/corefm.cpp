@@ -593,12 +593,15 @@ void corefm::pathEditChanged(QString path) {
 /**
  * @brief Reaction for change of clippboard content
  */
-void corefm::clipboardChanged() {
+void corefm::clipboardChanged()
+{
   if (QApplication::clipboard()->mimeData()->hasUrls()) {
-    ui->actionPaste->setEnabled(true);
+    ui->actionPaste->setEnabled(1);
+    ui->paste->setVisible(1);
   } else {
     modelList->clearCutItems();
-    ui->actionPaste->setEnabled(false);
+    ui->actionPaste->setEnabled(0);
+    ui->paste->setVisible(0);
   }
 }
 
@@ -675,7 +678,8 @@ void corefm::pasteLauncher(const QList<QUrl> &files, const QString &newPath,
   if (!QFile(files.at(0).path()).exists()) {
     QString msg = tr("File '%1' no longer exists!").arg(files.at(0).path());
     QMessageBox::information(this, tr("No paste for you!"), msg);
-    ui->actionPaste->setEnabled(false);
+    ui->actionPaste->setEnabled(0);
+    ui->paste->setVisible(0);
     return;
   }
 
@@ -1271,11 +1275,8 @@ QMenu* corefm::globalmenu(){
         popup->addMenu(arrageItems);
         popup->addAction(ui->actionRefresh);
         popup->addSeparator();
-        if (ui->actionPaste->isVisible()) {
+        if (QApplication::clipboard()->mimeData()->hasUrls()) {
             popup->addAction(ui->actionPaste);
-            if (ui->actionPaste->isEnabled()) {
-                ui->actionPaste->setEnabled(true);
-            }
         }
         popup->addSeparator();
         popup->addMenu(subnew);
@@ -1839,7 +1840,7 @@ void corefm::on_actionProperties_triggered()
 
 void corefm::on_actionRefresh_triggered()
 {
-    QApplication::clipboard()->clear();
+//    QApplication::clipboard()->clear();
     listSelectionModel->clear();
 
     modelList->refreshItems();

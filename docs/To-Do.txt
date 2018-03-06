@@ -18,6 +18,7 @@ bookmarks
 0 - bookmark file location is not correct.
 
 dashboard
+0 - hide the bettry page ,if it is disabled in setting
 1 - remove unwanted pertition
 1 - selected drive will show only it's pertition.
 1 - mount specific pertition on corebox startup
@@ -41,7 +42,6 @@ corefm
 1 - multiple file's combined size.
 1 - add trash in on_actionTrash_it_triggered .proper trash intigration.
 0 - after trash , the file is not resotreable.
-0 - right button paste is not working .but button is working.
 0 - arrange item crashing the app.
 0 - hidden is not setting it's bool,from previous start.
 1 - add app engine.
@@ -70,6 +70,7 @@ start
 0 - recently close collecting, but not specific corefm path.
 
 coreimage
+0 - deleteing pic also delete entry from path qstringlist
 1 - ctrl + wheel = zoom
 0 - mouse wheel >>next image not working sometimes
 

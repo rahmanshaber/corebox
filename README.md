@@ -12,6 +12,7 @@
 ### Dependencies:
 * qt5
 * qt5-charts
+* qt5-svg5
 * qt5-multimedia
 * qt5-x11extras
 * libmagic-dev/libmagic-mgc/libmagic1

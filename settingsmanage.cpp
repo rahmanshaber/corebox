@@ -37,7 +37,7 @@ void SettingsManage::createDefaultSettings() {
 
         cSetting->beginGroup("CoreBox");
         cSetting->setValue("Maximized", false);
-        cSetting->setValue("Show-Battery", true);
+        cSetting->setValue("Show-Battery", false);
         cSetting->setValue("Recent-Disable", false);
         cSetting->endGroup();
     }

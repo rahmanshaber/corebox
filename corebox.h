@@ -67,6 +67,8 @@ private slots:
     void on_corefm_clicked();
     void on_corepad_clicked();
 
+    void on_box_clicked();
+
 private:
     SettingsManage sm;
     Ui::CoreBox *ui;

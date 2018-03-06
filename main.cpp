@@ -19,6 +19,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QStyleFactory>
+#include <QtSvg>
 
 
 int main(int argc, char *argv[])

@@ -1,4 +1,4 @@
-QT += core gui dbus printsupport multimedia multimediawidgets charts concurrent
+QT += core gui dbus printsupport multimedia multimediawidgets charts concurrent svg
 CONFIG += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

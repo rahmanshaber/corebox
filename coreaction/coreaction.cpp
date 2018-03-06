@@ -42,10 +42,10 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     ui->setupUi(this);
 
     //DEMO
-    QStringList lio;
-    lio.append("/home/shaber/Downloads/");
-    lio.append("/home/shaber/Desktop/");
-    qDebug() << "DEMO FOR GETTING FILESIZE " << getMultipleFileSize(lio);
+//    QStringList lio;
+//    lio.append("/home/shaber/Downloads/");
+//    lio.append("/home/shaber/Desktop/");
+//    qDebug() << "DEMO FOR GETTING FILESIZE " << getMultipleFileSize(lio);
     //
 
     ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));
