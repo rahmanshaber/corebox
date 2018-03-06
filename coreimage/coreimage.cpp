@@ -54,6 +54,18 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
     ui->tools->setVisible(false);
     ui->propbox->setVisible(false);
     ui->thumnailView->setVisible(false);
+
+    if(currentImagePath.isNull()){
+        for (QPushButton *b : ui->tools->findChildren<QPushButton*>()){
+            b->setEnabled(false);
+        }
+
+        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+            b->setEnabled(false);
+        }
+        ui->cTools->setEnabled(true);
+        ui->cOpen->setEnabled(true);
+    }
     shotcuts();
 }
 
@@ -152,6 +164,15 @@ bool coreimage::loadFile(const QString &fileName)
         }
         setImage(newImage);
         setWindowFilePath(fileName);
+
+        for (QPushButton *b : ui->tools->findChildren<QPushButton*>()){
+            b->setEnabled(true);
+        }
+
+        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+            b->setEnabled(true);
+        }
+
         return true;
     }
     return false;
@@ -203,11 +224,11 @@ void coreimage::setImage(const QImage &newImage)
     QString h = QString::number(image.height()) ;
     QString w = QString::number(image.width()) ;
 
-    ui->name->setText("Name :" + nam + " ; ");
-    ui->height->setText("Height :" + h + " px ; ");
-    ui->width->setText("Width :" + w + " px ; ");
-    ui->size->setText("Size :" + formatSize(info.size()) + " ; ");
-    ui->type->setText("Type :" + typ + " ; ");
+    ui->name->setText("Name : " + nam + " ; ");
+    ui->height->setText("Height : " + h + " px ; ");
+    ui->width->setText("Width : " + w + " px ; ");
+    ui->size->setText("Size : " + formatSize(info.size()) + " ; ");
+    ui->type->setText("Type : " + typ + " ; ");
     ui->thumnailView->item(images.indexOf(currentImagePath))->setSelected(true);
 }
 

@@ -24,7 +24,7 @@ void SettingsManage::createDefaultSettings() {
         cSetting->setValue("Zoom-Tree", 16);
         cSetting->setValue("Zoom-List", 24);
         cSetting->setValue("Zoom-Detail", 16);
-        cSetting->setValue("Show-Thumb", true);
+        cSetting->setValue("Show-Thumb", false);
         cSetting->setValue("Show-Toolbox", false);
         cSetting->setValue("View-Mode", "Detail");
         cSetting->setValue("Sort-Column", 0);
@@ -38,7 +38,7 @@ void SettingsManage::createDefaultSettings() {
         cSetting->beginGroup("CoreBox");
         cSetting->setValue("Maximized", false);
         cSetting->setValue("Show-Battery", false);
-        cSetting->setValue("Recent-Disable", false);
+        cSetting->setValue("Recent-Disable", true);
         cSetting->endGroup();
     }
 }

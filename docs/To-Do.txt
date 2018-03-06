@@ -2,8 +2,11 @@ version 2
 
 1-fetures
 0-bug/fix
+2-fixed-test is needed
 
 corebox
+1 - setwindow title >> a global function.
+0 - add option for using defult window manager
 1 - update the app when clicked from tab.(only corboxapps)
 0 - close function in corebox is not closing corepaint properly.it is doing that problem what the corepad did earlier.
 1 - if bookmark is booked it shouldshow a message if it exists and show the section it was booked.
@@ -18,6 +21,7 @@ bookmarks
 0 - bookmark file location is not correct.
 
 dashboard
+0 - show used network in general section.
 0 - hide the bettry page ,if it is disabled in setting
 1 - remove unwanted pertition
 1 - selected drive will show only it's pertition.
@@ -34,10 +38,12 @@ Search
 0 - if path is given find is not working.but locate is working.
 
 corefm
+0 - need to fix view mode.
+0 - icondlg.cpp and header >> remove
 1 - copyto some common places(like desktop,downloads,home)
 1 - properties - option to make file executable(chmod a+x filepath)
-0 - preview is not working properly.
-0 - remove the demon in corefm
+0 - preview is not working.
+0 - remove the demon in corefm.
 1 - ctrl + wheel = zoom.
 1 - multiple file's combined size.
 1 - add trash in on_actionTrash_it_triggered .proper trash intigration.
@@ -63,6 +69,8 @@ corepad
 1 - add tab widget to corepad.like corepaint.
 
 setting
+1 - also open corebox at start up.
+1 - seperate the coreaction section in setting manage.
 0 - add a button stop the recent closed app.
     
 start
@@ -75,8 +83,9 @@ coreimage
 0 - mouse wheel >>next image not working sometimes
 
 coreplayer
-0 - stop clicked >> seekbar position not changing.
-0 - play by open file function automatically play button is clicked.
+0 - after stop clicked player widget turs white
+2 - stop clicked >> seekbar position not changing.
+2 - play by open file function automatically play button is clicked.
 
 coreshot
 1 - add active window at screenshot

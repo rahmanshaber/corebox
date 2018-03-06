@@ -267,6 +267,97 @@ border-radius: 10px;
        </widget>
       </item>
       <item>
+       <widget class="QFrame" name="info">
+        <property name="styleSheet">
+         <string notr="true">QFrame{
+background-color: #27527F;
+color: #ffffff;
+border-radius: 10px;
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
+          <number>2</number>
+         </property>
+         <property name="horizontalSpacing">
+          <number>5</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0" rowspan="3">
+          <widget class="QPushButton" name="pushButton_6">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="icons.qrc">
+             <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_16">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Info</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack the github page for more info &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Cheack out the manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+           <property name="openExternalLinks">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
        <widget class="QFrame" name="devlopers">
         <property name="styleSheet">
          <string notr="true">QFrame{
@@ -581,7 +672,7 @@ border-radius: 10px;
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="other_2">
+       <widget class="QFrame" name="thanks">
         <property name="styleSheet">
          <string notr="true">QFrame{
 background-color: #27527F;
@@ -683,13 +774,10 @@ border-radius: 10px;
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Expanding</enum>
-        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>468</width>
-          <height>211</height>
+          <width>20</width>
+          <height>40</height>
          </size>
         </property>
        </spacer>

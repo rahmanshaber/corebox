@@ -71,15 +71,15 @@ void sysinfo::systemInformationInit()
 
     QStringList infos;
     infos
-        << tr("UserName       : %1").arg(sysInfo.getHostname())
-        << tr("Platform       : %1").arg(sysInfo.getPlatform())
-        << tr("Distribution   : %1").arg(sysInfo.getDistribution())
-        << tr("Kernel Release : %1").arg(sysInfo.getKernel())
-        << tr("CPU Model      : %1").arg(sysInfo.getCpuModel())
-        << tr("CPU Speed      : %1 (Mhz)").arg(sysInfo.getCpuSpeed())
-        << tr("CPU Core       : %1").arg(sysInfo.getCpuCore())
-        << tr("Display Size   : %1").arg(scr)
-        << tr("Qt version     : %1").arg(QT_VERSION_STR);
+        << tr("UserName : %1")       .arg(sysInfo.getHostname())
+        << tr("Platform : %1")       .arg(sysInfo.getPlatform())
+        << tr("Distribution : %1")   .arg(sysInfo.getDistribution())
+        << tr("Kernel Release : %1") .arg(sysInfo.getKernel())
+        << tr("CPU Model : %1")      .arg(sysInfo.getCpuModel())
+        << tr("CPU Speed : %1 (Mhz)").arg(sysInfo.getCpuSpeed())
+        << tr("CPU Core  : %1")      .arg(sysInfo.getCpuCore())
+        << tr("Display Size : %1")   .arg(scr)
+        << tr("Qt version : %1")     .arg(QT_VERSION_STR);
 
     QStringListModel *systemInfoModel = new QStringListModel(infos);
 

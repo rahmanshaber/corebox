@@ -196,6 +196,15 @@ QListView::item:hover {
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
         </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="showDropIndicator" stdset="0">
+         <bool>false</bool>
+        </property>
+        <property name="defaultDropAction">
+         <enum>Qt::IgnoreAction</enum>
+        </property>
        </widget>
       </item>
       <item>
@@ -281,7 +290,7 @@ color: #FFFFFF;
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="selectedsection">
+       <widget class="QLabel" name="playing">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -346,7 +355,7 @@ color: #FFFFFF;
     </layout>
    </item>
    <item row="2" column="2">
-    <widget class="QFrame" name="frame">
+    <widget class="QFrame" name="navigation">
      <property name="minimumSize">
       <size>
        <width>0</width>

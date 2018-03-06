@@ -86,7 +86,6 @@ public slots:
     void toggleSortBy(QAction* action);
     void setSortOrder(Qt::SortOrder order);
     void setSortColumn(QAction *columnAct);
-    void showEditDialog();
     void actionMapper(QString);
     void dragLauncher(const QMimeData *data, const QString &newPath, myModel::DragMode dragMode);
     void pasteLauncher(const QMimeData *data, const QString &newPath, const QStringList &cutList);
@@ -152,7 +151,6 @@ private slots:
     void on_actionExtract_Here_triggered();
     void on_actionCreate_Archive_triggered();
     void on_STrash_clicked();
-
     void on_emptyTrash_clicked();
 
 private:

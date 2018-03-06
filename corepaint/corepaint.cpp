@@ -54,7 +54,13 @@ corepaint::corepaint( QWidget *parent):QWidget(parent),
     qRegisterMetaType<InstrumentsEnum>("InstrumentsEnum");
     DataSingleton::Instance()->setIsInitialized();
 
-    ui->page->setTabEnabled(1,false);
+    if(filepath.isEmpty()){
+        ui->page->setTabEnabled(1,false);
+        ui->page->setTabEnabled(2,false);
+        ui->save->setEnabled(false);
+        ui->saveas->setEnabled(false);
+        ui->bookMarkIt->setEnabled(false);
+    }
 
     initializeMainMenu();
     shotcuts();
@@ -145,6 +151,10 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
         filepath = filePath;
         if (ui->paintTabs->count() >= 1) {
             ui->page->setTabEnabled(1, true);
+            ui->page->setTabEnabled(2,true);
+            ui->save->setEnabled(true);
+            ui->saveas->setEnabled(true);
+            ui->bookMarkIt->setEnabled(true);
         }
         if (!fileName.isEmpty()) {
             messageEngine("File Opened Successfully.", "Info");
@@ -436,12 +446,12 @@ void corepaint::on_paintTabs_currentChanged(int index)
 
     if(!getCurrentImageArea()->getFileName().isEmpty())
     {
-        setWindowTitle(QString("%1 - EasyPaint").arg(getCurrentImageArea()->getFileName()));
+//        setWindowTitle(QString("%1 - EasyPaint").arg(getCurrentImageArea()->getFileName()));
         currentFile = QDir(currentFile).path() + "/" + getCurrentImageArea()->getFileName();
     }
     else
     {
-        setWindowTitle(QString("%1 - EasyPaint").arg(tr("Untitled Image")));
+//        setWindowTitle(QString("%1 - EasyPaint").arg(tr("Untitled Image")));
         currentFile = "Untitled Image";
     }
     mUndoStackGroup->setActiveStack(getCurrentImageArea()->getUndoStack());
@@ -485,7 +495,12 @@ void corepaint::on_paintTabs_tabCloseRequested(int index)
     ui->paintTabs->removeTab(index);
     delete wid;
     if(ui->paintTabs->count() == 0){
-        setWindowTitle("Empty - EasyPaint");
+        ui->page->setTabEnabled(1,false);
+        ui->page->setTabEnabled(2,false);
+        ui->save->setEnabled(false);
+        ui->saveas->setEnabled(false);
+        ui->bookMarkIt->setEnabled(false);
+        ui->selectedsection->setText("");
     }
 }
 

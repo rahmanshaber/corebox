@@ -22,6 +22,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QWidget>
 #include <QMap>
 #include <QMenu>
+#include <QPushButton>
 
 #include "settingsmanage.h"
 #include "globalfunctions.h"

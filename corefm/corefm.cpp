@@ -45,6 +45,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     qDebug() << "corefm opening";
     ui->setupUi(this);
 
+
     QIcon::setThemeName(sm.getThemeName());
 
     // Create mime utils
@@ -124,13 +125,14 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     connect(ui->detaile, SIGNAL(clicked(bool)), this, SLOT(on_detaile_clicked(bool)));
     connect(ui->icon, SIGNAL(clicked(bool)), this, SLOT(on_icon_clicked(bool)));
 
-    on_icon_clicked(true);
-    ui->paste->setVisible(false);
+    on_icon_clicked(1);
+    ui->paste->setVisible(0);
     ui->mk->addWidget(tabs);
-    ui->TrashFrame->setVisible(false);
+    ui->TrashFrame->setVisible(0);
 //    toggleSortBy(sortNameAct);
-    on_showHidden_clicked(false);
-    ui->emptyTrash->setVisible(false);
+    on_showHidden_clicked(0);
+    ui->emptyTrash->setVisible(0);
+    ui->showthumb->setVisible(0);
 
     ui->newTab->setDefaultAction(ui->actionNewTab);
     ui->copy->setDefaultAction(ui->actionCopy);
@@ -302,17 +304,14 @@ void corefm::loadSettings() {
   ui->tools->setVisible(sm.getShowToolbox());
   qDebug()<< "SHOW TOOL" << sm.getShowToolbox();
   // Load view mode
-  //if (sett->value("View-Mode").toString() == "Detail") {
-      //ui->detaile->setChecked(true);
-      //ui->icon->setChecked(false);
-      //on_detaile_clicked(true);
-      //on_icon_clicked(false);
-  //} else {
-      //ui->detaile->setChecked(false);
-      //ui->icon->setChecked(true);
-      //on_icon_clicked(true);
-      //on_detaile_clicked(false);
-  //}
+//  if (sett->value("View-Mode").toString() != "Detail") {
+//      on_icon_clicked(1);
+//      qDebug()<< sett->value("View-Mode").toString();
+//  }
+//  else if (sett->value("View-Mode").toString() == "Detail") {
+//      on_detaile_clicked(1);
+//      qDebug()<< "Detail";
+//  }
 //  ui->actionDetailView->setChecked(settings->value("viewMode", 0).toBool());
 //  ui->actionIconView->setChecked(settings->value("iconMode", 0).toBool());
 //  on_actionDetailView_triggered();
@@ -1079,7 +1078,7 @@ void corefm::progressFinished(int ret,QStringList newFiles)
         if(currentView == 2) ui->viewtree->scrollTo(modelView->mapFromSource(modelList->index(newFiles.first())),QAbstractItemView::EnsureVisible);
         else ui->viewlist->scrollTo(modelView->mapFromSource(modelList->index(newFiles.first())),QAbstractItemView::EnsureVisible);
 
-        if(QFile(QDir::tempPath() + "/qtfm.temp").exists()) QApplication::clipboard()->clear();
+        if(QFile(QDir::tempPath() + "/corefm.temp").exists()) QApplication::clipboard()->clear();
 
         clearCutItems();
     }
@@ -1099,7 +1098,7 @@ void corefm::writeSettings() {
     sm.setSortColumn(currentSortColumn);
     sm.setSortOrder(currentSortOrder);
     sm.setIsShowThumb(ui->showthumb->isChecked());
-    qDebug() << ui->tools->isVisible() << ui->Tools->isChecked();
+//    qDebug() << ui->tools->isVisible() << ui->Tools->isChecked();
     sm.setShowToolbox(ui->tools->isVisible());
     sm.setIsRealMimeType(modelList->isRealMimeTypes());
 }
@@ -1165,7 +1164,6 @@ QMenu* corefm::globalmenu(){
     QMenu *with = new QMenu(tr("Open with.."));
     QMenu *arrageItems = new QMenu(tr("Arrage Items"));
 
-    curIndex = modelList->filePath(modelView->mapToSource(listSelectionModel->currentIndex()));
     QFileInfo info(selcitempath);
     QString littleinfo = info.suffix();
 
@@ -1235,7 +1233,7 @@ QMenu* corefm::globalmenu(){
     }
 
     else  if(sec == 1){
-      if(curIndex.isFile()){ //file
+      if(info.isFile()){ //file
           popup->addAction(ui->actionOpen);
           popup->addMenu(with);
           popup->addMenu(createOpenWithMenu());
@@ -1243,11 +1241,11 @@ QMenu* corefm::globalmenu(){
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
           popup->addSeparator();
-          if (curIndex.isExecutable()) {
+          if (info.isExecutable()) {
               popup->addAction(ui->actionRunFile);
           }
         }
-      if(curIndex.isDir()){ //folder
+      if(info.isDir()){ //folder
           popup->addMenu(innew);
           popup->addSeparator();
           popup->addAction(ui->actionCut);
@@ -1272,7 +1270,7 @@ QMenu* corefm::globalmenu(){
         popup->addAction(ui->actionSelectAll);
         popup->addSeparator();
 //        popup->addMenu(view);
-        popup->addMenu(arrageItems);
+//        popup->addMenu(arrageItems);
         popup->addAction(ui->actionRefresh);
         popup->addSeparator();
         if (QApplication::clipboard()->mimeData()->hasUrls()) {
@@ -1757,7 +1755,7 @@ void corefm::on_actionCut_triggered()
     modelList->addCutItems(fileList);
 
     // Save a temp file to allow pasting in a different instance
-    QFile tempFile(QDir::tempPath() + "/qtfm.temp");
+    QFile tempFile(QDir::tempPath() + "/corefm.temp");
     tempFile.open(QIODevice::WriteOnly);
     QDataStream out(&tempFile);
     out << fileList;
@@ -1813,7 +1811,7 @@ void corefm::on_actionPaste_triggered()
     else newPath = ui->pathEdit->itemText(0);
 
     // Check ui->viewlist of files that are to be cut
-    QFile tempFile(QDir::tempPath() + "/qtfm.temp");
+    QFile tempFile(QDir::tempPath() + "/corefm.temp");
     if (tempFile.exists()) {
       tempFile.open(QIODevice::ReadOnly);
       QDataStream out(&tempFile);
@@ -1851,7 +1849,6 @@ void corefm::on_actionRefresh_triggered()
 
     return;
 }
-
 
 void corefm::on_actionNewFolder_triggered()
 {
@@ -1919,6 +1916,7 @@ void corefm::on_actionShowThumbnails_triggered()
 {
     if (currentView != 2) on_icon_clicked(true);
     else on_detaile_clicked(true);
+    on_actionRefresh_triggered();
 }
 
 void corefm::on_actionRunFile_triggered()
@@ -1981,37 +1979,6 @@ void corefm::on_actionAscending_triggered()
     setSortOrder(currentSortOrder == Qt::AscendingOrder ? Qt::DescendingOrder
                                                         : Qt::AscendingOrder);
     modelView->sort(currentSortColumn, currentSortOrder);
-}
-
-/**
- * @brief Displays settings dialog
- */
-void corefm::showEditDialog() {  //need
-//   // Deletes current ui->viewlist of custom actions
-//   // customActManager->freeActions();
-
-//    sett->beginGroup("CoreFM");
-//    // Loads current icon theme
-//    QString oldTheme = sm.getThemeName();//sett->value("Force-Theme").toString();
-
-//    // Creates settings dialog
-//    SettingsDialog *d = new SettingsDialog(actionList, sm.cSetting, mimeUtils, this);
-//    if (d->exec()) {
-
-//        // Reload settings
-//        loadSettings();
-
-//        // If icon theme has changed, use new theme and clear cache
-//        QString newTheme = sm.getThemeName();//sett->value("Force-Theme").toString();
-//        if (oldTheme.compare(newTheme) != 0) {
-//          modelList->clearIconCache();
-//          QIcon::setThemeName(newTheme);
-//        }
-//    }
-
-//    // Reads custom actions
-//    //customActManager->readActions();
-//    delete d;
 }
 
 /**

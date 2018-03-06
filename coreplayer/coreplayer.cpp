@@ -56,6 +56,15 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
     player->setVideoOutput(Vwidget);
     ui->view->addWidget(Vwidget);
 
+    if(isPlayerAvailable()){
+        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+            b->setEnabled(false);
+        }
+        ui->playlist->setEnabled(true);
+        ui->seekBar->setEnabled(false);
+        ui->volume->setEnabled(false);
+    }
+
     ui->seekBar->setRange(0, player->duration() / 1000);
     connect(ui->seekBar,SIGNAL(sliderMoved(int)),this,SLOT(seek(int)));
 
@@ -267,19 +276,19 @@ void coreplayer::bufferingProgress(int progress)
 void coreplayer::setTrackInfo(const QString &info)
 {
     trackInfo = info;
-    if (!statusInfo.isEmpty())
-        setWindowTitle(QString("%1 | %2").arg(trackInfo).arg(statusInfo));
-    else
-        setWindowTitle(trackInfo);
+//    if (!statusInfo.isEmpty())
+//        setWindowTitle(QString("%1 | %2").arg(trackInfo).arg(statusInfo));
+//    else
+//        setWindowTitle(trackInfo);
 }
 
 void coreplayer::setStatusInfo(const QString &info)
 {
     statusInfo = info;
-    if (!statusInfo.isEmpty())
-        setWindowTitle(QString("%1 | %2").arg(trackInfo).arg(statusInfo));
-    else
-        setWindowTitle(trackInfo);
+//    if (!statusInfo.isEmpty())
+//        setWindowTitle(QString("%1 | %2").arg(trackInfo).arg(statusInfo));
+//    else
+//        setWindowTitle(trackInfo);
 }
 
 void coreplayer::displayErrorMessage()
@@ -316,8 +325,6 @@ void coreplayer::openPlayer(QString path) {
     list1.clear();
     list2.clear();
     lists = lists.toSet().toList();
-    //qSort(lists.begin(), lists.end());
-    //sp.isFile() ? play(lists.indexOf(sp.fileName())) : play(0);
     for (int i = 0; i < lists.count(); ++i) {
         mModel->appendRow((new QStandardItem(QFileInfo(lists.at(i)).fileName())));
         if (sp.isFile() && (sp.fileName() == mModel->index(i, 0).data().toString())) {
@@ -330,7 +337,13 @@ void coreplayer::openPlayer(QString path) {
          ui->numberOfFiles->setVisible(1);
          ui->numberOfFiles->setText(QString("Included Files: %1").arg(mNumberOfFiles));
     }
-    on_medialist_doubleClicked(index);
+    if(!path.isEmpty()){
+        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+            b->setEnabled(true);
+        }
+        ui->seekBar->setEnabled(true);
+        ui->volume->setEnabled(true);
+    }
 }
 
 void coreplayer::on_open_clicked()
@@ -344,6 +357,11 @@ void coreplayer::on_open_clicked()
     if (dialog.exec() == QDialog::Accepted) { //if dialog pressed accept means open then do this.
         openPlayer(QFileInfo(dialog.selectedFiles().first()).path());
         messageEngine("Files Collected", "Info");
+        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+            b->setEnabled(true);
+        }
+        ui->seekBar->setEnabled(true);
+        ui->volume->setEnabled(true);
     } else {
         messageEngine("Files collection rejected", "Info");
     }
@@ -414,12 +432,10 @@ void coreplayer::on_stop_clicked()
     ui->stop->setEnabled(false);
     player->stop();
     ui->play->setChecked(false);
-
-
     player->setPosition(0);
-
     player->setMedia(NULL);
     ui->duration->setText("00:00 / 00:00");
+    ui->workingOn->setText("");
     messageEngine("Stop", "Info");
 }
 

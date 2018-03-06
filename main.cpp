@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
     //int sh = dw.height();
 
     a.move(sw,0);
+    a.show();
 
     return app.exec();
 }

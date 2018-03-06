@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/back">
         <file>sounds/e.jpeg</file>
+        <file>sounds/background.png</file>
     </qresource>
     <qresource prefix="/">
         <file>icons/About.svg</file>
