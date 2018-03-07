@@ -21,6 +21,7 @@
 * engrampa(for Archive support)
 
 ### Known Bugs
+* Firt time opening search freeze the app.Restart the app should fix it.
 * Window movement needs right mouse hold.
 * Multipal monitor support not good.
 * Cheack the To-Do.txt in doc folder for known bugs.
