@@ -31,3 +31,4 @@
   Please make simple player with qtav and send via email to us.
   Please in qmake.not cmake.We tried the example's of QtAV .but they don't work.
 * See the Help Us page in Help app of corebox for more.
+* This is [an example](http://example.com/ "Title") inline link.
