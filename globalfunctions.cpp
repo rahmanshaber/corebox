@@ -81,17 +81,17 @@ void messageEngine(QString message, QString messageType)
     QWidget *mbox = new QWidget();
     QVBoxLayout *bi = new QVBoxLayout();
     mbox->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::ToolTip);
-    //mbox->setFixedSize(230,50);
+    mbox->setMinimumSize(230,50);
     mbox->setLayout(bi);
     l->setFont(f);
     bi->addWidget(l);
     bi->setContentsMargins(6, 6, 6, 6);
     if (messageType == "Info") {
-        mbox->setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A; border-radius: 2px; padding: 5px 5px 5px 5px;}");
+        mbox->setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A; border-radius: 10px; padding: 5px 5px 5px 5px;}");
     } else if (messageType == "Warning") {
-        mbox->setStyleSheet("QWidget{background-color: red;color: #ffffff;border: 1px #2A2A2A; border-radius: 2px; padding: 5px 5px 5px 5px;}");
+        mbox->setStyleSheet("QWidget{background-color: red;color: #ffffff;border: 1px #2A2A2A; border-radius: 10px; padding: 5px 5px 5px 5px;}");
     } else if (messageType == "Tips") {
-        mbox->setStyleSheet("QWidget{background-color: blue;color: #ffffff;border: 1px #2A2A2A; border-radius: 2px; padding: 5px 5px 5px 5px;}");
+        mbox->setStyleSheet("QWidget{background-color: blue;color: #ffffff;border: 1px #2A2A2A; border-radius: 10px; padding: 5px 5px 5px 5px;}");
     } else {
         return;
     }

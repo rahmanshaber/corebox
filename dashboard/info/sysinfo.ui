@@ -147,6 +147,24 @@ color: #ffffff;
    </item>
    <item>
     <widget class="QWidget" name="network" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>300</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true">QWidget{
 background-color: #1F2B38; ;
@@ -188,7 +206,7 @@ color: #FFFFFF;
        </spacer>
       </item>
       <item>
-       <widget class="QFrame" name="frame">
+       <widget class="QFrame" name="downloadF">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -260,7 +278,7 @@ QProgressBar::chunk {
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="frame_2">
+       <widget class="QFrame" name="uploadF">
         <property name="minimumSize">
          <size>
           <width>0</width>

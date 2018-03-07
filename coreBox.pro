@@ -160,7 +160,6 @@ SOURCES += \
     corefm/corefm.cpp \
     corefm/desktopfile.cpp \
     corefm/fileutils.cpp \
-    corefm/icondlg.cpp \
     corefm/mimeutils.cpp \
     corefm/mymodel.cpp \
     corefm/mymodelitem.cpp \
@@ -219,7 +218,6 @@ HEADERS += \
     corefm/corefm.h \
     corefm/desktopfile.h \
     corefm/fileutils.h \
-    corefm/icondlg.h \
     corefm/mimeutils.h \
     corefm/mymodel.h \
     corefm/mymodelitem.h \

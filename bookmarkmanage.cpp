@@ -230,7 +230,7 @@ QString BookmarkManage::checkingBookPath(QString sectionn, QString bookPath)
     //foreach (QString section, getBookSections()) {
         foreach (QString bName, getBookNames(sectionn)) {
             if (!QString::compare(bookmarkPath(sectionn, bName), bookPath, Qt::CaseSensitive)) {
-                line->setText("Path exists.");
+                line->setText("Path exists in this section.");
                 return line->text();
             } else { line->setText(""); continue;}
         }

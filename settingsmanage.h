@@ -47,8 +47,8 @@ public:
     bool getShowToolbox();
     bool setShowToolbox(bool showTool);
 
-    QString getViewMode();
-    bool setViewMode(QString mode);
+    bool getViewMode();
+    bool setViewMode(bool mode);
 
     int getSortColumn();
     bool setSortColumn(int value);

@@ -5,14 +5,17 @@ version 2
 2-fixed-test is needed
 
 corebox
+0 - round border is no working.
+1 - qdesktopwidget as a global function.
+1 - add display scale support
 1 - setwindow title >> a global function.
 0 - add option for using defult window manager
 1 - update the app when clicked from tab.(only corboxapps)
 0 - close function in corebox is not closing corepaint properly.it is doing that problem what the corepad did earlier.
 1 - if bookmark is booked it shouldshow a message if it exists and show the section it was booked.
-1 - separate process for per app
+1 - separate process for per app.
 0 - limit the openable tab.
-1 - tab text ailing left
+1 - tab text ailing left.
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
@@ -25,19 +28,22 @@ dashboard
 0 - hide the bettry page ,if it is disabled in setting
 1 - remove unwanted pertition
 1 - selected drive will show only it's pertition.
-1 - mount specific pertition on corebox startup
-1 - add drive frame in drive view
+1 - mount specific pertition on corebox startup.
+1 - add drive frame in drive view.
 
 corepaint
 1 - set all the instrument cursor.
 1 - open screenshot folder pushbutton which show the screenshot folder.
 
 Search
+1 - if searh opened from FM hide locate option.
 1 - add button to set folder
 1 - show the file/folder in coerFM with selecting the file/folder.
 0 - if path is given find is not working.but locate is working.
 
 corefm
+1 - if folder is empty show an image. like search app
+1 - add tree and mediainfo package.
 0 - need to fix view mode.
 0 - icondlg.cpp and header >> remove
 1 - copyto some common places(like desktop,downloads,home)
@@ -48,11 +54,12 @@ corefm
 1 - multiple file's combined size.
 1 - add trash in on_actionTrash_it_triggered .proper trash intigration.
 0 - after trash , the file is not resotreable.
-0 - arrange item crashing the app.
+0 - arrange item is crashing the app.
 0 - hidden is not setting it's bool,from previous start.
 1 - add app engine.
 1 - send a file to a drive.
 0 - there is a problem when the selection changed after clicking copy.
+1 - fix properties ui(fram less
 
 messageengine
 1 - file moved message.
@@ -60,6 +67,8 @@ messageengine
 1 - file deleted & delete failed message.
 
 core time
+0 - fix alarm page
+1 - set reminder option.
 0 - add to settings AM or PM
 0 - remove settings
 0 - fix the timer start/pause button .
@@ -74,6 +83,8 @@ setting
 0 - add a button stop the recent closed app.
     
 start
+1 - start button in side of tab(+).
+1 - option to sidebar or tab button(+)
 1 - new background
 0 - recently close collecting, but not specific corefm path.
 
@@ -83,13 +94,28 @@ coreimage
 0 - mouse wheel >>next image not working sometimes
 
 coreplayer
+1 - video thumbnails of playlist.
+1 - hide the navigation bar when playing.
+1 - move to qtav engine
 0 - after stop clicked player widget turs white
 2 - stop clicked >> seekbar position not changing.
 2 - play by open file function automatically play button is clicked.
 
 coreshot
+1 - add stylsheet
 1 - add active window at screenshot
 0 - on left mouse click at screenshot when a screenshot is taken it save a file to tmp folder
+
+help
+1 - add some recomendation
+
+app
+1 - terminal app
+1 - pdf viewer
+1 - file renamer
+
+infuture
+1 - make manjaro iso with lxqt desktop as base.
 
 
 *remove unwanted function from all cpp files.

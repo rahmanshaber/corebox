@@ -45,7 +45,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     qDebug() << "corefm opening";
     ui->setupUi(this);
 
-
     QIcon::setThemeName(sm.getThemeName());
 
     // Create mime utils
@@ -77,7 +76,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
                         "QTabBar::close-button {image: url(:/icons/close_w.svg);subcontrol-position: right;}"
                         "QTabBar::tab{text-align:left;background-color: #136ba2;border-style: 1px rgb(67, 67, 67);height: 30px;color: #136ba2;padding: 0px 5px 0px 5px;}"
                         "QTabBar{background-color: #353536;height: 30px;}");
-
 
     modelTree = new mainTreeFilterProxyModel();
     modelTree->setSourceModel(modelList);
@@ -125,7 +123,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     connect(ui->detaile, SIGNAL(clicked(bool)), this, SLOT(on_detaile_clicked(bool)));
     connect(ui->icon, SIGNAL(clicked(bool)), this, SLOT(on_icon_clicked(bool)));
 
-    on_icon_clicked(1);
     ui->paste->setVisible(0);
     ui->mk->addWidget(tabs);
     ui->TrashFrame->setVisible(0);
@@ -260,36 +257,17 @@ void corefm::lateStart()
 
   qApp->setKeyboardInputInterval(1000);
 
-  // Read custom actions
-//  QTimer::singleShot(100, customActManager, SLOT(readActions()));
-
   // Read defaults
   QTimer::singleShot(100, mimeUtils, SLOT(generateDefaults()));
   on_actionRefresh_triggered();
 }
 
-//---------------------------------------------------------------------------
-
 /**
  * @brief Loads application settings
  */
-void corefm::loadSettings() {
-
-  // Restore window state
-//  restoreState(settings->value("windowState").toByteArray(), 1);
-//  resize(settings->value("size", QSize(600, 400)).toSize());
-
-  // Load info whether use real mime types
-    //sett->beginGroup("CoreFM");
-    //modelList->setRealMimeTypes(sett->value("Real-Mime-Types", true).toBool());
-
+void corefm::loadSettings()
+{
     modelList->setRealMimeTypes(sm.getIsRealMimeType());
-
-  // Load zoom settings
-//  zoom = sett->value("Zoom", 48).toInt();
-//  zoomTree = sett->value("Zoom-Tree", 16).toInt();
-//  zoomList = sett->value("Zoom-List", 24).toInt();
-//  zoomDetail = sett->value("Zoom-Detail", 16).toInt();
 
     zoom = sm.getZoomValue();
     zoomTree = sm.getZoomTreeValue();
@@ -298,63 +276,69 @@ void corefm::loadSettings() {
     ui->viewtree->setIconSize(QSize(zoomDetail, zoomDetail));
     tree->setIconSize(QSize(zoomTree, zoomTree));
 
-  // Load information whether thumbnails can be shown
-  ui->showthumb->setChecked(sm.getIsShowThumb());//sett->value("Show-Thumb", 1).toBool());
-  ui->Tools->setChecked(sm.getShowToolbox());
-  ui->tools->setVisible(sm.getShowToolbox());
-  qDebug()<< "SHOW TOOL" << sm.getShowToolbox();
-  // Load view mode
-//  if (sett->value("View-Mode").toString() != "Detail") {
-//      on_icon_clicked(1);
-//      qDebug()<< sett->value("View-Mode").toString();
-//  }
-//  else if (sett->value("View-Mode").toString() == "Detail") {
-//      on_detaile_clicked(1);
-//      qDebug()<< "Detail";
-//  }
-//  ui->actionDetailView->setChecked(settings->value("viewMode", 0).toBool());
-//  ui->actionIconView->setChecked(settings->value("iconMode", 0).toBool());
-//  on_actionDetailView_triggered();
+    ui->showthumb->setChecked(sm.getIsShowThumb());
+    ui->Tools->setChecked(sm.getShowToolbox());
+    ui->tools->setVisible(sm.getShowToolbox());
 
-  //on_detaile_clicked(true);
+    // Load view mode
+    if (sm.getViewMode() == true) {
+        on_icon_clicked(1);
+        ui->icon->setChecked(1);
+    }
+    else if (sm.getViewMode() == false) {
+        on_detaile_clicked(1);
+        ui->detaile->setChecked(1);
+    }
 
-  // Restore header of detail tree
-//  ui->viewtree->header()->restoreState(settings->value("header").toByteArray());
-  //ui->viewtree->setSortingEnabled(1);
+    // Load terminal command
+    term = sm.getTerminal();
 
+    currentSortColumn = sm.getSortColumn();//sett->value("Sort-Column", 0).toInt();
+    currentSortOrder = (Qt::SortOrder)sm.getSortOrder();// sett->value("Sort-Order", 0).toInt();
 
-  // Load sorting information and sort
-  currentSortColumn = sm.getSortColumn();//sett->value("Sort-Column", 0).toInt();
-  currentSortOrder = (Qt::SortOrder)sm.getSortOrder();// sett->value("Sort-Order", 0).toInt();
-//  switch (currentSortColumn) {
-//    case 0 : setSortColumn(sortNameAct); break;
-//    case 1 : setSortColumn(sortSizeAct); break;
-//    case 3 : setSortColumn(sortDateAct); break;
-//  }
-//  setSortOrder(currentSortOrder);
-//  modelView->sort(currentSortColumn, currentSortOrder);
-
-  // Load terminal command
-  term = sm.getTerminal();//sett->value("Terminal").toString();
-//sett->endGroup();
+//    ui->viewtree->setSortingEnabled(1);
+//    switch (currentSortColumn) {
+//      case 0 : setSortColumn(sortNameAct); break;
+//      case 1 : setSortColumn(sortSizeAct); break;
+//      case 3 : setSortColumn(sortDateAct); break;
+//    }
+//    setSortOrder(currentSortOrder);
+//    modelView->sort(currentSortColumn, currentSortOrder);
 }
-//---------------------------------------------------------------------------
 
-void corefm::closeEvent(QCloseEvent *event) {
+/**
+ * @brief Writes settings into config file
+ */
+void corefm::writeSettings() {
+    sm.setZoomValue(zoom);
+    sm.setZoomTreeValue(zoomTree);
+    sm.setZoomListValue(zoomList);
+    sm.setZoomDetailValue(zoomDetail);
+    sm.setSortColumn(currentSortColumn);
+    sm.setSortOrder(currentSortOrder);
+    sm.setIsShowThumb(ui->showthumb->isChecked());
+    sm.setViewMode(ui->icon->isChecked());
+    sm.setShowToolbox(ui->tools->isVisible());
+    sm.setIsRealMimeType(modelList->isRealMimeTypes());
+}
 
-  // Save settings
-  event->ignore();
+void corefm::closeEvent(QCloseEvent *event)
+{
+    // Save settings
+    event->ignore();
+
     writeSettings();
-    qDebug() << tabs->count();
     if (tabs->count() == 0) {
         saveToRecent("CoreFM", ui->pathEdit->currentText());
-    } else if (tabs->count() > 0) {
+    }
+    else if (tabs->count() > 0) {
         for (int i = 0; i < tabs->count(); i++) {
             tabs->setCurrentIndex(i);
             qDebug() << ui->pathEdit->currentText() << tabs->currentIndex();
             saveToRecent("CoreFM", ui->pathEdit->currentText());
         }
     }
+
   // If deamon, ignore event
 //  if (isDaemon) {
 //    this->setVisible(0);
@@ -661,8 +645,6 @@ void corefm::pasteLauncher(const QMimeData *data, const QString &newPath,
   pasteLauncher(files, newPath, cutList);
 }
 
-//---------------------------------------------------------------------------
-
 /**
  * @brief Pastes files to the new path
  * @param files ui->viewlist of files
@@ -754,114 +736,113 @@ void corefm::pasteLauncher(const QList<QUrl> &files, const QString &newPath,
  * @param cutList ui->viewlist of files that are going to be removed from source path
  * @return true if operation was successfull
  */
-bool corefm::pasteFiles(const QList<QUrl> &files, const QString &newPath,
-                            const QStringList &cutList) {
+bool corefm::pasteFiles(const QList<QUrl> &files, const QString &newPath,const QStringList &cutList)
+{
+    // Temporary variables
+    bool ok = true;
+    QStringList newFiles;
 
-  // Temporary variables
-  bool ok = true;
-  QStringList newFiles;
+    // Quit if folder not writable
+    if (!QFileInfo(newPath).isWritable()
+        || newPath == QDir(files.at(0).toLocalFile()).path()) {
+      emit copyProgressFinished(1, newFiles);
+      return 0;
+    }
 
-  // Quit if folder not writable
-  if (!QFileInfo(newPath).isWritable()
-      || newPath == QDir(files.at(0).toLocalFile()).path()) {
-    emit copyProgressFinished(1, newFiles);
-    return 0;
-  }
+    // Get total size in bytes
+    qint64 total = FileUtils::totalSize(files);
 
-  // Get total size in bytes
-  qint64 total = FileUtils::totalSize(files);
+    // Check available space on destination before we start
+    struct statfs info;
+    statfs(newPath.toLocal8Bit(), &info);
+    if ((qint64) info.f_bavail * info.f_bsize < total) {
 
-  // Check available space on destination before we start
-  struct statfs info;
-  statfs(newPath.toLocal8Bit(), &info);
-  if ((qint64) info.f_bavail * info.f_bsize < total) {
+      // If it is a cut/move on the same device it doesn't matter
+      if (cutList.count()) {
+        qint64 driveSize = (qint64) info.f_bavail*info.f_bsize;
+        statfs(files.at(0).path().toLocal8Bit(),&info);
 
-    // If it is a cut/move on the same device it doesn't matter
-    if (cutList.count()) {
-      qint64 driveSize = (qint64) info.f_bavail*info.f_bsize;
-      statfs(files.at(0).path().toLocal8Bit(),&info);
-
-      // Same device?
-      if ((qint64) info.f_bavail*info.f_bsize != driveSize) {
+        // Same device?
+        if ((qint64) info.f_bavail*info.f_bsize != driveSize) {
+          emit copyProgressFinished(2, newFiles);
+          return 0;
+        }
+      } else {
         emit copyProgressFinished(2, newFiles);
         return 0;
       }
-    } else {
-      emit copyProgressFinished(2, newFiles);
-      return 0;
-    }
-  }
-
-  // Main loop
-  for (int i = 0; i < files.count(); ++i) {
-
-    // Canceled ?
-    if (progress->result() == 1) {
-      emit copyProgressFinished(0, newFiles);
-      return 1;
     }
 
-    // Destination file name and url
-    QFileInfo temp(files.at(i).toLocalFile());
-    QString destName = temp.fileName();
-    QString destUrl = newPath + QDir::separator() + destName;
+    // Main loop
+    for (int i = 0; i < files.count(); ++i) {
 
-    // Only do 'Copy(x) of' if same folder
-    if (temp.path() == newPath) {
-      int num = 1;
-      while (QFile(destUrl).exists()) {
-        destName = QString("Copy (%1) of %2").arg(num).arg(temp.fileName());
-        destUrl = newPath + QDir::separator() + destName;
-        num++;
+      // Canceled ?
+      if (progress->result() == 1) {
+        emit copyProgressFinished(0, newFiles);
+        return 1;
       }
-    }
 
-    // If destination file does not exist and is directory
-    QFileInfo dName(destUrl);
-    if (!dName.exists() || dName.isDir()) {
+      // Destination file name and url
+      QFileInfo temp(files.at(i).toLocalFile());
+      QString destName = temp.fileName();
+      QString destUrl = newPath + QDir::separator() + destName;
 
-      // Keep a ui->viewlist of new files so we can select them later
-      newFiles.append(destUrl);
+      // Only do 'Copy(x) of' if same folder
+      if (temp.path() == newPath) {
+        int num = 1;
+        while (QFile(destUrl).exists()) {
+          destName = QString("Copy (%1) of %2").arg(num).arg(temp.fileName());
+          destUrl = newPath + QDir::separator() + destName;
+          num++;
+        }
+      }
 
-      // Cut action
-      if (cutList.contains(temp.filePath())) {
+      // If destination file does not exist and is directory
+      QFileInfo dName(destUrl);
+      if (!dName.exists() || dName.isDir()) {
 
-        // Files or directories
-        if (temp.isFile()) {
+        // Keep a ui->viewlist of new files so we can select them later
+        newFiles.append(destUrl);
 
-          // NOTE: Rename will fail if across different filesystem
-          /*QFSFileEngine*/ QFile file(temp.filePath());
-          if (!file.rename(destUrl))	{
-            ok = cutCopyFile(temp.filePath(), destUrl, total, true);
-          }
-        } else {
-          ok = QFile(temp.filePath()).rename(destUrl);
+        // Cut action
+        if (cutList.contains(temp.filePath())) {
 
-          // File exists or move folder between different filesystems, so use
-          // copy/remove method
-          if (!ok) {
-            if (temp.isDir()) {
-              ok = true;
-              copyFolder(temp.filePath(), destUrl, total, true);
-              modelList->clearCutItems();
+          // Files or directories
+          if (temp.isFile()) {
+
+            // NOTE: Rename will fail if across different filesystem
+            /*QFSFileEngine*/ QFile file(temp.filePath());
+            if (!file.rename(destUrl))	{
+              ok = cutCopyFile(temp.filePath(), destUrl, total, true);
             }
-            // File already exists, don't do anything
+          } else {
+            ok = QFile(temp.filePath()).rename(destUrl);
+
+            // File exists or move folder between different filesystems, so use
+            // copy/remove method
+            if (!ok) {
+              if (temp.isDir()) {
+                ok = true;
+                copyFolder(temp.filePath(), destUrl, total, true);
+                modelList->clearCutItems();
+              }
+              // File already exists, don't do anything
+            }
           }
-        }
-      } else {
-        if (temp.isDir()) {
-          copyFolder(temp.filePath(),destUrl,total,false);
         } else {
-          ok = cutCopyFile(temp.filePath(), destUrl, total, false);
+          if (temp.isDir()) {
+            copyFolder(temp.filePath(),destUrl,total,false);
+          } else {
+            ok = cutCopyFile(temp.filePath(), destUrl, total, false);
+          }
         }
       }
     }
-  }
-  qDebug()<< "pasteFiles";
+    qDebug()<< "pasteFiles";
 
-  // Finished
-  emit copyProgressFinished(0, newFiles);
-  return 1;
+    // Finished
+    emit copyProgressFinished(0, newFiles);
+    return 1;
 }
 
 /**
@@ -872,59 +853,58 @@ bool corefm::pasteFiles(const QList<QUrl> &files, const QString &newPath,
  * @param cut true/false if source directory is going to be moved/copied
  * @return true if copy was successfull
  */
-bool corefm::copyFolder(const QString &srcFolder, const QString &dstFolder,
-                            qint64 total, bool cut) {
+bool corefm::copyFolder(const QString &srcFolder, const QString &dstFolder,qint64 total, bool cut)
+{
+    // Temporary variables
+    QDir srcDir(srcFolder);
+    QDir dstDir(QFileInfo(dstFolder).path());
+    QStringList files;
+    bool ok = true;
 
-  // Temporary variables
-  QDir srcDir(srcFolder);
-  QDir dstDir(QFileInfo(dstFolder).path());
-  QStringList files;
-  bool ok = true;
+    // Name of destination directory
+    QString folderName = QFileInfo(dstFolder).fileName();
 
-  // Name of destination directory
-  QString folderName = QFileInfo(dstFolder).fileName();
-
-  // Id destination location does not exist, create it
-  if (!QFileInfo(dstFolder).exists()) {
-    dstDir.mkdir(folderName);
-  }
-  dstDir = QDir(dstFolder);
-
-  // Get files in source directory
-  files = srcDir.entryList(QDir::Files | QDir::NoDotAndDotDot | QDir::Hidden);
-
-  // Copy each file
-  for (int i = 0; i < files.count(); i++) {
-    QString srcName = srcDir.path() + QDir::separator() + files[i];
-    QString dstName = dstDir.path() + QDir::separator() + files[i];
-
-    // Don't remove source folder if all files not cut
-    if (!cutCopyFile(srcName, dstName, total, cut)) ok = false;
-
-    // Cancelled
-    if (progress->result() == 1) return 0;
-  }
-
-  // Get directories in source directory
-  files.clear();
-  files = srcDir.entryList(QDir::AllDirs | QDir::NoDotAndDotDot | QDir::Hidden);
-
-  // Copy each directory
-  for (int i = 0; i < files.count(); i++) {
-    if (progress->result() == 1) {
-      return 0;
+    // Id destination location does not exist, create it
+    if (!QFileInfo(dstFolder).exists()) {
+      dstDir.mkdir(folderName);
     }
-    QString srcName = srcDir.path() + QDir::separator() + files[i];
-    QString dstName = dstDir.path() + QDir::separator() + files[i];
-    copyFolder(srcName, dstName, total, cut);
-  }
+    dstDir = QDir(dstFolder);
 
-  // Remove source folder if all files moved ok
-  if (cut && ok) {
-    srcDir.rmdir(srcFolder);
-  }
-  qDebug()<< "copyFolder";
-  return ok;
+    // Get files in source directory
+    files = srcDir.entryList(QDir::Files | QDir::NoDotAndDotDot | QDir::Hidden);
+
+    // Copy each file
+    for (int i = 0; i < files.count(); i++) {
+      QString srcName = srcDir.path() + QDir::separator() + files[i];
+      QString dstName = dstDir.path() + QDir::separator() + files[i];
+
+      // Don't remove source folder if all files not cut
+      if (!cutCopyFile(srcName, dstName, total, cut)) ok = false;
+
+      // Cancelled
+      if (progress->result() == 1) return 0;
+    }
+
+    // Get directories in source directory
+    files.clear();
+    files = srcDir.entryList(QDir::AllDirs | QDir::NoDotAndDotDot | QDir::Hidden);
+
+    // Copy each directory
+    for (int i = 0; i < files.count(); i++) {
+      if (progress->result() == 1) {
+        return 0;
+      }
+      QString srcName = srcDir.path() + QDir::separator() + files[i];
+      QString dstName = dstDir.path() + QDir::separator() + files[i];
+      copyFolder(srcName, dstName, total, cut);
+    }
+
+    // Remove source folder if all files moved ok
+    if (cut && ok) {
+      srcDir.rmdir(srcFolder);
+    }
+    qDebug()<< "copyFolder";
+    return ok;
 }
 
 /**
@@ -935,51 +915,50 @@ bool corefm::copyFolder(const QString &srcFolder, const QString &dstFolder,
  * @param cut true/false if source file is going to be moved/copied
  * @return true if copy was successfull
  */
-bool corefm::cutCopyFile(const QString &src, QString dst, qint64 totalSize,
-                             bool cut) {
+bool corefm::cutCopyFile(const QString &src, QString dst, qint64 totalSize,bool cut)
+{
+    // Create files with given locations
+    QFile srcFile(src);
+    QFile dstFile(dst);
 
-  // Create files with given locations
-  QFile srcFile(src);
-  QFile dstFile(dst);
+    // Destination file already exists, exit
+    if (dstFile.exists()) return 1;
 
-  // Destination file already exists, exit
-  if (dstFile.exists()) return 1;
+    // If destination location is too long make it shorter
+    if (dst.length() > 50) dst = "/.../" + dst.split(QDir::separator()).last();
 
-  // If destination location is too long make it shorter
-  if (dst.length() > 50) dst = "/.../" + dst.split(QDir::separator()).last();
+    // Open source and destination files
+    srcFile.open(QFile::ReadOnly);
+    dstFile.open(QFile::WriteOnly);
 
-  // Open source and destination files
-  srcFile.open(QFile::ReadOnly);
-  dstFile.open(QFile::WriteOnly);
+    // Determine buffer size, calculate size of file and number of steps
+    char block[4096];
+    qint64 total = srcFile.size();
+    qint64 steps = total >> 7; // shift right 7, same as divide 128, much faster
+    qint64 interTotal = 0;
 
-  // Determine buffer size, calculate size of file and number of steps
-  char block[4096];
-  qint64 total = srcFile.size();
-  qint64 steps = total >> 7; // shift right 7, same as divide 128, much faster
-  qint64 interTotal = 0;
-
-  // Copy blocks
-  while (!srcFile.atEnd()) {
-    if (progress->result() == 1) break; // cancelled
-    qint64 inBytes = srcFile.read(block, sizeof(block));
-    dstFile.write(block, inBytes);
-    interTotal += inBytes;
-    if (interTotal > steps) {
-      emit updateCopyProgress(interTotal, totalSize, dst);
-      interTotal = 0;
+    // Copy blocks
+    while (!srcFile.atEnd()) {
+      if (progress->result() == 1) break; // cancelled
+      qint64 inBytes = srcFile.read(block, sizeof(block));
+      dstFile.write(block, inBytes);
+      interTotal += inBytes;
+      if (interTotal > steps) {
+        emit updateCopyProgress(interTotal, totalSize, dst);
+        interTotal = 0;
+      }
     }
-  }
 
-  // Update copy progress
-  emit updateCopyProgress(interTotal, totalSize, dst);
+    // Update copy progress
+    emit updateCopyProgress(interTotal, totalSize, dst);
 
-  dstFile.close();
-  srcFile.close();
+    dstFile.close();
+    srcFile.close();
 
-  if (dstFile.size() != total) return 0;
-  if (cut) srcFile.remove();  // if file is cut remove the source
-  qDebug()<< "cutCopyFile";
-  return 1;
+    if (dstFile.size() != total) return 0;
+    if (cut) srcFile.remove();  // if file is cut remove the source
+    qDebug()<< "cutCopyFile";
+    return 1;
 }
 
 /**
@@ -988,44 +967,44 @@ bool corefm::cutCopyFile(const QString &src, QString dst, qint64 totalSize,
  * @param newPath
  * @return true if link creation was successfull
  */
-bool corefm::linkFiles(const QList<QUrl> &files, const QString &newPath) {
+bool corefm::linkFiles(const QList<QUrl> &files, const QString &newPath)
+{
+    // Quit if folder not writable
+    if (!QFileInfo(newPath).isWritable()
+        || newPath == QDir(files.at(0).toLocalFile()).path()) {
+      return false;
+    }
 
-  // Quit if folder not writable
-  if (!QFileInfo(newPath).isWritable()
-      || newPath == QDir(files.at(0).toLocalFile()).path()) {
-    return false;
-  }
+    // TODO: even if symlinks are small we have to make sure that we have space
+    // available for links
 
-  // TODO: even if symlinks are small we have to make sure that we have space
-  // available for links
+    // Main loop
+    for (int i = 0; i < files.count(); ++i) {
 
-  // Main loop
-  for (int i = 0; i < files.count(); ++i) {
+      // Choose destination file name and url
+      QFile file(files.at(i).toLocalFile());
+      QFileInfo temp(file);
+      QString destName = temp.fileName();
+      QString destUrl = newPath + QDir::separator() + destName;
 
-    // Choose destination file name and url
-    QFile file(files.at(i).toLocalFile());
-    QFileInfo temp(file);
-    QString destName = temp.fileName();
-    QString destUrl = newPath + QDir::separator() + destName;
+      // Only do 'Link(x) of' if same folder
+      if (temp.path() == newPath) {
+        int num = 1;
+        while (QFile(destUrl).exists()) {
+          destName = QString("Link (%1) of %2").arg(num).arg(temp.fileName());
+          destUrl = newPath + QDir::separator() + destName;
+          num++;
+        }
+      }
 
-    // Only do 'Link(x) of' if same folder
-    if (temp.path() == newPath) {
-      int num = 1;
-      while (QFile(destUrl).exists()) {
-        destName = QString("Link (%1) of %2").arg(num).arg(temp.fileName());
-        destUrl = newPath + QDir::separator() + destName;
-        num++;
+      // If file does not exists then create link
+      QFileInfo dName(destUrl);
+      if (!dName.exists()) {
+        file.link(destUrl);
       }
     }
-
-    // If file does not exists then create link
-    QFileInfo dName(destUrl);
-    if (!dName.exists()) {
-      file.link(destUrl);
-    }
-  }
-  qDebug()<< "linkFiles";
-  return true;
+    qDebug()<< "linkFiles";
+    return true;
 }
 
 /**
@@ -1034,21 +1013,21 @@ bool corefm::linkFiles(const QList<QUrl> &files, const QString &newPath) {
  * @param f2 file to replace f1
  * @return result
  */
-int corefm::showReplaceMsgBox(const QFileInfo &f1, const QFileInfo &f2) {
+int corefm::showReplaceMsgBox(const QFileInfo &f1, const QFileInfo &f2)
+{
+    // Create message
+    QString t = tr("Do you want to replace:<p><b>%1</p><p>Modified: %2<br>"
+                   "Size: %3 bytes</p><p>with:<p><b>%4</p><p>Modified: %5"
+                   "<br>Size: %6 bytes</p>");
 
-  // Create message
-  QString t = tr("Do you want to replace:<p><b>%1</p><p>Modified: %2<br>"
-                 "Size: %3 bytes</p><p>with:<p><b>%4</p><p>Modified: %5"
-                 "<br>Size: %6 bytes</p>");
+    // Populate message with data
+    t = t.arg(f1.filePath()).arg(f1.lastModified().toString()).arg(f1.size())
+         .arg(f2.filePath()).arg(f2.lastModified().toString()).arg(f2.size());
 
-  // Populate message with data
-  t = t.arg(f1.filePath()).arg(f1.lastModified().toString()).arg(f1.size())
-       .arg(f2.filePath()).arg(f2.lastModified().toString()).arg(f2.size());
-
-  // Show message
-  return QMessageBox::question(0, tr("Replace"), t, QMessageBox::Yes
-                               | QMessageBox::YesToAll | QMessageBox::No
-                               | QMessageBox::NoToAll | QMessageBox::Cancel);
+    // Show message
+    return QMessageBox::question(0, tr("Replace"), t, QMessageBox::Yes
+                                 | QMessageBox::YesToAll | QMessageBox::No
+                                 | QMessageBox::NoToAll | QMessageBox::Cancel);
 }
 
 void corefm::progressFinished(int ret,QStringList newFiles)
@@ -1087,72 +1066,56 @@ void corefm::progressFinished(int ret,QStringList newFiles)
     if(ret == 2) QMessageBox::warning(this,tr("Too big!"),tr("There is not enough space on the destination drive!"));
 }
 
-/**
- * @brief Writes settings into config file
- */
-void corefm::writeSettings() {
-    sm.setZoomValue(zoom);
-    sm.setZoomTreeValue(zoomTree);
-    sm.setZoomListValue(zoomList);
-    sm.setZoomDetailValue(zoomDetail);
-    sm.setSortColumn(currentSortColumn);
-    sm.setSortOrder(currentSortOrder);
-    sm.setIsShowThumb(ui->showthumb->isChecked());
-//    qDebug() << ui->tools->isVisible() << ui->Tools->isChecked();
-    sm.setShowToolbox(ui->tools->isVisible());
-    sm.setIsRealMimeType(modelList->isRealMimeTypes());
-}
 
 /**
  * @brief Creates menu for opening file in selected application
  * @return menu
  */
 QMenu* corefm::createOpenWithMenu() {
+    // Add open with functionality ...
+    QMenu *openMenu = new QMenu(tr("Open with"));
 
-  // Add open with functionality ...
-  QMenu *openMenu = new QMenu(tr("Open with"));
+    // Select action
+    QAction *selectAppAct = new QAction(tr("Select..."), openMenu);
+  //  selectAppAct->setStatusTip(tr("Select application for opening the file"));
+    //selectAppAct->setIcon(actionIcons->at(18));
+    connect(selectAppAct, SIGNAL(triggered()), this, SLOT(selectApp()));
 
-  // Select action
-  QAction *selectAppAct = new QAction(tr("Select..."), openMenu);
-//  selectAppAct->setStatusTip(tr("Select application for opening the file"));
-  //selectAppAct->setIcon(actionIcons->at(18));
-  connect(selectAppAct, SIGNAL(triggered()), this, SLOT(selectApp()));
+    // Load default applications for current mime
+    QString mime = mimeUtils->getMimeType(curIndex.filePath());
+    QStringList appNames = mimeUtils->getDefault(mime);
 
-  // Load default applications for current mime
-  QString mime = mimeUtils->getMimeType(curIndex.filePath());
-  QStringList appNames = mimeUtils->getDefault(mime);
+    // Create actions for opening
+    QList<QAction*> defaultApps;
+    foreach (QString appName, appNames) {
 
-  // Create actions for opening
-  QList<QAction*> defaultApps;
-  foreach (QString appName, appNames) {
+      // Skip empty app name
+      if (appName.isEmpty()) {
+        continue;
+      }
 
-    // Skip empty app name
-    if (appName.isEmpty()) {
-      continue;
+      // Load desktop file for application
+      DesktopFile df = DesktopFile("/usr/share/applications/" + appName);
+
+      // Create action
+      QAction* action = new QAction(df.getName(), openMenu);
+      action->setData(df.getExec());
+      action->setIcon(FileUtils::searchAppIcon(df));
+      defaultApps.append(action);
+
+      // TODO: icon and connect
+      connect(action, SIGNAL(triggered()), SLOT(openInApp()));
+
+      // Add action to menu
+      openMenu->addAction(action);
     }
 
-    // Load desktop file for application
-    DesktopFile df = DesktopFile("/usr/share/applications/" + appName);
-
-    // Create action
-    QAction* action = new QAction(df.getName(), openMenu);
-    action->setData(df.getExec());
-    action->setIcon(FileUtils::searchAppIcon(df));
-    defaultApps.append(action);
-
-    // TODO: icon and connect
-    connect(action, SIGNAL(triggered()), SLOT(openInApp()));
-
-    // Add action to menu
-    openMenu->addAction(action);
-  }
-
-  // Add open action to menu
-  if (!defaultApps.isEmpty()) {
-    openMenu->addSeparator();
-  }
-  openMenu->addAction(selectAppAct);
-  return openMenu;
+    // Add open action to menu
+    if (!defaultApps.isEmpty()) {
+      openMenu->addSeparator();
+    }
+    openMenu->addAction(selectAppAct);
+    return openMenu;
 }
 
 QMenu* corefm::globalmenu(){
@@ -1508,8 +1471,6 @@ void corefm::addressChanged(int old, int now)
 
         ui->pathEdit->setCompleter(0);
         tree->setCurrentIndex(modelTree->mapFromSource(modelList->index(temp.left(pos))));
-
-//        QTimer::singleShot(500,this,SLOT(focusAction()));
     }
     else
     if(!ui->pathEdit->lineEdit()->hasSelectedText())
@@ -1693,11 +1654,9 @@ void corefm::on_actionDelete_triggered()
 
     // Display error message if deletion failed
     if(!ok) {
-      //QString title = tr("Failed");
       QString msg = tr("Could not delete some items...do you have the right "
                        "permissions?");
       messageEngine(msg, "Warning");
-      //QMessageBox::information(this, title, msg);
     }
 
     return;
@@ -1912,15 +1871,15 @@ void corefm::on_actionTerminal_triggered()
     messageEngine(mess, "Info");
 }
 
-void corefm::on_actionShowThumbnails_triggered()
-{
+void corefm::on_actionShowThumbnails_triggered(){
+
     if (currentView != 2) on_icon_clicked(true);
     else on_detaile_clicked(true);
     on_actionRefresh_triggered();
 }
 
-void corefm::on_actionRunFile_triggered()
-{
+void corefm::on_actionRunFile_triggered(){
+
     executeFile(listSelectionModel->currentIndex(), 1);
 }
 
@@ -2125,8 +2084,6 @@ void corefm::on_icon_clicked(bool checked)
         ui->view->setCurrentIndex(1);
         ui->viewlist->setMouseTracking(false);
         ui->viewtree->setMouseTracking(true);
-        //currentView = 2;
-
         ui->detaile->setChecked(true);
     }
 
@@ -2158,8 +2115,6 @@ void corefm::on_detaile_clicked(bool checked)
         ui->view->setCurrentIndex(0);
         ui->viewtree->setMouseTracking(false);
         ui->viewlist->setMouseTracking(true);
-
-        //currentView = 1;
         ui->icon->setChecked(true);
     }
 

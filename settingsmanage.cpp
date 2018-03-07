@@ -26,7 +26,7 @@ void SettingsManage::createDefaultSettings() {
         cSetting->setValue("Zoom-Detail", 16);
         cSetting->setValue("Show-Thumb", false);
         cSetting->setValue("Show-Toolbox", false);
-        cSetting->setValue("View-Mode", "Detail");
+        cSetting->setValue("View-Mode", true);
         cSetting->setValue("Sort-Column", 0);
         cSetting->setValue("Sort-Order", 0);
         cSetting->endGroup();
@@ -151,12 +151,12 @@ bool SettingsManage::getShowToolbox() {
     return getSpecificValue("CoreFM", "Show-Toolbox").toBool();
 }
 
-bool SettingsManage::setViewMode(QString mode) {
+bool SettingsManage::setViewMode(bool mode) {
     return setSpecificValue("CoreFM", "View-Mode", mode);
 }
 
-QString SettingsManage::getViewMode() {
-    return getSpecificValue("CoreFM", "View-Mode").toString();
+bool SettingsManage::getViewMode() {
+    return getSpecificValue("CoreFM", "View-Mode").toBool();
 }
 
 bool SettingsManage::setSortColumn(int value) {

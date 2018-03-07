@@ -54,7 +54,7 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
 
     ui->view->addItem("Detail");
     ui->view->addItem("Icon");
-    ui->view->setCurrentText(sm.getViewMode());//cSett->value("View-Mode").toString());
+//    ui->view->setCurrentText(sm.getViewMode());//cSett->value("View-Mode").toString());
 
     QString currentTheme = sm.getThemeName();//cSett->value("Force-Theme").toString();
     QDirIterator it("/usr/share/icons", QDir::Dirs | QDir::NoDotAndDotDot);
