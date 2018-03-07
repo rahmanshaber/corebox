@@ -44,6 +44,7 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
     ui->findCMD->setEnabled(0);
     ui->locateCMD->setEnabled(0);
     shotcuts();
+    qDebug() << "search opening";
 }
 
 search::~search()

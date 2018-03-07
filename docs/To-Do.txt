@@ -36,6 +36,7 @@ corepaint
 1 - open screenshot folder pushbutton which show the screenshot folder.
 
 Search
+0 - search frezzez on first start.
 1 - if searh opened from FM hide locate option.
 1 - add button to set folder
 1 - show the file/folder in coerFM with selecting the file/folder.
