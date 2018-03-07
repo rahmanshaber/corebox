@@ -16,6 +16,7 @@
 * qt5-svg5
 * qt5-multimedia
 * qt5-x11extras
+* file
 * libmagic-dev/libmagic-mgc/libmagic1
 * engrampa(for Archive support)
 
@@ -23,5 +24,10 @@
 * Cheack the To-Do.txt in doc folder for known bugs.
 
 ### Help Us
-* We need to add package for this app.Appimage is in top priority.so if any one could guide us how to do that it will be helpful.
-* see the Help Us page in Help app of corebox for more.
+* We need to add package for this app.DEB is in top priority.so if any one could guide us how to do that it will be helpful.
+* Also add the app in AUR.
+* Some of the apps has old code,so they have some issue in them.Please review the code and help us fix them.
+* Move the CorePlayer to QtAV.https://github.com/wang-bin/QtAV.
+  Please make simple player with qtav and send via email to us.
+  Please in qmake.not cmake.We tried the example's of QtAV .but they don't work.
+* See the Help Us page in Help app of corebox for more.
