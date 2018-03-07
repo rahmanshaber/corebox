@@ -21,6 +21,8 @@
 * engrampa(for Archive support)
 
 ### Known Bugs
+* Window movement needs right mouse hold.
+* Multipal monitor support not good.
 * Cheack the To-Do.txt in doc folder for known bugs.
 
 ### Help Us
