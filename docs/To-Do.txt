@@ -42,6 +42,7 @@ Search
 0 - if path is given find is not working.but locate is working.
 
 corefm
+0 - set custom icom in home folder's.
 1 - if folder is empty show an image. like search app
 1 - add tree and mediainfo package.
 0 - need to fix view mode.

@@ -56,15 +56,16 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     mimeUtils->setDefaultsFileName(name);
 
     // Create filesystem model
-    bool realMime = sm.getIsRealMimeType();//sett->value("Real-Mime-Types", true).toBool();
+    bool realMime = sm.getIsRealMimeType();
 
     QString startP;
 
-    if (sm.getStartupPath() == "") {//sett->value("Startup-Path").toString() == "") {
+    if (sm.getStartupPath() == "") {
         startP = QDir::homePath();
     } else {
-        startP = sm.getStartupPath();//sett->value("Startup-Path").toString();
+        startP = sm.getStartupPath();
     }
+    startPath = startP;
 
     modelList = new myModel(realMime, mimeUtils);
 
@@ -146,8 +147,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
 //    watcher = new QFileSystemWatcher(this);
 //    connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
-
-    startPath = startP;
 }
 
 corefm::~corefm()
