@@ -47,7 +47,8 @@ CoreBox::CoreBox(QWidget *parent) :QMainWindow(parent),ui(new Ui::CoreBox)
     int x =dw.width()*.8;
     int y = dw.height()*.8;
 
-    ui->windows->installEventFilter(this);
+    ui->windows->tabBar()->installEventFilter(this);
+//    ui->windows->installEventFilter(this);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint );//| Qt::SubWindow
     ui->restoreButton->setVisible(false);
     ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
@@ -285,21 +286,26 @@ void CoreBox::mousePressEvent(QMouseEvent *event)
     mousePressed = true;
     mousePos = event->globalPos();
 
-//    if ( event->button() == Qt::LeftButton ){
+    if ( event->button() == Qt::LeftButton ){
+        qDebug() << "left button is pressed";
 //        mousePressed = true;
 //        mousePos = event->globalPos();
 
 //        if (ui->windows->tabBar()->underMouse())
 //          wndPos = this->pos();
-//    }
+    }
+//    if (event->button() == Qt::RightButton) {
+//              QTabWidget::mousePressEvent(newEvent); // propagate right as left
+//         }
+//         QTabWidget::mousePressEvent(event); // propagate original event (ie., right as right)
 
-    if (ui->windows->tabBar()->underMouse())
+    if (ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse())
       wndPos = this->pos();
 }
 
 void CoreBox::mouseMoveEvent(QMouseEvent *event)
 {
-    if (ui->windows->tabBar()->underMouse() && mousePressed)
+    if ((ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse()) && mousePressed)
       move(wndPos + (event->globalPos() - mousePos));
 }
 

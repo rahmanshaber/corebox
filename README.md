@@ -27,8 +27,7 @@
 * We need to add package for this app.DEB is in top priority.so if any one could guide us how to do that it will be helpful.
 * Also add the app in AUR.
 * Some of the apps has old code,so they have some issue in them.Please review the code and help us fix them.
-* Move the CorePlayer to QtAV.https://github.com/wang-bin/QtAV.
+* Move the CorePlayer to QtAV [link](https://github.com/wang-bin/QtAV "Title") .
   Please make simple player with qtav and send via email to us.
   Please in qmake.not cmake.We tried the example's of QtAV .but they don't work.
 * See the Help Us page in Help app of corebox for more.
-* This is [an example](http://example.com/ "Title") inline link.
