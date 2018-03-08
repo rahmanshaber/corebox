@@ -21,23 +21,21 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 coreedit::coreedit(QWidget *parent) : QPlainTextEdit(parent)
 {
     qDebug() << "coreedit opening";
-    setStyleSheet("QMenu::item{"
-                  "background-color: rgb(0, 170, 0);"
-                  "color: rgb(255, 255, 255);}"
+    setStyleSheet("QMenu::item{background-color: rgb(0, 170, 0);color: rgb(255, 255, 255);}"
                   "QMenu::item::selected{background-color: rgb(0, 85, 127);color: rgb(255,255,255);}");
     lineNumberArea = new LineNumberArea(this);
-//=========================== Setting the CoreEdit background ==========================================
+//---------------------------- Setting the CoreEdit background -----------------------------------------
     QPalette p = palette();
-    p.setColor(QPalette::Text, Qt::white);  //Text color set to white.
-    p.setColor(QPalette::Active, QPalette::Base, Qt::black);  //Active base color black.
-    p.setColor(QPalette::Inactive, QPalette::Base,Qt::black); //Inactive base color black.
+    p.setColor(QPalette::Text, "#B9A388");  //Text color set to white.
+    p.setColor(QPalette::Active, QPalette::Base, "#2E2F30");  //Active base color black.
+    p.setColor(QPalette::Inactive, QPalette::Base,"#2E2F30"); //Inactive base color black.
     setPalette(p);
-//======================================================================================================
-//============================ Connecting to slots and signals =========================================
+//------------------------------------------------------------------------------------------------------
+//---------------------------- Connecting to slots and signals -----------------------------------------
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
-//======================================================================================================
+//------------------------------------------------------------------------------------------------------
     updateLineNumberAreaWidth(0);   //Set the line number area.
     highlightCurrentLine();         //Highlight the current line.
 }
@@ -75,27 +73,27 @@ void coreedit::resizeEvent(QResizeEvent *e)
 
 void coreedit::highlightCurrentLine()
 {
-    QList<QTextEdit::ExtraSelection> extraSelections;
+//    QList<QTextEdit::ExtraSelection> extraSelections;
 
-    if (!isReadOnly()) {
-        QTextEdit::ExtraSelection selection;
+//    if (!isReadOnly()) {
+//        QTextEdit::ExtraSelection selection;
 
-        QColor lineColor = QColor(Qt::gray).lighter(100);
+//        QColor lineColor = QColor(Qt::gray).lighter(100);
 
-        selection.format.setBackground(lineColor);
-        selection.format.setProperty(QTextFormat::FullWidthSelection, true);
-        selection.cursor = textCursor();
-        selection.cursor.clearSelection();
-        extraSelections.append(selection);
-    }
+//        selection.format.setBackground(lineColor);
+//        selection.format.setProperty(QTextFormat::FullWidthSelection, true);
+//        selection.cursor = textCursor();
+//        selection.cursor.clearSelection();
+//        extraSelections.append(selection);
+//    }
 
-    setExtraSelections(extraSelections);
+//    setExtraSelections(extraSelections);
 }
 
 void coreedit::lineNumberAreaPaintEvent(QPaintEvent *event)
 {
     QPainter painter(lineNumberArea);
-    painter.fillRect(event->rect(), QColor(Qt::lightGray).lighter(121));
+    painter.fillRect(event->rect(), QColor("#2E2F30").lighter(121));
 
     QTextBlock block = firstVisibleBlock();
     int blockNumber = block.blockNumber();
@@ -105,9 +103,8 @@ void coreedit::lineNumberAreaPaintEvent(QPaintEvent *event)
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
             QString number = QString::number(blockNumber + 1);
-            painter.setPen(Qt::black);
-            painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(),
-                             Qt::AlignRight, number);
+            painter.setPen("#ffffff");
+            painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(),Qt::AlignRight, number);
         }
 
         block = block.next();

@@ -684,7 +684,7 @@ QByteArray myModel::getThumb(QString item) {
   if (w > 128 || h > 128) {
     pic.setScaledSize(QSize(123, 93));
     QImage temp = pic.read();
-    theThumb.load(":/back/sounds/background.png");
+    theThumb.load(":/other/other/background.png");
     QPainter painter(&theThumb);
     painter.drawImage(QPoint(0, 0), temp);
   } else {

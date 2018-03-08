@@ -1158,7 +1158,7 @@ background-color: #00619D;
     <widget class="coreedit" name="text">
      <property name="styleSheet">
       <string notr="true">QWidget{
-background-color: #1D1D1D;
+background-color:#2E2F30;
 }
 </string>
      </property>

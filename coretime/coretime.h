@@ -12,6 +12,9 @@
 #include <QDialogButtonBox>
 #include <QListWidgetItem>
 
+#include "../corebox/corebox.h"
+#include "../corebox/globalfunctions.h"
+
 
 namespace Ui {
 class coretime;

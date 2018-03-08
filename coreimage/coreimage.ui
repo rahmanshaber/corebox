@@ -87,7 +87,7 @@ border: 1px rgb(67, 67, 67);
          <string notr="true">Text-align:left</string>
         </property>
         <property name="text">
-         <string>Core Image</string>
+         <string>CoreImage</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">

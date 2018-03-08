@@ -24,7 +24,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMimeDatabase>
 
 #include "corefm.h"
-#include "globalfunctions.h"
+#include "../corebox/globalfunctions.h"
 
 
 propertiesw::propertiesw(QString paths,QWidget *parent) :QWidget(parent),ui(new Ui::propertiesw)

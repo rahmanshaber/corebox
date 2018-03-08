@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreimage.h"
-#include "corebox.h"
+#include "../corebox/corebox.h"
 #include "ui_coreimage.h"
 
 #include <QFileDialog>
@@ -31,10 +31,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QSpacerItem>
 #include <QtWidgets>
 #include <QDateTime>
-
-#include "bookmarks.h"
-#include "../bookmarkdialog.h"
-#include "../corepaint/corepaint.h"
 
 
 coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
@@ -456,7 +452,7 @@ void coreimage::on_openincorepaint_clicked()
     QString path = currentImagePath;
 
     ima->initializeNewTab(true,path);
-    boxTab->insertTab(boxTab->count(), ima, QIcon(":/icons/CorePaint.svg"), "Core Paint");
+    boxTab->insertTab(boxTab->count(), ima, QIcon(":/icons/CorePaint.svg"), "CorePaint");
     boxTab->setCurrentIndex(boxTab->count());
 }
 

@@ -37,11 +37,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QSettings>
 #include <QDebug>
 
-#include "bookmarks.h"
-
-#include "../bookmarkdialog.h"
-#include "corebox.h"
-
 
 corepaint::corepaint( QWidget *parent):QWidget(parent),
     ui(new Ui::corepaint), mPrevInstrumentSetted(false)

@@ -27,8 +27,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QShortcut>
 #include <QPlainTextEdit>
 
-#include "corebox.h"
-#include "globalfunctions.h"
+#include "../corebox/corebox.h"
+#include "../corebox/globalfunctions.h"
+#include "../bookmarks/bookmarkdialog.h"
+#include "../bookmarks/bookmarks.h"
 
 
 namespace Ui {

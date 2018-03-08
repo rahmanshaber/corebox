@@ -25,7 +25,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QListWidgetItem>
 #include <QPushButton>
 
-#include "globalfunctions.h"
+#include "../corebox/globalfunctions.h"
+#include "../bookmarks//bookmarks.h"
+#include "../bookmarks/bookmarkdialog.h"
+#include "../corepaint/corepaint.h"
+
+
 QString formatSize(qint64 num);
 
 

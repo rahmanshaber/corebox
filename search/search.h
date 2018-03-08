@@ -21,6 +21,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QWidget>
 #include <QToolButton>
 
+#include "coreimage/coreimage.h"
+#include "corepad/corepad.h"
+#include "../corebox/corebox.h"
+
 
 namespace Ui {
 class search;

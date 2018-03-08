@@ -29,6 +29,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QModelIndex>
 #include <QMediaPlaylist>
 
+#include "../corebox/corebox.h"
+#include "../corebox/globalfunctions.h"
+
 
 namespace Ui {
 class coreplayer;

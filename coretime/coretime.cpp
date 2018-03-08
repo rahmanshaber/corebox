@@ -6,8 +6,6 @@
 #include "schedulecollection.h"
 #include "settingdialog.h"
 #include "snooze.h"
-#include "corebox.h"
-#include "globalfunctions.h"
 
 #include <QCheckBox>
 #include <QLabel>

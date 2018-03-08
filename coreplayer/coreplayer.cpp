@@ -25,9 +25,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QVideoWidget>
 #include <QStandardItemModel>
 
-#include "corebox.h"
-#include "globalfunctions.h"
-
 
 coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
    , coverLabel(0)

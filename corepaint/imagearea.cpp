@@ -17,9 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "imagearea.h"
 #include "datasingleton.h"
 #include "undocommand.h"
-
-#include "corebox.h"
-
 #include "instruments/abstractinstrument.h"
 #include "instruments/pencilinstrument.h"
 #include "instruments/lineinstrument.h"
@@ -35,8 +32,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "instruments/textinstrument.h"
 #include "dialogs/resizedialog.h"
 
-#include "settingsmanage.h"
-#include "globalfunctions.h"
+#include "../settings/settingsmanage.h"
+#include "../corebox/globalfunctions.h"
 
 #include <QSettings>
 #include <QApplication>

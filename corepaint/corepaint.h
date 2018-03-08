@@ -24,8 +24,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMenu>
 #include <QPushButton>
 
-#include "settingsmanage.h"
-#include "globalfunctions.h"
+#include "../settings/settingsmanage.h"
+#include "../corebox/globalfunctions.h"
+#include "../bookmarks/bookmarks.h"
+#include "../bookmarks/bookmarkdialog.h"
+#include "../corebox/corebox.h"
 
 QT_BEGIN_NAMESPACE
 class QAction;

@@ -81,7 +81,7 @@ border: 1px rgb(67, 67, 67);
          <string notr="true">Text-align:left</string>
         </property>
         <property name="text">
-         <string>Core Paint</string>
+         <string>CorePaint</string>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
@@ -706,7 +706,7 @@ color: white;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>88</width>
+               <width>90</width>
                <height>102</height>
               </rect>
              </property>

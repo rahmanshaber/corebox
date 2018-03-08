@@ -22,8 +22,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <magic.h>
 
 #include "fileutils.h"
-#include "corebox.h"
-#include "globalfunctions.h"
+#include "../corebox/corebox.h"
+#include "../corebox/globalfunctions.h"
 
 
 /**

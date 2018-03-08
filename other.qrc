@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/background">
+        <file>other/e.jpeg</file>
+    </qresource>
+    <qresource prefix="/sound">
+        <file>other/condition_one.ogg</file>
+    </qresource>
+    <qresource prefix="/other">
+        <file>other/background.png</file>
+    </qresource>
+</RCC>

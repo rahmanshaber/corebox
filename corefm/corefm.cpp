@@ -25,6 +25,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QInputDialog>
 #include <QApplication>
 #include <QMenu>
+#include <QAction>
 #include <sys/vfs.h>
 #include <fcntl.h>
 #include <QDebug>
@@ -32,13 +33,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDateTime>
 #include <QtConcurrent/QtConcurrent>
 
-#include "bookmarks.h"
-#include "bookmarkdialog.h"
-#include "../coreimage/coreimage.h"
-#include "../corepad/corepad.h"
-#include "coreplayer/coreplayer.h"
-#include "corepaint/corepaint.h"
-#include "search/search.h"
 
 corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {

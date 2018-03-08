@@ -19,7 +19,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QIcon>
 #include <QProcess>
-#include <QTableWidgetItem>
 #include <QMimeDatabase>
 #include <QMimeType>
 #include <QTimer>
@@ -28,9 +27,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QThreadPool>
 #include <qtconcurrentrun.h>
 
-#include "coreimage/coreimage.h"
-#include "corepad/corepad.h"
-#include "corebox.h"
 
 using namespace QtConcurrent;
 

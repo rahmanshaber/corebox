@@ -32,14 +32,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFileSystemWatcher>
 
 #include "udisks2.h"
-#include "../corebox.h"
-#include "settingsmanage.h"
-#include "globalfunctions.h"
-
-QT_BEGIN_NAMESPACE
-class QAction;
-class QMenu;
-QT_END_NAMESPACE
+#include "../corebox/corebox.h"
+#include "../settings/settingsmanage.h"
+#include "../corebox/globalfunctions.h"
+#include "../bookmarks/bookmarks.h"
+#include "../bookmarks/bookmarkdialog.h"
 
 
 namespace Ui {

@@ -24,12 +24,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTreeWidgetItem>
 #include <QDir>
 
-#include "info/sysinfo.h"
-#include "resources/resources_page.h"
-#include "corefm/udisks2.h"
-#include "corebox.h"
-#include "globalfunctions.h"
-
 
 dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 {

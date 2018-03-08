@@ -21,9 +21,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDateTime>
 #include <QMessageBox>
 
-#include "bookmarkdialog.h"
-#include "bookmarks.h"
-
 
 corepad::corepad(QWidget *parent) :QWidget(parent),ui(new Ui::corepad)
 {

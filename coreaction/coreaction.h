@@ -23,8 +23,14 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMenu>
 #include <QSystemTrayIcon>
 
-#include "settingsmanage.h"
-#include "globalfunctions.h"
+#include "../settings/settingsmanage.h"
+#include "../corebox/globalfunctions.h"
+#include "../corebox/corebox.h"
+#include "about/about.h"
+#include "corescreenshot/mainwindow.h"
+#include "dashboard/upower.h"
+#include "dashboard/battery.h"
+
 
 namespace Ui {
 class coreaction;

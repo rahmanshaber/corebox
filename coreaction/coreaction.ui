@@ -90,7 +90,7 @@ height: 1px;
          </font>
         </property>
         <property name="text">
-         <string>Core Actions</string>
+         <string>CoreActions</string>
         </property>
         <property name="indent">
          <number>10</number>

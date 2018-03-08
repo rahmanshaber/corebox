@@ -23,14 +23,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFile>
 #include <QDoubleValidator>
 
-#include "corebox.h"
-#include "about.h"
-#include "corescreenshot/mainwindow.h"
-#include "corepaint/corepaint.h"
-#include "corepad/corepad.h"
-#include "corefm/corefm.h"
-#include "dashboard/upower.h"
-#include "dashboard/battery.h"
 
 float varA, varB, result;
 int z = 0, varC, varD;

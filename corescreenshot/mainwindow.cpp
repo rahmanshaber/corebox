@@ -20,10 +20,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QClipboard>
 #include <QSpinBox>
 
-#include "corebox.h"
-#include "corepaint/corepaint.h"
-#include "globalfunctions.h"
-
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
@@ -86,6 +82,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
     connect(cCancel,SIGNAL(clicked()),this,SLOT(close()));
 
     on_cType_IndexChanged(0);
+    this->setWindowIcon(QIcon(":/icons/CoreShot.svg"));
+    this->setWindowTitle("CoreShot");
 //    setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A;padding: 5px 5px 5px 5px;}"););
 }
 

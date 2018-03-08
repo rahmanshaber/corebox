@@ -25,8 +25,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QtWidgets>
 #include <QTimer>
 
-#include "corebox.h"
-#include "settingsmanage.h"
+#include "corepaint/corepaint.h"
+#include "../corebox/corebox.h"
+#include "../settings/settingsmanage.h"
+#include "../corebox/globalfunctions.h"
 
 
 class MainWindow : public QWidget
