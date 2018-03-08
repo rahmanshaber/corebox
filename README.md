@@ -21,16 +21,16 @@
 * engrampa(for Archive support)
 
 ### Known Bugs
-* Firt time opening search freeze the app.Restart the app should fix it.
+* First time opening search freeze the app.Restart the app should fix it.
 * Window movement needs right mouse hold.
-* Multipal monitor support not good.
-* Cheack the To-Do.txt in doc folder for known bugs.
+* Multiple monitor support not good.
+* Check the To-Do.txt in doc folder for known bugs.
 
 ### Help Us
 * We need to add package for this app.DEB is in top priority.so if any one could guide us how to do that it will be helpful.
 * Also add the app in AUR.
 * Some of the apps has old code,so they have some issue in them.Please review the code and help us fix them.
-* Move the CorePlayer to QtAV [link](https://github.com/wang-bin/QtAV "Title") .
+* Move the CorePlayer to QtAV. here is the [link](https://github.com/wang-bin/QtAV "Title") .
   Please make simple player with qtav and send via email to us.
   Please in qmake.not cmake.We tried the example's of QtAV .but they don't work.
-* See the Help Us page in Help app of corebox for more.
+* See the "HelpUs" page in CoreBox for more.
