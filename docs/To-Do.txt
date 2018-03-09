@@ -46,8 +46,6 @@ corefm
 0 - set custom icom in home folder's.
 1 - if folder is empty show an image. like search app
 1 - add tree and mediainfo package.
-0 - need to fix view mode.
-0 - icondlg.cpp and header >> remove
 1 - copyto some common places(like desktop,downloads,home)
 1 - properties - option to make file executable(chmod a+x filepath)
 0 - preview is not working.
@@ -56,12 +54,11 @@ corefm
 1 - multiple file's combined size.
 1 - add trash in on_actionTrash_it_triggered .proper trash intigration.
 0 - after trash , the file is not resotreable.
-0 - arrange item is crashing the app.
 0 - hidden is not setting it's bool,from previous start.
-1 - add app engine.
+1 - improve app engine.
 1 - send a file to a drive.
 0 - there is a problem when the selection changed after clicking copy.
-1 - fix properties ui(fram less
+1 - fix properties ui(fram less)
 
 messageengine
 1 - file moved message.

@@ -933,7 +933,7 @@ bool myModel::setData(const QModelIndex & index, const QVariant & value, int rol
 
     //physically change the name on disk
     bool ok = QFile::rename(item->absoluteFilePath(),item->parent()->absoluteFilePath() + SEPARATOR + value.toString());
-
+    qDebug()<<"renamed";
     //change the details in the modelItem
     if(ok)
     {

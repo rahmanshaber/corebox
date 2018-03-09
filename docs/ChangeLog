@@ -1,0 +1,9 @@
+v.2
+
+- fixed tabengine
+- fixed rename problem
+- fixed view mode
+- icondlg.cpp and header >> removed
+- arrange item fixed
+
+

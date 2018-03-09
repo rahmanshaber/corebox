@@ -253,7 +253,6 @@ int CoreBox::filterEngine(QString name){
 
     for(int i= 0; i < ui->windows->count(); ++i) {
         if(ui->windows->tabText(i) == name) {
-//            ui->windows->setCurrentIndex(i);
             return i ;
         }
     }
@@ -264,8 +263,6 @@ void CoreBox::on_windows_currentChanged(int index)
 {
     QString title = ui->windows->tabText(index);
     this->setWindowTitle(title);
-    qDebug()<<title;
-    qDebug()<<appsIconPath(title);
     this->setWindowIcon(QIcon(appsIconPath(title)));
 }
 

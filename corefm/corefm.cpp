@@ -39,6 +39,11 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     qDebug() << "corefm opening";
     ui->setupUi(this);
 
+    sortNameAct =ui->actionName;
+    sortDateAct = ui->actionDate;
+    sortSizeAct = ui->actionSize;
+    sortAscAct = ui->actionAscending;
+
     QIcon::setThemeName(sm.getThemeName());
 
     // Create mime utils
@@ -121,10 +126,11 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->paste->setVisible(0);
     ui->mk->addWidget(tabs);
     ui->TrashFrame->setVisible(0);
-//    toggleSortBy(sortNameAct);
+    toggleSortBy(sortNameAct);
     on_showHidden_clicked(0);
     ui->emptyTrash->setVisible(0);
     ui->showthumb->setVisible(0);
+    ui->showthumb->setChecked(0);
 
     ui->newTab->setDefaultAction(ui->actionNewTab);
     ui->copy->setDefaultAction(ui->actionCopy);
@@ -260,8 +266,10 @@ void corefm::lateStart()
  */
 void corefm::loadSettings()
 {
+    // Load info whether use real mime types
     modelList->setRealMimeTypes(sm.getIsRealMimeType());
 
+    // Load zoom settings
     zoom = sm.getZoomValue();
     zoomTree = sm.getZoomTreeValue();
     zoomList = sm.getZoomListValue();
@@ -269,7 +277,7 @@ void corefm::loadSettings()
     ui->viewtree->setIconSize(QSize(zoomDetail, zoomDetail));
     tree->setIconSize(QSize(zoomTree, zoomTree));
 
-    ui->showthumb->setChecked(sm.getIsShowThumb());
+//    ui->showthumb->setChecked(sm.getIsShowThumb());
     ui->Tools->setChecked(sm.getShowToolbox());
     ui->tools->setVisible(sm.getShowToolbox());
 
@@ -286,17 +294,20 @@ void corefm::loadSettings()
     // Load terminal command
     term = sm.getTerminal();
 
+    ui->viewtree->setSortingEnabled(1);
+
     currentSortColumn = sm.getSortColumn();//sett->value("Sort-Column", 0).toInt();
     currentSortOrder = (Qt::SortOrder)sm.getSortOrder();// sett->value("Sort-Order", 0).toInt();
 
-//    ui->viewtree->setSortingEnabled(1);
-//    switch (currentSortColumn) {
-//      case 0 : setSortColumn(sortNameAct); break;
-//      case 1 : setSortColumn(sortSizeAct); break;
-//      case 3 : setSortColumn(sortDateAct); break;
-//    }
-//    setSortOrder(currentSortOrder);
-//    modelView->sort(currentSortColumn, currentSortOrder);
+
+    switch (currentSortColumn) {
+      case 0 : setSortColumn(sortNameAct); break;
+      case 1 : setSortColumn(sortSizeAct); break;
+      case 3 : setSortColumn(sortDateAct); break;
+    }
+
+    setSortOrder(currentSortOrder);
+    modelView->sort(currentSortColumn, currentSortOrder);
 }
 
 /**
@@ -309,7 +320,7 @@ void corefm::writeSettings() {
     sm.setZoomDetailValue(zoomDetail);
     sm.setSortColumn(currentSortColumn);
     sm.setSortOrder(currentSortOrder);
-    sm.setIsShowThumb(ui->showthumb->isChecked());
+//    sm.setIsShowThumb(ui->showthumb->isChecked());
     sm.setViewMode(ui->icon->isChecked());
     sm.setShowToolbox(ui->tools->isVisible());
     sm.setIsRealMimeType(modelList->isRealMimeTypes());
@@ -1226,7 +1237,7 @@ QMenu* corefm::globalmenu(){
         popup->addAction(ui->actionSelectAll);
         popup->addSeparator();
 //        popup->addMenu(view);
-//        popup->addMenu(arrageItems);
+        popup->addMenu(arrageItems);
         popup->addAction(ui->actionRefresh);
         popup->addSeparator();
         if (QApplication::clipboard()->mimeData()->hasUrls()) {
@@ -1553,9 +1564,11 @@ void corefm::on_actionRename_triggered()
 {
     if (focusWidget() == tree) {
       tree->edit(treeSelectionModel->currentIndex());
-    } else if(focusWidget() == ui->viewlist) {
+    }
+    else if(ui->view->currentIndex() == 0) {
       ui->viewlist->edit(listSelectionModel->currentIndex());
-    } else if(focusWidget() == ui->viewtree) {
+    }
+    else if(ui->view->currentIndex() == 1) {
       ui->viewtree->edit(listSelectionModel->currentIndex());
     }
 }
@@ -1589,11 +1602,13 @@ void corefm::on_actionDelete_triggered()
     // Retrieves selection
     if (focusWidget() == tree) {
       selList << modelList->index(ui->pathEdit->itemText(0));
-    } else {
+    }
+    else {
       QModelIndexList proxyList;
       if (listSelectionModel->selectedRows(0).count()) {
         proxyList = listSelectionModel->selectedRows(0);
-      } else {
+      }
+      else {
         proxyList = listSelectionModel->selectedIndexes();
       }
       foreach (QModelIndex proxyItem, proxyList) {
@@ -1602,24 +1617,6 @@ void corefm::on_actionDelete_triggered()
     }
 
     bool ok = false;
-    bool confirm;
-
-    //PROBLEM
-    //MESSAGE CONFIRMATION NOT NEEDED
-    // Display confirmation message box
-    if (sett->value("confirmDelete").isNull()) {
-      QString title = tr("Delete confirmation");
-      QString msg = tr("Do you want to confirm all delete operations?");
-      QMessageBox::StandardButtons btns = QMessageBox::Yes | QMessageBox::No;
-      if (QMessageBox::question(this, title, msg, btns) == QMessageBox::Yes) {
-        confirm = 1;
-      } else {
-        confirm = 0;
-      }
-      sett->setValue("confirmDelete",confirm);
-    } else {
-      confirm = sett->value("confirmDelete").toBool();
-    }
 
     // Delete selected file(s)
     for (int i = 0; i < selList.count(); ++i) {
@@ -1627,28 +1624,27 @@ void corefm::on_actionDelete_triggered()
       if (file.isWritable()) {
         if (file.isSymLink()) {
           ok = QFile::remove(file.filePath());
-        } else {
+        }
+        else {
           if (yesToAll == false) {
-            if (confirm) {
               QString title = tr("Careful");
               QString msg = tr("Are you sure you want to delete <p><b>\"") + file.filePath() + "</b>?";
               int ret = QMessageBox::information(this, title, msg,
                   QMessageBox::Yes | QMessageBox::No | QMessageBox::YesToAll);
               if (ret == QMessageBox::YesToAll) yesToAll = true;
               if (ret == QMessageBox::No) return;
-            }
           }
           ok = modelList->remove(selList.at(i));
         }
-      } else if (file.isSymLink()) {
+      }
+      else if (file.isSymLink()) {
         ok = QFile::remove(file.filePath());
       }
     }
 
     // Display error message if deletion failed
     if(!ok) {
-      QString msg = tr("Could not delete some items...do you have the right "
-                       "permissions?");
+      QString msg = tr("Could not delete some items...do you have the permissions?");
       messageEngine(msg, "Warning");
     }
 
@@ -1854,7 +1850,7 @@ void corefm::on_SHome_clicked()
 
 void corefm::on_actionTerminal_triggered()
 {
-    QString term = sm.getTerminal();//sett->value("Terminal").toString();//here we collect the selected terminal name from settings.
+    QString term = sm.getTerminal();//here we collect the selected terminal name from settings.
 
     QStringList args(term.split(" "));
     QString name = args.at(0);
@@ -1885,15 +1881,18 @@ void corefm::setSortColumn(QAction *columnAct) {
   }
 
   columnAct->setChecked(true);
+  qDebug()<<"entrer";
 
   if (columnAct == sortNameAct) {
     currentSortColumn =  0;
-  } else if (columnAct == sortDateAct) {
+  }
+  else if (columnAct == sortDateAct) {
     currentSortColumn =  3;
-  } else if (columnAct == sortSizeAct) {
+  }
+  else if (columnAct == sortSizeAct) {
     currentSortColumn = 1;
   }
-  sett->setValue("Sort-Column", currentSortColumn);
+//  sett->setValue("Sort-Column", currentSortColumn);
 }
 //---------------------------------------------------------------------------
 
@@ -1922,7 +1921,7 @@ void corefm::setSortOrder(Qt::SortOrder order) {
   // Change sort order
   currentSortOrder = order;
   sortAscAct->setChecked(!((bool) currentSortOrder));
-  sett->setValue("Sort-Order", currentSortOrder);
+//  sett->setValue("Sort-Order", currentSortOrder);
 }
 
 
@@ -1960,7 +1959,6 @@ void corefm::goTo(QString path) {
         on_actionRefresh_triggered();
     }
     else  {
-//        messageEngine("Path not exists", "Warning");
         QModelIndex i = modelTree->mapFromSource(modelList->index(startPath));
         tree->setCurrentIndex(i);
         on_actionRefresh_triggered();

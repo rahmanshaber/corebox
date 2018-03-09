@@ -81,7 +81,8 @@ DISTFILES += \
     docs/buildinfo.txt \
     docs/PKGBUILD \
     docs/To-Do.txt \
-    LICENSE
+    LICENSE \
+    docs/ChangeLog
 
 HEADERS += \
     about/about.h \
