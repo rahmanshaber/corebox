@@ -102,7 +102,6 @@ void corepaint::shotcuts()
 void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
 {
     if (ui->paintTabs->count() < 10) {
-    if (!filePath.isNull()) {
         ImageArea *imageArea;
         QString fileName;
 
@@ -157,7 +156,7 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
             messageEngine("File not Opened Successfully.", "Info");
         }
     }
-    } else {
+    else {
         messageEngine("Maximum NUmber of Tab reached.", "Warning");
     }
 }

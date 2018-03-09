@@ -356,37 +356,6 @@ void bookmarks::on_pathName_textChanged(const QString &arg1)
     }
 }
 
-void bookmarks::openAppEngine(QString path)
-{
-    QFileInfo dir(path);
-    corefm *fm = new corefm();
-    corepad *pad = new corepad();
-    coreimage *img = new coreimage();
-    QTabWidget *boxTab = this->parent()->parent()->parent()->parent()->findChild<QTabWidget*>("windows");
-    if (dir.isDir()) {
-        fm->goTo(path);
-        int n = boxTab->count();
-        boxTab->insertTab(n, fm, QIcon(":/icons/CoreFM.svg"),"CoreFM");
-        boxTab->setCurrentIndex(n);
-    } else if (dir.isFile()) {
-        const QByteArrayList supportedMime = QImageReader::supportedImageFormats();
-        foreach (const QByteArray &mimeTypeName, supportedMime) {
-            if (dir.completeSuffix() == mimeTypeName) {
-                img->loadFile(path);
-                boxTab->insertTab(boxTab->count(), img, QIcon(":/icons/CoreImage.svg"), "CoreImage");
-                boxTab->setCurrentIndex(boxTab->count());
-                return;
-            }
-        }
-        if (!dir.isExecutable()) {
-           pad->openText(path);
-           boxTab->insertTab(boxTab->count(), pad, QIcon(":/icons/CorePad.svg"), "CorePad");
-           boxTab->setCurrentIndex(boxTab->count());
-           return;
-        }
-    }
-}
-
 void bookmarks::on_boklist_itemDoubleClicked(QTableWidgetItem *item)
 {
     QString s = bk.bookmarkPath(ui->section->currentItem()->text(), ui->boklist->item(item->row(),0)->text());

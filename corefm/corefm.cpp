@@ -1953,13 +1953,17 @@ void corefm::executeFile(QModelIndex index, bool run) {
 }
 
 void corefm::goTo(QString path) {
+    qDebug() << "goto";
     if (!path.isEmpty()){
         QModelIndex i = modelTree->mapFromSource(modelList->index(path));
         tree->setCurrentIndex(i);
         on_actionRefresh_triggered();
     }
     else  {
-        messageEngine("Path not exists", "Warning");
+//        messageEngine("Path not exists", "Warning");
+        QModelIndex i = modelTree->mapFromSource(modelList->index(startPath));
+        tree->setCurrentIndex(i);
+        on_actionRefresh_triggered();
     }
 }
 

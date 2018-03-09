@@ -41,7 +41,6 @@ public:
     ~bookmarks();
 
     void saveBookMark(QString section, QString bookmarkName, QString bookmarkPath, QString bookmarkIcon);
-    void openAppEngine(QString path);
     void callBookMarkDialog(QWidget *parent, QString currentPath, QString iconPath);
 
 private slots:

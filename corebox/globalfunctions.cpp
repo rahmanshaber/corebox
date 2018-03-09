@@ -226,3 +226,38 @@ QString getMultipleFileSize(QStringList paths)
 {
     return formatSize(getmultiplefilesize(paths));
 }
+
+void openAppEngine(QString path){
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    QFileInfo info(path);
+    if(!info.exists() && !path.isEmpty()){
+        messageEngine("File not exists","Warning");
+        return;
+    }
+    //-----------------------------CoreImage---------------start--------------------------------------
+    const QByteArrayList supportedMime = QImageReader::supportedImageFormats();
+    foreach (const QByteArray &mimeTypeName, supportedMime) {
+        if (info.completeSuffix() == mimeTypeName) {
+            cBox->tabEngine(1, info.absoluteFilePath());
+            return;
+        }
+    }
+    //-----------------------------CoreImage---------------end----------------------------------------
+    //-----------------------------CoreFM---------------start----------------------------------------
+    if (info.isDir()) {
+        cBox->tabEngine(0, info.absoluteFilePath());
+    }
+    //-----------------------------CoreFM---------------end----------------------------------------
+
+    else {
+        //-----------------------------CorePad---------------start----------------------------------------
+        QString littleinfo = info.suffix();
+        if(littleinfo == "txt" || !info.isExecutable()){
+            cBox->tabEngine(2, info.absoluteFilePath());
+        }
+        //-----------------------------CorePad---------------end-----------------------------------------
+        else {    //send it to desktop prosess
+            QProcess::startDetached("xdg-open", QStringList() << path);
+        }
+    }
+}

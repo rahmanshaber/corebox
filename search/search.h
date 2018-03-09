@@ -40,8 +40,7 @@ public:
     Ui::search *ui;
 
     void shotcuts();
-    void setPath(QString text);
-    void openEngine(QString path);
+    void setPath(QString path);
 
 private:
     QStringList all;

@@ -82,6 +82,9 @@ void corepad::openText(QString filePath) {
             ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
         }
     }
+    else {
+        on_cNew_clicked();
+    }
 }
 
 void corepad::quiting() {

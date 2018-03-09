@@ -70,7 +70,6 @@ private slots:
     void on_search_clicked();
     void on_corefm_clicked();
     void on_corepad_clicked();
-
     void on_box_clicked();
 
 private:
@@ -80,6 +79,7 @@ private:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
+    int filterEngine(QString name);
 };
 
 #endif // COREBOX_H

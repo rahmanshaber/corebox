@@ -13,12 +13,14 @@
 #include <QFileInfo>
 #include <QSettings>
 
+#include "corebox.h"
 #include "../settings/settingsmanage.h"
 
 
  bool moveToTrash(QString fileName);
  bool saveToRecent(QString appName, QString pathName);
  void messageEngine(QString message, QString messageType);
+ void openAppEngine(QString path);
 
  int nameToInt(QString appName);
  QString appsIconPath(QString appName);

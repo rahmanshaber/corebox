@@ -34,6 +34,7 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
 {
     qDebug() << "search opening";
     ui->setupUi(this);
+    ui->searchFF->setFocus();
     ui->results->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     ui->folderPath->setVisible(0);
     ui->typeframe->setEnabled(false);
@@ -54,42 +55,14 @@ void search::shotcuts(){
     connect(shortcut, &QShortcut::activated, this, &search::on_locateCMD_clicked);
 }
 
-void search::openEngine(QString path)
-{
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    QFileInfo info(path);
-    //-----------------------------CoreImage---------------start--------------------------------------
-    const QByteArrayList supportedMime = QImageReader::supportedImageFormats();
-    foreach (const QByteArray &mimeTypeName, supportedMime) {
-        if (info.completeSuffix() == mimeTypeName) {
-            cBox->tabEngine(1, info.absoluteFilePath());
-            return;
-        }
-    }
-    //-----------------------------CoreImage---------------end----------------------------------------
-    if (info.isDir()) {
-        cBox->tabEngine(0, info.absoluteFilePath());
-    }
-    else {
-        //-----------------------------CorePad---------------start----------------------------------------
-        QString littleinfo = info.suffix();
-        if(littleinfo == "txt"){
-            cBox->tabEngine(2, info.absoluteFilePath());
-        }
-        //-----------------------------CorePad---------------end-----------------------------------------
-        else {    //send it to desktop prosess
-            QProcess::startDetached("xdg-open", QStringList() << path);
-        }
-    }
-}
-
 /**
  * @brief Set the folder path from other application
  * @param Path of the folder
  */
-void search::setPath(QString text)
+void search::setPath(QString path)
 {
-    ui->folderPath->setText(text);
+    if(!path.isEmpty()){ui->folderPath->setText(path);}
+    if(path.isEmpty()){ui->folderPath->setText("/");}
 }
 
 /**
@@ -308,7 +281,8 @@ void search::on_typeother_clicked()
 void search::on_results_itemDoubleClicked(QTableWidgetItem *item)
 {
     QString path = ui->results->item(item->row(), 1)->text() + "/" + ui->results->item(item->row(), 0)->text();
-    openEngine(path);
+//    openEngine(path);
+    openAppEngine(path);
 }
 
 void search::on_more_clicked(bool checked)

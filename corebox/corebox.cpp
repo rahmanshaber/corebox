@@ -75,55 +75,84 @@ void CoreBox::tabEngine(int i, QString arg) {
     int n = ui->windows->count();
     if (i == 0) {
         corefm *cFM = new corefm();
-        if (!arg.isEmpty()) {cFM->goTo(arg); }
+        cFM->goTo(arg);
         ui->windows->insertTab(n, cFM, QIcon(":/icons/CoreFM.svg"), "CoreFM");
         ui->windows->setCurrentIndex(n);
     } else if (i == 1) {
         coreimage *cIMG = new coreimage();
-        cIMG->loadFile(arg);
+        if(!arg.isEmpty()){cIMG->loadFile(arg);}
         ui->windows->insertTab(n, cIMG, QIcon(":/icons/CoreImage.svg"), "CoreImage");
         ui->windows->setCurrentIndex(n);
     } else if (i == 2) {
         corepad *cPAD = new corepad();
-        if (arg.isEmpty()) {cPAD->openText(arg);}
+        cPAD->openText(arg);
         ui->windows->insertTab(n, cPAD, QIcon(":/icons/CorePad.svg"), "CorePad");
         ui->windows->setCurrentIndex(n);
     } else if (i == 3) {
         corepaint *cPAINT = new corepaint();
-        cPAINT->initializeNewTab(true, arg);
+        if(!arg.isEmpty()){cPAINT->initializeNewTab(true, arg);}
+        if(arg.isEmpty()){cPAINT->initializeNewTab();}
         ui->windows->insertTab(n, cPAINT, QIcon(":/icons/CorePaint.svg"), "CorePaint");
         ui->windows->setCurrentIndex(n);
     } else if (i == 4) {
         coreplayer *cPLAYER = new coreplayer();
-        if (!arg.isEmpty()) { cPLAYER->openPlayer(arg); }
+        cPLAYER->openPlayer(arg);
         ui->windows->insertTab(n, cPLAYER, QIcon(":/icons/CorePlayer.svg"), "CorePlayer");
         ui->windows->setCurrentIndex(n);
     } else if (i == 5) {
-        ui->windows->insertTab(n, new dashboard(), QIcon(":/icons/DashBoard.svg"), "DashBoard");
-        ui->windows->setCurrentIndex(n);
+        int n = filterEngine("DashBoard");
+        if(n != 404){ui->windows->setCurrentIndex(n);}
+        else{
+            ui->windows->insertTab(n, new dashboard(), QIcon(":/icons/DashBoard.svg"), "DashBoard");
+            ui->windows->setCurrentIndex(n);
+        }
     } else if (i == 6) {
-        ui->windows->insertTab(n, new bookmarks(), QIcon(":/icons/Bookmarks.svg"), "Bookmarks");
-        ui->windows->setCurrentIndex(n);
+        int n = filterEngine("Bookmarks");
+        if(n != 404){ui->windows->setCurrentIndex(n);}
+        else{
+            ui->windows->insertTab(n, new bookmarks(), QIcon(":/icons/Bookmarks.svg"), "Bookmarks");
+            ui->windows->setCurrentIndex(n);
+        }
     } else if (i == 7) {
-        ui->windows->insertTab(n, new about(), QIcon(":/icons/About.svg"), "About");
-        ui->windows->setCurrentIndex(n);
+        int n = filterEngine("About");
+        if(n != 404){ui->windows->setCurrentIndex(n);}
+        else{
+            ui->windows->insertTab(n, new about(), QIcon(":/icons/About.svg"), "About");
+            ui->windows->setCurrentIndex(n);
+        }
     } else if (i == 8) {
-        ui->windows->insertTab(n, new Start(), QIcon(":/icons/Start.svg"), "Start");
-        ui->windows->setCurrentIndex(n);
+        int n = filterEngine("Start");
+        if(n != 404){ui->windows->setCurrentIndex(n);}
+        else{
+            ui->windows->insertTab(n, new Start(), QIcon(":/icons/Start.svg"), "Start");
+            ui->windows->setCurrentIndex(n);
+        }
     } else if (i == 9) {
-        ui->windows->insertTab(n, new help(), QIcon(":/icons/Help.svg"), "Help");
-        ui->windows->setCurrentIndex(n);
+        int n = filterEngine("Help");
+        if(n != 404){ui->windows->setCurrentIndex(n);}
+        else{
+            ui->windows->insertTab(n, new help(), QIcon(":/icons/Help.svg"), "Help");
+            ui->windows->setCurrentIndex(n);
+        }
     } else if (i == 10) {
-        ui->windows->insertTab(n, new settings(), QIcon(":/icons/Settings.svg"), "Settings");
-        ui->windows->setCurrentIndex(n);
+        int n = filterEngine("Settings");
+        if(n != 404){ui->windows->setCurrentIndex(n);}
+        else{
+            ui->windows->insertTab(n, new settings(), QIcon(":/icons/Settings.svg"), "Settings");
+            ui->windows->setCurrentIndex(n);
+        }
     } else if (i == 11) {
         search *ser = new search();
         ser->setPath(arg);
         ui->windows->insertTab(n, ser, QIcon(":/icons/Search.svg"), "Search");
         ui->windows->setCurrentIndex(n);
     } else if (i == 12) {
-        ui->windows->insertTab(n, new coretime, QIcon(":/icons/CoreTimesvg"), "CoreTime");
-        ui->windows->setCurrentIndex(n);
+        int n = filterEngine("CoreTime");
+        if(n != 404){ui->windows->setCurrentIndex(n);}
+        else{
+            ui->windows->insertTab(n, new coretime, QIcon(":/icons/CoreTimesvg"), "CoreTime");
+            ui->windows->setCurrentIndex(n);
+        }
     } else if (i == 99) {
         CoreBox *cBox = new CoreBox();
         cBox->show();
@@ -218,6 +247,17 @@ void CoreBox::on_windows_tabCloseRequested(int index)
     if(ui->windows->count() == 0){
         on_start_clicked();
     }
+}
+
+int CoreBox::filterEngine(QString name){
+
+    for(int i= 0; i < ui->windows->count(); ++i) {
+        if(ui->windows->tabText(i) == name) {
+//            ui->windows->setCurrentIndex(i);
+            return i ;
+        }
+    }
+    return 404;
 }
 
 void CoreBox::on_windows_currentChanged(int index)
@@ -337,78 +377,42 @@ void CoreBox::closeEvent(QCloseEvent *event) {
 
 void CoreBox::on_bookmarks_clicked()
 {
-    for(int b=0; b<ui->windows->count(); ++b) {
-        if("Bookmarks" == ui->windows->tabText(b)) {
-            ui->windows->setCurrentIndex(b);
-            return;
-        }
-    }
-    tabEngine(6);
+    tabEngine(nameToInt("Bookmarks"));
 }
 
 void CoreBox::on_dashboard_clicked()
 {
-    for(int d=0; d<ui->windows->count(); ++d) {
-        if("DashBoard" == ui->windows->tabText(d)) {
-            ui->windows->setCurrentIndex(d);
-            return;
-        }
-    }
-    tabEngine(5);
+    tabEngine(nameToInt("DashBoard"));
 }
 
 void CoreBox::on_settings_clicked()
 {
-    for(int s=0; s<ui->windows->count(); ++s) {
-        if("Settings" == ui->windows->tabText(s)) {
-            ui->windows->setCurrentIndex(s);
-            return;
-        }
-    }
-    tabEngine(10);
+    tabEngine(nameToInt("Settings"));
 }
 
 void CoreBox::on_start_clicked()
 {
-    for(int i= 0; i < ui->windows->count(); ++i) {
-        if(ui->windows->tabText(i) == "Start") {
-            ui->windows->setCurrentIndex(i);
-            return;
-        }
-    }
-    tabEngine(8);
+    tabEngine(nameToInt("Start"));
 }
 
 void CoreBox::on_search_clicked()
 {
-    for(int i=0; i<ui->windows->count(); ++i) {
-        if("Search" == ui->windows->tabText(i)) {
-            ui->windows->setCurrentIndex(i);
-            return;
-        }
-    }
-    tabEngine(11);
+    tabEngine(nameToInt("Search"));
 }
 
 void CoreBox::on_corepaint_clicked()
 {
-    int n = ui->windows->count();
-    ui->windows->insertTab(n,new corepaint,QIcon(":/icons/CorePaint.svg"),"CorePaint");
-    ui->windows->setCurrentIndex(n);
+    tabEngine(nameToInt("CorePaint"));
 }
 
 void CoreBox::on_corefm_clicked()
 {
-    int n = ui->windows->count();
-    ui->windows->insertTab(n,new corefm,QIcon(":/icons/CoreFM.svg"),"CoreFM");
-    ui->windows->setCurrentIndex(n);
+    tabEngine(nameToInt("CoreFM"));
 }
 
 void CoreBox::on_corepad_clicked()
 {
-    int n = ui->windows->count();
-    ui->windows->insertTab(n,new corepad,QIcon(":/icons/CorePad.svg"),"CorePad");
-    ui->windows->setCurrentIndex(n);
+    tabEngine(nameToInt("CorePad"));
 }
 
 void CoreBox::on_box_clicked()

@@ -168,7 +168,6 @@ bool coreimage::loadFile(const QString &fileName)
         for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
             b->setEnabled(true);
         }
-
         return true;
     }
     return false;
@@ -185,8 +184,6 @@ void coreimage::setImage(const QImage &newImage)
     image = newImage;
     scaleFactor = 1.0;
 
-    ui->scrollArea->setVisible(true);
-    ui->navigation->setVisible(true);
     ui->horizontalLayout_3->removeItem(hSpacer);
     ui->scrollArea->setWidget(ui->cImageLabel);
 
