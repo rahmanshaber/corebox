@@ -51,12 +51,6 @@ public:
     bool getViewMode();
     bool setViewMode(bool mode);
 
-    int getSortColumn();
-    bool setSortColumn(int value);
-
-    int getSortOrder();
-    bool setSortOrder(Qt::SortOrder order);
-
     QString getSCSaveLocation();
     bool setSCSaveLocation(QString path);
 
@@ -71,6 +65,9 @@ public:
 
     QString getTimeFormat();
     bool setTimeFormat(QString AmPm);
+
+    bool getShowHidden();
+    bool setShowHidden(bool showTool);
 
 };
 

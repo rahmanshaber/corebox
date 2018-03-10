@@ -53,7 +53,6 @@ propertiesw::~propertiesw()
 void propertiesw::general(){
 
     QFile file(pathName);
-
     QFileInfo info(file);
     QMimeDatabase db;
     QMimeType mime = db.mimeTypeForFile(file, QMimeDatabase::MatchContent);

@@ -5,5 +5,10 @@ v.2
 - fixed view mode
 - icondlg.cpp and header >> removed
 - arrange item fixed
-
+- fixed hidden is not saving it's last state.
+- improved arciving
+- fixed alarm page
+- removed coretime settings.
+- fixed page selecte in coretime.
+- fixed sound path in coretime.
 

@@ -78,7 +78,6 @@ public slots:
     void executeFile(QModelIndex, bool);
     void clipboardChanged();
     void toggleSortBy(QAction* action);
-    void setSortOrder(Qt::SortOrder order);
     void setSortColumn(QAction *columnAct);
     void actionMapper(QString);
     void dragLauncher(const QMimeData *data, const QString &newPath, myModel::DragMode dragMode);
@@ -131,7 +130,7 @@ private slots:
     void on_actionTerminal_triggered();
     void on_actionShowThumbnails_triggered();
     void on_actionRunFile_triggered();
-    void on_actionAscending_triggered();
+    void on_actionAscending_triggered(bool checked);
     void on_SHome_clicked();
     void on_SDesktop_clicked();
     void on_SDownloads_clicked();
@@ -147,6 +146,8 @@ private slots:
     void on_STrash_clicked();
     void on_emptyTrash_clicked();
 
+
+
 private:
     SettingsManage sm;
     void writeSettings();
@@ -155,6 +156,8 @@ private:
     int showReplaceMsgBox(const QFileInfo &f1, const QFileInfo &f2);
     QMenu* createOpenWithMenu();
     QMenu *globalmenu();
+
+//    Qt::SortOrder currentSortOrder;
 
     int zoom;
     int zoomTree;

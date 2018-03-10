@@ -1,10 +1,25 @@
+/*
+CoreBox is combination of some common desktop apps.
+
+CoreBox is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2
+of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see {http://www.gnu.org/licenses/}. */
+
 #include "coretime.h"
 #include "ui_coretime.h"
 #include "timer.h"
 #include "alarm.h"
 #include "fileio.h"
 #include "schedulecollection.h"
-#include "settingdialog.h"
 #include "snooze.h"
 
 #include <QCheckBox>
@@ -15,7 +30,6 @@
 #include <QFileDialog>
 #include <QDialogButtonBox>
 #include <QSlider>
-#include <QSystemTrayIcon>
 #include <QListWidgetItem>
 #include <QCalendarWidget>
 
@@ -31,8 +45,8 @@ coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
     PopulateListWidget();
     DisablePanelIfNoSelection();
 
-    _isMilTime=FileIO::isMilTime();
-    _WarnOnPm=FileIO::LoadWarnOnPm();
+    _isMilTime=false;
+    _WarnOnPm=true;            //FileIO::LoadWarnOnPm();
     _prevTimeWasMil=_isMilTime;
     displayTimeMode();
 
@@ -42,11 +56,9 @@ coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
     TimeKeeper->StartTimer(CurAlarm);
 
     //Set Volume
-    int Volume = FileIO::LoadVolume();
-    ui->VolumeSlider->setValue(Volume<=0? 50:Volume);
+//    int Volume = FileIO::LoadVolume();
+//    ui->VolumeSlider->setValue(Volume<=0? 50:Volume);
     CurAlarm->SetVolume(ui->VolumeSlider->value());
-    ui->listAlmBtn->button(QDialogButtonBox::Ok)->setText("&Add");
-    ui->listAlmBtn->button(QDialogButtonBox::Cancel)->setText("&Remove");
 
     ui->txtSoundPath->setText("");
     ui->CustEdit->setDate(QDate::currentDate());
@@ -56,8 +68,6 @@ coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
 
     //set up ui slots
     connect(ui->timeEdit,SIGNAL(editingFinished()),this,SLOT(SetTime()));
-    connect(ui->listAlmBtn,SIGNAL(clicked(QAbstractButton*)),this,SLOT(AddRemoveAlarm(QAbstractButton*)));
-    connect(ui->listWidget,SIGNAL(currentRowChanged(int)),this,SLOT(ShowActiveAlarm(int)));
     connect(ui->chkMon,SIGNAL(clicked(bool)),this,SLOT(ToggleMon(bool)));
     connect(ui->chkTues,SIGNAL(clicked(bool)),this,SLOT(ToggleTue(bool)));
     connect(ui->chkWed,SIGNAL(clicked(bool)),this,SLOT(ToggleWed(bool)));
@@ -69,8 +79,12 @@ coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
     connect(ui->chkSounds,SIGNAL(clicked(bool)),this,SLOT(OpenDiaglog(bool)));
     connect(ui->TestBtn,SIGNAL(clicked()),this,SLOT(TestAlarm()));
     connect(ui->VolumeSlider,SIGNAL(valueChanged(int)),CurAlarm,SLOT(SetVolume(int)));
-
     connect(ui->calendarWidget,SIGNAL(clicked(QDate)),this,SLOT(SetCustomDate()));
+
+    ui->addsoundF->setVisible(false);
+    ui->adddateF->setVisible(false);
+    ui->alarmF->setVisible(false);
+    ui->editalarm->setVisible(false);
 
     mRunning = false;
     mTotalTime = 0;
@@ -79,6 +93,12 @@ coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
     ui->lapTime->setEnabled(0);
     forStopWatch = new QTimer();
     connect(forStopWatch, SIGNAL(timeout()), this, SLOT(counting()));
+
+    if(this->CurAlarm->isPlaying())
+    {
+        this->CurAlarm->Stop();
+    }
+    ui->TestBtn->setText("Test");
 
 }
 
@@ -93,24 +113,6 @@ void coretime::SetupClock()
     QTimer *CurrentTime=new QTimer(this);
     connect(CurrentTime,SIGNAL(timeout()),this,SLOT(timeCheck()));
     CurrentTime->start(500);
-}
-
-void coretime::ShowWindow(QSystemTrayIcon::ActivationReason Reason)
-{
-    if(Reason==QSystemTrayIcon::DoubleClick || Reason==QSystemTrayIcon::Trigger)
-    {
-        ShowWindow();
-    }
-}
-
-void coretime::ShowWindow()
-{
-    if(this->CurAlarm->isPlaying())
-    {
-        this->CurAlarm->Stop();
-    }
-    ui->TestBtn->setText("Test");
-    this->show();
 }
 
 void coretime::SetTime()
@@ -188,7 +190,6 @@ void coretime::ToggleSun(bool isEnabled)
     UpdateListWidget();
 }
 
-
 void coretime::ToggleCust(bool isEnabled)
 {
     Schedule *Active=this->_Schedules->GetSchedule(ui->listWidget->currentRow());
@@ -196,30 +197,14 @@ void coretime::ToggleCust(bool isEnabled)
     UpdateListWidget();
 }
 
-void coretime::Quit()
-{
-    this->_Schedules->Save();
-    FileIO::DelExtracted();
-    FileIO::SaveVolume(ui->VolumeSlider->value());
-    qApp->quit();
-}
+//void coretime::Quit()
+//{
+//    this->_Schedules->Save();
+//    FileIO::DelExtracted();
+//    FileIO::SaveVolume(ui->VolumeSlider->value());
+//    qApp->quit();
+//}
 
-void coretime::AddRemoveAlarm(QAbstractButton *button)
-{
-    if(button->text()=="&Add")
-    {
-        Schedule *scheToAdd=new Schedule(this);
-        this->_Schedules->AddSchedule(scheToAdd);
-        ui->listWidget->addItem(scheToAdd->Name());
-        ui->listWidget->setCurrentRow(ui->listWidget->count()-1);
-    }
-    else if(button->text()=="&Remove")
-    {
-        this->_lastDeletedIndex=ui->listWidget->currentRow();
-        this->_Schedules->removeScheduleByIndex(ui->listWidget->currentRow());
-        PopulateListWidget();
-    }
-}
 
 void coretime::ShowActiveAlarm(int index)
 {
@@ -324,13 +309,6 @@ void coretime::PMWarning()
     messageEngine(mess,"Warning");
 }
 
-
-void coretime::ShowSettings()
-{
-    SettingDialog *settingsPage=new SettingDialog(this,&_isMilTime, &_WarnOnPm);
-    settingsPage->show();
-}
-
 void coretime::displayTimeMode()
 {
     if(_isMilTime)
@@ -430,6 +408,38 @@ quint64 coretime::timeToms(QString time) {
     return total;
 }
 
+void coretime::on_listWidget_currentRowChanged(int currentRow)
+{
+    ShowActiveAlarm(currentRow);
+    ui->editalarm->setVisible(true);
+    if(ui->alarmF->isVisible() ){
+        ui->alarmF->setVisible(false);
+    }
+}
+
+void coretime::on_editalarm_clicked()
+{
+    ui->alarmF->setVisible(true);
+}
+
+void coretime::on_removealarm_clicked()
+{
+    this->_lastDeletedIndex=ui->listWidget->currentRow();
+    this->_Schedules->removeScheduleByIndex(ui->listWidget->currentRow());
+    PopulateListWidget();
+}
+
+void coretime::on_addalarm_clicked()
+{
+    Schedule *scheToAdd=new Schedule(this);
+    this->_Schedules->AddSchedule(scheToAdd);
+    ui->listWidget->addItem(scheToAdd->Name());
+    ui->listWidget->setCurrentRow(ui->listWidget->count()-1);
+    ui->alarmF->setVisible(true);
+}
+
+//======================Stopwatch=====================Start==================================
+
 void coretime::start() {
     forStopWatch->start(1);
 }
@@ -501,6 +511,10 @@ void coretime::on_lapandreset_clicked()
     }
 }
 
+//======================Stopwatch=====================End==================================
+
+//======================Timer=======================Start==================================
+
 void coretime::on_addTimer_clicked()
 {
     ui->timerText->setText(ui->setTimer->text());
@@ -532,34 +546,31 @@ void coretime::on_resetTimer_clicked()
     ui->startstopTimer->setText("Start");
     disconnect(forTimer, 0, 0, 0);
     ui->timerSet->setVisible(true);
+    ui->timerDuration->setVisible(false);
+}
+//======================Timer=======================End===================================
+
+void coretime::pageClick(QPushButton *btn, int i, QString title)
+{
+    // all button checked false
+    for (QPushButton *b : ui->shortcut->findChildren<QPushButton*>())
+        b->setChecked(false);
+    btn->setChecked(true);
+    ui->selectedsection->setText(title);
+    ui->pages->setCurrentIndex(i);
 }
 
-void coretime::on_alarm_clicked(bool checked)
+void coretime::on_alarm_clicked()
 {
-    if(checked){
-        ui->selectedsection->setText("Alarm");
-        ui->pages->setCurrentIndex(0);
-        ui->stopwatch->setChecked(false);
-        ui->timer->setChecked(false);
-    }
+    pageClick(ui->alarm,0, tr("Alarm"));
 }
 
-void coretime::on_stopwatch_clicked(bool checked)
+void coretime::on_stopwatch_clicked()
 {
-    if(checked){
-        ui->selectedsection->setText("Stopwatch");
-        ui->pages->setCurrentIndex(1);
-        ui->alarm->setChecked(false);
-        ui->timer->setChecked(false);
-    }
+    pageClick(ui->stopwatch,1, tr("Stopwatch"));
 }
 
-void coretime::on_timer_clicked(bool checked)
+void coretime::on_timer_clicked()
 {
-    if(checked){
-        ui->selectedsection->setText("Timer");
-        ui->pages->setCurrentIndex(2);
-        ui->alarm->setChecked(false);
-        ui->stopwatch->setChecked(false);
-    }
+    pageClick(ui->timer,2, tr("Timer"));
 }

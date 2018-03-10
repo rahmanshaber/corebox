@@ -56,7 +56,7 @@ FORMS += \
     corepaint/corepaint.ui \
     coreplayer/coreplayer.ui \
     coretime/coretime.ui \
-    coretime/settingdialog.ui \
+#    coretime/settingdialog.ui \
     coretime/snooze.ui \
     dashboard/info/circlebar.ui \
     dashboard/info/sysinfo.ui \
@@ -145,7 +145,7 @@ HEADERS += \
     coretime/fileio.h \
     coretime/schedule.h \
     coretime/schedulecollection.h \
-    coretime/settingdialog.h \
+#    coretime/settingdialog.h \
     coretime/snooze.h \
     coretime/timer.h \
     dashboard/info/circlebar.h \
@@ -231,7 +231,7 @@ SOURCES += \
     coretime/fileio.cpp \
     coretime/schedule.cpp \
     coretime/schedulecollection.cpp \
-    coretime/settingdialog.cpp \
+#    coretime/settingdialog.cpp \
     coretime/snooze.cpp \
     coretime/timer.cpp \
     dashboard/info/circlebar.cpp \

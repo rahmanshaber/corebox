@@ -30,7 +30,6 @@
         <file>icons/CorePlayer.svg</file>
         <file>icons/CoreRenemer.svg</file>
         <file>icons/CoreShot.svg</file>
-        <file>icons/CoreTimesvg</file>
         <file>icons/cut_b.svg</file>
         <file>icons/cut_w.svg</file>
         <file>icons/DashBoard.svg</file>
@@ -148,5 +147,6 @@
         <file>icons/zoom_in_w.svg</file>
         <file>icons/zoom_out_b.svg</file>
         <file>icons/zoom_out_w.svg</file>
+        <file>icons/CoreTime.svg</file>
     </qresource>
 </RCC>

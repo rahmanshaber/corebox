@@ -19,7 +19,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QDateTime>
 #include <QSettings>
-#include <QSystemTrayIcon>
 #include <QPoint>
 
 #include "start/start.h"
@@ -150,7 +149,7 @@ void CoreBox::tabEngine(int i, QString arg) {
         int n = filterEngine("CoreTime");
         if(n != 404){ui->windows->setCurrentIndex(n);}
         else{
-            ui->windows->insertTab(n, new coretime, QIcon(":/icons/CoreTimesvg"), "CoreTime");
+            ui->windows->insertTab(n, new coretime, QIcon(":/icons/CoreTime.svg"), "CoreTime");
             ui->windows->setCurrentIndex(n);
         }
     } else if (i == 99) {

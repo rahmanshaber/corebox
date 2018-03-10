@@ -6,67 +6,97 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>675</width>
-    <height>300</height>
+    <width>751</width>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Snooze</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Icons.qrc">
+   <iconset>
     <normaloff>:/new/icons/Clock.png</normaloff>:/new/icons/Clock.png</iconset>
   </property>
-  <widget class="QPushButton" name="snzBtn">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>170</y>
-     <width>621</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Snooze</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="DismissBtn">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>230</y>
-     <width>251</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Dismiss</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="time">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>60</y>
-     <width>351</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>36</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+background-color: #262626;
+color: #ffffff;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="time">
+     <property name="font">
+      <font>
+       <pointsize>36</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="snzBtn">
+     <property name="maximumSize">
+      <size>
+       <width>700</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background-color:#FF9C00 ;
+border: 1px #34343C;
+padding: 10px 10px 10px 10px;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Snooze</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="DismissBtn">
+     <property name="maximumSize">
+      <size>
+       <width>500</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background-color:#1EB093 ;
+border: 1px #34343C;
+padding: 10px 10px 10px 10px;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Dismiss</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <resources>
-  <include location="Icons.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

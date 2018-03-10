@@ -27,9 +27,8 @@ void SettingsManage::createDefaultSettings() {
         cSetting->setValue("Zoom-Detail", 16);
         cSetting->setValue("Show-Thumb", false);
         cSetting->setValue("Show-Toolbox", false);
+        cSetting->setValue("Show-Hidden",false);
         cSetting->setValue("View-Mode", true);
-        cSetting->setValue("Sort-Column", 0);
-        cSetting->setValue("Sort-Order", 0);
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreScreenshot");
@@ -38,9 +37,15 @@ void SettingsManage::createDefaultSettings() {
 
         cSetting->beginGroup("CoreBox");
         cSetting->setValue("Maximized", false);
-        cSetting->setValue("Show-Battery", false);
         cSetting->setValue("Recent-Disable", true);
         cSetting->endGroup();
+
+        cSetting->beginGroup("CoreAction");
+//        cSetting->setValue("Maximized", false);
+        cSetting->setValue("Show-Battery", false);
+//        cSetting->setValue("Recent-Disable", true);
+        cSetting->endGroup();
+
     }
 }
 
@@ -152,28 +157,20 @@ bool SettingsManage::getShowToolbox() {
     return getSpecificValue("CoreFM", "Show-Toolbox").toBool();
 }
 
+bool SettingsManage::setShowHidden(bool showTool) {
+    return setSpecificValue("CoreFM", "Show-Hidden", showTool);
+}
+
+bool SettingsManage::getShowHidden() {
+    return getSpecificValue("CoreFM", "Show-Hidden").toBool();
+}
+
 bool SettingsManage::setViewMode(bool mode) {
     return setSpecificValue("CoreFM", "View-Mode", mode);
 }
 
 bool SettingsManage::getViewMode() {
     return getSpecificValue("CoreFM", "View-Mode").toBool();
-}
-
-bool SettingsManage::setSortColumn(int value) {
-    return setSpecificValue("CoreFM", "Sort-Column", value);
-}
-
-int SettingsManage::getSortColumn() {
-    return getSpecificValue("CoreFM", "Sort-Column").toInt();
-}
-
-bool SettingsManage::setSortOrder(Qt::SortOrder order) {
-    return setSpecificValue("CoreFM", "Sort-Order", order);
-}
-
-int SettingsManage::getSortOrder() {
-    return getSpecificValue("CoreFM", "Sort-Order").toInt();
 }
 
 bool SettingsManage::setSCSaveLocation(QString path) {

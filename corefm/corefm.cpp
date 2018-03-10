@@ -1,4 +1,4 @@
-/*
+﻿/*
 CoreBox is combination of some common desktop apps.
 
 CoreBox is free software; you can redistribute it and/or
@@ -38,11 +38,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {
     qDebug() << "corefm opening";
     ui->setupUi(this);
-
-    sortNameAct =ui->actionName;
-    sortDateAct = ui->actionDate;
-    sortSizeAct = ui->actionSize;
-    sortAscAct = ui->actionAscending;
 
     QIcon::setThemeName(sm.getThemeName());
 
@@ -105,6 +100,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->viewtree->setSelectionModel(listSelectionModel);
     ui->viewtree->setFocusPolicy(Qt::NoFocus);
     int i = ui->navigationBar->sizeHint().width();
+    ui->viewtree->setSortingEnabled(1);
     ui->viewtree->setColumnWidth(0,i);
     ui->viewtree->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -126,11 +122,10 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->paste->setVisible(0);
     ui->mk->addWidget(tabs);
     ui->TrashFrame->setVisible(0);
-    toggleSortBy(sortNameAct);
-    on_showHidden_clicked(0);
     ui->emptyTrash->setVisible(0);
     ui->showthumb->setVisible(0);
     ui->showthumb->setChecked(0);
+    ui->actionAscending->setChecked(1);
 
     ui->newTab->setDefaultAction(ui->actionNewTab);
     ui->copy->setDefaultAction(ui->actionCopy);
@@ -189,76 +184,86 @@ void corefm::shotcuts(){
 
 void corefm::lateStart()
 {
-  // Configure tree view
-  tree->setDragDropMode(QAbstractItemView::DragDrop);
-  tree->setDefaultDropAction(Qt::MoveAction);
-  tree->setDropIndicatorShown(true);
-  tree->setEditTriggers(QAbstractItemView::EditKeyPressed | QAbstractItemView::SelectedClicked);
+    // Configure tree view
+    tree->setDragDropMode(QAbstractItemView::DragDrop);
+    tree->setDefaultDropAction(Qt::MoveAction);
+    tree->setDropIndicatorShown(true);
+    tree->setEditTriggers(QAbstractItemView::EditKeyPressed | QAbstractItemView::SelectedClicked);
 
-  ui->viewlist->setFocus();
+    ui->viewlist->setFocus();
 
-  // Watch for mounts
-  int fd = open("/proc/self/mounts", O_RDONLY, 0);
-  notify = new QSocketNotifier(fd, QSocketNotifier::Write);
+    // Watch for mounts
+    int fd = open("/proc/self/mounts", O_RDONLY, 0);
+    notify = new QSocketNotifier(fd, QSocketNotifier::Write);
 
-  // Clipboard configuration
-  progress = 0;
-  clipboardChanged();
+    // Clipboard configuration
+    progress = 0;
+    clipboardChanged();
 
-  // Completer configuration
-  customComplete = new myCompleter;
-  customComplete->setModel(modelTree);
-  customComplete->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
-  customComplete->setMaxVisibleItems(10);
-  ui->pathEdit->setCompleter(customComplete);
+    // Completer configuration
+    customComplete = new myCompleter;
+    customComplete->setModel(modelTree);
+    customComplete->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
+    customComplete->setMaxVisibleItems(10);
+    ui->pathEdit->setCompleter(customComplete);
 
-  // Tabs configuration
-  tabs->setDrawBase(0);
-  tabs->setExpanding(0);
+    // Tabs configuration
+    tabs->setDrawBase(0);
+    tabs->setExpanding(0);
 
-  // Connect mouse clicks in views
-//  if (sett->value("singleClick").toInt() == 1) {
-//    connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(listItemClicked(QModelIndex)));
-//    connect(ui->viewtree, SIGNAL(clicked(QModelIndex)),this, SLOT(listItemClicked(QModelIndex)));
-//  }
-//  if (sett->value("singleClick").toInt() == 2) {
-//    connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
-//    connect(ui->viewtree, SIGNAL(clicked(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
-//  }
+    // Connect mouse clicks in views
+//    if (sett->value("singleClick").toInt() == 1) {
+//      connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(listItemClicked(QModelIndex)));
+//      connect(ui->viewtree, SIGNAL(clicked(QModelIndex)),this, SLOT(listItemClicked(QModelIndex)));
+//    }
+//    if (sett->value("singleClick").toInt() == 2) {
+//      connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
+//      connect(ui->viewtree, SIGNAL(clicked(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
+//    }
 
-  // Connect ui->viewlist view
-  connect(ui->viewlist, SIGNAL(activated(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
+    // Connect ui->viewlist view
+    connect(ui->viewlist, SIGNAL(activated(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
 
-  // Connect path edit
-  connect(ui->pathEdit, SIGNAL(activated(QString)),this, SLOT(pathEditChanged(QString)));
-  connect(customComplete, SIGNAL(activated(QString)),this, SLOT(pathEditChanged(QString)));
-  connect(ui->pathEdit->lineEdit(), SIGNAL(cursorPositionChanged(int,int)),this, SLOT(addressChanged(int,int)));
+    // Connect path edit
+    connect(ui->pathEdit, SIGNAL(activated(QString)),this, SLOT(pathEditChanged(QString)));
+    connect(customComplete, SIGNAL(activated(QString)),this, SLOT(pathEditChanged(QString)));
+    connect(ui->pathEdit->lineEdit(), SIGNAL(cursorPositionChanged(int,int)),this, SLOT(addressChanged(int,int)));
 
-  // Connect selection
-  connect(QApplication::clipboard(), SIGNAL(changed(QClipboard::Mode)),this, SLOT(clipboardChanged()));
-  connect(ui->viewtree,SIGNAL(activated(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
-  connect(listSelectionModel,SIGNAL(selectionChanged(const QItemSelection, const QItemSelection)),
-          this, SLOT(listSelectionChanged(const QItemSelection,const QItemSelection)));
+    // Connect selection
+    connect(QApplication::clipboard(), SIGNAL(changed(QClipboard::Mode)),this, SLOT(clipboardChanged()));
+    connect(ui->viewtree,SIGNAL(activated(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
+    connect(listSelectionModel,SIGNAL(selectionChanged(const QItemSelection, const QItemSelection)),
+            this, SLOT(listSelectionChanged(const QItemSelection,const QItemSelection)));
 
-  // Connect copy progress
-  connect(this, SIGNAL(copyProgressFinished(int,QStringList)),this, SLOT(progressFinished(int,QStringList)));
+    // Connect copy progress
+    connect(this, SIGNAL(copyProgressFinished(int,QStringList)),this, SLOT(progressFinished(int,QStringList)));
 
-  // Conect ui->viewlist model
-  connect(modelList,SIGNAL(dragDropPaste(const QMimeData *, QString, myModel::DragMode)),
-          this,SLOT(dragLauncher(const QMimeData *, QString, myModel::DragMode)));
+    // Conect ui->viewlist model
+    connect(modelList,SIGNAL(dragDropPaste(const QMimeData *, QString, myModel::DragMode)),
+            this,SLOT(dragLauncher(const QMimeData *, QString, myModel::DragMode)));
 
-  // Connect tabs
-  connect(tabs, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
-  connect(tabs, SIGNAL(dragDropTab(const QMimeData *, QString, QStringList)),this, SLOT(pasteLauncher(const QMimeData *, QString, QStringList)));
-  connect(ui->viewlist, SIGNAL(pressed(QModelIndex)),this, SLOT(listItemPressed(QModelIndex)));
-  connect(ui->viewtree, SIGNAL(pressed(QModelIndex)),this, SLOT(listItemPressed(QModelIndex)));
-  connect(modelList, SIGNAL(thumbUpdate(QModelIndex)),this, SLOT(thumbUpdate(QModelIndex)));
+    // Connect tabs
+    connect(tabs, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
+    connect(tabs, SIGNAL(dragDropTab(const QMimeData *, QString, QStringList)),
+            this, SLOT(pasteLauncher(const QMimeData *, QString, QStringList)));
+    connect(ui->viewlist, SIGNAL(pressed(QModelIndex)),this, SLOT(listItemPressed(QModelIndex)));
+    connect(ui->viewtree, SIGNAL(pressed(QModelIndex)),this, SLOT(listItemPressed(QModelIndex)));
+    connect(modelList, SIGNAL(thumbUpdate(QModelIndex)),this, SLOT(thumbUpdate(QModelIndex)));
 
-  qApp->setKeyboardInputInterval(1000);
+    qApp->setKeyboardInputInterval(1000);
 
-  // Read defaults
-  QTimer::singleShot(100, mimeUtils, SLOT(generateDefaults()));
-  on_actionRefresh_triggered();
+    currentSortColumn = 0;
+    currentSortOrder = Qt::AscendingOrder;
+    switch (currentSortColumn) {
+      case 0 : setSortColumn(ui->actionName); break;
+      case 1 : setSortColumn(ui->actionSize); break;
+      case 3 : setSortColumn(ui->actionDate); break;
+    }
+    modelView->sort(currentSortColumn,currentSortOrder);
+
+    // Read defaults
+    QTimer::singleShot(100, mimeUtils, SLOT(generateDefaults()));
+    on_actionRefresh_triggered();
 }
 
 /**
@@ -278,6 +283,8 @@ void corefm::loadSettings()
     tree->setIconSize(QSize(zoomTree, zoomTree));
 
 //    ui->showthumb->setChecked(sm.getIsShowThumb());
+    ui->showHidden->setChecked(sm.getShowHidden());
+    on_showHidden_clicked(sm.getShowHidden());
     ui->Tools->setChecked(sm.getShowToolbox());
     ui->tools->setVisible(sm.getShowToolbox());
 
@@ -293,21 +300,6 @@ void corefm::loadSettings()
 
     // Load terminal command
     term = sm.getTerminal();
-
-    ui->viewtree->setSortingEnabled(1);
-
-    currentSortColumn = sm.getSortColumn();//sett->value("Sort-Column", 0).toInt();
-    currentSortOrder = (Qt::SortOrder)sm.getSortOrder();// sett->value("Sort-Order", 0).toInt();
-
-
-    switch (currentSortColumn) {
-      case 0 : setSortColumn(sortNameAct); break;
-      case 1 : setSortColumn(sortSizeAct); break;
-      case 3 : setSortColumn(sortDateAct); break;
-    }
-
-    setSortOrder(currentSortOrder);
-    modelView->sort(currentSortColumn, currentSortOrder);
 }
 
 /**
@@ -318,9 +310,8 @@ void corefm::writeSettings() {
     sm.setZoomTreeValue(zoomTree);
     sm.setZoomListValue(zoomList);
     sm.setZoomDetailValue(zoomDetail);
-    sm.setSortColumn(currentSortColumn);
-    sm.setSortOrder(currentSortOrder);
 //    sm.setIsShowThumb(ui->showthumb->isChecked());
+    sm.setShowHidden(ui->showHidden->isChecked());
     sm.setViewMode(ui->icon->isChecked());
     sm.setShowToolbox(ui->tools->isVisible());
     sm.setIsRealMimeType(modelList->isRealMimeTypes());
@@ -554,16 +545,16 @@ void corefm::tabChanged(int index)
  * @param current
  */
 void corefm::listDoubleClicked(QModelIndex current) {
-  Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
-  if (mods == Qt::ControlModifier || mods == Qt::ShiftModifier) {
-    return;
-  }
-  if (modelList->isDir(modelView->mapToSource(current))) {
-    QModelIndex i = modelView->mapToSource(current);
-    tree->setCurrentIndex(modelTree->mapFromSource(i));
-  } else {
-    executeFile(current, 0);
-  }
+    Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
+    if (mods == Qt::ControlModifier || mods == Qt::ShiftModifier) {
+      return;
+    }
+    if (modelList->isDir(modelView->mapToSource(current))) {
+      QModelIndex i = modelView->mapToSource(current);
+      tree->setCurrentIndex(modelTree->mapFromSource(i));
+    } else {
+      executeFile(current, 0);
+    }
 }
 
 /**
@@ -571,25 +562,24 @@ void corefm::listDoubleClicked(QModelIndex current) {
  * @param path
  */
 void corefm::pathEditChanged(QString path) {
-  QString info = path;
-  if (!QFileInfo(path).exists()) return;
-  info.replace("~",QDir::homePath());
-  tree->setCurrentIndex(modelTree->mapFromSource(modelList->index(info)));
+    QString info = path;
+    if (!QFileInfo(path).exists()) return;
+    info.replace("~",QDir::homePath());
+    tree->setCurrentIndex(modelTree->mapFromSource(modelList->index(info)));
 }
 
 /**
  * @brief Reaction for change of clippboard content
  */
-void corefm::clipboardChanged()
-{
-  if (QApplication::clipboard()->mimeData()->hasUrls()) {
-    ui->actionPaste->setEnabled(1);
-    ui->paste->setVisible(1);
-  } else {
-    modelList->clearCutItems();
-    ui->actionPaste->setEnabled(0);
-    ui->paste->setVisible(0);
-  }
+void corefm::clipboardChanged(){
+    if (QApplication::clipboard()->mimeData()->hasUrls()) {
+      ui->actionPaste->setEnabled(1);
+      ui->paste->setVisible(1);
+    } else {
+      modelList->clearCutItems();
+      ui->actionPaste->setEnabled(0);
+      ui->paste->setVisible(0);
+    }
 }
 
 /**
@@ -600,41 +590,40 @@ void corefm::clipboardChanged()
  */
 void corefm::dragLauncher(const QMimeData *data, const QString &newPath,
                               myModel::DragMode dragMode) {
+    // Retrieve urls (paths) of data
+    QList<QUrl> files = data->urls();
 
-  // Retrieve urls (paths) of data
-  QList<QUrl> files = data->urls();
-
-  // If drag mode is unknown then ask what to do
-  if (dragMode == myModel::DM_UNKNOWN) {
-    QMessageBox box;
-    box.setWindowTitle(tr("What do you want to do?"));
-    QAbstractButton *move = box.addButton(tr("Move here"), QMessageBox::ActionRole);
-    QAbstractButton *copy = box.addButton(tr("Copy here"), QMessageBox::ActionRole);
-    QAbstractButton *link = box.addButton(tr("Link here"), QMessageBox::ActionRole);
-    QAbstractButton *canc = box.addButton(QMessageBox::Cancel);
-    box.exec();
-    if (box.clickedButton() == move) {
-      dragMode = myModel::DM_MOVE;
-    } else if (box.clickedButton() == copy) {
-      dragMode = myModel::DM_COPY;
-    } else if (box.clickedButton() == link) {
-      dragMode = myModel::DM_LINK;
-    } else if (box.clickedButton() == canc) {
-      return;
+    // If drag mode is unknown then ask what to do
+    if (dragMode == myModel::DM_UNKNOWN) {
+      QMessageBox box;
+      box.setWindowTitle(tr("What do you want to do?"));
+      QAbstractButton *move = box.addButton(tr("Move here"), QMessageBox::ActionRole);
+      QAbstractButton *copy = box.addButton(tr("Copy here"), QMessageBox::ActionRole);
+      QAbstractButton *link = box.addButton(tr("Link here"), QMessageBox::ActionRole);
+      QAbstractButton *canc = box.addButton(QMessageBox::Cancel);
+      box.exec();
+      if (box.clickedButton() == move) {
+        dragMode = myModel::DM_MOVE;
+      } else if (box.clickedButton() == copy) {
+        dragMode = myModel::DM_COPY;
+      } else if (box.clickedButton() == link) {
+        dragMode = myModel::DM_LINK;
+      } else if (box.clickedButton() == canc) {
+        return;
+      }
     }
-  }
 
-  // If moving is enabled, cut files from the original location
-  QStringList cutList;
-  if (dragMode == myModel::DM_MOVE) {
-    foreach (QUrl item, files) {
-      cutList.append(item.path());
+    // If moving is enabled, cut files from the original location
+    QStringList cutList;
+    if (dragMode == myModel::DM_MOVE) {
+      foreach (QUrl item, files) {
+        cutList.append(item.path());
+      }
     }
-  }
 
-  // Paste launcher (this method has to be called instead of that with 'data'
-  // parameter, because that 'data' can timeout)
-  pasteLauncher(files, newPath, cutList, dragMode == myModel::DM_LINK);
+    // Paste launcher (this method has to be called instead of that with 'data'
+    // parameter, because that 'data' can timeout)
+    pasteLauncher(files, newPath, cutList, dragMode == myModel::DM_LINK);
 }
 
 /**
@@ -645,8 +634,8 @@ void corefm::dragLauncher(const QMimeData *data, const QString &newPath,
  */
 void corefm::pasteLauncher(const QMimeData *data, const QString &newPath,
                                const QStringList &cutList) {
-  QList<QUrl> files = data->urls();
-  pasteLauncher(files, newPath, cutList);
+    QList<QUrl> files = data->urls();
+    pasteLauncher(files, newPath, cutList);
 }
 
 /**
@@ -658,79 +647,78 @@ void corefm::pasteLauncher(const QMimeData *data, const QString &newPath,
  */
 void corefm::pasteLauncher(const QList<QUrl> &files, const QString &newPath,
                                const QStringList &cutList, bool link) {
-
-  // File no longer exists?
-  if (!QFile(files.at(0).path()).exists()) {
-    QString msg = tr("File '%1' no longer exists!").arg(files.at(0).path());
-    QMessageBox::information(this, tr("No paste for you!"), msg);
-    ui->actionPaste->setEnabled(0);
-    ui->paste->setVisible(0);
-    return;
-  }
-
-  // Temporary variables
-  int replace = 0;
-  QStringList completeList;
-  QString baseName = QFileInfo(files.at(0).toLocalFile()).path();
-
-  // Only if not in same directory, otherwise we will do 'Copy(x) of'
-  if (newPath != baseName) {
-
-    foreach (QUrl file, files) {
-
-      // Merge or replace?
-      QFileInfo temp(file.toLocalFile());
-
-      if (temp.isDir() && QFileInfo(newPath + QDir::separator() + temp.fileName()).exists()) {
-        QString msg = QString("<b>%1</b><p>Already exists!<p>What do you want to do?").arg(newPath + QDir::separator() + temp.fileName());
-        QMessageBox message(QMessageBox::Question, tr("Existing folder"), msg, QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-        message.button(QMessageBox::Yes)->setText(tr("Merge"));
-        message.button(QMessageBox::No)->setText(tr("Replace"));
-
-        int merge = message.exec();
-        if (merge == QMessageBox::Cancel) return;
-        if (merge == QMessageBox::Yes) {
-          FileUtils::recurseFolder(temp.filePath(), temp.fileName(), &completeList);
-        }
-        else {
-          FileUtils::removeRecurse(newPath, temp.fileName());
-        }
-      }
-      else completeList.append(temp.fileName());
+    // File no longer exists?
+    if (!QFile(files.at(0).path()).exists()) {
+      QString msg = tr("File '%1' no longer exists!").arg(files.at(0).path());
+      QMessageBox::information(this, tr("No paste for you!"), msg);
+      ui->actionPaste->setEnabled(0);
+      ui->paste->setVisible(0);
+      return;
     }
 
-    // Ask whether replace files if files with same name already exist in
-    // destination directory
-    foreach (QString file, completeList) {
-      QFileInfo temp(newPath + QDir::separator() + file);
-      if (temp.exists()) {
-        QFileInfo orig(baseName + QDir::separator() + file);
-        if (replace != QMessageBox::YesToAll && replace != QMessageBox::NoToAll) {
-          // TODO: error dispalys only at once
-          replace = showReplaceMsgBox(temp, orig);
+    // Temporary variables
+    int replace = 0;
+    QStringList completeList;
+    QString baseName = QFileInfo(files.at(0).toLocalFile()).path();
+
+    // Only if not in same directory, otherwise we will do 'Copy(x) of'
+    if (newPath != baseName) {
+
+      foreach (QUrl file, files) {
+
+        // Merge or replace?
+        QFileInfo temp(file.toLocalFile());
+
+        if (temp.isDir() && QFileInfo(newPath + QDir::separator() + temp.fileName()).exists()) {
+          QString msg = QString("<b>%1</b><p>Already exists!<p>What do you want to do?").arg(newPath + QDir::separator() + temp.fileName());
+          QMessageBox message(QMessageBox::Question, tr("Existing folder"), msg, QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+          message.button(QMessageBox::Yes)->setText(tr("Merge"));
+          message.button(QMessageBox::No)->setText(tr("Replace"));
+
+          int merge = message.exec();
+          if (merge == QMessageBox::Cancel) return;
+          if (merge == QMessageBox::Yes) {
+            FileUtils::recurseFolder(temp.filePath(), temp.fileName(), &completeList);
+          }
+          else {
+            FileUtils::removeRecurse(newPath, temp.fileName());
+          }
         }
-        if (replace == QMessageBox::Cancel) {
-          return;
-        }
-        if (replace == QMessageBox::Yes || replace == QMessageBox::YesToAll) {
-          QFile(temp.filePath()).remove();
+        else completeList.append(temp.fileName());
+      }
+
+      // Ask whether replace files if files with same name already exist in
+      // destination directory
+      foreach (QString file, completeList) {
+        QFileInfo temp(newPath + QDir::separator() + file);
+        if (temp.exists()) {
+          QFileInfo orig(baseName + QDir::separator() + file);
+          if (replace != QMessageBox::YesToAll && replace != QMessageBox::NoToAll) {
+            // TODO: error dispalys only at once
+            replace = showReplaceMsgBox(temp, orig);
+          }
+          if (replace == QMessageBox::Cancel) {
+            return;
+          }
+          if (replace == QMessageBox::Yes || replace == QMessageBox::YesToAll) {
+            QFile(temp.filePath()).remove();
+          }
         }
       }
     }
-  }
 
-  // If only links should be created, create them and exit
-  if (link) {
-    linkFiles(files, newPath);
-    return;
-  }
+    // If only links should be created, create them and exit
+    if (link) {
+      linkFiles(files, newPath);
+      return;
+    }
 
-  // Copy/move files
-  QString title = cutList.count() == 0 ? tr("Copying...") : tr("Moving...");
-  progress = new myProgressDialog(title);
-  connect(this, SIGNAL(updateCopyProgress(qint64, qint64, QString)), progress, SLOT(update(qint64, qint64, QString)));
-  listSelectionModel->clear();
-  QtConcurrent::run(this, &corefm::pasteFiles, files, newPath, cutList);
+    // Copy/move files
+    QString title = cutList.count() == 0 ? tr("Copying...") : tr("Moving...");
+    progress = new myProgressDialog(title);
+    connect(this, SIGNAL(updateCopyProgress(qint64, qint64, QString)), progress, SLOT(update(qint64, qint64, QString)));
+    listSelectionModel->clear();
+    QtConcurrent::run(this, &corefm::pasteFiles, files, newPath, cutList);
 }
 
 /**
@@ -1081,8 +1069,8 @@ QMenu* corefm::createOpenWithMenu() {
 
     // Select action
     QAction *selectAppAct = new QAction(tr("Select..."), openMenu);
-  //  selectAppAct->setStatusTip(tr("Select application for opening the file"));
-    //selectAppAct->setIcon(actionIcons->at(18));
+//    selectAppAct->setStatusTip(tr("Select application for opening the file"));
+//    selectAppAct->setIcon(actionIcons->at(18));
     connect(selectAppAct, SIGNAL(triggered()), this, SLOT(selectApp()));
 
     // Load default applications for current mime
@@ -1125,40 +1113,22 @@ QMenu* corefm::createOpenWithMenu() {
 QMenu* corefm::globalmenu(){
 
     QMenu *popup = new QMenu(this);
-//    QMenu *view = new QMenu(tr("View"));
     QMenu *subnew = new QMenu(tr("New.."));
     QMenu *innew = new QMenu(tr("Open in.."));
     QMenu *with = new QMenu(tr("Open with.."));
     QMenu *arrageItems = new QMenu(tr("Arrage Items"));
 
     QFileInfo info(selcitempath);
-    QString littleinfo = info.suffix();
-
-    sortNameAct = new QAction(tr("Name"), this);
-    sortNameAct->setCheckable(true);
-
-    sortDateAct = new QAction(tr("Date"), this);
-    sortDateAct->setCheckable(true);
-
-    sortSizeAct = new QAction(tr("Size"), this);
-    sortSizeAct->setCheckable(true);
+    QFile file(selcitempath);
+    QMimeDatabase db;
+    QMimeType mime = db.mimeTypeForFile(file, QMimeDatabase::MatchContent);
+    QString extrainfo = mime.name();
 
     sortByActGrp = new QActionGroup(this);
-    sortByActGrp->addAction(sortNameAct);
-    sortByActGrp->addAction(sortDateAct);
-    sortByActGrp->addAction(sortSizeAct);
+    sortByActGrp->addAction(ui->actionName);
+    sortByActGrp->addAction(ui->actionDate);
+    sortByActGrp->addAction(ui->actionSize);
     connect(sortByActGrp, SIGNAL(triggered(QAction*)), SLOT(toggleSortBy(QAction*)));
-
-    sortAscAct = new QAction(tr("Ascending"), this);
-    sortAscAct->setCheckable(true);
-    connect(sortAscAct, SIGNAL(triggered()), this, SLOT(toggleSortOrder()));
-
-//    view->addAction(ui->actionIconView);
-//    view->addAction(ui->actionDetailView);
-//    if(ui->viewlist->hasFocus()){
-//        view->addSeparator();
-//        view->addAction(ui->actionShowThumbnails);
-//    }
 
     innew->addAction(ui->actionNewTab);
     innew->addAction(ui->actionCoreFM);
@@ -1172,11 +1142,11 @@ QMenu* corefm::globalmenu(){
     with->addAction(ui->actionCorePad);
     with->addAction(ui->actionCorePlayer);
 
-    arrageItems->addAction(sortNameAct);
-    arrageItems->addAction(sortSizeAct);
-    arrageItems->addAction(sortDateAct);
+    arrageItems->addAction(ui->actionName);
+    arrageItems->addAction(ui->actionSize);
+    arrageItems->addAction(ui->actionDate);
     arrageItems->addSeparator();
-    arrageItems->addAction(sortAscAct);
+    arrageItems->addAction(ui->actionAscending);
 
     //Detect whether this is the Trash folder because menus are different
     if (ui->pathEdit->currentText() == QDir::homePath() + "/.local/share/Trash/files") { //This is the Trash folder
@@ -1226,7 +1196,7 @@ QMenu* corefm::globalmenu(){
       popup->addSeparator();
       popup->addAction(ui->actionTrash_it);
       popup->addAction(ui->actionCreate_Archive);
-      if(littleinfo == "zip"){
+      if(extrainfo == "application/zip"){
           popup->addAction(ui->actionExtract_Here);
       }
       popup->addSeparator();
@@ -1236,7 +1206,6 @@ QMenu* corefm::globalmenu(){
         on_actionRefresh_triggered();
         popup->addAction(ui->actionSelectAll);
         popup->addSeparator();
-//        popup->addMenu(view);
         popup->addMenu(arrageItems);
         popup->addAction(ui->actionRefresh);
         popup->addSeparator();
@@ -1258,25 +1227,25 @@ QMenu* corefm::globalmenu(){
  */
 void corefm::selectApp() {
 
-  // Select application in the dialog
-  ApplicationDialog *dialog = new ApplicationDialog(this);
-  if (dialog->exec()) {
-    if (dialog->getCurrentLauncher().compare("") != 0) {
-      QString appName = dialog->getCurrentLauncher() + ".desktop";
-      DesktopFile df = DesktopFile("/usr/share/applications/" + appName);
-      mimeUtils->openInApp(df.getExec(), curIndex, this);
+    // Select application in the dialog
+    ApplicationDialog *dialog = new ApplicationDialog(this);
+    if (dialog->exec()) {
+      if (dialog->getCurrentLauncher().compare("") != 0) {
+        QString appName = dialog->getCurrentLauncher() + ".desktop";
+        DesktopFile df = DesktopFile("/usr/share/applications/" + appName);
+        mimeUtils->openInApp(df.getExec(), curIndex, this);
+      }
     }
-  }
 }
 
 /**
  * @brief Opens file in application
  */
 void corefm::openInApp() {
-  QAction* action = dynamic_cast<QAction*>(sender());
-  if (action) {
-    mimeUtils->openInApp(action->data().toString(), curIndex, this);
-  }
+    QAction* action = dynamic_cast<QAction*>(sender());
+    if (action) {
+      mimeUtils->openInApp(action->data().toString(), curIndex, this);
+    }
 }
 
 void corefm::actionMapper(QString cmd)
@@ -1450,6 +1419,7 @@ void corefm::addressChanged(int old, int now)
         if(!ui->showHidden->isChecked())
         {
             ui->showHidden->setChecked(1);
+            on_showHidden_clicked(true);
         }
 
     if(temp.right(1) == "/")
@@ -1874,62 +1844,54 @@ void corefm::on_actionRunFile_triggered(){
 
 void corefm::setSortColumn(QAction *columnAct) {
 
-  // Set root index
-  if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
-    QModelIndex i = modelList->index(ui->pathEdit->currentText());
-    ui->viewlist->setRootIndex(modelView->mapFromSource(i));
-  }
+    // Set root index
+    if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
+      QModelIndex i = modelList->index(ui->pathEdit->currentText());
+      ui->viewlist->setRootIndex(modelView->mapFromSource(i));
+    }
 
-  columnAct->setChecked(true);
-  qDebug()<<"entrer";
+    columnAct->setChecked(true);
 
-  if (columnAct == sortNameAct) {
-    currentSortColumn =  0;
-  }
-  else if (columnAct == sortDateAct) {
-    currentSortColumn =  3;
-  }
-  else if (columnAct == sortSizeAct) {
-    currentSortColumn = 1;
-  }
-//  sett->setValue("Sort-Column", currentSortColumn);
+    if (columnAct == ui->actionName) {
+      currentSortColumn =  0;
+    }
+    else if (columnAct == ui->actionDate) {
+      currentSortColumn =  3;
+    }
+    else if (columnAct == ui->actionSize) {
+      currentSortColumn = 1;
+    }
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Sets sort column
  * @param action
  */
 void corefm::toggleSortBy(QAction *action) {
-  setSortColumn(action);
-  modelView->sort(currentSortColumn, currentSortOrder);
+    setSortColumn(action);
+    modelView->sort(currentSortColumn, currentSortOrder);
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Sets sort order
  * @param order
  */
-void corefm::setSortOrder(Qt::SortOrder order) {
-
-  // Set root index
-  if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
-    QModelIndex i = modelList->index(ui->pathEdit->currentText());
-    ui->viewlist->setRootIndex(modelView->mapFromSource(i));
-  }
-
-  // Change sort order
-  currentSortOrder = order;
-  sortAscAct->setChecked(!((bool) currentSortOrder));
-//  sett->setValue("Sort-Order", currentSortOrder);
-}
-
-
-void corefm::on_actionAscending_triggered()
+void corefm::on_actionAscending_triggered(bool checked)
 {
-    setSortOrder(currentSortOrder == Qt::AscendingOrder ? Qt::DescendingOrder
-                                                        : Qt::AscendingOrder);
-    modelView->sort(currentSortColumn, currentSortOrder);
+    if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
+      QModelIndex i = modelList->index(ui->pathEdit->currentText());
+      ui->viewlist->setRootIndex(modelView->mapFromSource(i));
+    }
+
+    if(checked){
+        currentSortOrder == Qt::AscendingOrder;
+        modelView->sort(currentSortColumn, Qt::AscendingOrder);
+        qDebug()<<"checked";
+    }
+    else{
+        currentSortOrder == Qt::DescendingOrder;
+        modelView->sort(currentSortColumn, Qt::DescendingOrder);
+    }
 }
 
 /**
@@ -1939,20 +1901,20 @@ void corefm::on_actionAscending_triggered()
  */
 void corefm::executeFile(QModelIndex index, bool run) {
 
-  // Index of file
-  QModelIndex srcIndex = modelView->mapToSource(index);
+    // Index of file
+    QModelIndex srcIndex = modelView->mapToSource(index);
 
-  // Run or open
-  if (run) {
-    QProcess *myProcess = new QProcess(this);
-    myProcess->startDetached(modelList->filePath(srcIndex));
-  } else {
-    mimeUtils->openInApp(modelList->fileInfo(srcIndex), this);
-  }
+    // Run or open
+    if (run) {
+      QProcess *myProcess = new QProcess(this);
+      myProcess->startDetached(modelList->filePath(srcIndex));
+    } else {
+      mimeUtils->openInApp(modelList->fileInfo(srcIndex), this);
+    }
 }
 
 void corefm::goTo(QString path) {
-    qDebug() << "goto";
+
     if (!path.isEmpty()){
         QModelIndex i = modelTree->mapFromSource(modelList->index(path));
         tree->setCurrentIndex(i);
@@ -1965,31 +1927,31 @@ void corefm::goTo(QString path) {
     }
 }
 
-void corefm::on_SDesktop_clicked()
-{
+void corefm::on_SDesktop_clicked(){
+
     QModelIndex i = modelTree->mapFromSource(modelList->index(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)));
     tree->setCurrentIndex(i);
 }
 
-void corefm::on_SDownloads_clicked()
-{
+void corefm::on_SDownloads_clicked(){
+
     QModelIndex i = modelTree->mapFromSource(modelList->index(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)));
     tree->setCurrentIndex(i);
     on_actionRefresh_triggered();
 }
 
-void corefm::on_viewlist_customContextMenuRequested(const QPoint &pos)
-{
+void corefm::on_viewlist_customContextMenuRequested(const QPoint &pos){
+
     globalmenu()->exec(ui->viewlist->mapToGlobal(pos));
 }
 
-void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos)
-{
+void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos){
+
     globalmenu()->exec(ui->viewtree->mapToGlobal(pos));
 }
 
-void corefm::on_actionSelectAll_triggered()
-{
+void corefm::on_actionSelectAll_triggered(){
+
     if(ui->viewlist->hasFocus()){
         ui->viewlist->selectAll();
     }
@@ -1998,8 +1960,8 @@ void corefm::on_actionSelectAll_triggered()
     }
 }
 
-void corefm::on_Tools_clicked(bool checked)
-{
+void corefm::on_Tools_clicked(bool checked){
+
     if(checked){
         ui->tools->show();
     }
@@ -2008,51 +1970,51 @@ void corefm::on_Tools_clicked(bool checked)
     }
 }
 
-void corefm::on_actionCorePlayer_triggered()
-{
+void corefm::on_actionCorePlayer_triggered(){
+
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(4, selcitempath);
 }
 
-void corefm::on_actionCorePad_triggered()
-{
+void corefm::on_actionCorePad_triggered(){
+
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(2, selcitempath);
 }
 
-void corefm::on_actionCoreFM_triggered()
-{
+void corefm::on_actionCoreFM_triggered(){
+
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(0, QFileInfo(selcitempath).path());
 }
 
-void corefm::on_actionCoreImage_triggered()
-{
+void corefm::on_actionCoreImage_triggered(){
+
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(1, selcitempath);
 }
 
-void corefm::on_actionCorePaint_triggered()
-{
+void corefm::on_actionCorePaint_triggered(){
+
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(3, selcitempath);
 }
 
-void corefm::on_actionCoreBox_triggered()
-{
+void corefm::on_actionCoreBox_triggered(){
+
     CoreBox *cBox = new CoreBox();
     cBox->show();
     QTabWidget *cTab = cBox->findChild<QTabWidget*>("windows");
     int n = cTab->count();
+
     corefm *cfm = new corefm();
     QString go = selcitempath;
-
     cfm->goTo(go);
     cTab->insertTab(n, cfm,QIcon(":/icons/CoreFM.svg"),"CoreFM");
 }
 
-void corefm::on_icon_clicked(bool checked)
-{
+void corefm::on_icon_clicked(bool checked){
+
     // Set root index
     if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
       QModelIndex i = modelList->index(ui->pathEdit->currentText());
@@ -2061,7 +2023,6 @@ void corefm::on_icon_clicked(bool checked)
 
     if (checked) {
         ui->detaile->setChecked(false);
-
         ui->view->setCurrentIndex(0);
         ui->viewlist->setMouseTracking(true);
         ui->viewtree->setMouseTracking(false);
@@ -2087,11 +2048,10 @@ void corefm::on_icon_clicked(bool checked)
     on_actionRefresh_triggered();
 }
 
-void corefm::on_detaile_clicked(bool checked)
-{
+void corefm::on_detaile_clicked(bool checked){
+
     if (checked) {
         ui->icon->setChecked(false);
-
         ui->view->setCurrentIndex(1);
         ui->viewtree->setMouseTracking(true);
         ui->viewlist->setMouseTracking(false);
@@ -2116,16 +2076,16 @@ void corefm::on_detaile_clicked(bool checked)
     on_actionRefresh_triggered();
 }
 
-void corefm::on_actionTrash_it_triggered()
-{
+void corefm::on_actionTrash_it_triggered(){
+
     if (!selcitem == 0) {
         moveToTrash(selcitempath);
         on_actionRefresh_triggered();
     }
 }
 
-void corefm::on_showHidden_clicked(bool checked)
-{
+void corefm::on_showHidden_clicked(bool checked){
+
     if(!checked){
         if (curIndex.isHidden()) {
           listSelectionModel->clear();
@@ -2141,16 +2101,16 @@ void corefm::on_showHidden_clicked(bool checked)
     dirLoaded();
 }
 
-void corefm::on_showthumb_clicked(bool checked)
-{
+void corefm::on_showthumb_clicked(bool checked){
+
     Q_UNUSED(checked);
     if (currentView != 2) on_icon_clicked(true);
     else on_detaile_clicked(true);
     on_actionRefresh_triggered();
 }
 
-void corefm::on_SBookMarkIt_clicked()
-{
+void corefm::on_SBookMarkIt_clicked(){
+
     bookmarks bookMarks;
     QString path;
     QString Icon = ":/icons/CoreFM.svg";
@@ -2165,40 +2125,45 @@ void corefm::on_SBookMarkIt_clicked()
     }
 }
 
-void corefm::on_searchHere_clicked()
-{
+void corefm::on_searchHere_clicked(){
+
     QString path = ui->pathEdit->itemText(0);
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(11, path);
 }
 
-void corefm::on_actionExtract_Here_triggered()// engrampa -h nj.zip
-{
+void corefm::on_actionExtract_Here_triggered(){
+
     QProcess p1;
     QString commad = "engrampa -h \"" + selcitempath + "\"";
     p1.start(commad.toLatin1());
     p1.waitForFinished();
+    on_actionRefresh_triggered();
 }
 
-void corefm::on_actionCreate_Archive_triggered() // engrampa ./newFM/* -a nj.zip
-{
+void corefm::on_actionCreate_Archive_triggered(){
+
     QProcess p1;
-    QString commd = "engrampa \"" + selcitempath + "\" -a \"" + selcitempath + ".zip\"";
+//    QString commd = "engrampa \"" + selcitempath + "\" -a \"" + selcitempath + ".zip\"";
+    QString commd = "engrampa \"" + selcitempath + "\" -d";
+    qDebug()<<commd;
     p1.start(commd.toLatin1());
     p1.waitForFinished();
+    on_actionRefresh_triggered();
 }
 
-void corefm::on_STrash_clicked()
-{
+void corefm::on_STrash_clicked(){
+
 //    QModelIndex i = modelTree->mapFromSource(modelList->index(QDir::homePath() + "/.local/share/Trash/files"));
 //    tree->setCurrentIndex(i);
 //    on_actionRefresh_triggered();
 //    ui->emptyTrash->setVisible(1);
 }
 
-void corefm::on_emptyTrash_clicked()
-{
+void corefm::on_emptyTrash_clicked(){
+
 //    on_actionSelectAll_triggered();
 //    on_actionDelete_triggered();
 }
+

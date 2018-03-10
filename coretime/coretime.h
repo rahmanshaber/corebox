@@ -1,3 +1,19 @@
+/*
+CoreBox is combination of some common desktop apps.
+
+CoreBox is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2
+of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see {http://www.gnu.org/licenses/}. */
+
 #ifndef CORETIME_H
 #define CORETIME_H
 
@@ -8,7 +24,6 @@
 #include <QTime>
 #include <QDateTime>
 #include <QElapsedTimer>
-#include <QSystemTrayIcon>
 #include <QDialogButtonBox>
 #include <QListWidgetItem>
 
@@ -64,10 +79,7 @@ private:
 private slots:
     void updateStopwatch();
 
-    void ShowWindow();
     void ShowActiveAlarm(int index);
-    void ShowWindow(QSystemTrayIcon::ActivationReason);
-    void AddRemoveAlarm(QAbstractButton*);
     void SetTime();
     void SetCustomDate();
     void ToggleMon(bool);
@@ -78,12 +90,10 @@ private slots:
     void ToggleSat(bool);
     void ToggleSun(bool);
     void ToggleCust(bool);
-    void Quit();
     void OpenDiaglog(bool);
     void TestAlarm();
     void SnoozeMenuCheck();
     void timeCheck();
-    void ShowSettings();
 
     void on_startandpause_clicked(bool checked);
     void on_lapandreset_clicked();
@@ -92,9 +102,15 @@ private slots:
     void on_resetTimer_clicked();
     void counting();
 
-    void on_alarm_clicked(bool checked);
-    void on_stopwatch_clicked(bool checked);
-    void on_timer_clicked(bool checked);
+    void on_listWidget_currentRowChanged(int currentRow);
+    void on_editalarm_clicked();
+    void on_removealarm_clicked();
+    void on_addalarm_clicked();
+
+    void pageClick(QPushButton *btn, int i, QString title);
+    void on_alarm_clicked();
+    void on_stopwatch_clicked();
+    void on_timer_clicked();
 
 public slots:
     void start();

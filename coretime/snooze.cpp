@@ -1,9 +1,26 @@
+/*
+CoreBox is combination of some common desktop apps.
+
+CoreBox is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2
+of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see {http://www.gnu.org/licenses/}. */
+
 #include "snooze.h"
 #include "alarm.h"
 #include "ui_snooze.h"
 
 #include <QTimer>
 #include <QTime>
+#include <QDesktopWidget>
 
 
 snooze::snooze(QWidget *parent,Alarm *curAlarm) :
@@ -15,6 +32,13 @@ snooze::snooze(QWidget *parent,Alarm *curAlarm) :
     this->_snoozeTimer=new QTimer(this);
     this->isDismissed=false;
     SetupClock();
+
+    QDesktopWidget w;
+    w.width();
+    this->setFixedWidth(w.width());
+    this->setFixedHeight(w.height()/2);
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    this->move(qApp->desktop()->availableGeometry(this).center()-rect().center());
 
     //setup connections
     connect(ui->snzBtn,SIGNAL(clicked()),SLOT(SnoozeClicked()));
@@ -42,7 +66,6 @@ void snooze::UpdateClock()
 {
     ui->time->setText(QTime::currentTime().toString("h:mm:ss ap"));
 }
-
 
 void snooze::SnoozeClicked()
 {

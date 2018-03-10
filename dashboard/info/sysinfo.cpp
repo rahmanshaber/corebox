@@ -79,7 +79,7 @@ void sysinfo::systemInformationInit()
         << tr("CPU Speed : %1 (Mhz)").arg(sysInfo.getCpuSpeed())
         << tr("CPU Core  : %1")      .arg(sysInfo.getCpuCore())
         << tr("Display Size : %1")   .arg(scr)
-        << tr("Qt version : %1")     .arg(QT_VERSION_STR);
+        << tr("Qt Toolkit Version : %1")     .arg(QT_VERSION_STR);
 
     QStringListModel *systemInfoModel = new QStringListModel(infos);
 

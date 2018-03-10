@@ -281,7 +281,6 @@ void search::on_typeother_clicked()
 void search::on_results_itemDoubleClicked(QTableWidgetItem *item)
 {
     QString path = ui->results->item(item->row(), 1)->text() + "/" + ui->results->item(item->row(), 0)->text();
-//    openEngine(path);
     openAppEngine(path);
 }
 

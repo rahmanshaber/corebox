@@ -5,7 +5,8 @@ version 2
 2-fixed-test is needed
 
 corebox
-0 - round border is no working.
+0 - don't goto the opened tab.
+0 - round border is no working in messageengine>>messagebox.
 1 - qdesktopwidget as a global function.
 1 - add display scale support
 1 - setwindow title >> a global function.
@@ -21,11 +22,10 @@ bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
 1 - two icon .folder and file .in bookmarklist list
-0 - bookmark file location is not correct.
+0 - bookmark file location is not correct.(void corefm::addressChanged(int old, int now))
 
 dashboard
 0 - show used network in general section.
-0 - hide the bettry page ,if it is disabled in setting
 1 - remove unwanted pertition
 1 - selected drive will show only it's pertition.
 1 - mount specific pertition on corebox startup.
@@ -43,8 +43,10 @@ Search
 0 - if path is given find is not working.but locate is working.
 
 corefm
+0 - size colom alignment to right.
+1 - rightbuttonMenu>new add a new option.derectly make a paint.
 0 - set custom icom in home folder's.
-1 - if folder is empty show an image. like search app
+1 - if folder is empty show an image. like search app do.
 1 - add tree and mediainfo package.
 1 - copyto some common places(like desktop,downloads,home)
 1 - properties - option to make file executable(chmod a+x filepath)
@@ -54,7 +56,6 @@ corefm
 1 - multiple file's combined size.
 1 - add trash in on_actionTrash_it_triggered .proper trash intigration.
 0 - after trash , the file is not resotreable.
-0 - hidden is not setting it's bool,from previous start.
 1 - improve app engine.
 1 - send a file to a drive.
 0 - there is a problem when the selection changed after clicking copy.
@@ -66,10 +67,11 @@ messageengine
 1 - file deleted & delete failed message.
 
 core time
-0 - fix alarm page
+0 - save the alarm list.
+0 - improve the alarm list.
+0 - snooze.ui>>>alling the button in center
+0 - need a done button for alarm completion.
 1 - set reminder option.
-0 - add to settings AM or PM
-0 - remove settings
 0 - fix the timer start/pause button .
 
 corepad 
@@ -83,8 +85,9 @@ setting
     
 start
 1 - start button in side of tab(+).
-1 - option to sidebar or tab button(+)
-1 - new background
+1 - option to sidebar or tab button(+).
+1 - new background.
+1 - recent path not opening with dobule click.
 0 - recently close collecting, but not specific corefm path.
 
 coreimage

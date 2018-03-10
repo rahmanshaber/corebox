@@ -1,3 +1,19 @@
+/*
+CoreBox is combination of some common desktop apps.
+
+CoreBox is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2
+of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see {http://www.gnu.org/licenses/}. */
+
 #include "fileio.h"
 #include "schedule.h"
 #include "schedulecollection.h"
@@ -19,7 +35,7 @@ FileIO::FileIO(QObject *parent) :
 
 bool FileIO::ExtractAudio()
 {
-    if(QFile::copy(":/new/sounds/alarm.ogg", QDir::tempPath()+"/QTalarm.ogg"))
+    if(QFile::copy(":/sound/other/sound.ogg", QDir::tempPath()+"/sound.ogg"))
     {
         return true;
     }
@@ -28,7 +44,7 @@ bool FileIO::ExtractAudio()
 
 bool FileIO::DelExtracted()
 {
-    return QFile::remove(QDir::tempPath()+"/QTalarm.ogg");
+    return QFile::remove(QDir::tempPath()+"/sound.ogg");
 }
 
 QList<Schedule*> FileIO::LoadConfig()
