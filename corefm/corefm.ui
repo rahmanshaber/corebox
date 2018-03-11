@@ -1094,7 +1094,7 @@ background-color: rgb(48, 140, 198);
 border: 1px solid rgb(67, 67, 67);
 }
 QPushButton:checked{
-background-color: rgb(48, 140, 198);
+background-color: #1268A4;
 }
 </string>
         </property>
@@ -1140,8 +1140,9 @@ background-color: rgb(48, 140, 198);
          <string notr="true">QPushButton{
 border: 1px solid rgb(67, 67, 67);
 }
+
 QPushButton:checked{
-background-color: rgb(48, 140, 198);
+background-color: #1268A4;
 }
 </string>
         </property>
@@ -1367,11 +1368,11 @@ border: 1px solid rgb(67, 67, 67);
 }
 
 QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
+background-color: #1268A4; 
 }
 
 QPushButton:hover {
-background-color: rgb(48, 140, 198);
+background-color: #1268A4;
 }</string>
         </property>
         <property name="text">
@@ -1412,11 +1413,11 @@ border: 1px solid rgb(67, 67, 67);
 }
 
 QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
+background-color: #1268A4; 
 }
 
 QToolButton:hover {
-background-color: rgb(48, 140, 198);
+background-color: #1268A4;
 }</string>
         </property>
         <property name="text">
@@ -1714,11 +1715,11 @@ padding: 5px 5px 5px 5px;
 }
 
 QPushButton:pressed{
-background-color:#1793D1; 
+background-color:#1268A4; 
 }
 
 QPushButton:hover {
-background-color: #1793D1;
+background-color: #1268A4;
 }</string>
         </property>
         <property name="text">
@@ -1765,11 +1766,11 @@ padding: 5px 5px 5px 5px;
 }
 
 QPushButton:pressed{
-background-color:#1793D1; 
+background-color:#1268A4; 
 }
 
 QPushButton:hover {
-background-color: #1793D1;
+background-color: #1268A4;
 }</string>
         </property>
         <property name="text">
@@ -1801,11 +1802,11 @@ padding: 5px 5px 5px 5px;
 }
 
 QPushButton:pressed{
-background-color:#1793D1; 
+background-color:#1268A4; 
 }
 
 QPushButton:hover {
-background-color: #1793D1;
+background-color: #1268A4;
 }</string>
         </property>
         <property name="text">
@@ -1837,11 +1838,11 @@ padding: 5px 5px 5px 5px;
 }
 
 QPushButton:pressed{
-background-color:#1793D1; 
+background-color:#1268A4; 
 }
 
 QPushButton:hover {
-background-color: #1793D1;
+background-color: #1268A4;
 }</string>
         </property>
         <property name="text">
@@ -1968,11 +1969,11 @@ padding: 5px 5px 5px 5px;
 }
 
 QPushButton:pressed{
-background-color:#1793D1; 
+background-color:#1268A4; 
 }
 
 QPushButton:hover {
-background-color: #1793D1;
+background-color: #1268A4;
 }</string>
         </property>
         <property name="text">
@@ -2007,11 +2008,11 @@ padding: 5px 5px 5px 5px;
 }
 
 QPushButton:pressed{
-background-color:#1793D1; 
+background-color:#1268A4; 
 }
 
 QPushButton:hover {
-background-color: #1793D1;
+background-color: #1268A4;
 }</string>
         </property>
         <property name="text">

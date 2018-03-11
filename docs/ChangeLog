@@ -11,4 +11,8 @@ v.2
 - removed coretime settings.
 - fixed page selecte in coretime.
 - fixed sound path in coretime.
+- fixed the settings.
+- changed start ui.
+- removed background from start.
+- fixed alarm edit button nor working properly
 

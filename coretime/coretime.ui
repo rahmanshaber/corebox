@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>889</width>
-    <height>594</height>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -398,6 +398,13 @@ border: 1px #34343C;
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget{
+background-color: #373737;
+color: #000000;
+border: 1px #34343C;
+}</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>

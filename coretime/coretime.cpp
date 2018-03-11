@@ -412,8 +412,9 @@ void coretime::on_listWidget_currentRowChanged(int currentRow)
 {
     ShowActiveAlarm(currentRow);
     ui->editalarm->setVisible(true);
-    if(ui->alarmF->isVisible() ){
+    if(ui->alarmF->isVisible() || ui->listWidget->count() ==0 ){
         ui->alarmF->setVisible(false);
+        ui->editalarm->setVisible(false);
     }
 }
 

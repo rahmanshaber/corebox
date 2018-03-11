@@ -19,7 +19,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
-background-image: url(:/background/other/e.jpeg) ;
+background-color: #172027 ;
 color: #ffffff;
 border: 1px rgb(67, 67, 67);
 }
@@ -43,11 +43,32 @@ border: 1px rgb(67, 67, 67);
    </property>
    <item>
     <widget class="QScrollArea" name="view">
+     <property name="styleSheet">
+      <string notr="true">
+QScrollBar::groove:vertical {
+    background: red;
+    position: absolute; /* absolutely position 4px from the left and right of the widget. setting margins on the widget should work too... */
+    left: 4px; right: 4px;
+}
+
+QScrollBar::handle:vertical {
+   background: white;
+    height:10px;
+}
+
+QScrollBar::add-page:vertical {
+    background: #172027;
+}
+
+QScrollBar::sub-page:vertical {
+    background: #172027;
+}</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -62,14 +83,13 @@ border: 1px rgb(67, 67, 67);
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
-        <width>849</width>
+        <y>-217</y>
+        <width>837</width>
         <height>900</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background: transparent;
-</string>
+       <string notr="true"/>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
@@ -221,16 +241,16 @@ background-color: #000000;
             </property>
             <property name="styleSheet">
              <string notr="true">QListView::item:selected {
-border: 1px solid #323232;
-background-color: #2E303C;
+border: 1px solid #232730;
+background-color: #232730;
 }
 
 QListView::item:hover {
-background-color: #3E4453;
+background-color: #232730;
 }
 
 QListView::item {
-background-color: rgba( 94, 102, 105, 60% );
+background-color: #303942;
 border: 1px #323232;
 padding: 5px 20px 5px 20px;
 border-radius: 2px;
@@ -557,6 +577,23 @@ padding: 50px 5px 20px 20px;
                  <pointsize>14</pointsize>
                 </font>
                </property>
+               <property name="contextMenuPolicy">
+                <enum>Qt::NoContextMenu</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+border-radius: 2px;
+padding: 3px 3px 3px 3px;
+}
+
+QPushButton:pressed{
+background-color: #303942; 
+}
+
+QPushButton:hover {
+background-color: #303942;
+}</string>
+               </property>
                <property name="text">
                 <string>Reload List</string>
                </property>
@@ -605,16 +642,16 @@ background-color: #000000;
             </property>
             <property name="styleSheet">
              <string notr="true">QListView::item:selected {
-border: 1px solid #323232;
-background-color: #2E303C;
+border: 1px solid #232730;
+background-color: #232730;
 }
 
 QListView::item:hover {
-background-color: #3E4453;
+background-color: #232730;
 }
 
 QListView::item {
-background-color: rgba( 94, 102, 105, 60% );
+background-color: #303942;
 border: 1px #323232;
 padding: 5px 20px 5px 20px;
 border-radius: 2px;
@@ -672,8 +709,8 @@ padding: 50px 5px 20px 20px;
             </property>
             <property name="gridSize">
              <size>
-              <width>100</width>
-              <height>100</height>
+              <width>130</width>
+              <height>113</height>
              </size>
             </property>
             <property name="viewMode">
@@ -806,6 +843,23 @@ padding: 50px 5px 20px 20px;
                  <pointsize>14</pointsize>
                 </font>
                </property>
+               <property name="contextMenuPolicy">
+                <enum>Qt::NoContextMenu</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+border-radius: 2px;
+padding: 3px 3px 3px 3px;
+}
+
+QPushButton:pressed{
+background-color: #303942; 
+}
+
+QPushButton:hover {
+background-color: #303942;
+}</string>
+               </property>
                <property name="text">
                 <string>Reload List</string>
                </property>
@@ -823,6 +877,23 @@ padding: 50px 5px 20px 20px;
                 <font>
                  <pointsize>14</pointsize>
                 </font>
+               </property>
+               <property name="contextMenuPolicy">
+                <enum>Qt::NoContextMenu</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+border-radius: 2px;
+padding: 3px 3px 3px 3px;
+}
+
+QPushButton:pressed{
+background-color: #303942; 
+}
+
+QPushButton:hover {
+background-color: #303942;
+}</string>
                </property>
                <property name="text">
                 <string>Clear List</string>
@@ -882,8 +953,8 @@ border-color: #323232;
 }
 
 QTableView {
-selection-background-color:#323232 ;
-selection-color:#1CB853; 
+selection-background-color:#232730 ;
+selection-color:#ffffff; 
 padding: 10px 5px 0px 5px;
 }</string>
             </property>

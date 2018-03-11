@@ -21,10 +21,10 @@ void SettingsManage::createDefaultSettings() {
         cSetting->setValue("Force-Theme", QIcon::themeName());
         cSetting->setValue("Default-Mime-Apps-File", "/.local/share/applications/mimeapps.ui->viewlist");
         cSetting->setValue("Real-Mime-Types", true);
-        cSetting->setValue("Zoom", 48);
+        cSetting->setValue("Zoom", 80);
         cSetting->setValue("Zoom-Tree", 16);
         cSetting->setValue("Zoom-List", 24);
-        cSetting->setValue("Zoom-Detail", 16);
+        cSetting->setValue("Zoom-Detail", 24);
         cSetting->setValue("Show-Thumb", false);
         cSetting->setValue("Show-Toolbox", false);
         cSetting->setValue("Show-Hidden",false);

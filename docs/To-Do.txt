@@ -5,12 +5,13 @@ version 2
 2-fixed-test is needed
 
 corebox
-0 - don't goto the opened tab.
+1 - need two theme (dark and light)
+0 - doesn't goto the currently opened tab somtimes.
 0 - round border is no working in messageengine>>messagebox.
 1 - qdesktopwidget as a global function.
 1 - add display scale support
 1 - setwindow title >> a global function.
-0 - add option for using defult window manager
+1 - add option for using defult window manager
 1 - update the app when clicked from tab.(only corboxapps)
 0 - close function in corebox is not closing corepaint properly.it is doing that problem what the corepad did earlier.
 1 - if bookmark is booked it shouldshow a message if it exists and show the section it was booked.
@@ -36,16 +37,19 @@ corepaint
 1 - open screenshot folder pushbutton which show the screenshot folder.
 
 Search
-0 - search frezzez on first start.
+0 - search frezzez on first start.(means no settings file in .config folder.
 1 - if searh opened from FM hide locate option.
 1 - add button to set folder
 1 - show the file/folder in coerFM with selecting the file/folder.
 0 - if path is given find is not working.but locate is working.
 
 corefm
+0 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
+0 - open in coreimage crash.
+2 - cheack the acrcive creator/extrator code and try it in u r system.
 0 - size colom alignment to right.
 1 - rightbuttonMenu>new add a new option.derectly make a paint.
-0 - set custom icom in home folder's.
+0 - set custom icom in home's folder.
 1 - if folder is empty show an image. like search app do.
 1 - add tree and mediainfo package.
 1 - copyto some common places(like desktop,downloads,home)
@@ -68,7 +72,7 @@ messageengine
 
 core time
 0 - save the alarm list.
-0 - improve the alarm list.
+0 - improve the alarm .
 0 - snooze.ui>>>alling the button in center
 0 - need a done button for alarm completion.
 1 - set reminder option.
@@ -81,18 +85,18 @@ corepad
 setting
 1 - also open corebox at start up.
 1 - seperate the coreaction section in setting manage.
-0 - add a button stop the recent closed app.
+2 - add a button stop the recent closed app.
     
 start
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
-1 - new background.
-1 - recent path not opening with dobule click.
+0 - recent path not opening with dobule click.
 0 - recently close collecting, but not specific corefm path.
 
 coreimage
-0 - deleteing pic also delete entry from path qstringlist
-1 - ctrl + wheel = zoom
+0 - need a black image on app start.
+0 - deleteing pic, will also delete entry from path qstringlist
+1 - ctrl + wheel = zoom shorcut.
 0 - mouse wheel >>next image not working sometimes
 
 coreplayer
@@ -115,6 +119,9 @@ app
 1 - terminal app
 1 - pdf viewer
 1 - file renamer
+
+packaging
+0 - fixthe fonts
 
 infuture
 1 - make manjaro iso with lxqt desktop as base.
