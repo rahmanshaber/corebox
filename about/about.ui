@@ -14,7 +14,7 @@
    <string>About</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="icons.qrc">
+   <iconset resource="../icons.qrc">
     <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -94,7 +94,7 @@ border: 1px #0C2C45;
          <string notr="true">About</string>
         </property>
         <property name="icon">
-         <iconset resource="icons.qrc">
+         <iconset resource="../icons.qrc">
           <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
         </property>
         <property name="iconSize">
@@ -193,7 +193,7 @@ border-radius: 10px;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset resource="../icons.qrc">
              <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
            </property>
            <property name="iconSize">
@@ -250,7 +250,7 @@ border-radius: 10px;
             </font>
            </property>
            <property name="text">
-            <string>CoreBox v.1.01 </string>
+            <string>CoreBox v.2.0 Beta</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -313,7 +313,7 @@ border-radius: 10px;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset resource="../icons.qrc">
              <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
            </property>
            <property name="iconSize">
@@ -407,7 +407,7 @@ border-radius: 10px;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset resource="../icons.qrc">
              <normaloff>:/icons/devloper.svg</normaloff>:/icons/devloper.svg</iconset>
            </property>
            <property name="iconSize">
@@ -489,7 +489,7 @@ border-radius: 10px;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset resource="../icons.qrc">
              <normaloff>:/icons/QT.svg</normaloff>:/icons/QT.svg</iconset>
            </property>
            <property name="iconSize">
@@ -648,7 +648,7 @@ border-radius: 10px;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset resource="../icons.qrc">
              <normaloff>:/icons/other.svg</normaloff>:/icons/other.svg</iconset>
            </property>
            <property name="iconSize">
@@ -730,7 +730,7 @@ border-radius: 10px;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset resource="../icons.qrc">
              <normaloff>:/icons/videogames.svg</normaloff>:/icons/videogames.svg</iconset>
            </property>
            <property name="iconSize">
@@ -789,7 +789,7 @@ border-radius: 10px;
   </layout>
  </widget>
  <resources>
-  <include location="icons.qrc"/>
+  <include location="../icons.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -64,6 +64,10 @@ corefm
 1 - send a file to a drive.
 0 - there is a problem when the selection changed after clicking copy.
 1 - fix properties ui(fram less)
+1 - Finish movement of mime-related code from FileUtils to MimeUtils
+1 - Implement clearDeadDefaults() method in MimeUtils
+1 - Some *.desktop file has more groups(sections) and each group can contain
+    exec command, but only first is read, this must be fixed
 
 messageengine
 1 - file moved message.
