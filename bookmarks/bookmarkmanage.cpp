@@ -25,7 +25,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 void BookmarkManage::checkBookPath()
 {
     if (!QDir(cbookPath).exists()) {
-        QDir::home().mkdir(".box");
+        QDir::home().mkdir(".config/coreBox");
     }
 }
 

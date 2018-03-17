@@ -593,7 +593,7 @@ void corepaint::on_past_clicked()
 void corepaint::on_openshots_clicked()
 {
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(0, sm.getSCSaveLocation());
+    cBox->tabEngine(CoreFM, sm.getSCSaveLocation());
 }
 
 void corepaint::undo() {

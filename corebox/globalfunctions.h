@@ -13,16 +13,34 @@
 #include <QFileInfo>
 #include <QSettings>
 
-#include "corebox.h"
 #include "../settings/settingsmanage.h"
 
+enum AppsName {
+    damn = -1,
+    CoreFM = 0,
+    CoreImage,
+    CorePad,
+    CorePaint,
+    CorePlayer,
+    Dashboard,
+    Bookmarks,
+    About,
+    StartView,
+    Help,
+    Settings,
+    Search,
+    CoreTime,
+    CoreRenamer,
+    Corebox,
+    CorePDF
+};
 
  bool moveToTrash(QString fileName);
  bool saveToRecent(QString appName, QString pathName);
  void messageEngine(QString message, QString messageType);
  void openAppEngine(QString path);
 
- int nameToInt(QString appName);
+ AppsName nameToInt(QString appName);
  QString appsIconPath(QString appName);
 
  QString formatSize(qint64 num);

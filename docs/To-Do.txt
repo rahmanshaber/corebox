@@ -6,18 +6,18 @@ version 2
 
 corebox
 1 - need two theme (dark and light)
-0 - doesn't goto the currently opened tab somtimes.
-0 - round border is no working in messageengine>>messagebox.
+2 - doesn't goto the currently opened tab somtimes.
+1 - round border is no working in messageengine>>messagebox.
 1 - qdesktopwidget as a global function.
 1 - add display scale support
 1 - setwindow title >> a global function.
-1 - add option for using defult window manager
-1 - update the app when clicked from tab.(only corboxapps)
+1 - add option for using default window manager
+1 - update the app when clicked from window.(only coreboxapps)
 0 - close function in corebox is not closing corepaint properly.it is doing that problem what the corepad did earlier.
 1 - if bookmark is booked it shouldshow a message if it exists and show the section it was booked.
 1 - separate process for per app.
-0 - limit the openable tab.
-1 - tab text ailing left.
+1 - limit the openable window.
+1 - tab text align left.
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
@@ -37,20 +37,18 @@ corepaint
 1 - open screenshot folder pushbutton which show the screenshot folder.
 
 Search
-0 - search frezzez on first start.(means no settings file in .config folder.
+2 - search freezz on first start.(means no settings file in .config folder.
 1 - if searh opened from FM hide locate option.
 1 - add button to set folder
 1 - show the file/folder in coerFM with selecting the file/folder.
 0 - if path is given find is not working.but locate is working.
 
 corefm
-0 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
-0 - open in coreimage crash.
-2 - cheack the acrcive creator/extrator code and try it in u r system.
-0 - size colom alignment to right.
+2 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
+2 - open in coreimage crash.
 1 - rightbuttonMenu>new add a new option.derectly make a paint.
-0 - set custom icom in home's folder.
-1 - if folder is empty show an image. like search app do.
+1 - set custom icom in home's folder.
+1 - if folder is empty show at message engine.
 1 - add tree and mediainfo package.
 1 - copyto some common places(like desktop,downloads,home)
 1 - properties - option to make file executable(chmod a+x filepath)
@@ -62,7 +60,6 @@ corefm
 0 - after trash , the file is not resotreable.
 1 - improve app engine.
 1 - send a file to a drive.
-0 - there is a problem when the selection changed after clicking copy.
 1 - fix properties ui(fram less)
 1 - Finish movement of mime-related code from FileUtils to MimeUtils
 1 - Implement clearDeadDefaults() method in MimeUtils
@@ -81,21 +78,23 @@ core time
 0 - need a done button for alarm completion.
 1 - set reminder option.
 0 - fix the timer start/pause button .
+1 - show a message (not a messagebox) before 5 minutes of alarm time
 
 corepad 
+1 - add multiple tab.
 1 - limit the openable tab.
 1 - add tab widget to corepad.like corepaint.
 
 setting
 1 - also open corebox at start up.
-1 - seperate the coreaction section in setting manage.
+2 - seperate the coreaction section in setting manage.
 2 - add a button stop the recent closed app.
     
 start
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
-0 - recent path not opening with dobule click.
-0 - recently close collecting, but not specific corefm path.
+0 - recent path not opening with dobule click.(Open when double clicked on name but not at datetime)
+2 - recently close collecting, but not specific corefm path.
 
 coreimage
 0 - need a black image on app start.
@@ -106,15 +105,15 @@ coreimage
 coreplayer
 1 - video thumbnails of playlist.
 1 - hide the navigation bar when playing.
-1 - move to qtav engine
+1 - move to qtAV engine
 0 - after stop clicked player widget turs white
 2 - stop clicked >> seekbar position not changing.
 2 - play by open file function automatically play button is clicked.
 
 coreshot
 1 - add stylsheet
-1 - add active window at screenshot
-0 - on left mouse click at screenshot when a screenshot is taken it save a file to tmp folder
+2 - add active window at screenshot
+1 - on left mouse click at screenshot when a screenshot is taken it save a file to tmp folder
 
 help
 1 - add some recomendation

@@ -84,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
     on_cType_IndexChanged(0);
     this->setWindowIcon(QIcon(":/icons/CoreShot.svg"));
     this->setWindowTitle("CoreShot");
-//    setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A;padding: 5px 5px 5px 5px;}"););
+    setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A;padding: 5px 5px 5px 5px;}");
 }
 
 MainWindow::~MainWindow()
@@ -168,7 +168,7 @@ void MainWindow::toCorePaint()
     file.close();
     files = fileName;
     CoreBox *cBox = new CoreBox();
-    cBox->tabEngine(3, files);
+    cBox->tabEngine(CorePaint, files);
     this->close();
     cBox->show();
 }

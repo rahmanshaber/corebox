@@ -1,8 +1,8 @@
 #include "globalfunctions.h"
+#include "corebox.h"
 
 #include <QProcess>
 #include <QDebug>
-
 
 bool moveToTrash(QString fileName)
 {
@@ -106,38 +106,42 @@ void messageEngine(QString message, QString messageType)
 
 }
 
-int nameToInt(QString appName)
+AppsName nameToInt(QString appName)
 {
     if (appName == "CoreFM" || appName == "corefm") {
-        return 0;
+        return CoreFM;
     } else if (appName == "CoreImage" || appName == "coreimage") {
-        return 1;
+        return CoreImage;
     } else if (appName == "CorePad" || appName == "corepad") {
-        return 2;
+        return CorePad;
     } else if (appName == "CorePaint" || appName == "corepaint") {
-        return 3;
+        return CorePaint;
     } else if (appName == "CorePlayer" || appName == "coreplayer") {
-        return 4;
+        return CorePlayer;
     } else if (appName == "DashBoard" || appName == "dashboard") {
-        return 5;
+        return Dashboard;
     } else if (appName == "Bookmarks" || appName == "bookmarks") {
-        return 6;
+        return Bookmarks;
     } else if (appName == "About" || appName == "about") {
-        return 7;
+        return About;
     } else if (appName == "Start" || appName == "start") {
-        return 8;
+        return StartView;
     } else if (appName == "Help" || appName == "help") {
-        return 9;
+        return Help;
     } else if (appName == "Settings" || appName == "settings") {
-        return 10;
+        return Settings;
     } else if (appName == "Search" || appName == "search") {
-        return 11;
+        return Search;
     } else if (appName == "CoreTime" || appName == "coretime") {
-        return 12;
-    }else if (appName == "CoreBox" || appName == "corebox") {
-        return 99;
+        return CoreTime;
+    } else if (appName == "CoreBox" || appName == "corebox") {
+        return Corebox;
+    } else if (appName == "CoreRenamer" || appName == "corerenamer") {
+        return CoreRenamer;
+    } else if (appName == "CorePDF" || appName == "corepdf") {
+        return CorePDF;
     } else {
-        return -1;
+        return damn;
     }
 }
 
@@ -238,14 +242,14 @@ void openAppEngine(QString path){
     const QByteArrayList supportedMime = QImageReader::supportedImageFormats();
     foreach (const QByteArray &mimeTypeName, supportedMime) {
         if (info.completeSuffix() == mimeTypeName) {
-            cBox->tabEngine(1, info.absoluteFilePath());
+            cBox->tabEngine(CoreImage, info.absoluteFilePath());
             return;
         }
     }
     //-----------------------------CoreImage---------------end----------------------------------------
     //-----------------------------CoreFM---------------start----------------------------------------
     if (info.isDir()) {
-        cBox->tabEngine(0, info.absoluteFilePath());
+        cBox->tabEngine(CoreFM, info.absoluteFilePath());
     }
     //-----------------------------CoreFM---------------end----------------------------------------
 
@@ -253,7 +257,7 @@ void openAppEngine(QString path){
         //-----------------------------CorePad---------------start----------------------------------------
         QString littleinfo = info.suffix();
         if(littleinfo == "txt" || !info.isExecutable()){
-            cBox->tabEngine(2, info.absoluteFilePath());
+            cBox->tabEngine(CorePad, info.absoluteFilePath());
         }
         //-----------------------------CorePad---------------end-----------------------------------------
         else {    //send it to desktop prosess

@@ -19,14 +19,16 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QStyleFactory>
-#include <QtSvg>
+//#include <QtSvg>
 
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     app.setQuitOnLastWindowClosed(false);
+
     QApplication::setStyle(QStyleFactory::create("Fusion"));
+
     // Set application info
     app.setOrganizationName("coreaction");
     app.setApplicationName("coreaction");
@@ -36,15 +38,16 @@ int main(int argc, char *argv[])
     QDesktopWidget dw;
     coreaction a;
 
-    int x = dw.width()*.23;
+    int x = dw.width() * .23;
     int y = QApplication::desktop()->availableGeometry().height();
+
     a.setFixedSize(x, y);
     a.setWindowFlags(Qt::Window | Qt::FramelessWindowHint); //| Qt::ToolTip
 
     int sw = dw.width() - x;
     //int sh = dw.height();
 
-    a.move(sw,0);
+    a.move(sw, 0);
     a.show();
 
     return app.exec();

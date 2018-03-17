@@ -15,4 +15,9 @@ v.2
 - changed start ui.
 - removed background from start.
 - fixed alarm edit button nor working properly
+- archive available for all problem
 
+- fixed extract here problem
+- AppsName as enum
+- goto the current open tab
+- bookmark location changed to .config/coreBox folder

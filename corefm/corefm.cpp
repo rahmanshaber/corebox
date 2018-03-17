@@ -1196,7 +1196,7 @@ QMenu* corefm::globalmenu(){
       popup->addSeparator();
       popup->addAction(ui->actionTrash_it);
       popup->addAction(ui->actionCreate_Archive);
-      if(extrainfo == "application/zip"){
+      if(extrainfo.contains("application")){
           popup->addAction(ui->actionExtract_Here);
       }
       popup->addSeparator();
@@ -1884,12 +1884,12 @@ void corefm::on_actionAscending_triggered(bool checked)
     }
 
     if(checked){
-        currentSortOrder == Qt::AscendingOrder;
+        currentSortOrder = Qt::AscendingOrder;
         modelView->sort(currentSortColumn, Qt::AscendingOrder);
         qDebug()<<"checked";
     }
     else{
-        currentSortOrder == Qt::DescendingOrder;
+        currentSortOrder = Qt::DescendingOrder;
         modelView->sort(currentSortColumn, Qt::DescendingOrder);
     }
 }
@@ -1973,31 +1973,31 @@ void corefm::on_Tools_clicked(bool checked){
 void corefm::on_actionCorePlayer_triggered(){
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(4, selcitempath);
+    cBox->tabEngine(CorePlayer, selcitempath);
 }
 
 void corefm::on_actionCorePad_triggered(){
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(2, selcitempath);
+    cBox->tabEngine(CorePad, selcitempath);
 }
 
 void corefm::on_actionCoreFM_triggered(){
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(0, QFileInfo(selcitempath).path());
+    cBox->tabEngine(CoreFM, QFileInfo(selcitempath).path());
 }
 
 void corefm::on_actionCoreImage_triggered(){
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(1, selcitempath);
+    cBox->tabEngine(CoreImage, selcitempath);
 }
 
 void corefm::on_actionCorePaint_triggered(){
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(3, selcitempath);
+    cBox->tabEngine(CorePaint, selcitempath);
 }
 
 void corefm::on_actionCoreBox_triggered(){
@@ -2130,7 +2130,7 @@ void corefm::on_searchHere_clicked(){
     QString path = ui->pathEdit->itemText(0);
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(11, path);
+    cBox->tabEngine(Search, path);
 }
 
 void corefm::on_actionExtract_Here_triggered(){

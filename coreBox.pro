@@ -1,4 +1,4 @@
-QT += core gui dbus printsupport multimedia multimediawidgets charts concurrent svg
+QT += core gui dbus printsupport multimedia multimediawidgets charts concurrent #svg
 CONFIG += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -169,7 +169,7 @@ HEADERS += \
     settings/settings.h \
     settings/settingsmanage.h \
     start/start.h \
-    coreedit.h
+    corepad/coreedit.h
 
 SOURCES += \
     about/about.cpp \
@@ -254,5 +254,5 @@ SOURCES += \
     settings/settings.cpp \
     settings/settingsmanage.cpp \
     start/start.cpp \
-    coreedit.cpp \
+    corepad/coreedit.cpp \
     main.cpp

@@ -28,7 +28,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../bookmarks/bookmarkmanage.h"
 #include "../settings/settings.h"
 #include "../settings/settingsmanage.h"
-
+#include "globalfunctions.h"
 
 namespace Ui {
 class CoreBox;
@@ -42,7 +42,7 @@ public:
     explicit CoreBox(QWidget *parent = 0);
     ~CoreBox();
 
-    void tabEngine(int i, QString arg = 0);
+    void tabEngine(AppsName i, QString arg = 0);
     void closeCurrentTab();
     bool eventFilter(QObject *obj, QEvent *evt);
 

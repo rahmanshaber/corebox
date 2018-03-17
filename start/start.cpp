@@ -21,6 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
 {
     ui->setupUi(this);
+
     ui->recents->setFocusPolicy(Qt::NoFocus);
     loadsettings();
 

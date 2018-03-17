@@ -1,6 +1,7 @@
 # CoreBox
 
 ## Corebox is combination of some common desktop apps with bookmark support. It's like a window manager for coreapps.
+## For Linux Only.
 
 <img src="docs/screenshots/a1.png" width="500">
 <img src="docs/screenshots/a2.png" width="500">

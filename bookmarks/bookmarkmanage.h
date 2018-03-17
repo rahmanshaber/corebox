@@ -38,7 +38,7 @@ public:
     QString checkingBookName(QString sectionName, QString bookName);
     QString checkingBookPath(QString section, QString bookPath);
     QString cbookName = "CoreBoxBook";
-    QString cbookPath = QDir::homePath() + "/.box";
+    QString cbookPath = QDir::homePath() + "/.config/coreBox";
     QString cbookFullPath = cbookPath + "/" + cbookName;
 
     void delSection(QString sectionName);

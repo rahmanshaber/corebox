@@ -238,12 +238,16 @@ void bookmarks::on_bookmarkDelete_clicked()
 
 void bookmarks::on_bookmarksLocation_clicked()
 {
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    cBox->tabEngine(CoreFM, QDir::homePath() + "/.box");
+    /*
     QTabWidget *boxTab = this->parent()->parent()->parent()->parent()->findChild<QTabWidget*>("windows");
     int n = boxTab->count();
     corefm *cfm = new corefm();
     cfm->goTo(QDir::home().path() + "/.box");
     boxTab->insertTab(n, cfm, QIcon(":/icons/CoreFM.svg"), "CoreFM");
     boxTab->setCurrentWidget(cfm);
+    */
 }
 
 void bookmarks::on_editDone_clicked()

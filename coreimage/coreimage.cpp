@@ -466,7 +466,7 @@ void coreimage::on_openThumbview_clicked()
 void coreimage::on_containingfolder_clicked()
 {
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(0, QFileInfo(currentImagePath).path());
+    cBox->tabEngine(CoreFM, QFileInfo(currentImagePath).path());
 }
 
 void coreimage::on_thumnailView_itemClicked(QListWidgetItem *item)

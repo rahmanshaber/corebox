@@ -47,6 +47,7 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
 search::~search()
 {
     delete ui;
+    qDebug() << "Search Closing";
 }
 
 void search::shotcuts(){
