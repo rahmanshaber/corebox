@@ -33,7 +33,6 @@ bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)
     ui->addSectionBox->setVisible(false);
     ui->deleteSection->setVisible(false);
     ui->addSection->setVisible(false);
-    ui->bookmarksLocation->setVisible(false);
     ui->cTools->setChecked(false);
     ui->boklist->setFocusPolicy(Qt::NoFocus);
 
@@ -182,7 +181,7 @@ void bookmarks::on_sectionDone_clicked()
     ui->sectionStatus->setText("");
     ui->addSectionBox->setVisible(false);
     messageEngine("Section Added", "Info");
-    on_cTools_clicked(false);
+    on_cTools_clicked();
 }
 
 void bookmarks::on_sectionCancel_clicked()
@@ -190,6 +189,7 @@ void bookmarks::on_sectionCancel_clicked()
     ui->sectionName->setText("");
     ui->sectionStatus->setText("");
     ui->addSectionBox->setVisible(false);
+    on_cTools_clicked();
 }
 
 void bookmarks::on_sectionName_textChanged(const QString &arg1)
@@ -212,9 +212,7 @@ void bookmarks::on_sectionName_textChanged(const QString &arg1)
 
 void bookmarks::on_bookmarkEdit_clicked()
 {
-    if(ui->addSectionBox->isVisible()){
-        on_sectionCancel_clicked();
-    }
+    on_cTools_clicked();
     ui->bookmarkEditBox->setVisible(true);
     ui->selectSection->clear();
     ui->selectSection->addItems(bk.getBookSections());
@@ -234,20 +232,6 @@ void bookmarks::on_bookmarkDelete_clicked()
     }
     ui->bookmarkCount->setText(QString::number(ui->boklist->rowCount()) + " item(s)");
     sectionRefresh();
-}
-
-void bookmarks::on_bookmarksLocation_clicked()
-{
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(CoreFM, QDir::homePath() + "/.box");
-    /*
-    QTabWidget *boxTab = this->parent()->parent()->parent()->parent()->findChild<QTabWidget*>("windows");
-    int n = boxTab->count();
-    corefm *cfm = new corefm();
-    cfm->goTo(QDir::home().path() + "/.box");
-    boxTab->insertTab(n, cfm, QIcon(":/icons/CoreFM.svg"), "CoreFM");
-    boxTab->setCurrentWidget(cfm);
-    */
 }
 
 void bookmarks::on_editDone_clicked()
@@ -276,25 +260,6 @@ void bookmarks::on_editCancel_clicked()
     ui->bookmarkName->clear();
     ui->statuslbl->clear();
     ui->pathName->clear();
-}
-
-void bookmarks::on_cTools_clicked(bool checked)
-{
-    if(checked){
-        ui->bookmarksLocation->setVisible(true);
-        ui->addSection->setVisible(true);
-        ui->deleteSection->setVisible(true);
-    }
-    else if (!checked){
-        ui->bookmarksLocation->setVisible(false);
-        ui->addSection->setVisible(false);
-        ui->deleteSection->setVisible(false);
-
-        if(ui->bookmarkEditBox->isVisible()|ui->addSectionBox->isVisible()){
-            on_editCancel_clicked();
-            on_sectionCancel_clicked();
-        }
-    }
 }
 
 void bookmarks::on_bookmarkName_textChanged(const QString &arg1)
@@ -399,5 +364,22 @@ void bookmarks::on_searchBook_textChanged(const QString &arg1)
         }
     } if(arg1.isEmpty()) {
         ui->boklist->clearSelection();
+    }
+}
+
+void bookmarks::on_cTools_clicked()
+{
+    if(!ui->addSection->isVisible()){
+        ui->addSection->setVisible(true);
+        ui->deleteSection->setVisible(true);
+    }
+    else {
+        ui->addSection->setVisible(false);
+        ui->deleteSection->setVisible(false);
+
+        if(ui->bookmarkEditBox->isVisible()|ui->addSectionBox->isVisible()){
+            on_editCancel_clicked();
+            on_sectionCancel_clicked();
+        }
     }
 }

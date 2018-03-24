@@ -26,13 +26,7 @@ corepad::corepad(QWidget *parent) :QWidget(parent),ui(new Ui::corepad)
 {
     qDebug() << "corepad opening";
     ui->setupUi(this);
-    isUpdated = false;
-    isSaved = false;
 
-    ui->text->setFont(QFont(ui->text->font().family(), ui->fontSize->currentText().toInt()));
-    ui->text->lineNumberArea_()->setFont(QFont(ui->text->lineNumberArea_()->font().family(), ui->fontSize->currentText().toInt()));
-
-    ui->workingOn->setText("untitled.txt");
     ui->searchbox->setVisible(false);
 
     shotcuts();
@@ -42,6 +36,48 @@ corepad::~corepad()
 {
     qDebug()<<"corepad closing";
     delete ui;
+}
+
+bool corepad::initializeNewTab(QString filePath) {
+    isUpdated = false;
+    isSaved = false;
+
+    QString fileName;
+
+    int index = ui->notes->tabBar()->count();
+    text = new coreedit();
+    text->setPlainText("");
+
+    workFileName = "";
+    workingFile = new QFile();
+    fileName = tr("untitled%1.txt").arg(index);
+    //ui->workingOn->setText(fileName);
+
+    if (!filePath.isEmpty()) {
+        fileName = QFileInfo(filePath).fileName();
+        workFileName = filePath;
+        workingFile = new QFile(filePath);
+        if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) return false;
+        else {
+            QTextStream in(workingFile);
+            text->setPlainText(in.readAll());
+            workingFile->close();
+            isSaved = true;
+            //ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
+        }
+    }
+
+    text->setFont(QFont(text->font().family(), ui->fontSize->currentText().toInt()));
+    text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), ui->fontSize->currentText().toInt()));
+
+    ui->notes->insertTab(index, text, fileName);
+    ui->notes->setCurrentIndex(index);
+    connect(text, SIGNAL(copyAvailable(bool)), this, SLOT(on_text_copyAvailable(bool)));
+    connect(text, SIGNAL(undoAvailable(bool)), this, SLOT(on_text_undoAvailable(bool)));
+    connect(text, SIGNAL(redoAvailable(bool)), this, SLOT(on_text_redoAvailable(bool)));
+    connect(text, SIGNAL(textChanged()), this, SLOT(on_text_textChanged()));
+
+    return true;
 }
 
 void corepad::shotcuts()
@@ -70,7 +106,7 @@ void corepad::shotcuts()
 }
 
 void corepad::openText(QString filePath) {
-    if (!filePath.isNull()) {
+    /*f (!filePath.isNull()) {
         workFileName = filePath;
         workingFile = new QFile(filePath);
         if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) return;
@@ -84,7 +120,8 @@ void corepad::openText(QString filePath) {
     }
     else {
         on_cNew_clicked();
-    }
+    }*/
+    initializeNewTab(filePath);
 }
 
 void corepad::quiting() {
@@ -92,7 +129,7 @@ void corepad::quiting() {
 }
 
 void corepad::closeEvent(QCloseEvent *event){
-    if (ui->workingOn->text().contains("*")) {
+    if (ui->notes->tabText(ui->notes->currentIndex()).contains("*")) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
@@ -128,34 +165,34 @@ void corepad::on_text_redoAvailable(bool b)
 void corepad::on_text_textChanged()
 {
     isUpdated = true;
-    if (!ui->workingOn->text().contains("*")) {
-       ui->workingOn->setText("*" + ui->workingOn->text());
+    if (!ui->notes->tabText(ui->notes->currentIndex()).contains("*")) {
+       ui->notes->setTabText(ui->notes->currentIndex(), "*" + ui->notes->tabText(ui->notes->currentIndex()));
     }
 }
 
 void corepad::on_cUndo_clicked()
 {
-    ui->text->undo();
+    text->undo();
 }
 
 void corepad::on_cRedo_clicked()
 {
-    ui->text->redo();
+    text->redo();
 }
 
 void corepad::on_cCut_clicked()
 {
-    ui->text->cut();
+    text->cut();
 }
 
 void corepad::on_cCopy_clicked()
 {
-    ui->text->copy();
+    text->copy();
 }
 
 void corepad::on_cPaste_clicked()
 {
-    ui->text->paste();
+    text->paste();
 }
 
 void corepad::on_cSave_clicked()
@@ -174,11 +211,11 @@ void corepad::on_cSave_clicked()
             }
             else {
                 QTextStream out(workingFile);
-                out << ui->text->toPlainText();
+                out << text->toPlainText();
                 workingFile->close();
                 isSaved = true;
                 isUpdated = false;
-                ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
+                ui->notes->setTabText(ui->notes->currentIndex(), QFileInfo(workingFile->fileName()).fileName());
                 messageEngine("File Saved", "Info");
             }
         }
@@ -190,10 +227,10 @@ void corepad::on_cSave_clicked()
         }
         else {
             QTextStream out(workingFile);
-            out << ui->text->toPlainText();
+            out << text->toPlainText();
             workingFile->close();
             isUpdated = false;
-            ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
+            ui->notes->setTabText(ui->notes->currentIndex(), QFileInfo(workingFile->fileName()).fileName());
             messageEngine("File Saved", "Info");
         }
     }
@@ -220,10 +257,10 @@ void corepad::on_cSaveAs_clicked()
         }
         else {
             QTextStream out(&file);
-            out << ui->text->toPlainText();
+            out << text->toPlainText();
             file.flush();
             file.close();
-            ui->workingOn->setText(QFileInfo(file.fileName()).fileName());
+            ui->notes->setTabText(ui->notes->currentIndex(), QFileInfo(file.fileName()).fileName());
             messageEngine("File Saved", "Info");
         }
     }
@@ -237,31 +274,34 @@ void corepad::on_cOpen_clicked()
         return;
     }
     else {
-        workingFile = new QFile(workFileName);
-        if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) {
-            messageEngine("Can't open file", "Warning");
-            return;
-        }
-        else {
-            QTextStream in(workingFile);
-            ui->text->setPlainText(in.readAll());
-            workingFile->close();
-            isSaved = true;
-            ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
-            messageEngine("File Opened", "Info");
-        }
+//        workingFile = new QFile(workFileName);
+//        if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) {
+//            messageEngine("Can't open file", "Warning");
+//            return;
+//        }
+//        else {
+//            QTextStream in(workingFile);
+//            text->setPlainText(in.readAll());
+//            workingFile->close();
+//            isSaved = true;
+//            ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
+//            messageEngine("File Opened", "Info");
+//        }
+        bool open = initializeNewTab(workFileName);
+        if (open) messageEngine("File Opened", "Info");
+        else messageEngine("Can't open file", "Warning");
     }
 }
 
 void corepad::on_cNew_clicked()
 {
-    if (ui->workingOn->text().contains("*")) {
+    /*if (ui->workingOn->text().contains("*")) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             workFileName = "";
             ui->workingOn->setText("untitled.txt");
-            ui->text->setPlainText("");
+            text->setPlainText("");
         }
         else if (reply == QMessageBox::No){
             return;
@@ -270,13 +310,15 @@ void corepad::on_cNew_clicked()
     else {
         workFileName = "";
         ui->workingOn->setText("untitled.txt");
-        ui->text->setPlainText("");
-    }
+        text->setPlainText("");
+    }*/
+
+    initializeNewTab("");
 }
 
 void corepad::on_cQuit_clicked()
 {
-    if (ui->workingOn->text().contains("*")) {
+    if (ui->notes->tabText(ui->notes->currentIndex()).contains("*")) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
@@ -293,7 +335,7 @@ void corepad::on_cQuit_clicked()
 
 void corepad::on_bookMarkIt_clicked()
 {
-    if (!workFileName.isNull()) {        
+    if (!workFileName.isNull()) {
         QString myIcon = ":/icons/CorePad.svg";
         bookmarks bookMarks;
         bookMarks.callBookMarkDialog(this, workFileName, myIcon);
@@ -302,24 +344,23 @@ void corepad::on_bookMarkIt_clicked()
 
 void corepad::on_fontSize_currentIndexChanged(const QString &arg1)
 {
-    ui->text->setFont(QFont(ui->text->font().family(), arg1.toInt()));
-    ui->text->lineNumberArea_()->setFont(QFont(ui->text->lineNumberArea_()->font().family(), arg1.toInt()));
+    text->setFont(QFont(text->font().family(), arg1.toInt()));
+    text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), arg1.toInt()));
 }
 
 void corepad::on_addDate_clicked()
 {
-    int pos = ui->text->textCursor().position();
-    ui->text->setPlainText(ui->text->toPlainText().insert(ui->text->textCursor().position(), QDate::currentDate().toString("dd/MM/yyyy")));
-    ui->text->textCursor().setPosition(pos + 10);
+    int pos = text->textCursor().position();
+    text->setPlainText(text->toPlainText().insert(text->textCursor().position(), QDate::currentDate().toString("dd/MM/yyyy")));
+    text->textCursor().setPosition(pos + 10);
 
 }
 
 void corepad::on_search_clicked(bool checked)
 {
-    if (checked){
+    if (checked) {
         ui->searchbox->setVisible(true);
-    }
-    else {
+    } else {
         ui->searchbox->setVisible(false);
     }
 }
@@ -327,10 +368,10 @@ void corepad::on_search_clicked(bool checked)
 void corepad::findS(QString searchS, bool reverse, QTextDocument::FindFlags flag) {
     if (!searchS.isNull()) {
         QTextCursor cr;
-        ui->text->find(searchS, flag);
-        cr.movePosition(reverse?QTextCursor::End:QTextCursor::Start);
+        text->find(searchS, flag);
+        cr.movePosition(reverse ? QTextCursor::End : QTextCursor::Start);
         if (!(cr.position() < 0)) {
-            ui->text->setTextCursor(cr);
+            text->setTextCursor(cr);
         }
     }
 }
@@ -348,4 +389,15 @@ void corepad::on_nextW_clicked()
 void corepad::on_previousW_clicked()
 {
     findS(ui->searchHere->text(), true, QTextDocument::FindBackward);
+}
+
+void corepad::on_notes_currentChanged(int index)
+{
+    text = static_cast<coreedit*>(ui->notes->widget(index));
+    /*Copy available need to fix when the current tab changed*/
+    on_text_redoAvailable(text->isUndoRedoEnabled());
+    on_text_undoAvailable(text->isUndoRedoEnabled());
+    //on_text_textChanged();
+    on_searchHere_textChanged(ui->searchHere->text());
+    qDebug() << text->toPlainText() << " L";
 }

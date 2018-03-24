@@ -25,8 +25,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFileDialog>
 #include <QTextStream>
 #include <QShortcut>
+#include <QFileInfo>
 #include <QPlainTextEdit>
 
+#include "coreedit.h"
 #include "../corebox/corebox.h"
 #include "../corebox/globalfunctions.h"
 #include "../bookmarks/bookmarkdialog.h"
@@ -45,7 +47,10 @@ public:
     explicit corepad(QWidget *parent = 0);
     ~corepad();
 
-    void openText(QString filePath);    
+    coreedit *text;
+    bool initializeNewTab(QString filePath);
+
+    void openText(QString filePath);
     void findS(QString searchS, bool reverse, QTextDocument::FindFlags flag = 0);
     QString fulldoc;
     QTextDocument *doc;
@@ -73,6 +78,8 @@ private slots:
     void on_searchHere_textChanged(const QString &arg1);
     void on_nextW_clicked();
     void on_previousW_clicked();
+
+    void on_notes_currentChanged(int index);
 
 public slots:
     void quiting();

@@ -33,6 +33,25 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     qDebug() << "coreaction opening";
     ui->setupUi(this);
 
+    QDesktopWidget dw;
+    int x = dw.width() * .23;
+    int y = QApplication::desktop()->availableGeometry().height();
+
+    this->setFixedSize(x, y);
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint); //| Qt::ToolTip
+
+    int sw = dw.width() - x;
+    //int sh = dw.height();
+
+    this->move(sw, 0);
+
+    qDebug() << dw.screenCount();
+    qDebug() << dw.screen();
+    qDebug() << dw.screenGeometry(-1);
+//    qDebug()<< dw.activateWindow();
+    qDebug() << dw.isVirtualDesktop();
+    qDebug() << dw.screenNumber();
+
     //DEMO
 //    QStringList lio;
 //    lio.append("/home/shaber/Downloads/");
@@ -85,6 +104,7 @@ void coreaction::tryicon()  //setup coreaction tryicon
 
 void coreaction::loadsettings()
 {
+    SettingsManage sm;
     sm.createDefaultSettings();
 }
 

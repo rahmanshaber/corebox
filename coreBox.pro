@@ -56,7 +56,6 @@ FORMS += \
     corepaint/corepaint.ui \
     coreplayer/coreplayer.ui \
     coretime/coretime.ui \
-#    coretime/settingdialog.ui \
     coretime/snooze.ui \
     dashboard/info/circlebar.ui \
     dashboard/info/sysinfo.ui \
@@ -70,19 +69,19 @@ FORMS += \
 
 DISTFILES += \
     CoreBox.desktop \
+    README.md \
+    LICENSE \
     other/condition_one.ogg \
     other/e.jpeg \
+    other/background.png \
+    docs/ChangeLog \
+    docs/buildinfo.txt \
+    docs/PKGBUILD \
+    docs/To-Do.txt \
     docs/screenshots/a1.png \
     docs/screenshots/a2.png \
     docs/screenshots/a3.png \
     docs/screenshots/a4.png \
-    other/background.png \
-    README.md \
-    docs/buildinfo.txt \
-    docs/PKGBUILD \
-    docs/To-Do.txt \
-    LICENSE \
-    docs/ChangeLog
 
 HEADERS += \
     about/about.h \
@@ -145,7 +144,6 @@ HEADERS += \
     coretime/fileio.h \
     coretime/schedule.h \
     coretime/schedulecollection.h \
-#    coretime/settingdialog.h \
     coretime/snooze.h \
     coretime/timer.h \
     dashboard/info/circlebar.h \
@@ -231,7 +229,6 @@ SOURCES += \
     coretime/fileio.cpp \
     coretime/schedule.cpp \
     coretime/schedulecollection.cpp \
-#    coretime/settingdialog.cpp \
     coretime/snooze.cpp \
     coretime/timer.cpp \
     dashboard/info/circlebar.cpp \

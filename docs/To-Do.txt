@@ -6,14 +6,12 @@ version 2
 
 corebox
 1 - need two theme (dark and light)
-2 - doesn't goto the currently opened tab somtimes.
 1 - round border is no working in messageengine>>messagebox.
 1 - qdesktopwidget as a global function.
 1 - add display scale support
 1 - setwindow title >> a global function.
 1 - add option for using default window manager
 1 - update the app when clicked from window.(only coreboxapps)
-0 - close function in corebox is not closing corepaint properly.it is doing that problem what the corepad did earlier.
 1 - if bookmark is booked it shouldshow a message if it exists and show the section it was booked.
 1 - separate process for per app.
 1 - limit the openable window.
@@ -23,7 +21,6 @@ bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
 1 - two icon .folder and file .in bookmarklist list
-0 - bookmark file location is not correct.(void corefm::addressChanged(int old, int now))
 
 dashboard
 0 - show used network in general section.
@@ -37,15 +34,16 @@ corepaint
 1 - open screenshot folder pushbutton which show the screenshot folder.
 
 Search
-2 - search freezz on first start.(means no settings file in .config folder.
 1 - if searh opened from FM hide locate option.
 1 - add button to set folder
 1 - show the file/folder in coerFM with selecting the file/folder.
 0 - if path is given find is not working.but locate is working.
 
 corefm
+0 - pathedit is always in focuse even outside clicked.
+0 - rename mode is not going off when clicked outside.
+0 - somtimes in detail mode, dobule click it goes to rename mode.
 2 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
-2 - open in coreimage crash.
 1 - rightbuttonMenu>new add a new option.derectly make a paint.
 1 - set custom icom in home's folder.
 1 - if folder is empty show at message engine.
@@ -53,7 +51,6 @@ corefm
 1 - copyto some common places(like desktop,downloads,home)
 1 - properties - option to make file executable(chmod a+x filepath)
 0 - preview is not working.
-0 - remove the demon in corefm.
 1 - ctrl + wheel = zoom.
 1 - multiple file's combined size.
 1 - add trash in on_actionTrash_it_triggered .proper trash intigration.
@@ -71,13 +68,13 @@ messageengine
 1 - finished copying message.
 1 - file deleted & delete failed message.
 
-core time
-0 - save the alarm list.
+coretime
+0 - fix the timer start/pause button .
+0 - save the alarm list in config folder.(another file if possible.
 0 - improve the alarm .
 0 - snooze.ui>>>alling the button in center
 0 - need a done button for alarm completion.
 1 - set reminder option.
-0 - fix the timer start/pause button .
 1 - show a message (not a messagebox) before 5 minutes of alarm time
 
 corepad 
@@ -87,16 +84,15 @@ corepad
 
 setting
 1 - also open corebox at start up.
-2 - seperate the coreaction section in setting manage.
-2 - add a button stop the recent closed app.
     
 start
+0 - reload buttons in buttom.(now in center)
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 0 - recent path not opening with dobule click.(Open when double clicked on name but not at datetime)
-2 - recently close collecting, but not specific corefm path.
 
 coreimage
+0 - coreimage crash in some file extention(7.3.png,b.b.png)
 0 - need a black image on app start.
 0 - deleteing pic, will also delete entry from path qstringlist
 1 - ctrl + wheel = zoom shorcut.
@@ -124,7 +120,7 @@ app
 1 - file renamer
 
 packaging
-0 - fixthe fonts
+0 - fixthe fonts in appimage.
 
 infuture
 1 - make manjaro iso with lxqt desktop as base.

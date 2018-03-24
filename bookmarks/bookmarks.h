@@ -53,9 +53,7 @@ private slots:
     void on_sectionName_textChanged(const QString &arg1);
     void on_bookmarkEdit_clicked();
     void on_bookmarkDelete_clicked();
-    void on_bookmarksLocation_clicked();
     void on_editCancel_clicked();
-    void on_cTools_clicked(bool checked);
     void on_bookmarkName_textChanged(const QString &arg1);
     void on_pathName_textChanged(const QString &arg1);
     void on_boklist_itemDoubleClicked(QTableWidgetItem *item);
@@ -63,6 +61,7 @@ private slots:
     void on_editDone_clicked();
     void on_selectSection_currentIndexChanged(const QString &arg1);
     void on_searchBook_textChanged(const QString &arg1);
+    void on_cTools_clicked();
 
 private:
     Ui::bookmarks *ui;

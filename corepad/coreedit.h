@@ -27,7 +27,7 @@ class coreedit : public QPlainTextEdit
     Q_OBJECT
 
 public:
-    coreedit(QWidget *parent);
+    coreedit(QWidget *parent = 0);
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
 

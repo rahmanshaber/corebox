@@ -30,6 +30,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QSortFilterProxyModel>
 #include <QSignalMapper>
 #include <QFileSystemWatcher>
+#include <QMouseEvent>
+#include <QListView>
+#include <QAbstractItemView>
 
 #include "udisks2.h"
 #include "../corebox/corebox.h"
@@ -37,7 +40,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../corebox/globalfunctions.h"
 #include "../bookmarks/bookmarks.h"
 #include "../bookmarks/bookmarkdialog.h"
-
 
 namespace Ui {
 class corefm;
@@ -145,8 +147,6 @@ private slots:
     void on_actionCreate_Archive_triggered();
     void on_STrash_clicked();
     void on_emptyTrash_clicked();
-
-
 
 private:
     SettingsManage sm;

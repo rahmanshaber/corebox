@@ -63,7 +63,7 @@ color: #ffffff;
 border: 1px rgb(67, 67, 67);
 }</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -228,42 +228,6 @@ background-color: #171717;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="bookmarksLocation">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #171717; 
-}
-
-QPushButton:hover {
-background-color: #171717;
-}</string>
-        </property>
-        <property name="text">
-         <string>Bookmark's file Locaion</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="cTools">
         <property name="font">
          <font>
@@ -298,7 +262,7 @@ background-color: #171717;
          </size>
         </property>
         <property name="checkable">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </item>

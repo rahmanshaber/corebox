@@ -333,22 +333,8 @@ void corefm::closeEvent(QCloseEvent *event)
             saveToRecent("CoreFM", ui->pathEdit->currentText());
         }
     }
-
-  // If deamon, ignore event
-//  if (isDaemon) {
-//    this->setVisible(0);
-//    //startDaemon();
-//    customComplete->setModel(0);
-//    modelList->refresh();
-//    tabs->setCurrentIndex(0);
-//    tree->setCurrentIndex(modelTree->mapFromSource(modelList->index(startPath)));
-//    tree->scrollTo(tree->currentIndex());
-//    customComplete->setModel(modelTree);
-//    event->ignore();
-//  } else {
     modelList->cacheInfo();
     event->accept();
-  //}
 }
 
 
@@ -2166,4 +2152,3 @@ void corefm::on_emptyTrash_clicked(){
 //    on_actionSelectAll_triggered();
 //    on_actionDelete_triggered();
 }
-

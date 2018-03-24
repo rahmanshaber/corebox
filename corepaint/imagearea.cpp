@@ -216,11 +216,11 @@ bool ImageArea::saveAs()
         }
         else
         {
+            result = false;
             messageEngine(tr("Can't save file \"%1\".").arg(filePath) ,"Warning");
 
-            result = false;
         }
-    }
+    } else { result = false;}
     QApplication::restoreOverrideCursor();
     return result;
 }

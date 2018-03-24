@@ -16,8 +16,16 @@ v.2
 - removed background from start.
 - fixed alarm edit button nor working properly
 - archive available for all problem
-
 - fixed extract here problem
 - AppsName as enum
-- goto the current open tab
+- fixed not going to the currently opened tab
 - bookmark location changed to .config/coreBox folder
+- added coreaction section in settings
+- fixed properties window icon.
+- coreaction's size code moved from main.cpp to coreaction
+- bookmark location button removed.
+- fixed tool button in bookmark.
+- fixed corepaint save dialog.
+- fixed coreaction is creating in config folder.
+- removed demon from corefm.
+

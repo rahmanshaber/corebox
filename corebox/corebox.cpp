@@ -86,12 +86,19 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
         ui->windows->insertTab(n, cIMG, QIcon(":/icons/CoreImage.svg"), "CoreImage");
         ui->windows->setCurrentIndex(n);
     } else if (i == CorePad) {
-        corepad *cPAD = new corepad();
+        int nn = filterEngine("CorePad");
 
-        if (!arg.isEmpty()) cPAD->openText(arg);
+        if (nn != 404) {
+            ui->windows->setCurrentIndex(nn);
+            corepad *cPad = static_cast<corepad*>(ui->windows->currentWidget());
+            cPad->initializeNewTab(!arg.isEmpty() ? arg : "");
+        } else {
+            corepad *cPAD = new corepad();
+            if (!arg.isEmpty()) cPAD->openText(arg);
 
-        ui->windows->insertTab(n, cPAD, QIcon(":/icons/CorePad.svg"), "CorePad");
-        ui->windows->setCurrentIndex(n);
+            ui->windows->insertTab(n, cPAD, QIcon(":/icons/CorePad.svg"), "CorePad");
+            ui->windows->setCurrentIndex(n);
+        }
     } else if (i == CorePaint) {
         corepaint *cPAINT = new corepaint();
 

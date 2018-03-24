@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1003</width>
+    <width>1017</width>
     <height>515</height>
    </rect>
   </property>
@@ -980,57 +980,6 @@ background-color: rgb(48, 140, 198);
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="pathEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QComboBox {
-    border: 1px solid rgb(67, 67, 67);
-    padding: 5px 5px 5px 10px;
-}
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: #ffffff;
-    selection-background-color: #C2C2C2;
-}
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}
-QComboBox::down-arrow {
-    image: url(:/icons/down_w.svg);
-}
-QComboBox:focus{
-    border:1px solid #C2C2C2;
-}</string>
-        </property>
-        <property name="editable">
-         <bool>true</bool>
-        </property>
-        <property name="currentText">
-         <string notr="true"/>
-        </property>
-        <property name="frame">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QToolButton" name="searchHere">
         <property name="minimumSize">
          <size>
@@ -1069,6 +1018,60 @@ background-color: rgb(48, 140, 198);
           <width>22</width>
           <height>22</height>
          </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="pathEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::NoContextMenu</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border: 1px solid rgb(67, 67, 67);
+    padding: 5px 5px 5px 10px;
+}
+QComboBox QAbstractItemView {
+    background-color: #546070;
+    color: #ffffff;
+    selection-background-color: #C2C2C2;
+}
+QComboBox::drop-down {
+    background-color: #3C3C43;
+}
+QComboBox::down-arrow {
+    image: url(:/icons/down_w.svg);
+}
+QComboBox:focus{
+    border:1px solid #C2C2C2;
+}</string>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="maxVisibleItems">
+         <number>4</number>
         </property>
        </widget>
       </item>
@@ -1475,8 +1478,11 @@ background-color: #1268A4;
              <pointsize>11</pointsize>
             </font>
            </property>
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="focusPolicy">
-            <enum>Qt::WheelFocus</enum>
+            <enum>Qt::ClickFocus</enum>
            </property>
            <property name="styleSheet">
             <string notr="true">QListView {

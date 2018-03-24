@@ -477,8 +477,7 @@ void corepaint::on_paintTabs_tabCloseRequested(int index)
         switch(ans)
         {
         case QMessageBox::Yes:
-            if (ia->save())
-                break;
+            if (ia->save()) break;
             return;
         case QMessageBox::Cancel:
             return;
@@ -510,22 +509,28 @@ void corepaint::on_open_clicked()
 
 void corepaint::on_save_clicked()
 {
-    getCurrentImageArea()->save();
-    ui->paintTabs->setTabText(ui->paintTabs->currentIndex(), getCurrentImageArea()->getFileName().isEmpty() ?
-                                  tr("Untitled Image") : getCurrentImageArea()->getFileName() );
+    if(getCurrentImageArea()->save()){
+        ui->paintTabs->setTabText(ui->paintTabs->currentIndex(), getCurrentImageArea()->getFileName().isEmpty() ?
+                                      tr("Untitled Image") : getCurrentImageArea()->getFileName() );
 
-    filepath = getCurrentImageArea()->mFilePath;
-    messageEngine("File Saved", "Info");
+        filepath = getCurrentImageArea()->mFilePath;
+        messageEngine("File Saved", "Info");
+    } else {
+        messageEngine("File not Saved", "Info");
+    }
 }
 
 void corepaint::on_saveas_clicked()
 {
-    getCurrentImageArea()->saveAs();
-    ui->paintTabs->setTabText(ui->paintTabs->currentIndex(), getCurrentImageArea()->getFileName().isEmpty() ?
-                                  tr("Untitled Image") : getCurrentImageArea()->getFileName() );
+    if(getCurrentImageArea()->saveAs()){
+        ui->paintTabs->setTabText(ui->paintTabs->currentIndex(), getCurrentImageArea()->getFileName().isEmpty() ?
+                                      tr("Untitled Image") : getCurrentImageArea()->getFileName() );
 
-    filepath = getCurrentImageArea()->mFilePath;
-    messageEngine("File Saved", "Info");
+        filepath = getCurrentImageArea()->mFilePath;
+        messageEngine("File Saved", "Info");
+    } else {
+        messageEngine("File not Saved", "Info");
+    }
 }
 
 void corepaint::on_resizeimage_clicked()
