@@ -83,8 +83,8 @@ QScrollBar::sub-page:vertical {
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-216</y>
-        <width>835</width>
+        <y>-217</y>
+        <width>837</width>
         <height>900</height>
        </rect>
       </property>
@@ -983,6 +983,9 @@ padding: 10px 5px 0px 5px;
             <property name="editTriggers">
              <set>QAbstractItemView::NoEditTriggers</set>
             </property>
+            <property name="tabKeyNavigation">
+             <bool>false</bool>
+            </property>
             <property name="showDropIndicator" stdset="0">
              <bool>false</bool>
             </property>
@@ -1005,7 +1008,10 @@ padding: 10px 5px 0px 5px;
              <bool>false</bool>
             </property>
             <property name="cornerButtonEnabled">
-             <bool>true</bool>
+             <bool>false</bool>
+            </property>
+            <property name="columnCount">
+             <number>3</number>
             </property>
             <attribute name="horizontalHeaderVisible">
              <bool>false</bool>
@@ -1025,6 +1031,9 @@ padding: 10px 5px 0px 5px;
             <attribute name="verticalHeaderDefaultSectionSize">
              <number>30</number>
             </attribute>
+            <column/>
+            <column/>
+            <column/>
            </widget>
           </item>
          </layout>

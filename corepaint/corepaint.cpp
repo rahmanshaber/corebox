@@ -157,7 +157,7 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
         }
     }
     else {
-        messageEngine("Maximum NUmber of Tab reached.", "Warning");
+        messageEngine("Reached page limite.", "Warning");
     }
 }
 

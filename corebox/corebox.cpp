@@ -40,15 +40,19 @@ CoreBox::CoreBox(QWidget *parent) :QMainWindow(parent),ui(new Ui::CoreBox){
     qDebug() << "CoreBox opening";
     ui->setupUi(this);
 
-    QDesktopWidget dw;
-    int x =dw.width()*.8;
-    int y = dw.height()*.8;
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect  screenGeometry = screen->geometry();
+    int x = screenGeometry.width() * .8;
+    int y = screenGeometry.height() * .8;
 
     ui->windows->tabBar()->installEventFilter(this);
 //    ui->windows->installEventFilter(this);
-    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint );//| Qt::SubWindow
+    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::SubWindow);
     ui->restoreButton->setVisible(false);
     ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
+
+    QSizeGrip * sizeGrip = new QSizeGrip(this);
+    ui->resize->addWidget(sizeGrip);
 
     if (sm.getBoxIsMaximize()) {
         on_maximizeButton_clicked();
@@ -294,7 +298,8 @@ void CoreBox::on_windows_currentChanged(int index)
     this->setWindowIcon(QIcon(appsIconPath(title)));
 }
 
-void CoreBox::closeCurrentTab() {
+void CoreBox::closeCurrentTab()
+{
     on_windows_tabCloseRequested(ui->windows->currentIndex());
 }
 

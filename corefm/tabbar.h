@@ -52,6 +52,7 @@ private:
     QHash<QString,QIcon> *folderIcons;
     QList<QStringList*> history;
     QList<int> viewType;
+
 };
 
 #endif // TABBAR_H

@@ -62,6 +62,7 @@ private slots:
 
 private:
     BookmarkManage bk;
+
 };
 
 #endif // BOOKMARKDIALOG_H

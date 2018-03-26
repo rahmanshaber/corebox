@@ -28,8 +28,10 @@ dashboard
 1 - selected drive will show only it's pertition.
 1 - mount specific pertition on corebox startup.
 1 - add drive frame in drive view.
+0 - bettery properties >>convert it to>> listview(hint>>>systemInformationInit);
 
 corepaint
+0 - add delete selected area as a pushbutton and shortcut(del).
 1 - set all the instrument cursor.
 1 - open screenshot folder pushbutton which show the screenshot folder.
 
@@ -40,13 +42,14 @@ Search
 0 - if path is given find is not working.but locate is working.
 
 corefm
+0 - add drive list in shortcut widget with mount/unmount.
+0 - void corefm::tabChanged(int index)>>> not working.
 0 - pathedit is always in focuse even outside clicked.
 0 - rename mode is not going off when clicked outside.
 0 - somtimes in detail mode, dobule click it goes to rename mode.
 2 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
-1 - rightbuttonMenu>new add a new option.derectly make a paint.
+1 - rightbuttonMenu>new add a new option.derectly make a paint app file.
 1 - set custom icom in home's folder.
-1 - if folder is empty show at message engine.
 1 - add tree and mediainfo package.
 1 - copyto some common places(like desktop,downloads,home)
 1 - properties - option to make file executable(chmod a+x filepath)
@@ -77,16 +80,14 @@ coretime
 1 - set reminder option.
 1 - show a message (not a messagebox) before 5 minutes of alarm time
 
-corepad 
-1 - add multiple tab.
-1 - limit the openable tab.
-1 - add tab widget to corepad.like corepaint.
+corepad
+0 - closeable pages.
 
 setting
 1 - also open corebox at start up.
     
 start
-0 - reload buttons in buttom.(now in center)
+0 - reload buttons in buttom.(now in vertical>>>center)
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 0 - recent path not opening with dobule click.(Open when double clicked on name but not at datetime)

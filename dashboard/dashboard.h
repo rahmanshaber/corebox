@@ -68,11 +68,9 @@ private slots:
     void on_Bdrives_clicked();
     void on_Bbattery_clicked();
     void on_Bgeneral_clicked();
-
     void on_blocks_itemSelectionChanged();
-
-
     void on_drives_itemSelectionChanged();
+    void on_Bdisplay_clicked();
 
 public:
     explicit dashboard(QWidget *parent = 0);
@@ -87,7 +85,7 @@ private:
     UDisks2 *disks;
     sysinfo *info;
     ResourcesPage *resource;
-
+    void setdisplaypage();
 };
 
 #endif // DASHBOARD_H

@@ -71,6 +71,7 @@ private:
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
+
 };
 
 #endif // BOOKMARKS_H

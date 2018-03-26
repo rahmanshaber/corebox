@@ -706,7 +706,7 @@ color: white;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>90</width>
+               <width>88</width>
                <height>102</height>
               </rect>
              </property>
@@ -2050,13 +2050,13 @@ color: #FFFFFF;
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="leftMargin">
-       <number>1</number>
+       <number>5</number>
       </property>
       <property name="topMargin">
        <number>1</number>
       </property>
       <property name="rightMargin">
-       <number>1</number>
+       <number>5</number>
       </property>
       <property name="bottomMargin">
        <number>1</number>
@@ -2219,36 +2219,41 @@ background-color: rgb(48, 140, 198);
       <string notr="true">QTabWidget QTabBar{
 background-color: #333333;
 height: 30px;
-
 }
 
 QTabWidget QTabBar::tab{
-text-align: left;
 background-color: #136ba2;
+color: #ffffff;
 border-style: none;
 height: 30px;
 width: 130px;
-color: #ffffff;
 padding: 0px 5px 0px 5px;
 }
 
 QTabWidget QTabBar::tab:selected{
-background-color: #0f5d90;
+background-color: #9F9F9F;
+color: #000000;
 }
 QTabWidget QTabBar::tab:!selected{
 background-color:  #333333;
-}
-QTabWidget QTabBar::tab:hover{
-background-color:  #3D3D3D;
 }</string>
      </property>
      <property name="tabPosition">
       <enum>QTabWidget::South</enum>
      </property>
+     <property name="elideMode">
+      <enum>Qt::ElideRight</enum>
+     </property>
+     <property name="usesScrollButtons">
+      <bool>false</bool>
+     </property>
      <property name="tabsClosable">
       <bool>true</bool>
      </property>
      <property name="movable">
+      <bool>true</bool>
+     </property>
+     <property name="tabBarAutoHide">
       <bool>true</bool>
      </property>
     </widget>

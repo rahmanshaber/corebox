@@ -97,6 +97,7 @@ int tabBar::addNewTab(QString path, int type)
     int newtab = addTab(file.fileName());
     setTabData(newtab,file.filePath());
     setIcon(newtab);
+    setCurrentIndex(newtab);
     return newtab;
 }
 

@@ -78,7 +78,6 @@ private slots:
     void on_searchHere_textChanged(const QString &arg1);
     void on_nextW_clicked();
     void on_previousW_clicked();
-
     void on_notes_currentChanged(int index);
 
 public slots:
@@ -95,6 +94,7 @@ private:
     QFile *workingFile;
     QString documentPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     void shotcuts();
+
 };
 
 #endif // COREPAD_H

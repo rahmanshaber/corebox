@@ -980,48 +980,6 @@ background-color: rgb(48, 140, 198);
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="searchHere">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/search_w.svg</normaloff>:/icons/search_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QComboBox" name="pathEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -1072,6 +1030,48 @@ QComboBox:focus{
         </property>
         <property name="maxVisibleItems">
          <number>4</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="searchHere">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QToolButton{
+border: 1px solid rgb(67, 67, 67);
+}
+
+QToolButton:pressed{
+background-color:rgb(48, 140, 198); 
+}
+
+QToolButton:hover {
+background-color: rgb(48, 140, 198);
+}</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/search_w.svg</normaloff>:/icons/search_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -2411,7 +2411,10 @@ border: 1px  #F2F2F2;
      <normaloff>:/icons/new_tab_b.svg</normaloff>:/icons/new_tab_b.svg</iconset>
    </property>
    <property name="text">
-    <string>NewTab</string>
+    <string>NewPage</string>
+   </property>
+   <property name="toolTip">
+    <string>NewPage</string>
    </property>
   </action>
   <action name="actionCloseTab">

@@ -71,6 +71,7 @@ private slots:
     void on_results_itemDoubleClicked(QTableWidgetItem *item);
     void on_more_clicked(bool checked);
     void on_searchFF_currentTextChanged(const QString &arg1);
+
 };
 
 #endif // SEARCH_H

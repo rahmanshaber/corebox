@@ -39,45 +39,51 @@ corepad::~corepad()
 }
 
 bool corepad::initializeNewTab(QString filePath) {
-    isUpdated = false;
-    isSaved = false;
 
-    QString fileName;
+    if (ui->notes->count() < 10) {
+        isUpdated = false;
+        isSaved = false;
 
-    int index = ui->notes->tabBar()->count();
-    text = new coreedit();
-    text->setPlainText("");
+        QString fileName;
 
-    workFileName = "";
-    workingFile = new QFile();
-    fileName = tr("untitled%1.txt").arg(index);
-    //ui->workingOn->setText(fileName);
+        int index = ui->notes->tabBar()->count();
+        text = new coreedit();
+        text->setPlainText("");
 
-    if (!filePath.isEmpty()) {
-        fileName = QFileInfo(filePath).fileName();
-        workFileName = filePath;
-        workingFile = new QFile(filePath);
-        if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) return false;
-        else {
-            QTextStream in(workingFile);
-            text->setPlainText(in.readAll());
-            workingFile->close();
-            isSaved = true;
-            //ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
+        workFileName = "";
+        workingFile = new QFile();
+        fileName = tr("untitled%1.txt").arg(index);
+        //ui->workingOn->setText(fileName);
+
+        if (!filePath.isEmpty()) {
+            fileName = QFileInfo(filePath).fileName();
+            workFileName = filePath;
+            workingFile = new QFile(filePath);
+            if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) return false;
+            else {
+                QTextStream in(workingFile);
+                text->setPlainText(in.readAll());
+                workingFile->close();
+                isSaved = true;
+                //ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
+            }
         }
+
+        text->setFont(QFont(text->font().family(), ui->fontSize->currentText().toInt()));
+        text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), ui->fontSize->currentText().toInt()));
+
+        ui->notes->insertTab(index, text, fileName);
+        ui->notes->setCurrentIndex(index);
+        connect(text, SIGNAL(copyAvailable(bool)), this, SLOT(on_text_copyAvailable(bool)));
+        connect(text, SIGNAL(undoAvailable(bool)), this, SLOT(on_text_undoAvailable(bool)));
+        connect(text, SIGNAL(redoAvailable(bool)), this, SLOT(on_text_redoAvailable(bool)));
+        connect(text, SIGNAL(textChanged()), this, SLOT(on_text_textChanged()));
+
+        return true;
     }
-
-    text->setFont(QFont(text->font().family(), ui->fontSize->currentText().toInt()));
-    text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), ui->fontSize->currentText().toInt()));
-
-    ui->notes->insertTab(index, text, fileName);
-    ui->notes->setCurrentIndex(index);
-    connect(text, SIGNAL(copyAvailable(bool)), this, SLOT(on_text_copyAvailable(bool)));
-    connect(text, SIGNAL(undoAvailable(bool)), this, SLOT(on_text_undoAvailable(bool)));
-    connect(text, SIGNAL(redoAvailable(bool)), this, SLOT(on_text_redoAvailable(bool)));
-    connect(text, SIGNAL(textChanged()), this, SLOT(on_text_textChanged()));
-
-    return true;
+    else{
+        messageEngine("Reached page limite", "Warning");
+    }
 }
 
 void corepad::shotcuts()

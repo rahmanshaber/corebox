@@ -157,8 +157,6 @@ private:
     QMenu* createOpenWithMenu();
     QMenu *globalmenu();
 
-//    Qt::SortOrder currentSortOrder;
-
     int zoom;
     int zoomTree;
     int zoomList;
@@ -209,8 +207,6 @@ private:
     int selcitem;
 
     CoreBox corebox_;
-
-
 };
 
 //---------------------------------------------------------------------------------

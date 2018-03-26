@@ -17,7 +17,7 @@ v.2
 - fixed alarm edit button nor working properly
 - archive available for all problem
 - fixed extract here problem
-- AppsName as enum
+- upgraded AppsName to enum
 - fixed not going to the currently opened tab
 - bookmark location changed to .config/coreBox folder
 - added coreaction section in settings
@@ -28,4 +28,15 @@ v.2
 - fixed corepaint save dialog.
 - fixed coreaction is creating in config folder.
 - removed demon from corefm.
+- changed page ui of all apps.
+- fixed corefm's new page is not going in new opened tab.
+- if folder is empty shows a message.
+- added multiple tab support in corepad.
+- limited the openable tab in corepad to 10.
+- fixed multiwindow problem in corebox.
+- fixed multiwindow problem in sohowing message.
+- added option to resize corebox.
+- added display page in deshboard app.
+- added multiwindow support.
+-
 

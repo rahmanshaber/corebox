@@ -67,8 +67,8 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     tabs->setTabsClosable(true);
     connect(tabs, SIGNAL(tabCloseRequested(int)), tabs, SLOT(closeTab(int)));
     tabs->setStyleSheet("QTabBar::tab:!selected{background-color:#353536;color:#B4B4B4;}"
-                        "QTabBar::tab:selected{background-color: #2E2E2E;font-weight: bold;color:#ffffff;}"
-                        "QTabBar::close-button {image: url(:/icons/close_w.svg);subcontrol-position: right;}"
+                        "QTabBar::tab:selected{background-color:#F2F2F2;font-weight: bold;color:#000000;}"
+                        "QTabBar::close-button {image: url(:/icons/close_b.svg);subcontrol-position: right;}"
                         "QTabBar::tab{text-align:left;background-color: #136ba2;border-style: 1px rgb(67, 67, 67);height: 30px;color: #136ba2;padding: 0px 5px 0px 5px;}"
                         "QTabBar{background-color: #353536;height: 30px;}");
 
@@ -407,6 +407,7 @@ void corefm::dirLoaded()
     ui->totalitem->setText("Total : " + QString("%1 items").arg(items.count()));
     ui->selecteditem->setText("Selected : 0 items");
 
+    if(items.count()==0){messageEngine("Folder is empty", "Info");}
     if(ui->showthumb->isChecked()) QtConcurrent::run(modelList,&myModel::loadThumbs,items);
 }
 
@@ -494,11 +495,12 @@ void corefm::listItemPressed(QModelIndex current)
 
 int corefm::addTab(QString path)
 {
+    qDebug()<<currentView;
     if (tabs->count() < 10) {
         if(tabs->count() == 0) tabs->addNewTab(ui->pathEdit->currentText(),currentView);
         return tabs->addNewTab(path,currentView);
     } else {
-        messageEngine("Maximum Number of tabs reached.", "Warning");
+        messageEngine("Reached page limite", "Warning");
     }
     return -1;
 }

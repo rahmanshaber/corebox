@@ -97,11 +97,13 @@ void messageEngine(QString message, QString messageType)
     }
     mbox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     mbox->show();
-    QDesktopWidget dw;
-    int sw = dw.width() - (mbox->width() + 20);
-    int sh = QApplication::desktop()->availableGeometry().height() - (mbox->height() + 20);
 
-    mbox->move(sw,sh);
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect  screenGeometry = screen->geometry();
+    int x = screenGeometry.width() - (mbox->width() + 20);
+    int y = screenGeometry.height() - (mbox->height() + 40);
+
+    mbox->move(x,y);
     QTimer::singleShot(3000, mbox, SLOT(close()));
 
 }

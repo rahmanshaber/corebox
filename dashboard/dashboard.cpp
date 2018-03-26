@@ -23,6 +23,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMetaProperty>
 #include <QTreeWidgetItem>
 #include <QDir>
+#include <QSize>
 
 
 dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
@@ -52,6 +53,8 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 //        ui->drives->setItemWidget(p, ui->widget);
         ui->drives->item(i)->setIcon(QIcon(":/icons/hdd_b.svg"));
     }
+
+    setdisplaypage();
 
     ui->blocks->addItems(disks->blockDevices());
     for (int i = 0; i < ui->blocks->count(); ++i) {
@@ -85,6 +88,7 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
     ui->pages->insertWidget(2, ui->pageBattery);
     ResourcesPage *resourcePage = new ResourcesPage();
     ui->pages->insertWidget(3, resourcePage);
+    ui->pages->insertWidget(4,ui->pageDisplay);
 
     ui->pages->setCurrentIndex(0);
 }
@@ -340,4 +344,68 @@ void dashboard::on_Bgeneral_clicked()
     pageClick(ui->Bgeneral, 0, tr("General"));
 }
 
+void dashboard::on_Bdisplay_clicked()
+{
+    pageClick(ui->Bdisplay, 4, tr("Display"));
+}
 
+void dashboard::setdisplaypage()
+{
+    for (int i = 0; i < qApp->screens().count(); i++) {
+
+        QSize s = qApp->screens()[i]->size();
+        QString size(tr("(%1,%2)").arg(s.width()).arg(s.height()));
+
+        QSize a = qApp->screens()[i]->availableVirtualSize();
+        QString AvailableVS(tr("(%1,%2)").arg(a.width()).arg(a.height()));
+
+        QRect g = qApp->screens()[i]->geometry();
+        QString Geometry(tr("(%1,%2)").arg(g.width()).arg(g.height()));
+
+        QSizeF py = qApp->screens()[i]->physicalSize();
+        QString PhysicalSize(tr("(%1,%2)").arg(py.width()).arg(py.height()));
+
+
+        QStringList infos;
+        infos
+            << tr("Name : %1 ")      . arg(qApp->screens()[i]->name())
+            << tr("Size : %1 px")       . arg(size)
+            << tr("Manufacturer : %1 ")       . arg(qApp->screens()[i]->manufacturer())
+            << tr("Model : %1 ")        . arg(qApp->screens()[i]->model())
+            << tr("SerialNumber : %1 ")      . arg(qApp->screens()[i]->serialNumber())
+            << tr("RefreshRate : %1 ")       . arg(qApp->screens()[i]->refreshRate())
+            << tr("Actual Resolution : %1 px")   . arg(AvailableVS)
+            << tr("Set Resolution : %1 px")  . arg(Geometry)
+            << tr("PhysicaldotsPerInch : %1 ppi"). arg(qApp->screens()[i]->physicalDotsPerInch())
+            << tr("Physical Size : %1 milimeter"). arg(PhysicalSize)
+            << tr("PrimaryOrientation : %1")   . arg(qApp->screens()[i]->primaryOrientation());
+
+        QStringListModel *systemInfoModel = new QStringListModel(infos);
+
+        QListView *p = new QListView();
+        p->setModel(systemInfoModel);
+
+        QWidget *w = new QWidget();
+        QFont fl ("Cantarell", 14, QFont::Normal);
+        QFont fp ("Cantarell", 11, QFont::Normal);
+        QLabel *l = new QLabel("Screen : " + QString::number(i+1));
+        QVBoxLayout *v = new QVBoxLayout();
+        QHBoxLayout *h = new QHBoxLayout();
+
+        l->setFont(fl);
+        p->setFont(fp);
+
+        h->addWidget(p);
+        h->setContentsMargins(1, 1, 1, 5);
+
+        v->addWidget(l);
+        v->addLayout(h);
+
+        w->setLayout(v);
+
+        p->setStyleSheet("QWidget{background-color: #1B252F; ;color: #ffffff;padding: 5px 5px 5px 5px;}");
+        w->setStyleSheet("QWidget{background-color:#1F2B38;color:#ffffff;}");
+
+        ui->list->addWidget(w);
+    }
+}

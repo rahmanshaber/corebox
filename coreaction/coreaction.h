@@ -89,6 +89,7 @@ private slots:
     void on_corefm_clicked();
     void on_start_clicked();
     void on_search_clicked();
+
 };
 
 #endif // COREACTION_H

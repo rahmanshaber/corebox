@@ -56,7 +56,7 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QFrame" name="sidebar">
+     <widget class="QWidget" name="sidebar" native="true">
       <property name="minimumSize">
        <size>
         <width>40</width>
@@ -68,12 +68,6 @@
 background-color: #111111;
 border: 1px rgb(0, 0, 0);
 }</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Plain</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <property name="spacing">
@@ -610,6 +604,9 @@ background-color: #1268A4;
           </size>
          </property>
         </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="resize"/>
        </item>
       </layout>
      </widget>

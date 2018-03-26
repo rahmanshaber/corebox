@@ -68,6 +68,7 @@ private slots:
 private:
     Ui::settings *ui;
     SettingsManage sm;
+
 };
 
 #endif // SETTINGS_H

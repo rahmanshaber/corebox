@@ -80,6 +80,7 @@ private:
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     int filterEngine(QString name);
+
 };
 
 #endif // COREBOX_H
