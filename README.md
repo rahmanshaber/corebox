@@ -9,9 +9,9 @@
 <img src="docs/screenshots/a4.png" width="500">
 
 ### Download
-*Release date Monday, March 26, 2018.
-*Here is the download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
-*See the fixed bug and new features [link](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
+* Release date Monday, March 26, 2018.
+* Here is the download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
+* See the fixed bug and new features [link](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Build
 * To build see the buidinfo.txt in doc folder
