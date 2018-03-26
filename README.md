@@ -10,7 +10,7 @@
 
 ### Download
 * Release date Monday, March 26, 2018.
-* Here is the download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
+* Here is the app download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
 * See the fixed bug and new features [link](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Build
