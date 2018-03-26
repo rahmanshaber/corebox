@@ -1,36 +1,36 @@
 v.2
 
-- fixed tabengine
-- fixed rename problem
-- fixed view mode
+- fixed tabengine in corebox.
+- fixed rename problem in corefm.
+- fixed view mode in corefm.
 - icondlg.cpp and header >> removed
-- arrange item fixed
+- arrange item fixed in corefm.
 - fixed hidden is not saving it's last state.
-- improved arciving
-- fixed alarm page
+- improved arciving in corefm.
+- fixed alarm page in coretime.
 - removed coretime settings.
 - fixed page selecte in coretime.
 - fixed sound path in coretime.
 - fixed the settings.
 - changed start ui.
 - removed background from start.
-- fixed alarm edit button nor working properly
-- archive available for all problem
-- fixed extract here problem
-- upgraded AppsName to enum
-- fixed not going to the currently opened tab
+- fixed alarm edit button not working properly.
+- creating archive in all all format added in corefm.
+- fixed extract here problem in corefm.
+- upgraded AppsName to enum in corebox.
+- fixed not going to the currently opened tab in corebox.
 - bookmark location changed to .config/coreBox folder
-- added coreaction section in settings
-- fixed properties window icon.
-- coreaction's size code moved from main.cpp to coreaction
-- bookmark location button removed.
+- added coreaction section in settings.
+- fixed properties window icon in corefm.
+- coreaction's size code moved from main.cpp to coreaction.cpp.
+- bookmark location button removed from bookmark app.
 - fixed tool button in bookmark.
-- fixed corepaint save dialog.
-- fixed coreaction is creating in config folder.
+- fixed corepaint save dialog in corepaint.
+- fixed coreaction is creating setting file in config folder.
 - removed demon from corefm.
 - changed page ui of all apps.
 - fixed corefm's new page is not going in new opened tab.
-- if folder is empty shows a message.
+- if folder is empty shows a message in corefm.
 - added multiple tab support in corepad.
 - limited the openable tab in corepad to 10.
 - fixed multiwindow problem in corebox.
@@ -38,5 +38,4 @@ v.2
 - added option to resize corebox.
 - added display page in deshboard app.
 - added multiwindow support.
--
 

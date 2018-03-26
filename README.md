@@ -9,9 +9,15 @@
 <img src="docs/screenshots/a4.png" width="500">
 
 ### Download
-* Release date Monday, March 26, 2018.
+* Version 2 release date Monday, March 26, 2018.
 * Here is the app download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
 * See the fixed bug and new features [link](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
+
+### Change in letest release
+* added multiwindow support.
+* added option to resize corebox.
+* added multiple tab support in corepad.
+* improved arciving in corefm and more in [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Build
 * To build see the buidinfo.txt in doc folder
