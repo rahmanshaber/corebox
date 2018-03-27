@@ -11,16 +11,17 @@
 ### Download
 * Version 2 released date Monday, March 26, 2018.
 * Here is the app download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
-* See the fixed bug and new features [link](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
+* See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Changes in latest release
+* Total 40 fixes in this release.s 
 * added multiwindow support.
 * added option to resize corebox.
 * added multiple tab support in corepad.
 * improved archiving in corefm and more in [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Build
-* To build see the buidinfo.txt in doc folder
+* To build see the buidinfo.txt in doc folder [here](https://github.com/rahmanshaber/corebox/blob/master/docs/buildinfo.txt "Title") 
 
 ### Dependencies:
 * qt5
