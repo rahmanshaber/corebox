@@ -250,7 +250,7 @@ border-radius: 10px;
             </font>
            </property>
            <property name="text">
-            <string>CoreBox v.2.0 Beta</string>
+            <string>CoreBox v.2.0 Stable</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -342,7 +342,7 @@ border-radius: 10px;
          <item row="1" column="1">
           <widget class="QLabel" name="label_18">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack the github page for more info &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Cheack out the manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack the github page for more info &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Cheack out the manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Release date Monday,March 26,2018. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="margin">
             <number>0</number>

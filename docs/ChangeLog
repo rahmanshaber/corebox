@@ -1,4 +1,5 @@
-v.2
+
+version 2,Released date Monday, March 26, 2018
 
 - fixed tabengine in corebox.
 - fixed rename problem in corefm.
@@ -6,10 +7,10 @@ v.2
 - icondlg.cpp and header >> removed
 - arrange item fixed in corefm.
 - fixed hidden is not saving it's last state.
-- improved arciving in corefm.
+- improved archiving in corefm.
 - fixed alarm page in coretime.
 - removed coretime settings.
-- fixed page selecte in coretime.
+- fixed page select in coretime.
 - fixed sound path in coretime.
 - fixed the settings.
 - changed start ui.
@@ -33,9 +34,10 @@ v.2
 - if folder is empty shows a message in corefm.
 - added multiple tab support in corepad.
 - limited the openable tab in corepad to 10.
-- fixed multiwindow problem in corebox.
-- fixed multiwindow problem in sohowing message.
+- added multi-window support.
+- fixed multi-window problem in corebox.
+- fixed multi-window problem in showing message.
 - added option to resize corebox.
-- added display page in deshboard app.
-- added multiwindow support.
+- added display page in dashboard app.
+- added new information in help app.
 

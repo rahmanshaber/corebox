@@ -126,6 +126,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->showthumb->setVisible(0);
     ui->showthumb->setChecked(0);
     ui->actionAscending->setChecked(1);
+    ui->STrash->setVisible(0);
 
     ui->newTab->setDefaultAction(ui->actionNewTab);
     ui->copy->setDefaultAction(ui->actionCopy);

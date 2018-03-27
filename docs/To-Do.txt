@@ -1,8 +1,8 @@
-version 2
 
-1-fetures
+1-features
 0-bug/fix
 2-fixed-test is needed
+
 
 corebox
 1 - need two theme (dark and light)
@@ -12,7 +12,7 @@ corebox
 1 - setwindow title >> a global function.
 1 - add option for using default window manager
 1 - update the app when clicked from window.(only coreboxapps)
-1 - if bookmark is booked it shouldshow a message if it exists and show the section it was booked.
+1 - if bookmark is booked it should show a message if it exists and show the section it was booked.
 1 - separate process for per app.
 1 - limit the openable window.
 1 - tab text align left.
@@ -24,9 +24,9 @@ bookmarks
 
 dashboard
 0 - show used network in general section.
-1 - remove unwanted pertition
+1 - remove unwanted partition
 1 - selected drive will show only it's pertition.
-1 - mount specific pertition on corebox startup.
+1 - mount specific partition on corebox startup.
 1 - add drive frame in drive view.
 0 - bettery properties >>convert it to>> listview(hint>>>systemInformationInit);
 
@@ -36,7 +36,7 @@ corepaint
 1 - open screenshot folder pushbutton which show the screenshot folder.
 
 Search
-1 - if searh opened from FM hide locate option.
+1 - if search opened from FM hide locate option.
 1 - add button to set folder
 1 - show the file/folder in coerFM with selecting the file/folder.
 0 - if path is given find is not working.but locate is working.
@@ -44,20 +44,20 @@ Search
 corefm
 0 - add drive list in shortcut widget with mount/unmount.
 0 - void corefm::tabChanged(int index)>>> not working.
-0 - pathedit is always in focuse even outside clicked.
+0 - pathedit is always in focus, even outside clicked.
 0 - rename mode is not going off when clicked outside.
-0 - somtimes in detail mode, dobule click it goes to rename mode.
+0 - sometimes in detail mode, dobule click it goes to rename mode.
 2 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
-1 - rightbuttonMenu>new add a new option.derectly make a paint app file.
+1 - rightbuttonMenu>new add a new option. directly make a paint app file.
 1 - set custom icom in home's folder.
 1 - add tree and mediainfo package.
-1 - copyto some common places(like desktop,downloads,home)
+1 - copy-to some common places(like desktop,downloads,home)
 1 - properties - option to make file executable(chmod a+x filepath)
 0 - preview is not working.
 1 - ctrl + wheel = zoom.
 1 - multiple file's combined size.
-1 - add trash in on_actionTrash_it_triggered .proper trash intigration.
-0 - after trash , the file is not resotreable.
+1 - add trash in on_actionTrash_it_triggered .proper trash integration.
+0 - after trash , the file is not restoreable.
 1 - improve app engine.
 1 - send a file to a drive.
 1 - fix properties ui(fram less)
@@ -75,32 +75,33 @@ coretime
 0 - fix the timer start/pause button .
 0 - save the alarm list in config folder.(another file if possible.
 0 - improve the alarm .
-0 - snooze.ui>>>alling the button in center
+0 - snooze.ui>>> alling the button in center
 0 - need a done button for alarm completion.
 1 - set reminder option.
 1 - show a message (not a messagebox) before 5 minutes of alarm time
 
 corepad
-0 - closeable pages.
+0 - close-able pages.
 
 setting
 1 - also open corebox at start up.
-    
+1 - add option to backup corbox config folder as a zip and restore the settings.
+
 start
-0 - reload buttons in buttom.(now in vertical>>>center)
+0 - reload buttons in button.(now in vertical>>>center)
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
-0 - recent path not opening with dobule click.(Open when double clicked on name but not at datetime)
+0 - recent path not opening with double click.(Open when double clicked on name but not at date and path)
 
 coreimage
-0 - coreimage crash in some file extention(7.3.png,b.b.png)
+0 - coreimage crash when open image with some file extension(7.3.png,b.b.png)
 0 - need a black image on app start.
-0 - deleteing pic, will also delete entry from path qstringlist
-1 - ctrl + wheel = zoom shorcut.
+0 - deleting pic, will also delete entry from path qstringlist
+1 - ctrl + wheel = zoom shortcut.
 0 - mouse wheel >>next image not working sometimes
 
 coreplayer
-1 - video thumbnails of playlist.
+1 - video thumbnails of play-list.
 1 - hide the navigation bar when playing.
 1 - move to qtAV engine
 0 - after stop clicked player widget turs white
@@ -108,22 +109,25 @@ coreplayer
 2 - play by open file function automatically play button is clicked.
 
 coreshot
-1 - add stylsheet
-2 - add active window at screenshot
-1 - on left mouse click at screenshot when a screenshot is taken it save a file to tmp folder
+1 - fixed the button style.
+2 - add active window at screen-shot.
+1 - on left mouse click at screen-shot when a screenshot is taken it save a file to tmp folder.
+
+coreaction
+1 - save the notes.
 
 help
-1 - add some recomendation
+1 - add some recommendation
 
 app
 1 - terminal app
 1 - pdf viewer
-1 - file renamer
+1 - file reamer
 
 packaging
-0 - fixthe fonts in appimage.
+0 - fix the fonts in appimage.
 
-infuture
+in-future
 1 - make manjaro iso with lxqt desktop as base.
 
 
