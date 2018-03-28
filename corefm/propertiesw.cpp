@@ -37,7 +37,6 @@ propertiesw::propertiesw(QString paths,QWidget *parent) :QWidget(parent),ui(new 
     permission();
     general();
     details();
-//    filesize();
     show();
 
     ui->partitionSize->setText(getDriveInfo(pathName));
@@ -138,16 +137,16 @@ void propertiesw::permission(){
 }
 
 QIcon propertiesw::geticon(const QString &filename){
-  QMimeDatabase mime_database;
-  QIcon icon;
-  QList<QMimeType> mime_types = mime_database.mimeTypesForFileName(filename);
-  for (int i=0; i < mime_types.count() && icon.isNull(); i++)
-    icon = QIcon::fromTheme(mime_types[i].iconName());
+    QMimeDatabase mime_database;
+    QIcon icon;
+    QList<QMimeType> mime_types = mime_database.mimeTypesForFileName(filename);
+    for (int i=0; i < mime_types.count() && icon.isNull(); i++)
+      icon = QIcon::fromTheme(mime_types[i].iconName());
 
-  if (icon.isNull())
-    return QApplication::style()->standardIcon(QStyle::SP_FileIcon);
-  else
-    return icon;
+    if (icon.isNull())
+      return QApplication::style()->standardIcon(QStyle::SP_FileIcon);
+    else
+      return icon;
 }
 
 void propertiesw::checkboxesChanged()

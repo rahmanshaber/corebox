@@ -110,7 +110,6 @@ ApplicationDialog::ApplicationDialog(QWidget *parent) : QDialog(parent) {
           SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
           SLOT(updateCommand(QTreeWidgetItem*,QTreeWidgetItem*)));
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Returns currently selected launcher
@@ -119,7 +118,6 @@ ApplicationDialog::ApplicationDialog(QWidget *parent) : QDialog(parent) {
 QString ApplicationDialog::getCurrentLauncher() const {
   return edtCommand->text();
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Creates default application categories
@@ -154,7 +152,6 @@ void ApplicationDialog::createCategories() {
     categories.insert(name, category);
   }
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Searches the most suitable category for application
@@ -190,7 +187,6 @@ QTreeWidgetItem* ApplicationDialog::findCategory(const DesktopFile &app) {
   }
   return category;
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Updates launcher command
@@ -201,4 +197,3 @@ void ApplicationDialog::updateCommand(QTreeWidgetItem *current,QTreeWidgetItem *
     Q_UNUSED(previous);
     edtCommand->setText(applications.key(current));
 }
-//---------------------------------------------------------------------------

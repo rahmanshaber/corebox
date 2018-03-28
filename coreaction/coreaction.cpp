@@ -42,7 +42,6 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
 
     this->setFixedSize(x, y);
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint); //| Qt::ToolTip
-
     this->move(sw, 0);
 
     //DEMO

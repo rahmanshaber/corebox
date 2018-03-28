@@ -1451,6 +1451,12 @@ background-color: #1268A4;
      </property>
      <item>
       <widget class="QStackedWidget" name="view">
+       <property name="styleSheet">
+        <string notr="true">QWidget {
+background-color:#F2F2F2 ;
+color:#000000; 
+}</string>
+       </property>
        <property name="lineWidth">
         <number>0</number>
        </property>
@@ -1486,8 +1492,6 @@ background-color: #1268A4;
            </property>
            <property name="styleSheet">
             <string notr="true">QListView {
-background-color:#F2F2F2 ;
-color:#000000; 
 padding: 5px 5px 0px 5px;
 }
 
@@ -1550,11 +1554,7 @@ color:#000000;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QTreeView {
-background-color:#F2F2F2 ;
-color:#000000; 
-}
-QTreeView::item{
+            <string notr="true">QTreeView::item{
 border-bottom-style:solid;
 border-width:1;
 border-color: #E6E6E6;

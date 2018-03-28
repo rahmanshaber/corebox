@@ -74,7 +74,6 @@ ProcessDialog::ProcessDialog(QProcess* proc, const QString &procName,
   connect(btnClear, SIGNAL(clicked()), output, SLOT(clear()));
   connect(btnClose, SIGNAL(clicked()), SLOT(hide()));
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Reaction on process finish
@@ -83,7 +82,6 @@ void ProcessDialog::onProcFinished() {
   //this->hide();
   this->deleteLater();
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Reaction on process start
@@ -91,7 +89,6 @@ void ProcessDialog::onProcFinished() {
 void ProcessDialog::onProcStarted() {
   this->show();
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Reaction on process standard output
@@ -102,4 +99,3 @@ void ProcessDialog::onProcStdOut() {
   output->addItem(new QListWidgetItem(text, output));
   output->scrollToBottom();
 }
-//---------------------------------------------------------------------------

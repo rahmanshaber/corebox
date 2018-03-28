@@ -82,7 +82,6 @@ myModel::myModel(bool realMime, MimeUtils *mimeUtils) {
 
   realMimeTypes = realMime;
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Deletes model of file system
@@ -91,7 +90,6 @@ myModel::~myModel() {
   delete rootItem;
   delete iconFactory;
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Deletes icon cache
@@ -102,7 +100,6 @@ void myModel::clearIconCache() {
   QFile(QDir::homePath() + "/.config/coreBox/folder.cache").remove();
   QFile(QDir::homePath() + "/.config/coreBox/file.cache").remove();
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Sets whether use real mime types or not
@@ -111,7 +108,6 @@ void myModel::clearIconCache() {
 void myModel::setRealMimeTypes(bool realMimeTypes) {
   this->realMimeTypes = realMimeTypes;
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Returns true if real mime types are used
@@ -120,7 +116,6 @@ void myModel::setRealMimeTypes(bool realMimeTypes) {
 bool myModel::isRealMimeTypes() const {
   return realMimeTypes;
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Returns mime utils
@@ -129,7 +124,6 @@ bool myModel::isRealMimeTypes() const {
 MimeUtils* myModel::getMimeUtils() const {
   return mimeUtilsPtr;
 }
-//---------------------------------------------------------------------------
 
 QModelIndex myModel::index(int row, int column, const QModelIndex &parent) const
 {
@@ -145,7 +139,6 @@ QModelIndex myModel::index(int row, int column, const QModelIndex &parent) const
     return QModelIndex();
 }
 
-//---------------------------------------------------------------------------------------
 QModelIndex myModel::index(const QString& path) const
 {
     myModelItem *item = rootItem->matchPath(path.split(SEPARATOR),0);
@@ -155,7 +148,6 @@ QModelIndex myModel::index(const QString& path) const
     return QModelIndex();
 }
 
-//---------------------------------------------------------------------------------------
 QModelIndex myModel::parent(const QModelIndex &index) const
 {
     if(!index.isValid()) return QModelIndex();
@@ -171,7 +163,6 @@ QModelIndex myModel::parent(const QModelIndex &index) const
     return createIndex(parentItem->childNumber(), 0, parentItem);
 }
 
-//---------------------------------------------------------------------------------------
 bool myModel::isDir(const QModelIndex &index)
 {
     myModelItem *item = static_cast<myModelItem*>(index.internalPointer());
@@ -181,7 +172,6 @@ bool myModel::isDir(const QModelIndex &index)
     return false;
 }
 
-//---------------------------------------------------------------------------------------
 QFileInfo myModel::fileInfo(const QModelIndex &index)
 {
     myModelItem *item = static_cast<myModelItem*>(index.internalPointer());
@@ -201,7 +191,6 @@ qint64 myModel::size(const QModelIndex &index)
     return 0;
 }
 
-//---------------------------------------------------------------------------------------
 QString myModel::fileName(const QModelIndex &index)
 {
     myModelItem *item = static_cast<myModelItem*>(index.internalPointer());
@@ -211,7 +200,6 @@ QString myModel::fileName(const QModelIndex &index)
     return "";
 }
 
-//---------------------------------------------------------------------------------------
 QString myModel::filePath(const QModelIndex &index)
 {
     myModelItem *item = static_cast<myModelItem*>(index.internalPointer());
@@ -221,7 +209,6 @@ QString myModel::filePath(const QModelIndex &index)
     return "";
 }
 
-//---------------------------------------------------------------------------------------
 QString myModel::getMimeType(const QModelIndex &index)
 {
     myModelItem *item = static_cast<myModelItem*>(index.internalPointer());
@@ -240,7 +227,6 @@ QString myModel::getMimeType(const QModelIndex &index)
     return item->mMimeType;
 }
 
-//---------------------------------------------------------------------------------------
 void myModel::notifyChange()
 {
     notifier->setEnabled(0);
@@ -284,14 +270,12 @@ void myModel::notifyChange()
     notifier->setEnabled(1);
 }
 
-//---------------------------------------------------------------------------------------
 void myModel::eventTimeout()
 {
     notifyProcess(lastEventID);
     eventTimer.stop();
 }
 
-//---------------------------------------------------------------------------------------
 void myModel::notifyProcess(int eventID)
 {
     if(watchers.contains(eventID))
@@ -342,7 +326,6 @@ void myModel::notifyProcess(int eventID)
     }
 }
 
-//---------------------------------------------------------------------------------
 void myModel::addWatcher(myModelItem *item)
 {
     while(item != rootItem)
@@ -353,7 +336,6 @@ void myModel::addWatcher(myModelItem *item)
     }
 }
 
-//---------------------------------------------------------------------------------
 bool myModel::setRootPath(const QString& path)
 {
     currentRootPath = path;
@@ -377,7 +359,6 @@ bool myModel::setRootPath(const QString& path)
     return false;
 }
 
-//---------------------------------------------------------------------------------------
 bool myModel::canFetchMore (const QModelIndex & parent) const
 {
     myModelItem *item = static_cast<myModelItem*>(parent.internalPointer());
@@ -389,7 +370,6 @@ bool myModel::canFetchMore (const QModelIndex & parent) const
 
 }
 
-//---------------------------------------------------------------------------------------
 void myModel::fetchMore (const QModelIndex & parent)
 {
     myModelItem *item = static_cast<myModelItem*>(parent.internalPointer());
@@ -403,7 +383,6 @@ void myModel::fetchMore (const QModelIndex & parent)
     return;
 }
 
-//---------------------------------------------------------------------------------------
 void myModel::populateItem(myModelItem *item)
 {
     item->walked = 1;
@@ -415,13 +394,11 @@ void myModel::populateItem(myModelItem *item)
         new myModelItem(one,item);
 }
 
-//---------------------------------------------------------------------------------
 int myModel::columnCount(const QModelIndex &parent) const
 {
     return (parent.column() > 0) ? 0 : 5;
 }
 
-//---------------------------------------------------------------------------------------
 int myModel::rowCount(const QModelIndex &parent) const
 {
     myModelItem *item = static_cast<myModelItem*>(parent.internalPointer());
@@ -429,7 +406,6 @@ int myModel::rowCount(const QModelIndex &parent) const
     return rootItem->childCount();
 }
 
-//---------------------------------------------------------------------------------
 void myModel::refresh()
 {
     myModelItem *item = rootItem->matchPath(QStringList("/"));
@@ -444,7 +420,6 @@ void myModel::refresh()
     endResetModel();
 }
 
-//---------------------------------------------------------------------------------
 void myModel::update()
 {
     myModelItem *item = rootItem->matchPath(currentRootPath.split(SEPARATOR));
@@ -453,7 +428,6 @@ void myModel::update()
         child->refreshFileInfo();
 }
 
-//---------------------------------------------------------------------------------
 void myModel::refreshItems()
 {
     myModelItem *item = rootItem->matchPath(currentRootPath.split(SEPARATOR));
@@ -462,7 +436,6 @@ void myModel::refreshItems()
     populateItem(item);
 }
 
-//---------------------------------------------------------------------------------
 QModelIndex myModel::insertFolder(QModelIndex parent)
 {
     myModelItem *item = static_cast<myModelItem*>(parent.internalPointer());
@@ -488,7 +461,6 @@ QModelIndex myModel::insertFolder(QModelIndex parent)
     return index(item->childCount() - 1,0,parent);
 }
 
-//---------------------------------------------------------------------------------
 QModelIndex myModel::insertFile(QModelIndex parent)
 {
     myModelItem *item = static_cast<myModelItem*>(parent.internalPointer());
@@ -515,19 +487,16 @@ QModelIndex myModel::insertFile(QModelIndex parent)
     return index(item->childCount()-1,0,parent);
 }
 
-//---------------------------------------------------------------------------------
 Qt::DropActions myModel::supportedDropActions() const
 {
     return Qt::CopyAction | Qt::MoveAction;
 }
 
-//---------------------------------------------------------------------------------
 QStringList myModel::mimeTypes() const
 {
     return QStringList("text/uri-list");
 }
 
-//---------------------------------------------------------------------------------
 QMimeData * myModel::mimeData(const QModelIndexList & indexes) const
 {
     QMimeData *data = new QMimeData();
@@ -545,7 +514,6 @@ QMimeData * myModel::mimeData(const QModelIndexList & indexes) const
 }
 
 
-//---------------------------------------------------------------------------------
 void myModel::cacheInfo()
 {
     QFile fileIcons(QDir::homePath() + "/.config/coreBox/file.cache");
@@ -574,7 +542,6 @@ void myModel::cacheInfo()
     }
 }
 
-//---------------------------------------------------------------------------
 
 /**
  * @brief Sets indicator wthether show thumbnails of pictures
@@ -583,7 +550,6 @@ void myModel::cacheInfo()
 void myModel::setMode(bool icons) {
   showThumbs = icons;
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Loads mime types
@@ -625,7 +591,6 @@ void myModel::loadMimeTypes() const {
   } while (!out.atEnd());
   mimeInfo.close();
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Loads thumbnails
@@ -661,7 +626,6 @@ void myModel::loadThumbs(QModelIndexList indexes) {
     }
   }
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Creates thumbnail for given item
@@ -704,7 +668,6 @@ QByteArray myModel::getThumb(QString item) {
   writer.write(background);
   return buffer.buffer();
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Returns model data (information about directories and files)
@@ -767,7 +730,7 @@ QVariant myModel::data(const QModelIndex & index, int role) const {
       case 4 : {
         if (item->mPermissions.isNull()) {
           QString str;
-#if QT_VERSION >= 0x050000
+
           QFile::Permissions perms = item->fileInfo().permissions();
           str.append(perms.testFlag(QFileDevice::ReadOwner) ? "r" : "-" );
           str.append(perms.testFlag(QFileDevice::WriteOwner) ? "w" : "-" );
@@ -778,18 +741,7 @@ QVariant myModel::data(const QModelIndex & index, int role) const {
           str.append(perms.testFlag(QFileDevice::ReadOther) ? "r" : "-" );
           str.append(perms.testFlag(QFileDevice::WriteOther) ? "w" : "-" );
           str.append(perms.testFlag(QFileDevice::ExeOther) ? "x" : "-" );
-#else
-          QFlags<QFile::Permissions> perms = item->fileInfo().permissions();
-          str.append(perms.testFlag(QFile::ReadOwner) ? "r" : "-" );
-          str.append(perms.testFlag(QFile::WriteOwner) ? "w" : "-" );
-          str.append(perms.testFlag(QFile::ExeOwner) ? "x" : "-" );
-          str.append(perms.testFlag(QFile::ReadGroup) ? "r" : "-" );
-          str.append(perms.testFlag(QFile::WriteGroup) ? "w" : "-" );
-          str.append(perms.testFlag(QFile::ExeGroup) ? "x" : "-" );
-          str.append(perms.testFlag(QFile::ReadOther) ? "r" : "-" );
-          str.append(perms.testFlag(QFile::WriteOther) ? "w" : "-" );
-          str.append(perms.testFlag(QFile::ExeOther) ? "x" : "-" );
-#endif
+
           str.append(" " + item->fileInfo().owner() + " " +
                      item->fileInfo().group());
           item->mPermissions = str;
@@ -819,7 +771,6 @@ QVariant myModel::data(const QModelIndex & index, int role) const {
   }
   return QVariant();
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Finds icon of a file
@@ -903,7 +854,6 @@ QVariant myModel::findIcon(myModelItem *item) const {
   mimeIcons->insert(suffix, theIcon);
   return theIcon;
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Finds icon of a file, based on file mime type
@@ -923,7 +873,6 @@ QVariant myModel::findMimeIcon(myModelItem *item) const {
   mimeIcons->insert(mime, theIcon);
   return theIcon;
 }
-//---------------------------------------------------------------------------
 
 bool myModel::setData(const QModelIndex & index, const QVariant & value, int role)
 {
@@ -945,7 +894,6 @@ bool myModel::setData(const QModelIndex & index, const QVariant & value, int rol
     return ok;
 }
 
-//---------------------------------------------------------------------------------
 bool myModel::remove(const QModelIndex & theIndex)
 {
     myModelItem *item = static_cast<myModelItem*>(theIndex.internalPointer());
@@ -983,7 +931,6 @@ bool myModel::remove(const QModelIndex & theIndex)
     return error;
 }
 
-//---------------------------------------------------------------------------------
 
 /**
  * @brief Drag drop to current datamodel
@@ -1035,7 +982,6 @@ bool myModel::dropMimeData(const QMimeData *data, Qt::DropAction action,
   emit dragDropPaste(data, filePath(parent), mode);
   return true;
 }
-//------------------------------------------------------------------------------
 
 QVariant myModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
@@ -1054,20 +1000,17 @@ QVariant myModel::headerData(int section, Qt::Orientation orientation, int role)
     return QVariant();
 }
 
-//---------------------------------------------------------------------------------------
 Qt::ItemFlags myModel::flags(const QModelIndex &index) const
 {
     if(!index.isValid()) return 0;
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled;
 }
 
-//---------------------------------------------------------------------------------
 void myModel::addCutItems(QStringList files)
 {
     cutItems = files;
 }
 
-//---------------------------------------------------------------------------------
 void myModel::clearCutItems()
 {
     cutItems.clear();

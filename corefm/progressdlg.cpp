@@ -59,14 +59,12 @@ myProgressDialog::myProgressDialog(QString title)
    QTimer::singleShot(1000,this,SLOT(setShowing()));
 }
 
-//---------------------------------------------------------------------------
 void myProgressDialog::setShowing()
 {
     if(bar->value() < 70) open();
     return;
 }
 
-//---------------------------------------------------------------------------
 void myProgressDialog::update(qint64 bytes, qint64 total, QString name)
 {
     //set file name

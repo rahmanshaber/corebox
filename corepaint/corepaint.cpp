@@ -440,12 +440,10 @@ void corepaint::on_paintTabs_currentChanged(int index)
 
     if(!getCurrentImageArea()->getFileName().isEmpty())
     {
-//        setWindowTitle(QString("%1 - EasyPaint").arg(getCurrentImageArea()->getFileName()));
         currentFile = QDir(currentFile).path() + "/" + getCurrentImageArea()->getFileName();
     }
     else
     {
-//        setWindowTitle(QString("%1 - EasyPaint").arg(tr("Untitled Image")));
         currentFile = "Untitled Image";
     }
     mUndoStackGroup->setActiveStack(getCurrentImageArea()->getUndoStack());

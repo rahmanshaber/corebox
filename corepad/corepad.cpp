@@ -112,21 +112,6 @@ void corepad::shotcuts()
 }
 
 void corepad::openText(QString filePath) {
-    /*f (!filePath.isNull()) {
-        workFileName = filePath;
-        workingFile = new QFile(filePath);
-        if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) return;
-        else {
-            QTextStream in(workingFile);
-            ui->text->setPlainText(in.readAll());
-            workingFile->close();
-            isSaved = true;
-            ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
-        }
-    }
-    else {
-        on_cNew_clicked();
-    }*/
     initializeNewTab(filePath);
 }
 
@@ -280,19 +265,6 @@ void corepad::on_cOpen_clicked()
         return;
     }
     else {
-//        workingFile = new QFile(workFileName);
-//        if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) {
-//            messageEngine("Can't open file", "Warning");
-//            return;
-//        }
-//        else {
-//            QTextStream in(workingFile);
-//            text->setPlainText(in.readAll());
-//            workingFile->close();
-//            isSaved = true;
-//            ui->workingOn->setText(QFileInfo(workingFile->fileName()).fileName());
-//            messageEngine("File Opened", "Info");
-//        }
         bool open = initializeNewTab(workFileName);
         if (open) messageEngine("File Opened", "Info");
         else messageEngine("Can't open file", "Warning");
@@ -301,24 +273,6 @@ void corepad::on_cOpen_clicked()
 
 void corepad::on_cNew_clicked()
 {
-    /*if (ui->workingOn->text().contains("*")) {
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
-        if (reply == QMessageBox::Yes) {
-            workFileName = "";
-            ui->workingOn->setText("untitled.txt");
-            text->setPlainText("");
-        }
-        else if (reply == QMessageBox::No){
-            return;
-        }
-    }
-    else {
-        workFileName = "";
-        ui->workingOn->setText("untitled.txt");
-        text->setPlainText("");
-    }*/
-
     initializeNewTab("");
 }
 
@@ -405,5 +359,4 @@ void corepad::on_notes_currentChanged(int index)
     on_text_undoAvailable(text->isUndoRedoEnabled());
     //on_text_textChanged();
     on_searchHere_textChanged(ui->searchHere->text());
-    qDebug() << text->toPlainText() << " L";
 }

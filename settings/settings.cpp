@@ -30,11 +30,6 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     qDebug() << "settings opening";
     ui->setupUi(this);
 
-    qDebug() << "SHOW TOOL" << sm.getShowToolbox();
-    qDebug() << "CURRENT THEME" << sm.getThemeName();
-//    cSett = new QSettings("coreBox", "coreBox");
-
-//    cSett->beginGroup("CoreFM");
     ui->terminals->setCurrentText(sm.getTerminal());//cSett->value("Terminal").toString());
     ui->startPath->setText(sm.getStartupPath());//cSett->value("Startup-Path").toString());
 
@@ -48,7 +43,6 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
 
     ui->view->addItem("Detail");
     ui->view->addItem("Icon");
-//    ui->view->setCurrentText(sm.getViewMode());//cSett->value("View-Mode").toString());
 
     QString currentTheme = sm.getThemeName();//cSett->value("Force-Theme").toString();
     QDirIterator it("/usr/share/icons", QDir::Dirs | QDir::NoDotAndDotDot);
@@ -59,20 +53,13 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     }
     ui->cmbIconTheme->addItems(iconThemes);
     ui->cmbIconTheme->setCurrentText(currentTheme);
-
-    //cSett->endGroup();
-
-    //cSett->beginGroup("CoreScreenshot");
     ui->ssLocation->setText(sm.getSCSaveLocation());//cSett->value("Save-Location").toString());
-    //cSett->endGroup();
 
     selectedTerminal = ui->terminals->currentText();
 
-    //cSett->beginGroup("CoreBox");
     ui->isMaximized->setChecked(sm.getBoxIsMaximize());//cSett->value("Maximized").toBool());
     ui->isBattery->setChecked(sm.getShowBattery());//cSett->value("Show-Battery").toBool());
     ui->isRecentDisable->setChecked(sm.getDisableRecent());//cSett->value("Recent-Disable").toBool());
-    //cSett->endGroup();
 
     MimeUtils *mimeUtils = new MimeUtils(this);
     mimeUtils->setDefaultsFileName(tmp);
@@ -265,7 +252,6 @@ void settings::removeAppAssoc() {
   qDeleteAll(ui->listAssoc->selectedItems());
   updateMimeAssoc(ui->mimesWidget->currentItem());
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Moves association up in list
@@ -280,7 +266,6 @@ void settings::moveAppAssocUp() {
   ui->listAssoc->insertItem(currIndex, temp);
   updateMimeAssoc(ui->mimesWidget->currentItem());
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Moves association down in list

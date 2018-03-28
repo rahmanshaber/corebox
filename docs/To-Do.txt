@@ -109,8 +109,7 @@ coreplayer
 2 - play by open file function automatically play button is clicked.
 
 coreshot
-1 - fixed the button style.
-2 - add active window at screen-shot.
+2 - add active window option.
 1 - on left mouse click at screen-shot when a screenshot is taken it save a file to tmp folder.
 
 coreaction

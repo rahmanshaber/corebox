@@ -2,6 +2,8 @@
 version 2.1
 
 - fixed battery pointer that caused compiling error in dashboard app.
+- fixed button ui in corescreenshot app.
+-
 
 version 2,Released date Monday, March 26, 2018
 

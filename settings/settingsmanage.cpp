@@ -41,9 +41,7 @@ void SettingsManage::createDefaultSettings() {
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreAction");
-//        cSetting->setValue("Maximized", false);
         cSetting->setValue("Show-Battery", false);
-//        cSetting->setValue("Recent-Disable", true);
         cSetting->endGroup();
 
     }

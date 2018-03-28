@@ -50,44 +50,35 @@ DesktopFile::DesktopFile(const QString &fileName) {
     categories.removeFirst();
   }
 }
-//---------------------------------------------------------------------------
 
 QString DesktopFile::getFileName() const {
   return fileName;
 }
-//---------------------------------------------------------------------------
 
 QString DesktopFile::getPureFileName() const {
   return fileName.split("/").last().remove(".desktop");
 }
-//---------------------------------------------------------------------------
 
 QString DesktopFile::getName() const {
   return name;
 }
-//---------------------------------------------------------------------------
 
 QString DesktopFile::getExec() const {
   return exec;
 }
-//---------------------------------------------------------------------------
 
 QString DesktopFile::getIcon() const {
   return icon;
 }
-//---------------------------------------------------------------------------
 
 QString DesktopFile::getType() const {
   return type;
 }
-//---------------------------------------------------------------------------
 
 QStringList DesktopFile::getCategories() const {
   return categories;
 }
-//---------------------------------------------------------------------------
 
 QStringList DesktopFile::getMimeType() const {
   return mimeType;
 }
-//---------------------------------------------------------------------------

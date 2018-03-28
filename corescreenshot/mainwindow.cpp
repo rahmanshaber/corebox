@@ -85,6 +85,16 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
     this->setWindowIcon(QIcon(":/icons/CoreShot.svg"));
     this->setWindowTitle("CoreShot");
     setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A;padding: 5px 5px 5px 5px;}");
+
+    QString p ="QPushButton{border: 1px solid rgb(67, 67, 67);padding: 3px 2px 3px 2px;}QPushButton:hover {background-color: rgb(48, 140, 198)}QPushButton:checked{background-color:rgb(48, 140, 198);}";
+
+    cPreview->setStyleSheet(p);
+    cShot->setStyleSheet(p);
+    cSave->setStyleSheet(p);
+    cSaveAs->setStyleSheet(p);
+    cCancel->setStyleSheet(p);
+    cType->setStyleSheet(p);
+    cCorePaint->setStyleSheet(p);
 }
 
 MainWindow::~MainWindow()
@@ -97,6 +107,7 @@ MainWindow::~MainWindow()
     delete cSaveAs;
     delete cCancel;
     delete cType;
+    delete cCorePaint;
     delete cLable;
 }
 

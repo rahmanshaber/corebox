@@ -31,10 +31,10 @@ public:
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
 
-
     QWidget* lineNumberArea_() const {
         return lineNumberArea;
     }
+
 protected:
     void resizeEvent(QResizeEvent *event) override;
 
