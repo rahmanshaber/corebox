@@ -1,4 +1,8 @@
 
+version 2.1
+
+- fixed battery pointer that caused compiling error in dashboard app.
+
 version 2,Released date Monday, March 26, 2018
 
 - fixed tabengine in corebox.
@@ -34,9 +38,9 @@ version 2,Released date Monday, March 26, 2018
 - if folder is empty shows a message in corefm.
 - added multiple tab support in corepad.
 - limited the openable tab in corepad to 10.
-- added multi-window support.
+- added multi-monitor support.
 - fixed multi-window problem in corebox.
-- fixed multi-window problem in showing message.
+- fixed multi-monitor problem in showing message.
 - added option to resize corebox.
 - added display page in dashboard app.
 - added new information in help app.

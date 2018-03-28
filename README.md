@@ -14,8 +14,8 @@
 * See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Changes in latest release
-* Total 40 fixes in this release.s 
-* added multiwindow support.
+* Total 40 fixes in this release.
+* added Multi-monitor support.
 * added option to resize corebox.
 * added multiple tab support in corepad.
 * improved archiving in corefm and more in [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .

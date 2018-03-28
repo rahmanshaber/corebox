@@ -414,31 +414,8 @@ void settings::on_ok_clicked()
     sm.setSHowBattery(ui->isBattery->isChecked());
     sm.setDisableRecent(ui->isRecentDisable->isChecked());
 
-//    cSett->beginGroup("CoreFM");
-//    cSett->setValue("Terminal", ui->terminals->currentText());
-//    cSett->setValue("Startup-Path", ui->startPath->text());
-//    cSett->setValue("Force-Theme", ui->cmbIconTheme->currentText());
-//    cSett->setValue("Default-Mime-Apps-File", ui->cmbDefaultMimeApps->currentText());
-//    cSett->setValue("Show-Thumb", ui->checkThumbs->isChecked());;
-//    cSett->setValue("View-Mode", ui->view->currentIndex() == 0 ? "Detail" : "Icon");
-//    cSett->setValue("Zoom", 48);
-//    cSett->setValue("Zoom-Tree", 16);
-//    cSett->setValue("Zoom-List", 24);
-//    cSett->setValue("Zoom-Detail", 16);
-//    cSett->setValue("Sort-Column", 0);
-//    cSett->setValue("Sort-Order", 0);
-//    cSett->endGroup();
-//    cSett->beginGroup("CoreScreenshot");
-//    cSett->setValue("Save-Location", ui->ssLocation->text());
-//    cSett->endGroup();
-//    cSett->beginGroup("CoreBox");
-//    cSett->setValue("Maximized", ui->isMaximized->isChecked());
-//    cSett->setValue("Show-Battery", ui->isBattery->isChecked());
-//    cSett->setValue("Recent-Disable", ui->isRecentDisable->isChecked());
-//    cSett->endGroup();
     messageEngine("Settings Applied", "Info");
     QIcon::setThemeName(sm.getThemeName());
-    on_cancel_clicked();
 }
 
 void settings::on_browseF_clicked()

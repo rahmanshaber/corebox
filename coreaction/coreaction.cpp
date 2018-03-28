@@ -105,10 +105,18 @@ void coreaction::batteryCheck()
 {
     if (sm.getShowBattery()) {
         UPower *u = new UPower(this);
-        Battery *b;
+
+//        Battery *b;
+//        foreach (Battery *bat, *u->batteries()) {
+//            b = u->batteries()->value(bat->path());
+//        }
+        Battery *b = nullptr;
         foreach (Battery *bat, *u->batteries()) {
             b = u->batteries()->value(bat->path());
         }
+        if (!b)
+            return;
+
         ui->batteryProg->setValue(b->percentage());
 
         switch( b->state() ) {
