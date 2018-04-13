@@ -64,7 +64,9 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     tryicon();
     batteryCheck();
     showTime();
+    collectNotes();
     messageEngine("CoreAction Started.\nPlease click icon in System Tray", "Info");
+
 }
 
 coreaction::~coreaction()
@@ -88,7 +90,8 @@ void coreaction::tryicon()  //setup coreaction tryicon
     trayIcon->setIcon(QIcon(":/icons/CoreAction.svg"));
     trayIcon->setToolTip("CoreAction");
     trayIcon->show();
-    connect(QAquit, SIGNAL(triggered()),qApp,SLOT(quit()));
+
+    connect(QAquit, SIGNAL(triggered()),this,SLOT(close()));
     connect(QAshow, SIGNAL(triggered()),this,SLOT(show()));
     connect(QAabout, SIGNAL(triggered()), this, SLOT(on_about_clicked()));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(ShowWindow(QSystemTrayIcon::ActivationReason)));
@@ -156,13 +159,14 @@ void coreaction::showTime()
 }
 
 void coreaction::focusOutEvent(QFocusEvent *event){
-    if (event->lostFocus()) {
-    }
-    if (geometry().contains(QCursor::pos())) {
-        setFocus(Qt::PopupFocusReason);
-    } else {
-        hide();
-    }
+    Q_UNUSED(event);
+//    if (event->lostFocus()) {
+//    }
+//    if (geometry().contains(QCursor::pos())) {
+//        setFocus(Qt::PopupFocusReason);
+//    } else {
+//        hide();
+//    }
 }
 
 void coreaction::ShowWindow(QSystemTrayIcon::ActivationReason Reason){
@@ -342,4 +346,21 @@ void coreaction::on_search_clicked()
     cBox->show();
     cBox->tabEngine(Search);
     this->hide();
+}
+
+void coreaction::closeEvent(QCloseEvent *event) {
+    Q_UNUSED(event);
+    sm.cSetting->beginGroup("Notes");
+    sm.cSetting->setValue("Note1", ui->plainTextEdit->toPlainText());
+    sm.cSetting->setValue("Note2", ui->plainTextEdit_2->toPlainText());
+    sm.cSetting->endGroup();
+
+    QTimer::singleShot(100, qApp, SLOT(quit()));
+}
+
+void coreaction::collectNotes() {
+    sm.cSetting->beginGroup("Notes");
+    ui->plainTextEdit->setPlainText(sm.cSetting->value("Note1").toString());
+    ui->plainTextEdit_2->setPlainText(sm.cSetting->value("Note2").toString());
+    sm.cSetting->endGroup();
 }

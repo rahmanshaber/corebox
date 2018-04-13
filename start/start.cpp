@@ -16,6 +16,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "start.h"
 #include "ui_start.h"
+#include <QTableWidgetItem>
 
 
 Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
@@ -71,8 +72,8 @@ void Start::on_reloadR_clicked()
         }
     }
 
-    ui->recents->setRowCount(sList.count());
     ui->recents->setColumnCount(3);
+    ui->recents->setRowCount(sList.count());
 
     for (int i = 0; i < sList.count(); ++i) {
         r = sm.cSetting->value(sList.at(i)).toString().split("$$$");;//sett->value(sList.at(i)).toString().split("$$$");

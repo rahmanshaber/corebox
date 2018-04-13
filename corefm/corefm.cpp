@@ -126,7 +126,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->showthumb->setVisible(0);
     ui->showthumb->setChecked(0);
     ui->actionAscending->setChecked(1);
-    ui->STrash->setVisible(0);
+    ui->STrash->setVisible(1);
 
     ui->newTab->setDefaultAction(ui->actionNewTab);
     ui->copy->setDefaultAction(ui->actionCopy);
@@ -438,13 +438,23 @@ void corefm::listSelectionChanged(const QItemSelection selected, const QItemSele
 
     curIndex = modelList->filePath(modelView->mapToSource(listSelectionModel->currentIndex()));
 
-    if(selcitem==1){
+
+
+    if (selcitem == 1) {
+       ui->name->setText(curIndex.fileName());
        selcitempath = curIndex.absoluteFilePath();
-    }else{
+    } else {
+       ui->name->setText(ui->pathEdit->currentText());
        selcitempath = ui->pathEdit->itemText(0);
     }
 
-    ui->name->setText(curIndex.fileName());
+    QStringList li;
+    foreach (QModelIndex item, listSelectionModel->selectedIndexes()) {
+        li.append(modelList->filePath(modelView->mapToSource(item)));
+    }
+
+    ui->size->setText(formatSize(getmultiplefilesize(li)));
+    //ui->name->setText(curIndex.fileName());
     ui->selecteditem->setText("Selected : " + QString("%1 items").arg(items.count()));
 
     //for multipal file size
@@ -458,11 +468,13 @@ void corefm::listSelectionChanged(const QItemSelection selected, const QItemSele
 
 //    QStringList paths;
 
-//    foreach(QModelIndex item, selList)
+//    foreach(QModelIndex item, selList)container
 //        paths.append(modelList->filePath(modelView->mapToSource(item)));
 
 //    qDebug()<< paths;
 //    qDebug()<< modelList;
+
+
 }
 
 void corefm::listItemClicked(QModelIndex current)
@@ -2144,14 +2156,14 @@ void corefm::on_actionCreate_Archive_triggered(){
 
 void corefm::on_STrash_clicked(){
 
-//    QModelIndex i = modelTree->mapFromSource(modelList->index(QDir::homePath() + "/.local/share/Trash/files"));
-//    tree->setCurrentIndex(i);
-//    on_actionRefresh_triggered();
-//    ui->emptyTrash->setVisible(1);
+    QModelIndex i = modelTree->mapFromSource(modelList->index(QDir::homePath() + "/.local/share/Trash/files"));
+    tree->setCurrentIndex(i);
+    on_actionRefresh_triggered();
+    ui->emptyTrash->setVisible(1);
 }
 
 void corefm::on_emptyTrash_clicked(){
 
-//    on_actionSelectAll_triggered();
-//    on_actionDelete_triggered();
+    on_actionSelectAll_triggered();
+    on_actionDelete_triggered();
 }

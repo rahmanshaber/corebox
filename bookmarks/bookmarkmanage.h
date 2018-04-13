@@ -37,6 +37,7 @@ public:
     QString bookmarkIconPath(QString sectionName, QString bookmarkName);
     QString checkingBookName(QString sectionName, QString bookName);
     QString checkingBookPath(QString section, QString bookPath);
+    QString checkingBookPathEx(QString bookPath);
     QString cbookName = "CoreBoxBook";
     QString cbookPath = QDir::homePath() + "/.config/coreBox";
     QString cbookFullPath = cbookPath + "/" + cbookName;

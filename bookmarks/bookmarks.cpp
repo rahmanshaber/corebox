@@ -101,20 +101,26 @@ void bookmarks::on_reload_clicked()
 void bookmarks::callBookMarkDialog(QWidget *parent, QString currentPath, QString iconPath)
 {
     QFileInfo info(currentPath);
-    bookmarkDialog *bkdlg = new bookmarkDialog(parent);
-    QPixmap pix(iconPath);
-    bkdlg->pathLabel->setText(currentPath);
-    bkdlg->bookMarkName->setText(info.fileName() + "");
-    bkdlg->checkPath();
-    bkdlg->iconLabel->setPixmap(pix.scaled(bkdlg->iconLabel->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation));
-    if (bkdlg->exec() == 0) {
-        if (bkdlg->accepted) {
-            bk.addBookmark(bkdlg->sectionName->currentText(), bkdlg->bookMarkName->text(), currentPath, iconPath);
-        } else if (!bkdlg->accepted) {
-            bkdlg->close();
+    BookmarkManage bm;
+    QString str = bm.checkingBookPathEx(currentPath);
+    if (str.isEmpty() || str.isNull()) {
+        bookmarkDialog *bkdlg = new bookmarkDialog(parent);
+        QPixmap pix(iconPath);
+        bkdlg->pathLabel->setText(currentPath);
+        bkdlg->bookMarkName->setText(info.fileName() + "");
+        bkdlg->checkPath();
+        bkdlg->iconLabel->setPixmap(pix.scaled(bkdlg->iconLabel->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        if (bkdlg->exec() == 0) {
+            if (bkdlg->accepted) {
+                bk.addBookmark(bkdlg->sectionName->currentText(), bkdlg->bookMarkName->text(), currentPath, iconPath);
+            } else if (!bkdlg->accepted) {
+                bkdlg->close();
+            }
         }
+        sectionRefresh();
+    } else {
+        messageEngine(str, "Info");
     }
-    sectionRefresh();
 }
 
 void bookmarks::on_selectSection_currentIndexChanged(const QString &arg1)

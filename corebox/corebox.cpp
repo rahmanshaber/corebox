@@ -34,16 +34,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreaction/coreaction.h"
 #include "coretime/coretime.h"
 
-
-CoreBox::CoreBox(QWidget *parent) :QMainWindow(parent),ui(new Ui::CoreBox){
-
+CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
     qDebug() << "CoreBox opening";
     ui->setupUi(this);
-
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect  screenGeometry = screen->geometry();
-    int x = screenGeometry.width() * .8;
-    int y = screenGeometry.height() * .8;
 
     ui->windows->tabBar()->installEventFilter(this);
 //    ui->windows->installEventFilter(this);
@@ -51,13 +44,17 @@ CoreBox::CoreBox(QWidget *parent) :QMainWindow(parent),ui(new Ui::CoreBox){
     ui->restoreButton->setVisible(false);
     ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
 
-    QSizeGrip * sizeGrip = new QSizeGrip(this);
+    QSizeGrip *sizeGrip = new QSizeGrip(this);
     ui->resize->addWidget(sizeGrip);
 
     if (sm.getBoxIsMaximize()) {
         on_maximizeButton_clicked();
-    }else{
-        this->resize(x,y);
+    } else {
+        QScreen *screen = QGuiApplication::primaryScreen();
+        QRect  screenGeometry = screen->geometry();
+        int x = screenGeometry.width() * .8;
+        int y = screenGeometry.height() * .8;
+        this->resize(x, y);
     }
 
     BookmarkManage bk;
@@ -65,8 +62,7 @@ CoreBox::CoreBox(QWidget *parent) :QMainWindow(parent),ui(new Ui::CoreBox){
     on_start_clicked();
 }
 
-CoreBox::~CoreBox(){
-
+CoreBox::~CoreBox() {
     qDebug()<<"corebox closing";
     delete ui;
 }
@@ -75,50 +71,66 @@ CoreBox::~CoreBox(){
 
 void CoreBox::tabEngine(AppsName i, QString arg) {
     int n = ui->windows->count();
-    if (i == CoreFM) {
+
+    switch (i) {
+    case CoreFM: {
         corefm *cFM = new corefm();
 
-        if (!arg.isEmpty()) cFM->goTo(arg);
+        QString str = checkIsValidDir(arg);
+        if (!str.isEmpty() || !str.isNull()) cFM->goTo(str);
 
         ui->windows->insertTab(n, cFM, QIcon(":/icons/CoreFM.svg"), "CoreFM");
         ui->windows->setCurrentIndex(n);
-    } else if (i == CoreImage) {
+        break;
+    }
+    case CoreImage: {
         coreimage *cIMG = new coreimage();
 
-        if(!arg.isEmpty()) cIMG->loadFile(arg);
+        QString str = checkIsValidFile(arg);
+        if (!str.isEmpty() || !str.isNull()) cIMG->loadFile(str);
 
         ui->windows->insertTab(n, cIMG, QIcon(":/icons/CoreImage.svg"), "CoreImage");
         ui->windows->setCurrentIndex(n);
-    } else if (i == CorePad) {
+        break;
+    }
+    case CorePad: {
         int nn = filterEngine("CorePad");
 
         if (nn != 404) {
             ui->windows->setCurrentIndex(nn);
             corepad *cPad = static_cast<corepad*>(ui->windows->currentWidget());
-            cPad->initializeNewTab(!arg.isEmpty() ? arg : "");
+            cPad->initializeNewTab(checkIsValidFile(arg));
         } else {
             corepad *cPAD = new corepad();
-            if (!arg.isEmpty()) cPAD->openText(arg);
+            cPAD->openText(checkIsValidFile(arg));
 
             ui->windows->insertTab(n, cPAD, QIcon(":/icons/CorePad.svg"), "CorePad");
             ui->windows->setCurrentIndex(n);
         }
-    } else if (i == CorePaint) {
+        break;
+    }
+    case CorePaint: {
         corepaint *cPAINT = new corepaint();
 
-        if (!arg.isEmpty()) cPAINT->initializeNewTab(true, arg);
+        QString str = checkIsValidFile(arg);
+        if (!str.isEmpty() || !str.isNull()) cPAINT->initializeNewTab(true, str);
         else cPAINT->initializeNewTab();
 
         ui->windows->insertTab(n, cPAINT, QIcon(":/icons/CorePaint.svg"), "CorePaint");
         ui->windows->setCurrentIndex(n);
-    } else if (i == CorePlayer) {
+        break;
+    }
+    case CorePlayer: {
         coreplayer *cPLAYER = new coreplayer();
 
-        if (!arg.isEmpty()) cPLAYER->openPlayer(arg);
+        QString str = checkIsValidFile(arg);
+        if (!str.isEmpty() || !str.isNull()) cPLAYER->openPlayer(str);
 
         ui->windows->insertTab(n, cPLAYER, QIcon(":/icons/CorePlayer.svg"), "CorePlayer");
         ui->windows->setCurrentIndex(n);
-    } else if (i == Dashboard) {
+        break;
+    }
+    case Dashboard: {
         int nn = filterEngine("DashBoard");
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
@@ -126,7 +138,9 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
             ui->windows->insertTab(n, new dashboard(), QIcon(":/icons/DashBoard.svg"), "DashBoard");
             ui->windows->setCurrentIndex(n);
         }
-    } else if (i == Bookmarks) {
+        break;
+    }
+    case Bookmarks: {
         int nn = filterEngine("Bookmarks");
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
@@ -134,7 +148,9 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
             ui->windows->insertTab(n, new bookmarks(), QIcon(":/icons/Bookmarks.svg"), "Bookmarks");
             ui->windows->setCurrentIndex(n);
         }
-    } else if (i == About) {
+        break;
+    }
+    case About: {
         int nn = filterEngine("About");
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
@@ -142,7 +158,9 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
             ui->windows->insertTab(n, new about(), QIcon(":/icons/About.svg"), "About");
             ui->windows->setCurrentIndex(n);
         }
-    } else if (i == StartView) {
+        break;
+    }
+    case StartView: {
         int nn = filterEngine("Start");
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
@@ -150,7 +168,9 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
             ui->windows->insertTab(n, new Start(), QIcon(":/icons/Start.svg"), "Start");
             ui->windows->setCurrentIndex(n);
         }
-    } else if (i == Help) {
+        break;
+    }
+    case Help: {
         int nn = filterEngine("Help");
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
@@ -158,7 +178,9 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
             ui->windows->insertTab(n, new help(), QIcon(":/icons/Help.svg"), "Help");
             ui->windows->setCurrentIndex(n);
         }
-    } else if (i == Settings) {
+        break;
+    }
+    case Settings: {
         int nn = filterEngine("Settings");
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
@@ -166,14 +188,19 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
             ui->windows->insertTab(n, new settings(), QIcon(":/icons/Settings.svg"), "Settings");
             ui->windows->setCurrentIndex(n);
         }
-    } else if (i == Search) {
+        break;
+    }
+    case Search: {
         search *ser = new search();
 
-        if (!arg.isEmpty()) ser->setPath(arg);
+        QString str = checkIsValidDir(arg);
+        if (!str.isEmpty() || !str.isNull()) ser->setPath(str);
 
         ui->windows->insertTab(n, ser, QIcon(":/icons/Search.svg"), "Search");
         ui->windows->setCurrentIndex(n);
-    } else if (i == CoreTime) {
+        break;
+    }
+    case CoreTime: {
         int nn = filterEngine("CoreTime");
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
@@ -181,9 +208,52 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
             ui->windows->insertTab(n, new coretime, QIcon(":/icons/CoreTime.svg"), "CoreTime");
             ui->windows->setCurrentIndex(n);
         }
-    } else if (i == Corebox) {
+        break;
+    }
+    case Corebox: {
         CoreBox *cBox = new CoreBox();
         cBox->show();
+        break;
+    }
+    case CorePDF: {
+
+        break;
+    }
+    case CoreRenamer: {
+
+        break;
+    }
+    default:
+        break;
+    }
+    if (i == CoreFM) {
+
+    } else if (i == CoreImage) {
+
+    } else if (i == CorePad) {
+
+    } else if (i == CorePaint) {
+
+    } else if (i == CorePlayer) {
+
+    } else if (i == Dashboard) {
+
+    } else if (i == Bookmarks) {
+
+    } else if (i == About) {
+
+    } else if (i == StartView) {
+
+    } else if (i == Help) {
+
+    } else if (i == Settings) {
+
+    } else if (i == Search) {
+
+    } else if (i == CoreTime) {
+
+    } else if (i == Corebox) {
+
     } else if (i == CorePDF) {
 
     } else {

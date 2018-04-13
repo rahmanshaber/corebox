@@ -50,14 +50,14 @@ bool corepad::initializeNewTab(QString filePath) {
         text = new coreedit();
         text->setPlainText("");
 
-        workFileName = "";
+        workFilePath = "";
         workingFile = new QFile();
         fileName = tr("untitled%1.txt").arg(index);
         //ui->workingOn->setText(fileName);
 
-        if (!filePath.isEmpty()) {
+        if (!filePath.isEmpty() || !filePath.isNull()) {
             fileName = QFileInfo(filePath).fileName();
-            workFileName = filePath;
+            workFilePath = filePath;
             workingFile = new QFile(filePath);
             if (!workingFile->open(QIODevice::Text | QIODevice::ReadOnly)) return false;
             else {
@@ -84,6 +84,7 @@ bool corepad::initializeNewTab(QString filePath) {
     else{
         messageEngine("Reached page limite", "Warning");
     }
+    return false;
 }
 
 void corepad::shotcuts()
@@ -124,7 +125,7 @@ void corepad::closeEvent(QCloseEvent *event){
         QMessageBox::StandardButton reply;
         reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
-            saveToRecent("CorePad", workFileName);
+            saveToRecent("CorePad", workFilePath);
             event->accept();
         }
         else if (reply == QMessageBox::No){
@@ -132,7 +133,7 @@ void corepad::closeEvent(QCloseEvent *event){
         }
     }
     else {
-        saveToRecent("CorePad", workFileName);
+        saveToRecent("CorePad", workFilePath);
         event->accept();
     }
 }
@@ -189,13 +190,13 @@ void corepad::on_cPaste_clicked()
 void corepad::on_cSave_clicked()
 {
     if (!isSaved && isUpdated) {
-        workFileName = QFileDialog::getSaveFileName(this, tr("Save File"),"untitled.txt",tr("Text Files (*.*)"));
-        if (workFileName.isEmpty()) {
+        workFilePath = QFileDialog::getSaveFileName(this, tr("Save File"),"untitled.txt",tr("Text Files (*.*)"));
+        if (workFilePath.isEmpty()) {
             messageEngine("Empty File Name", "Warning");
             return;
         }
         else {
-            workingFile = new QFile(workFileName);
+            workingFile = new QFile(workFilePath);
             if (!workingFile->open(QIODevice::Truncate | QIODevice::Text | QIODevice::WriteOnly)) {
                 messageEngine("Can't open file", "Warning");
                 return;
@@ -230,8 +231,8 @@ void corepad::on_cSave_clicked()
 void corepad::on_cSaveAs_clicked()
 {
     QString file = "untitled.txt";
-    if (!workFileName.isNull()) {
-        file = workFileName;
+    if (!workFilePath.isNull()) {
+        file = workFilePath;
     }
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File As"),
                                                       file,
@@ -259,13 +260,13 @@ void corepad::on_cSaveAs_clicked()
 
 void corepad::on_cOpen_clicked()
 {
-    workFileName = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath() + "/Documents", tr("Text Files (*.*)"));
-    if (workFileName.isEmpty()) {
+    workFilePath = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath() + "/Documents", tr("Text Files (*.*)"));
+    if (workFilePath.isEmpty()) {
         messageEngine("Empty File Name", "Warning");
         return;
     }
     else {
-        bool open = initializeNewTab(workFileName);
+        bool open = initializeNewTab(workFilePath);
         if (open) messageEngine("File Opened", "Info");
         else messageEngine("Can't open file", "Warning");
     }
@@ -273,7 +274,12 @@ void corepad::on_cOpen_clicked()
 
 void corepad::on_cNew_clicked()
 {
-    initializeNewTab("");
+    int index = ui->notes->tabBar()->count();
+    text = new coreedit();
+    text->setPlainText("");
+    QString fileName = tr("untitled%1.txt").arg(index);
+    ui->notes->insertTab(index, text, fileName);
+    ui->notes->setCurrentIndex(index);
 }
 
 void corepad::on_cQuit_clicked()
@@ -295,10 +301,10 @@ void corepad::on_cQuit_clicked()
 
 void corepad::on_bookMarkIt_clicked()
 {
-    if (!workFileName.isNull()) {
+    if (!workFilePath.isNull()) {
         QString myIcon = ":/icons/CorePad.svg";
         bookmarks bookMarks;
-        bookMarks.callBookMarkDialog(this, workFileName, myIcon);
+        bookMarks.callBookMarkDialog(this, workFilePath, myIcon);
     }
 }
 
@@ -359,4 +365,21 @@ void corepad::on_notes_currentChanged(int index)
     on_text_undoAvailable(text->isUndoRedoEnabled());
     //on_text_textChanged();
     on_searchHere_textChanged(ui->searchHere->text());
+}
+
+void corepad::on_notes_tabCloseRequested(int index)
+{
+    if (ui->notes->tabBar()->tabText(index).contains("*")) {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            ui->notes->tabBar()->removeTab(index);
+        }
+        else if (reply == QMessageBox::No){
+            return;
+        }
+    }
+    else {
+        ui->notes->tabBar()->removeTab(index);
+    }
 }

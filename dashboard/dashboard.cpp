@@ -57,9 +57,21 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
     setdisplaypage();
 
     ui->blocks->addItems(disks->blockDevices());
-    for (int i = 0; i < ui->blocks->count(); ++i) {
+    QStringList s = disks->blockDevices();
+    qDebug()<<"all"<<s.count();
+    for (int i = 0; i < s.count(); ++i) {
         ui->blocks->item(i)->setIcon(QIcon(":/icons/partition.svg"));
+        QString d = s.at(i);
+        qDebug()<<"now"<<i<<d.count();
+
+        if (d.count() == 3){
+            s.removeAt(i);
+            qDebug()<<"rm"<<i;
+        }
     }
+    ui->blocks->clear();
+    ui->blocks->addItems(s);
+
 
     disks = new UDisks2(this);
     connect(disks, SIGNAL(blockDeviceAdded(QString)), this, SLOT(blockDevicesChanged()));
@@ -288,8 +300,8 @@ void dashboard::on_batteriesList_currentIndexChanged(int index)
     time = time.addSecs(addSeconds);
     ui->timerEdit->setTime(time);
 
-    QList<QTreeWidgetItem*> listItems;
-    ui->propertiesList->clear();
+    QStringList infos;
+
     const QMetaObject *metaObject = m_model->metaObject();
     int count = metaObject->propertyCount();
     for( int i = 0; i < count; ++i ) {
@@ -298,15 +310,16 @@ void dashboard::on_batteriesList_currentIndexChanged(int index)
         if( name != "objectName" ) {
             QVariant value = m_model->property(name.toUtf8());
             if( value.type() == QVariant::Double ) {
-                listItems << new QTreeWidgetItem(ui->propertiesList, QStringList() << name << QString( "%1" ).number( value.toDouble() ), QTreeWidgetItem::Type );
+                infos << QString(name.toUpper().rightJustified(20) + QString(" : %1").arg(value.toDouble()));
             } else {
-                listItems << new QTreeWidgetItem(ui->propertiesList, QStringList() << name << value.toString(), QTreeWidgetItem::Type );
+                infos << QString(name.toUpper().rightJustified(20) + " : " + value.toString());
             }
         }
     }
-    ui->propertiesList->addTopLevelItems(listItems);
-    ui->propertiesList->resizeColumnToContents(0);
-    ui->propertiesList->resizeColumnToContents(1);
+
+    QStringListModel *infoModel = new QStringListModel(infos);
+
+    ui->batProperties->setModel(infoModel);
 }
 
 void dashboard::on_refresh_clicked()
@@ -368,17 +381,17 @@ void dashboard::setdisplaypage()
 
         QStringList infos;
         infos
-            << tr("Name : %1 ")      . arg(qApp->screens()[i]->name())
-            << tr("Size : %1 px")       . arg(size)
-            << tr("Manufacturer : %1 ")       . arg(qApp->screens()[i]->manufacturer())
-            << tr("Model : %1 ")        . arg(qApp->screens()[i]->model())
-            << tr("SerialNumber : %1 ")      . arg(qApp->screens()[i]->serialNumber())
-            << tr("RefreshRate : %1 ")       . arg(qApp->screens()[i]->refreshRate())
-            << tr("Actual Resolution : %1 px")   . arg(AvailableVS)
-            << tr("Set Resolution : %1 px")  . arg(Geometry)
-            << tr("PhysicaldotsPerInch : %1 ppi"). arg(qApp->screens()[i]->physicalDotsPerInch())
-            << tr("Physical Size : %1 milimeter"). arg(PhysicalSize)
-            << tr("PrimaryOrientation : %1")   . arg(qApp->screens()[i]->primaryOrientation());
+            << QString("Name")  .rightJustified(26)                + tr(" : %1 ")          .arg(qApp->screens()[i]->name())
+            << QString("Size").rightJustified(29)                + tr(" : %1 px")        .arg(size)
+            << QString("Manufacturer").rightJustified(23)        + tr(" : %1 ")          .arg(qApp->screens()[i]->manufacturer())
+            << QString("Model").rightJustified(28)               + tr(" : %1 ")          .arg(qApp->screens()[i]->model())
+            << QString("SerialNumber").rightJustified(23)        + tr(" : %1 ")          .arg(qApp->screens()[i]->serialNumber())
+            << QString("RefreshRate").rightJustified(24)         + tr(" : %1 ")          .arg(qApp->screens()[i]->refreshRate())
+            << QString("Actual Resolution").rightJustified(22)   + tr(" : %1 px")        .arg(AvailableVS)
+            << QString("Set Resolution").rightJustified(24)      + tr(" : %1 px")        .arg(Geometry)
+            << QString("PhysicaldotsPerInch").rightJustified(20) + tr(" : %1 ppi")       .arg(qApp->screens()[i]->physicalDotsPerInch())
+            << QString("Physical Size").rightJustified(25)       + tr(" : %1 milimeter") .arg(PhysicalSize)
+            << QString("PrimaryOrientation").rightJustified(20)  + tr(" : %1")           .arg(qApp->screens()[i]->primaryOrientation());
 
         QStringListModel *systemInfoModel = new QStringListModel(infos);
 
@@ -387,7 +400,7 @@ void dashboard::setdisplaypage()
 
         QWidget *w = new QWidget();
         QFont fl ("Cantarell", 14, QFont::Normal);
-        QFont fp ("Cantarell", 11, QFont::Normal);
+        QFont fp ("Ubuntu Mono", 11, QFont::Normal);
         QLabel *l = new QLabel("Screen : " + QString::number(i+1));
         QVBoxLayout *v = new QVBoxLayout();
         QHBoxLayout *h = new QHBoxLayout();

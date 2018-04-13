@@ -17,12 +17,13 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreaction/coreaction.h"
 
 #include <QApplication>
+#include <QFont>
 #include <QStyleFactory>
-
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setAttribute(Qt::AA_EnableHighDpiScaling);
     app.setQuitOnLastWindowClosed(false);
 
     QApplication::setStyle(QStyleFactory::create("Fusion"));

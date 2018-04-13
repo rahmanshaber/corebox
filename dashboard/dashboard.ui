@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>799</width>
-    <height>540</height>
+    <height>562</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -452,7 +452,7 @@ border: 1px #3F67C0;
 }</string>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="pageGeneral">
       <property name="styleSheet">
@@ -792,6 +792,12 @@ color:#ffffff;
           </item>
           <item row="1" column="1">
            <widget class="QListView" name="info">
+            <property name="font">
+             <font>
+              <family>Ubuntu Mono</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="styleSheet">
              <string notr="true">QWidget{
 background-color: #1B252F; ;
@@ -1407,22 +1413,6 @@ color:#ffffff;
           <property name="horizontalSpacing">
            <number>0</number>
           </property>
-          <item row="1" column="0">
-           <spacer name="horizontalSpacer_8">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>5</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label_7">
             <property name="sizePolicy">
@@ -1493,29 +1483,17 @@ color:#ffffff;
             </property>
            </widget>
           </item>
-          <item row="1" column="1" colspan="2">
-           <widget class="QTreeWidget" name="propertiesList">
+          <item row="1" column="0" colspan="3">
+           <widget class="QListView" name="batProperties">
             <property name="font">
              <font>
+              <family>Ubuntu Mono</family>
               <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QWidget{
-background-color:#1B252F;
-color:#ffffff;
-}</string>
+             <string notr="true">QWidget{background-color: #1B252F; ;color: #ffffff;padding: 5px 5px 5px 5px;}</string>
             </property>
-            <column>
-             <property name="text">
-              <string>Properties</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </column>
            </widget>
           </item>
          </layout>

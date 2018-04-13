@@ -12,7 +12,6 @@ corebox
 1 - setwindow title >> a global function.
 1 - add option for using default window manager
 1 - update the app when clicked from window.(only coreboxapps)
-1 - if bookmark is booked it should show a message if it exists and show the section it was booked.
 1 - separate process for per app.
 1 - limit the openable window.
 1 - tab text align left.
@@ -28,7 +27,6 @@ dashboard
 1 - selected drive will show only it's pertition.
 1 - mount specific partition on corebox startup.
 1 - add drive frame in drive view.
-0 - bettery properties >>convert it to>> listview(hint>>>systemInformationInit);
 
 corepaint
 0 - add delete selected area as a pushbutton and shortcut(del).
@@ -43,7 +41,6 @@ Search
 
 corefm
 0 - add drive list in shortcut widget with mount/unmount.
-0 - void corefm::tabChanged(int index)>>> not working.
 0 - pathedit is always in focus, even outside clicked.
 0 - rename mode is not going off when clicked outside.
 0 - sometimes in detail mode, dobule click it goes to rename mode.
@@ -55,10 +52,6 @@ corefm
 1 - properties - option to make file executable(chmod a+x filepath)
 0 - preview is not working.
 1 - ctrl + wheel = zoom.
-1 - multiple file's combined size.
-1 - add trash in on_actionTrash_it_triggered .proper trash integration.
-0 - after trash , the file is not restoreable.
-1 - improve app engine.
 1 - send a file to a drive.
 1 - fix properties ui(fram less)
 1 - Finish movement of mime-related code from FileUtils to MimeUtils
@@ -81,20 +74,19 @@ coretime
 1 - show a message (not a messagebox) before 5 minutes of alarm time
 
 corepad
-0 - close-able pages.
+0 - close ing pages is crashing the whole app.
+0 - new page button not working.
 
 setting
 1 - also open corebox at start up.
 1 - add option to backup corbox config folder as a zip and restore the settings.
 
 start
-0 - reload buttons in button.(now in vertical>>>center)
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 0 - recent path not opening with double click.(Open when double clicked on name but not at date and path)
 
 coreimage
-0 - coreimage crash when open image with some file extension(7.3.png,b.b.png)
 0 - need a black image on app start.
 0 - deleting pic, will also delete entry from path qstringlist
 1 - ctrl + wheel = zoom shortcut.

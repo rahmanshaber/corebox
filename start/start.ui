@@ -84,7 +84,7 @@ QScrollBar::sub-page:vertical {
        <rect>
         <x>0</x>
         <y>-217</y>
-        <width>837</width>
+        <width>835</width>
         <height>900</height>
        </rect>
       </property>
@@ -583,6 +583,7 @@ padding: 50px 5px 20px 20px;
                <property name="styleSheet">
                 <string notr="true">QPushButton{
 border-radius: 2px;
+margin: 40px 0px 0px 0px;
 padding: 3px 3px 3px 3px;
 }
 
@@ -849,6 +850,7 @@ padding: 50px 5px 20px 20px;
                <property name="styleSheet">
                 <string notr="true">QPushButton{
 border-radius: 2px;
+margin: 40px 0px 0px 0px;
 padding: 3px 3px 3px 3px;
 }
 
@@ -881,9 +883,13 @@ background-color: #303942;
                <property name="contextMenuPolicy">
                 <enum>Qt::NoContextMenu</enum>
                </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton{
 border-radius: 2px;
+margin: 40px 0px 0px 0px;
 padding: 3px 3px 3px 3px;
 }
 
@@ -970,9 +976,6 @@ padding: 10px 5px 0px 5px;
             <property name="editTriggers">
              <set>QAbstractItemView::NoEditTriggers</set>
             </property>
-            <property name="tabKeyNavigation">
-             <bool>false</bool>
-            </property>
             <property name="showDropIndicator" stdset="0">
              <bool>false</bool>
             </property>
@@ -994,11 +997,8 @@ padding: 10px 5px 0px 5px;
             <property name="showGrid">
              <bool>false</bool>
             </property>
-            <property name="cornerButtonEnabled">
-             <bool>false</bool>
-            </property>
             <property name="columnCount">
-             <number>3</number>
+             <number>0</number>
             </property>
             <attribute name="horizontalHeaderVisible">
              <bool>false</bool>
@@ -1018,9 +1018,6 @@ padding: 10px 5px 0px 5px;
             <attribute name="verticalHeaderDefaultSectionSize">
              <number>30</number>
             </attribute>
-            <column/>
-            <column/>
-            <column/>
            </widget>
           </item>
          </layout>

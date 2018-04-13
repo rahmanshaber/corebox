@@ -46,9 +46,9 @@ bool moveToTrash(QString fileName)
             QFile trashinfo(trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo");
             trashinfo.open(QFile::WriteOnly);
             trashinfo.write(QString("[Trash Info]\n").toUtf8());
-            qDebug()<<  QString("[Trash Info]\n").toUtf8() ;
+            qDebug()<<  QString("[Trash Info]\n").toUtf8();
             trashinfo.write(QString("Path=" + fileLocation + "\n").toUtf8());
-            qDebug()<<  QString("Path=" + fileLocation + "\n").toUtf8() ;
+            qDebug()<<  QString("Path=" + fileLocation + "\n").toUtf8();
             trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());
             qDebug()<<  QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8();
             trashinfo.close();
@@ -57,6 +57,7 @@ bool moveToTrash(QString fileName)
         }
     return true;
     }
+    return false;
 }
 
 bool saveToRecent(QString appName, QString pathName)
@@ -266,4 +267,33 @@ void openAppEngine(QString path){
             QProcess::startDetached("xdg-open", QStringList() << path);
         }
     }
+}
+
+
+QString checkIsValidDir(QString str) {
+    if (str.isEmpty() || str.isNull()) {
+        return NULL;
+    } else {
+        QFileInfo dir(str);
+        if (dir.isDir()) {
+            if (dir.isRoot()) return str;
+            else {
+                if (str.endsWith('/')) return str.remove(str.length() - 1, 1);
+                else return str;
+            }
+        }
+    }
+    return NULL;
+}
+
+QString checkIsValidFile(QString str) {
+    if (str.isEmpty() || str.isNull()) {
+        return NULL;
+    } else {
+        QFileInfo fi(str);
+        if (fi.isFile()) {
+            return str;
+        }
+    }
+    return NULL;
 }

@@ -71,15 +71,15 @@ void sysinfo::systemInformationInit()
 
     QStringList infos;
     infos
-        << tr("UserName : %1")       .arg(sysInfo.getHostname())
-        << tr("Platform : %1")       .arg(sysInfo.getPlatform())
-        << tr("Distribution : %1")   .arg(sysInfo.getDistribution())
-        << tr("Kernel Release : %1") .arg(sysInfo.getKernel())
-        << tr("CPU Model : %1")      .arg(sysInfo.getCpuModel())
-        << tr("CPU Speed : %1 (Mhz)").arg(sysInfo.getCpuSpeed())
-        << tr("CPU Core  : %1")      .arg(sysInfo.getCpuCore())
-        << tr("Display Size : %1")   .arg(scr)
-        << tr("Qt Toolkit Version : %1")     .arg(QT_VERSION_STR);
+        << QString("UserName").rightJustified(20)           + tr(" : %1")       .arg(sysInfo.getHostname())
+        << QString("Platform").rightJustified(23)           + tr(" : %1")       .arg(sysInfo.getPlatform())
+        << QString("Distribution").rightJustified(22)       + tr(" : %1")       .arg(sysInfo.getDistribution())
+        << QString("Kernel Release").rightJustified(19)     + tr(" : %1")       .arg(sysInfo.getKernel())
+        << QString("CPU Model").rightJustified(20)          + tr(" : %1")       .arg(sysInfo.getCpuModel())
+        << QString("CPU Speed").rightJustified(20)          + tr(" : %1 (Mhz)") .arg(sysInfo.getCpuSpeed())
+        << QString("CPU Core").rightJustified(21)           + tr(" : %1")       .arg(sysInfo.getCpuCore())
+        << QString("Display Size").rightJustified(21)       + tr(" : %1")       .arg(scr)
+        << QString("Qt Toolkit Version").rightJustified(19) + tr(" : %1")       .arg(QT_VERSION_STR);
 
     QStringListModel *systemInfoModel = new QStringListModel(infos);
 

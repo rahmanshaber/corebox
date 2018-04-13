@@ -3,7 +3,19 @@ version 2.1
 
 - fixed battery pointer that caused compiling error in dashboard app.
 - fixed button ui in corescreenshot app.
--
+- fixed extention crash for coreimage (File.File.File.png like files)
+- closeable tab for corepad.
+- tabengine moved to switch (for a better code functionality) and checking argument for validation
+- moved to non movable page in corefm.
+- changed open folder to screen shot folder.
+- reload button at bottom in start.
+- added support for multiple file's combined size in corefm.
+- if bookmark is booked it shows a message and show the section it was booked.
+- full trash support with restoreable file.
+- notes at coreaction is saved and restored in every restart.
+- Fixed Empty the trash.
+- battery properties converted to stringlistmodel.
+- improved app engine.
 
 version 2,Released date Monday, March 26, 2018
 

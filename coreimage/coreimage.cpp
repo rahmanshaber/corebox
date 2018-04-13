@@ -138,7 +138,7 @@ QStringList coreimage::getImages(QString path) {
 
         const QByteArrayList supportedMime = QImageReader::supportedImageFormats();
         foreach (const QByteArray &mimeTypeName, supportedMime) {
-            if (QFileInfo(file).completeSuffix() == mimeTypeName) {
+            if (QFileInfo(file).suffix() == mimeTypeName) {
                 images.append(path + "/" + file);
             }
         }
@@ -212,6 +212,7 @@ void coreimage::setImage(const QImage &newImage)
     }
 
     QFileInfo info (currentImagePath);
+    //QString typ = info.fileName().split(".").at(info.fileName().split(".").count() - 1);
     QString typ = info.suffix();
     QString nam = info.fileName();
     QString h = QString::number(image.height()) ;

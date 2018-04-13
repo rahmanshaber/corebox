@@ -23,7 +23,7 @@ tabBar::tabBar(QHash<QString,QIcon> * icons)
 {
     folderIcons = icons;
     setAcceptDrops(1);
-    setMovable(1);
+    setMovable(0);
 }
 
 void tabBar::mousePressEvent(QMouseEvent * event)

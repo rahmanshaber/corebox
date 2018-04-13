@@ -74,7 +74,7 @@ void propertiesw::general(){
     ui->location->setText(info.path());
 
     ui->modified->setText(info.lastModified().toString());
-    ui->created->setText(info.created().toString());
+    ui->created->setText(info.birthTime().toString());
 
     ui->owner->setText(info.owner());
     ui->group->setText(info.group());

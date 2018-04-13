@@ -51,5 +51,7 @@ enum AppsName {
  qint64 getfilesize(QString path);
  qint64 getmultiplefilesize(QStringList paths);
 
+ QString checkIsValidDir(QString str);
+ QString checkIsValidFile(QString str);
 
 #endif // GLOBALFUNCTIONS_H

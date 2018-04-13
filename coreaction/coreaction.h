@@ -19,9 +19,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QWidget>
 #include <QFocusEvent>
+#include <QCloseEvent>
 #include <QDir>
 #include <QMenu>
 #include <QSystemTrayIcon>
+#include <QTimer>
 
 #include "../settings/settingsmanage.h"
 #include "../corebox/globalfunctions.h"
@@ -30,7 +32,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corescreenshot/mainwindow.h"
 #include "dashboard/upower.h"
 #include "dashboard/battery.h"
-
 
 namespace Ui {
 class coreaction;
@@ -48,13 +49,19 @@ public:
     void focusOutEvent(QFocusEvent *event);
     void loadsettings();
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private:
     Ui::coreaction *ui;
+    SettingsManage sm;
+
     QMenu *trayIconMenu;
+    QDir currentDir;
+
     void tryicon();
     void batteryCheck();
-    QDir currentDir;
-    SettingsManage sm;
+    void collectNotes();
 
 public slots:
     void ShowWindow(QSystemTrayIcon::ActivationReason Reason);

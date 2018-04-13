@@ -41,7 +41,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 RESOURCES += \
     icons.qrc \
-    icons.qrc \
     other.qrc
 
 FORMS += \
@@ -81,7 +80,7 @@ DISTFILES += \
     docs/screenshots/a1.png \
     docs/screenshots/a2.png \
     docs/screenshots/a3.png \
-    docs/screenshots/a4.png \
+    docs/screenshots/a4.png
 
 HEADERS += \
     about/about.h \

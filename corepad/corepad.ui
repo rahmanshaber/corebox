@@ -1040,6 +1040,9 @@ background-color: rgb(48, 140, 198);
      <property name="tabPosition">
       <enum>QTabWidget::South</enum>
      </property>
+     <property name="tabsClosable">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
   </layout>
