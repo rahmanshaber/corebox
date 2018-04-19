@@ -1,15 +1,13 @@
 
-1-features
 0-bug/fix
+1-features
 2-fixed-test is needed
 
 
 corebox
 1 - need two theme (dark and light)
 1 - round border is no working in messageengine>>messagebox.
-1 - qdesktopwidget as a global function.
 1 - add display scale support
-1 - setwindow title >> a global function.
 1 - add option for using default window manager
 1 - update the app when clicked from window.(only coreboxapps)
 1 - separate process for per app.
@@ -35,7 +33,6 @@ corepaint
 
 Search
 1 - if search opened from FM hide locate option.
-1 - add button to set folder
 1 - show the file/folder in coerFM with selecting the file/folder.
 0 - if path is given find is not working.but locate is working.
 
@@ -74,8 +71,7 @@ coretime
 1 - show a message (not a messagebox) before 5 minutes of alarm time
 
 corepad
-0 - close ing pages is crashing the whole app.
-0 - new page button not working.
+
 
 setting
 1 - also open corebox at start up.
@@ -101,11 +97,9 @@ coreplayer
 2 - play by open file function automatically play button is clicked.
 
 coreshot
-2 - add active window option.
-1 - on left mouse click at screen-shot when a screenshot is taken it save a file to tmp folder.
+1 - add active window option.
 
 coreaction
-1 - save the notes.
 
 help
 1 - add some recommendation

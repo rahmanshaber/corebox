@@ -25,6 +25,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../corebox/globalfunctions.h"
 
 
+
 bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)
 {
     qDebug() << "bookmarks opening";

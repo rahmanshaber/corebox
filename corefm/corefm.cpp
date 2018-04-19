@@ -438,43 +438,22 @@ void corefm::listSelectionChanged(const QItemSelection selected, const QItemSele
 
     curIndex = modelList->filePath(modelView->mapToSource(listSelectionModel->currentIndex()));
 
-
-
-    if (selcitem == 1) {
-       ui->name->setText(curIndex.fileName());
-       selcitempath = curIndex.absoluteFilePath();
-    } else {
-       ui->name->setText(ui->pathEdit->currentText());
-       selcitempath = ui->pathEdit->itemText(0);
-    }
-
     QStringList li;
     foreach (QModelIndex item, listSelectionModel->selectedIndexes()) {
         li.append(modelList->filePath(modelView->mapToSource(item)));
     }
 
-    ui->size->setText(formatSize(getmultiplefilesize(li)));
-    //ui->name->setText(curIndex.fileName());
+    if (selcitem == 1) {
+       ui->name->setText(curIndex.fileName());
+       ui->size->setText(formatSize(curIndex.size()));
+       selcitempath = curIndex.absoluteFilePath();
+    }else {
+       ui->name->setText(ui->pathEdit->currentText());
+       ui->size->setText(formatSize(getmultiplefilesize(li)));
+       selcitempath = ui->pathEdit->itemText(0);
+    }
+
     ui->selecteditem->setText("Selected : " + QString("%1 items").arg(items.count()));
-
-    //for multipal file size
-//    QModelIndexList selList;
-//    if(focusWidget() == ui->viewlist || focusWidget() == ui->viewtree){
-//        if(listSelectionModel->selectedRows(0).count()) selList = listSelectionModel->selectedRows(0);
-//        else selList = listSelectionModel->selectedIndexes();
-//    }
-
-//    if(selList.count() == 0) selList << modelView->mapFromSource(modelList->index(ui->pathEdit->currentText()));
-
-//    QStringList paths;
-
-//    foreach(QModelIndex item, selList)container
-//        paths.append(modelList->filePath(modelView->mapToSource(item)));
-
-//    qDebug()<< paths;
-//    qDebug()<< modelList;
-
-
 }
 
 void corefm::listItemClicked(QModelIndex current)
@@ -1907,9 +1886,11 @@ void corefm::executeFile(QModelIndex index, bool run) {
 
     // Run or open
     if (run) {
+        qDebug()<< "gn";
       QProcess *myProcess = new QProcess(this);
       myProcess->startDetached(modelList->filePath(srcIndex));
     } else {
+        qDebug()<< modelList->fileInfo(srcIndex);
       mimeUtils->openInApp(modelList->fileInfo(srcIndex), this);
     }
 }

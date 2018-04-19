@@ -34,7 +34,7 @@
     <number>0</number>
    </property>
    <item row="0" column="0" rowspan="5">
-    <widget class="QWidget" name="shortcuts" native="true">
+    <widget class="QWidget" name="shortcut" native="true">
      <property name="minimumSize">
       <size>
        <width>200</width>
@@ -696,7 +696,7 @@ color: white;
 }</string>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>2</number>
             </property>
             <property name="tabSpacing">
              <number>0</number>
@@ -706,8 +706,8 @@ color: white;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>88</width>
-               <height>102</height>
+               <width>98</width>
+               <height>137</height>
               </rect>
              </property>
              <attribute name="label">
@@ -949,6 +949,52 @@ background-color: #212F39;
                </widget>
               </item>
               <item>
+               <widget class="QToolButton" name="delete_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QToolButton{
+Text-align:left;
+padding: 5px 5px 5px 5px;
+}
+
+QToolButton:checked{
+background-color: #212F39; 
+}
+
+QToolButton:hover {
+background-color: #212F39; 
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Delete</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../icons.qrc">
+                  <normaloff>:/icons/delete_w.svg</normaloff>:/icons/delete_w.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="toolButtonStyle">
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
                <spacer name="verticalSpacer_2">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -968,7 +1014,7 @@ background-color: #212F39;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>208</width>
+               <width>93</width>
                <height>292</height>
               </rect>
              </property>
@@ -1189,7 +1235,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1243,7 +1289,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1297,7 +1343,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1351,7 +1397,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1405,7 +1451,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1459,7 +1505,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1519,7 +1565,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1567,7 +1613,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1594,8 +1640,8 @@ background-color: #212F39;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>88</width>
-               <height>101</height>
+               <width>220</width>
+               <height>267</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1722,7 +1768,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1782,7 +1828,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonFollowStyle</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>
@@ -1842,7 +1888,7 @@ background-color: #212F39;
                  <bool>true</bool>
                 </property>
                 <property name="toolButtonStyle">
-                 <enum>Qt::ToolButtonTextOnly</enum>
+                 <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
                  <bool>true</bool>

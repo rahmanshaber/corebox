@@ -40,6 +40,8 @@ enum AppsName {
  void messageEngine(QString message, QString messageType);
  void openAppEngine(QString path);
 
+ QRect screensize();
+
  AppsName nameToInt(QString appName);
  QString appsIconPath(QString appName);
 

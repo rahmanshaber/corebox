@@ -70,8 +70,8 @@ private slots:
     void on_typeother_clicked();
     void on_results_itemDoubleClicked(QTableWidgetItem *item);
     void on_more_clicked(bool checked);
-    void on_searchFF_currentTextChanged(const QString &arg1);
-
+    void on_searchFF_textChanged(const QString &arg1);
+    void on_setfolder_clicked();
 };
 
 #endif // SEARCH_H

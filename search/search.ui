@@ -121,43 +121,13 @@ border: 1px rgb(67, 67, 67);
           </spacer>
          </item>
          <item>
-          <widget class="QComboBox" name="searchFF">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
+          <widget class="QLineEdit" name="searchFF">
            <property name="styleSheet">
-            <string notr="true">QComboBox {
+            <string notr="true">QLineEdit {
     border: 1px solid #ffffff;
     padding: 5px 5px 5px 10px;
 }
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: #ffffff;
-    selection-background-color: #F1A873;
-}
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}</string>
-           </property>
-           <property name="editable">
-            <bool>true</bool>
-           </property>
-           <property name="insertPolicy">
-            <enum>QComboBox::InsertAlphabetically</enum>
+</string>
            </property>
           </widget>
          </item>
@@ -287,20 +257,22 @@ color: #57585D ;
           </widget>
          </item>
         </layout>
+        <zorder>more</zorder>
+        <zorder>title</zorder>
+        <zorder>findCMD</zorder>
+        <zorder>locateCMD</zorder>
+        <zorder>searchFF</zorder>
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="pathitemfream">
+       <widget class="QFrame" name="pathfream">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <property name="spacing">
-          <number>10</number>
-         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLineEdit" name="folderPath">
            <property name="minimumSize">
@@ -333,17 +305,19 @@ border:1px solid gray;
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="itemCount">
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
+          <widget class="QPushButton" name="setfolder">
            <property name="text">
-            <string>0 item(s) found</string>
+            <string/>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
+           <property name="icon">
+            <iconset resource="../icons.qrc">
+             <normaloff>:/icons/search_w.svg</normaloff>:/icons/search_w.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -617,6 +591,21 @@ background-color:rgb(48, 140, 198);
           </widget>
          </item>
         </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="itemCount">
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>0 item(s) found</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
      </layout>

@@ -56,21 +56,12 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 
     setdisplaypage();
 
-    ui->blocks->addItems(disks->blockDevices());
     QStringList s = disks->blockDevices();
-    qDebug()<<"all"<<s.count();
-    for (int i = 0; i < s.count(); ++i) {
-        ui->blocks->item(i)->setIcon(QIcon(":/icons/partition.svg"));
-        QString d = s.at(i);
-        qDebug()<<"now"<<i<<d.count();
+    QStringList l = s.filter(QRegularExpression(QStringLiteral("[a-z]{3}")));
 
-        if (d.count() == 3){
-            s.removeAt(i);
-            qDebug()<<"rm"<<i;
-        }
-    }
-    ui->blocks->clear();
-    ui->blocks->addItems(s);
+//    ui->blocks->addItems(disks->blockDevices());
+
+    ui->blocks->addItems(l);
 
 
     disks = new UDisks2(this);
@@ -147,7 +138,7 @@ void dashboard::on_blocks_currentTextChanged(const QString &currentText)
             << tr("Dev : %1")         . arg(block->toStringToSeperate(3))
             << tr("Drive : %1")       . arg(block->toStringToSeperate(4))
             << tr("Type : %1")        . arg(block->toStringToSeperate(5))
-            << tr("Id : %1 (Mhz)")    . arg(block->toStringToSeperate(6))
+            << tr("Id : %1")          . arg(block->toStringToSeperate(6))
             << tr("Read Only : %1")   . arg(block->toStringToSeperate(7))
             << tr("Usage : %1")       . arg(block->toStringToSeperate(8))
             << tr("Mount Point : %1") . arg(path)
@@ -381,17 +372,17 @@ void dashboard::setdisplaypage()
 
         QStringList infos;
         infos
-            << QString("Name")  .rightJustified(26)                + tr(" : %1 ")          .arg(qApp->screens()[i]->name())
-            << QString("Size").rightJustified(29)                + tr(" : %1 px")        .arg(size)
-            << QString("Manufacturer").rightJustified(23)        + tr(" : %1 ")          .arg(qApp->screens()[i]->manufacturer())
-            << QString("Model").rightJustified(28)               + tr(" : %1 ")          .arg(qApp->screens()[i]->model())
-            << QString("SerialNumber").rightJustified(23)        + tr(" : %1 ")          .arg(qApp->screens()[i]->serialNumber())
-            << QString("RefreshRate").rightJustified(24)         + tr(" : %1 ")          .arg(qApp->screens()[i]->refreshRate())
-            << QString("Actual Resolution").rightJustified(22)   + tr(" : %1 px")        .arg(AvailableVS)
-            << QString("Set Resolution").rightJustified(24)      + tr(" : %1 px")        .arg(Geometry)
-            << QString("PhysicaldotsPerInch").rightJustified(20) + tr(" : %1 ppi")       .arg(qApp->screens()[i]->physicalDotsPerInch())
-            << QString("Physical Size").rightJustified(25)       + tr(" : %1 milimeter") .arg(PhysicalSize)
-            << QString("PrimaryOrientation").rightJustified(20)  + tr(" : %1")           .arg(qApp->screens()[i]->primaryOrientation());
+            << tr("Name : %1 ")                   . arg(qApp->screens()[i]->name())
+            << tr("Size : %1 px")                 . arg(size)
+            << tr("Manufacturer : %1 ")           . arg(qApp->screens()[i]->manufacturer())
+            << tr("Model : %1 ")                  . arg(qApp->screens()[i]->model())
+            << tr("SerialNumber : %1 ")           . arg(qApp->screens()[i]->serialNumber())
+            << tr("RefreshRate : %1 ")            . arg(qApp->screens()[i]->refreshRate())
+            << tr("Actual Resolution : %1 px")    . arg(AvailableVS)
+            << tr("Set Resolution : %1 px")       . arg(Geometry)
+            << tr("PhysicaldotsPerInch : %1 ppi") . arg(qApp->screens()[i]->physicalDotsPerInch())
+            << tr("Physical Size : %1 milimeter") . arg(PhysicalSize)
+            << tr("PrimaryOrientation : %1")      . arg(qApp->screens()[i]->primaryOrientation());
 
         QStringListModel *systemInfoModel = new QStringListModel(infos);
 

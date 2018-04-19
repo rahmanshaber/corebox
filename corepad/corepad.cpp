@@ -274,12 +274,7 @@ void corepad::on_cOpen_clicked()
 
 void corepad::on_cNew_clicked()
 {
-    int index = ui->notes->tabBar()->count();
-    text = new coreedit();
-    text->setPlainText("");
-    QString fileName = tr("untitled%1.txt").arg(index);
-    ui->notes->insertTab(index, text, fileName);
-    ui->notes->setCurrentIndex(index);
+    initializeNewTab(NULL);
 }
 
 void corepad::on_cQuit_clicked()
@@ -359,12 +354,14 @@ void corepad::on_previousW_clicked()
 
 void corepad::on_notes_currentChanged(int index)
 {
-    text = static_cast<coreedit*>(ui->notes->widget(index));
-    /*Copy available need to fix when the current tab changed*/
-    on_text_redoAvailable(text->isUndoRedoEnabled());
-    on_text_undoAvailable(text->isUndoRedoEnabled());
-    //on_text_textChanged();
-    on_searchHere_textChanged(ui->searchHere->text());
+    if(ui->notes->count() > 0){
+        text = static_cast<coreedit*>(ui->notes->widget(index));
+        /*Copy available need to fix when the current tab changed*/
+        on_text_redoAvailable(text->isUndoRedoEnabled());
+        on_text_undoAvailable(text->isUndoRedoEnabled());
+        on_text_textChanged();
+        on_searchHere_textChanged(ui->searchHere->text());
+    }
 }
 
 void corepad::on_notes_tabCloseRequested(int index)
@@ -380,6 +377,8 @@ void corepad::on_notes_tabCloseRequested(int index)
         }
     }
     else {
-        ui->notes->tabBar()->removeTab(index);
+        text = static_cast<coreedit*>(ui->notes->widget(index));
+        text->deleteLater();
+        ui->notes->removeTab(index);
     }
 }

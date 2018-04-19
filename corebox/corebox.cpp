@@ -50,10 +50,8 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
     if (sm.getBoxIsMaximize()) {
         on_maximizeButton_clicked();
     } else {
-        QScreen *screen = QGuiApplication::primaryScreen();
-        QRect  screenGeometry = screen->geometry();
-        int x = screenGeometry.width() * .8;
-        int y = screenGeometry.height() * .8;
+        int x = screensize().width()  * .8;
+        int y = screensize().height() * .8;
         this->resize(x, y);
     }
 
@@ -71,6 +69,7 @@ CoreBox::~CoreBox() {
 
 void CoreBox::tabEngine(AppsName i, QString arg) {
     int n = ui->windows->count();
+    qDebug()<<n;
 
     switch (i) {
     case CoreFM: {
@@ -225,39 +224,6 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
     }
     default:
         break;
-    }
-    if (i == CoreFM) {
-
-    } else if (i == CoreImage) {
-
-    } else if (i == CorePad) {
-
-    } else if (i == CorePaint) {
-
-    } else if (i == CorePlayer) {
-
-    } else if (i == Dashboard) {
-
-    } else if (i == Bookmarks) {
-
-    } else if (i == About) {
-
-    } else if (i == StartView) {
-
-    } else if (i == Help) {
-
-    } else if (i == Settings) {
-
-    } else if (i == Search) {
-
-    } else if (i == CoreTime) {
-
-    } else if (i == Corebox) {
-
-    } else if (i == CorePDF) {
-
-    } else {
-
     }
 }
 

@@ -1,8 +1,9 @@
-#include "globalfunctions.h"
+﻿#include "globalfunctions.h"
 #include "corebox.h"
 
 #include <QProcess>
 #include <QDebug>
+
 
 bool moveToTrash(QString fileName)
 {
@@ -99,10 +100,8 @@ void messageEngine(QString message, QString messageType)
     mbox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     mbox->show();
 
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect  screenGeometry = screen->geometry();
-    int x = screenGeometry.width() - (mbox->width() + 20);
-    int y = screenGeometry.height() - (mbox->height() + 40);
+    int x = screensize().width() - (mbox->width() + 20);
+    int y = screensize().height() - (mbox->height() + 40);
 
     mbox->move(x,y);
     QTimer::singleShot(3000, mbox, SLOT(close()));
@@ -235,6 +234,7 @@ QString getMultipleFileSize(QStringList paths)
 }
 
 void openAppEngine(QString path){
+
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     QFileInfo info(path);
     if(!info.exists() && !path.isEmpty()){
@@ -296,4 +296,9 @@ QString checkIsValidFile(QString str) {
         }
     }
     return NULL;
+}
+
+QRect screensize(){
+    QScreen * screen = QGuiApplication::primaryScreen();
+    return screen->geometry();
 }

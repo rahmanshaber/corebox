@@ -36,7 +36,7 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
     ui->setupUi(this);
     ui->searchFF->setFocus();
     ui->results->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
-    ui->folderPath->setVisible(0);
+    ui->pathfream->setVisible(0);
     ui->typeframe->setEnabled(false);
     ui->findCMD->setEnabled(0);
     ui->locateCMD->setEnabled(0);
@@ -81,7 +81,8 @@ QString search::processCall(bool find)
     //-----------------------------------------------------------
 
     //-------------Assigning values------------------------------
-    ff = ui->searchFF->currentText();
+    ff = ui->searchFF->text();
+    qDebug()<< ff;
     type = "*" + ff + "*";    
     //if folder path not given then set it to default (Root "/")
     ui->folderPath->text().isEmpty() ? folPath = "/" : folPath = ui->folderPath->text();
@@ -90,7 +91,7 @@ QString search::processCall(bool find)
     //-----------------------------------------------------------
 
     //-------------Working methods-------------------------------
-    ui->searchFF->addItem(ff);                      //Add the current search text
+    ui->searchFF->setText(ff);                      //Add the current search text
     p1.start(name.toLatin1());                      //Start process by argument
     p1.waitForFinished();                           //Wait for collecting the output
     processOutput.clear();                          //Clear the old output result
@@ -211,7 +212,8 @@ void search::toTable(QStringList list) {
 
 void search::on_findCMD_clicked()
 {
-    if (ui->searchFF->currentText().isEmpty()) {
+    qDebug()<<ui->searchFF->text().isEmpty();
+    if (ui->searchFF->text().isEmpty()) {
         return;
     } else {
         find();
@@ -225,7 +227,7 @@ void search::find() {
 
 void search::on_locateCMD_clicked()
 {
-    if (ui->searchFF->currentText().isEmpty()) {
+    if (ui->searchFF->text().isEmpty()) {
         return;
     } else {
         populateItems(processCall(false));
@@ -287,13 +289,13 @@ void search::on_results_itemDoubleClicked(QTableWidgetItem *item)
 void search::on_more_clicked(bool checked)
 {
     if(checked){
-        ui->folderPath->setVisible(1);
+        ui->pathfream->setVisible(1);
     }else{
-        ui->folderPath->setVisible(0);
+        ui->pathfream->setVisible(0);
     }
 }
 
-void search::on_searchFF_currentTextChanged(const QString &arg1)
+void search::on_searchFF_textChanged(const QString &arg1)
 {
     if(arg1.isEmpty()){
         ui->findCMD->setEnabled(0);
@@ -307,4 +309,9 @@ void search::on_searchFF_currentTextChanged(const QString &arg1)
         ui->typeframe->setEnabled(true); ;
         ui->typeframe->setFocusPolicy(Qt::NoFocus);
     }
+}
+
+void search::on_setfolder_clicked()
+{
+    ui->folderPath->setText(QFileDialog::getExistingDirectory(this, "Select a folder"));
 }

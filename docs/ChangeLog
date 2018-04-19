@@ -16,6 +16,12 @@ version 2.1
 - Fixed Empty the trash.
 - battery properties converted to stringlistmodel.
 - improved app engine.
+- added a button to set search folder in search app.
+- fixed corepad's tab related problems.
+- QScreen moved to golbalfunctions.
+
+
+
 
 version 2,Released date Monday, March 26, 2018
 

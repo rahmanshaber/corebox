@@ -47,12 +47,12 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
     ui->scrollArea->setBackgroundRole(QPalette::Dark);
     ui->scrollArea->setStyleSheet("background-color:rgb(0,0,0);");
 
-    ui->tools->setVisible(false);
+    ui->shortcut->setVisible(false);
     ui->propbox->setVisible(false);
     ui->thumnailView->setVisible(false);
 
     if(currentImagePath.isNull()){
-        for (QPushButton *b : ui->tools->findChildren<QPushButton*>()){
+        for (QPushButton *b : ui->shortcut->findChildren<QPushButton*>()){
             b->setEnabled(false);
         }
 
@@ -161,7 +161,7 @@ bool coreimage::loadFile(const QString &fileName)
         setImage(newImage);
         setWindowFilePath(fileName);
 
-        for (QPushButton *b : ui->tools->findChildren<QPushButton*>()){
+        for (QPushButton *b : ui->shortcut->findChildren<QPushButton*>()){
             b->setEnabled(true);
         }
 
@@ -369,10 +369,10 @@ void coreimage::on_cSaveAs_clicked()
 void coreimage::on_cTools_clicked(bool checked)
 {
     if(checked){
-        ui->tools->setVisible(true);
+        ui->shortcut->setVisible(true);
     }
     else{
-        ui->tools->setVisible(false);
+        ui->shortcut->setVisible(false);
     }
 }
 
@@ -423,7 +423,7 @@ void coreimage::on_slideShow_clicked(bool checked)
       }
       ui->scrollArea->showFullScreen();
       slideShowTimer->start(3000);
-      ui->tools->setVisible(false);
+      ui->shortcut->setVisible(false);
     }
     else {
       if(slideShowTimer) {

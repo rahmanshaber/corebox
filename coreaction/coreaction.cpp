@@ -33,23 +33,14 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     qDebug() << "coreaction opening";
     ui->setupUi(this);
 
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect  screenGeometry = screen->geometry();
-    int x = screenGeometry.width()* .23;
-    int y = screenGeometry.height();
+    int x = screensize().width()* .23;
+    int y = screensize().height();
 
-    int sw = screenGeometry.width() - x;
+    int sw = screensize().width() - x;
 
     this->setFixedSize(x, y);
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint); //| Qt::ToolTip
     this->move(sw, 0);
-
-    //DEMO
-//    QStringList lio;
-//    lio.append("/home/shaber/Downloads/");
-//    lio.append("/home/shaber/Desktop/");
-//    qDebug() << "DEMO FOR GETTING FILESIZE " << getMultipleFileSize(lio);
-    //
 
     ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));
 
