@@ -69,6 +69,23 @@ public:
     bool getShowHidden();
     bool setShowHidden(bool showTool);
 
+    bool getShowCalander();
+    bool setSHowCalander(bool showBattery);
+
+    bool getShowSystem();
+    bool setSHowSystem(bool showSystem);
+
+    bool getShowNetwork();
+    bool setSHowNetwork(bool showNetwork);
+
+    bool getShowCalculator();
+    bool setSHowCalculator(bool showCalculator);
+
+    bool getShowNote();
+    bool setSHowNote(bool showNote);
+
+    bool setSHowTime(bool showTime);
+    bool getShowTime();
 };
 
 #endif // SETTINGSMANAGE_H

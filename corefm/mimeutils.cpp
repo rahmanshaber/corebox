@@ -143,7 +143,7 @@ void MimeUtils::openInApp(QString exe, const QFileInfo &file,
     args.append(/*"\"" + */file.filePath()/* + "\""*/);
   }
 
-  //qDebug() << name << args;
+//  qDebug() << name << args;
 
   // Start application
   QProcess *myProcess = new QProcess(processOwner);

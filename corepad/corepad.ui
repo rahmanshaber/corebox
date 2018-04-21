@@ -1037,10 +1037,47 @@ background-color: rgb(48, 140, 198);
    </item>
    <item row="2" column="1">
     <widget class="QTabWidget" name="notes">
+     <property name="styleSheet">
+      <string notr="true">QTabWidget QTabBar{
+background-color: #EFEFEF;
+height: 30px;
+}
+
+QTabWidget QTabBar::tab{
+background-color: #136ba2;
+color: #ffffff;
+border-right:none;
+height: 30px;
+width: 130px;
+padding: 0px 5px 0px 5px;
+}
+
+QTabWidget QTabBar::tab:selected{
+background-color: #2E2F30;
+color: #ffffff;
+}
+
+QTabWidget QTabBar::tab:!selected{
+background-color:  #EFEFEF;
+color:#000000;
+}
+
+QTabBar::close-button {
+    image: url(:/icons/close_b.svg);
+    subcontrol-position: right;
+}
+</string>
+     </property>
      <property name="tabPosition">
       <enum>QTabWidget::South</enum>
      </property>
+     <property name="documentMode">
+      <bool>true</bool>
+     </property>
      <property name="tabsClosable">
+      <bool>true</bool>
+     </property>
+     <property name="tabBarAutoHide">
       <bool>true</bool>
      </property>
     </widget>

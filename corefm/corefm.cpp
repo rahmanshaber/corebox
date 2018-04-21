@@ -330,7 +330,7 @@ void corefm::closeEvent(QCloseEvent *event)
     else if (tabs->count() > 0) {
         for (int i = 0; i < tabs->count(); i++) {
             tabs->setCurrentIndex(i);
-            qDebug() << ui->pathEdit->currentText() << tabs->currentIndex();
+//            qDebug() << ui->pathEdit->currentText() << tabs->currentIndex();
             saveToRecent("CoreFM", ui->pathEdit->currentText());
         }
     }
@@ -487,7 +487,7 @@ void corefm::listItemPressed(QModelIndex current)
 
 int corefm::addTab(QString path)
 {
-    qDebug()<<currentView;
+//    qDebug()<<currentView;
     if (tabs->count() < 10) {
         if(tabs->count() == 0) tabs->addNewTab(ui->pathEdit->currentText(),currentView);
         return tabs->addNewTab(path,currentView);
@@ -810,7 +810,7 @@ bool corefm::pasteFiles(const QList<QUrl> &files, const QString &newPath,const Q
         }
       }
     }
-    qDebug()<< "pasteFiles";
+//    qDebug()<< "pasteFiles";
 
     // Finished
     emit copyProgressFinished(0, newFiles);
@@ -875,7 +875,7 @@ bool corefm::copyFolder(const QString &srcFolder, const QString &dstFolder,qint6
     if (cut && ok) {
       srcDir.rmdir(srcFolder);
     }
-    qDebug()<< "copyFolder";
+//    qDebug()<< "copyFolder";
     return ok;
 }
 
@@ -929,7 +929,7 @@ bool corefm::cutCopyFile(const QString &src, QString dst, qint64 totalSize,bool 
 
     if (dstFile.size() != total) return 0;
     if (cut) srcFile.remove();  // if file is cut remove the source
-    qDebug()<< "cutCopyFile";
+//    qDebug()<< "cutCopyFile";
     return 1;
 }
 
@@ -975,7 +975,7 @@ bool corefm::linkFiles(const QList<QUrl> &files, const QString &newPath)
         file.link(destUrl);
       }
     }
-    qDebug()<< "linkFiles";
+//    qDebug()<< "linkFiles";
     return true;
 }
 
@@ -1866,7 +1866,7 @@ void corefm::on_actionAscending_triggered(bool checked)
     if(checked){
         currentSortOrder = Qt::AscendingOrder;
         modelView->sort(currentSortColumn, Qt::AscendingOrder);
-        qDebug()<<"checked";
+//        qDebug()<<"checked";
     }
     else{
         currentSortOrder = Qt::DescendingOrder;
@@ -1886,11 +1886,11 @@ void corefm::executeFile(QModelIndex index, bool run) {
 
     // Run or open
     if (run) {
-        qDebug()<< "gn";
+//        qDebug()<< "gn";
       QProcess *myProcess = new QProcess(this);
       myProcess->startDetached(modelList->filePath(srcIndex));
     } else {
-        qDebug()<< modelList->fileInfo(srcIndex);
+//        qDebug()<< modelList->fileInfo(srcIndex);
       mimeUtils->openInApp(modelList->fileInfo(srcIndex), this);
     }
 }
@@ -2129,7 +2129,7 @@ void corefm::on_actionCreate_Archive_triggered(){
     QProcess p1;
 //    QString commd = "engrampa \"" + selcitempath + "\" -a \"" + selcitempath + ".zip\"";
     QString commd = "engrampa \"" + selcitempath + "\" -d";
-    qDebug()<<commd;
+//    qDebug()<<commd;
     p1.start(commd.toLatin1());
     p1.waitForFinished();
     on_actionRefresh_triggered();

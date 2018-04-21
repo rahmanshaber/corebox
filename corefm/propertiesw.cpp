@@ -17,8 +17,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "propertiesw.h"
 #include "ui_propertiesw.h"
 
-#include <QtConcurrent/QtConcurrent>
-#include <sys/vfs.h>
+//#include <QtConcurrent/QtConcurrent>
+//#include <sys/vfs.h>
 #include <sys/stat.h>
 #include <QImageReader>
 #include <QMimeDatabase>
@@ -37,15 +37,16 @@ propertiesw::propertiesw(QString paths,QWidget *parent) :QWidget(parent),ui(new 
     permission();
     general();
     details();
+    partition(pathName);
     show();
 
-    ui->partitionSize->setText(getDriveInfo(pathName));
     connect(ui->ok,SIGNAL(pressed()),this,SLOT(close()));
     this->setAttribute(Qt::WA_DeleteOnClose,1);
 }
 
-propertiesw::~propertiesw()
-{
+propertiesw::~propertiesw(){
+
+    qDebug() << "propertiesw closing";
     delete ui;
 }
 
@@ -104,6 +105,7 @@ void propertiesw::details(){
 }
 
 void propertiesw::permission(){
+
     connect(ui->otherRead,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
     connect(ui->ownerWrite,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
     connect(ui->ownerExec,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
@@ -136,7 +138,18 @@ void propertiesw::permission(){
     ui->permissions->setFocusPolicy(Qt::NoFocus);
 }
 
+void propertiesw::partition(QString path){
+
+    QString t= formatSize(QStorageInfo(path).bytesTotal());
+    QString f= formatSize(QStorageInfo(path).bytesFree());
+//    QString s = QString::number((double) t - f);
+
+    ui->sizefree->setText("Free : " + f);
+    ui->sizetotal->setText("Total : " + t);
+}
+
 QIcon propertiesw::geticon(const QString &filename){
+
     QMimeDatabase mime_database;
     QIcon icon;
     QList<QMimeType> mime_types = mime_database.mimeTypesForFileName(filename);
@@ -149,15 +162,15 @@ QIcon propertiesw::geticon(const QString &filename){
       return icon;
 }
 
-void propertiesw::checkboxesChanged()
-{
+void propertiesw::checkboxesChanged(){
+
     ui->permissionsNumeric->setText(QString("%1%2%3").arg(ui->ownerRead->isChecked()*4 + ui->ownerWrite->isChecked()*2 + ui->ownerExec->isChecked())
                                 .arg(ui->groupRead->isChecked()*4 + ui->groupWrite->isChecked()*2 + ui->groupExec->isChecked())
                                 .arg(ui->otherRead->isChecked()*4 + ui->otherWrite->isChecked()*2 + ui->otherExec->isChecked()));
 }
 
-void propertiesw::numericChanged(QString text)
-{
+void propertiesw::numericChanged(QString text){
+
     if(text.count() != 3) return;
 
     int owner = QString(text.at(0)).toInt();
@@ -175,16 +188,3 @@ void propertiesw::numericChanged(QString text)
     ui->otherWrite->setChecked((other - other / 4 * 4 - other % 2));
     ui->otherExec->setChecked(other % 2);
 }
-
-QString propertiesw::getDriveInfo(QString path)
-{
-    struct statfs info;
-    statfs(path.toLocal8Bit(), &info);
-
-    if(info.f_blocks == 0) return "";
-
-    return QString("%1  /  %2  (%3%)").arg(formatSize((qint64) (info.f_blocks - info.f_bavail)*info.f_bsize))
-                       .arg(formatSize((qint64) info.f_blocks*info.f_bsize))
-                       .arg((info.f_blocks - info.f_bavail)*100/info.f_blocks);
-}
-

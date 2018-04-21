@@ -69,7 +69,6 @@ CoreBox::~CoreBox() {
 
 void CoreBox::tabEngine(AppsName i, QString arg) {
     int n = ui->windows->count();
-    qDebug()<<n;
 
     switch (i) {
     case CoreFM: {
@@ -392,7 +391,7 @@ void CoreBox::mousePressEvent(QMouseEvent *event)
     mousePos = event->globalPos();
 
     if ( event->button() == Qt::LeftButton ){
-        qDebug() << "left button is pressed";
+//        qDebug() << "left button is pressed";
 //        mousePressed = true;
 //        mousePos = event->globalPos();
 

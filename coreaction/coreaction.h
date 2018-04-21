@@ -32,6 +32,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corescreenshot/mainwindow.h"
 #include "dashboard/upower.h"
 #include "dashboard/battery.h"
+#include "dashboard/lib/info_manager.h"
 
 namespace Ui {
 class coreaction;
@@ -59,9 +60,16 @@ private:
     QMenu *trayIconMenu;
     QDir currentDir;
 
+    QTimer *timer;
+    InfoManager *im;
+
     void tryicon();
     void batteryCheck();
     void collectNotes();
+
+    void sysWsetup();
+    void networkWsetup();
+    void widgetList();
 
 public slots:
     void ShowWindow(QSystemTrayIcon::ActivationReason Reason);

@@ -48,7 +48,6 @@ private:
 
     CircleBar* cpuBar;
     CircleBar* memBar;
-    CircleBar* diskBar;
 
     QTimer *timer;
     InfoManager *im;

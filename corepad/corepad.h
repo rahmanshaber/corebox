@@ -79,7 +79,6 @@ private slots:
     void on_nextW_clicked();
     void on_previousW_clicked();
     void on_notes_currentChanged(int index);
-
     void on_notes_tabCloseRequested(int index);
 
 public slots:

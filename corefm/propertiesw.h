@@ -47,7 +47,7 @@ private:
     void permission();
     void general();
     void details();
-    QString getDriveInfo(QString path);
+    void partition(QString path);
 };
 
 #endif // PROPERTIESW_H

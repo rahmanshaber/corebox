@@ -2281,7 +2281,8 @@ background-color: #9F9F9F;
 color: #000000;
 }
 QTabWidget QTabBar::tab:!selected{
-background-color:  #333333;
+background-color:  #EFEFEF;
+color:#000000;
 }</string>
      </property>
      <property name="tabPosition">

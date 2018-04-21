@@ -15,6 +15,12 @@ SettingsManage::SettingsManage()
 void SettingsManage::createDefaultSettings() {
     qDebug() << "createDefaultSettings opening";
     if (!QFileInfo(cSetting->fileName()).exists()) {
+
+        cSetting->beginGroup("CoreBox");
+        cSetting->setValue("Maximized", false);
+        cSetting->setValue("Recent-Disable", true);
+        cSetting->endGroup();
+
         cSetting->beginGroup("CoreFM");
         cSetting->setValue("Terminal", "xfce4-terminal");
         cSetting->setValue("Startup-Path", QDir::homePath());
@@ -35,13 +41,14 @@ void SettingsManage::createDefaultSettings() {
         cSetting->setValue("Save-Location", QDir::homePath() + "/Pictures");
         cSetting->endGroup();
 
-        cSetting->beginGroup("CoreBox");
-        cSetting->setValue("Maximized", false);
-        cSetting->setValue("Recent-Disable", true);
-        cSetting->endGroup();
-
         cSetting->beginGroup("CoreAction");
+        cSetting->setValue("Show-Time", true);
         cSetting->setValue("Show-Battery", false);
+        cSetting->setValue("Show-System", false);
+        cSetting->setValue("Show-Network", false);
+        cSetting->setValue("Show-Calander", false);
+        cSetting->setValue("Show-Calculator", true);
+        cSetting->setValue("Show-Note", true);
         cSetting->endGroup();
 
     }
@@ -66,6 +73,28 @@ QVariant SettingsManage::getSpecificValue(QString groupName, QString keyName) {
     }
     return QVariant();
 }
+
+//-------------------------CoreBox--------------------------------------
+
+bool SettingsManage::setBoxIsMaximize(bool isMaximize) {
+    return setSpecificValue("CoreBox", "Maximized", isMaximize);
+}
+
+bool SettingsManage::getBoxIsMaximize() {
+    return getSpecificValue("CoreBox", "Maximized").toBool();
+}
+
+bool SettingsManage::setDisableRecent(bool showRecent) {
+    return setSpecificValue("CoreBox", "Recent-Disable", showRecent);
+}
+
+bool SettingsManage::getDisableRecent() {
+    return getSpecificValue("CoreBox", "Recent-Disable").toBool();
+}
+
+//-------------------------CoreBox--------------------------------------
+
+//-------------------------CoreFM--------------------------------------
 
 bool SettingsManage::setTerminal(QString termName) {
     return setSpecificValue("CoreFM", "Terminal", termName);
@@ -171,6 +200,10 @@ bool SettingsManage::getViewMode() {
     return getSpecificValue("CoreFM", "View-Mode").toBool();
 }
 
+//-------------------------CoreFM--------------------------------------
+
+//-------------------------CoreScreenshot------------------------------
+
 bool SettingsManage::setSCSaveLocation(QString path) {
     return setSpecificValue("CoreScreenshot", "Save-Location", path);
 }
@@ -179,26 +212,64 @@ QString SettingsManage::getSCSaveLocation() {
     return getSpecificValue("CoreScreenshot", "Save-Location").toString();
 }
 
-bool SettingsManage::setBoxIsMaximize(bool isMaximize) {
-    return setSpecificValue("CoreBox", "Maximized", isMaximize);
+//-------------------------CoreScreenshot------------------------------
+
+//-------------------------CoreAction------------------------------
+
+bool SettingsManage::setSHowTime(bool showTime) {
+    return setSpecificValue("CoreAction", "Show-Time", showTime);
 }
 
-bool SettingsManage::getBoxIsMaximize() {
-    return getSpecificValue("CoreBox", "Maximized").toBool();
+bool SettingsManage::getShowTime() {
+    return getSpecificValue("CoreAction", "Show-Time").toBool();
 }
 
 bool SettingsManage::setSHowBattery(bool showBattery) {
-    return setSpecificValue("CoreBox", "Show-Battery", showBattery);
+    return setSpecificValue("CoreAction", "Show-Battery", showBattery);
 }
 
 bool SettingsManage::getShowBattery() {
-    return getSpecificValue("CoreBox", "Show-Battery").toBool();
+    return getSpecificValue("CoreAction", "Show-Battery").toBool();
 }
 
-bool SettingsManage::setDisableRecent(bool showRecent) {
-    return setSpecificValue("CoreBox", "Recent-Disable", showRecent);
+bool SettingsManage::setSHowSystem(bool showSystem) {
+    return setSpecificValue("CoreAction", "Show-System", showSystem);
 }
 
-bool SettingsManage::getDisableRecent() {
-    return getSpecificValue("CoreBox", "Recent-Disable").toBool();
+bool SettingsManage::getShowSystem() {
+    return getSpecificValue("CoreAction", "Show-System").toBool();
 }
+
+bool SettingsManage::setSHowNetwork(bool showNetwork) {
+    return setSpecificValue("CoreAction", "Show-Network", showNetwork);
+}
+
+bool SettingsManage::getShowNetwork() {
+    return getSpecificValue("CoreAction", "Show-Network").toBool();
+}
+
+bool SettingsManage::setSHowCalander(bool showCalander) {
+    return setSpecificValue("CoreAction", "Show-Calander", showCalander);
+}
+
+bool SettingsManage::getShowCalander() {
+    return getSpecificValue("CoreAction", "Show-Calander").toBool();
+}
+
+bool SettingsManage::setSHowCalculator(bool showCalculator) {
+    return setSpecificValue("CoreAction", "Show-Calculator", showCalculator);
+}
+
+bool SettingsManage::getShowCalculator() {
+    return getSpecificValue("CoreAction", "Show-Calculator").toBool();
+}
+
+bool SettingsManage::setSHowNote(bool showNote) {
+    return setSpecificValue("CoreAction", "Show-Note", showNote);
+}
+
+bool SettingsManage::getShowNote() {
+    return getSpecificValue("CoreAction", "Show-Note").toBool();
+}
+
+//-------------------------CoreAction------------------------------

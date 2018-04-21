@@ -82,7 +82,7 @@ QString search::processCall(bool find)
 
     //-------------Assigning values------------------------------
     ff = ui->searchFF->text();
-    qDebug()<< ff;
+//    qDebug()<< ff;
     type = "*" + ff + "*";    
     //if folder path not given then set it to default (Root "/")
     ui->folderPath->text().isEmpty() ? folPath = "/" : folPath = ui->folderPath->text();
@@ -212,7 +212,7 @@ void search::toTable(QStringList list) {
 
 void search::on_findCMD_clicked()
 {
-    qDebug()<<ui->searchFF->text().isEmpty();
+//    qDebug()<<ui->searchFF->text().isEmpty();
     if (ui->searchFF->text().isEmpty()) {
         return;
     } else {

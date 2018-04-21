@@ -28,7 +28,9 @@ float varA, varB, result;
 int z = 0, varC, varD;
 
 coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
-    ui(new Ui::coreaction)
+    ui(new Ui::coreaction),
+    timer(new QTimer(this)),
+    im(InfoManager::ins())
 {
     qDebug() << "coreaction opening";
     ui->setupUi(this);
@@ -38,26 +40,16 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
 
     int sw = screensize().width() - x;
 
-    this->setFixedSize(x, y);
+    ui->widgetsL->setFixedWidth(x);
+
+    this->setFixedSize(x+6, y);
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint); //| Qt::ToolTip
     this->move(sw, 0);
-
-    ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));
-
-    ui->bookmarks->setVisible(0);
-    ui->dashboard->setVisible(0);
-
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
-    timer->start(1000);
+    QTimer::singleShot(8000, this, SLOT(hide()));
 
     loadsettings();
+    widgetList();
     tryicon();
-    batteryCheck();
-    showTime();
-    collectNotes();
-    messageEngine("CoreAction Started.\nPlease click icon in System Tray", "Info");
-
 }
 
 coreaction::~coreaction()
@@ -88,6 +80,67 @@ void coreaction::tryicon()  //setup coreaction tryicon
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(ShowWindow(QSystemTrayIcon::ActivationReason)));
 }
 
+void coreaction::widgetList(){
+
+    if(sm.getShowTime() == 1){
+        ui->timeW->setVisible(1);
+        QTimer *timer = new QTimer(this);
+        showTime();
+        connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
+        timer->start(1000);
+    }else {
+        ui->timeW->setVisible(0);
+    }
+
+    if(sm.getShowBattery() == 1){
+        ui->batteryW->setVisible(1);
+        QTimer *timer = new QTimer(this);
+        batteryCheck();
+        connect(timer, SIGNAL(timeout()), this, SLOT(batteryCheck()));
+        timer->start(5000);
+    }else {
+        ui->batteryW->setVisible(0);
+    }
+
+    if(sm.getShowSystem() == 1){
+        ui->sysW->setVisible(1);
+        sysWsetup();
+        connect(timer, &QTimer::timeout, this, &coreaction::sysWsetup);
+        timer->start(1 * 1000);
+    }else {
+        ui->sysW->setVisible(0);
+    }
+
+    if(sm.getShowNetwork() == 1){
+        ui->networkW->setVisible(1);
+        networkWsetup();
+        connect(timer, &QTimer::timeout, this, &coreaction::networkWsetup);
+        timer->start(1 * 1000);
+    }else {
+        ui->networkW->setVisible(0);
+    }
+
+    if(sm.getShowCalander() == 1){
+        ui->calandarW->setVisible(1);
+    }else {
+        ui->calandarW->setVisible(0);
+    }
+
+    if(sm.getShowCalculator() == 1){
+        ui->calculatorW->setVisible(1);
+        ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));
+    }else {
+        ui->calculatorW->setVisible(0);
+    }
+
+    if(sm.getShowNote() == 1){
+        ui->notesW->setVisible(1);
+        collectNotes();
+    }else {
+        ui->notesW->setVisible(0);
+    }
+}
+
 void coreaction::loadsettings()
 {
     SettingsManage sm;
@@ -96,43 +149,35 @@ void coreaction::loadsettings()
 
 void coreaction::batteryCheck()
 {
-    if (sm.getShowBattery()) {
-        UPower *u = new UPower(this);
+    UPower *u = new UPower(this);
 
-//        Battery *b;
-//        foreach (Battery *bat, *u->batteries()) {
-//            b = u->batteries()->value(bat->path());
-//        }
-        Battery *b = nullptr;
-        foreach (Battery *bat, *u->batteries()) {
-            b = u->batteries()->value(bat->path());
-        }
-        if (!b)
-            return;
+    Battery *b = nullptr;
+    foreach (Battery *bat, *u->batteries()) {
+        b = u->batteries()->value(bat->path());
+    }
+    if (!b)
+        return;
 
-        ui->batteryProg->setValue(b->percentage());
+    ui->batteryProg->setValue(b->percentage());
 
-        switch( b->state() ) {
-            case Battery::FullyCharged:
-                ui->batteryStatus->setText( tr( "Full" ) );
-                break;
-            case Battery::Discharging:
-                ui->batteryStatus->setText( tr( "Discharging" ) );
-                break;
-            case Battery::Charging:
-                ui->batteryStatus->setText( tr( "Charging" ) );
-                break;
-            default:
-                ui->batteryStatus->setText( tr( "No Battery" ) );
-                break;
-        }
-        ui->batteryframe->setVisible(true);
-    } else {
-        ui->batteryframe->setVisible(false);
+    switch( b->state() ) {
+        case Battery::FullyCharged:
+            ui->batteryStatus->setText( tr( "Full" ) );
+            break;
+        case Battery::Discharging:
+            ui->batteryStatus->setText( tr( "Discharging" ) );
+            break;
+        case Battery::Charging:
+            ui->batteryStatus->setText( tr( "Charging" ) );
+            break;
+        default:
+            ui->batteryStatus->setText( tr( "No Battery" ) );
+            break;
     }
 }
 
 void coreaction::on_about_clicked() {
+
     about *ab = new about();
     ab->show();
 }
@@ -145,19 +190,19 @@ void coreaction::showTime()
         text[2] = ' ';
     QString d = QDate::currentDate().toString("dddd");
     QString dt = QDate::currentDate().toString("MMMM d");
-    ui->day->setText(d + ",");
-    ui->date->setText(dt);
+    ui->day->setText(d + "," + dt);
 }
 
 void coreaction::focusOutEvent(QFocusEvent *event){
     Q_UNUSED(event);
-//    if (event->lostFocus()) {
-//    }
-//    if (geometry().contains(QCursor::pos())) {
-//        setFocus(Qt::PopupFocusReason);
-//    } else {
-//        hide();
-//    }
+    if (event->lostFocus()) {
+//        qDebug()<<"lost";
+    }
+    if (geometry().contains(QCursor::pos())) {
+        setFocus(Qt::PopupFocusReason);
+    } else {
+        hide();
+    }
 }
 
 void coreaction::ShowWindow(QSystemTrayIcon::ActivationReason Reason){
@@ -165,6 +210,7 @@ void coreaction::ShowWindow(QSystemTrayIcon::ActivationReason Reason){
         if (!this->isVisible()) {
             batteryCheck();
             this->show();
+            QTimer::singleShot(8000, this, SLOT(hide()));
         } else {
             this->hide();
         }
@@ -340,6 +386,7 @@ void coreaction::on_search_clicked()
 }
 
 void coreaction::closeEvent(QCloseEvent *event) {
+
     Q_UNUSED(event);
     sm.cSetting->beginGroup("Notes");
     sm.cSetting->setValue("Note1", ui->plainTextEdit->toPlainText());
@@ -350,8 +397,55 @@ void coreaction::closeEvent(QCloseEvent *event) {
 }
 
 void coreaction::collectNotes() {
+
     sm.cSetting->beginGroup("Notes");
     ui->plainTextEdit->setPlainText(sm.cSetting->value("Note1").toString());
     ui->plainTextEdit_2->setPlainText(sm.cSetting->value("Note2").toString());
     sm.cSetting->endGroup();
+}
+
+void coreaction::sysWsetup()
+{
+    //set cpu bar value
+    int cpuPercent = im->getCpuPercents().at(0);
+    ui->cpubar->setValue(cpuPercent);
+
+    //set ram bar value
+    im->updateMemoryInfo();
+    int memPercent = 0;
+
+    if (im->getMemTotal())
+        memPercent = ((double)im->getMemUsed() / (double)im->getMemTotal()) * 100.0;
+
+    ui->rambar->setValue(memPercent);
+
+    //set drive bar value
+    int drivePercent = ((double)QStorageInfo("/").bytesTotal() - QStorageInfo("/").bytesFree() / (double)QStorageInfo("/").bytesTotal()) * 100.0;
+    ui->drivebar->setValue(drivePercent);
+}
+
+void coreaction::networkWsetup()
+{
+    static quint64 l_RXbytes = im->getRXbytes();
+    static quint64 l_TXbytes = im->getTXbytes();
+    static quint64 max_RXbytes = 1L << 20; // 1 MEBI
+    static quint64 max_TXbytes = 1L << 20; // 1 MEBI
+
+    quint64 RXbytes = im->getRXbytes();
+    quint64 TXbytes = im->getTXbytes();
+
+    quint64 d_RXbytes = (RXbytes - l_RXbytes);
+    quint64 d_TXbytes = (TXbytes - l_TXbytes);
+
+    QString downText = FormatUtil::formatBytes(d_RXbytes);
+    QString upText = FormatUtil::formatBytes(d_TXbytes);
+
+    ui->dspeed->setText(downText);
+    ui->uspeed->setText(upText);
+
+    max_RXbytes = qMax(max_RXbytes, d_RXbytes);
+    max_TXbytes = qMax(max_TXbytes, d_TXbytes);
+
+    l_RXbytes = RXbytes;
+    l_TXbytes = TXbytes;
 }

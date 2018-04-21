@@ -47,7 +47,7 @@ border: 1px rgb(67, 67, 67);
       <string notr="true">
 QScrollBar::groove:vertical {
     background: red;
-    position: absolute; /* absolutely position 4px from the left and right of the widget. setting margins on the widget should work too... */
+    position: absolute;
     left: 4px; right: 4px;
 }
 
@@ -83,8 +83,8 @@ QScrollBar::sub-page:vertical {
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-217</y>
-        <width>835</width>
+        <y>0</y>
+        <width>837</width>
         <height>900</height>
        </rect>
       </property>

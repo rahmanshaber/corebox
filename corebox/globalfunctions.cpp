@@ -31,27 +31,27 @@ bool moveToTrash(QString fileName)
         reply = QMessageBox::warning(qApp->activeWindow(), "Warning!", "Do you want to Trash the '" + fileName + "' ?", QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             QString fileLocation = fileName;
-            qDebug()<<  fileLocation ;
+//            qDebug()<<  fileLocation ;
             if (QFile(fileLocation).exists()) {
                 //copyops.append(new copy(QStringList() << currentDir.path() + "/" + item->text(), trash.path() + "/files/", true));
                 QFile(fileLocation).rename(trash.path() + "/files/" + QFileInfo(fileName).fileName());
-                qDebug()<< QFileInfo(fileName).fileName()  ;
+//                qDebug()<< QFileInfo(fileName).fileName()  ;
             } else {
                 //QDir dirToRemove(currentDir);
                 //dirToRemove.cd(item->text());
                 QDir(QFileInfo(fileName).path()).rename(QFileInfo(fileName).fileName(), trash.path() + "/files/ " + QFileInfo(fileName).fileName());
-                qDebug()<<  QFileInfo(fileName).fileName() ;
+//                qDebug()<<  QFileInfo(fileName).fileName() ;
                 //copyops.append(new copy(QStringList() << dirToRemove.path(), trash.path() + "/files/", true));
             }
-            qDebug()<<  trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo" ;
+//            qDebug()<<  trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo" ;
             QFile trashinfo(trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo");
             trashinfo.open(QFile::WriteOnly);
             trashinfo.write(QString("[Trash Info]\n").toUtf8());
-            qDebug()<<  QString("[Trash Info]\n").toUtf8();
+//            qDebug()<<  QString("[Trash Info]\n").toUtf8();
             trashinfo.write(QString("Path=" + fileLocation + "\n").toUtf8());
-            qDebug()<<  QString("Path=" + fileLocation + "\n").toUtf8();
+//            qDebug()<<  QString("Path=" + fileLocation + "\n").toUtf8();
             trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());
-            qDebug()<<  QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8();
+//            qDebug()<<  QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8();
             trashinfo.close();
 
             messageEngine("File Moved to Trash", "Info");
@@ -100,8 +100,8 @@ void messageEngine(QString message, QString messageType)
     mbox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     mbox->show();
 
-    int x = screensize().width() - (mbox->width() + 20);
-    int y = screensize().height() - (mbox->height() + 40);
+    int x = screensize().width() - (mbox->width() + 10);
+    int y = screensize().height() - (mbox->height() + 10);
 
     mbox->move(x,y);
     QTimer::singleShot(3000, mbox, SLOT(close()));
@@ -300,5 +300,5 @@ QString checkIsValidFile(QString str) {
 
 QRect screensize(){
     QScreen * screen = QGuiApplication::primaryScreen();
-    return screen->geometry();
+    return screen->availableGeometry();
 }

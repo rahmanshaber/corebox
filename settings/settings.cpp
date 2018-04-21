@@ -366,6 +366,11 @@ void settings::on_cancel_clicked()
 
 void settings::on_ok_clicked()
 {
+    //corebox
+    sm.setBoxIsMaximize(ui->isMaximized->isChecked());
+    sm.setDisableRecent(ui->isRecentDisable->isChecked());
+
+    //corefm
     MimeUtils *mimeUtils = new MimeUtils(this);
     mimeUtils->setDefaultsFileName(ui->cmbDefaultMimeApps->currentText());
     for (int i = 0; i < ui->mimesWidget->topLevelItemCount(); ++i) {
@@ -393,11 +398,18 @@ void settings::on_ok_clicked()
     sm.setShowToolbox(ui->showTool->isChecked());
     sm.setViewMode(ui->view->currentIndex() == 0 ? "Detail" : "Icon");
 
+    //corescreenshot
     sm.setSCSaveLocation(ui->ssLocation->text());
 
-    sm.setBoxIsMaximize(ui->isMaximized->isChecked());
+    //coreaction
+    sm.setSHowTime(ui->isTime->isChecked());
     sm.setSHowBattery(ui->isBattery->isChecked());
-    sm.setDisableRecent(ui->isRecentDisable->isChecked());
+    sm.setSHowSystem(ui->isSystem->isChecked());
+    sm.setSHowNetwork(ui->isNetwork->isChecked());
+    sm.setSHowCalander(ui->isCalander->isChecked());
+    sm.setSHowCalculator(ui->isCalculator->isChecked());
+    sm.setSHowNote(ui->isNotes->isChecked());
+
 
     messageEngine("Settings Applied", "Info");
     QIcon::setThemeName(sm.getThemeName());

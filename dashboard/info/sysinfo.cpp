@@ -106,6 +106,7 @@ void sysinfo::updateMemoryBar()
 
     memBar->setValue(memUsedPercent, QString("%1 / %2").arg(f_memUsed).arg(f_memTotal));
 }
+
 void sysinfo::updateNetworkBar()
 {
     static quint64 l_RXbytes = im->getRXbytes();

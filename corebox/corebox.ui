@@ -623,12 +623,10 @@ background-color: #1268A4;
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
-       <string notr="true">QTabWidget{
-background-color: #373737;
-border: none;
-}
+       <string notr="true">
 QTabWidget QTabBar{
 background-color: #373737;
+border:none;
 height: 30px;
 }
 
@@ -647,14 +645,17 @@ background-color: #5A5B5C;
 font-weight: bold;
 color: #ffffff;
 }
+
 QTabWidget QTabBar::tab:!selected{
 background-color:#353536;
 color:  #B4B4B4;
 }
+
 QTabWidget QTabBar::tab:hover{
 background-color:  #5A5B5C;
 color:  #ffffff;
 }
+
 QTabBar::close-button {
     image: url(:/icons/close_w.svg);
     subcontrol-position: right;
