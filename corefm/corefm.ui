@@ -1912,7 +1912,7 @@ background-color: #1268A4;
        <layout class="QHBoxLayout" name="lp"/>
       </item>
       <item>
-       <widget class="QListWidget" name="fav_2">
+       <widget class="QListWidget" name="partitions">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -1944,12 +1944,12 @@ padding: 5px 5px 5px 5px;
 }
 
 QListView::item:selected {
-background-color: #1793D1;
+background-color: #1268A4;
 }
 
 QListView::item:hover {
 padding: 5px 5px 5px 0px;
- background-color: #1793D1;
+ background-color: #1268A4;
 }</string>
         </property>
         <property name="frameShape">

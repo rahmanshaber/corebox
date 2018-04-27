@@ -148,6 +148,8 @@ private slots:
     void on_STrash_clicked();
     void on_emptyTrash_clicked();
 
+    void on_partitions_itemClicked(QListWidgetItem *item);
+
 private:
     SettingsManage sm;
     void writeSettings();
@@ -207,6 +209,9 @@ private:
     int selcitem;
 
     CoreBox corebox_;
+    void blockDevicesChanged();
+    QStringList favDirs;
+    UDisks2 *udisks;
 };
 
 //---------------------------------------------------------------------------------

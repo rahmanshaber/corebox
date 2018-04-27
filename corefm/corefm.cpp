@@ -141,6 +141,23 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->newfolder->setDefaultAction(ui->actionNewFolder);
     ui->newtext->setDefaultAction(ui->actionNewTextFile);
 
+    QDir::home().mkdir(".coreBox");
+//    QFile fav(QDir::homePath() + "/.coreBox");
+//    if (!fav.exists()) {
+//        fav.open(QFile::WriteOnly);
+//        fav.write(QString("").toUtf8());
+//        fav.close();
+//    }
+
+    udisks = new UDisks2(this);
+    connect(udisks, SIGNAL(blockDeviceAdded(QString)), this, SLOT(blockDevicesChanged()));
+    connect(udisks, SIGNAL(blockDeviceChanged(QString)), this, SLOT(blockDevicesChanged()));
+    connect(udisks, SIGNAL(blockDeviceRemoved(QString)), this, SLOT(blockDevicesChanged()));
+    connect(udisks, SIGNAL(filesystemAdded(QString)), this, SLOT(blockDevicesChanged()));
+
+    blockDevicesChanged();
+
+
 //    watcher = new QFileSystemWatcher(this);
 //    connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
 }
@@ -2147,4 +2164,283 @@ void corefm::on_emptyTrash_clicked(){
 
     on_actionSelectAll_triggered();
     on_actionDelete_triggered();
+}
+
+void corefm::blockDevicesChanged() {
+
+    ui->partitions->clear();
+
+//    QListWidgetItem* sep1 = new QListWidgetItem();
+//    sep1->setSizeHint(QSize(50, 1));
+//    sep1->setFlags(Qt::NoItemFlags);
+//    ui->partitions->addItem(sep1);
+
+//    QFrame *sepLine1 = new QFrame();
+//    sepLine1->setFrameShape(QFrame::HLine);
+//    ui->partitions->setItemWidget(sep1, sepLine1);
+
+    //Add detected block devices
+    QProcess *lsblk = new QProcess(this);
+    lsblk->start("lsblk -rf --output name,label,hotplug,parttype");
+
+    lsblk->waitForFinished();
+    QByteArray output = lsblk->readAllStandardOutput();
+
+    for (QString block : udisks->blockDevices()) { //Iterate over all detected block devices
+        UDisks2Block *device = udisks->blockDevice(block);
+        QListWidgetItem *item;
+        QIcon icon;
+        if (device) { //Check that device actually exists
+            if (device->fileSystem()) { //Check that filesystem exists on block device
+                if (device->type != "swap") { //Ignore swap devices
+                    for (QString part : QString(output).split("\n")) {
+                        if (part != "") {
+                            QStringList parse = part.split(" ");
+                            if (parse.length() > 1) {
+                                if (parse[0] == device->fileSystem()->name) {
+
+                                    if (parse[1] == "") {
+                                        item = new QListWidgetItem("Drive (" +formatSize(device->size)+ ")"); // device->fileSystem()->name
+                                        icon = QIcon::fromTheme("drive-harddisk");
+                                    } else {
+                                        if (parse.count() > 2) {
+                                            if (parse[2] == "0") {
+                                                icon = QIcon::fromTheme("drive-harddisk");
+                                            } else {
+                                                icon = QIcon::fromTheme("drive-removable-media");
+                                            }
+                                        }
+                                        QString itemText(parse[1].replace("\\x20", " "));  // + " (" + device->fileSystem()->name + ")"
+                                        item = new QListWidgetItem(itemText);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (!(item)) {
+                        item = new QListWidgetItem(formatSize(device->size) + " Hard Drive (" + device->fileSystem()->name + ")");
+                        icon = QIcon::fromTheme("drive-harddisk");
+                    }
+
+                    if (device->fileSystem()->mountPoints().count() == 0) {
+                        QPainter *p = new QPainter();
+                        QPixmap temp = icon.pixmap(16,16);
+                        p->begin(&temp);
+                        p->drawPixmap(8,8,8,8,QIcon::fromTheme("emblem-unmounted").pixmap(8,8));
+                        p->end();
+                        icon = QIcon(temp);
+                    } else {
+                        QPainter *p = new QPainter();
+                        QPixmap temp = icon.pixmap(16,16);
+                        p->begin(&temp);
+                        p->drawPixmap(8,8,8,8,QIcon::fromTheme("emblem-mounted").pixmap(8,8));
+                        p->end();
+                        icon = QIcon(temp);
+                    }
+
+                    item->setIcon(icon);
+                    item->setData(Qt::UserRole, device->fileSystem()->name);
+                    ui->partitions->addItem(item);
+                }
+            }
+        }
+    }
+
+
+//    QListWidgetItem* sep3 = new QListWidgetItem();
+//    sep3->setSizeHint(QSize(50, 1));
+//    sep3->setFlags(Qt::NoItemFlags);
+//    ui->partitions->addItem(sep3);
+
+//    QFrame *sepLine3 = new QFrame();
+//    sepLine3->setFrameShape(QFrame::HLine);
+//    bool hasItem = false;
+//    ui->partitions->setItemWidget(sep3, sepLine3);
+
+
+
+    if (QFile("/usr/bin/jmtpfs").exists()) {
+        //Detect MTP devices
+        QProcess* mtpDev = new QProcess(this);
+        mtpDev->start("jmtpfs -l");
+        mtpDev->waitForStarted();
+
+        while (mtpDev->state() == QProcess::Running) {
+            QApplication::processEvents();
+        }
+        QString output(mtpDev->readAll());
+        bool startReading = false;
+        for (QString line : output.split("\n")) {
+            if (line != "") {
+                if (startReading) {
+//                    hasItem = true;
+                    QStringList parse = line.split(", "); //busLocation, devNum, productId, vendorId, product, vendor
+                    QListWidgetItem* item = new QListWidgetItem();
+                    QString text = parse.at(5) + " " + parse.at(4);
+                    if (!text.contains("(MTP)")) {
+                        text += " (MTP)";
+                    }
+                    item->setText(parse.at(5) + " " + parse.at(4));
+                    item->setIcon(QIcon::fromTheme("smartphone"));
+                    item->setData(Qt::UserRole, "mtp");
+                    item->setData(Qt::UserRole + 1, parse.at(0));
+                    item->setData(Qt::UserRole + 2, parse.at(1));
+                    ui->partitions->addItem(item);
+                } else {
+                    if (line.startsWith("Available devices")) {
+                        startReading = true;
+                    }
+                }
+            }
+        }
+
+    }
+
+    if (QFile("/usr/bin/ifuse").exists() && QFile("/usr/bin/idevicepair").exists() && QFile("/usr/bin/idevice_id").exists()) {
+        //Detect iOS Devices
+
+        QProcess* iosDev = new QProcess();
+        iosDev->start("idevice_id -l");
+        iosDev->waitForStarted();
+
+        while (iosDev->state() == QProcess::Running) {
+            QApplication::processEvents();
+        }
+
+        QString output(iosDev->readAll());
+        for (QString line : output.split("\n")) {
+            if (line != "") {
+                if (!line.startsWith("ERROR:")) {
+                    QListWidgetItem* item = new QListWidgetItem();
+                    QProcess* iosName = new QProcess();
+                    iosName->start("idevice_id " + line);
+                    iosName->waitForFinished();
+
+                    QString name(iosName->readAll());
+                    name = name.trimmed();
+
+                    if (name == "") {
+                        item->setText("iOS Device");
+                    } else {
+                        item->setText(name + " (iOS)");
+                    }
+
+                    item->setIcon(QIcon::fromTheme("smartphone"));
+                    item->setData(Qt::UserRole, "ios");
+                    item->setData(Qt::UserRole + 1, line);
+                    ui->partitions->addItem(item);
+//                    hasItem = true;
+                }
+            }
+        }
+    }
+
+//    if (!hasItem) {
+//        delete sepLine3;
+//        delete sep3;
+//    }
+}
+
+void corefm::on_partitions_itemClicked(QListWidgetItem *item)
+{
+    //Decide if clicked item is a favourite or not
+    if (favDirs.count() - 1 < ui->partitions->selectionModel()->selectedIndexes().at(0).row()) { //The item is not a favourite
+    }
+
+    //This is a block or MTP device; mount and navigate to device.
+    QString dev = item->data(Qt::UserRole).toString();
+    if (dev == "mtp") {
+        qDebug() << "Mounting MTP device " + item->data(Qt::UserRole + 1).toString() + ", " + item->data(Qt::UserRole + 2).toString();
+
+        QString mtpDirName = "mtp" + item->data(Qt::UserRole + 1).toString() + "," + item->data(Qt::UserRole + 2).toString();
+        QDir::home().mkdir(".coreBox");
+        QDir(QDir::homePath() + "/.coreBox").mkdir(mtpDirName);
+        QProcess *mountProcess = new QProcess(this);
+
+        bool mounted = false;
+        for (QString file : QDir(QDir::homePath() + "/.coreBox/" + mtpDirName).entryList()) {
+            if (file != "." && file != "..") {
+                mounted = true;
+            }
+        }
+        if (!mounted) {
+            mountProcess->start("jmtpfs " + QDir::homePath() + "/.coreBox/" + mtpDirName + " -device=" + item->data(Qt::UserRole + 1).toString() + "," + item->data(Qt::UserRole + 2).toString());
+            mountProcess->waitForStarted();
+
+            while (mountProcess->state() == QProcess::Running) {
+                QApplication::processEvents();
+            }
+        }
+        goTo(QDir::homePath() + "/.coreBox/" + mtpDirName);
+
+    }
+    else if (dev == "ios") { //iOS Device
+        QString id = item->data(Qt::UserRole + 1).toString();
+        qDebug() << "Mounting iOS Device " + id;
+
+        QProcess* pairProcess = new QProcess(this);
+        pairProcess->start("idevicepair -u " + id + " pair");
+        pairProcess->waitForStarted();
+
+        while (pairProcess->state() == QProcess::Running) {
+            QApplication::processEvents();
+        }
+
+        QString pairOutput(pairProcess->readAll());
+        if (pairOutput.startsWith("ERROR:")) {
+            if (pairOutput.contains("Please enter the passcode")) { // Ask user to unlock device
+                QMessageBox::critical(this, "iOS Device Locked", "The device is locked. Enter the passcode on the device and try again.", QMessageBox::Ok, QMessageBox::Ok);
+            } else if (pairOutput.contains("Please accept the trust dialog")) { //Ask user to trust PC
+                QMessageBox::critical(this, "iOS Device Trust", "Your device does not trust this PC. To access the device, you need to trust this PC. Answer the trust dialog on your device and try again.", QMessageBox::Ok, QMessageBox::Ok);
+            } else if (pairOutput.contains("user denied the trust dialog")) { //User did not trust PC
+                QMessageBox::critical(this, "iOS Device Trust", "We can't access this device because you told it to not trust this computer.", QMessageBox::Ok, QMessageBox::Ok);
+            } else { //Generic Error
+                QMessageBox::critical(this, "iOS Error", "An error occurred trying to pair with the device:\n\n" + pairOutput, QMessageBox::Ok, QMessageBox::Ok);
+            }
+            return;
+        }
+        else {
+            QString iosDirName = "ios" + id;
+            QDir::home().mkdir(".coreBox");
+            QDir(QDir::homePath() + "/.coreBox").mkdir(iosDirName);
+
+            QProcess* mountProcess = new QProcess();
+
+            bool mounted = false;
+            for (QString file : QDir(QDir::homePath() + "/.coreBox/" + iosDirName).entryList()) {
+                if (file != "." && file != "..") {
+                    mounted = true;
+                }
+            }
+            if (!mounted) {
+                mountProcess->start("ifuse -o ro " + QDir::homePath() + "/.coreBox/" + iosDirName + " -u " + id);
+                mountProcess->waitForStarted();
+
+                while (mountProcess->state() == QProcess::Running) {
+                    QApplication::processEvents();
+                }
+            }
+        }
+
+    }
+    else {
+        qDebug() << "Mounting " + dev;
+        if (udisks->blockDevice(dev)->fileSystem()->mountPoints().count() == 0) {
+            QString mountpoint = udisks->blockDevice(dev)->fileSystem()->mount();
+            while (udisks->blockDevice(dev)->fileSystem()->mountPoints().count() == 0) {
+                QApplication::processEvents();
+            }
+            if (mountpoint == "") {
+                messageEngine("Couldn't mount " + udisks->blockDevice(dev)->dev,"Warning");
+            }
+            else {
+                goTo(mountpoint);
+            }
+        }
+        else {
+            goTo(udisks->blockDevice(dev)->fileSystem()->mountPoints().at(0));
+        }
+    }
+    blockDevicesChanged();
 }
