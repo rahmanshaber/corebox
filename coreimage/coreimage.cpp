@@ -396,6 +396,8 @@ void coreimage::on_cPrevious_clicked()
             loadFile(images.at(images.count() - 1));
         }
     }
+
+    qDebug()<< images;
 }
 
 void coreimage::on_cNext_clicked()

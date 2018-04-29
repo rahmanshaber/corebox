@@ -147,13 +147,13 @@ private slots:
     void on_actionCreate_Archive_triggered();
     void on_STrash_clicked();
     void on_emptyTrash_clicked();
-
     void on_partitions_itemClicked(QListWidgetItem *item);
 
 private:
     SettingsManage sm;
     void writeSettings();
     void shotcuts();
+    void blockDevicesChanged();
     void recurseFolder(QString path, QString parent, QStringList *);
     int showReplaceMsgBox(const QFileInfo &f1, const QFileInfo &f2);
     QMenu* createOpenWithMenu();
@@ -209,8 +209,6 @@ private:
     int selcitem;
 
     CoreBox corebox_;
-    void blockDevicesChanged();
-    QStringList favDirs;
     UDisks2 *udisks;
 };
 

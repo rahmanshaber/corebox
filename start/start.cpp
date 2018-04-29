@@ -53,7 +53,7 @@ void Start::on_cleaRecent_clicked()
 void Start::on_recents_itemDoubleClicked(QTableWidgetItem *item)
 {
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(nameToInt(item->text()), ui->recents->item(item->row(), 1)->text());
+    cBox->tabEngine(nameToInt(ui->recents->item(item->row(),0)->text()), ui->recents->item(item->row(),1)->text());
 }
 
 void Start::on_reloadR_clicked()

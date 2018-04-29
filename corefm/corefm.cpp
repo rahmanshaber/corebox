@@ -142,12 +142,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->newtext->setDefaultAction(ui->actionNewTextFile);
 
     QDir::home().mkdir(".coreBox");
-//    QFile fav(QDir::homePath() + "/.coreBox");
-//    if (!fav.exists()) {
-//        fav.open(QFile::WriteOnly);
-//        fav.write(QString("").toUtf8());
-//        fav.close();
-//    }
+    ui->partitions->setFocusPolicy(Qt::NoFocus);
 
     udisks = new UDisks2(this);
     connect(udisks, SIGNAL(blockDeviceAdded(QString)), this, SLOT(blockDevicesChanged()));
@@ -1883,7 +1878,6 @@ void corefm::on_actionAscending_triggered(bool checked)
     if(checked){
         currentSortOrder = Qt::AscendingOrder;
         modelView->sort(currentSortColumn, Qt::AscendingOrder);
-//        qDebug()<<"checked";
     }
     else{
         currentSortOrder = Qt::DescendingOrder;
@@ -2144,9 +2138,7 @@ void corefm::on_actionExtract_Here_triggered(){
 void corefm::on_actionCreate_Archive_triggered(){
 
     QProcess p1;
-//    QString commd = "engrampa \"" + selcitempath + "\" -a \"" + selcitempath + ".zip\"";
     QString commd = "engrampa \"" + selcitempath + "\" -d";
-//    qDebug()<<commd;
     p1.start(commd.toLatin1());
     p1.waitForFinished();
     on_actionRefresh_triggered();
@@ -2169,15 +2161,6 @@ void corefm::on_emptyTrash_clicked(){
 void corefm::blockDevicesChanged() {
 
     ui->partitions->clear();
-
-//    QListWidgetItem* sep1 = new QListWidgetItem();
-//    sep1->setSizeHint(QSize(50, 1));
-//    sep1->setFlags(Qt::NoItemFlags);
-//    ui->partitions->addItem(sep1);
-
-//    QFrame *sepLine1 = new QFrame();
-//    sepLine1->setFrameShape(QFrame::HLine);
-//    ui->partitions->setItemWidget(sep1, sepLine1);
 
     //Add detected block devices
     QProcess *lsblk = new QProcess(this);
@@ -2247,21 +2230,8 @@ void corefm::blockDevicesChanged() {
         }
     }
 
-
-//    QListWidgetItem* sep3 = new QListWidgetItem();
-//    sep3->setSizeHint(QSize(50, 1));
-//    sep3->setFlags(Qt::NoItemFlags);
-//    ui->partitions->addItem(sep3);
-
-//    QFrame *sepLine3 = new QFrame();
-//    sepLine3->setFrameShape(QFrame::HLine);
-//    bool hasItem = false;
-//    ui->partitions->setItemWidget(sep3, sepLine3);
-
-
-
+    //Add detected MTP devices
     if (QFile("/usr/bin/jmtpfs").exists()) {
-        //Detect MTP devices
         QProcess* mtpDev = new QProcess(this);
         mtpDev->start("jmtpfs -l");
         mtpDev->waitForStarted();
@@ -2274,7 +2244,6 @@ void corefm::blockDevicesChanged() {
         for (QString line : output.split("\n")) {
             if (line != "") {
                 if (startReading) {
-//                    hasItem = true;
                     QStringList parse = line.split(", "); //busLocation, devNum, productId, vendorId, product, vendor
                     QListWidgetItem* item = new QListWidgetItem();
                     QString text = parse.at(5) + " " + parse.at(4);
@@ -2297,9 +2266,8 @@ void corefm::blockDevicesChanged() {
 
     }
 
+    //Detect iOS Devices
     if (QFile("/usr/bin/ifuse").exists() && QFile("/usr/bin/idevicepair").exists() && QFile("/usr/bin/idevice_id").exists()) {
-        //Detect iOS Devices
-
         QProcess* iosDev = new QProcess();
         iosDev->start("idevice_id -l");
         iosDev->waitForStarted();
@@ -2330,28 +2298,18 @@ void corefm::blockDevicesChanged() {
                     item->setData(Qt::UserRole, "ios");
                     item->setData(Qt::UserRole + 1, line);
                     ui->partitions->addItem(item);
-//                    hasItem = true;
                 }
             }
         }
     }
-
-//    if (!hasItem) {
-//        delete sepLine3;
-//        delete sep3;
-//    }
 }
 
 void corefm::on_partitions_itemClicked(QListWidgetItem *item)
 {
-    //Decide if clicked item is a favourite or not
-    if (favDirs.count() - 1 < ui->partitions->selectionModel()->selectedIndexes().at(0).row()) { //The item is not a favourite
-    }
-
     //This is a block or MTP device; mount and navigate to device.
     QString dev = item->data(Qt::UserRole).toString();
     if (dev == "mtp") {
-        qDebug() << "Mounting MTP device " + item->data(Qt::UserRole + 1).toString() + ", " + item->data(Qt::UserRole + 2).toString();
+//        qDebug() << "Mounting MTP device " + item->data(Qt::UserRole + 1).toString() + ", " + item->data(Qt::UserRole + 2).toString();
 
         QString mtpDirName = "mtp" + item->data(Qt::UserRole + 1).toString() + "," + item->data(Qt::UserRole + 2).toString();
         QDir::home().mkdir(".coreBox");
@@ -2377,7 +2335,7 @@ void corefm::on_partitions_itemClicked(QListWidgetItem *item)
     }
     else if (dev == "ios") { //iOS Device
         QString id = item->data(Qt::UserRole + 1).toString();
-        qDebug() << "Mounting iOS Device " + id;
+//        qDebug() << "Mounting iOS Device " + id;
 
         QProcess* pairProcess = new QProcess(this);
         pairProcess->start("idevicepair -u " + id + " pair");
@@ -2425,7 +2383,7 @@ void corefm::on_partitions_itemClicked(QListWidgetItem *item)
 
     }
     else {
-        qDebug() << "Mounting " + dev;
+//        qDebug() << "Mounting " + dev;
         if (udisks->blockDevice(dev)->fileSystem()->mountPoints().count() == 0) {
             QString mountpoint = udisks->blockDevice(dev)->fileSystem()->mount();
             while (udisks->blockDevice(dev)->fileSystem()->mountPoints().count() == 0) {

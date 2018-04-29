@@ -37,7 +37,6 @@ Search
 0 - if path is given find is not working.but locate is working.
 
 corefm
-0 - add drive list in shortcut widget with mount/unmount.
 0 - pathedit is always in focus, even outside clicked.
 0 - rename mode is not going off when clicked outside.
 0 - sometimes in detail mode, dobule click it goes to rename mode.
@@ -46,11 +45,9 @@ corefm
 1 - set custom icom in home's folder.
 1 - add tree and mediainfo package.
 1 - copy-to some common places(like desktop,downloads,home)
-1 - properties - option to make file executable(chmod a+x filepath)
 0 - preview is not working.
 1 - ctrl + wheel = zoom.
 1 - send a file to a drive.
-1 - fix properties ui(fram less)
 1 - Finish movement of mime-related code from FileUtils to MimeUtils
 1 - Implement clearDeadDefaults() method in MimeUtils
 1 - Some *.desktop file has more groups(sections) and each group can contain
@@ -80,7 +77,6 @@ setting
 start
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
-0 - recent path not opening with double click.(Open when double clicked on name but not at date and path)
 
 coreimage
 0 - need a black image on app start.
@@ -94,7 +90,7 @@ coreplayer
 1 - move to qtAV engine
 0 - after stop clicked player widget turs white
 2 - stop clicked >> seekbar position not changing.
-2 - play by open file function automatically play button is clicked.
+
 
 coreshot
 1 - add active window option.

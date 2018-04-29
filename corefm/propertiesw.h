@@ -36,9 +36,14 @@ public:
 
     QIcon geticon(const QString &filename);
 
+    QFileInfo info;
+
 public slots:
     void checkboxesChanged();
     void numericChanged(QString);
+
+private slots:
+    void on_executableB_clicked(bool checked);
 
 private:
     Ui::propertiesw *ui;

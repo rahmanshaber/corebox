@@ -27,8 +27,12 @@ version 2.1
 - battery widget in coreaction now updates every 5 second.
 - changed corepad page ui.
 - corefm's properties would open faster now
-- coreaction will automatically hide within 10 sec.
-
+- coreaction will automatically hide within 10 sec in startup.
+- added drive list in corefm with click to mount support.
+- option to make file executable via corefm's properties.
+- fixed recent path not opening with double click in start.
+- now opening a video file in coreplayer automatically plays it.
+- changed properties ui in corefm.
 
 
 version 2,Released date Monday, March 26, 2018

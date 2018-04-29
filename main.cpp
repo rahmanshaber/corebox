@@ -33,25 +33,6 @@ int main(int argc, char *argv[])
     app.setApplicationName("coreaction");
     app.setWindowIcon(QIcon(":/icons/CoreAction.svg"));
 
-    QStringList result;
-    const auto allMounted = QStorageInfo::mountedVolumes();
-    result.reserve(allMounted.size());
-    for(auto& singleMounted : allMounted)
-    result << singleMounted.displayName();
-
-//    const auto allMounted = QStorageInfo::mountedVolumes();
-    for(int i=0; i<result.count(); ++i ){
-        QString l;
-        l = result.at(i);
-        QStorageInfo(l).rootPath();
-        qDebug()<<QStorageInfo(l).rootPath();
-    }
-//    result.reserve(allMounted.size());
-//    for(auto& singleMounted : allMounted)
-//    result << singleMounted.displayName();
-
-    qDebug()<< result;
-
     coreaction a;
     a.show();
 

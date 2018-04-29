@@ -308,6 +308,7 @@ void coreplayer::updateDurationInfo(qint64 currentInfo)
 }
 
 void coreplayer::openPlayer(QString path) {
+
     QFileInfo sp(path);
     QString selectedFilePath;
     QModelIndex index = mModel->index(0, 0);
@@ -340,7 +341,12 @@ void coreplayer::openPlayer(QString path) {
         }
         ui->seekBar->setEnabled(true);
         ui->volume->setEnabled(true);
+        player->setMedia(QUrl::fromLocalFile(path));
+        player->play();
+        ui->play->setChecked(true);
+        messageEngine("Playing", "Info");
     }
+
 }
 
 void coreplayer::on_open_clicked()
@@ -376,16 +382,16 @@ void coreplayer::setState(QMediaPlayer::State state)
 
         switch (state) {
         case QMediaPlayer::StoppedState:
-            ui->stop->setEnabled(false);
-            ui->play->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+            ui->play->setChecked(0);
+            ui->stop->setChecked(1);
             break;
         case QMediaPlayer::PlayingState:
-            ui->stop->setEnabled(true);
-            ui->play->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
+            ui->play->setChecked(1);
+            ui->stop->setChecked(0);
             break;
         case QMediaPlayer::PausedState:
-            ui->stop->setEnabled(true);
-            ui->play->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+            ui->play->setChecked(0);
+            ui->stop->setChecked(0);
             break;
         }
     }
@@ -394,12 +400,13 @@ void coreplayer::setState(QMediaPlayer::State state)
 void coreplayer::on_play_clicked(bool checked)
 {
     if (checked ){//| QMediaPlayer::StoppedState | QMediaPlayer::PausedState){
-        //setState(QMediaPlayer::PlayingState);
+        setState(QMediaPlayer::PlayingState);
+        player->stop();
         play(ui->medialist->currentIndex().row());
         messageEngine("Playing", "Info");
     }
-    else{ //QMediaPlayer::PlayingState
-        //setState(QMediaPlayer::PausedState);
+    else if (!checked){ //QMediaPlayer::PlayingState
+        setState(QMediaPlayer::PausedState);
         player->pause();
         messageEngine("Paused", "Info");
     }

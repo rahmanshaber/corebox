@@ -17,7 +17,17 @@
    <iconset resource="../icons.qrc">
     <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+background-color: #333333;
+color:#E6E6E6; 
+border: 1px rgb(67, 67, 67);
+}</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>15</number>
+   </property>
    <property name="leftMargin">
     <number>2</number>
    </property>
@@ -53,34 +63,32 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">QTabWidget QTabBar{
-background-color: #333333;
-height: 30px;
+      <string notr="true">
+QTabWidget::pane { /* The tab widget frame */
+	border-top: 1px solid #454A4D;
+	padding: 5px 0px;
 }
 
-QTabWidget QTabBar::tab{
-text-align: left;
-background-color: #136ba2;
-border-style: none;
-height: 30px;
-width: 84px;
-color: #ffffff;
-padding: 0px 5px 0px 5px;
-}
+QTabWidget::tab-bar { alignment: center; }
 
-QTabWidget QTabBar::tab:selected{
-background-color: #0f5d90;
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+	border-style: none;
+	padding-bottom: 5px;
+	min-width: 90px;
 }
-QTabWidget QTabBar::tab:!selected{
-background-color:  #333333;
+QTabBar::tab:selected {
+	border-bottom: 2px solid #0f5d90;
+	font-weight: bold;
 }
-QTabWidget QTabBar::tab:hover{
-background-color:  #3D3D3D;
-}
-</string>
+QTabBar::tab:!selected {
+	font-weight: normal;
+	margin-bottom: 1px;
+}</string>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="generalP">
       <attribute name="title">
@@ -88,10 +96,13 @@ background-color:  #3D3D3D;
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
        <property name="leftMargin">
-        <number>5</number>
+        <number>10</number>
        </property>
        <property name="topMargin">
-        <number>2</number>
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
        </property>
        <property name="bottomMargin">
         <number>2</number>
@@ -116,7 +127,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="labelCreated">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -141,7 +152,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="labelOwner">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -153,7 +164,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="labelSize">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -168,7 +179,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="labelType">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -180,7 +191,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="labelGroup">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -192,7 +203,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="lableLocation">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -217,7 +228,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="labelModified">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -245,7 +256,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="labelExecutable">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -298,7 +309,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="size">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -310,7 +321,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="location">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -325,7 +336,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="type">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -337,7 +348,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="modified">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -349,7 +360,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="created">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -361,7 +372,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="owner">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -373,7 +384,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="group">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -385,7 +396,7 @@ background-color:  #3D3D3D;
         <widget class="QLabel" name="executable">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
@@ -419,26 +430,23 @@ background-color:  #3D3D3D;
         <number>2</number>
        </property>
        <property name="leftMargin">
-        <number>5</number>
+        <number>10</number>
        </property>
        <property name="topMargin">
-        <number>2</number>
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
        </property>
        <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
-        <widget class="QGroupBox" name="groupBox_2">
+        <widget class="QFrame" name="frame_2">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
-         </property>
-         <property name="title">
-          <string notr="true">Image Details</string>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <property name="leftMargin">
@@ -460,7 +468,9 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="label_15">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -472,7 +482,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="imagetype">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -484,7 +494,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="label_17">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -496,7 +506,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="dimensions">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -508,7 +518,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="label_18">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -520,7 +530,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="imageheight">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -532,7 +542,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="label_19">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -544,7 +554,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="imagewidth">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -556,7 +566,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="label_20">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -568,7 +578,7 @@ background-color:  #3D3D3D;
            <widget class="QLabel" name="bitplanecount">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="text">
@@ -600,10 +610,16 @@ background-color:  #3D3D3D;
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
+        <number>20</number>
+       </property>
+       <property name="leftMargin">
         <number>10</number>
        </property>
        <property name="topMargin">
         <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
        </property>
        <item>
         <widget class="QFrame" name="permissions">
@@ -728,7 +744,17 @@ background-color:  #3D3D3D;
            </widget>
           </item>
           <item row="6" column="1" colspan="6">
-           <widget class="QLineEdit" name="permissionsNumeric"/>
+           <widget class="QLineEdit" name="permissionsNumeric">
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="text">
+             <string>4</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="6">
            <widget class="QCheckBox" name="otherRead">
@@ -773,6 +799,19 @@ background-color:  #3D3D3D;
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="executableB">
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Allow this file to run as a program</string>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_4">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -793,18 +832,60 @@ background-color:  #3D3D3D;
       </attribute>
       <layout class="QGridLayout" name="gridLayout_5">
        <property name="leftMargin">
-        <number>5</number>
+        <number>10</number>
        </property>
        <property name="topMargin">
         <number>20</number>
        </property>
+       <property name="rightMargin">
+        <number>10</number>
+       </property>
        <property name="bottomMargin">
         <number>2</number>
        </property>
-       <property name="spacing">
+       <property name="horizontalSpacing">
         <number>2</number>
        </property>
-       <item row="3" column="2">
+       <property name="verticalSpacing">
+        <number>10</number>
+       </property>
+       <item row="2" column="1" colspan="2">
+        <widget class="QLabel" name="sizefree">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Free</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2">
+        <widget class="QLabel" name="sizetotal">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Total</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QLabel" name="patitionN">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="3">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -817,21 +898,14 @@ background-color:  #3D3D3D;
          </property>
         </spacer>
        </item>
-       <item row="2" column="0" colspan="4">
-        <widget class="Line" name="line_5">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" rowspan="2">
+       <item row="1" column="0" rowspan="3">
         <widget class="QPushButton" name="pushButton_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>60</width>
@@ -840,8 +914,8 @@ background-color:  #3D3D3D;
          </property>
          <property name="maximumSize">
           <size>
-           <width>60</width>
-           <height>60</height>
+           <width>131</width>
+           <height>13513</height>
           </size>
          </property>
          <property name="text">
@@ -862,52 +936,15 @@ background-color:  #3D3D3D;
          </property>
         </widget>
        </item>
-       <item row="1" column="2" colspan="2">
-        <widget class="QLabel" name="sizetotal">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Total</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2" colspan="2">
-        <widget class="QLabel" name="sizefree">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Free</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" rowspan="2">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>47</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
      </widget>
     </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="rightMargin">
+      <number>3</number>
+     </property>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
@@ -923,8 +960,30 @@ background-color:  #3D3D3D;
      </item>
      <item>
       <widget class="QPushButton" name="ok">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: 1px solid rgb(67, 67, 67);
+padding: 2px 3px 2px 3px;
+}
+
+QPushButton:hover {
+background-color: rgb(48, 140, 198);
+}
+
+QPushButton:checked{
+background-color:rgb(48, 140, 198); 
+}
+</string>
+       </property>
        <property name="text">
-        <string>OK</string>
+        <string>Close</string>
        </property>
       </widget>
      </item>

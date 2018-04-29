@@ -33,6 +33,7 @@ propertiesw::propertiesw(QString paths,QWidget *parent) :QWidget(parent),ui(new 
     ui->setupUi(this);
 
     pathName = paths;
+    info = QFileInfo(pathName);
 
     permission();
     general();
@@ -53,7 +54,6 @@ propertiesw::~propertiesw(){
 void propertiesw::general(){
 
     QFile file(pathName);
-    QFileInfo info(file);
     QMimeDatabase db;
     QMimeType mime = db.mimeTypeForFile(file, QMimeDatabase::MatchContent);
     QString littleinfo = info.suffix();
@@ -82,13 +82,11 @@ void propertiesw::general(){
     ui->executable->setText("File is not Executable");
     if(info.isExecutable() && !info.isDir()){
         ui->executable->setText("File is Executable");
+        ui->executableB->setChecked(1);
     }
 }
 
 void propertiesw::details(){
-
-    QFile file(pathName);
-    QFileInfo info(file);
 
     QImageReader reader(pathName);
     QString type = info.suffix();
@@ -136,6 +134,10 @@ void propertiesw::permission(){
 
     ui->permissions->setAttribute(Qt::WA_TransparentForMouseEvents);
     ui->permissions->setFocusPolicy(Qt::NoFocus);
+
+    if(info.isDir()){
+        ui->executableB->setVisible(0);
+    }
 }
 
 void propertiesw::partition(QString path){
@@ -144,6 +146,7 @@ void propertiesw::partition(QString path){
     QString f= formatSize(QStorageInfo(path).bytesFree());
 //    QString s = QString::number((double) t - f);
 
+    ui->patitionN->setText(QStorageInfo(path).name());
     ui->sizefree->setText("Free : " + f);
     ui->sizetotal->setText("Total : " + t);
 }
@@ -187,4 +190,22 @@ void propertiesw::numericChanged(QString text){
     ui->otherRead->setChecked(other / 4);
     ui->otherWrite->setChecked((other - other / 4 * 4 - other % 2));
     ui->otherExec->setChecked(other % 2);
+}
+
+void propertiesw::on_executableB_clicked(bool checked)
+{
+    if(checked){
+        QProcess p1;
+        QString commd = "chmod a+x " + pathName;
+        qDebug()<< commd;
+        p1.start(commd.toLatin1());
+        p1.waitForFinished();
+    }
+    else if(!checked){
+        QProcess p1;
+        QString commd = "chmod -x " + pathName;
+        qDebug()<< commd;
+        p1.start(commd.toLatin1());
+        p1.waitForFinished();
+    }
 }

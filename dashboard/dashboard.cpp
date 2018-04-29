@@ -56,13 +56,14 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 
     setdisplaypage();
 
-    QStringList s = disks->blockDevices();
-    QStringList l = s.filter(QRegularExpression(QStringLiteral("[a-z]{3}")));
+//    QStringList s = disks->blockDevices();
+//    QStringList l = s.filter(QRegularExpression(QStringLiteral("[a-z]{3}")));
+//    ui->blocks->addItems(l);
 
-//    ui->blocks->addItems(disks->blockDevices());
-
-    ui->blocks->addItems(l);
-
+    ui->blocks->addItems(disks->blockDevices());
+    for (int i = 0; i < ui->blocks->count(); ++i) {
+           ui->blocks->item(i)->setIcon(QIcon(":/icons/partition.svg"));
+    }
 
     disks = new UDisks2(this);
     connect(disks, SIGNAL(blockDeviceAdded(QString)), this, SLOT(blockDevicesChanged()));
@@ -267,8 +268,8 @@ void dashboard::on_batteriesList_currentIndexChanged(int index)
     int addSeconds = 0;
     switch( m_model->state() ) {
         case Battery::FullyCharged:
-            ui->statusEdit->setText( tr( "Full" ) );
-            ui->timerLblEdit->setText( tr( "Full" ) );
+            ui->statusEdit->setText( tr( "Full Charged" ) );
+            ui->timerLblEdit->setText( tr( "Full Charged" ) );
             break;
         case Battery::Discharging:
             addSeconds = m_model->toEmpty();
@@ -301,9 +302,9 @@ void dashboard::on_batteriesList_currentIndexChanged(int index)
         if( name != "objectName" ) {
             QVariant value = m_model->property(name.toUtf8());
             if( value.type() == QVariant::Double ) {
-                infos << QString(name.toUpper().rightJustified(20) + QString(" : %1").arg(value.toDouble()));
+                infos << QString(name + QString(" : %1").arg(value.toDouble()));
             } else {
-                infos << QString(name.toUpper().rightJustified(20) + " : " + value.toString());
+                infos << QString(name + " : " + value.toString());
             }
         }
     }
