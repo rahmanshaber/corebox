@@ -41,6 +41,9 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
     QIcon::setThemeName(sm.getThemeName());
 
+    ui->view->installEventFilter(this);
+    connect(ui->viewlist->viewport(), SIGNAL(clicked()),this, SLOT(ll()));
+
     // Create mime utils
     mimeUtils = new MimeUtils(this);
 //    QString tmp = "/.local/share/applications/mimeapps.ui->viewlist";
@@ -152,7 +155,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
     blockDevicesChanged();
 
-
 //    watcher = new QFileSystemWatcher(this);
 //    connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
 }
@@ -226,8 +228,8 @@ void corefm::lateStart()
 
     // Connect mouse clicks in views
 //    if (sett->value("singleClick").toInt() == 1) {
-//      connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(listItemClicked(QModelIndex)));
-//      connect(ui->viewtree, SIGNAL(clicked(QModelIndex)),this, SLOT(listItemClicked(QModelIndex)));
+//      connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(lll()));
+//      connect(ui->viewtree, SIGNAL(clicked(QModelIndex)),this, SLOT(lll()));
 //    }
 //    if (sett->value("singleClick").toInt() == 2) {
 //      connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
@@ -2401,4 +2403,15 @@ void corefm::on_partitions_itemClicked(QListWidgetItem *item)
         }
     }
     blockDevicesChanged();
+}
+
+void corefm::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << "Mounting " ;
+
+}
+
+void corefm::ll(){
+
+    qDebug() << "lllllll " ;
 }

@@ -33,6 +33,9 @@ version 2.1
 - fixed recent path not opening with double click in start.
 - now opening a video file in coreplayer automatically plays it.
 - changed properties ui in corefm.
+- fixed dobule clicking file goes to rename mode in corefm.
+- dashborad now show used network in general section.
+
 
 
 version 2,Released date Monday, March 26, 2018

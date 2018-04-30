@@ -387,7 +387,7 @@ border: 1px #34343C;
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="palarm">
       <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1360,18 +1360,7 @@ background-color:#3D3D3D ;
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton{
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:checked{
-background-color:#F5584D ;
-}
-
-QPushButton:!checked{
-background-color:#7EC781 ;
-}
-</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Start</string>

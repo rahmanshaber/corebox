@@ -250,7 +250,7 @@ border-radius: 10px;
             </font>
            </property>
            <property name="text">
-            <string>CoreBox v.2.0 Stable</string>
+            <string>CoreBox v.2.1 Stable</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

@@ -20,7 +20,6 @@ bookmarks
 1 - two icon .folder and file .in bookmarklist list
 
 dashboard
-0 - show used network in general section.
 1 - remove unwanted partition
 1 - selected drive will show only it's pertition.
 1 - mount specific partition on corebox startup.
@@ -39,8 +38,7 @@ Search
 corefm
 0 - pathedit is always in focus, even outside clicked.
 0 - rename mode is not going off when clicked outside.
-0 - sometimes in detail mode, dobule click it goes to rename mode.
-2 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
+0 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
 1 - set custom icom in home's folder.
 1 - add tree and mediainfo package.
@@ -90,7 +88,6 @@ coreplayer
 1 - move to qtAV engine
 0 - after stop clicked player widget turs white
 2 - stop clicked >> seekbar position not changing.
-
 
 coreshot
 1 - add active window option.

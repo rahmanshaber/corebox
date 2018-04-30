@@ -21,6 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QStringListModel>
 #include <QSysInfo>
+#include <QtNetwork>
 #include <QObject>
 
 sysinfo::sysinfo(QWidget *parent) :QWidget(parent),ui(new Ui::sysinfo),
@@ -109,6 +110,12 @@ void sysinfo::updateMemoryBar()
 
 void sysinfo::updateNetworkBar()
 {
+    QNetworkAccessManager manager;
+    const auto config = manager.activeConfiguration();
+//    qDebug() << config.bearerType() << config.bearerTypeName();
+    ui->usedN->setText(config.bearerTypeName());
+
+
     static quint64 l_RXbytes = im->getRXbytes();
     static quint64 l_TXbytes = im->getTXbytes();
     static quint64 max_RXbytes = 1L << 20; // 1 MEBI

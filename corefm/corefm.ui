@@ -1502,6 +1502,9 @@ color:#000000;
        <property name="lineWidth">
         <number>0</number>
        </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
        <widget class="QWidget" name="pagelist">
         <layout class="QVBoxLayout" name="verticalLayout">
          <property name="spacing">
@@ -1550,7 +1553,7 @@ color:#000000;
             <number>0</number>
            </property>
            <property name="editTriggers">
-            <set>QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+            <set>QAbstractItemView::NoEditTriggers</set>
            </property>
            <property name="showDropIndicator" stdset="0">
             <bool>false</bool>
@@ -1627,7 +1630,7 @@ font: 12pt &quot;Cantarell&quot;;
             <number>0</number>
            </property>
            <property name="editTriggers">
-            <set>QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+            <set>QAbstractItemView::NoEditTriggers</set>
            </property>
            <property name="dragDropMode">
             <enum>QAbstractItemView::DragDrop</enum>
@@ -1645,6 +1648,9 @@ font: 12pt &quot;Cantarell&quot;;
             <bool>true</bool>
            </property>
            <property name="itemsExpandable">
+            <bool>false</bool>
+           </property>
+           <property name="expandsOnDoubleClick">
             <bool>false</bool>
            </property>
            <attribute name="headerDefaultSectionSize">
