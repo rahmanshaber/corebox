@@ -11,7 +11,7 @@ version 2.1
 - reload button at bottom in start.
 - added support for multiple file's combined size in corefm.
 - if bookmark is booked it shows a message and show the section it was booked.
-- full trash support with restorable file.
+- full trash support.
 - notes at coreaction is saved and restored in every restart.
 - Fixed Empty the trash.
 - battery properties converted to stringlistmodel.
@@ -35,7 +35,8 @@ version 2.1
 - changed properties ui in corefm.
 - fixed dobule clicking file goes to rename mode in corefm.
 - dashborad now show used network in general section.
-
+- fixed if dir's file is changed corefm will detect now.
+- added sendto some common places(like desktop,downloads,home) in corefm.
 
 
 version 2,Released date Monday, March 26, 2018

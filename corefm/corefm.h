@@ -153,6 +153,10 @@ private slots:
 
     void mousePressEvent(QMouseEvent *event);
 
+    void on_actionDesktop_triggered();
+
+    void on_actionHome_triggered();
+
 private:
     SettingsManage sm;
     void writeSettings();

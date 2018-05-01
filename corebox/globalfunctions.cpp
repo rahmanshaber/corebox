@@ -31,28 +31,16 @@ bool moveToTrash(QString fileName)
         reply = QMessageBox::warning(qApp->activeWindow(), "Warning!", "Do you want to Trash the '" + fileName + "' ?", QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             QString fileLocation = fileName;
-//            qDebug()<<  fileLocation ;
             if (QFile(fileLocation).exists()) {
-                //copyops.append(new copy(QStringList() << currentDir.path() + "/" + item->text(), trash.path() + "/files/", true));
                 QFile(fileLocation).rename(trash.path() + "/files/" + QFileInfo(fileName).fileName());
-//                qDebug()<< QFileInfo(fileName).fileName()  ;
             } else {
-                //QDir dirToRemove(currentDir);
-                //dirToRemove.cd(item->text());
                 QDir(QFileInfo(fileName).path()).rename(QFileInfo(fileName).fileName(), trash.path() + "/files/ " + QFileInfo(fileName).fileName());
-//                qDebug()<<  QFileInfo(fileName).fileName() ;
-                //copyops.append(new copy(QStringList() << dirToRemove.path(), trash.path() + "/files/", true));
             }
-//            qDebug()<<  trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo" ;
             QFile trashinfo(trash.path() + "/info/" + QFileInfo(fileName).fileName() + ".trashinfo");
             trashinfo.open(QFile::WriteOnly);
             trashinfo.write(QString("[Trash Info]\n").toUtf8());
-//            qDebug()<<  QString("[Trash Info]\n").toUtf8();
             trashinfo.write(QString("Path=" + fileLocation + "\n").toUtf8());
-//            qDebug()<<  QString("Path=" + fileLocation + "\n").toUtf8();
-            trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());
-//            qDebug()<<  QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8();
-            trashinfo.close();
+            trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());trashinfo.close();
 
             messageEngine("File Moved to Trash", "Info");
         }

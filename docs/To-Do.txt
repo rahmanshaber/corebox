@@ -42,9 +42,7 @@ corefm
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
 1 - set custom icom in home's folder.
 1 - add tree and mediainfo package.
-1 - copy-to some common places(like desktop,downloads,home)
 0 - preview is not working.
-1 - ctrl + wheel = zoom.
 1 - send a file to a drive.
 1 - Finish movement of mime-related code from FileUtils to MimeUtils
 1 - Implement clearDeadDefaults() method in MimeUtils

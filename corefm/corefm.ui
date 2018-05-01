@@ -2321,16 +2321,16 @@ border: 1px  #F2F2F2;
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="totalitem">
+       <widget class="QLabel" name="selecteditem">
         <property name="text">
-         <string>total item</string>
+         <string>selected item</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="selecteditem">
+       <widget class="QLabel" name="totalitem">
         <property name="text">
-         <string>selected item</string>
+         <string>total item</string>
         </property>
        </widget>
       </item>
@@ -2465,11 +2465,6 @@ border: 1px  #F2F2F2;
     <string>NewPage</string>
    </property>
   </action>
-  <action name="actionCloseTab">
-   <property name="text">
-    <string>CloseTab</string>
-   </property>
-  </action>
   <action name="actionRunFile">
    <property name="text">
     <string>Execute File</string>
@@ -2583,6 +2578,16 @@ border: 1px  #F2F2F2;
   <action name="actionCreate_Archive">
    <property name="text">
     <string>Create Archive..</string>
+   </property>
+  </action>
+  <action name="actionDesktop">
+   <property name="text">
+    <string>Desktop</string>
+   </property>
+  </action>
+  <action name="actionHome">
+   <property name="text">
+    <string>Home</string>
    </property>
   </action>
  </widget>

@@ -41,8 +41,9 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
     QIcon::setThemeName(sm.getThemeName());
 
-    ui->view->installEventFilter(this);
-    connect(ui->viewlist->viewport(), SIGNAL(clicked()),this, SLOT(ll()));
+    ui->viewlist->viewport()->installEventFilter(this);
+    ui->viewtree->viewport()->installEventFilter(this);
+//    connect(ui->viewlist->viewport(), SIGNAL(clicked()),this, SLOT(ll()));
 
     // Create mime utils
     mimeUtils = new MimeUtils(this);
@@ -144,7 +145,11 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->newfolder->setDefaultAction(ui->actionNewFolder);
     ui->newtext->setDefaultAction(ui->actionNewTextFile);
 
-    QDir::home().mkdir(".coreBox");
+    QString p = QDir::homePath() + "/.coreBox";
+    if(!QDir(p).exists()){
+        QDir::home().mkdir(".coreBox");
+    }
+
     ui->partitions->setFocusPolicy(Qt::NoFocus);
 
     udisks = new UDisks2(this);
@@ -155,8 +160,8 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
     blockDevicesChanged();
 
-//    watcher = new QFileSystemWatcher(this);
-//    connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
+    watcher = new QFileSystemWatcher(this);
+    connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
 }
 
 corefm::~corefm()
@@ -1058,13 +1063,17 @@ void corefm::progressFinished(int ret,QStringList newFiles)
  * @return menu
  */
 QMenu* corefm::createOpenWithMenu() {
-    // Add open with functionality ...
+
     QMenu *openMenu = new QMenu(tr("Open with"));
+
+    // Adding CoreApps
+    openMenu->addAction(ui->actionCoreImage);
+    openMenu->addAction(ui->actionCorePaint);
+    openMenu->addAction(ui->actionCorePad);
+    openMenu->addAction(ui->actionCorePlayer);
 
     // Select action
     QAction *selectAppAct = new QAction(tr("Select..."), openMenu);
-//    selectAppAct->setStatusTip(tr("Select application for opening the file"));
-//    selectAppAct->setIcon(actionIcons->at(18));
     connect(selectAppAct, SIGNAL(triggered()), this, SLOT(selectApp()));
 
     // Load default applications for current mime
@@ -1097,9 +1106,7 @@ QMenu* corefm::createOpenWithMenu() {
     }
 
     // Add open action to menu
-    if (!defaultApps.isEmpty()) {
-      openMenu->addSeparator();
-    }
+    openMenu->addSeparator();
     openMenu->addAction(selectAppAct);
     return openMenu;
 }
@@ -1109,8 +1116,8 @@ QMenu* corefm::globalmenu(){
     QMenu *popup = new QMenu(this);
     QMenu *subnew = new QMenu(tr("New.."));
     QMenu *innew = new QMenu(tr("Open in.."));
-    QMenu *with = new QMenu(tr("Open with.."));
     QMenu *arrageItems = new QMenu(tr("Arrage Items"));
+    QMenu *sendto = new QMenu(tr("Send to.."));
 
     QFileInfo info(selcitempath);
     QFile file(selcitempath);
@@ -1131,16 +1138,15 @@ QMenu* corefm::globalmenu(){
     subnew->addAction(ui->actionNewFolder);
     subnew->addAction(ui->actionNewTextFile);
 
-    with->addAction(ui->actionCoreImage);
-    with->addAction(ui->actionCorePaint);
-    with->addAction(ui->actionCorePad);
-    with->addAction(ui->actionCorePlayer);
-
     arrageItems->addAction(ui->actionName);
     arrageItems->addAction(ui->actionSize);
     arrageItems->addAction(ui->actionDate);
     arrageItems->addSeparator();
     arrageItems->addAction(ui->actionAscending);
+
+    sendto->addAction(ui->actionDesktop);
+    sendto->addAction(ui->actionHome);
+
 
     //Detect whether this is the Trash folder because menus are different
     if (ui->pathEdit->currentText() == QDir::homePath() + "/.local/share/Trash/files") { //This is the Trash folder
@@ -1154,20 +1160,22 @@ QMenu* corefm::globalmenu(){
     int sec = items.count();
 
     if (sec > 1) {
-         popup->addSeparator();
-         popup->addAction(ui->actionCut);
-         popup->addAction(ui->actionCopy);
-         popup->addSeparator();
-         popup->addAction(ui->actionTrash_it);
-         popup->addSeparator();
-
+        popup->addSeparator();
+        popup->addMenu(sendto);
+        popup->addSeparator();
+        popup->addAction(ui->actionCut);
+        popup->addAction(ui->actionCopy);
+        popup->addSeparator();
+        popup->addAction(ui->actionTrash_it);
+        popup->addSeparator();
     }
 
     else  if(sec == 1){
       if(info.isFile()){ //file
           popup->addAction(ui->actionOpen);
-          popup->addMenu(with);
           popup->addMenu(createOpenWithMenu());
+          popup->addSeparator();
+          popup->addMenu(sendto);
           popup->addSeparator();
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
@@ -1178,6 +1186,8 @@ QMenu* corefm::globalmenu(){
         }
       if(info.isDir()){ //folder
           popup->addMenu(innew);
+          popup->addSeparator();
+          popup->addMenu(sendto);
           popup->addSeparator();
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
@@ -1899,11 +1909,9 @@ void corefm::executeFile(QModelIndex index, bool run) {
 
     // Run or open
     if (run) {
-//        qDebug()<< "gn";
       QProcess *myProcess = new QProcess(this);
       myProcess->startDetached(modelList->filePath(srcIndex));
     } else {
-//        qDebug()<< modelList->fileInfo(srcIndex);
       mimeUtils->openInApp(modelList->fileInfo(srcIndex), this);
     }
 }
@@ -2414,4 +2422,32 @@ void corefm::mousePressEvent(QMouseEvent *event)
 void corefm::ll(){
 
     qDebug() << "lllllll " ;
+}
+
+void corefm::on_actionDesktop_triggered()
+{
+    on_actionCopy_triggered();
+
+    QString newPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) ;
+    QStringList cutList;
+
+    pasteLauncher(QApplication::clipboard()->mimeData(), newPath, cutList);
+    ui->paste->setVisible(false);
+    on_actionRefresh_triggered();
+
+    messageEngine("Send Completed.", "Info");
+}
+
+void corefm::on_actionHome_triggered()
+{
+    on_actionCopy_triggered();
+
+    QString newPath = QDir::home().path() ;
+    QStringList cutList;
+
+    pasteLauncher(QApplication::clipboard()->mimeData(), newPath, cutList);
+    ui->paste->setVisible(false);
+    on_actionRefresh_triggered();
+
+    messageEngine("send Completed.", "Info");
 }

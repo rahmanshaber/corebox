@@ -9,16 +9,16 @@
 <img src="docs/screenshots/a4.png" width="500">
 
 ### Download
-* Version 2 released date Monday, March 26, 2018.
+* Version 2.1 released date Monday, March 26, 2018.
 * Here is the app download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
 * See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Changes in latest release
 * Total 40 fixes in this release.
-* added Multi-monitor support.
-* added option to resize corebox.
-* added multiple tab support in corepad.
-* improved archiving in corefm and more in [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
+* full trash support.
+* redesinged coreaction.
+* added drive list in corefm.
+* changed properties ui in corefm and more in [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Build
 * To build see the buidinfo.txt in doc folder [here](https://github.com/rahmanshaber/corebox/blob/master/docs/buildinfo.txt "Title") 
@@ -34,8 +34,7 @@
 * engrampa(for Archive support)
 
 ### Known Bugs
-* In "Recently Closed" section of Start ,clicking only the app name will open the app.
-* First time opening search freeze the app.Restart the app should fix it.
+* Opening two dashboard ,crash the whole app.
 * Window movement needs right mouse hold.
 * Check the To-Do.txt in doc folder for known bugs.
 

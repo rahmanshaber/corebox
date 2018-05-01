@@ -39,6 +39,22 @@ INSTALLS += target desktop icon
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
+DISTFILES += \
+    CoreBox.desktop \
+    README.md \
+    LICENSE \
+    other/condition_one.ogg \
+    other/e.jpeg \
+    other/background.png \
+    docs/ChangeLog \
+    docs/buildinfo.txt \
+    docs/PKGBUILD \
+    docs/To-Do.txt \
+    docs/screenshots/a1.png \
+    docs/screenshots/a2.png \
+    docs/screenshots/a3.png \
+    docs/screenshots/a4.png \
+
 RESOURCES += \
     icons.qrc \
     other.qrc
@@ -65,22 +81,6 @@ FORMS += \
     search/search.ui \
     settings/settings.ui \
     start/start.ui
-
-DISTFILES += \
-    CoreBox.desktop \
-    README.md \
-    LICENSE \
-    other/condition_one.ogg \
-    other/e.jpeg \
-    other/background.png \
-    docs/ChangeLog \
-    docs/buildinfo.txt \
-    docs/PKGBUILD \
-    docs/To-Do.txt \
-    docs/screenshots/a1.png \
-    docs/screenshots/a2.png \
-    docs/screenshots/a3.png \
-    docs/screenshots/a4.png
 
 HEADERS += \
     about/about.h \
