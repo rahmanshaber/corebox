@@ -44,8 +44,6 @@ public:
     QString selectedTerminal;
 
 protected slots:
-    //void getIcon(QTreeWidgetItem *item, int column);
-    //void onActionChanged(QTreeWidgetItem *item, int column);
     void onMimeSelected(QTreeWidgetItem* current, QTreeWidgetItem* previous);
     void updateMimeAssoc(QTreeWidgetItem* item);
     void showAppDialog();

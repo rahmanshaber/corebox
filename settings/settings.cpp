@@ -160,196 +160,130 @@ settings::~settings()
 void settings::onMimeSelected(QTreeWidgetItem *current,QTreeWidgetItem *previous)
 {
     Q_UNUSED(current);
-  // Store previously used associations
-  updateMimeAssoc(previous);
+    // Store previously used associations
+    updateMimeAssoc(previous);
 
-  // Clear previously used associations
-  ui->listAssoc->clear();
+    // Clear previously used associations
+    ui->listAssoc->clear();
 
-  // Check if current is editable
-//  if (current->childCount() > 0) {
-//    grpAssoc->setEnabled(false);
-//    return;
-//  }
+    // Check if current is editable
+//    if (current->childCount() > 0) {
+//      grpAssoc->setEnabled(false);
+//      return;
+//    }
 
-  // Enable editation
-  //grpAssoc->setEnabled(true);
+    // Enable editation
+    //grpAssoc->setEnabled(true);
 
-  // Prepare source of icons
-  QDir appIcons("/usr/share/pixmaps","", 0, QDir::Files | QDir::NoDotAndDotDot);
-  QStringList iconFiles = appIcons.entryList();
-  QIcon defaultIcon = QIcon::fromTheme("application-x-executable");
+    // Prepare source of icons
+    QDir appIcons("/usr/share/pixmaps","", 0, QDir::Files | QDir::NoDotAndDotDot);
+    QStringList iconFiles = appIcons.entryList();
+    QIcon defaultIcon = QIcon::fromTheme("application-x-executable");
 
-  QStringList apps = ui->mimesWidget->currentItem()->text(1).remove(" ").split(";");
-  foreach (QString app, apps) {
+    QStringList apps = ui->mimesWidget->currentItem()->text(1).remove(" ").split(";");
+    foreach (QString app, apps) {
 
-    // Skip empty string
-    if (app.compare("") == 0) {
-      continue;
-    }
-
-    // Finds icon
-    QIcon temp = QIcon::fromTheme(app).pixmap(16, 16);
-    if (temp.isNull()) {
-      QStringList searchIcons = iconFiles.filter(app);
-      if (searchIcons.count() > 0) {
-        temp = QIcon("/usr/share/pixmaps/" + searchIcons.at(0));
-      } else {
-        temp = defaultIcon;
+      // Skip empty string
+      if (app.compare("") == 0) {
+        continue;
       }
+
+      // Finds icon
+      QIcon temp = QIcon::fromTheme(app).pixmap(16, 16);
+      if (temp.isNull()) {
+        QStringList searchIcons = iconFiles.filter(app);
+        if (searchIcons.count() > 0) {
+          temp = QIcon("/usr/share/pixmaps/" + searchIcons.at(0));
+        } else {
+          temp = defaultIcon;
+        }
+      }
+
+      // Add application
+      ui->listAssoc->addItem(new QListWidgetItem(temp, app, ui->listAssoc));
     }
 
-    // Add application
-    ui->listAssoc->addItem(new QListWidgetItem(temp, app, ui->listAssoc));
-  }
 }
 
-void settings::updateMimeAssoc(QTreeWidgetItem* item) {
-  if (item && item->childCount() == 0) {
-    QStringList associations;
-    for (int i = 0; i < ui->listAssoc->count(); i++) {
-      associations.append(ui->listAssoc->item(i)->text());
+void settings::updateMimeAssoc(QTreeWidgetItem* item)
+{
+    if (item && item->childCount() == 0) {
+      QStringList associations;
+      for (int i = 0; i < ui->listAssoc->count(); i++) {
+        associations.append(ui->listAssoc->item(i)->text());
+      }
+      item->setText(1, associations.join(";"));
     }
-    item->setText(1, associations.join(";"));
-  }
 }
 
-void settings::showAppDialog() {
+void settings::showAppDialog()
+{
+    // Choose application
+    ApplicationDialog *dialog = new ApplicationDialog(this);
+    if (dialog->exec()) {
 
-  // Choose application
-  ApplicationDialog *dialog = new ApplicationDialog(this);
-  if (dialog->exec()) {
-
-    // If application name is empty, exit
-    if (dialog->getCurrentLauncher().isEmpty()) {
-      return;
-    }
-
-    // Retrieve launcher name
-    QString name = dialog->getCurrentLauncher();
-
-    // If application with same name is already used, exit
-    for (int i = 0; i < ui->listAssoc->count(); i++) {
-      if (ui->listAssoc->item(i)->text().compare(name) == 0) {
+      // If application name is empty, exit
+      if (dialog->getCurrentLauncher().isEmpty()) {
         return;
       }
-    }
 
-    // Add new launcher to the list of launchers
-    if (dialog->getCurrentLauncher().compare("") != 0) {
-      QIcon icon = QIcon::fromTheme(name).pixmap(16, 16);
-      ui->listAssoc->addItem(new QListWidgetItem(icon, name, ui->listAssoc));
-      updateMimeAssoc(ui->mimesWidget->currentItem());
+      // Retrieve launcher name
+      QString name = dialog->getCurrentLauncher();
+
+      // If application with same name is already used, exit
+      for (int i = 0; i < ui->listAssoc->count(); i++) {
+        if (ui->listAssoc->item(i)->text().compare(name) == 0) {
+          return;
+        }
+      }
+
+      // Add new launcher to the list of launchers
+      if (dialog->getCurrentLauncher().compare("") != 0) {
+        QIcon icon = QIcon::fromTheme(name).pixmap(16, 16);
+        ui->listAssoc->addItem(new QListWidgetItem(icon, name, ui->listAssoc));
+        updateMimeAssoc(ui->mimesWidget->currentItem());
+      }
     }
-  }
 }
-//---------------------------------------------------------------------------
 
 /**
  * @brief Removes association of application and mime type
  */
-void settings::removeAppAssoc() {
-  qDeleteAll(ui->listAssoc->selectedItems());
-  updateMimeAssoc(ui->mimesWidget->currentItem());
+void settings::removeAppAssoc()
+{
+    qDeleteAll(ui->listAssoc->selectedItems());
+    updateMimeAssoc(ui->mimesWidget->currentItem());
 }
 
 /**
  * @brief Moves association up in list
  */
-void settings::moveAppAssocUp() {
-  QListWidgetItem *current = ui->listAssoc->currentItem();
-  int currIndex = ui->listAssoc->row(current);
-  QListWidgetItem *prev = ui->listAssoc->item(ui->listAssoc->row(current) - 1);
-  int prevIndex = ui->listAssoc->row(prev);
-  QListWidgetItem *temp = ui->listAssoc->takeItem(prevIndex);
-  ui->listAssoc->insertItem(prevIndex, current);
-  ui->listAssoc->insertItem(currIndex, temp);
-  updateMimeAssoc(ui->mimesWidget->currentItem());
+void settings::moveAppAssocUp()
+{
+    QListWidgetItem *current = ui->listAssoc->currentItem();
+    int currIndex = ui->listAssoc->row(current);
+    QListWidgetItem *prev = ui->listAssoc->item(ui->listAssoc->row(current) - 1);
+    int prevIndex = ui->listAssoc->row(prev);
+    QListWidgetItem *temp = ui->listAssoc->takeItem(prevIndex);
+    ui->listAssoc->insertItem(prevIndex, current);
+    ui->listAssoc->insertItem(currIndex, temp);
+    updateMimeAssoc(ui->mimesWidget->currentItem());
 }
 
 /**
  * @brief Moves association down in list
  */
-void settings::moveAppAssocDown() {
-  QListWidgetItem *current = ui->listAssoc->currentItem();
-  int currIndex = ui->listAssoc->row(current);
-  QListWidgetItem *next = ui->listAssoc->item(ui->listAssoc->row(current) + 1);
-  int nextIndex = ui->listAssoc->row(next);
-  QListWidgetItem *temp = ui->listAssoc->takeItem(nextIndex);
-  ui->listAssoc->insertItem(currIndex, temp);
-  ui->listAssoc->insertItem(nextIndex, current);
-  updateMimeAssoc(ui->mimesWidget->currentItem());
+void settings::moveAppAssocDown()
+{
+    QListWidgetItem *current = ui->listAssoc->currentItem();
+    int currIndex = ui->listAssoc->row(current);
+    QListWidgetItem *next = ui->listAssoc->item(ui->listAssoc->row(current) + 1);
+    int nextIndex = ui->listAssoc->row(next);
+    QListWidgetItem *temp = ui->listAssoc->takeItem(nextIndex);
+    ui->listAssoc->insertItem(currIndex, temp);
+    ui->listAssoc->insertItem(nextIndex, current);
+    updateMimeAssoc(ui->mimesWidget->currentItem());
 }
-
-//
-//Don't delete it......
-//
-/*
-void settings::defaultSettings() {
-    if (!QFile(cSett->fileName()).exists()) {
-
-        cSett->beginGroup("CoreFM");
-        cSett->setValue("Terminal", "xfce4-terminal");
-        cSett->setValue("Startup-Path", QDir::homePath());
-        QString temp = cSett->value("Force-Theme").toString();
-        if(temp.isNull())
-        {
-            //get theme from system (works for gnome/kde)
-            temp = QIcon::themeName();
-
-            //Qt doesn't detect the theme very well for non-DE systems,
-            //so try reading the '~/.gtkrc-2.0' or '~/.config/gtk-3.0/settings.ini'
-
-            if(temp == "hicolor")
-            {
-                //check for gtk-2.0 settings
-                if(QFile::exists(QDir::homePath() + "/" + ".gtkrc-2.0"))
-                {
-                    QSettings gtkFile(QDir::homePath() + "/.gtkrc-2.0",QSettings::IniFormat,this);
-                    temp = gtkFile.value("gtk-icon-theme-name").toString().remove("\"");
-                }
-                else
-                {
-                    //try gtk-3.0
-                    QSettings gtkFile(QDir::homePath() + "/.config/gtk-3.0/settings.ini",QSettings::IniFormat,this);
-                    temp = gtkFile.value("gtk-fallback-icon-theme").toString().remove("\"");
-                }
-
-                //fallback
-                if(temp.isNull())
-                {
-                    if(QFile::exists("/usr/share/icons/gnome")) temp = "gnome";
-                    else if(QFile::exists("/usr/share/icons/oxygen")) temp = "oxygen";
-                    else temp = "hicolor";
-                    cSett->setValue("Force-Theme", temp);
-                }
-            }
-        }
-        QString tmp = "/.local/share/applications/mimeapps.ui->viewlist";
-
-        cSett->setValue("Default-Mime-Apps-File", tmp);
-        cSett->setValue("Real-Mime-Types", true);
-        cSett->setValue("Zoom", 48);
-        cSett->setValue("Zoom-Tree", 16);
-        cSett->setValue("Zoom-List", 24);
-        cSett->setValue("Zoom-Detail", 16);
-        cSett->setValue("Show-Thumb", true);;
-        cSett->setValue("View-Mode", "Detail");
-        cSett->setValue("Sort-Column", 0);
-        cSett->setValue("Sort-Order", 0);
-        cSett->endGroup();
-
-        cSett->beginGroup("CoreScreenshot");
-        cSett->setValue("Save-Location", QDir::homePath() + "/Pictures");
-        cSett->endGroup();
-        cSett->beginGroup("CoreBox");
-        cSett->setValue("Maximized", false);
-        cSett->setValue("Show-Battery", true);
-        cSett->setValue("Recent-Disable", false);
-        cSett->endGroup();
-    }
-}
-*/
 
 void settings::on_terminals_currentIndexChanged(const QString &arg1)
 {

@@ -2581,11 +2581,19 @@ border: 1px  #F2F2F2;
    </property>
   </action>
   <action name="actionDesktop">
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/desktop_b.svg</normaloff>:/icons/desktop_b.svg</iconset>
+   </property>
    <property name="text">
     <string>Desktop</string>
    </property>
   </action>
   <action name="actionHome">
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/home_b.svg</normaloff>:/icons/home_b.svg</iconset>
+   </property>
    <property name="text">
     <string>Home</string>
    </property>

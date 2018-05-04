@@ -311,7 +311,7 @@ border:1px solid gray;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/search_w.svg</normaloff>:/icons/search_w.svg</iconset>
+             <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
            </property>
            <property name="iconSize">
             <size>

@@ -38,6 +38,7 @@ version 2.1
 - fixed if dir's file is changed corefm will detect now.
 - added sendto some common places(like desktop,downloads,home) in corefm.
 - added mediainfo package to view detailes in properties of corefm.
+- removed format_util.h|.cpp to fix armv7h build.
 
 
 version 2,Released date Monday, March 26, 2018
