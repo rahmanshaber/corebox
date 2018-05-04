@@ -162,6 +162,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
+
 }
 
 corefm::~corefm()
@@ -2411,17 +2412,6 @@ void corefm::on_partitions_itemClicked(QListWidgetItem *item)
         }
     }
     blockDevicesChanged();
-}
-
-void corefm::mousePressEvent(QMouseEvent *event)
-{
-    qDebug() << "Mounting " ;
-
-}
-
-void corefm::ll(){
-
-    qDebug() << "lllllll " ;
 }
 
 void corefm::on_actionDesktop_triggered()

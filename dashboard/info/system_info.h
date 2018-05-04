@@ -2,7 +2,6 @@
 #define SYSTEMINFO_H
 
 #include "../lib/file_util.h"
-#include "../lib/format_util.h"
 #include "../lib/command_util.h"
 #include "../lib/cpu_info.h"
 #include "../lib/stacer-core_global.h"

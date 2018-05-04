@@ -4,7 +4,6 @@
 #include "cpu_info.h"
 #include "memory_info.h"
 #include "network_info.h"
-#include "format_util.h"
 
 #include "../info/system_info.h"
 

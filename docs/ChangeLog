@@ -37,6 +37,7 @@ version 2.1
 - dashborad now show used network in general section.
 - fixed if dir's file is changed corefm will detect now.
 - added sendto some common places(like desktop,downloads,home) in corefm.
+- added mediainfo package to view detailes in properties of corefm.
 
 
 version 2,Released date Monday, March 26, 2018

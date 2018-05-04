@@ -41,7 +41,7 @@ corefm
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
 1 - set custom icom in home's folder.
-1 - add tree and mediainfo package.
+1 - add tree package.
 0 - preview is not working.
 1 - send a file to a drive.
 1 - Finish movement of mime-related code from FileUtils to MimeUtils

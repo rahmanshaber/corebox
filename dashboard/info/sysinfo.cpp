@@ -18,6 +18,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_sysinfo.h"
 
 #include "system_info.h"
+#include "../corebox/corebox/globalfunctions.h"
 
 #include <QStringListModel>
 #include <QSysInfo>
@@ -102,8 +103,8 @@ void sysinfo::updateMemoryBar()
     if (im->getMemTotal())
         memUsedPercent = ((double)im->getMemUsed() / (double)im->getMemTotal()) * 100.0;
 
-    QString f_memUsed  = FormatUtil::formatBytes(im->getMemUsed());
-    QString f_memTotal = FormatUtil::formatBytes(im->getMemTotal());
+    QString f_memUsed  = formatSize(im->getMemUsed());
+    QString f_memTotal = formatSize(im->getMemTotal());
 
     memBar->setValue(memUsedPercent, QString("%1 / %2").arg(f_memUsed).arg(f_memTotal));
 }
@@ -127,8 +128,8 @@ void sysinfo::updateNetworkBar()
     quint64 d_RXbytes = (RXbytes - l_RXbytes);
     quint64 d_TXbytes = (TXbytes - l_TXbytes);
 
-    QString downText = FormatUtil::formatBytes(d_RXbytes);
-    QString upText = FormatUtil::formatBytes(d_TXbytes);
+    QString downText = formatSize(d_RXbytes);
+    QString upText = formatSize(d_TXbytes);
 
     int downPercent = ((double) d_RXbytes / (double) max_RXbytes) * 100.0;
     int upPercent = ((double) d_TXbytes / (double) max_TXbytes) * 100.0;
@@ -139,8 +140,8 @@ void sysinfo::updateNetworkBar()
 
     ui->dspeed->setText(downText);
     ui->uspeed->setText(upText);
-    ui->dtotal->setText(FormatUtil::formatBytes(RXbytes));
-    ui->utotal->setText(FormatUtil::formatBytes(TXbytes));
+    ui->dtotal->setText(formatSize(RXbytes));
+    ui->utotal->setText(formatSize(TXbytes));
 
     max_RXbytes = qMax(max_RXbytes, d_RXbytes);
     max_TXbytes = qMax(max_TXbytes, d_TXbytes);

@@ -1,6 +1,8 @@
 #include "resources_page.h"
 #include "ui_resources_page.h"
 
+#include "../corebox/corebox/globalfunctions.h"
+
 
 ResourcesPage::~ResourcesPage()
 {
@@ -62,19 +64,19 @@ void ResourcesPage::updateNetworkChart()
     quint64 d_RXbytes = (RXbytes - l_RXbytes);
     quint64 d_TXbytes = (TXbytes - l_TXbytes);
 
-    QString downText = FormatUtil::formatBytes(d_RXbytes);
-    QString upText = FormatUtil::formatBytes(d_TXbytes);
+    QString downText = formatSize(d_RXbytes);
+    QString upText = formatSize(d_TXbytes);
 
     // Download
     seriesList.at(0)->insert(0, QPointF(0, d_RXbytes >> 10));
     seriesList.at(0)->setName(tr("Download %1/s Total: %2")
                               .arg(downText)
-                              .arg(FormatUtil::formatBytes(RXbytes)));
+                              .arg(formatSize(RXbytes)));
 
     seriesList.at(1)->insert(0, QPointF(0, d_TXbytes >> 10));
     seriesList.at(1)->setName(tr("Upload %1/s  Total: %2")
                               .arg(upText)
-                              .arg(FormatUtil::formatBytes(TXbytes)));
+                              .arg(formatSize(TXbytes)));
 
     max_RXbytes = qMax(max_RXbytes, d_RXbytes);
     max_TXbytes = qMax(max_TXbytes, d_TXbytes);
@@ -114,18 +116,18 @@ void ResourcesPage::updateMemoryChart()
 
     seriesList.at(0)->insert(0, QPointF(0, percent));
     seriesList.at(0)->setName(tr("Swap %1 (%2%) %3")
-                              .arg(FormatUtil::formatBytes(im->getSwapUsed()))
+                              .arg(formatSize(im->getSwapUsed()))
                               .arg(QString().sprintf("%.1f",percent))
-                              .arg(FormatUtil::formatBytes(im->getSwapTotal())));
+                              .arg(formatSize(im->getSwapTotal())));
 
     // Memory
     double percent2 = ((double) im->getMemUsed() / (double) im->getMemTotal()) * 100.0;
 
     seriesList.at(1)->insert(0, QPointF(0, percent2));
     seriesList.at(1)->setName(tr("Memory %1 (%2%) %3")
-                              .arg(FormatUtil::formatBytes(im->getMemUsed()))
+                              .arg(formatSize(im->getMemUsed()))
                               .arg(QString().sprintf("%.1f",percent2))
-                              .arg(FormatUtil::formatBytes(im->getMemTotal())));
+                              .arg(formatSize(im->getMemTotal())));
 
     second++;
 

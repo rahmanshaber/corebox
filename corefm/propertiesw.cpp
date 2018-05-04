@@ -40,6 +40,9 @@ propertiesw::propertiesw(QString paths,QWidget *parent) :QWidget(parent),ui(new 
     details();
     partition(pathName);
     show();
+    int x = screensize().width()  * .27;
+    int y = screensize().height() * .6;
+    this->setFixedSize(x,y);
 
     connect(ui->ok,SIGNAL(pressed()),this,SLOT(close()));
     this->setAttribute(Qt::WA_DeleteOnClose,1);
@@ -88,18 +91,43 @@ void propertiesw::general(){
 
 void propertiesw::details(){
 
-    QImageReader reader(pathName);
-    QString type = info.suffix();
-    ui->imagetype->setText(type);
-    const QImage image = reader.read();
-    ui->dimensions->setText(QString::number(image.width()) + " x "+ QString::number(image.height()));
-    ui->bitplanecount->setText(QString::number(image.bitPlaneCount()));
-    ui->imagewidth->setText(QString::number(image.width()) + " px");
-    ui->imageheight->setText(QString::number(image.height()) + " px") ;
+//    QImageReader reader(pathName);
+//    QString type = info.suffix();
+//    ui->imagetype->setText(type);
+//    const QImage image = reader.read();
+//    ui->dimensions->setText(QString::number(image.width()) + " x "+ QString::number(image.height()));
+//    ui->bitplanecount->setText(QString::number(image.bitPlaneCount()));
+//    ui->imagewidth->setText(QString::number(image.width()) + " px");
+//    ui->imageheight->setText(QString::number(image.height()) + " px") ;
 
-    if(image.bitPlaneCount() == 0){
-        ui->propertiestab->removeTab(1);
-    }
+//    if(image.bitPlaneCount() == 0){
+//        ui->propertiestab->removeTab(1);
+//    }
+
+    ui->qtdetails->setVisible(0);
+
+    ui->tdetail->setLineWrapMode(QTextEdit::NoWrap);
+//    ui->tdetail->setCurrentFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+
+
+
+    QProcess p1;
+    p1.start("mediainfo " + pathName);
+    p1.waitForFinished();
+    QString output(p1.readAllStandardOutput());
+
+
+
+    QTextCursor textBrowCrsr(ui->tdetail->document());
+    const int oldPos = textBrowCrsr.position();
+    textBrowCrsr.movePosition(QTextCursor::End);
+    QTextCharFormat textBrowFormat = textBrowCrsr.charFormat();
+    textBrowFormat.setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+    textBrowCrsr.insertText(output,textBrowFormat);
+    textBrowCrsr.setPosition(oldPos);
+
+
+    ui->tdetail->setText(output.toUtf8());
 }
 
 void propertiesw::permission(){

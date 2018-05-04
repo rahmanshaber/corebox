@@ -437,8 +437,8 @@ void coreaction::networkWsetup()
     quint64 d_RXbytes = (RXbytes - l_RXbytes);
     quint64 d_TXbytes = (TXbytes - l_TXbytes);
 
-    QString downText = FormatUtil::formatBytes(d_RXbytes);
-    QString upText = FormatUtil::formatBytes(d_TXbytes);
+    QString downText = formatSize(d_RXbytes);
+    QString upText = formatSize(d_TXbytes);
 
     ui->dspeed->setText(downText);
     ui->uspeed->setText(upText);

@@ -99,7 +99,6 @@ public slots:
     void addressChanged(int,int);
     void loadSettings();
 
-    void ll();
 signals:
     void updateCopyProgress(qint64, qint64, QString);
     void copyProgressFinished(int,QStringList);
@@ -150,11 +149,7 @@ private slots:
     void on_emptyTrash_clicked();
     void on_partitions_itemClicked(QListWidgetItem *item);
     void blockDevicesChanged();
-
-    void mousePressEvent(QMouseEvent *event);
-
     void on_actionDesktop_triggered();
-
     void on_actionHome_triggered();
 
 private:
