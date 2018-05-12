@@ -31,10 +31,9 @@ public:
     QStringList getBookSections();
     QStringList getBookNames(QString sectionName);
     bool addSection(QString sectionName);
-    bool addBookmark(QString sectionName, QString bookmarkName, QString bookPath, QString iconPath);
+    bool addBookmark(QString sectionName, QString bookmarkName, QString bookPath);
 
     QString bookmarkPath(QString sectionName, QString bookmarkName);
-    QString bookmarkIconPath(QString sectionName, QString bookmarkName);
     QString checkingBookName(QString sectionName, QString bookName);
     QString checkingBookPath(QString section, QString bookPath);
     QString checkingBookPathEx(QString bookPath);
@@ -45,7 +44,7 @@ public:
     void delSection(QString sectionName);
     void delBookmark(QString bookmarkName);
     void changeAll(QString oldSectionName, QString oldBookmarkName, QString sectionName, QString bookmarkName, QString bookmarkValue);
-    void editbookmark(QString sectionName, QString bookmarkName, QString bookPath, QString iconPath);
+    void editbookmark(QString sectionName, QString bookmarkName, QString bookPath);
     void delbookmark(QString bookmarkName, QString section);
 
 private:

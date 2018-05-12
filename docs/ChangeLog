@@ -15,7 +15,7 @@ version 2.1
 - notes at coreaction is saved and restored in every restart.
 - Fixed Empty the trash.
 - battery properties converted to stringlistmodel.
-- improved app engine.
+- improved openAppEngine.
 - added a button to set search folder in search app.
 - fixed corepad's tab related problems.
 - QScreen moved to golbalfunctions.
@@ -37,8 +37,10 @@ version 2.1
 - dashborad now show used network in general section.
 - fixed if dir's file is changed corefm will detect now.
 - added sendto some common places(like desktop,downloads,home) in corefm.
-- added mediainfo package to view detailes in properties of corefm.
+- added video details in properties of corefm.
 - removed format_util.h|.cpp to fix armv7h build.
+- bookmark now support and save the file icon by it's type.
+- speeddial of start now shows icons of it's type.
 
 
 version 2,Released date Monday, March 26, 2018

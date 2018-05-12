@@ -579,7 +579,7 @@ color: #FFFFFF;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/folder.svg</normaloff>:/icons/folder.svg</iconset>
+             <normaloff>:/icons/type-dir.svg</normaloff>:/icons/type-dir.svg</iconset>
            </property>
            <property name="iconSize">
             <size>

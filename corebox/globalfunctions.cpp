@@ -229,31 +229,34 @@ void openAppEngine(QString path){
         messageEngine("File not exists","Warning");
         return;
     }
-    //-----------------------------CoreImage---------------start--------------------------------------
-    const QByteArrayList supportedMime = QImageReader::supportedImageFormats();
-    foreach (const QByteArray &mimeTypeName, supportedMime) {
-        if (info.completeSuffix() == mimeTypeName) {
-            cBox->tabEngine(CoreImage, info.absoluteFilePath());
-            return;
-        }
-    }
-    //-----------------------------CoreImage---------------end----------------------------------------
-    //-----------------------------CoreFM---------------start----------------------------------------
+
+    QStringList image, txts;
+    image << "jpg" << "jpeg" << "png" << "bmp" << "ico" << "svg" << "gif";
+    txts << "txt" << "pro" << "";
+
+    QString suffix = QFileInfo(path).suffix();
+
+    //CoreFM
     if (info.isDir()) {
         cBox->tabEngine(CoreFM, info.absoluteFilePath());
+        return;
     }
-    //-----------------------------CoreFM---------------end----------------------------------------
 
+    //CoreImage
+    else if (image.contains(suffix, Qt::CaseInsensitive)) {
+        cBox->tabEngine(CoreImage, info.absoluteFilePath());
+        return;
+    }
+
+    //CorePad
+    else if (txts.contains(suffix, Qt::CaseInsensitive)) {
+        cBox->tabEngine(CorePad, info.absoluteFilePath());
+        return;
+    }
+
+    //sendtoprosess
     else {
-        //-----------------------------CorePad---------------start----------------------------------------
-        QString littleinfo = info.suffix();
-        if(littleinfo == "txt" || !info.isExecutable()){
-            cBox->tabEngine(CorePad, info.absoluteFilePath());
-        }
-        //-----------------------------CorePad---------------end-----------------------------------------
-        else {    //send it to desktop prosess
-            QProcess::startDetached("xdg-open", QStringList() << path);
-        }
+        QProcess::startDetached("xdg-open", QStringList() << path);
     }
 }
 
@@ -289,4 +292,55 @@ QString checkIsValidFile(QString str) {
 QRect screensize(){
     QScreen * screen = QGuiApplication::primaryScreen();
     return screen->availableGeometry();
+}
+
+QIcon geticon(const QString &filePath) {
+
+    QIcon icon;
+    QFileInfo info(filePath);
+
+    if (info.isDir()) {
+        return icon = QIcon(":/icons/type-dir.svg");
+    }
+
+    QMimeDatabase mime_database;
+
+    QList<QMimeType> mime_types = mime_database.mimeTypesForFileName(filePath);
+
+    for (int i = 0; i < mime_types.count() && icon.isNull(); i++){
+        icon = QIcon::fromTheme(mime_types[i].iconName());
+    }
+
+    if (icon.isNull())
+      return QApplication::style()->standardIcon(QStyle::SP_FileIcon);
+    else
+      return icon;
+}
+
+
+
+QStringList fStringList(QStringList left, QStringList right, QFont font) {
+    QFontMetrics *fm = new QFontMetrics(font);
+    int large = 0;
+    int index;
+    for (int i = 0; i < left.count(); i++) {
+        if (large < fm->width(left.at(i))) {
+            large = fm->width(left.at(i));
+            index = i;
+        }
+    }
+
+    large = large + fm->width('\t');
+
+    for (int i = 0; i < left.count(); i++) {
+        while (large >= fm->width(left.at(i))) {
+             left.replace(i, QString(left.at(i) + QString('\t')));
+        }
+    }
+
+    for (int i = 0; i < left.count(); i++) {
+        left.replace(i, left.at(i) + ": " + right.at(i));
+    }
+
+    return left;
 }

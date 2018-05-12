@@ -56,57 +56,57 @@ void BookmarkManage::checkBook()
 
 QStringList BookmarkManage::getBookSections()
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
-    return settings.childGroups();
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
+    return bkGet.childGroups();
 }
 
 QStringList BookmarkManage::getBookNames(QString sectionName)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
 
-    settings.beginGroup(sectionName);
-    QStringList list = settings.allKeys();
-    settings.endGroup();
+    bkGet.beginGroup(sectionName);
+    QStringList list = bkGet.allKeys();
+    bkGet.endGroup();
     list.removeOne("count");
     return list;
 }
 
 bool BookmarkManage::addSection(QString sectionName)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
 
     if (!getBookSections().contains(sectionName, Qt::CaseInsensitive)) {
-        settings.beginGroup(sectionName);
+        bkGet.beginGroup(sectionName);
         for (int i = 0; i < getBookSections().count(); ++i) {
             if (sectionName.contains(getBookSections().at(i), Qt::CaseInsensitive) == false) {
-                settings.setValue("count", int(0));
+                bkGet.setValue("count", int(0));
             }
         }
-        settings.endGroup();
+        bkGet.endGroup();
         return true;
     }
     return false;
 }
 
-bool BookmarkManage::addBookmark(QString sectionName, QString bookmarkName, QString bookPath, QString iconPath)
+bool BookmarkManage::addBookmark(QString sectionName, QString bookmarkName, QString bookPath)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
 
     if (!getBookNames(sectionName).contains(bookmarkName, Qt::CaseInsensitive)) {
-        settings.beginGroup(sectionName);
+        bkGet.beginGroup(sectionName);
         for (int i = 0; i < getBookNames(sectionName).count(); ++i) {
             if (bookmarkName.contains("count", Qt::CaseInsensitive) == true) {
                 return false;
             } else {
                 if (bookmarkName.contains(getBookNames(sectionName).at(i), Qt::CaseInsensitive) == false) {
-                    int count = settings.value("count").toInt();
-                    settings.setValue("count", count + 1);
+                    int count = bkGet.value("count").toInt();
+                    bkGet.setValue("count", count + 1);
                 }
             }
         }
 
-        settings.setValue(bookmarkName, bookPath + "$$$" + iconPath);
-        settings.endGroup();
+        bkGet.setValue(bookmarkName, bookPath);
+        bkGet.endGroup();
         return true;
     }
     return false;
@@ -114,85 +114,80 @@ bool BookmarkManage::addBookmark(QString sectionName, QString bookmarkName, QStr
 
 void BookmarkManage::delSection(QString sectionName)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
-    settings.remove(sectionName);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
+    bkGet.remove(sectionName);
 }
 
 void BookmarkManage::delBookmark(QString bookmarkName)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
-    settings.remove(bookmarkName);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
+    bkGet.remove(bookmarkName);
 }
 void BookmarkManage::delbookmark(QString bookmarkName , QString section)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
-    settings.beginGroup(section);
-    settings.remove(bookmarkName);
-    settings.endGroup();
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
+    bkGet.beginGroup(section);
+    bkGet.remove(bookmarkName);
+    bkGet.endGroup();
 }
 
-void BookmarkManage::editbookmark(QString sectionName, QString bookmarkName, QString bookPath, QString iconPath)
+void BookmarkManage::editbookmark(QString sectionName, QString bookmarkName, QString bookPath)
 {
-    addBookmark(sectionName, bookmarkName, bookPath, iconPath);
+    addBookmark(sectionName, bookmarkName, bookPath);
 }
 
 void BookmarkManage::changeAll(QString oldSectionName, QString oldBookmarkName, QString sectionName, QString bookmarkName, QString bookmarkValue)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
-    settings.beginGroup(oldSectionName);
-    settings.remove(oldBookmarkName);
-    settings.setValue("count", settings.childKeys().count());
-    settings.endGroup();
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
+    bkGet.beginGroup(oldSectionName);
+    bkGet.remove(oldBookmarkName);
+    bkGet.setValue("count", bkGet.childKeys().count());
+    bkGet.endGroup();
 
-    settings.beginGroup(sectionName);
-    settings.setValue(bookmarkName, bookmarkValue);
-    settings.setValue("count", settings.childKeys().count());
-    settings.endGroup();
+    bkGet.beginGroup(sectionName);
+    bkGet.setValue(bookmarkName, bookmarkValue);
+    bkGet.setValue("count", bkGet.childKeys().count());
+    bkGet.endGroup();
 }
 
 void BookmarkManage::changeSection(QString oldSectionName, QString sectionName, QString bookmarkName, QString bookmarkValue)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
 
-    settings.beginGroup(oldSectionName);
-    settings.remove(bookmarkName);
-    settings.setValue("count", settings.childKeys().count());
-    settings.endGroup();
+    bkGet.beginGroup(oldSectionName);
+    bkGet.remove(bookmarkName);
+    bkGet.setValue("count", bkGet.childKeys().count());
+    bkGet.endGroup();
 
-    settings.beginGroup(sectionName);
-    settings.setValue(bookmarkName, bookmarkValue);
-    settings.setValue("count", settings.childKeys().count());
-    settings.endGroup();
+    bkGet.beginGroup(sectionName);
+    bkGet.setValue(bookmarkName, bookmarkValue);
+    bkGet.setValue("count", bkGet.childKeys().count());
+    bkGet.endGroup();
 }
 
 void BookmarkManage::changeBookmark(QString oldBookmarkName, QString sectionName, QString bookmarkName, QString bookmarkValue)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
-    settings.remove(oldBookmarkName);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
+    bkGet.remove(oldBookmarkName);
 
-    settings.beginGroup(sectionName);
-    settings.setValue(bookmarkName, bookmarkValue);
-    settings.endGroup();
+    bkGet.beginGroup(sectionName);
+    bkGet.setValue(bookmarkName, bookmarkValue);
+    bkGet.endGroup();
 }
 
 QString BookmarkManage::bookmarkValues(QString sectionName, QString bookmarkName)
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
 
-    settings.beginGroup(sectionName);
-    return settings.value(bookmarkName).toString();
+    bkGet.beginGroup(sectionName);
+    return bkGet.value(bookmarkName).toString();
 }
 
 QString BookmarkManage::bookmarkPath(QString sectionName, QString bookmarkName)
 {
-    QStringList values(bookmarkValues(sectionName, bookmarkName).split("$$$"));
-    return values.at(0);
-}
-
-QString BookmarkManage::bookmarkIconPath(QString sectionName, QString bookmarkName)
-{
-    QStringList values(bookmarkValues(sectionName, bookmarkName).split("$$$"));
-    return values.at(1);
+    //QStringList values(bookmarkValues(sectionName, bookmarkName).split("$$$"));
+    //return values.at(0);
+    return bookmarkValues(sectionName, bookmarkName);
 }
 
 QString BookmarkManage::checkingBookName(QString sectionName, QString bookName)
@@ -212,10 +207,10 @@ QString BookmarkManage::keyCount()
 
 QStringList BookmarkManage::keys()
 {
-    QSettings settings(cbookFullPath, QSettings::IniFormat);
+    QSettings bkGet(cbookFullPath, QSettings::IniFormat);
     QStringList list;
-    for(int i = 0; i < settings.allKeys().count(); ++i) {
-        list.append(QString(settings.allKeys().at(i)).split("/").at(1));
+    for(int i = 0; i < bkGet.allKeys().count(); ++i) {
+        list.append(QString(bkGet.allKeys().at(i)).split("/").at(1));
     }
     list = list.toSet().toList();
     //list.removeOne("count");

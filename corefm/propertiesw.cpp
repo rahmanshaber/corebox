@@ -17,8 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "propertiesw.h"
 #include "ui_propertiesw.h"
 
-//#include <QtConcurrent/QtConcurrent>
-//#include <sys/vfs.h>
 #include <sys/stat.h>
 #include <QImageReader>
 #include <QMimeDatabase>
@@ -64,13 +62,13 @@ void propertiesw::general(){
 
     this->setWindowTitle("Properties - " + info.fileName() );
 
-    if(!info.isDir() && info.isFile()){
-        ui->typeIcon->setIcon(geticon(info.fileName()));
+    ui->typeIcon->setIcon(geticon(info.filePath()));
+
+    if(info.isFile()){
         ui->type->setText(littleinfo + " , " + extrainfo );
     }
-    if(info.isDir() && !info.isFile()){
-        ui->type->setText("Folder");
-        ui->typeIcon->setIcon(QIcon(":/icons/folder.svg"));
+    if(info.isDir()){
+        ui->type->setText("Directory");
     }
 
     ui->fileName->setText(info.fileName());
@@ -78,7 +76,7 @@ void propertiesw::general(){
     ui->location->setText(info.path());
 
     ui->modified->setText(info.lastModified().toString());
-    ui->created->setText(info.birthTime().toString());
+    //ui->created->setText(info.birthTime().toString());
 
     ui->owner->setText(info.owner());
     ui->group->setText(info.group());
@@ -91,59 +89,35 @@ void propertiesw::general(){
 
 void propertiesw::details(){
 
-//    QImageReader reader(pathName);
-//    QString type = info.suffix();
-//    ui->imagetype->setText(type);
-//    const QImage image = reader.read();
-//    ui->dimensions->setText(QString::number(image.width()) + " x "+ QString::number(image.height()));
-//    ui->bitplanecount->setText(QString::number(image.bitPlaneCount()));
-//    ui->imagewidth->setText(QString::number(image.width()) + " px");
-//    ui->imageheight->setText(QString::number(image.height()) + " px") ;
+    QStringList image,media;
+    image << "jpg" << "jpeg" << "png" << "bmp" << "ico" << "svg" << "gif";
+    media << "webm" << "mkv" << "flv" << "avi" << "mov" << "m4a"
+             << "mp4" << "3gp" << "wav" << "mp3" << "ogg" << "flac" ;
 
-//    if(image.bitPlaneCount() == 0){
-//        ui->propertiestab->removeTab(1);
-//    }
+    QString suffix = info.suffix();
 
-    ui->qtdetails->setVisible(0);
+    //image
+    if (image.contains(suffix, Qt::CaseInsensitive)) {
+        detailimage(pathName);
+    }
 
-    ui->tdetail->setLineWrapMode(QTextEdit::NoWrap);
-//    ui->tdetail->setCurrentFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+    //media
+    else if (media.contains(suffix, Qt::CaseInsensitive)) {
+        m_player = new QMediaPlayer(this);
+        m_player->setMedia(QUrl::fromLocalFile(pathName));
+        connect(m_player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)),
+                this, SLOT(detailmedia(QMediaPlayer::MediaStatus)));
+    }
 
-
-
-    QProcess p1;
-    p1.start("mediainfo " + pathName);
-    p1.waitForFinished();
-    QString output(p1.readAllStandardOutput());
-
-
-
-    QTextCursor textBrowCrsr(ui->tdetail->document());
-    const int oldPos = textBrowCrsr.position();
-    textBrowCrsr.movePosition(QTextCursor::End);
-    QTextCharFormat textBrowFormat = textBrowCrsr.charFormat();
-    textBrowFormat.setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
-    textBrowCrsr.insertText(output,textBrowFormat);
-    textBrowCrsr.setPosition(oldPos);
-
-
-    ui->tdetail->setText(output.toUtf8());
+    //not supported
+    else{
+        ui->propertiestab->removeTab(1);
+    }
 }
 
 void propertiesw::permission(){
 
-    connect(ui->otherRead,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-    connect(ui->ownerWrite,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-    connect(ui->ownerExec,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-
-    connect(ui->groupRead,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-    connect(ui->groupWrite,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-    connect(ui->groupExec,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-
-    connect(ui->otherRead,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-    connect(ui->otherWrite,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-    connect(ui->otherExec,SIGNAL(clicked(bool)),this,SLOT(checkboxesChanged()));
-
+    checkboxesChanged();
     connect(ui->permissionsNumeric, SIGNAL(textChanged(QString)), this,SLOT(numericChanged(QString)));
 
     struct stat perms;
@@ -179,20 +153,6 @@ void propertiesw::partition(QString path){
     ui->sizetotal->setText("Total : " + t);
 }
 
-QIcon propertiesw::geticon(const QString &filename){
-
-    QMimeDatabase mime_database;
-    QIcon icon;
-    QList<QMimeType> mime_types = mime_database.mimeTypesForFileName(filename);
-    for (int i=0; i < mime_types.count() && icon.isNull(); i++)
-      icon = QIcon::fromTheme(mime_types[i].iconName());
-
-    if (icon.isNull())
-      return QApplication::style()->standardIcon(QStyle::SP_FileIcon);
-    else
-      return icon;
-}
-
 void propertiesw::checkboxesChanged(){
 
     ui->permissionsNumeric->setText(QString("%1%2%3").arg(ui->ownerRead->isChecked()*4 + ui->ownerWrite->isChecked()*2 + ui->ownerExec->isChecked())
@@ -224,16 +184,59 @@ void propertiesw::on_executableB_clicked(bool checked)
 {
     if(checked){
         QProcess p1;
-        QString commd = "chmod a+x " + pathName;
+        QString commd = "chmod a+x \"" + pathName + "\"";
         qDebug()<< commd;
         p1.start(commd.toLatin1());
         p1.waitForFinished();
     }
     else if(!checked){
         QProcess p1;
-        QString commd = "chmod -x " + pathName;
+        QString commd = "chmod -x \"" + pathName + "\"";
         qDebug()<< commd;
         p1.start(commd.toLatin1());
         p1.waitForFinished();
+    }
+}
+
+void propertiesw::detailimage(QString imagepath)
+{
+    QImageReader reader(imagepath);
+    const QImage image = reader.read();
+    QFileInfo info(imagepath);
+
+    QStringList infos;
+    infos
+        << tr("Name : %1")            . arg(info.fileName())
+        << tr("Size : %1")            . arg(info.size())
+        << tr("Type : %1")            . arg(info.suffix())
+        << tr("Dimensions : %1")      . arg(QString::number(image.width()) + " x "+ QString::number(image.height()))
+        << tr("Bitplane Count : %1")  . arg(QString::number(image.bitPlaneCount()))
+        << tr("Width : %1")           . arg(QString::number(image.width()) + " pixels")
+        << tr("Height : %1")          . arg(QString::number(image.height()) + " pixels");
+
+    QStringListModel *infoModel = new QStringListModel(infos);
+    ui->detail->setModel(infoModel);
+}
+
+void propertiesw::detailmedia(QMediaPlayer::MediaStatus status)
+{
+    if (status == QMediaPlayer::LoadedMedia){
+
+        QStringList infos;
+        QStringList metadatalist = m_player->availableMetaData();
+        int list_size = metadatalist.size();
+        QString metadata_key;
+        QVariant var_data;
+
+        for (int indx = 0; indx < list_size; indx++)
+        {
+            metadata_key  = metadatalist.at(indx);
+            var_data      = m_player->metaData(metadata_key);
+
+            infos << QString(metadata_key + QString(" : %1").arg(var_data.toString()));
+        }
+
+        QStringListModel *infoModel = new QStringListModel(infos);
+        ui->detail->setModel(infoModel);
     }
 }

@@ -23,6 +23,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QStringListModel>
 #include <QSysInfo>
 #include <QtNetwork>
+#include <QFontMetrics>
+#include <QFont>
 #include <QObject>
 
 sysinfo::sysinfo(QWidget *parent) :QWidget(parent),ui(new Ui::sysinfo),
@@ -71,19 +73,29 @@ void sysinfo::systemInformationInit()
     // get system information
     SystemInfo sysInfo;
 
-    QStringList infos;
-    infos
-        << tr("UserName : %1")            .arg(sysInfo.getHostname())
-        << tr("Platform : %1")            .arg(sysInfo.getPlatform())
-        << tr("Distribution : %1")        .arg(sysInfo.getDistribution())
-        << tr("Kernel Release : %1")      .arg(sysInfo.getKernel())
-        << tr("CPU Model : %1")           .arg(sysInfo.getCpuModel())
-        << tr("CPU Speed : %1 (Mhz)")     .arg(sysInfo.getCpuSpeed())
-        << tr("CPU Core  : %1")           .arg(sysInfo.getCpuCore())
-        << tr("Display Size : %1")        .arg(scr)
-        << tr("Qt Toolkit Version : %1")  .arg(QT_VERSION_STR);
+//    QStringList infos;
+//    infos
+//        << tr("UserName : %1")            .arg(sysInfo.getHostname())
+//        << tr("Platform : %1")            .arg(sysInfo.getPlatform())
+//        << tr("Distribution : %1")        .arg(sysInfo.getDistribution())
+//        << tr("Kernel Release : %1")      .arg(sysInfo.getKernel())
+//        << tr("CPU Model : %1")           .arg(sysInfo.getCpuModel())
+//        << tr("CPU Speed : %1 (Mhz)")     .arg(sysInfo.getCpuSpeed())
+//        << tr("CPU Core  : %1")           .arg(sysInfo.getCpuCore())
+//        << tr("Display Size : %1")        .arg(scr)
+//        << tr("Qt Toolkit Version : %1")  .arg(QT_VERSION_STR);
 
-    QStringListModel *systemInfoModel = new QStringListModel(infos);
+    QStringList left;
+    left << "User Name" << "Platform" << "Distribution" << "Kernel Release"
+         << "CPU Model" << "CPU Speed" << "CPU Core" << "Display Size"
+         << "Qt Toolkit Version";
+
+    QStringList right;
+    right << sysInfo.getHostname() << sysInfo.getPlatform() << sysInfo.getDistribution()
+          << sysInfo.getKernel() << sysInfo.getCpuModel() << sysInfo.getCpuSpeed()
+          << sysInfo.getCpuCore() << scr << QT_VERSION_STR;
+
+    QStringListModel *systemInfoModel = new QStringListModel(fStringList(left, right, ui->systemInfoList->font()));
 
     ui->systemInfoList->setModel(systemInfoModel);
 }

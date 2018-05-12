@@ -1,7 +1,6 @@
 #ifndef NETWORK_INFO_H
 #define NETWORK_INFO_H
 
-#include "file_util.h"
 #include "command_util.h"
 #include "stacer-core_global.h"
 

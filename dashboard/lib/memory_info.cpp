@@ -6,7 +6,7 @@ MemoryInfo::MemoryInfo():memTotal(0),memAvailable(0),memUsed(0)
 
 void MemoryInfo::updateMemoryInfo()
 {
-    QStringList lines = FileUtil::readListFromFile(PROC_MEMINFO)
+    QStringList lines = CommandUtil::readListFromFile(PROC_MEMINFO)
             .filter(QRegExp("^MemTotal|^MemAvailable|^SwapTotal|^SwapFree"));
     QRegExp sep("\\s+");
 

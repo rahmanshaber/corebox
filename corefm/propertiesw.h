@@ -20,7 +20,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "mymodel.h"
 
 #include <QWidget>
-
+#include <QImageReader>
+#include <QMediaPlayer>
 
 namespace Ui {
 class propertiesw;
@@ -34,25 +35,26 @@ public:
     explicit propertiesw(QString paths, QWidget *parent = 0);
     ~propertiesw();
 
-    QIcon geticon(const QString &filename);
-
-    QFileInfo info;
-
 public slots:
     void checkboxesChanged();
     void numericChanged(QString);
 
 private slots:
     void on_executableB_clicked(bool checked);
+    void detailmedia(QMediaPlayer::MediaStatus status);
 
 private:
     Ui::propertiesw *ui;
     QString pathName;
     QString permString;
+    QFileInfo info;
+    QMediaPlayer *m_player;
+
     void permission();
     void general();
     void details();
     void partition(QString path);
+    void detailimage(QString imagepath);
 };
 
 #endif // PROPERTIESW_H

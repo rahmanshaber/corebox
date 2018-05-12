@@ -150,7 +150,6 @@ HEADERS += \
     dashboard/info/system_info.h \
     dashboard/lib/command_util.h \
     dashboard/lib/cpu_info.h \
-    dashboard/lib/file_util.h \
     dashboard/lib/info_manager.h \
     dashboard/lib/memory_info.h \
     dashboard/lib/network_info.h \
@@ -165,7 +164,8 @@ HEADERS += \
     settings/settings.h \
     settings/settingsmanage.h \
     start/start.h \
-    corepad/coreedit.h
+    corepad/coreedit.h \
+    corefm/clickoutlistview.h
 
 SOURCES += \
     about/about.cpp \
@@ -234,7 +234,6 @@ SOURCES += \
     dashboard/info/system_info.cpp \
     dashboard/lib/command_util.cpp \
     dashboard/lib/cpu_info.cpp \
-    dashboard/lib/file_util.cpp \
     dashboard/lib/info_manager.cpp \
     dashboard/lib/memory_info.cpp \
     dashboard/lib/network_info.cpp \

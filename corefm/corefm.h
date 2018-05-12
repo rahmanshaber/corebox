@@ -99,6 +99,8 @@ public slots:
     void addressChanged(int,int);
     void loadSettings();
 
+    void pressed();
+
 signals:
     void updateCopyProgress(qint64, qint64, QString);
     void copyProgressFinished(int,QStringList);

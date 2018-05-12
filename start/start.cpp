@@ -63,7 +63,7 @@ void Start::on_reloadR_clicked()
     sm.cSetting->beginGroup("Recent");
 
     QTableWidgetItem *item;
-    QStringList sList = sm.cSetting->childKeys();//sett->childKeys();
+    QStringList sList = sm.cSetting->childKeys();
     QStringList r;
     if (sList.count() > 30) {
         int extra = sList.count() - 30;
@@ -76,7 +76,7 @@ void Start::on_reloadR_clicked()
     ui->recents->setRowCount(sList.count());
 
     for (int i = 0; i < sList.count(); ++i) {
-        r = sm.cSetting->value(sList.at(i)).toString().split("$$$");;//sett->value(sList.at(i)).toString().split("$$$");
+        r = sm.cSetting->value(sList.at(i)).toString().split("$$$");
         item = new QTableWidgetItem(QIcon(appsIconPath(r.at(0))), r.at(0));
         ui->recents->setItem(i, 0, item);
         ui->recents->setItem(i, 1, new QTableWidgetItem(r.at(1)));
@@ -113,7 +113,7 @@ void Start::on_reloadB_clicked()
         if (i == 15) {
             return;
         } else {
-            ui->speedDialB->addItem(new QListWidgetItem(QIcon(bk.bookmarkIconPath("Speed Dial", list.at(i))), list.at(i)));
+            ui->speedDialB->addItem(new QListWidgetItem(geticon(bk.bookmarkPath("Speed Dial", list.at(i))), list.at(i)));
         }
     }
 }

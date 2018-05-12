@@ -98,7 +98,7 @@ void coreaction::widgetList(){
         batteryCheck();
         connect(timer, SIGNAL(timeout()), this, SLOT(batteryCheck()));
         timer->start(5000);
-    }else {
+    } else {
         ui->batteryW->setVisible(0);
     }
 
@@ -107,7 +107,7 @@ void coreaction::widgetList(){
         sysWsetup();
         connect(timer, &QTimer::timeout, this, &coreaction::sysWsetup);
         timer->start(1 * 1000);
-    }else {
+    } else {
         ui->sysW->setVisible(0);
     }
 

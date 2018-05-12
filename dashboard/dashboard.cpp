@@ -107,20 +107,30 @@ dashboard::~dashboard()
 void dashboard::on_drives_currentTextChanged(const QString &currentText)
 {
     auto dr = disks->drive(currentText);
-    QStringList infos;
-    infos
-        << tr("Name : %1")       . arg(dr->toStringToSeperate(1))
-        << tr("Size : %1")       . arg(dr->toStringToSeperate(2))
-        << tr("Dev : %1")        . arg(dr->toStringToSeperate(3))
-        << tr("Drive : %1")      . arg(dr->toStringToSeperate(4))
-        << tr("Type : %1")       . arg(dr->toStringToSeperate(5))
-        << tr("Id : %1 (Mhz)")   . arg(dr->toStringToSeperate(6))
-        << tr("Read Only : %1")  . arg(dr->toStringToSeperate(7))
-        << tr("Usage : %1")      . arg(dr->toStringToSeperate(8))
-        << tr("Mount Point : %1"). arg(dr->toStringToSeperate(9))
-        << tr("Overview : %1")   . arg(dr->toStringToSeperate(10));
+//    QStringList infos;
+//    infos
+//        << tr("Name : %1")       . arg(dr->toStringToSeperate(1))
+//        << tr("Size : %1")       . arg(dr->toStringToSeperate(2))
+//        << tr("Dev : %1")        . arg(dr->toStringToSeperate(3))
+//        << tr("Drive : %1")      . arg(dr->toStringToSeperate(4))
+//        << tr("Type : %1")       . arg(dr->toStringToSeperate(5))
+//        << tr("Id : %1 (Mhz)")   . arg(dr->toStringToSeperate(6))
+//        << tr("Read Only : %1")  . arg(dr->toStringToSeperate(7))
+//        << tr("Usage : %1")      . arg(dr->toStringToSeperate(8))
+//        << tr("Mount Point : %1"). arg(dr->toStringToSeperate(9))
+//        << tr("Overview : %1")   . arg(dr->toStringToSeperate(10));
 
-    QStringListModel *systemInfoModel = new QStringListModel(infos);
+    QStringList left;
+    QStringList right;
+    left << "Name" << "Size" << "Dev" << "Drive" << "Type" << "Id" << "Read Only"
+         << "Usage" << "Mount Point" << "Overview";
+    right << dr->toStringToSeperate(1) << dr->toStringToSeperate(2) << dr->toStringToSeperate(3)
+          << dr->toStringToSeperate(4) << dr->toStringToSeperate(5) << dr->toStringToSeperate(6)
+          << dr->toStringToSeperate(7) << dr->toStringToSeperate(8) << dr->toStringToSeperate(9)
+          << dr->toStringToSeperate(10);
+
+
+    QStringListModel *systemInfoModel = new QStringListModel(fStringList(left, right, ui->info->font()));
 
     ui->info->setModel(systemInfoModel);
 }
@@ -133,20 +143,29 @@ void dashboard::on_blocks_currentTextChanged(const QString &currentText)
 
         QString path = t->mountPoints().join("");
 
-        QStringList infos;
-        infos
-            << tr("Name : %1")        . arg(block->toStringToSeperate(1))
-            << tr("Size : %1")        . arg(block->toStringToSeperate(2))
-            << tr("Dev : %1")         . arg(block->toStringToSeperate(3))
-            << tr("Drive : %1")       . arg(block->toStringToSeperate(4))
-            << tr("Type : %1")        . arg(block->toStringToSeperate(5))
-            << tr("Id : %1")          . arg(block->toStringToSeperate(6))
-            << tr("Read Only : %1")   . arg(block->toStringToSeperate(7))
-            << tr("Usage : %1")       . arg(block->toStringToSeperate(8))
-            << tr("Mount Point : %1") . arg(path)
-            << tr("Overview : %1")    . arg(getDriveInfo(path));
+//        QStringList infos;
+//        infos
+//            << tr("Name : %1")        . arg(block->toStringToSeperate(1))
+//            << tr("Size : %1")        . arg(block->toStringToSeperate(2))
+//            << tr("Dev : %1")         . arg(block->toStringToSeperate(3))
+//            << tr("Drive : %1")       . arg(block->toStringToSeperate(4))
+//            << tr("Type : %1")        . arg(block->toStringToSeperate(5))
+//            << tr("Id : %1")          . arg(block->toStringToSeperate(6))
+//            << tr("Read Only : %1")   . arg(block->toStringToSeperate(7))
+//            << tr("Usage : %1")       . arg(block->toStringToSeperate(8))
+//            << tr("Mount Point : %1") . arg(path)
+//            << tr("Overview : %1")    . arg(getDriveInfo(path));
 
-        QStringListModel *systemInfoModel = new QStringListModel(infos);
+        QStringList left;
+        QStringList right;
+        left << "Name" << "Size" << "Dev" << "Drive" << "Type" << "Id" << "Read Only"
+             << "Usage" << "Mount Point" << "Overview";
+        right << block->toStringToSeperate(1) << block->toStringToSeperate(2) << block->toStringToSeperate(3)
+              << block->toStringToSeperate(4) << block->toStringToSeperate(5) << block->toStringToSeperate(6)
+              << block->toStringToSeperate(7) << block->toStringToSeperate(8) << path
+              << getDriveInfo(path);
+
+        QStringListModel *systemInfoModel = new QStringListModel(fStringList(left, right, ui->info->font()));
 
         ui->info->setModel(systemInfoModel);
     }
@@ -294,6 +313,8 @@ void dashboard::on_batteriesList_currentIndexChanged(int index)
     ui->timerEdit->setTime(time);
 
     QStringList infos;
+    QStringList left;
+    QStringList right;
 
     const QMetaObject *metaObject = m_model->metaObject();
     int count = metaObject->propertyCount();
@@ -301,16 +322,21 @@ void dashboard::on_batteriesList_currentIndexChanged(int index)
         QMetaProperty metaProperty = metaObject->property(i);
         QString name = metaProperty.name();
         if( name != "objectName" ) {
-            QVariant value = m_model->property(name.toUtf8());
+            QVariant value = m_model->property(name.toUtf8());            
+
+            left << name;
+
             if( value.type() == QVariant::Double ) {
-                infos << QString(name + QString(" : %1").arg(value.toDouble()));
+                //infos << QString(name + QString(" : %1").arg(value.toDouble()));
+                right << QString::number(value.toDouble());
             } else {
-                infos << QString(name + " : " + value.toString());
+                //infos << QString(name + " : " + value.toString());
+                right << value.toString();
             }
         }
     }
 
-    QStringListModel *infoModel = new QStringListModel(infos);
+    QStringListModel *infoModel = new QStringListModel(fStringList(left, right, ui->batProperties->font()));
 
     ui->batProperties->setModel(infoModel);
 }
@@ -357,6 +383,12 @@ void dashboard::on_Bdisplay_clicked()
 
 void dashboard::setdisplaypage()
 {
+    QStringList left;
+    left << "Name        " << "Size        " << "Manufacturer" << "Model      "
+         << "Serial Number         " << "Refresh Rate" << "Actual Resolution     "
+         << "Set Resolution        " << "Physical Dots Per Inch "
+         << "Physical Size" << "Primary Orientation   ";
+
     for (int i = 0; i < qApp->screens().count(); i++) {
 
         QSize s = qApp->screens()[i]->size();
@@ -372,31 +404,41 @@ void dashboard::setdisplaypage()
         QString PhysicalSize(tr("(%1,%2)").arg(py.width()).arg(py.height()));
 
 
-        QStringList infos;
-        infos
-            << tr("Name : %1 ")                   . arg(qApp->screens()[i]->name())
-            << tr("Size : %1 px")                 . arg(size)
-            << tr("Manufacturer : %1 ")           . arg(qApp->screens()[i]->manufacturer())
-            << tr("Model : %1 ")                  . arg(qApp->screens()[i]->model())
-            << tr("SerialNumber : %1 ")           . arg(qApp->screens()[i]->serialNumber())
-            << tr("RefreshRate : %1 ")            . arg(qApp->screens()[i]->refreshRate())
-            << tr("Actual Resolution : %1 px")    . arg(AvailableVS)
-            << tr("Set Resolution : %1 px")       . arg(Geometry)
-            << tr("PhysicaldotsPerInch : %1 ppi") . arg(qApp->screens()[i]->physicalDotsPerInch())
-            << tr("Physical Size : %1 milimeter") . arg(PhysicalSize)
-            << tr("PrimaryOrientation : %1")      . arg(qApp->screens()[i]->primaryOrientation());
+//        QStringList infos;
+//        infos
+//            << tr("Name : %1 ")                   . arg(qApp->screens()[i]->name())
+//            << tr("Size : %1 px")                 . arg(size)
+//            << tr("Manufacturer : %1 ")           . arg(qApp->screens()[i]->manufacturer())
+//            << tr("Model : %1 ")                  . arg(qApp->screens()[i]->model())
+//            << tr("SerialNumber : %1 ")           . arg(qApp->screens()[i]->serialNumber())
+//            << tr("RefreshRate : %1 ")            . arg(qApp->screens()[i]->refreshRate())
+//            << tr("Actual Resolution : %1 px")    . arg(AvailableVS)
+//            << tr("Set Resolution : %1 px")       . arg(Geometry)
+//            << tr("PhysicaldotsPerInch : %1 ppi") . arg(qApp->screens()[i]->physicalDotsPerInch())
+//            << tr("Physical Size : %1 milimeter") . arg(PhysicalSize)
+//            << tr("PrimaryOrientation : %1")      . arg(qApp->screens()[i]->primaryOrientation());
 
-        QStringListModel *systemInfoModel = new QStringListModel(infos);
+        QStringList right;
+
 
         QListView *p = new QListView();
-        p->setModel(systemInfoModel);
-
         QWidget *w = new QWidget();
         QFont fl ("Cantarell", 14, QFont::Normal);
         QFont fp ("Ubuntu Mono", 11, QFont::Normal);
         QLabel *l = new QLabel("Screen : " + QString::number(i+1));
         QVBoxLayout *v = new QVBoxLayout();
         QHBoxLayout *h = new QHBoxLayout();
+
+
+        right << qApp->screens()[i]->name() << size << qApp->screens()[i]->manufacturer()
+              << qApp->screens()[i]->model() << qApp->screens()[i]->serialNumber()
+              << QString::number(qApp->screens()[i]->refreshRate()) << AvailableVS << Geometry
+              << QString::number(qApp->screens()[i]->physicalDotsPerInch()) << PhysicalSize
+              << QString::number(qApp->screens()[i]->primaryOrientation());
+
+        QStringListModel *systemInfoModel = new QStringListModel(fStringList(left, right, p->font()));
+
+        p->setModel(systemInfoModel);
 
         l->setFont(fl);
         p->setFont(fp);
@@ -413,5 +455,7 @@ void dashboard::setdisplaypage()
         w->setStyleSheet("QWidget{background-color:#1F2B38;color:#ffffff;}");
 
         ui->list->addWidget(w);
+
+        right.clear();
     }
 }

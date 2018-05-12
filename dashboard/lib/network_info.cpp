@@ -3,7 +3,7 @@
 
 NetworkInfo::NetworkInfo()
 {
-    QStringList lines = FileUtil::readListFromFile(PROC_NET_ROUTE);
+    QStringList lines = CommandUtil::readListFromFile(PROC_NET_ROUTE);
 
     if(lines.count() > 2)
         defaultNetworkInterface = lines
@@ -27,7 +27,7 @@ QString NetworkInfo::getDefaultNetworkInterface() const
 
 quint64 NetworkInfo::getRXbytes() const
 {
-    quint64 rx = FileUtil::readStringFromFile(rxPath)
+    quint64 rx = CommandUtil::readStringFromFile(rxPath)
             .trimmed()
             .toLong();
 
@@ -36,7 +36,7 @@ quint64 NetworkInfo::getRXbytes() const
 
 quint64 NetworkInfo::getTXbytes() const
 {
-    quint64 tx = FileUtil::readStringFromFile(txPath)
+    quint64 tx = CommandUtil::readStringFromFile(txPath)
             .trimmed()
             .toLong();
 

@@ -1,7 +1,7 @@
 #ifndef MEMORYINFO_H
 #define MEMORYINFO_H
 
-#include "file_util.h"
+#include "command_util.h"
 #include "stacer-core_global.h"
 
 #define PROC_MEMINFO "/proc/meminfo"

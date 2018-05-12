@@ -41,7 +41,7 @@ public:
     ~bookmarks();
 
     void saveBookMark(QString section, QString bookmarkName, QString bookmarkPath, QString bookmarkIcon);
-    void callBookMarkDialog(QWidget *parent, QString currentPath, QString iconPath);
+    void callBookMarkDialog(QWidget *parent, QString currentPath);
 
 private slots:
     void on_section_itemClicked(QListWidgetItem *item);

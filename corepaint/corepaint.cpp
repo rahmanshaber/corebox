@@ -569,9 +569,8 @@ void corepaint::on_bookMarkIt_clicked()
         QString mess = "File: " + currentFile + "' not exists Or not saved";
         messageEngine(mess, "Info");
     } else {
-        QString myIcon = ":/icons/CorePaint.svg";
         bookmarks bookMarks;
-        bookMarks.callBookMarkDialog(this, filepath, myIcon);
+        bookMarks.callBookMarkDialog(this, filepath);
     }
 }
 

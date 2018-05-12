@@ -109,7 +109,7 @@ void bookmarkDialog::ok_clicked()
     if (bookMarkName->text().count() == 0) {
         accept->setEnabled(false);
     }
-    if (!bookMarkName->text().count() == 0 && !sectionName->currentText().count() == 0) {
+    if (bookMarkName->text().count() != 0 && sectionName->currentText().count() != 0) {
         accepted = true;
         QTimer::singleShot(100, this, SLOT(close()));
         messageEngine("Bookmark Added at '" + sectionName->currentText() + "'", "Info");

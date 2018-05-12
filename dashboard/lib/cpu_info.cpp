@@ -10,7 +10,7 @@ quint8 CpuInfo::getCpuCoreCount() const
 
     if (! count)
     {
-        QStringList cpuinfo = FileUtil::readListFromFile(PROC_CPUINFO);
+        QStringList cpuinfo = CommandUtil::readListFromFile(PROC_CPUINFO);
 
         if (! cpuinfo.isEmpty())
             count = cpuinfo.filter(QRegExp("^processor")).count();
@@ -25,7 +25,7 @@ QList<int> CpuInfo::getCpuPercents() const
 
     QList<int> cpuPercents;
 
-    QStringList times = FileUtil::readListFromFile(PROC_STAT);
+    QStringList times = CommandUtil::readListFromFile(PROC_STAT);
 
     if (! times.isEmpty())
     {

@@ -74,7 +74,7 @@ void bookmarks::sectionRefresh()
     ui->section->addItems(bk.getBookSections());
 
     for (int i = 0; i < ui->section->count(); ++i) {
-        ui->section->item(i)->setIcon((QIcon::fromTheme("folder")));
+        ui->section->item(i)->setIcon((QIcon(":/icons/CoreFM.svg")));
     }
 
     ui->section->setCurrentRow(selectedIndex);
@@ -99,21 +99,21 @@ void bookmarks::on_reload_clicked()
  * @param currentPath : Path which needs to bookmarked.
  * @param iconPath : Apps icon path from resource.
  */
-void bookmarks::callBookMarkDialog(QWidget *parent, QString currentPath, QString iconPath)
+void bookmarks::callBookMarkDialog(QWidget *parent, QString currentPath)
 {
     QFileInfo info(currentPath);
     BookmarkManage bm;
     QString str = bm.checkingBookPathEx(currentPath);
     if (str.isEmpty() || str.isNull()) {
         bookmarkDialog *bkdlg = new bookmarkDialog(parent);
-        QPixmap pix(iconPath);
+        QPixmap pix = geticon(currentPath).pixmap(QSize(bkdlg->iconLabel->width(),bkdlg->iconLabel->height()));
         bkdlg->pathLabel->setText(currentPath);
         bkdlg->bookMarkName->setText(info.fileName() + "");
         bkdlg->checkPath();
-        bkdlg->iconLabel->setPixmap(pix.scaled(bkdlg->iconLabel->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        bkdlg->iconLabel->setPixmap(pix);//.scaled(bkdlg->iconLabel->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation));
         if (bkdlg->exec() == 0) {
             if (bkdlg->accepted) {
-                bk.addBookmark(bkdlg->sectionName->currentText(), bkdlg->bookMarkName->text(), currentPath, iconPath);
+                bk.addBookmark(bkdlg->sectionName->currentText(), bkdlg->bookMarkName->text(), currentPath);
             } else if (!bkdlg->accepted) {
                 bkdlg->close();
             }
@@ -151,7 +151,7 @@ void bookmarks::on_section_itemClicked(QListWidgetItem *item)
     QTableWidgetItem *items;
     for (int i = 0; i < count; ++i) {
         items = new QTableWidgetItem(list.at(i));
-        items->setIcon(QIcon(bk.bookmarkIconPath(ui->section->currentItem()->text(), list.at(i))));
+        items->setIcon(geticon(bk.bookmarkPath(ui->section->currentItem()->text(), list.at(i))));
 
         ui->boklist->setItem(i, 0, items);
         ui->boklist->setItem(i, 1, new QTableWidgetItem(bk.bookmarkPath(ui->section->currentItem()->text(), list.at(i))));
@@ -243,8 +243,7 @@ void bookmarks::on_bookmarkDelete_clicked()
 
 void bookmarks::on_editDone_clicked()
 {
-    QString bookValue = QDir(ui->pathName->text()).absolutePath() + "$$$" + bk.bookmarkIconPath(ui->section->currentItem()->text(),
-                                                                                                ui->boklist->item(ui->boklist->currentIndex().row(), 0)->text());
+    QString bookValue = QDir(ui->pathName->text()).absolutePath();
     bk.changeAll(ui->section->currentItem()->text(), ui->boklist->item(ui->boklist->currentIndex().row(), 0)->text(),
                  ui->selectSection->currentText(), ui->bookmarkName->text(), bookValue);
     if (ui->section->currentItem()->text() == ui->selectSection->currentText()) {
@@ -302,7 +301,7 @@ void bookmarks::on_pathName_textChanged(const QString &arg1)
                     ui->editDone->setEnabled(false);
                 } else {
                     ui->pathlbl->setText(str);
-                    if (!ui->bookmarkName->text().count() == 0 && ui->statuslbl->text().count() == 0) {ui->editDone->setEnabled(true);}
+                    if (ui->bookmarkName->text().count() != 0 && ui->statuslbl->text().count() == 0) {ui->editDone->setEnabled(true);}
                     else {ui->editDone->setEnabled(false);}
                 }
             }
@@ -322,7 +321,7 @@ void bookmarks::on_pathName_textChanged(const QString &arg1)
                     ui->editDone->setEnabled(false);
                 } else {
                     ui->pathlbl->setText(str);
-                    if (!ui->bookmarkName->text().count() == 0 && ui->statuslbl->text().count() == 0) {ui->editDone->setEnabled(true);}
+                    if (ui->bookmarkName->text().count() != 0 && ui->statuslbl->text().count() == 0) {ui->editDone->setEnabled(true);}
                     else {ui->editDone->setEnabled(false);}
                 }
             }

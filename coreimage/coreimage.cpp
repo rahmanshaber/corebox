@@ -379,18 +379,17 @@ void coreimage::on_cTools_clicked(bool checked)
 void coreimage::on_bookMarkIt_clicked()
 {
     if (!currentImagePath.isNull()) {
-        QString myIcon = ":/icons/CoreImage.svg";
         bookmarks bookMarks;
-        bookMarks.callBookMarkDialog(this, currentImagePath, myIcon);
+        bookMarks.callBookMarkDialog(this, currentImagePath);
     }
 }
 
 void coreimage::on_cPrevious_clicked()
 {
     //QStringList images = getImages(QFileInfo(currentImagePath).path());
-    if (!images.count() == 0) {
+    if (images.count() != 0) {
         int currentIndex = images.indexOf(currentImagePath);
-        if (!currentIndex == 0) {
+        if (currentIndex != 0) {
             loadFile(images.at(currentIndex - 1));
         } else {
             loadFile(images.at(images.count() - 1));
@@ -403,7 +402,7 @@ void coreimage::on_cPrevious_clicked()
 void coreimage::on_cNext_clicked()
 {
     //QStringList images = getImages(QFileInfo(currentImagePath).path());
-    if (!images.count() == 0) {
+    if (images.count() != 0) {
         int currentIndex = images.indexOf(currentImagePath);
         int lastIndex = images.count() - 1;
         if (!(currentIndex == lastIndex)) {

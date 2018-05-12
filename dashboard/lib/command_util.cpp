@@ -52,3 +52,26 @@ bool CommandUtil::isExecutable(const QString &cmd)
 {
     return !QStandardPaths::findExecutable(cmd).isEmpty();
 }
+
+QString CommandUtil::readStringFromFile(const QString &path, const QIODevice::OpenMode &mode)
+{
+    QSharedPointer<QFile> file(new QFile(path));
+
+    QString data;
+
+    if(file->open(mode)) {
+
+      data = file->readAll();
+
+      file->close();
+    }
+
+    return data;
+}
+
+QStringList CommandUtil::readListFromFile(const QString &path, const QIODevice::OpenMode &mode)
+{
+    QStringList list = CommandUtil::readStringFromFile(path, mode).trimmed().split("\n");
+
+    return list;
+}

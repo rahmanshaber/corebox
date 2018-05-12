@@ -163,6 +163,9 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
 
+
+    //left mouse click at viewlist
+    connect(ui->viewlist, &ClickOutListview::clickedOut, this, &corefm::pressed);
 }
 
 corefm::~corefm()
@@ -2082,7 +2085,7 @@ void corefm::on_detaile_clicked(bool checked){
 
 void corefm::on_actionTrash_it_triggered(){
 
-    if (!selcitem == 0) {
+    if (selcitem != 0) {
         moveToTrash(selcitempath);
         on_actionRefresh_triggered();
     }
@@ -2117,15 +2120,14 @@ void corefm::on_SBookMarkIt_clicked(){
 
     bookmarks bookMarks;
     QString path;
-    QString Icon = ":/icons/CoreFM.svg";
 
     if (selcitem == 0) {
         path = ui->pathEdit->itemText(0);
-        bookMarks.callBookMarkDialog(this,path, Icon);
+        bookMarks.callBookMarkDialog(this,path);
     }
     if (selcitem == 1) {
         path =  selcitempath;
-        bookMarks.callBookMarkDialog(this,path, Icon);
+        bookMarks.callBookMarkDialog(this,path);
     }
 }
 
@@ -2150,6 +2152,7 @@ void corefm::on_actionCreate_Archive_triggered(){
 
     QProcess p1;
     QString commd = "engrampa \"" + selcitempath + "\" -d";
+    qDebug()<< commd;
     p1.start(commd.toLatin1());
     p1.waitForFinished();
     on_actionRefresh_triggered();
@@ -2440,4 +2443,9 @@ void corefm::on_actionHome_triggered()
     on_actionRefresh_triggered();
 
     messageEngine("send Completed.", "Info");
+}
+
+
+void corefm::pressed() {
+    qDebug() << "Left MOuse Clicked from viewlist";
 }

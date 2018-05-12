@@ -4,10 +4,10 @@
 
 SystemInfo::SystemInfo()
 {
-    QStringList lines = FileUtil::readListFromFile(PROC_CPUINFO)
+    QStringList lines = CommandUtil::readListFromFile(PROC_CPUINFO)
             .filter(QRegExp("^model name"));
 
-    QStringList cpuMhz = FileUtil::readListFromFile(PROC_CPUINFO)
+    QStringList cpuMhz = CommandUtil::readListFromFile(PROC_CPUINFO)
             .filter(QRegExp("^cpu MHz"));
 
     if (! lines.isEmpty()) {

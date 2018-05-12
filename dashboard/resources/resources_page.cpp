@@ -15,8 +15,8 @@ ResourcesPage::ResourcesPage(QWidget *parent) :
     cpuChart(new HistoryChart(tr("CPU History"), im->getCpuCoreCount(), this)),
     memoryChart(new HistoryChart(tr("Memory History"), 2, this)),
     networkChart(new HistoryChart(tr("Network History"), 2, this)),
-    timer(new QTimer(this)),
-    im(InfoManager::ins())
+    im(InfoManager::ins()),
+    timer(new QTimer(this))
 {
     ui->setupUi(this);
     init();
@@ -105,8 +105,7 @@ void ResourcesPage::updateMemoryChart()
         for (int i = 0; i < (second < 61 ? second : 61); i++)
             seriesList.at(j)->replace(i, (i+1), seriesList.at(j)->at(i).y());
 
-        if(second > 61)
-            seriesList.at(j)->removePoints(61, 1);
+        if(second > 61) seriesList.at(j)->removePoints(61, 1);
     }
 
     // Swap
@@ -130,32 +129,26 @@ void ResourcesPage::updateMemoryChart()
                               .arg(formatSize(im->getMemTotal())));
 
     second++;
-
     memoryChart->setSeriesList(seriesList);
 }
 
-void ResourcesPage::updateCpuChart()
-{
+void ResourcesPage::updateCpuChart() {
     static int second = 0;
-
     QList<int> cpuPercents = im->getCpuPercents();
+    QVector<QLineSeries*> seriesList = cpuChart->getSeriesList();
 
-    QVector<QLineSeries *> seriesList = cpuChart->getSeriesList();
-
-    for (int j = 0; j < seriesList.count(); j++){
-        int p = cpuPercents.at(j+1);
+    for (int j = 0; j < seriesList.count(); j++) {
+        int p = cpuPercents.at(j + 1);
 
         for (int i = 0; i < (second < 61 ? second : 61); i++)
-            seriesList.at(j)->replace(i, (i+1), seriesList.at(j)->at(i).y());
+            seriesList.at(j)->replace(i, (i + 1), seriesList.at(j)->at(i).y());
 
         seriesList.at(j)->insert(0, QPointF(0, p));
-
         seriesList.at(j)->setName(QString("CPU%1 %2%").arg(j+1).arg(p));
 
-        if(second > 61) seriesList.at(j)->removePoints(61, 1);
+        if (second > 61) seriesList.at(j)->removePoints(61, 1);
     }
 
     second++;
-
     cpuChart->setSeriesList(seriesList);
 }

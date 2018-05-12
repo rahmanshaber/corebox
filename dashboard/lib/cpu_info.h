@@ -2,7 +2,7 @@
 #define CPUINFO_H
 
 #include "stacer-core_global.h"
-#include "file_util.h"
+#include "command_util.h"
 
 #define PROC_CPUINFO "/proc/cpuinfo"
 #define PROC_STAT    "/proc/stat"

@@ -9,6 +9,8 @@
 #include <QTimer>
 #include <QFile>
 #include <QDir>
+#include <QFont>
+#include <QFontMetrics>
 #include <QMessageBox>
 #include <QFileInfo>
 #include <QSettings>
@@ -55,5 +57,8 @@ enum AppsName {
 
  QString checkIsValidDir(QString str);
  QString checkIsValidFile(QString str);
+
+ QIcon geticon(const QString &filePath);
+ QStringList fStringList(QStringList left, QStringList right, QFont font);
 
 #endif // GLOBALFUNCTIONS_H

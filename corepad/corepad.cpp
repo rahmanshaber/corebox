@@ -22,7 +22,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMessageBox>
 
 
-corepad::corepad(QWidget *parent) :QWidget(parent),ui(new Ui::corepad)
+corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
 {
     qDebug() << "corepad opening";
     ui->setupUi(this);
@@ -297,9 +297,8 @@ void corepad::on_cQuit_clicked()
 void corepad::on_bookMarkIt_clicked()
 {
     if (!workFilePath.isNull()) {
-        QString myIcon = ":/icons/CorePad.svg";
         bookmarks bookMarks;
-        bookMarks.callBookMarkDialog(this, workFilePath, myIcon);
+        bookMarks.callBookMarkDialog(this, workFilePath);
     }
 }
 

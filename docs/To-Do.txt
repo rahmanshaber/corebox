@@ -2,6 +2,7 @@
 0-bug/fix
 1-features
 2-fixed-test is needed
+3-impossible for us.
 
 
 corebox
@@ -10,14 +11,19 @@ corebox
 1 - add display scale support
 1 - add option for using default window manager
 1 - update the app when clicked from window.(only coreboxapps)
-1 - separate process for per app.
+3 - separate process for per app.
 1 - limit the openable window.
 1 - tab text align left.
+
+globalfunction
+1 - add mimetype open function.
+0 - fix folder icon.
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
-1 - two icon .folder and file .in bookmarklist list
+0 - fix the bookmark dialog icon.
+0 - change cSetting to bokmark
 
 dashboard
 1 - remove unwanted partition
@@ -28,7 +34,6 @@ dashboard
 corepaint
 0 - add delete selected area as a pushbutton and shortcut(del).
 1 - set all the instrument cursor.
-1 - open screenshot folder pushbutton which show the screenshot folder.
 
 Search
 1 - if search opened from FM hide locate option.
@@ -40,13 +45,13 @@ corefm
 0 - rename mode is not going off when clicked outside.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
-1 - set custom icom in home's folder.
+3 - set custom icom in home's folder.
 1 - add tree package.
 0 - preview is not working.
 1 - send a file to a drive.
-1 - Finish movement of mime-related code from FileUtils to MimeUtils
-1 - Implement clearDeadDefaults() method in MimeUtils
-1 - Some *.desktop file has more groups(sections) and each group can contain
+3 - Finish movement of mime-related code from FileUtils to MimeUtils
+3 - Implement clearDeadDefaults() method in MimeUtils
+3 - Some *.desktop file has more groups(sections) and each group can contain
     exec command, but only first is read, this must be fixed
 
 messageengine
@@ -67,15 +72,15 @@ corepad
 
 
 setting
-1 - also open corebox at start up.
 1 - add option to backup corbox config folder as a zip and restore the settings.
 
 start
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
+0 - add the file name the passed coreapps.
 
 coreimage
-0 - need a black image on app start.
+0 - set blace pixmap on app start.
 0 - deleting pic, will also delete entry from path qstringlist
 1 - ctrl + wheel = zoom shortcut.
 0 - mouse wheel >>next image not working sometimes
@@ -88,7 +93,7 @@ coreplayer
 2 - stop clicked >> seekbar position not changing.
 
 coreshot
-1 - add active window option.
+3 - add active window option.
 
 coreaction
 

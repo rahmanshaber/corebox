@@ -1523,7 +1523,7 @@ color:#000000;
           <number>0</number>
          </property>
          <item>
-          <widget class="QListView" name="viewlist">
+          <widget class="ClickOutListview" name="viewlist">
            <property name="font">
             <font>
              <pointsize>11</pointsize>
@@ -2600,6 +2600,13 @@ border: 1px  #F2F2F2;
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ClickOutListview</class>
+   <extends>QListView</extends>
+   <header location="global">corefm/clickoutlistview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../icons.qrc"/>
  </resources>
