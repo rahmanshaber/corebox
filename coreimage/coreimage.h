@@ -93,7 +93,7 @@ private:
     QImage image;
     double scaleFactor;
 
-    QStringList getImages(QString path);
+    QStringList getImages(const QString path);
     bool saveFile(const QString &fileName);
     void setImage(const QImage &newImage);
     void scaleImage(double factor);

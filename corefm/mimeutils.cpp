@@ -115,8 +115,7 @@ void MimeUtils::openInApp(const QFileInfo &file, QObject *processOwner) {
  * @param file to be opened in executed application
  * @param processOwner process owner (default NULL)
  */
-void MimeUtils::openInApp(QString exe, const QFileInfo &file,
-                          QObject *processOwner) {
+void MimeUtils::openInApp(QString exe, const QFileInfo &file,QObject *processOwner) {
 
   // This is not the right the solution, but qpdfview won't start otherwise
   // TODO: Repair it correctly
@@ -143,7 +142,8 @@ void MimeUtils::openInApp(QString exe, const QFileInfo &file,
     args.append(/*"\"" + */file.filePath()/* + "\""*/);
   }
 
-//  qDebug() << name << args;
+  qDebug() << name << args;//lala
+  saveToRecent(name,args);
 
   // Start application
   QProcess *myProcess = new QProcess(processOwner);

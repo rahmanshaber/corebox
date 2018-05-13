@@ -60,7 +60,7 @@ public:
         return corebox_;
     }
 
-    void goTo(QString path);
+    void goTo(const QString path);
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -89,11 +89,11 @@ public slots:
     void listItemClicked(QModelIndex);
     void listItemPressed(QModelIndex);
     void tabChanged(int index);
-    int addTab(QString path);
+    int addTab(const QString path);
     void clearCutItems();
     void zoomInAction();
     void zoomOutAction();
-    void focusAction();
+//    void focusAction();
     void dirLoaded();
     void thumbUpdate(QModelIndex);
     void addressChanged(int,int);
@@ -133,7 +133,6 @@ private slots:
     void on_actionNewTab_triggered();
     void on_actionTerminal_triggered();
     void on_actionShowThumbnails_triggered();
-    void on_actionRunFile_triggered();
     void on_actionAscending_triggered(bool checked);
     void on_SHome_clicked();
     void on_SDesktop_clicked();
@@ -154,12 +153,14 @@ private slots:
     void on_actionDesktop_triggered();
     void on_actionHome_triggered();
 
+    void on_actionRun_triggered();
+
 private:
     SettingsManage sm;
     void writeSettings();
     void shotcuts();
 
-    void recurseFolder(QString path, QString parent, QStringList *);
+    void recurseFolder(const QString path, QString parent, QStringList *);//delete
     int showReplaceMsgBox(const QFileInfo &f1, const QFileInfo &f2);
     QMenu* createOpenWithMenu();
     QMenu *globalmenu();

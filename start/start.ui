@@ -83,7 +83,7 @@ QScrollBar::sub-page:vertical {
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-217</y>
+        <y>0</y>
         <width>837</width>
         <height>900</height>
        </rect>
@@ -325,7 +325,7 @@ padding: 50px 5px 20px 20px;
              <number>0</number>
             </property>
             <property name="uniformItemSizes">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="batchSize">
              <number>10</number>
@@ -706,7 +706,7 @@ padding: 50px 5px 20px 20px;
              <enum>QListView::Adjust</enum>
             </property>
             <property name="spacing">
-             <number>20</number>
+             <number>1</number>
             </property>
             <property name="gridSize">
              <size>
@@ -721,7 +721,7 @@ padding: 50px 5px 20px 20px;
              <number>0</number>
             </property>
             <property name="uniformItemSizes">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="batchSize">
              <number>10</number>

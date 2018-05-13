@@ -152,5 +152,7 @@
         <file>icons/type-text.svg</file>
         <file>icons/type-unknown.svg</file>
         <file>icons/type-video.svg</file>
+        <file>icons/emblem-mounted.svg</file>
+        <file>icons/emblem-unmounted.svg</file>
     </qresource>
 </RCC>

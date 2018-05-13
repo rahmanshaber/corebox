@@ -1,4 +1,6 @@
 
+FIX MUST BE SIMPLE.NOT COMPILCATED.
+
 0-bug/fix
 1-features
 2-fixed-test is needed
@@ -17,13 +19,10 @@ corebox
 
 globalfunction
 1 - add mimetype open function.
-0 - fix folder icon.
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
-0 - fix the bookmark dialog icon.
-0 - change cSetting to bokmark
 
 dashboard
 1 - remove unwanted partition
@@ -36,13 +35,13 @@ corepaint
 1 - set all the instrument cursor.
 
 Search
+0 - set icon with geticon function.
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
 0 - if path is given find is not working.but locate is working.
 
 corefm
 0 - pathedit is always in focus, even outside clicked.
-0 - rename mode is not going off when clicked outside.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,other one crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
 3 - set custom icom in home's folder.
@@ -69,6 +68,7 @@ coretime
 1 - show a message (not a messagebox) before 5 minutes of alarm time
 
 corepad
+0 - save dialog shows up when closing ,without changing the txt file.
 
 
 setting
@@ -90,7 +90,9 @@ coreplayer
 1 - hide the navigation bar when playing.
 1 - move to qtAV engine
 0 - after stop clicked player widget turs white
-2 - stop clicked >> seekbar position not changing.
+0 - stop clicked >> seekbar position not changing.
+0 - after stop ,play button dose not work.
+
 
 coreshot
 3 - add active window option.

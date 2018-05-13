@@ -131,6 +131,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->showthumb->setChecked(0);
     ui->actionAscending->setChecked(1);
     ui->STrash->setVisible(1);
+    ui->partitions->setFocusPolicy(Qt::NoFocus);
 
     ui->newTab->setDefaultAction(ui->actionNewTab);
     ui->copy->setDefaultAction(ui->actionCopy);
@@ -150,8 +151,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
         QDir::home().mkdir(".coreBox");
     }
 
-    ui->partitions->setFocusPolicy(Qt::NoFocus);
-
     udisks = new UDisks2(this);
     connect(udisks, SIGNAL(blockDeviceAdded(QString)), this, SLOT(blockDevicesChanged()));
     connect(udisks, SIGNAL(blockDeviceChanged(QString)), this, SLOT(blockDevicesChanged()));
@@ -163,9 +162,9 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
 
-
     //left mouse click at viewlist
     connect(ui->viewlist, &ClickOutListview::clickedOut, this, &corefm::pressed);
+    connect(ui->viewtree, &ClickOutTreeview::clickedOut, this, &corefm::pressed);
 }
 
 corefm::~corefm()
@@ -508,7 +507,7 @@ void corefm::listItemPressed(QModelIndex current)
     }
 }
 
-int corefm::addTab(QString path)
+int corefm::addTab(const QString path)
 {
 //    qDebug()<<currentView;
     if (tabs->count() < 10) {
@@ -1178,15 +1177,12 @@ QMenu* corefm::globalmenu(){
       if(info.isFile()){ //file
           popup->addAction(ui->actionOpen);
           popup->addMenu(createOpenWithMenu());
+          popup->addAction(ui->actionRun);
           popup->addSeparator();
           popup->addMenu(sendto);
           popup->addSeparator();
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
-          popup->addSeparator();
-          if (info.isExecutable()) {
-              popup->addAction(ui->actionRunFile);
-          }
         }
       if(info.isDir()){ //folder
           popup->addMenu(innew);
@@ -1307,8 +1303,6 @@ void corefm::actionMapper(QString cmd)
         temp.append(modelList->filePath(modelView->mapToSource(index)).replace(" ","\\"));
 
     cmd.replace("%F",temp.join(" "));
-
-//    customActManager->execAction(cmd, ui->pathEdit->itemText(0));
 }
 
 
@@ -1400,22 +1394,22 @@ QString myCompleter::pathFromIndex(const QModelIndex& index) const
     return list.join("/");
 }
 
-void corefm::focusAction()
-{
-    QAction *which = qobject_cast<QAction*>(sender());
-    if(which)
-    {
-        if(which->text().contains("address")) ui->pathEdit->setFocus(Qt::TabFocusReason);
-        else if(which->text().contains("tree")) tree->setFocus(Qt::TabFocusReason);
-        else if(currentView == 2) ui->viewtree->setFocus(Qt::TabFocusReason);
-        else ui->viewlist->setFocus(Qt::TabFocusReason);
-    }
-    else
-    {
-        QApplication::clipboard()->blockSignals(0);
-        ui->pathEdit->setCompleter(customComplete);
-    }
-}
+//void corefm::focusAction()//delete
+//{
+//    QAction *which = qobject_cast<QAction*>(sender());
+//    if(which)
+//    {
+//        if(which->text().contains("address")) ui->pathEdit->setFocus(Qt::TabFocusReason);
+//        else if(which->text().contains("tree")) tree->setFocus(Qt::TabFocusReason);
+//        else if(currentView == 2) ui->viewtree->setFocus(Qt::TabFocusReason);
+//        else ui->viewlist->setFocus(Qt::TabFocusReason);
+//    }
+//    else
+//    {
+//        QApplication::clipboard()->blockSignals(0);
+//        ui->pathEdit->setCompleter(customComplete);
+//    }
+//}
 
 void corefm::addressChanged(int old, int now)
 {
@@ -1845,11 +1839,6 @@ void corefm::on_actionShowThumbnails_triggered(){
     on_actionRefresh_triggered();
 }
 
-void corefm::on_actionRunFile_triggered(){
-
-    executeFile(listSelectionModel->currentIndex(), 1);
-}
-
 void corefm::setSortColumn(QAction *columnAct) {
 
     // Set root index
@@ -1912,15 +1901,15 @@ void corefm::executeFile(QModelIndex index, bool run) {
     QModelIndex srcIndex = modelView->mapToSource(index);
 
     // Run or open
-    if (run) {
-      QProcess *myProcess = new QProcess(this);
-      myProcess->startDetached(modelList->filePath(srcIndex));
+    if (run == true) {
+        QString path = modelList->filePath(srcIndex);
+        QProcess::startDetached("xdg-open", QStringList() << path);
     } else {
-      mimeUtils->openInApp(modelList->fileInfo(srcIndex), this);
+        mimeUtils->openInApp(modelList->fileInfo(srcIndex), this);
     }
 }
 
-void corefm::goTo(QString path) {
+void corefm::goTo(const QString path) {
 
     if (!path.isEmpty()){
         QModelIndex i = modelTree->mapFromSource(modelList->index(path));
@@ -2198,11 +2187,11 @@ void corefm::blockDevicesChanged() {
 
                                     if (parse[1] == "") {
                                         item = new QListWidgetItem("Drive (" +formatSize(device->size)+ ")"); // device->fileSystem()->name
-                                        icon = QIcon::fromTheme("drive-harddisk");
+                                        icon = QIcon(":/icons/partition.svg");;
                                     } else {
                                         if (parse.count() > 2) {
                                             if (parse[2] == "0") {
-                                                icon = QIcon::fromTheme("drive-harddisk");
+                                                icon = QIcon(":/icons/partition.svg");;
                                             } else {
                                                 icon = QIcon::fromTheme("drive-removable-media");
                                             }
@@ -2217,21 +2206,21 @@ void corefm::blockDevicesChanged() {
 
                     if (!(item)) {
                         item = new QListWidgetItem(formatSize(device->size) + " Hard Drive (" + device->fileSystem()->name + ")");
-                        icon = QIcon::fromTheme("drive-harddisk");
+                        icon = QIcon(":/icons/partition.svg");
                     }
 
                     if (device->fileSystem()->mountPoints().count() == 0) {
                         QPainter *p = new QPainter();
                         QPixmap temp = icon.pixmap(16,16);
                         p->begin(&temp);
-                        p->drawPixmap(8,8,8,8,QIcon::fromTheme("emblem-unmounted").pixmap(8,8));
+                        p->drawPixmap(8,8,8,8,QIcon(":/icons/emblem-unmounted.svg").pixmap(8,8));
                         p->end();
                         icon = QIcon(temp);
                     } else {
                         QPainter *p = new QPainter();
                         QPixmap temp = icon.pixmap(16,16);
                         p->begin(&temp);
-                        p->drawPixmap(8,8,8,8,QIcon::fromTheme("emblem-mounted").pixmap(8,8));
+                        p->drawPixmap(8,8,8,8,QIcon(":/icons/emblem-mounted.svg").pixmap(8,8));
                         p->end();
                         icon = QIcon(temp);
                     }
@@ -2447,5 +2436,15 @@ void corefm::on_actionHome_triggered()
 
 
 void corefm::pressed() {
-    qDebug() << "Left MOuse Clicked from viewlist";
+
+//    ui->pathEdit->clearFocus();
+//    ui->viewlist->viewport()->clearFocus();
+//    qDebug()<< "miefe";
+    ui->viewlist->setCurrentIndex(QModelIndex());
+    ui->viewtree->setCurrentIndex(QModelIndex());
+}
+
+void corefm::on_actionRun_triggered()
+{
+    executeFile(listSelectionModel->currentIndex(), true);
 }

@@ -61,6 +61,7 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
         }
         ui->cTools->setEnabled(true);
         ui->cOpen->setEnabled(true);
+        ui->title->setEnabled(true);
     }
     shotcuts();
 }
@@ -128,7 +129,7 @@ void coreimage::wheelEvent(QWheelEvent *event) {
     }
 }
 
-QStringList coreimage::getImages(QString path) {
+QStringList coreimage::getImages(const QString path) {
     QDir dir(path);
     //QStringList images;
     for (QString file : dir.entryList()) {

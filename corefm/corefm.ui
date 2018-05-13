@@ -1068,7 +1068,7 @@ QComboBox:focus{
 }</string>
         </property>
         <property name="editable">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="maxVisibleItems">
          <number>4</number>
@@ -1503,7 +1503,7 @@ color:#000000;
         <number>0</number>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="pagelist">
         <layout class="QVBoxLayout" name="verticalLayout">
@@ -1592,7 +1592,7 @@ color:#000000;
           <number>0</number>
          </property>
          <item>
-          <widget class="QTreeView" name="viewtree">
+          <widget class="ClickOutTreeview" name="viewtree">
            <property name="font">
             <font>
              <pointsize>11</pointsize>
@@ -2465,11 +2465,6 @@ border: 1px  #F2F2F2;
     <string>NewPage</string>
    </property>
   </action>
-  <action name="actionRunFile">
-   <property name="text">
-    <string>Execute File</string>
-   </property>
-  </action>
   <action name="actionAscending">
    <property name="checkable">
     <bool>true</bool>
@@ -2598,12 +2593,22 @@ border: 1px  #F2F2F2;
     <string>Home</string>
    </property>
   </action>
+  <action name="actionRun">
+   <property name="text">
+    <string>Run</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
    <class>ClickOutListview</class>
    <extends>QListView</extends>
+   <header location="global">corefm/clickoutlistview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ClickOutTreeview</class>
+   <extends>QTreeView</extends>
    <header location="global">corefm/clickoutlistview.h</header>
   </customwidget>
  </customwidgets>

@@ -41,8 +41,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFileDialog>
 #include <QMouseEvent>
 #include <QPaintEvent>
-#include <QPrinter>
-#include <QPrintDialog>
 #include <QTimer>
 #include <QImageReader>
 #include <QImageWriter>

@@ -32,7 +32,7 @@ class propertiesw : public QWidget
     Q_OBJECT
 
 public:
-    explicit propertiesw(QString paths, QWidget *parent = 0);
+    explicit propertiesw(const QString paths, QWidget *parent = 0);
     ~propertiesw();
 
 public slots:
@@ -53,8 +53,8 @@ private:
     void permission();
     void general();
     void details();
-    void partition(QString path);
-    void detailimage(QString imagepath);
+    void partition(const QString path);
+    void detailimage(const QString imagepath);
 };
 
 #endif // PROPERTIESW_H

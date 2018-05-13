@@ -387,7 +387,7 @@ border: 1px #34343C;
 }</string>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="palarm">
       <layout class="QVBoxLayout" name="verticalLayout_5">

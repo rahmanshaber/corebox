@@ -27,7 +27,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 
 coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
-   , coverLabel(0)
    , playerState(QMediaPlayer::StoppedState)
 {
     qDebug() << "coreplayer opening";
@@ -42,7 +41,6 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
     player = new QMediaPlayer(this);
     connect(player, SIGNAL(durationChanged(qint64)), SLOT(durationChanged(qint64)));
     connect(player, SIGNAL(positionChanged(qint64)), SLOT(positionChanged(qint64)));
-    connect(player, SIGNAL(metaDataChanged()), SLOT(metaDataChanged()));
     connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)),this, SLOT(statusChanged(QMediaPlayer::MediaStatus)));
     connect(player, SIGNAL(bufferStatusChanged(int)), this, SLOT(bufferingProgress(int)));
     connect(player, SIGNAL(videoAvailableChanged(bool)), this, SLOT(videoAvailableChanged(bool)));
@@ -71,7 +69,6 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
 
     ui->numberOfFiles->setVisible(0);
 
-    metaDataChanged();
     audioMimes();
     videoMimes();
     shotcuts();
@@ -128,11 +125,11 @@ void coreplayer::videoMimes() {
                 videomimes.append(s.name());
     }
 
-    //audiomimes.replace(audiomimes.indexOf("audio/mpeg"), "audio/mp3");
+//    audiomimes.replace(audiomimes.indexOf("audio/mpeg"), "audio/mp3");//error
     videomimes.sort();
 }
 
-QStringList coreplayer::getVideos(QString path) {
+QStringList coreplayer::getVideos(const QString path) {
 
     QDir dir(path);
     QStringList videos;
@@ -166,7 +163,7 @@ void coreplayer::audioMimes() {
 
 }
 
-QStringList coreplayer::getAudios(QString path) {
+QStringList coreplayer::getAudios(const QString path) {
 
     QDir dir(path);
     QStringList audios;
@@ -202,24 +199,6 @@ void coreplayer::positionChanged(qint64 progress)
     updateDurationInfo(progress / 1000);
 }
 
-void coreplayer::metaDataChanged()
-{
-    if (player->isMetaDataAvailable()) {
-        setTrackInfo(QString("%1 - %2")
-                .arg(player->metaData(QMediaMetaData::AlbumArtist).toString())
-                .arg(player->metaData(QMediaMetaData::Title).toString()));
-
-        if (ui->test) {
-            QUrl url = player->metaData(QMediaMetaData::CoverArtUrlLarge).value<QUrl>();
-
-            ui->test->setPixmap(!url.isEmpty()
-//            coverLabel->setPixmap(!url.isEmpty()
-                    ? QPixmap(url.toString())
-                    : QPixmap());
-        }
-    }
-}
-
 void coreplayer::seek(int seconds)
 {
     player->setPosition(seconds * 1000);
@@ -236,19 +215,19 @@ void coreplayer::statusChanged(QMediaPlayer::MediaStatus status)
     case QMediaPlayer::LoadedMedia:
     case QMediaPlayer::BufferingMedia:
     case QMediaPlayer::BufferedMedia:
-        setStatusInfo(QString());
+//        setStatusInfo(QString());
         break;
     case QMediaPlayer::LoadingMedia:
-        setStatusInfo(tr("Loading..."));
+        messageEngine("Loading...", "Info");
         break;
     case QMediaPlayer::StalledMedia:
-        setStatusInfo(tr("Media Stalled"));
+        messageEngine("Media Stalled", "Info");
         break;
     case QMediaPlayer::EndOfMedia:
         QApplication::alert(this);
         break;
     case QMediaPlayer::InvalidMedia:
-        displayErrorMessage();
+        messageEngine("InvalidMedia", "Warning");
         break;
     }
 }
@@ -267,30 +246,12 @@ void coreplayer::handleCursor(QMediaPlayer::MediaStatus status)
 
 void coreplayer::bufferingProgress(int progress)
 {
-    setStatusInfo(tr("Buffering %4%").arg(progress));
-}
-
-void coreplayer::setTrackInfo(const QString &info)
-{
-    trackInfo = info;
-//    if (!statusInfo.isEmpty())
-//        setWindowTitle(QString("%1 | %2").arg(trackInfo).arg(statusInfo));
-//    else
-//        setWindowTitle(trackInfo);
-}
-
-void coreplayer::setStatusInfo(const QString &info)
-{
-    statusInfo = info;
-//    if (!statusInfo.isEmpty())
-//        setWindowTitle(QString("%1 | %2").arg(trackInfo).arg(statusInfo));
-//    else
-//        setWindowTitle(trackInfo);
+    messageEngine(tr("Buffering %4%").arg(progress), "Info");
 }
 
 void coreplayer::displayErrorMessage()
 {
-    setStatusInfo(player->errorString());
+    messageEngine(player->errorString(), "Warning");
 }
 
 void coreplayer::updateDurationInfo(qint64 currentInfo)
@@ -307,7 +268,7 @@ void coreplayer::updateDurationInfo(qint64 currentInfo)
     ui->duration->setText(time);
 }
 
-void coreplayer::openPlayer(QString path) {
+void coreplayer::openPlayer(const QString path) {
 
     QFileInfo sp(path);
     QString selectedFilePath;
@@ -351,7 +312,7 @@ void coreplayer::openPlayer(QString path) {
 
 void coreplayer::on_open_clicked()
 {
-    QFileDialog dialog(this, tr("Open Audio Video File"));
+    QFileDialog dialog(this, tr("Open Media File"));
     QStringList mimes;
     mimes.append(audiomimes);
     mimes.append(videomimes);
@@ -399,13 +360,13 @@ void coreplayer::setState(QMediaPlayer::State state)
 
 void coreplayer::on_play_clicked(bool checked)
 {
-    if (checked ){//| QMediaPlayer::StoppedState | QMediaPlayer::PausedState){
+    if (checked ){
         setState(QMediaPlayer::PlayingState);
         player->stop();
         play(ui->medialist->currentIndex().row());
         messageEngine("Playing", "Info");
     }
-    else if (!checked){ //QMediaPlayer::PlayingState
+    else if (!checked){
         setState(QMediaPlayer::PausedState);
         player->pause();
         messageEngine("Paused", "Info");

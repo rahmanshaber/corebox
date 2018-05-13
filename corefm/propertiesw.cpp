@@ -20,12 +20,13 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <sys/stat.h>
 #include <QImageReader>
 #include <QMimeDatabase>
+#include <QMediaMetaData>
 
 #include "corefm.h"
 #include "../corebox/globalfunctions.h"
 
 
-propertiesw::propertiesw(QString paths,QWidget *parent) :QWidget(parent),ui(new Ui::propertiesw)
+propertiesw::propertiesw(const QString paths,QWidget *parent) :QWidget(parent),ui(new Ui::propertiesw)
 {
     qDebug() << "propertiesw opening";
     ui->setupUi(this);
@@ -142,7 +143,7 @@ void propertiesw::permission(){
     }
 }
 
-void propertiesw::partition(QString path){
+void propertiesw::partition(const QString path){
 
     QString t= formatSize(QStorageInfo(path).bytesTotal());
     QString f= formatSize(QStorageInfo(path).bytesFree());
@@ -198,31 +199,32 @@ void propertiesw::on_executableB_clicked(bool checked)
     }
 }
 
-void propertiesw::detailimage(QString imagepath)
+void propertiesw::detailimage(const QString imagepath)
 {
     QImageReader reader(imagepath);
     const QImage image = reader.read();
     QFileInfo info(imagepath);
 
-    QStringList infos;
-    infos
-        << tr("Name : %1")            . arg(info.fileName())
-        << tr("Size : %1")            . arg(info.size())
-        << tr("Type : %1")            . arg(info.suffix())
-        << tr("Dimensions : %1")      . arg(QString::number(image.width()) + " x "+ QString::number(image.height()))
-        << tr("Bitplane Count : %1")  . arg(QString::number(image.bitPlaneCount()))
-        << tr("Width : %1")           . arg(QString::number(image.width()) + " pixels")
-        << tr("Height : %1")          . arg(QString::number(image.height()) + " pixels");
+    QStringList left;
+    QStringList right;
+    left << "Name" << "Size" << "Type" << "Dimensions" << "Bitplane Count"
+         << "Width" << "Height" ;
+    right << info.fileName() << getFileSize(pathName) << info.suffix().toUpper()
+          << QString::number(image.width()) + " x "+ QString::number(image.height())
+          << QString::number(image.bitPlaneCount()) << QString::number(image.width()) + " pixels"
+          << QString::number(image.height()) + " pixels" ;
 
-    QStringListModel *infoModel = new QStringListModel(infos);
+    QStringListModel *infoModel = new QStringListModel(fStringList(left, right, ui->detail->font()));
     ui->detail->setModel(infoModel);
+    ui->detail->setFocusPolicy(Qt::NoFocus);
 }
 
 void propertiesw::detailmedia(QMediaPlayer::MediaStatus status)
 {
     if (status == QMediaPlayer::LoadedMedia){
 
-        QStringList infos;
+        QStringList left;
+        QStringList right;
         QStringList metadatalist = m_player->availableMetaData();
         int list_size = metadatalist.size();
         QString metadata_key;
@@ -233,10 +235,17 @@ void propertiesw::detailmedia(QMediaPlayer::MediaStatus status)
             metadata_key  = metadatalist.at(indx);
             var_data      = m_player->metaData(metadata_key);
 
-            infos << QString(metadata_key + QString(" : %1").arg(var_data.toString()));
+            left << metadata_key;
+            right << var_data.toString();
         }
 
-        QStringListModel *infoModel = new QStringListModel(infos);
+        float pi = m_player->duration()/60000.0;
+
+        left << "Duration";
+        right << QString::number(pi) + " mins";
+
+        QStringListModel *infoModel = new QStringListModel(fStringList(left, right, ui->detail->font()));
         ui->detail->setModel(infoModel);
+        ui->detail->setFocusPolicy(Qt::NoFocus);
     }
 }

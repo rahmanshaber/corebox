@@ -1,8 +1,11 @@
-﻿#include "globalfunctions.h"
+#include "globalfunctions.h"
 #include "corebox.h"
 
 #include <QProcess>
 #include <QDebug>
+#include <corefm/mimeutils.h>
+
+#include "corepad/corepad.h"
 
 
 bool moveToTrash(QString fileName)
@@ -256,7 +259,9 @@ void openAppEngine(QString path){
 
     //sendtoprosess
     else {
-        QProcess::startDetached("xdg-open", QStringList() << path);
+        QFileInfo p(path);
+        MimeUtils *m = new MimeUtils(cBox);
+        m->openInApp(p,cBox);
     }
 }
 
@@ -300,8 +305,8 @@ QIcon geticon(const QString &filePath) {
     QFileInfo info(filePath);
 
     if (info.isDir()) {
-        return icon = QIcon(":/icons/type-dir.svg");
-    }
+        return icon = QIcon::fromTheme("folder");//QIcon(":/icons/type-dir.svg");
+    };
 
     QMimeDatabase mime_database;
 

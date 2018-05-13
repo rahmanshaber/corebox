@@ -107,18 +107,6 @@ dashboard::~dashboard()
 void dashboard::on_drives_currentTextChanged(const QString &currentText)
 {
     auto dr = disks->drive(currentText);
-//    QStringList infos;
-//    infos
-//        << tr("Name : %1")       . arg(dr->toStringToSeperate(1))
-//        << tr("Size : %1")       . arg(dr->toStringToSeperate(2))
-//        << tr("Dev : %1")        . arg(dr->toStringToSeperate(3))
-//        << tr("Drive : %1")      . arg(dr->toStringToSeperate(4))
-//        << tr("Type : %1")       . arg(dr->toStringToSeperate(5))
-//        << tr("Id : %1 (Mhz)")   . arg(dr->toStringToSeperate(6))
-//        << tr("Read Only : %1")  . arg(dr->toStringToSeperate(7))
-//        << tr("Usage : %1")      . arg(dr->toStringToSeperate(8))
-//        << tr("Mount Point : %1"). arg(dr->toStringToSeperate(9))
-//        << tr("Overview : %1")   . arg(dr->toStringToSeperate(10));
 
     QStringList left;
     QStringList right;
@@ -142,19 +130,6 @@ void dashboard::on_blocks_currentTextChanged(const QString &currentText)
         auto block = disks->blockDevice(currentText);
 
         QString path = t->mountPoints().join("");
-
-//        QStringList infos;
-//        infos
-//            << tr("Name : %1")        . arg(block->toStringToSeperate(1))
-//            << tr("Size : %1")        . arg(block->toStringToSeperate(2))
-//            << tr("Dev : %1")         . arg(block->toStringToSeperate(3))
-//            << tr("Drive : %1")       . arg(block->toStringToSeperate(4))
-//            << tr("Type : %1")        . arg(block->toStringToSeperate(5))
-//            << tr("Id : %1")          . arg(block->toStringToSeperate(6))
-//            << tr("Read Only : %1")   . arg(block->toStringToSeperate(7))
-//            << tr("Usage : %1")       . arg(block->toStringToSeperate(8))
-//            << tr("Mount Point : %1") . arg(path)
-//            << tr("Overview : %1")    . arg(getDriveInfo(path));
 
         QStringList left;
         QStringList right;
@@ -312,7 +287,6 @@ void dashboard::on_batteriesList_currentIndexChanged(int index)
     time = time.addSecs(addSeconds);
     ui->timerEdit->setTime(time);
 
-    QStringList infos;
     QStringList left;
     QStringList right;
 
@@ -327,10 +301,8 @@ void dashboard::on_batteriesList_currentIndexChanged(int index)
             left << name;
 
             if( value.type() == QVariant::Double ) {
-                //infos << QString(name + QString(" : %1").arg(value.toDouble()));
                 right << QString::number(value.toDouble());
             } else {
-                //infos << QString(name + " : " + value.toString());
                 right << value.toString();
             }
         }
@@ -384,10 +356,10 @@ void dashboard::on_Bdisplay_clicked()
 void dashboard::setdisplaypage()
 {
     QStringList left;
-    left << "Name        " << "Size        " << "Manufacturer" << "Model      "
-         << "Serial Number         " << "Refresh Rate" << "Actual Resolution     "
+    left << "Name        " << "Size        " << "Manufacturer        " << "Model      "
+         << "Serial Number         " << "Refresh Rate        " << "Actual Resolution     "
          << "Set Resolution        " << "Physical Dots Per Inch "
-         << "Physical Size" << "Primary Orientation   ";
+         << "Physical Size        " << "Primary Orientation   ";
 
     for (int i = 0; i < qApp->screens().count(); i++) {
 
@@ -403,23 +375,7 @@ void dashboard::setdisplaypage()
         QSizeF py = qApp->screens()[i]->physicalSize();
         QString PhysicalSize(tr("(%1,%2)").arg(py.width()).arg(py.height()));
 
-
-//        QStringList infos;
-//        infos
-//            << tr("Name : %1 ")                   . arg(qApp->screens()[i]->name())
-//            << tr("Size : %1 px")                 . arg(size)
-//            << tr("Manufacturer : %1 ")           . arg(qApp->screens()[i]->manufacturer())
-//            << tr("Model : %1 ")                  . arg(qApp->screens()[i]->model())
-//            << tr("SerialNumber : %1 ")           . arg(qApp->screens()[i]->serialNumber())
-//            << tr("RefreshRate : %1 ")            . arg(qApp->screens()[i]->refreshRate())
-//            << tr("Actual Resolution : %1 px")    . arg(AvailableVS)
-//            << tr("Set Resolution : %1 px")       . arg(Geometry)
-//            << tr("PhysicaldotsPerInch : %1 ppi") . arg(qApp->screens()[i]->physicalDotsPerInch())
-//            << tr("Physical Size : %1 milimeter") . arg(PhysicalSize)
-//            << tr("PrimaryOrientation : %1")      . arg(qApp->screens()[i]->primaryOrientation());
-
         QStringList right;
-
 
         QListView *p = new QListView();
         QWidget *w = new QWidget();

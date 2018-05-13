@@ -19,7 +19,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QWidget>
 #include <QAbstractItemView>
-#include <QLabel>
 #include <QVideoProbe>
 #include <QVideoWidget>
 #include <QAudioProbe>
@@ -53,7 +52,7 @@ public:
     explicit coreplayer(QWidget *parent = 0);
     ~coreplayer();
 
-    void openPlayer(QString path);
+    void openPlayer(const QString path);
 
     bool isPlayerAvailable() const;
     QMediaPlayer::State state() const;
@@ -67,8 +66,8 @@ public slots:
 private:
     Ui::coreplayer *ui;
 
-    QStringList getAudios(QString path);
-    QStringList getVideos(QString path);
+    QStringList getAudios(const QString path);
+    QStringList getVideos(const QString path);
     QStringList videomimes;
     QStringList audiomimes;
 
@@ -83,15 +82,12 @@ private:
     void setCurrentIndex(int currentIndex);
     void shotcuts();
 
-    QLabel *coverLabel;
     int mNumberOfFiles;
     QMediaPlayer::State playerState;
     QMediaPlayer *player;
     QVideoProbe *videoProbe;
     QAudioProbe *audioProbe;
     QAbstractItemView *medialist;
-    QString trackInfo;
-    QString statusInfo;
     qint64 duration;
     QStandardItemModel *mModel;
 
@@ -103,7 +99,6 @@ private slots:
 
     void durationChanged(qint64 duration);
     void positionChanged(qint64 progress);
-    void metaDataChanged();
     void seek(int seconds);
     void statusChanged(QMediaPlayer::MediaStatus status);
     void bufferingProgress(int progress);

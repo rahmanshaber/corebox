@@ -40,7 +40,14 @@ version 2.1
 - added video details in properties of corefm.
 - removed format_util.h|.cpp to fix armv7h build.
 - bookmark now support and save the file icon by it's type.
-- speeddial of start now shows icons of it's type.
+- speeddial items of start now shows icons of it's type.
+- fixed text view of properties of the whole app.
+- made all path function to const path.
+- shows all the media state info of coreplayer with messageEngine.
+- fixed rename mode is not going off when clicked outside.
+- fixed Run option of rightbutton menue of corefm.
+-
+
 
 
 version 2,Released date Monday, March 26, 2018
