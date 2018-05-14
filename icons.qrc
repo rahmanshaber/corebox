@@ -147,12 +147,15 @@
         <file>icons/zoom_out_b.svg</file>
         <file>icons/zoom_out_w.svg</file>
         <file>icons/CoreTime.svg</file>
-        <file>icons/type-dir.svg</file>
-        <file>icons/type-image.svg</file>
-        <file>icons/type-text.svg</file>
-        <file>icons/type-unknown.svg</file>
-        <file>icons/type-video.svg</file>
         <file>icons/emblem-mounted.svg</file>
         <file>icons/emblem-unmounted.svg</file>
+        <file>icons/drive_usb.svg</file>
+        <file>icons/smartphone.svg</file>
+        <file>icons/drive_hdd_w.svg</file>
+        <file>icons/drive_hdd_b.svg</file>
+        <file>icons/drive_media_b.svg</file>
+        <file>icons/drive_media_w.svg</file>
+        <file>icons/drive_usb_b.svg</file>
+        <file>icons/drive_usb_w.svg</file>
     </qresource>
 </RCC>

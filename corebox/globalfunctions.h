@@ -61,4 +61,7 @@ enum AppsName {
  QIcon geticon(const QString &filePath);
  QStringList fStringList(QStringList left, QStringList right, QFont font);
 
+ QString getMountPathByName(QString displayName);
+
+
 #endif // GLOBALFUNCTIONS_H

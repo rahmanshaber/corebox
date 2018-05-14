@@ -38,7 +38,8 @@ Start::~Start()
     delete ui;
 }
 
-void Start::loadsettings(){
+void Start::loadsettings()
+{
     ui->recentSection->setVisible(sm.getDisableRecent());
     if (sm.getDisableRecent()) on_reloadR_clicked();
 }
@@ -52,8 +53,7 @@ void Start::on_cleaRecent_clicked()
 
 void Start::on_recents_itemDoubleClicked(QTableWidgetItem *item)
 {
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(nameToInt(ui->recents->item(item->row(),0)->text()), ui->recents->item(item->row(),1)->text());
+    openAppEngine(ui->recents->item(item->row(),1)->text());
 }
 
 void Start::on_reloadR_clicked()

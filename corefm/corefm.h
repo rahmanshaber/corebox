@@ -155,6 +155,7 @@ private slots:
 
     void on_actionRun_triggered();
 
+    void sendToPath();
 private:
     SettingsManage sm;
     void writeSettings();
@@ -164,6 +165,7 @@ private:
     int showReplaceMsgBox(const QFileInfo &f1, const QFileInfo &f2);
     QMenu* createOpenWithMenu();
     QMenu *globalmenu();
+    QMenu *sendto();
 
     int zoom;
     int zoomTree;
@@ -216,6 +218,7 @@ private:
 
     CoreBox corebox_;
     UDisks2 *udisks;
+
 };
 
 //---------------------------------------------------------------------------------

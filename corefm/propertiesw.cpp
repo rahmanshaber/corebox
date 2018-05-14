@@ -209,7 +209,7 @@ void propertiesw::detailimage(const QString imagepath)
     QStringList right;
     left << "Name" << "Size" << "Type" << "Dimensions" << "Bitplane Count"
          << "Width" << "Height" ;
-    right << info.fileName() << getFileSize(pathName) << info.suffix().toUpper()
+    right << info.fileName() << formatSize(info.size()) << info.suffix().toUpper()
           << QString::number(image.width()) + " x "+ QString::number(image.height())
           << QString::number(image.bitPlaneCount()) << QString::number(image.width()) + " pixels"
           << QString::number(image.height()) + " pixels" ;

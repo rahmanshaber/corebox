@@ -257,7 +257,7 @@ void openAppEngine(QString path){
         return;
     }
 
-    //sendtoprosess
+    //sendtomimeutils
     else {
         QFileInfo p(path);
         MimeUtils *m = new MimeUtils(cBox);
@@ -304,17 +304,11 @@ QIcon geticon(const QString &filePath) {
     QIcon icon;
     QFileInfo info(filePath);
 
-    if (info.isDir()) {
-        return icon = QIcon::fromTheme("folder");//QIcon(":/icons/type-dir.svg");
-    };
+    QMimeDatabase mime;
+    QMimeType mType;
 
-    QMimeDatabase mime_database;
-
-    QList<QMimeType> mime_types = mime_database.mimeTypesForFileName(filePath);
-
-    for (int i = 0; i < mime_types.count() && icon.isNull(); i++){
-        icon = QIcon::fromTheme(mime_types[i].iconName());
-    }
+    mType = mime.mimeTypeForFile(filePath);
+    icon = QIcon::fromTheme(mType.iconName());
 
     if (icon.isNull())
       return QApplication::style()->standardIcon(QStyle::SP_FileIcon);
@@ -325,10 +319,11 @@ QIcon geticon(const QString &filePath) {
 
 
 QStringList fStringList(QStringList left, QStringList right, QFont font) {
+
     QFontMetrics *fm = new QFontMetrics(font);
     int large = 0;
-    int index;
     for (int i = 0; i < left.count(); i++) {
+        int index;
         if (large < fm->width(left.at(i))) {
             large = fm->width(left.at(i));
             index = i;
@@ -348,4 +343,18 @@ QStringList fStringList(QStringList left, QStringList right, QFont font) {
     }
 
     return left;
+}
+
+
+QString getMountPathByName(QString displayName){
+
+    if(displayName.isNull() || displayName.isEmpty()) return NULL;
+
+    else {
+        const auto allMounted = QStorageInfo::mountedVolumes();
+        for(auto& singleMounted : allMounted){
+            if (singleMounted.displayName() == displayName) return singleMounted.rootPath();
+        }
+    }
+    return NULL;
 }

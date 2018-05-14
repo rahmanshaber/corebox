@@ -39,8 +39,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     qDebug() << "corefm opening";
     ui->setupUi(this);
 
-    QIcon::setThemeName(sm.getThemeName());
-
     ui->viewlist->viewport()->installEventFilter(this);
     ui->viewtree->viewport()->installEventFilter(this);
 //    connect(ui->viewlist->viewport(), SIGNAL(clicked()),this, SLOT(ll()));
@@ -1114,13 +1112,32 @@ QMenu* corefm::createOpenWithMenu() {
     return openMenu;
 }
 
+QMenu* corefm::sendto(){
+
+    QMenu *sendto = new QMenu(tr("Send to.."));
+
+    sendto->addAction(ui->actionDesktop);
+    sendto->addAction(ui->actionHome);
+
+    const auto allMounted = QStorageInfo::mountedVolumes();;
+    for(auto& singleMounted : allMounted){
+        if(singleMounted.device() != "tmpfs"){
+            QAction *action = new QAction(singleMounted.displayName(),sendto);
+            action->setData(singleMounted.displayName());
+            action->setIcon(QIcon(":/icons/drive_b.svg"));
+            sendto->addAction(action);
+            connect(action,SIGNAL(triggered()),SLOT(sendToPath()));
+        }
+    }
+    return sendto;
+}
+
 QMenu* corefm::globalmenu(){
 
     QMenu *popup = new QMenu(this);
     QMenu *subnew = new QMenu(tr("New.."));
     QMenu *innew = new QMenu(tr("Open in.."));
     QMenu *arrageItems = new QMenu(tr("Arrage Items"));
-    QMenu *sendto = new QMenu(tr("Send to.."));
 
     QFileInfo info(selcitempath);
     QFile file(selcitempath);
@@ -1147,10 +1164,6 @@ QMenu* corefm::globalmenu(){
     arrageItems->addSeparator();
     arrageItems->addAction(ui->actionAscending);
 
-    sendto->addAction(ui->actionDesktop);
-    sendto->addAction(ui->actionHome);
-
-
     //Detect whether this is the Trash folder because menus are different
     if (ui->pathEdit->currentText() == QDir::homePath() + "/.local/share/Trash/files") { //This is the Trash folder
         popup->addSection("Nothing");
@@ -1164,7 +1177,7 @@ QMenu* corefm::globalmenu(){
 
     if (sec > 1) {
         popup->addSeparator();
-        popup->addMenu(sendto);
+        popup->addMenu(sendto());
         popup->addSeparator();
         popup->addAction(ui->actionCut);
         popup->addAction(ui->actionCopy);
@@ -1179,7 +1192,7 @@ QMenu* corefm::globalmenu(){
           popup->addMenu(createOpenWithMenu());
           popup->addAction(ui->actionRun);
           popup->addSeparator();
-          popup->addMenu(sendto);
+          popup->addMenu(sendto());
           popup->addSeparator();
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
@@ -1187,7 +1200,7 @@ QMenu* corefm::globalmenu(){
       if(info.isDir()){ //folder
           popup->addMenu(innew);
           popup->addSeparator();
-          popup->addMenu(sendto);
+          popup->addMenu(sendto());
           popup->addSeparator();
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
@@ -2187,13 +2200,13 @@ void corefm::blockDevicesChanged() {
 
                                     if (parse[1] == "") {
                                         item = new QListWidgetItem("Drive (" +formatSize(device->size)+ ")"); // device->fileSystem()->name
-                                        icon = QIcon(":/icons/partition.svg");;
+                                        icon = QIcon(":/icons/drive_w.svg");;
                                     } else {
                                         if (parse.count() > 2) {
                                             if (parse[2] == "0") {
-                                                icon = QIcon(":/icons/partition.svg");;
+                                                icon = QIcon(":/icons/drive_w.svg");;
                                             } else {
-                                                icon = QIcon::fromTheme("drive-removable-media");
+                                                icon = QIcon(":/icons/drive_usb_w.svg");
                                             }
                                         }
                                         QString itemText(parse[1].replace("\\x20", " "));  // + " (" + device->fileSystem()->name + ")"
@@ -2254,7 +2267,7 @@ void corefm::blockDevicesChanged() {
                         text += " (MTP)";
                     }
                     item->setText(parse.at(5) + " " + parse.at(4));
-                    item->setIcon(QIcon::fromTheme("smartphone"));
+                    item->setIcon(QIcon(":/icons/smartphone.svg"));
                     item->setData(Qt::UserRole, "mtp");
                     item->setData(Qt::UserRole + 1, parse.at(0));
                     item->setData(Qt::UserRole + 2, parse.at(1));
@@ -2297,7 +2310,7 @@ void corefm::blockDevicesChanged() {
                         item->setText(name + " (iOS)");
                     }
 
-                    item->setIcon(QIcon::fromTheme("smartphone"));
+                    item->setIcon(QIcon(":/icons/smartphone.svg"));
                     item->setData(Qt::UserRole, "ios");
                     item->setData(Qt::UserRole + 1, line);
                     ui->partitions->addItem(item);
@@ -2434,12 +2447,8 @@ void corefm::on_actionHome_triggered()
     messageEngine("send Completed.", "Info");
 }
 
-
-void corefm::pressed() {
-
-//    ui->pathEdit->clearFocus();
-//    ui->viewlist->viewport()->clearFocus();
-//    qDebug()<< "miefe";
+void corefm::pressed()
+{
     ui->viewlist->setCurrentIndex(QModelIndex());
     ui->viewtree->setCurrentIndex(QModelIndex());
 }
@@ -2447,4 +2456,23 @@ void corefm::pressed() {
 void corefm::on_actionRun_triggered()
 {
     executeFile(listSelectionModel->currentIndex(), true);
+}
+
+void corefm::sendToPath()
+{
+    QAction* action = dynamic_cast<QAction*>(sender());
+    if(action){
+        qDebug()<< getMountPathByName(action->data().toString());
+
+        on_actionCopy_triggered();
+
+        QString newPath = getMountPathByName(action->data().toString()) ;
+        QStringList cutList;
+
+        pasteLauncher(QApplication::clipboard()->mimeData(), newPath, cutList);
+        ui->paste->setVisible(false);
+        on_actionRefresh_triggered();
+
+        messageEngine("send Completed.", "Info");
+    }
 }

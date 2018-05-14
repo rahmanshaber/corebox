@@ -581,7 +581,7 @@ color: #FFFFFF;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/type-dir.svg</normaloff>:/icons/type-dir.svg</iconset>
+             <normaloff>:/icons/bookit_w.svg</normaloff>:/icons/bookit_w.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -616,7 +616,7 @@ color: #FFFFFF;
             <string>Speed Dial</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            <set>Qt::AlignHCenter|Qt::AlignTop</set>
            </property>
           </widget>
          </item>
@@ -648,6 +648,9 @@ color: #FFFFFF;
            </property>
            <property name="alignment">
             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::NoTextInteraction</set>
            </property>
           </widget>
          </item>

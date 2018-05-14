@@ -74,7 +74,7 @@ void bookmarks::sectionRefresh()
     ui->section->addItems(bk.getBookSections());
 
     for (int i = 0; i < ui->section->count(); ++i) {
-        ui->section->item(i)->setIcon((QIcon(":/icons/CoreFM.svg")));
+        ui->section->item(i)->setIcon((QIcon(":/icons/bookit_w.svg")));
     }
 
     ui->section->setCurrentRow(selectedIndex);
@@ -110,7 +110,7 @@ void bookmarks::callBookMarkDialog(QWidget *parent, QString currentPath)
         bkdlg->pathLabel->setText(currentPath);
         bkdlg->bookMarkName->setText(info.fileName() + "");
         bkdlg->checkPath();
-        bkdlg->iconLabel->setPixmap(pix);//.scaled(bkdlg->iconLabel->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation));
+        bkdlg->iconLabel->setPixmap(pix);
         if (bkdlg->exec() == 0) {
             if (bkdlg->accepted) {
                 bk.addBookmark(bkdlg->sectionName->currentText(), bkdlg->bookMarkName->text(), currentPath);
@@ -183,7 +183,7 @@ void bookmarks::on_sectionDone_clicked()
 {
     bk.addSection(ui->sectionName->text());
     ui->section->addItem(ui->sectionName->text());
-    ui->section->item(ui->section->count() - 1)->setIcon(QIcon::fromTheme("folder"));
+    ui->section->item(ui->section->count() - 1)->setIcon(QIcon(":/icons/bookit_w.svg"));
     ui->sectionName->setText("");
     ui->sectionStatus->setText("");
     ui->addSectionBox->setVisible(false);

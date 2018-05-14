@@ -18,7 +18,6 @@ corebox
 1 - tab text align left.
 
 globalfunction
-1 - add mimetype open function.
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
@@ -47,7 +46,6 @@ corefm
 3 - set custom icom in home's folder.
 1 - add tree package.
 0 - preview is not working.
-1 - send a file to a drive.
 3 - Finish movement of mime-related code from FileUtils to MimeUtils
 3 - Implement clearDeadDefaults() method in MimeUtils
 3 - Some *.desktop file has more groups(sections) and each group can contain
@@ -80,10 +78,9 @@ start
 0 - add the file name the passed coreapps.
 
 coreimage
-0 - set blace pixmap on app start.
+0 - set black pixmap on app start.
 0 - deleting pic, will also delete entry from path qstringlist
 1 - ctrl + wheel = zoom shortcut.
-0 - mouse wheel >>next image not working sometimes
 
 coreplayer
 1 - video thumbnails of play-list.

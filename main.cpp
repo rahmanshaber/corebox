@@ -20,21 +20,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFont>
 #include <QStyleFactory>
 
-#include <QStorageInfo>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     app.setAttribute(Qt::AA_EnableHighDpiScaling);
     app.setQuitOnLastWindowClosed(false);
-
-//    QStringList result;
-//    const auto allMounted = QStorageInfo::mountedVolumes();
-//    result.reserve(allMounted.size());
-//    for(auto& singleMounted : allMounted){
-//        result << singleMounted.device();
-//    }
-//    qDebug()<<result;
 
     QApplication::setStyle(QStyleFactory::create("Fusion"));
 
@@ -45,10 +36,6 @@ int main(int argc, char *argv[])
 
     coreaction a;
     a.show();
-
-
-
-
 
     return app.exec();
 }

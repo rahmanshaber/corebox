@@ -46,7 +46,11 @@ version 2.1
 - shows all the media state info of coreplayer with messageEngine.
 - fixed rename mode is not going off when clicked outside.
 - fixed Run option of rightbutton menue of corefm.
--
+- addend option to send a file to a drive in corefm.
+- added option to open file in selected app in openAppEngine.
+- fixed mouse wheel >>next image not working sometimes in coreimage.
+- opening file with syestem apps now shows in recent activities in start.
+- removed unused icon from resoures file.
 
 
 

@@ -38,6 +38,8 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
     qDebug() << "CoreBox opening";
     ui->setupUi(this);
 
+    QIcon::setThemeName(sm.getThemeName());
+
     ui->windows->tabBar()->installEventFilter(this);
 //    ui->windows->installEventFilter(this);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::SubWindow);
