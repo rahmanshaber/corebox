@@ -25,7 +25,7 @@ void SettingsManage::createDefaultSettings() {
         cSetting->setValue("Terminal", "xfce4-terminal");
         cSetting->setValue("Startup-Path", QDir::homePath());
         cSetting->setValue("Force-Theme", QIcon::themeName());
-        cSetting->setValue("Default-Mime-Apps-File", "/.local/share/applications/mimeapps.ui->viewlist");
+        cSetting->setValue("Default-Mime-Apps-File", "/.local/share/applications/mimeapps.list");
         cSetting->setValue("Real-Mime-Types", true);
         cSetting->setValue("Zoom", 80);
         cSetting->setValue("Zoom-Tree", 16);

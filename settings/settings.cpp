@@ -30,21 +30,21 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     qDebug() << "settings opening";
     ui->setupUi(this);
 
-    ui->terminals->setCurrentText(sm.getTerminal());//cSett->value("Terminal").toString());
-    ui->startPath->setText(sm.getStartupPath());//cSett->value("Startup-Path").toString());
+    ui->terminals->setCurrentText(sm.getTerminal());
+    ui->startPath->setText(sm.getStartupPath());
 
     ui->cmbDefaultMimeApps->addItem("/.local/share/applications/mimeapps.list");
     ui->cmbDefaultMimeApps->addItem("/.local/share/applications/defaults.list");
-    QString tmp = sm.getMimeFilePath();//cSett->value("Default-Mime-Apps-File").toString();
+    QString tmp = sm.getMimeFilePath();
     ui->cmbDefaultMimeApps->setCurrentText(tmp);
 
-    ui->checkThumbs->setChecked(sm.getIsShowThumb());//cSett->value("Show-Thumb").toBool());
+    ui->checkThumbs->setChecked(sm.getIsShowThumb());
     ui->showTool->setChecked(sm.getShowToolbox());
 
     ui->view->addItem("Detail");
     ui->view->addItem("Icon");
 
-    QString currentTheme = sm.getThemeName();//cSett->value("Force-Theme").toString();
+    QString currentTheme = sm.getThemeName();
     QDirIterator it("/usr/share/icons", QDir::Dirs | QDir::NoDotAndDotDot);
     QStringList iconThemes;
     while (it.hasNext()) {
@@ -53,13 +53,13 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     }
     ui->cmbIconTheme->addItems(iconThemes);
     ui->cmbIconTheme->setCurrentText(currentTheme);
-    ui->ssLocation->setText(sm.getSCSaveLocation());//cSett->value("Save-Location").toString());
+    ui->ssLocation->setText(sm.getSCSaveLocation());
 
     selectedTerminal = ui->terminals->currentText();
 
-    ui->isMaximized->setChecked(sm.getBoxIsMaximize());//cSett->value("Maximized").toBool());
-    ui->isBattery->setChecked(sm.getShowBattery());//cSett->value("Show-Battery").toBool());
-    ui->isRecentDisable->setChecked(sm.getDisableRecent());//cSett->value("Recent-Disable").toBool());
+    ui->isMaximized->setChecked(sm.getBoxIsMaximize());
+    ui->isBattery->setChecked(sm.getShowBattery());
+    ui->isRecentDisable->setChecked(sm.getDisableRecent());
 
     MimeUtils *mimeUtils = new MimeUtils(this);
     mimeUtils->setDefaultsFileName(tmp);

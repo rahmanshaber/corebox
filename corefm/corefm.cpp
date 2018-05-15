@@ -39,15 +39,8 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     qDebug() << "corefm opening";
     ui->setupUi(this);
 
-    ui->viewlist->viewport()->installEventFilter(this);
-    ui->viewtree->viewport()->installEventFilter(this);
-//    connect(ui->viewlist->viewport(), SIGNAL(clicked()),this, SLOT(ll()));
-
     // Create mime utils
     mimeUtils = new MimeUtils(this);
-//    QString tmp = "/.local/share/applications/mimeapps.ui->viewlist";
-//    QString name = sett->value("Default-Mime-Apps-File", tmp).toString();
-
     QString name = sm.getMimeFilePath();
     mimeUtils->setDefaultsFileName(name);
 
