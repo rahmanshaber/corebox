@@ -33,8 +33,8 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     ui->terminals->setCurrentText(sm.getTerminal());
     ui->startPath->setText(sm.getStartupPath());
 
-    ui->cmbDefaultMimeApps->addItem("/.local/share/applications/mimeapps.list");
-    ui->cmbDefaultMimeApps->addItem("/.local/share/applications/defaults.list");
+    ui->cmbDefaultMimeApps->addItem("/.config/coreBox/mimeapps.list");
+    ui->cmbDefaultMimeApps->addItem("/.config/coreBox/defaults.list");
     QString tmp = sm.getMimeFilePath();
     ui->cmbDefaultMimeApps->setCurrentText(tmp);
 

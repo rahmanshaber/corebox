@@ -149,7 +149,6 @@ void propertiesw::partition(const QString path){
     QString f= formatSize(QStorageInfo(path).bytesFree());
 //    QString s = QString::number((double) t - f);
 
-    ui->patitionN->setText(QStorageInfo(path).name());
     ui->sizefree->setText("Free : " + f);
     ui->sizetotal->setText("Total : " + t);
 }

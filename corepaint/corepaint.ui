@@ -148,7 +148,7 @@ background-color:  #3D3D3D;
          <enum>QTabWidget::South</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="filePage">
          <attribute name="title">
@@ -696,7 +696,7 @@ color: white;
 }</string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <property name="tabSpacing">
              <number>0</number>
@@ -706,8 +706,8 @@ color: white;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>98</width>
-               <height>137</height>
+               <width>220</width>
+               <height>244</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1014,8 +1014,8 @@ background-color: #212F39;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>93</width>
-               <height>292</height>
+               <width>107</width>
+               <height>334</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1641,7 +1641,7 @@ background-color: #212F39;
                <x>0</x>
                <y>0</y>
                <width>220</width>
-               <height>267</height>
+               <height>244</height>
               </rect>
              </property>
              <attribute name="label">

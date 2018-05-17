@@ -59,7 +59,6 @@
         <file>icons/fullscreen_w.svg</file>
         <file>icons/general_b.svg</file>
         <file>icons/general_w.svg</file>
-        <file>icons/hdd_b.svg</file>
         <file>icons/Help.svg</file>
         <file>icons/hide_b.svg</file>
         <file>icons/hide_w.svg</file>
@@ -77,12 +76,9 @@
         <file>icons/new_tab_w.svg</file>
         <file>icons/next_b.svg</file>
         <file>icons/next_w.svg</file>
-        <file>icons/normal_size_b.svg</file>
-        <file>icons/normal_size_w.svg</file>
         <file>icons/open_b.svg</file>
         <file>icons/open_w.svg</file>
         <file>icons/other.svg</file>
-        <file>icons/partition.svg</file>
         <file>icons/paste_b.svg</file>
         <file>icons/paste_w.svg</file>
         <file>icons/pause.svg</file>
@@ -108,13 +104,10 @@
         <file>icons/save_w.svg</file>
         <file>icons/scrshot_b.svg</file>
         <file>icons/scrshot_w.svg</file>
-        <file>icons/sdcard_b.svg</file>
-        <file>icons/sdcard_w.svg</file>
         <file>icons/search_b.svg</file>
         <file>icons/search_w.svg</file>
         <file>icons/Search.svg</file>
         <file>icons/Settings.svg</file>
-        <file>icons/size.svg</file>
         <file>icons/slideshow_b.svg</file>
         <file>icons/slideshow_w.svg</file>
         <file>icons/Start.svg</file>
@@ -149,8 +142,6 @@
         <file>icons/CoreTime.svg</file>
         <file>icons/emblem-mounted.svg</file>
         <file>icons/emblem-unmounted.svg</file>
-        <file>icons/drive_usb.svg</file>
-        <file>icons/smartphone.svg</file>
         <file>icons/drive_hdd_w.svg</file>
         <file>icons/drive_hdd_b.svg</file>
         <file>icons/drive_media_b.svg</file>

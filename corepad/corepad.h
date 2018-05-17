@@ -90,6 +90,7 @@ protected:
 private:
     Ui::corepad *ui;
 
+    bool closeAllTab();
     bool isSaved;
     bool isUpdated;
     QFile *workingFile;

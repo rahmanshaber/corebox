@@ -342,6 +342,7 @@ void coreaction::on_corepad_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
+    cBox->startWidgetClose();
     cBox->tabEngine(CorePad);
     this->hide();
 }
@@ -358,6 +359,7 @@ void coreaction::on_corepaint_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
+    cBox->startWidgetClose();
     cBox->tabEngine(CorePaint);
     this->hide();
 }
@@ -366,6 +368,7 @@ void coreaction::on_corefm_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
+    cBox->startWidgetClose();
     cBox->tabEngine(CoreFM);
     this->hide();
 }
@@ -381,6 +384,7 @@ void coreaction::on_search_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
+    cBox->startWidgetClose();
     cBox->tabEngine(Search);
     this->hide();
 }

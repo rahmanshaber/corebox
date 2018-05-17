@@ -24,6 +24,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QScrollArea>
 #include <QListWidgetItem>
 #include <QPushButton>
+#include <QLabel>
 
 #include "../corebox/globalfunctions.h"
 #include "../bookmarks//bookmarks.h"

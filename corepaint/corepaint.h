@@ -114,6 +114,8 @@ private slots:
     void undo();
     void redo();
 
+    void on_delete_2_clicked();
+
 signals:
     void sendInstrumentChecked(InstrumentsEnum);
     void sendClearStatusBarColor();

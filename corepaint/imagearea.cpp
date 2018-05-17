@@ -268,6 +268,12 @@ void ImageArea::cutImage()
     instrument->cutImage(*this);
 }
 
+void ImageArea::clearBackground()
+{
+    SelectionInstrument *instrument = static_cast <SelectionInstrument*> (mInstrumentsHandlers.at(CURSOR));
+    instrument->clearSelectionBackground(*this);
+}
+
 void ImageArea::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton &&

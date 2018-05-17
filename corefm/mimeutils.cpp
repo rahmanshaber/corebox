@@ -31,7 +31,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
  * @param parent
  */
 MimeUtils::MimeUtils(QObject *parent) : QObject(parent) {
-  defaultsFileName = "/.local/share/applications/mimeapps.list";
+  defaultsFileName = "/.config/coreBox/mimeapps.list";
   defaults = new Properties();
   loadDefaults();
 }
@@ -143,7 +143,8 @@ void MimeUtils::openInApp(QString exe, const QFileInfo &file,QObject *processOwn
   }
 
   qDebug() << name << args;//lala
-  saveToRecent(name,args);
+  DesktopFile df = DesktopFile("/usr/share/applications/" + name);
+  saveToRecent(name,args,df.getIcon());
 
   // Start application
   QProcess *myProcess = new QProcess(processOwner);

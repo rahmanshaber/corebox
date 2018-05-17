@@ -39,7 +39,6 @@ corepad::~corepad()
 }
 
 bool corepad::initializeNewTab(QString filePath) {
-
     if (ui->notes->count() < 10) {
         isUpdated = false;
         isSaved = false;
@@ -48,7 +47,7 @@ bool corepad::initializeNewTab(QString filePath) {
 
         int index = ui->notes->tabBar()->count();
         text = new coreedit();
-        text->setPlainText("");
+        //text->setPlainText("");
 
         workFilePath = "";
         workingFile = new QFile();
@@ -73,6 +72,7 @@ bool corepad::initializeNewTab(QString filePath) {
         text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), ui->fontSize->currentText().toInt()));
 
         ui->notes->insertTab(index, text, fileName);
+
         ui->notes->setCurrentIndex(index);
         connect(text, SIGNAL(copyAvailable(bool)), this, SLOT(on_text_copyAvailable(bool)));
         connect(text, SIGNAL(undoAvailable(bool)), this, SLOT(on_text_undoAvailable(bool)));
@@ -80,9 +80,8 @@ bool corepad::initializeNewTab(QString filePath) {
         connect(text, SIGNAL(textChanged()), this, SLOT(on_text_textChanged()));
 
         return true;
-    }
-    else{
-        messageEngine("Reached page limite", "Warning");
+    } else {
+        messageEngine("Reached page limit.", "Warning");
     }
     return false;
 }
@@ -120,22 +119,63 @@ void corepad::quiting() {
     this->deleteLater();
 }
 
-void corepad::closeEvent(QCloseEvent *event){
-    if (ui->notes->tabText(ui->notes->currentIndex()).contains("*")) {
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
-        if (reply == QMessageBox::Yes) {
-            saveToRecent("CorePad", workFilePath);
-            event->accept();
-        }
-        else if (reply == QMessageBox::No){
-            return event->ignore();
-        }
-    }
-    else {
+void corepad::closeEvent(QCloseEvent *event) {
+//    event->ignore();
+//    for (int i = 0; i < ui->notes->count(); i++) {
+//        qDebug() << i << ui->notes->count();
+//        if (ui->notes->tabText(i).contains("*")) {
+//            qDebug() << i;
+//            QMessageBox::StandardButton reply;
+//            reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
+//            if (reply == QMessageBox::Yes) {
+//                saveToRecent("CorePad", workFilePath);
+//                ui->notes->removeTab(i);
+//            }
+//            else if (reply == QMessageBox::No){
+//                //return;
+//            }
+//        } else {
+//            saveToRecent("CorePad", workFilePath);
+//            ui->notes->removeTab(i);
+//            qDebug() << "else" << i << ui->notes->count();
+//        }
+//        on_notes_tabCloseRequested(i);
+//    }
+
+
+//    if (ui->notes->count() == 0) {
+//        qDebug() << "count" << ui->notes->count();
+//        event->accept();
+//    }
+//    else event->ignore();
+
+    if (closeAllTab()) {
+        event->ignore();
         saveToRecent("CorePad", workFilePath);
-        event->accept();
+    } else return event->ignore();
+}
+
+bool corepad::closeAllTab() {
+    while (ui->notes->count() != 0) {
+        if (ui->notes->tabText(ui->notes->currentIndex()).startsWith("*")) {
+            //int ans = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
+
+                 if (reply == QMessageBox::No) {
+                    return false;
+                 } else if (reply == QMessageBox::Yes){
+                     text = static_cast<coreedit*>(ui->notes->widget(ui->notes->currentIndex()));
+                     text->deleteLater();
+                     qDebug() << ui->notes->currentIndex();
+                     ui->notes->removeTab(ui->notes->currentIndex());
+                     return true;
+                 }
+            }
+
+
     }
+    return true;
 }
 
 void corepad::on_text_copyAvailable(bool b)
@@ -156,9 +196,11 @@ void corepad::on_text_redoAvailable(bool b)
 
 void corepad::on_text_textChanged()
 {
-    isUpdated = true;
-    if (!ui->notes->tabText(ui->notes->currentIndex()).contains("*")) {
-       ui->notes->setTabText(ui->notes->currentIndex(), "*" + ui->notes->tabText(ui->notes->currentIndex()));
+    if (text->toPlainText().count() > 0) {
+        isUpdated = true;
+        if (!ui->notes->tabText(ui->notes->currentIndex()).contains("*")) {
+           ui->notes->setTabText(ui->notes->currentIndex(), "*" + ui->notes->tabText(ui->notes->currentIndex()));
+        }
     }
 }
 
@@ -370,14 +412,17 @@ void corepad::on_notes_tabCloseRequested(int index)
         reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             ui->notes->tabBar()->removeTab(index);
+            goto L;
         }
         else if (reply == QMessageBox::No){
             return;
         }
     }
     else {
+        L:
         text = static_cast<coreedit*>(ui->notes->widget(index));
         text->deleteLater();
         ui->notes->removeTab(index);
+        return;
     }
 }

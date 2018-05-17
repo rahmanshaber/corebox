@@ -69,6 +69,7 @@ public:
     void copyImage();
     void pasteImage();
     void cutImage();
+    void clearBackground();
     void saveImageChanges();
     void clearSelection();
     void pushUndoCommand(UndoCommand *command);

@@ -45,6 +45,7 @@ public:
     void tabEngine(AppsName i, QString arg = 0);
     void closeCurrentTab();
     bool eventFilter(QObject *obj, QEvent *evt);
+    void startWidgetClose();
 
 protected:
     void closeEvent(QCloseEvent*event);

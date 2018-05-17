@@ -17,6 +17,7 @@ bool moveToTrash(QString fileName)
             return false;
         } else {
             QFile::remove(fileName);
+            return true;
         }
     }
     else {
@@ -46,25 +47,31 @@ bool moveToTrash(QString fileName)
             trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());trashinfo.close();
 
             messageEngine("File Moved to Trash", "Info");
+            return true;
         }
-    return true;
     }
     return false;
 }
 
-bool saveToRecent(QString appName, QString pathName)
-{
+bool saveToRecent(QString appName, QString pathName, QString iconPath) {
     SettingsManage sm;
     if (sm.getDisableRecent() == true) {
         if (!pathName.isEmpty()) {
             sm.cSetting->beginGroup("Recent");
             int keysCount = sm.cSetting->childKeys().count();
             sm.cSetting->endGroup();
-            sm.setSpecificValue("Recent", QString::number(keysCount), appName + "$$$" + pathName + "$$$" + QDateTime::currentDateTime().toString());
+            QString icon = "";
+            (iconPath.isNull() || iconPath.isEmpty()) ? icon = "" : icon = QString("$$$" + iconPath);
+            sm.setSpecificValue("Recent", QString::number(keysCount), appName + "$$$" + pathName + "$$$" + QDateTime::currentDateTime().toString() + icon);
             return true;
         }
     }
     return false;
+}
+
+bool saveToRecent(QString appName, QString pathName)
+{
+    return saveToRecent(appName, pathName, NULL);
 }
 
 void messageEngine(QString message, QString messageType)
@@ -138,37 +145,39 @@ AppsName nameToInt(QString appName)
     }
 }
 
-QString appsIconPath(QString appName)
+QIcon appsIconPath(QString appName)
 {
     QString str = ":/icons/";
     if (appName == "CoreFM" || appName == "corefm") {
-        return str + "CoreFM.svg";
+        return QIcon(str + "CoreFM.svg");
     } else if (appName == "CoreImage" || appName == "coreimage") {
-        return str + "CoreImage.svg";
+        return QIcon(str + "CoreImage.svg");
     } else if (appName == "CorePad" || appName == "corepad") {
-        return str + "CorePad.svg";
+        return QIcon(str + "CorePad.svg");
     } else if (appName == "CorePaint" || appName == "corepaint") {
-        return str + "CorePaint.svg";
+        return QIcon(str + "CorePaint.svg");
     } else if (appName == "CorePlayer" || appName == "coreplayer") {
-        return str + "CorePlayer.svg";
+        return QIcon(str + "CorePlayer.svg");
     } else if (appName == "CoreTime" || appName == "coretime") {
-        return str + "CoreTime.svg";
+        return QIcon(str + "CoreTime.svg");
     } else if (appName == "DashBoard" || appName == "dashboard") {
-        return str + "DashBoard.svg";
+        return QIcon(str + "DashBoard.svg");
     } else if (appName == "Bookmarks" || appName == "bookmarks") {
-        return str + "Bookmarks.svg";
+        return QIcon(str + "Bookmarks.svg");
     } else if (appName == "About" || appName == "about") {
-        return str + "About.svg";
+        return QIcon(str + "About.svg");
     } else if (appName == "Start" || appName == "start") {
-        return str + "Start.svg";
+        return QIcon(str + "Start.svg");
     } else if (appName == "Search" || appName == "search") {
-        return str + "Search.svg";
+        return QIcon(str + "Search.svg");
     } else if (appName == "Help" || appName == "help") {
-        return str + "Help.svg";
+        return QIcon(str + "Help.svg");
     } else if (appName == "Settings" || appName == "settings") {
-        return str + "Settings.svg";
+        return QIcon(str + "Settings.svg");
+    } else if (!appName.isNull() || !appName.isEmpty()) {
+        return QIcon::fromTheme(appName);
     } else {
-        return NULL;
+        return QIcon();
     }
 }
 
@@ -316,8 +325,6 @@ QIcon geticon(const QString &filePath) {
       return icon;
 }
 
-
-
 QStringList fStringList(QStringList left, QStringList right, QFont font) {
 
     QFontMetrics *fm = new QFontMetrics(font);
@@ -344,7 +351,6 @@ QStringList fStringList(QStringList left, QStringList right, QFont font) {
 
     return left;
 }
-
 
 QString getMountPathByName(QString displayName){
 

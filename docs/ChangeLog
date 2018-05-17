@@ -50,7 +50,12 @@ version 2.1
 - added option to open file in selected app in openAppEngine.
 - fixed mouse wheel >>next image not working sometimes in coreimage.
 - opening file with syestem apps now shows in recent activities in start.
-- removed unused icon from resoures file.
+- change in some icons & removed unused icon from resoures file.
+- mimelist save folder moved to .config/corebox.
+- fixed all the time opening start when opening other app.
+- fixed system app not showing in the recent activites.
+- trash a picture from coreimage, will also delete entry from path qstringlist
+- fixed empty trash not working in corefm.
 
 
 

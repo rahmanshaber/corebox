@@ -605,3 +605,9 @@ void corepaint::undo() {
 void corepaint::redo() {
     mUndoStackGroup->redo();
 }
+
+void corepaint::on_delete_2_clicked()
+{
+    //if (ImageArea *imageArea = getCurrentImageArea())
+    //   imageArea->clearBackground();
+}

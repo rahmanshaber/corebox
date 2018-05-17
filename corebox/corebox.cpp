@@ -59,7 +59,7 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
 
     BookmarkManage bk;
     bk.checkBook();
-    on_start_clicked();
+    if (ui->windows->count() == 0) on_start_clicked();
 }
 
 CoreBox::~CoreBox() {
@@ -332,7 +332,7 @@ void CoreBox::on_windows_currentChanged(int index)
 {
     QString title = ui->windows->tabText(index);
     this->setWindowTitle(title);
-    this->setWindowIcon(QIcon(appsIconPath(title)));
+    this->setWindowIcon(appsIconPath(title));
 }
 
 void CoreBox::closeCurrentTab()
@@ -428,6 +428,11 @@ bool CoreBox::eventFilter(QObject *obj, QEvent *evt)
     }
 
     return QMainWindow::eventFilter(obj,evt);
+}
+
+void CoreBox::startWidgetClose()
+{
+    ui->windows->removeTab(0);
 }
 
 //===========================WindowBar========End=================================================================

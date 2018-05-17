@@ -52,7 +52,7 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 
 //        ui->drives->addItem(p);
 //        ui->drives->setItemWidget(p, ui->widget);
-        ui->drives->item(i)->setIcon(QIcon(":/icons/hdd_b.svg"));
+        ui->drives->item(i)->setIcon(QIcon(":/icons/drive_hdd_w.svg"));
     }
 
     setdisplaypage();
@@ -63,7 +63,7 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 
     ui->blocks->addItems(disks->blockDevices());
     for (int i = 0; i < ui->blocks->count(); ++i) {
-           ui->blocks->item(i)->setIcon(QIcon(":/icons/partition.svg"));
+           ui->blocks->item(i)->setIcon(QIcon(":/icons/drive_w.svg"));
     }
 
     disks = new UDisks2(this);

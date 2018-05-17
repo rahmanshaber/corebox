@@ -1114,7 +1114,7 @@ QMenu* corefm::sendto(){
 
     const auto allMounted = QStorageInfo::mountedVolumes();;
     for(auto& singleMounted : allMounted){
-        if(singleMounted.device() != "tmpfs"){
+        if(singleMounted.device() != "tmpfs" && singleMounted.rootPath() != "/") {
             QAction *action = new QAction(singleMounted.displayName(),sendto);
             action->setData(singleMounted.displayName());
             action->setIcon(QIcon(":/icons/drive_b.svg"));
@@ -1952,12 +1952,10 @@ void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos){
     globalmenu()->exec(ui->viewtree->mapToGlobal(pos));
 }
 
-void corefm::on_actionSelectAll_triggered(){
-
-    if(ui->viewlist->hasFocus()){
+void corefm::on_actionSelectAll_triggered() {
+    if(ui->view->currentIndex() == 0){
         ui->viewlist->selectAll();
-    }
-    else{
+    } else {
         ui->viewtree->selectAll();
     }
 }
@@ -2260,7 +2258,7 @@ void corefm::blockDevicesChanged() {
                         text += " (MTP)";
                     }
                     item->setText(parse.at(5) + " " + parse.at(4));
-                    item->setIcon(QIcon(":/icons/smartphone.svg"));
+                    item->setIcon(QIcon(":/icons/drive_media_w.svg"));
                     item->setData(Qt::UserRole, "mtp");
                     item->setData(Qt::UserRole + 1, parse.at(0));
                     item->setData(Qt::UserRole + 2, parse.at(1));
@@ -2303,7 +2301,7 @@ void corefm::blockDevicesChanged() {
                         item->setText(name + " (iOS)");
                     }
 
-                    item->setIcon(QIcon(":/icons/smartphone.svg"));
+                    item->setIcon(QIcon(":/icons/drive_media_w.svg"));
                     item->setData(Qt::UserRole, "ios");
                     item->setData(Qt::UserRole + 1, line);
                     ui->partitions->addItem(item);

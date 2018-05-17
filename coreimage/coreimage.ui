@@ -559,6 +559,43 @@ background-color: #1D2025;
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="containingfolder">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+Text-align:left;
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton:pressed{
+background-color: #1D2025; 
+}
+
+QPushButton:hover {
+background-color: #1D2025;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Show the Folder</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="openincorepaint">
         <property name="font">
          <font>
@@ -586,43 +623,6 @@ background-color: #1D2025;
         <property name="icon">
          <iconset resource="../icons.qrc">
           <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="containingfolder">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #1D2025; 
-}
-
-QPushButton:hover {
-background-color: #1D2025;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>Show the Folder</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -818,7 +818,7 @@ QScrollBar::sub-page{
         <bool>false</bool>
        </property>
        <property name="dragDropMode">
-        <enum>QAbstractItemView::NoDragDrop</enum>
+        <enum>QAbstractItemView::DragDrop</enum>
        </property>
        <property name="defaultDropAction">
         <enum>Qt::IgnoreAction</enum>
