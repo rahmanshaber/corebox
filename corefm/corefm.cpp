@@ -45,7 +45,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     mimeUtils->setDefaultsFileName(name);
 
     // Create filesystem model
-    bool realMime = false; //sm.getIsRealMimeType();
+    bool realMime = sm.getIsRealMimeType();
 
     QString startP;
 
@@ -2235,9 +2235,11 @@ void corefm::blockDevicesChanged() {
     }
 
     //Add detected MTP devices
-    if (QFile("/usr/bin/jmtpfs").exists()) {
+    if (QFile("/usr/bin/jmtpfs").exists() || QFile("/usr/bin/mtpfs").exists()) {
+        QString command;
+        QFile("/usr/bin/jmtpfs").exists() ? command = "jmtpfs -l " : command = "mtpfs'";
         QProcess* mtpDev = new QProcess(this);
-        mtpDev->start("jmtpfs -l");
+        mtpDev->start(command);
         mtpDev->waitForStarted();
 
         while (mtpDev->state() == QProcess::Running) {

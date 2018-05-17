@@ -57,7 +57,7 @@ version 2.1
 - trash a picture from coreimage, will also delete entry from path qstringlist
 - fixed empty trash not working in corefm.
 - removed trash widget from corefm and defult mime path from settings.
--
+- added show real file type in corefm and settings.
 
 
 version 2,Released date Monday, March 26, 2018

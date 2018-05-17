@@ -436,7 +436,7 @@ border: 1px #45454D;
        <number>10</number>
       </property>
       <property name="rightMargin">
-       <number>10</number>
+       <number>20</number>
       </property>
       <item>
        <spacer name="horizontalSpacer_3">
@@ -509,7 +509,7 @@ border: 1px #45454D;
 }</string>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="pcorebox">
       <property name="styleSheet">
@@ -1162,8 +1162,8 @@ QScrollBar::sub-page:vertical {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>589</width>
-            <height>750</height>
+            <width>551</width>
+            <height>780</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
@@ -1214,7 +1214,35 @@ color: #ffffff;
 }</string>
              </property>
              <layout class="QGridLayout" name="gridLayout">
-              <item row="1" column="2">
+              <item row="5" column="4">
+               <widget class="QPushButton" name="browseF">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>20</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>...</string>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
                <widget class="QCheckBox" name="showTool">
                 <property name="maximumSize">
                  <size>
@@ -1247,31 +1275,64 @@ QCheckBox::indicator:unchecked {
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="label_13">
+              <item row="2" column="0" colspan="2">
+               <widget class="QLabel" name="label_11">
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="text">
-                 <string>View Mode : </string>
+                 <string>Show Toolbox</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_12">
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_5">
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Show Previews</string>
+                 <string>Startup Path : </string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
+              <item row="4" column="4">
+               <widget class="QCheckBox" name="showrealmime">
+                <property name="maximumSize">
+                 <size>
+                  <width>45</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QCheckBox::indicator {
+    width: 45px;
+    height: 25px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox.svg);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/checkbox_not.svg);
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="tristate">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1" colspan="3">
                <widget class="QLineEdit" name="startPath">
                 <property name="font">
                  <font>
@@ -1289,47 +1350,31 @@ QCheckBox::indicator:unchecked {
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="label_5">
+              <item row="0" column="0" colspan="2">
+               <widget class="QLabel" name="label_12">
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Startup Path : </string>
+                 <string>Show Previews</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QPushButton" name="browseF">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>20</width>
-                  <height>16777215</height>
-                 </size>
+              <item row="4" column="0" colspan="2">
+               <widget class="QLabel" name="label_8">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
                 </property>
                 <property name="text">
-                 <string>...</string>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
+                 <string>Show Real FileType</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
+              <item row="0" column="4">
                <widget class="QCheckBox" name="checkThumbs">
                 <property name="maximumSize">
                  <size>
@@ -1362,19 +1407,19 @@ QCheckBox::indicator:unchecked {
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_11">
+              <item row="8" column="0">
+               <widget class="QLabel" name="label_13">
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Show Toolbox</string>
+                 <string>View Mode : </string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="1" colspan="2">
+              <item row="8" column="1" colspan="4">
                <widget class="QComboBox" name="view">
                 <property name="styleSheet">
                  <string notr="true">QComboBox {

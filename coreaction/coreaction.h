@@ -105,6 +105,7 @@ private slots:
     void on_start_clicked();
     void on_search_clicked();
 
+    void actionshow();
 };
 
 #endif // COREACTION_H

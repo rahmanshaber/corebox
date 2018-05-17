@@ -75,7 +75,7 @@ void coreaction::tryicon()  //setup coreaction tryicon
     trayIcon->show();
 
     connect(QAquit, SIGNAL(triggered()),this,SLOT(close()));
-    connect(QAshow, SIGNAL(triggered()),this,SLOT(show()));
+    connect(QAshow, SIGNAL(triggered()),this,SLOT(actionshow()));
     connect(QAabout, SIGNAL(triggered()), this, SLOT(on_about_clicked()));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(ShowWindow(QSystemTrayIcon::ActivationReason)));
 }
@@ -141,6 +141,12 @@ void coreaction::loadsettings()
     SettingsManage sm;
     sm.createDefaultSettings();
 }
+
+void coreaction::actionshow(){
+    widgetList();
+    this->show();
+}
+
 
 void coreaction::batteryCheck()
 {

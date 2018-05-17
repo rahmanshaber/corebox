@@ -31,17 +31,67 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     ui->setupUi(this);
 
     setupCoreBoxPage();
-    setupCoreActionPage();
     setupCoreFMPage();
+    setupCoreActionPage();
     setupCoreShotPage();
 
-//    ui->cmbDefaultMimeApps->addItem("/.config/coreBox/mimeapps.list");
-//    ui->cmbDefaultMimeApps->addItem("/.config/coreBox/defaults.list");
+}
 
-    QString tmp = "/.config/coreBox/mimeapps.list";
-//    ui->cmbDefaultMimeApps->setCurrentText(tmp);
+settings::~settings()
+{
+    qDebug()<<"settings closing";
+    delete ui;
+}
 
+void settings::setupCoreBoxPage()
+{
+    //general
+    ui->isMaximized->setChecked(sm.getBoxIsMaximize());
+    ui->isRecentDisable->setChecked(sm.getDisableRecent());
+
+    //looks & feel
+    QString currentTheme = sm.getThemeName();
+    QDirIterator it("/usr/share/icons", QDir::Dirs | QDir::NoDotAndDotDot);
+    QStringList iconThemes;
+    while (it.hasNext()) {
+      it.next();
+      iconThemes.append(it.fileName());
+    }
+    ui->cmbIconTheme->addItems(iconThemes);
+    ui->cmbIconTheme->setCurrentText(currentTheme);
+}
+
+void settings::setupCoreActionPage()
+{
+    //show widgets
+    ui->isTime->setChecked(sm.getShowTime());
+    ui->isBattery->setChecked(sm.getShowBattery());
+    ui->isSystem->setChecked(sm.getShowSystem());
+    ui->isNetwork->setChecked(sm.getShowNetwork());
+    ui->isCalander->setChecked(sm.getShowCalander());
+    ui->isCalculator->setChecked(sm.getShowCalculator());
+    ui->isNotes->setChecked(sm.getShowNote());
+}
+
+void settings::setupCoreFMPage()
+{
+    //general
+    ui->checkThumbs->setChecked(sm.getIsShowThumb());
+    ui->showTool->setChecked(sm.getShowToolbox());
+    ui->startPath->setText(sm.getStartupPath());
+    ui->showrealmime->setChecked(sm.getIsRealMimeType());
+
+    ui->view->addItem("Detail");
+    ui->view->addItem("Icon");
+    ui->view->setCurrentIndex(sm.getViewMode());
+
+    //terminal
+    selectedTerminal = ui->terminals->currentText();
+    ui->terminals->setCurrentText(sm.getTerminal());
+
+    //setup mimes
     MimeUtils *mimeUtils = new MimeUtils(this);
+    QString tmp = "/.config/coreBox/mimeapps.list";
     mimeUtils->setDefaultsFileName(tmp);
     QStringList mimes = mimeUtils->getMimeTypes();
 
@@ -95,6 +145,7 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
       item->setText(1, appNames.remove(".desktop"));
       item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
+
     // Load application list
     QStringList apps = FileUtils::getApplicationNames();
     apps.replaceInStrings(".desktop", "");
@@ -129,61 +180,6 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     connect(ui->removeAppAssoc, SIGNAL(clicked()), SLOT(removeAppAssoc()));
     connect(ui->moveAppAssocUp, SIGNAL(clicked()), SLOT(moveAppAssocUp()));
     connect(ui->moveAppAssocDown, SIGNAL(clicked()), SLOT(moveAppAssocDown()));
-
-
-}
-
-settings::~settings()
-{
-    qDebug()<<"settings closing";
-    delete ui;
-}
-
-void settings::setupCoreBoxPage()
-{
-    //general
-    ui->isMaximized->setChecked(sm.getBoxIsMaximize());
-    ui->isRecentDisable->setChecked(sm.getDisableRecent());
-
-    //looks & feel
-    QString currentTheme = sm.getThemeName();
-    QDirIterator it("/usr/share/icons", QDir::Dirs | QDir::NoDotAndDotDot);
-    QStringList iconThemes;
-    while (it.hasNext()) {
-      it.next();
-      iconThemes.append(it.fileName());
-    }
-    ui->cmbIconTheme->addItems(iconThemes);
-    ui->cmbIconTheme->setCurrentText(currentTheme);
-}
-
-void settings::setupCoreActionPage()
-{
-    //show widgets
-    ui->isTime->setChecked(sm.getShowTime());
-    ui->isBattery->setChecked(sm.getShowBattery());
-    ui->isSystem->setChecked(sm.getShowSystem());
-    ui->isNetwork->setChecked(sm.getShowNetwork());
-    ui->isCalander->setChecked(sm.getShowCalander());
-    ui->isCalculator->setChecked(sm.getShowCalculator());
-    ui->isNotes->setChecked(sm.getShowNote());
-}
-
-void settings::setupCoreFMPage()
-{
-    //general
-    ui->checkThumbs->setChecked(sm.getIsShowThumb());
-    ui->showTool->setChecked(sm.getShowToolbox());
-    ui->startPath->setText(sm.getStartupPath());
-
-    ui->view->addItem("Detail");
-    ui->view->addItem("Icon");
-//    ui->view->setCurrentIndex();
-
-    //terminal
-    selectedTerminal = ui->terminals->currentText();
-    ui->terminals->setCurrentText(sm.getTerminal());
-
 
 }
 
@@ -339,6 +335,7 @@ void settings::on_ok_clicked()
     //corebox
     sm.setBoxIsMaximize(ui->isMaximized->isChecked());
     sm.setDisableRecent(ui->isRecentDisable->isChecked());
+    sm.setThemeName(ui->cmbIconTheme->currentText());
 
     //corefm
     MimeUtils *mimeUtils = new MimeUtils(this);
@@ -363,8 +360,7 @@ void settings::on_ok_clicked()
 
     sm.setTerminal(ui->terminals->currentText());
     sm.setStartupPath(ui->startPath->text());
-    sm.setThemeName(ui->cmbIconTheme->currentText());
-//    sm.setMimeFilePath(ui->cmbDefaultMimeApps->currentText());
+    sm.setIsRealMimeType(ui->showrealmime->isChecked());
     sm.setIsShowThumb(ui->checkThumbs->isChecked());
     sm.setShowToolbox(ui->showTool->isChecked());
     sm.setViewMode(ui->view->currentIndex() == 0 ? "Detail" : "Icon");
@@ -381,7 +377,7 @@ void settings::on_ok_clicked()
     sm.setSHowCalculator(ui->isCalculator->isChecked());
     sm.setSHowNote(ui->isNotes->isChecked());
 
-
+    //info the user
     messageEngine("Settings Applied", "Info");
     QIcon::setThemeName(sm.getThemeName());
 }

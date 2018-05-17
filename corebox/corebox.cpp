@@ -47,6 +47,7 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
     ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
 
     QSizeGrip *sizeGrip = new QSizeGrip(this);
+    sizeGrip->setStyleSheet("QWidget{background-color: #ffffff; background-image: url(:/icons/anewcorebox.svg); }");
     ui->resize->addWidget(sizeGrip);
 
     if (sm.getBoxIsMaximize()) {
@@ -392,14 +393,24 @@ void CoreBox::mousePressEvent(QMouseEvent *event)
     mousePressed = true;
     mousePos = event->globalPos();
 
-    if ( event->button() == Qt::LeftButton ){
+
+    if(event->buttons()== Qt::LeftButton){
+
+    qDebug() << "1st Left mouse clicked";
+    }
+    else if (event->buttons()== Qt::RightButton){
+
+    qDebug() << "1st Right mouse clicked";
+    }
+
+//    if ( event->button() == Qt::LeftButton ){
 //        qDebug() << "left button is pressed";
 //        mousePressed = true;
 //        mousePos = event->globalPos();
 
 //        if (ui->windows->tabBar()->underMouse())
 //          wndPos = this->pos();
-    }
+//    }
 //    if (event->button() == Qt::RightButton) {
 //              QTabWidget::mousePressEvent(newEvent); // propagate right as left
 //         }

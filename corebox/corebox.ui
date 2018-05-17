@@ -561,6 +561,9 @@ border: 1px rgb(0, 0, 0);
             </property>
            </widget>
           </item>
+          <item>
+           <layout class="QVBoxLayout" name="resize"/>
+          </item>
          </layout>
         </widget>
        </item>
@@ -604,9 +607,6 @@ background-color: #1268A4;
           </size>
          </property>
         </widget>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="resize"/>
        </item>
       </layout>
      </widget>
