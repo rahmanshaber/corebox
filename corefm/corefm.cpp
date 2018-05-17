@@ -41,7 +41,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
     // Create mime utils
     mimeUtils = new MimeUtils(this);
-    QString name = sm.getMimeFilePath();
+    QString name = "/.config/coreBox/mimeapps.list";
     mimeUtils->setDefaultsFileName(name);
 
     // Create filesystem model

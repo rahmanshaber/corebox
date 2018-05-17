@@ -35,13 +35,12 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     setupCoreFMPage();
     setupCoreShotPage();
 
-    ui->cmbDefaultMimeApps->addItem("/.config/coreBox/mimeapps.list");
-    ui->cmbDefaultMimeApps->addItem("/.config/coreBox/defaults.list");
-    QString tmp = sm.getMimeFilePath();
+//    ui->cmbDefaultMimeApps->addItem("/.config/coreBox/mimeapps.list");
+//    ui->cmbDefaultMimeApps->addItem("/.config/coreBox/defaults.list");
 
-    ui->cmbDefaultMimeApps->setCurrentText(tmp);
+    QString tmp = "/.config/coreBox/mimeapps.list";
+//    ui->cmbDefaultMimeApps->setCurrentText(tmp);
 
-//    QString tmp = "/.config/coreBox/mimeapps.list";
     MimeUtils *mimeUtils = new MimeUtils(this);
     mimeUtils->setDefaultsFileName(tmp);
     QStringList mimes = mimeUtils->getMimeTypes();
@@ -343,7 +342,8 @@ void settings::on_ok_clicked()
 
     //corefm
     MimeUtils *mimeUtils = new MimeUtils(this);
-    mimeUtils->setDefaultsFileName(ui->cmbDefaultMimeApps->currentText());
+    QString tmp = "/.config/coreBox/mimeapps.list";
+    mimeUtils->setDefaultsFileName(tmp);
     for (int i = 0; i < ui->mimesWidget->topLevelItemCount(); ++i) {
       QTreeWidgetItem* cathegory = ui->mimesWidget->topLevelItem(i);
       QString cathegoryName = cathegory->text(0) + "/";
@@ -364,7 +364,7 @@ void settings::on_ok_clicked()
     sm.setTerminal(ui->terminals->currentText());
     sm.setStartupPath(ui->startPath->text());
     sm.setThemeName(ui->cmbIconTheme->currentText());
-    sm.setMimeFilePath(ui->cmbDefaultMimeApps->currentText());
+//    sm.setMimeFilePath(ui->cmbDefaultMimeApps->currentText());
     sm.setIsShowThumb(ui->checkThumbs->isChecked());
     sm.setShowToolbox(ui->showTool->isChecked());
     sm.setViewMode(ui->view->currentIndex() == 0 ? "Detail" : "Icon");

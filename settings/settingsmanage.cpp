@@ -26,7 +26,6 @@ void SettingsManage::createDefaultSettings()
         cSetting->beginGroup("CoreFM");
         cSetting->setValue("Terminal", "xterm");
         cSetting->setValue("Startup-Path", QDir::homePath());
-        cSetting->setValue("Default-Mime-Apps-File", "/.config/coreBox/mimeapps.list");
         cSetting->setValue("Real-Mime-Types", true);
         cSetting->setValue("Zoom", 80);
         cSetting->setValue("Zoom-Tree", 16);
@@ -119,14 +118,6 @@ bool SettingsManage::setStartupPath(QString path) {
 
 QString SettingsManage::getStartupPath() {
     return getSpecificValue("CoreFM", "Startup-Path").toString();
-}
-
-bool SettingsManage::setMimeFilePath(QString mimeFilePath) {
-    return setSpecificValue("CoreFM", "Default-Mime-Apps-File", mimeFilePath);
-}
-
-QString SettingsManage::getMimeFilePath() {
-    return getSpecificValue("CoreFM", "Default-Mime-Apps-File").toString();
 }
 
 bool SettingsManage::setIsRealMimeType(bool isRealMime) {

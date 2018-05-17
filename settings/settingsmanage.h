@@ -24,9 +24,6 @@ public:
     QString getThemeName();
     bool setThemeName(QString themeName);
 
-    QString getMimeFilePath();
-    bool setMimeFilePath(QString mimeFilePath);
-
     bool getIsRealMimeType();
     bool setIsRealMimeType(bool isRealMime);
 

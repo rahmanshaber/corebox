@@ -56,7 +56,8 @@ version 2.1
 - fixed system app not showing in the recent activites.
 - trash a picture from coreimage, will also delete entry from path qstringlist
 - fixed empty trash not working in corefm.
-
+- removed trash widget from corefm and defult mime path from settings.
+-
 
 
 version 2,Released date Monday, March 26, 2018
