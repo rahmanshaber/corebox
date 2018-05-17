@@ -35,10 +35,9 @@ corepaint
 1 - set all the instrument cursor.
 
 Search
-0 - set icon with geticon function.
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
-0 - if path is given find is not working.but locate is working.
+2 - if path is given ,find is not working.but locate is working.
 
 corefm
 0 - pathedit is always in focus, even outside clicked.
@@ -69,7 +68,6 @@ coretime
 corepad
 0 - save dialog shows up when closing ,without changing the txt file.
 
-
 setting
 1 - add option to backup corbox config folder as a zip and restore the settings.
 
@@ -88,7 +86,6 @@ coreplayer
 0 - after stop clicked player widget turs white
 0 - stop clicked >> seekbar position not changing.
 0 - after stop ,play button dose not work.
-
 
 coreshot
 3 - add active window option.

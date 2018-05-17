@@ -98,7 +98,6 @@ public slots:
     void thumbUpdate(QModelIndex);
     void addressChanged(int,int);
     void loadSettings();
-
     void pressed();
 
 signals:
@@ -152,10 +151,9 @@ private slots:
     void blockDevicesChanged();
     void on_actionDesktop_triggered();
     void on_actionHome_triggered();
-
     void on_actionRun_triggered();
-
     void sendToPath();
+
 private:
     SettingsManage sm;
     void writeSettings();

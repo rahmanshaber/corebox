@@ -92,7 +92,7 @@ bookmarkDialog::bookmarkDialog(QWidget *parent)
 
 bookmarkDialog::~bookmarkDialog()
 {
-    qDebug()<<"bookmarkdialog closing";
+    qDebug() <<"bookmarkdialog closing";
     delete accept;
     delete cancel;
     delete lSection;

@@ -41,6 +41,7 @@ protected slots:
 protected:
   QProcess* procPtr;
   QListWidget* output;
+
 };
 
 #endif // PROCESSDIALOG_H

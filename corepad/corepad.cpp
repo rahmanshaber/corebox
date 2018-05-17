@@ -167,7 +167,7 @@ bool corepad::closeAllTab() {
                  } else if (reply == QMessageBox::Yes){
                      text = static_cast<coreedit*>(ui->notes->widget(ui->notes->currentIndex()));
                      text->deleteLater();
-                     qDebug() << ui->notes->currentIndex();
+//                     qDebug() << ui->notes->currentIndex();
                      ui->notes->removeTab(ui->notes->currentIndex());
                      return true;
                  }

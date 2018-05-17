@@ -19,12 +19,12 @@ void SettingsManage::createDefaultSettings() {
         cSetting->beginGroup("CoreBox");
         cSetting->setValue("Maximized", false);
         cSetting->setValue("Recent-Disable", true);
+        cSetting->setValue("Force-Theme", QIcon::themeName());
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreFM");
         cSetting->setValue("Terminal", "xfce4-terminal");
         cSetting->setValue("Startup-Path", QDir::homePath());
-        cSetting->setValue("Force-Theme", QIcon::themeName());
         cSetting->setValue("Default-Mime-Apps-File", "/.config/coreBox/mimeapps.list");
         cSetting->setValue("Real-Mime-Types", true);
         cSetting->setValue("Zoom", 80);

@@ -194,7 +194,7 @@ void search::toTable(QStringList list) {
             //the first item at temp string list is theme icon name
             //second is file path
             //third is suffix
-            qDebug()<< temp.at(0);
+//            qDebug()<< temp.at(0);
             ui->results->setItem(i, 0, new QTableWidgetItem(QIcon::fromTheme(temp.at(0)), QFileInfo(temp.at(1)).fileName()));
             ui->results->setItem(i, 1, new QTableWidgetItem(QFileInfo(temp.at(1)).path()));
             ui->results->setItem(i, 2, new QTableWidgetItem(temp.at(2)));

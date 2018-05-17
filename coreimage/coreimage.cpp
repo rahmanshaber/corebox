@@ -396,8 +396,7 @@ void coreimage::on_cPrevious_clicked()
             loadFile(images.at(images.count() - 1));
         }
     }
-
-    qDebug()<< images;
+//    qDebug()<< images;
 }
 
 void coreimage::on_cNext_clicked()
@@ -502,23 +501,21 @@ void coreimage::mouseReleaseEvent(QMouseEvent *event)
 
 void coreimage::on_cTrashIt_clicked()
 {
-    qDebug() << "K";
-    /*if (*/moveToTrash(currentImagePath);//) {
-        int index = images.indexOf(currentImagePath);
-        qDebug() << index;
-        images.removeAt(index);
-        qDebug() << images.count();
-        if (images.count() == 0) {
-            ui->cImageLabel->setPicture(QPicture());
-            qDebug() << images.count();
-        } else if (images.count() > 0) {
-            if (index == 0) on_cNext_clicked();
-            else if (index < (images.count() - 1)) {
-                on_cPrevious_clicked();
-            } else {
-                on_cNext_clicked();
-            }
-        }
-    //}
+    moveToTrash(currentImagePath);
 
+    int index = images.indexOf(currentImagePath);
+//    qDebug() << index;
+    images.removeAt(index);
+//    qDebug() << images.count();
+    if (images.count() == 0) {
+        ui->cImageLabel->setPicture(QPicture());
+//        qDebug() << images.count();
+    } else if (images.count() > 0) {
+        if (index == 0) on_cNext_clicked();
+        else if (index < (images.count() - 1)) {
+            on_cPrevious_clicked();
+        } else {
+            on_cNext_clicked();
+        }
+    }
 }

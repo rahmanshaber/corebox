@@ -43,7 +43,7 @@ bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)
 
 bookmarks::~bookmarks()
 {
-    qDebug()<<"bookmark closing";
+    qDebug() <<"bookmark closing";
     delete ui;
 }
 

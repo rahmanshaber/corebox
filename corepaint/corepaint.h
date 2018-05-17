@@ -113,8 +113,7 @@ private slots:
     void on_openshots_clicked();
     void undo();
     void redo();
-
-    void on_delete_2_clicked();
+    void on_delet_clicked();
 
 signals:
     void sendInstrumentChecked(InstrumentsEnum);

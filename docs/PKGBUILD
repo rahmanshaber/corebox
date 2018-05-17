@@ -1,7 +1,7 @@
 #Maintainer:
 
 pkgname=corebox-git
-pkgver=2.01
+pkgver=2.1
 pkgrel=1
 pkgdesc="Combination of some common desktop apps with Bookmark"
 arch=('x86_64')

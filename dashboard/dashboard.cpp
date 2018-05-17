@@ -100,7 +100,7 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 
 dashboard::~dashboard()
 {
-    qDebug()<<"dashboard closing";
+    qDebug() <<"dashboard closing";
     delete disks;
     delete ui;
 }

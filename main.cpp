@@ -36,7 +36,6 @@ int main(int argc, char *argv[])
 
     coreaction a;
     a.show();
-    qDebug() << QIcon::themeSearchPaths().indexOf(QIcon::themeName());
 
     return app.exec();
 }

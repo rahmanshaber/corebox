@@ -20,7 +20,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 coreedit::coreedit(QWidget *parent) : QPlainTextEdit(parent)
 {
-    qDebug() << "coreedit opening";
     setStyleSheet("QMenu::item{background-color: rgb(0, 170, 0);color: rgb(255, 255, 255);}"
                   "QMenu::item::selected{background-color: rgb(0, 85, 127);color: rgb(255,255,255);}");
     lineNumberArea = new LineNumberArea(this);

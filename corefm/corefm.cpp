@@ -45,7 +45,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     mimeUtils->setDefaultsFileName(name);
 
     // Create filesystem model
-    bool realMime = sm.getIsRealMimeType();
+    bool realMime = false; //sm.getIsRealMimeType();
 
     QString startP;
 
@@ -116,7 +116,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
     ui->paste->setVisible(0);
     ui->mk->addWidget(tabs);
-    ui->TrashFrame->setVisible(0);
     ui->emptyTrash->setVisible(0);
     ui->showthumb->setVisible(0);
     ui->showthumb->setChecked(0);
@@ -500,7 +499,6 @@ void corefm::listItemPressed(QModelIndex current)
 
 int corefm::addTab(const QString path)
 {
-//    qDebug()<<currentView;
     if (tabs->count() < 10) {
         if(tabs->count() == 0) tabs->addNewTab(ui->pathEdit->currentText(),currentView);
         return tabs->addNewTab(path,currentView);
@@ -2145,7 +2143,6 @@ void corefm::on_actionCreate_Archive_triggered(){
 
     QProcess p1;
     QString commd = "engrampa \"" + selcitempath + "\" -d";
-    qDebug()<< commd;
     p1.start(commd.toLatin1());
     p1.waitForFinished();
     on_actionRefresh_triggered();
@@ -2215,16 +2212,16 @@ void corefm::blockDevicesChanged() {
 
                     if (device->fileSystem()->mountPoints().count() == 0) {
                         QPainter *p = new QPainter();
-                        QPixmap temp = icon.pixmap(16,16);
+                        QPixmap temp = icon.pixmap(22,22);
                         p->begin(&temp);
-                        p->drawPixmap(8,8,8,8,QIcon(":/icons/emblem-unmounted.svg").pixmap(8,8));
+                        p->drawPixmap(10,10,10,10,QIcon(":/icons/emblem-unmounted.svg").pixmap(8,8));
                         p->end();
                         icon = QIcon(temp);
                     } else {
                         QPainter *p = new QPainter();
-                        QPixmap temp = icon.pixmap(16,16);
+                        QPixmap temp = icon.pixmap(22,22);
                         p->begin(&temp);
-                        p->drawPixmap(8,8,8,8,QIcon(":/icons/emblem-mounted.svg").pixmap(8,8));
+                        p->drawPixmap(10,10,10,10,QIcon(":/icons/emblem-mounted.svg").pixmap(8,8));
                         p->end();
                         icon = QIcon(temp);
                     }
@@ -2453,7 +2450,7 @@ void corefm::sendToPath()
 {
     QAction* action = dynamic_cast<QAction*>(sender());
     if(action){
-        qDebug()<< getMountPathByName(action->data().toString());
+//        qDebug()<< getMountPathByName(action->data().toString());
 
         on_actionCopy_triggered();
 

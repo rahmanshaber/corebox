@@ -46,7 +46,6 @@ signals:
 
 public slots:
     void closeTab(int index);
-    //void on_tabbar_closeRequested(int index);
 
 private:
     QHash<QString,QIcon> *folderIcons;

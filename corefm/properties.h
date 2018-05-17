@@ -41,6 +41,7 @@ public:
 
 protected:
   QMap<QString, QVariant> data;
+
 };
 
 #endif // PROPERTIES_H

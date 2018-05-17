@@ -196,7 +196,6 @@ void coreaction::showTime()
 void coreaction::focusOutEvent(QFocusEvent *event){
     Q_UNUSED(event);
     if (event->lostFocus()) {
-//        qDebug()<<"lost";
     }
     if (geometry().contains(QCursor::pos())) {
         setFocus(Qt::PopupFocusReason);

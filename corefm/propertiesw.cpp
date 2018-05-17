@@ -185,14 +185,12 @@ void propertiesw::on_executableB_clicked(bool checked)
     if(checked){
         QProcess p1;
         QString commd = "chmod a+x \"" + pathName + "\"";
-        qDebug()<< commd;
         p1.start(commd.toLatin1());
         p1.waitForFinished();
     }
     else if(!checked){
         QProcess p1;
         QString commd = "chmod -x \"" + pathName + "\"";
-        qDebug()<< commd;
         p1.start(commd.toLatin1());
         p1.waitForFinished();
     }

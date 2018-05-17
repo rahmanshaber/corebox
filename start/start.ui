@@ -814,7 +814,7 @@ padding: 50px 5px 20px 20px;
                 </font>
                </property>
                <property name="text">
-                <string>Recently Activities</string>
+                <string>Recent Activities</string>
                </property>
               </widget>
              </item>
