@@ -67,6 +67,10 @@ private:
     Ui::settings *ui;
     SettingsManage sm;
 
+    void setupCoreBoxPage();
+    void setupCoreActionPage();
+    void setupCoreFMPage();
+    void setupCoreShotPage();
 };
 
 #endif // SETTINGS_H

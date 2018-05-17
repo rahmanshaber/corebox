@@ -618,7 +618,7 @@ QCheckBox::indicator:unchecked {
              </font>
             </property>
             <property name="text">
-             <string>Show Recent closed apps at startup</string>
+             <string>Show Recent Activities in Start</string>
             </property>
            </widget>
           </item>
@@ -677,7 +677,7 @@ padding: 2px 10px 2px 0px;
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="generalb_2">
+        <widget class="QFrame" name="lookfeel">
          <property name="styleSheet">
           <string notr="true">QWidget{
 background-color: #34343C;
@@ -1162,7 +1162,7 @@ QScrollBar::sub-page:vertical {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>589</width>
+            <width>551</width>
             <height>828</height>
            </rect>
           </property>

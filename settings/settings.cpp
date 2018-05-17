@@ -30,37 +30,18 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     qDebug() << "settings opening";
     ui->setupUi(this);
 
-    ui->terminals->setCurrentText(sm.getTerminal());
-    ui->startPath->setText(sm.getStartupPath());
+    setupCoreBoxPage();
+    setupCoreActionPage();
+    setupCoreFMPage();
+    setupCoreShotPage();
 
     ui->cmbDefaultMimeApps->addItem("/.config/coreBox/mimeapps.list");
     ui->cmbDefaultMimeApps->addItem("/.config/coreBox/defaults.list");
     QString tmp = sm.getMimeFilePath();
+
     ui->cmbDefaultMimeApps->setCurrentText(tmp);
 
-    ui->checkThumbs->setChecked(sm.getIsShowThumb());
-    ui->showTool->setChecked(sm.getShowToolbox());
-
-    ui->view->addItem("Detail");
-    ui->view->addItem("Icon");
-
-    QString currentTheme = sm.getThemeName();
-    QDirIterator it("/usr/share/icons", QDir::Dirs | QDir::NoDotAndDotDot);
-    QStringList iconThemes;
-    while (it.hasNext()) {
-      it.next();
-      iconThemes.append(it.fileName());
-    }
-    ui->cmbIconTheme->addItems(iconThemes);
-    ui->cmbIconTheme->setCurrentText(currentTheme);
-    ui->ssLocation->setText(sm.getSCSaveLocation());
-
-    selectedTerminal = ui->terminals->currentText();
-
-    ui->isMaximized->setChecked(sm.getBoxIsMaximize());
-    ui->isBattery->setChecked(sm.getShowBattery());
-    ui->isRecentDisable->setChecked(sm.getDisableRecent());
-
+//    QString tmp = "/.config/coreBox/mimeapps.list";
     MimeUtils *mimeUtils = new MimeUtils(this);
     mimeUtils->setDefaultsFileName(tmp);
     QStringList mimes = mimeUtils->getMimeTypes();
@@ -115,46 +96,102 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
       item->setText(1, appNames.remove(".desktop"));
       item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
-      // Load application list
-      QStringList apps = FileUtils::getApplicationNames();
-      apps.replaceInStrings(".desktop", "");
-      apps.sort();
+    // Load application list
+    QStringList apps = FileUtils::getApplicationNames();
+    apps.replaceInStrings(".desktop", "");
+    apps.sort();
 
-      // Prepare source of icons
-      QDir appIcons("/usr/share/pixmaps","", 0, QDir::Files | QDir::NoDotAndDotDot);
-      QStringList iconFiles = appIcons.entryList();
-      QIcon defaulticon = QIcon::fromTheme("application-x-executable");
+    // Prepare source of icons
+    QDir appIcons("/usr/share/pixmaps","", 0, QDir::Files | QDir::NoDotAndDotDot);
+    QStringList iconFiles = appIcons.entryList();
+    QIcon defaulticon = QIcon::fromTheme("application-x-executable");
 
-      // Loads icon list
-      QList<QIcon> icons;
-      foreach (QString app, apps) {
-        QPixmap temp = QIcon::fromTheme(app).pixmap(16, 16);
-        if (!temp.isNull()) {
-          icons.append(temp);
+    // Loads icon list
+    QList<QIcon> icons;
+    foreach (QString app, apps) {
+      QPixmap temp = QIcon::fromTheme(app).pixmap(16, 16);
+      if (!temp.isNull()) {
+        icons.append(temp);
+      } else {
+        QStringList searchIcons = iconFiles.filter(app);
+        if (searchIcons.count() > 0) {
+          icons.append(QIcon("/usr/share/pixmaps/" + searchIcons.at(0)));
         } else {
-          QStringList searchIcons = iconFiles.filter(app);
-          if (searchIcons.count() > 0) {
-            icons.append(QIcon("/usr/share/pixmaps/" + searchIcons.at(0)));
-          } else {
-            icons.append(defaulticon);
-          }
+          icons.append(defaulticon);
         }
       }
+    }
 
-      // Connect
-      connect(ui->mimesWidget,
-              SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-              SLOT(onMimeSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
-      connect(ui->btnAdd, SIGNAL(clicked()), SLOT(showAppDialog()));
-      connect(ui->removeAppAssoc, SIGNAL(clicked()), SLOT(removeAppAssoc()));
-      connect(ui->moveAppAssocUp, SIGNAL(clicked()), SLOT(moveAppAssocUp()));
-      connect(ui->moveAppAssocDown, SIGNAL(clicked()), SLOT(moveAppAssocDown()));
+    // Connect
+    connect(ui->mimesWidget,
+            SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+            SLOT(onMimeSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
+    connect(ui->btnAdd, SIGNAL(clicked()), SLOT(showAppDialog()));
+    connect(ui->removeAppAssoc, SIGNAL(clicked()), SLOT(removeAppAssoc()));
+    connect(ui->moveAppAssocUp, SIGNAL(clicked()), SLOT(moveAppAssocUp()));
+    connect(ui->moveAppAssocDown, SIGNAL(clicked()), SLOT(moveAppAssocDown()));
+
 
 }
+
 settings::~settings()
 {
     qDebug()<<"settings closing";
     delete ui;
+}
+
+void settings::setupCoreBoxPage()
+{
+    //general
+    ui->isMaximized->setChecked(sm.getBoxIsMaximize());
+    ui->isRecentDisable->setChecked(sm.getDisableRecent());
+
+    //looks & feel
+    QString currentTheme = sm.getThemeName();
+    QDirIterator it("/usr/share/icons", QDir::Dirs | QDir::NoDotAndDotDot);
+    QStringList iconThemes;
+    while (it.hasNext()) {
+      it.next();
+      iconThemes.append(it.fileName());
+    }
+    ui->cmbIconTheme->addItems(iconThemes);
+    ui->cmbIconTheme->setCurrentText(currentTheme);
+}
+
+void settings::setupCoreActionPage()
+{
+    //show widgets
+    ui->isTime->setChecked(sm.getShowTime());
+    ui->isBattery->setChecked(sm.getShowBattery());
+    ui->isSystem->setChecked(sm.getShowSystem());
+    ui->isNetwork->setChecked(sm.getShowNetwork());
+    ui->isCalander->setChecked(sm.getShowCalander());
+    ui->isCalculator->setChecked(sm.getShowCalculator());
+    ui->isNotes->setChecked(sm.getShowNote());
+}
+
+void settings::setupCoreFMPage()
+{
+    //general
+    ui->checkThumbs->setChecked(sm.getIsShowThumb());
+    ui->showTool->setChecked(sm.getShowToolbox());
+    ui->startPath->setText(sm.getStartupPath());
+
+    ui->view->addItem("Detail");
+    ui->view->addItem("Icon");
+//    ui->view->setCurrentIndex();
+
+    //terminal
+    selectedTerminal = ui->terminals->currentText();
+    ui->terminals->setCurrentText(sm.getTerminal());
+
+
+}
+
+void settings::setupCoreShotPage()
+{
+    //general
+    ui->ssLocation->setText(sm.getSCSaveLocation());
 }
 
 void settings::onMimeSelected(QTreeWidgetItem *current,QTreeWidgetItem *previous)

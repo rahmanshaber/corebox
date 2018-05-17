@@ -12,9 +12,10 @@ SettingsManage::SettingsManage()
     cSetting = new QSettings("coreBox", "coreBox");
 }
 
-void SettingsManage::createDefaultSettings() {
-    qDebug() << "createDefaultSettings opening";
+void SettingsManage::createDefaultSettings()
+{
     if (!QFileInfo(cSetting->fileName()).exists()) {
+        qDebug() << "createDefaultSettings opening";
 
         cSetting->beginGroup("CoreBox");
         cSetting->setValue("Maximized", false);
@@ -23,7 +24,7 @@ void SettingsManage::createDefaultSettings() {
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreFM");
-        cSetting->setValue("Terminal", "xfce4-terminal");
+        cSetting->setValue("Terminal", "xterm");
         cSetting->setValue("Startup-Path", QDir::homePath());
         cSetting->setValue("Default-Mime-Apps-File", "/.config/coreBox/mimeapps.list");
         cSetting->setValue("Real-Mime-Types", true);
