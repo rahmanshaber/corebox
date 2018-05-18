@@ -2235,11 +2235,10 @@ void corefm::blockDevicesChanged() {
     }
 
     //Add detected MTP devices
-    if (QFile("/usr/bin/jmtpfs").exists() || QFile("/usr/bin/mtpfs").exists()) {
-        QString command;
-        QFile("/usr/bin/jmtpfs").exists() ? command = "jmtpfs -l " : command = "mtpfs'";
+    if (QFile("/usr/bin/jmtpfs").exists()) {
+        //Detect MTP devices
         QProcess* mtpDev = new QProcess(this);
-        mtpDev->start(command);
+        mtpDev->start("jmtpfs -l");
         mtpDev->waitForStarted();
 
         while (mtpDev->state() == QProcess::Running) {

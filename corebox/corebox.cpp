@@ -47,7 +47,7 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
     ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
 
     QSizeGrip *sizeGrip = new QSizeGrip(this);
-    sizeGrip->setStyleSheet("QWidget{background-color: #ffffff; background-image: url(:/icons/anewcorebox.svg); }");
+//    sizeGrip->setStyleSheet("QWidget{background-color: #EFEFEF ; background-image: url(:/icons/anewcorebox.svg); }");
     ui->resize->addWidget(sizeGrip);
 
     if (sm.getBoxIsMaximize()) {

@@ -58,6 +58,9 @@ version 2.1
 - fixed empty trash not working in corefm.
 - removed trash widget from corefm and defult mime path from settings.
 - added show real file type in corefm and settings.
+- fixed coreaction settings and view mode settings.
+
+
 
 
 version 2,Released date Monday, March 26, 2018
