@@ -389,3 +389,8 @@ void bookmarks::on_cTools_clicked()
         }
     }
 }
+
+void bookmarks::reload()
+{
+    sectionRefresh();
+}

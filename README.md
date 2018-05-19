@@ -14,7 +14,7 @@
 * See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Changes in latest release
-* Total 40 fixes in this release.
+* Total 60+ fixes in this release.
 * full trash support.
 * redesinged coreaction.
 * added drive list in corefm.

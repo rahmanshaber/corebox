@@ -3,12 +3,12 @@
 
 #include <QProcess>
 #include <QDebug>
-#include <corefm/mimeutils.h>
 
+#include <corefm/mimeutils.h>
 #include "corepad/corepad.h"
 
 
-bool moveToTrash(QString fileName)
+bool moveToTrash(QString fileName) // moves a file or folder to trash folder
 {
     if (getfilesize(fileName) >= 1073741824) {
         QMessageBox::StandardButton replyC;
@@ -53,7 +53,8 @@ bool moveToTrash(QString fileName)
     return false;
 }
 
-bool saveToRecent(QString appName, QString pathName, QString iconPath) {
+bool saveToRecent(QString appName, QString pathName, QString iconPath) // save file path and app name for recent activites
+{
     SettingsManage sm;
     if (sm.getDisableRecent() == true) {
         if (!pathName.isEmpty()) {
@@ -69,12 +70,12 @@ bool saveToRecent(QString appName, QString pathName, QString iconPath) {
     return false;
 }
 
-bool saveToRecent(QString appName, QString pathName)
+bool saveToRecent(QString appName, QString pathName) // send file to recent activies list
 {
     return saveToRecent(appName, pathName, NULL);
 }
 
-void messageEngine(QString message, QString messageType)
+void messageEngine(QString message, QString messageType) // engine show any message with type in desktop corner
 {
     QLabel *l = new QLabel(message);
     QFont f ("Arial", 14, QFont::Bold);
@@ -181,7 +182,7 @@ QIcon appsIconPath(QString appName)
     }
 }
 
-QString formatSize(qint64 num)
+QString formatSize(qint64 num) // separete size in universal size format
 {
     QString total;
     const qint64 kb = 1024;
@@ -198,7 +199,7 @@ QString formatSize(qint64 num)
     return total;
 }
 
-qint64 getfilesize(QString path)
+qint64 getfilesize(QString path) //get size of single file in int
 {
     QProcess p;
     QString commd = "du -sb --total \"" + path + "\"";
@@ -208,12 +209,12 @@ qint64 getfilesize(QString path)
     return output.split("\n").at(1).split("	").at(0).toLongLong();
 }
 
-QString getFileSize(QString path)
+QString getFileSize(QString path) //get size of single file in string
 {
     return formatSize(getfilesize(path));
 }
 
-qint64 getmultiplefilesize(QStringList paths)
+QString getMultipleFileSize(QStringList paths) // get file size of multiple files
 {
     QString pathNames;
     for (int i = 0; i < paths.count(); i++) {
@@ -225,16 +226,12 @@ qint64 getmultiplefilesize(QStringList paths)
     p.waitForFinished();
     QString output(p.readAllStandardOutput());
     QStringList l = output.split("\n");
-    return l.at(l.count() - 2).split("\t").at(0).toLongLong();
+
+    return formatSize(l.at(l.count() - 2).split("\t").at(0).toLongLong());
 }
 
-QString getMultipleFileSize(QStringList paths)
+void openAppEngine(QString path) // engine send right file to coreapps or system
 {
-    return formatSize(getmultiplefilesize(paths));
-}
-
-void openAppEngine(QString path){
-
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     QFileInfo info(path);
     if(!info.exists() && !path.isEmpty()){
@@ -274,8 +271,8 @@ void openAppEngine(QString path){
     }
 }
 
-
-QString checkIsValidDir(QString str) {
+QString checkIsValidDir(QString str) // cheack if a folder/dir is valid
+{
     if (str.isEmpty() || str.isNull()) {
         return NULL;
     } else {
@@ -291,7 +288,8 @@ QString checkIsValidDir(QString str) {
     return NULL;
 }
 
-QString checkIsValidFile(QString str) {
+QString checkIsValidFile(QString str) // cheack if a file is valid
+{
     if (str.isEmpty() || str.isNull()) {
         return NULL;
     } else {
@@ -303,13 +301,14 @@ QString checkIsValidFile(QString str) {
     return NULL;
 }
 
-QRect screensize(){
+QRect screensize() // gives the system screen size
+{
     QScreen * screen = QGuiApplication::primaryScreen();
     return screen->availableGeometry();
 }
 
-QIcon geticon(const QString &filePath) {
-
+QIcon geticon(const QString &filePath) // gives a file or folder icon from system
+{
     QIcon icon;
     QFileInfo info(filePath);
 
@@ -325,8 +324,8 @@ QIcon geticon(const QString &filePath) {
       return icon;
 }
 
-QStringList fStringList(QStringList left, QStringList right, QFont font) {
-
+QStringList fStringList(QStringList left, QStringList right, QFont font) // add two stringlist with ":"
+{
     QFontMetrics *fm = new QFontMetrics(font);
     int large = 0;
     for (int i = 0; i < left.count(); i++) {
@@ -352,8 +351,8 @@ QStringList fStringList(QStringList left, QStringList right, QFont font) {
     return left;
 }
 
-QString getMountPathByName(QString displayName){
-
+QString getMountPathByName(QString displayName) // get mount path by partition display name
+{
     if(displayName.isNull() || displayName.isEmpty()) return NULL;
 
     else {

@@ -34,15 +34,6 @@ int main(int argc, char *argv[])
     app.setApplicationName("coreaction");
     app.setWindowIcon(QIcon(":/icons/CoreAction.svg"));
 
-
-    QStringList result;
-       const auto allMounted = QStorageInfo::mountedVolumes();
-       result.reserve(allMounted.size());
-       for(auto& singleMounted : allMounted)
-       result << singleMounted.rootPath();
-       qDebug()<< result;
-
-
     coreaction a;
     a.show();
 

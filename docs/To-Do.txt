@@ -13,7 +13,6 @@ corebox
 1 - round border is no working in messageengine>>messagebox.
 1 - add display scale support
 1 - add option for using default window manager
-1 - update the app when clicked from window.(only coreboxapps)
 3 - separate process for per app.
 1 - limit the openable window.
 1 - tab text align left.

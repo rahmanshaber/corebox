@@ -415,3 +415,8 @@ void dashboard::setdisplaypage()
         right.clear();
     }
 }
+
+void dashboard::reload()
+{
+    on_batteriesList_currentIndexChanged(ui->batteriesList->currentIndex());
+}

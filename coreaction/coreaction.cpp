@@ -35,6 +35,20 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     qDebug() << "coreaction opening";
     ui->setupUi(this);
 
+    widget();
+    loadsettings();
+    widgetList();
+    tryicon();
+}
+
+coreaction::~coreaction()
+{
+    qDebug()<<"coreaction closing";
+    delete ui;
+}
+
+void coreaction::widget()  //setup coreaction widget
+{
     int x = screensize().width()* .23;
     int y = screensize().height();
 
@@ -46,16 +60,6 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint); //| Qt::ToolTip
     this->move(sw, 0);
     QTimer::singleShot(8000, this, SLOT(hide()));
-
-    loadsettings();
-    widgetList();
-    tryicon();
-}
-
-coreaction::~coreaction()
-{
-    qDebug()<<"coreaction closing";
-    delete ui;
 }
 
 void coreaction::tryicon()  //setup coreaction tryicon
@@ -137,8 +141,6 @@ void coreaction::widgetList()
 //        collectNotes();
 //    }
 
-
-
 }
 
 void coreaction::loadsettings()
@@ -147,7 +149,8 @@ void coreaction::loadsettings()
     sm.createDefaultSettings();
 }
 
-void coreaction::actionshow(){
+void coreaction::actionshow()
+{
     widgetList();
     this->show();
 }
@@ -182,8 +185,8 @@ void coreaction::batteryCheck()
     }
 }
 
-void coreaction::on_about_clicked() {
-
+void coreaction::on_about_clicked()
+{
     about *ab = new about();
     ab->show();
 }
@@ -199,7 +202,8 @@ void coreaction::showTime()
     ui->day->setText(d + "," + dt);
 }
 
-void coreaction::focusOutEvent(QFocusEvent *event){
+void coreaction::focusOutEvent(QFocusEvent *event)
+{
     Q_UNUSED(event);
     if (event->lostFocus()) {
     }
@@ -210,7 +214,8 @@ void coreaction::focusOutEvent(QFocusEvent *event){
     }
 }
 
-void coreaction::ShowWindow(QSystemTrayIcon::ActivationReason Reason){
+void coreaction::ShowWindow(QSystemTrayIcon::ActivationReason Reason)
+{
     if (Reason == QSystemTrayIcon::DoubleClick || Reason == QSystemTrayIcon::Trigger) {
         if (!this->isVisible()) {
             batteryCheck();
@@ -347,7 +352,6 @@ void coreaction::on_corepad_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
-    cBox->startWidgetClose();
     cBox->tabEngine(CorePad);
     this->hide();
 }
@@ -364,7 +368,6 @@ void coreaction::on_corepaint_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
-    cBox->startWidgetClose();
     cBox->tabEngine(CorePaint);
     this->hide();
 }
@@ -373,7 +376,6 @@ void coreaction::on_corefm_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
-    cBox->startWidgetClose();
     cBox->tabEngine(CoreFM);
     this->hide();
 }
@@ -382,6 +384,7 @@ void coreaction::on_start_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
+    cBox->tabEngine(StartView);
     this->hide();
 }
 
@@ -389,7 +392,6 @@ void coreaction::on_search_clicked()
 {
     CoreBox *cBox = new CoreBox();
     cBox->show();
-    cBox->startWidgetClose();
     cBox->tabEngine(Search);
     this->hide();
 }

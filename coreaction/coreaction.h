@@ -50,6 +50,7 @@ public:
     void focusOutEvent(QFocusEvent *event);
     void loadsettings();
 
+
 protected:
     void closeEvent(QCloseEvent *event);
 
@@ -63,6 +64,7 @@ private:
     QTimer *timer;
     InfoManager *im;
 
+    void widget();
     void tryicon();
     void batteryCheck();
     void collectNotes();

@@ -1,7 +1,7 @@
 
 version 2.1
 
-- fixed battery pointer that caused compiling error in dashboard app.
+- fixed battery pointer that caused compiling error in armv8 on dashboard app .
 - fixed button ui in corescreenshot app.
 - fixed extension crash for coreimage (File.File.File.png like files)
 - closeable tab for corepad.
@@ -54,12 +54,14 @@ version 2.1
 - mimelist save folder moved to .config/corebox.
 - fixed all the time opening start when opening other app.
 - fixed system app not showing in the recent activites.
-- trash a picture from coreimage, will also delete entry from path qstringlist
+- trash a picture from coreimage, will also delete entry from path qstringlist.
 - fixed empty trash not working in corefm.
 - removed trash widget from corefm and defult mime path from settings.
 - added show real file type in corefm and settings.
 - fixed coreaction settings and view mode settings.
-
+- now, app will update when clicked from window.(only coreboxapps).
+- fixed corefm keeps the multipal file size and count in status bar.
+- added resize icon and moved it to window button .
 
 
 

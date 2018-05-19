@@ -80,6 +80,7 @@ public:
     Battery *m_model;
     QStringList batteries;
 
+    void reload();
 private:
     Ui::dashboard *ui;
     UDisks2 *disks;

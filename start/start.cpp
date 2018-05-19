@@ -117,3 +117,10 @@ void Start::on_reloadB_clicked()
         }
     }
 }
+
+void Start::reload()
+{
+    on_reloadB_clicked();
+    on_reloadR_clicked();
+}
+

@@ -34,7 +34,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreaction/coreaction.h"
 #include "coretime/coretime.h"
 
-CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
+CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
+{
     qDebug() << "CoreBox opening";
     ui->setupUi(this);
 
@@ -47,7 +48,7 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
     ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
 
     QSizeGrip *sizeGrip = new QSizeGrip(this);
-//    sizeGrip->setStyleSheet("QWidget{background-color: #EFEFEF ; background-image: url(:/icons/anewcorebox.svg); }");
+    sizeGrip->setStyleSheet("QWidget{background-color: #EFEFEF ; width: 16px;height: 16px; background-image: url(:/icons/expand_b.svg); background-repeat: no-repeat ;background-position: center center ;}");
     ui->resize->addWidget(sizeGrip);
 
     if (sm.getBoxIsMaximize()) {
@@ -60,7 +61,6 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox) {
 
     BookmarkManage bk;
     bk.checkBook();
-    if (ui->windows->count() == 0) on_start_clicked();
 }
 
 CoreBox::~CoreBox() {
@@ -70,7 +70,8 @@ CoreBox::~CoreBox() {
 
 //===========================WindowBar========Start===============================================================
 
-void CoreBox::tabEngine(AppsName i, QString arg) {
+void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
+{
     int n = ui->windows->count();
 
     switch (i) {
@@ -214,6 +215,7 @@ void CoreBox::tabEngine(AppsName i, QString arg) {
     case Corebox: {
         CoreBox *cBox = new CoreBox();
         cBox->show();
+        cBox->tabEngine(StartView);
         break;
     }
     case CorePDF: {
@@ -319,8 +321,8 @@ void CoreBox::on_windows_tabCloseRequested(int index)
     }
 }
 
-int CoreBox::filterEngine(QString name){
-
+int CoreBox::filterEngine(QString name) // engine for find if a app is opened
+{
     for(int i= 0; i < ui->windows->count(); ++i) {
         if(ui->windows->tabText(i) == name) {
             return i ;
@@ -329,11 +331,27 @@ int CoreBox::filterEngine(QString name){
     return 404;
 }
 
-void CoreBox::on_windows_currentChanged(int index)
+void CoreBox::on_windows_currentChanged(int index) // set window titel related to current selected app
 {
     QString title = ui->windows->tabText(index);
     this->setWindowTitle(title);
     this->setWindowIcon(appsIconPath(title));
+}
+
+void CoreBox::on_windows_tabBarClicked(int index) // reload the apps if related app is clicked
+{
+    QString appName = ui->windows->tabBar()->tabText(index);
+
+    if (appName == "Bookmarks") {
+        bookmarks *cbook = ui->windows->findChild<bookmarks*>("bookmarks");
+        cbook->reload();
+    } else if (appName == "DashBoard") {
+        dashboard *cdash = ui->windows->findChild<dashboard*>("dashboard");
+        cdash->reload();
+    } else if (appName == "Start") {
+        Start *cstart = ui->windows->findChild<Start*>("Start");
+        cstart->reload();
+    }
 }
 
 void CoreBox::closeCurrentTab()
@@ -441,14 +459,10 @@ bool CoreBox::eventFilter(QObject *obj, QEvent *evt)
     return QMainWindow::eventFilter(obj,evt);
 }
 
-void CoreBox::startWidgetClose()
-{
-    ui->windows->removeTab(0);
-}
-
 //===========================WindowBar========End=================================================================
 
-void CoreBox::closeEvent(QCloseEvent *event) {
+void CoreBox::closeEvent(QCloseEvent *event)
+{
     event->ignore();
     if (ui->windows->count() > 1) {
         for (int i = ui->windows->count() - 1; i >= 1; --i) {

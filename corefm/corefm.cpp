@@ -461,7 +461,7 @@ void corefm::listSelectionChanged(const QItemSelection selected, const QItemSele
        selcitempath = curIndex.absoluteFilePath();
     }else {
        ui->name->setText(ui->pathEdit->currentText());
-       ui->size->setText(formatSize(getmultiplefilesize(li)));
+       ui->size->setText(getMultipleFileSize(li));
        selcitempath = ui->pathEdit->itemText(0);
     }
 
@@ -2440,6 +2440,9 @@ void corefm::pressed()
 {
     ui->viewlist->setCurrentIndex(QModelIndex());
     ui->viewtree->setCurrentIndex(QModelIndex());
+
+    ui->name->setText("");
+    ui->size->setText("");
 }
 
 void corefm::on_actionRun_triggered()

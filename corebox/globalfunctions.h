@@ -54,7 +54,6 @@ enum AppsName {
  QString getMultipleFileSize(QStringList paths);
 
  qint64 getfilesize(QString path);
- qint64 getmultiplefilesize(QStringList paths);
 
  QString checkIsValidDir(QString str);
  QString checkIsValidFile(QString str);

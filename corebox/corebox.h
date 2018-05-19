@@ -45,7 +45,6 @@ public:
     void tabEngine(AppsName i, QString arg = 0);
     void closeCurrentTab();
     bool eventFilter(QObject *obj, QEvent *evt);
-    void startWidgetClose();
 
 protected:
     void closeEvent(QCloseEvent*event);
@@ -57,6 +56,7 @@ protected:
 private slots:
     void on_windows_currentChanged(int index);
     void on_windows_tabCloseRequested(int index);
+    void on_windows_tabBarClicked(int index);
     void on_maximizeButton_clicked();
     void on_restoreButton_clicked();
     void on_minimizeButton_clicked();

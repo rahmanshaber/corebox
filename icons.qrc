@@ -148,5 +148,6 @@
         <file>icons/drive_media_w.svg</file>
         <file>icons/drive_usb_b.svg</file>
         <file>icons/drive_usb_w.svg</file>
+        <file>icons/expand_b.svg</file>
     </qresource>
 </RCC>

@@ -41,6 +41,7 @@ public:
     ~Start();
     void loadsettings();
 
+    void reload();
 private slots:
     void on_cleaRecent_clicked();
     void on_recents_itemDoubleClicked(QTableWidgetItem *item);
