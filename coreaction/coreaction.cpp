@@ -80,9 +80,9 @@ void coreaction::tryicon()  //setup coreaction tryicon
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(ShowWindow(QSystemTrayIcon::ActivationReason)));
 }
 
-void coreaction::widgetList(){
-
-    ui->timeW->setVisible(0);
+void coreaction::widgetList()
+{
+//    ui->timeW->hide();
     ui->batteryW->setVisible(0);
     ui->sysW->setVisible(0);
     ui->networkW->setVisible(0);
@@ -90,49 +90,54 @@ void coreaction::widgetList(){
     ui->calculatorW->setVisible(0);
     ui->notesW->setVisible(0);
 
-    if(sm.getShowTime() == 1){
-        ui->timeW->setVisible(1);
-        QTimer *timer = new QTimer(this);
-        showTime();
-        connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
-        timer->start(1000);
-    }
 
-    if(sm.getShowBattery() == 1){
-        ui->batteryW->setVisible(1);
-        QTimer *timer = new QTimer(this);
-        batteryCheck();
-        connect(timer, SIGNAL(timeout()), this, SLOT(batteryCheck()));
-        timer->start(5000);
-    }
+    ui->notesW->setVisible(1);
+//    ui->timeW->show();
+//    if(sm.getShowTime() == 1){
+//        ui->timeW->setVisible(1);
+//        QTimer *timer = new QTimer(this);
+//        showTime();
+//        connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
+//        timer->start(1000);
+//    }
 
-    if(sm.getShowSystem() == 1){
-        ui->sysW->setVisible(1);
-        sysWsetup();
-        connect(timer, &QTimer::timeout, this, &coreaction::sysWsetup);
-        timer->start(1 * 1000);
-    }
+//    if(sm.getShowBattery() == 1){
+//        ui->batteryW->setVisible(1);
+//        QTimer *timer = new QTimer(this);
+//        batteryCheck();
+//        connect(timer, SIGNAL(timeout()), this, SLOT(batteryCheck()));
+//        timer->start(5000);
+//    }
 
-    if(sm.getShowNetwork() == 1){
-        ui->networkW->setVisible(1);
-        networkWsetup();
-        connect(timer, &QTimer::timeout, this, &coreaction::networkWsetup);
-        timer->start(1 * 1000);
-    }
+//    if(sm.getShowSystem() == 1){
+//        ui->sysW->setVisible(1);
+//        sysWsetup();
+//        connect(timer, &QTimer::timeout, this, &coreaction::sysWsetup);
+//        timer->start(1 * 1000);
+//    }
 
-    if(sm.getShowCalander() == 1){
-        ui->calandarW->setVisible(1);
-    }
+//    if(sm.getShowNetwork() == 1){
+//        ui->networkW->setVisible(1);
+//        networkWsetup();
+//        connect(timer, &QTimer::timeout, this, &coreaction::networkWsetup);
+//        timer->start(1 * 1000);
+//    }
 
-    if(sm.getShowCalculator() == 1){
-        ui->calculatorW->setVisible(true);
-        ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));
-    }
+//    if(sm.getShowCalander() == 1){
+//        ui->calandarW->setVisible(1);
+//    }
 
-    if(sm.getShowNote() == 1){
-        ui->notesW->setVisible(1);
-        collectNotes();
-    }
+//    if(sm.getShowCalculator() == 1){
+//        ui->calculatorW->setVisible(true);
+//        ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));
+//    }
+
+//    if(sm.getShowNote() == 1){
+//        ui->notesW->setVisible(1);
+//        collectNotes();
+//    }
+
+
 
 }
 

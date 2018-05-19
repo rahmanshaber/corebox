@@ -120,39 +120,39 @@ void corepad::quiting() {
 }
 
 void corepad::closeEvent(QCloseEvent *event) {
-//    event->ignore();
-//    for (int i = 0; i < ui->notes->count(); i++) {
-//        qDebug() << i << ui->notes->count();
-//        if (ui->notes->tabText(i).contains("*")) {
-//            qDebug() << i;
-//            QMessageBox::StandardButton reply;
-//            reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
-//            if (reply == QMessageBox::Yes) {
-//                saveToRecent("CorePad", workFilePath);
-//                ui->notes->removeTab(i);
-//            }
-//            else if (reply == QMessageBox::No){
-//                //return;
-//            }
-//        } else {
-//            saveToRecent("CorePad", workFilePath);
-//            ui->notes->removeTab(i);
-//            qDebug() << "else" << i << ui->notes->count();
-//        }
+    event->ignore();
+    for (int i = 0; i < ui->notes->count(); i++) {
+        qDebug() << i << ui->notes->count();
+        if (ui->notes->tabText(i).contains("*")) {
+            qDebug() << i;
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
+            if (reply == QMessageBox::Yes) {
+                saveToRecent("CorePad", workFilePath);
+                ui->notes->removeTab(i);
+            }
+            else if (reply == QMessageBox::No){
+                event->ignore();
+            }
+        } else {
+            saveToRecent("CorePad", workFilePath);
+            ui->notes->removeTab(i);
+            qDebug() << "else" << i << ui->notes->count();
+        }
 //        on_notes_tabCloseRequested(i);
-//    }
+    }
 
 
-//    if (ui->notes->count() == 0) {
-//        qDebug() << "count" << ui->notes->count();
-//        event->accept();
-//    }
-//    else event->ignore();
+    if (ui->notes->count() == 0) {
+        qDebug() << "count" << ui->notes->count();
+        event->accept();
+    }
+    else event->ignore();
 
-    if (closeAllTab()) {
-        event->ignore();
-        saveToRecent("CorePad", workFilePath);
-    } else return event->ignore();
+//    if (closeAllTab()) {
+//        event->ignore();
+//        saveToRecent("CorePad", workFilePath);
+//    } else return event->accept();
 }
 
 bool corepad::closeAllTab() {

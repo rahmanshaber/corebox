@@ -8,6 +8,7 @@ FIX MUST BE SIMPLE.NOT COMPILCATED.
 
 
 corebox
+0 - closing the corebox needs to inform the app.
 1 - need two theme (dark and light)
 1 - round border is no working in messageengine>>messagebox.
 1 - add display scale support
