@@ -64,6 +64,7 @@ version 2.1
 - added resize icon and moved it to window button .
 - added new Coreapp ,CorePDF with it's library qpdflib.
 - redesigned corebox folder structure.
+- removed playercontrols.h/cpp & playlistmodel.h/.cpp from corepalyer
 
 
 
