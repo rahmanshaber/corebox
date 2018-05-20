@@ -72,6 +72,7 @@ setting
 1 - add option to backup corbox config folder as a zip and restore the settings.
 
 start
+0 - speeddile dobule click dose not work
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 
@@ -86,6 +87,11 @@ coreplayer
 0 - after stop clicked player widget turs white
 0 - stop clicked >> seekbar position not changing.
 0 - after stop ,play button dose not work.
+
+corepdf
+0 - fix the closing issue in corebox
+0 - fix the stylesheet.
+0 - fix the savetorecent not working.
 
 coreshot
 3 - add active window option.

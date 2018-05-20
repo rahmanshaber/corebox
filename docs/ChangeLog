@@ -62,6 +62,8 @@ version 2.1
 - now, app will update when clicked from window.(only coreboxapps).
 - fixed corefm keeps the multipal file size and count in status bar.
 - added resize icon and moved it to window button .
+- added new Coreapp ,CorePDF with it's library qpdflib.
+- redesigned corebox folder structure.
 
 
 
