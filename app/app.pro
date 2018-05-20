@@ -120,8 +120,8 @@ HEADERS += \
     corepaint/imagearea.h \
     corepaint/undocommand.h \
     coreplayer/coreplayer.h \
-    coreplayer/playercontrols.h \
-    coreplayer/playlistmodel.h \
+#    coreplayer/playercontrols.h \
+#    coreplayer/playlistmodel.h \
     corescreenshot/mainwindow.h \
     corescreenshot/modefullscreen.h \
     corescreenshot/modeselectarea.h \
@@ -205,8 +205,8 @@ SOURCES += \
     corepaint/imagearea.cpp \
     corepaint/undocommand.cpp \
     coreplayer/coreplayer.cpp \
-    coreplayer/playercontrols.cpp \
-    coreplayer/playlistmodel.cpp \
+#    coreplayer/playercontrols.cpp \
+#    coreplayer/playlistmodel.cpp \
     corescreenshot/mainwindow.cpp \
     corescreenshot/modefullscreen.cpp \
     corescreenshot/modeselectarea.cpp \
