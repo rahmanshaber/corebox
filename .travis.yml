@@ -9,8 +9,9 @@ before_install:
 
 install:
   - sudo apt-get -y install qt59base
-  - sudo apt-get -y -qq install qt59imageformats qt59svg qt59charts-no-lgpl qt59tools libqt5webenginewidgets5 libqt5webchannel5
-  - sudo apt-get -y -qq install qt59multimedia libmagic-dev libpulse-dev libqt5svg5 qtwebengine5 libqt5webenginecore5
+  - sudo apt-get -y -qq install qt59imageformats qt59svg qt59charts-no-lgpl qt59tools
+  - sudo apt-get -y -qq install qt59multimedia libmagic-dev libpulse-dev libqt5svg5
+  - sudo apt-get -y -qq install qtwebengine5-dev libqt5webchannel5-dev libqt5webenginewidgets5 libqt5webenginecore5 
   - source /opt/qt*/bin/qt*-env.sh
 
 script:
