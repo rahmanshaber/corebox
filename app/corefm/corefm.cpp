@@ -418,7 +418,7 @@ void corefm::dirLoaded()
 
 
     ui->totalitem->setText("Total : " + QString("%1 items").arg(items.count()));
-    ui->selecteditem->setText("Selected : 0 items");
+    ui->selecteditem->clear();
 
     if(items.count()==0){messageEngine("Folder is empty", "Info");}
     if(ui->showthumb->isChecked()) QtConcurrent::run(modelList,&myModel::loadThumbs,items);

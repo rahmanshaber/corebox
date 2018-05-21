@@ -154,7 +154,7 @@ color: #ffffff;
       <enum>QFrame::NoFrame</enum>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -169,8 +169,8 @@ color: #ffffff;
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-397</y>
-        <width>451</width>
+        <y>0</y>
+        <width>463</width>
         <height>1028</height>
        </rect>
       </property>

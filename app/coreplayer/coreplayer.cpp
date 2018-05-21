@@ -64,7 +64,7 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
     connect(ui->seekBar,SIGNAL(sliderMoved(int)),this,SLOT(seek(int)));
 
     if (!isPlayerAvailable()) {
-        messageEngine(tr("The QMediaPlayer object does not have a valid service.\nPlease check the media service plugins are installed."),"Warning");
+        messageEngine(tr("The QMediaPlayer object does not have a valid service\nPlease check the media service plugins are installed."),"Warning");
      }
 
     ui->numberOfFiles->setVisible(0);
@@ -344,14 +344,11 @@ void coreplayer::setState(QMediaPlayer::State state)
         switch (state) {
         case QMediaPlayer::StoppedState:
             ui->play->setChecked(0);
-            ui->stop->setChecked(1);
             break;
         case QMediaPlayer::PlayingState:
-            ui->play->setChecked(1);
             ui->stop->setChecked(0);
             break;
         case QMediaPlayer::PausedState:
-            ui->play->setChecked(0);
             ui->stop->setChecked(0);
             break;
         }
@@ -362,11 +359,13 @@ void coreplayer::on_play_clicked(bool checked)
 {
     if (checked ){
         setState(QMediaPlayer::PlayingState);
-        player->stop();
-        play(ui->medialist->currentIndex().row());
+        player->play();
+        if(ui->medialist->currentIndex().row() != -1){play(ui->medialist->currentIndex().row());}
+        else{play(0);}
+        if(ui->shortcut->isVisible()){ui->shortcut->setVisible(false);}
         messageEngine("Playing", "Info");
     }
-    else if (!checked){
+    else{
         setState(QMediaPlayer::PausedState);
         player->pause();
         messageEngine("Paused", "Info");
@@ -389,19 +388,16 @@ void coreplayer::on_volume_valueChanged(int value)
    player->setVolume(value);
    QString vol = QString::number(value);
    ui->volume->setValue(value);
-   messageEngine(vol, "Info");
 }
 
 void coreplayer::on_stop_clicked()
 {
-    ui->stop->setEnabled(false);
     player->stop();
     ui->play->setChecked(false);
     player->setPosition(0);
     player->setMedia(NULL);
     ui->duration->setText("00:00 / 00:00");
     ui->workingOn->setText("");
-    messageEngine("Stop", "Info");
 }
 
 void coreplayer::on_next_clicked()

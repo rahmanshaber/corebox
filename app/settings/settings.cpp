@@ -377,8 +377,8 @@ void settings::on_ok_clicked()
     sm.setSHowCalculator(ui->isCalculator->isChecked());
     sm.setSHowNote(ui->isNotes->isChecked());
 
-    //info the user
-    messageEngine("Settings Applied", "Info");
+    //inform the user
+    messageEngine("Settings Applied\nCoreBox needs to restart", "Info");
     QIcon::setThemeName(sm.getThemeName());
 }
 

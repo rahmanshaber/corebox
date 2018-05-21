@@ -1,5 +1,5 @@
 
-FIX MUST BE SIMPLE.NOT COMPILCATED.
+FIX MUST BE SIMPLE.
 
 0-bug/fix
 1-features
@@ -82,11 +82,8 @@ coreimage
 
 coreplayer
 1 - video thumbnails of play-list.
-1 - hide the navigation bar when playing.
 1 - move to qtAV engine
-0 - after stop clicked player widget turs white
-0 - stop clicked >> seekbar position not changing.
-0 - after stop ,play button dose not work.
+0 - after stop clicked player widget turns white color.
 
 corepdf
 0 - fix the closing issue in corebox

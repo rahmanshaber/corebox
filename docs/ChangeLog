@@ -65,7 +65,9 @@ version 2.1
 - added new Coreapp ,CorePDF with it's library qpdflib.
 - redesigned corebox folder structure.
 - removed playercontrols.h/cpp & playlistmodel.h/.cpp from corepalyer
-
+- fixed coreaction widgets not showing up.
+- fixed after stop ,play button dose not work in coreplayer.
+- when playing the navigation bar will be hidden in coreplayer.
 
 
 version 2,Released date Monday, March 26, 2018
