@@ -38,7 +38,8 @@ corepad::~corepad()
     delete ui;
 }
 
-bool corepad::initializeNewTab(QString filePath) {
+bool corepad::initializeNewTab(QString filePath)
+{
     if (ui->notes->count() < 10) {
         isUpdated = false;
         isSaved = false;
@@ -72,8 +73,9 @@ bool corepad::initializeNewTab(QString filePath) {
         text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), ui->fontSize->currentText().toInt()));
 
         ui->notes->insertTab(index, text, fileName);
-
         ui->notes->setCurrentIndex(index);
+
+        opened = true;
         connect(text, SIGNAL(copyAvailable(bool)), this, SLOT(on_text_copyAvailable(bool)));
         connect(text, SIGNAL(undoAvailable(bool)), this, SLOT(on_text_undoAvailable(bool)));
         connect(text, SIGNAL(redoAvailable(bool)), this, SLOT(on_text_redoAvailable(bool)));
@@ -198,9 +200,10 @@ void corepad::on_text_textChanged()
 {
     if (text->toPlainText().count() > 0) {
         isUpdated = true;
-        if (!ui->notes->tabText(ui->notes->currentIndex()).contains("*")) {
+        if (!ui->notes->tabText(ui->notes->currentIndex()).startsWith("*") && opened) {
            ui->notes->setTabText(ui->notes->currentIndex(), "*" + ui->notes->tabText(ui->notes->currentIndex()));
         }
+        opened = false;
     }
 }
 

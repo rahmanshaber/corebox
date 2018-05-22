@@ -573,42 +573,6 @@ padding: 50px 5px 20px 20px;
                </property>
               </spacer>
              </item>
-             <item>
-              <widget class="QPushButton" name="reloadB">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>14</pointsize>
-                </font>
-               </property>
-               <property name="contextMenuPolicy">
-                <enum>Qt::NoContextMenu</enum>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{
-border-radius: 2px;
-margin: 40px 0px 0px 0px;
-padding: 3px 3px 3px 3px;
-}
-
-QPushButton:pressed{
-background-color: #303942; 
-}
-
-QPushButton:hover {
-background-color: #303942;
-}</string>
-               </property>
-               <property name="text">
-                <string>Reload List</string>
-               </property>
-              </widget>
-             </item>
             </layout>
            </widget>
           </item>
@@ -839,81 +803,6 @@ padding: 50px 5px 20px 20px;
                 </size>
                </property>
               </spacer>
-             </item>
-             <item>
-              <widget class="QPushButton" name="reloadR">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>14</pointsize>
-                </font>
-               </property>
-               <property name="contextMenuPolicy">
-                <enum>Qt::NoContextMenu</enum>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{
-border-radius: 2px;
-margin: 40px 0px 0px 0px;
-padding: 3px 3px 3px 3px;
-}
-
-QPushButton:pressed{
-background-color: #303942; 
-}
-
-QPushButton:hover {
-background-color: #303942;
-}</string>
-               </property>
-               <property name="text">
-                <string>Reload List</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="cleaRecent">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>14</pointsize>
-                </font>
-               </property>
-               <property name="contextMenuPolicy">
-                <enum>Qt::NoContextMenu</enum>
-               </property>
-               <property name="autoFillBackground">
-                <bool>false</bool>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{
-border-radius: 2px;
-margin: 40px 0px 0px 0px;
-padding: 3px 3px 3px 3px;
-}
-
-QPushButton:pressed{
-background-color: #303942; 
-}
-
-QPushButton:hover {
-background-color: #303942;
-}</string>
-               </property>
-               <property name="text">
-                <string>Clear List</string>
-               </property>
-              </widget>
              </item>
             </layout>
            </widget>

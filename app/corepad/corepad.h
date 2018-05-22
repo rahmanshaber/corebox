@@ -91,6 +91,7 @@ private:
     Ui::corepad *ui;
 
     bool closeAllTab();
+    bool opened;
     bool isSaved;
     bool isUpdated;
     QFile *workingFile;

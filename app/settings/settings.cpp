@@ -336,6 +336,7 @@ void settings::on_ok_clicked()
     sm.setBoxIsMaximize(ui->isMaximized->isChecked());
     sm.setDisableRecent(ui->isRecentDisable->isChecked());
     sm.setThemeName(ui->cmbIconTheme->currentText());
+    if(ui->isRecentDisable->isChecked() == false){sm.cSetting->remove("Recent");};
 
     //corefm
     MimeUtils *mimeUtils = new MimeUtils(this);

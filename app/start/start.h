@@ -40,15 +40,11 @@ public:
     explicit Start(QWidget *parent = 0);
     ~Start();
     void loadsettings();
-
     void reload();
-private slots:
-    void on_cleaRecent_clicked();
-    void on_recents_itemDoubleClicked(QTableWidgetItem *item);
-    void on_reloadR_clicked();
-    void on_reloadB_clicked();
-    void on_appCollect_itemDoubleClicked(QListWidgetItem *item);
 
+private slots:
+    void on_recents_itemDoubleClicked(QTableWidgetItem *item);
+    void on_appCollect_itemDoubleClicked(QListWidgetItem *item);
     void resizeEvent(QResizeEvent *event);
 
 private:

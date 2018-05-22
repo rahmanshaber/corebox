@@ -322,11 +322,11 @@ void CoreBox::on_windows_tabCloseRequested(int index)
             ui->windows->removeTab(index);
         }
     } else if (appName == "CorePDF") {
-//        corepdf *cpdf = ui->windows->findChild<corepdf*>("corepdf");
-//        if (cpdf->close()){
-//            cpdf->deleteLater();
+        corepdf *cpdf = ui->windows->findChild<corepdf*>("corepdf");
+        if (cpdf->close()){
+            cpdf->deleteLater();
             ui->windows->removeTab(index);
-//        }
+        }
     }
 
     if(ui->windows->count() == 0){

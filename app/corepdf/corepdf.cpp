@@ -19,6 +19,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFile>
 #include <QVBoxLayout>
 #include <QDebug>
+#include <QPushButton>
 
 #include "corebox/globalfunctions.h"
 
@@ -26,7 +27,8 @@ corepdf::corepdf(QWidget *parent):QWidget(parent)
 {
 //    openPdfFile("/home/shaber/Desktop/p.pdf");
 
-     setStyleSheet("QWidget{background-color: #3E3E3E;border: 1px #2A2A2A;}");
+    setObjectName("corepdf");
+    setStyleSheet("QWidget{background-color: #3E3E3E;border: 1px #2A2A2A;}");
 }
 
 corepdf::~corepdf()
@@ -34,9 +36,10 @@ corepdf::~corepdf()
     delete PdfWidget;
 }
 
-void corepdf::eclose(){
+void corepdf::eclose()
+{
     QPdfWidget *cpdf = this->findChild<QPdfWidget*>("QPdfWidget");
-    cpdf->close();
+    cpdf->closeDocument();
 }
 
 void corepdf::openPdfFile(const QString path)
@@ -55,15 +58,17 @@ void corepdf::openPdfFile(const QString path)
         }
     });
 
+    cShot     = new QPushButton("close");
+    connect(cShot,SIGNAL(clicked()),this,SLOT(eclose()));
     mainLayout->setContentsMargins(0,0,0,0);
     mainLayout->addWidget(PdfWidget);
+    mainLayout->addWidget(cShot);
     setLayout(mainLayout);
 }
 
 void corepdf::closeEvent(QCloseEvent *event)
 {
     event->ignore();
-    qDebug()<< workFilePath;
     saveToRecent("CorePDF", workFilePath);
     event->accept();
 }

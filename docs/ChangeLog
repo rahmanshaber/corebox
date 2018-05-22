@@ -68,6 +68,8 @@ version 2.1
 - fixed coreaction widgets not showing up.
 - fixed after stop ,play button dose not work in coreplayer.
 - when playing the navigation bar will be hidden in coreplayer.
+- removed reload & clear button from start.
+- fixed corepdf closing and savetorecent problem.
 
 
 version 2,Released date Monday, March 26, 2018
