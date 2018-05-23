@@ -319,7 +319,10 @@ void coreplayer::on_open_clicked()
     dialog.setMimeTypeFilters(mimes);
     dialog.selectMimeTypeFilter("audio/mp3");
     if (dialog.exec() == QDialog::Accepted) { //if dialog pressed accept means open then do this.
-        openPlayer(QFileInfo(dialog.selectedFiles().first()).path());
+//        openPlayer(QFileInfo(dialog.selectedFiles().first()).path());
+        filepath = dialog.selectedFiles().first();
+        folderpath = QFileInfo(dialog.selectedFiles().first()).path();
+        openPlayer(filepath);
         messageEngine("Files Collected", "Info");
         for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
             b->setEnabled(true);
@@ -402,14 +405,18 @@ void coreplayer::on_stop_clicked()
 
 void coreplayer::on_next_clicked()
 {
-    player->stop();
-    play(ui->medialist->currentIndex().row() + 1);
+    on_stop_clicked();
+    if(ui->medialist->model()->rowCount() != ui->medialist->currentIndex().row()){
+        play(ui->medialist->currentIndex().row() + 1);
+    }
 }
 
 void coreplayer::on_previous_clicked()
 {
-    player->stop();
-    play(ui->medialist->currentIndex().row() - 1);
+    on_stop_clicked();
+    if(ui->medialist->currentIndex().row() > -1){
+        play(ui->medialist->currentIndex().row() - 1);
+    }
 }
 
 void coreplayer::setCurrentIndex(int currentIndex)
@@ -460,7 +467,7 @@ void coreplayer::play(int index)
 
 void coreplayer::on_medialist_doubleClicked(const QModelIndex &index)
 {
-    player->stop();
+    on_stop_clicked();
     play(index.row());
     ui->play->setChecked(true);
     messageEngine("Playing", "Info");

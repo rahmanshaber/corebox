@@ -66,7 +66,7 @@ private:
 
     void widget();
     void tryicon();
-    void batteryCheck();
+
     void collectNotes();
 
     void sysWsetup();
@@ -108,6 +108,7 @@ private slots:
     void on_search_clicked();
 
     void actionshow();
+    void batteryCheck();
 };
 
 #endif // COREACTION_H

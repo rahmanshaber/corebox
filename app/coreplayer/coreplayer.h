@@ -91,6 +91,9 @@ private:
     qint64 duration;
     QStandardItemModel *mModel;
 
+    QString folderpath;
+    QString filepath;
+
 private slots:
     void seekLeft();
     void seekRight();

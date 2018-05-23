@@ -27,7 +27,7 @@ corepdf::corepdf(QWidget *parent):QWidget(parent)
 {
 //    openPdfFile("/home/shaber/Desktop/p.pdf");
 
-    setObjectName("corepdf");
+//    setObjectName("corepdf");
     setStyleSheet("QWidget{background-color: #3E3E3E;border: 1px #2A2A2A;}");
 }
 
@@ -39,7 +39,11 @@ corepdf::~corepdf()
 void corepdf::eclose()
 {
     QPdfWidget *cpdf = this->findChild<QPdfWidget*>("QPdfWidget");
-    cpdf->closeDocument();
+        if (cpdf != nullptr) {
+            cpdf->closeDocument();
+        } else {
+            qWarning() << "Not found!";
+        }
 }
 
 void corepdf::openPdfFile(const QString path)
@@ -47,6 +51,7 @@ void corepdf::openPdfFile(const QString path)
     workFilePath = path;
     QVBoxLayout * mainLayout = new QVBoxLayout();
     PdfWidget = new QPdfWidget();
+    setObjectName("QPdfWidget");
 
     connect(PdfWidget, &QPdfWidget::initialized, [this,path]() {
         PdfWidget->setToolbarVisible(false);

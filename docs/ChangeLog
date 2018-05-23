@@ -70,6 +70,7 @@ version 2.1
 - when playing the navigation bar will be hidden in coreplayer.
 - removed reload & clear button from start.
 - fixed corepdf closing and savetorecent problem.
+- fixed some ui elements in coreplayer.
 
 
 version 2,Released date Monday, March 26, 2018

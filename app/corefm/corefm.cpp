@@ -150,7 +150,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     blockDevicesChanged();
 
     watcher = new QFileSystemWatcher(this);
-    connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(reloadList()));
+    connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(on_actionRefresh_triggered()));
 
     //left mouse click at viewlist
     connect(ui->viewlist, &ClickOutListview::clickedOut, this, &corefm::pressed);
@@ -162,7 +162,8 @@ corefm::~corefm()
     delete ui;
 }
 
-void corefm::shotcuts(){
+void corefm::shotcuts()
+{
     QShortcut* shortcut;
 
     shortcut = new QShortcut(QKeySequence(Qt::Key_Delete), this);
@@ -318,7 +319,8 @@ void corefm::loadSettings()
 /**
  * @brief Writes settings into config file
  */
-void corefm::writeSettings() {
+void corefm::writeSettings()
+{
     sm.setZoomValue(zoom);
     sm.setZoomTreeValue(zoomTree);
     sm.setZoomListValue(zoomList);
@@ -535,7 +537,8 @@ void corefm::tabChanged(int index)
  * @brief Doubleclick on icon/launcher
  * @param current
  */
-void corefm::listDoubleClicked(QModelIndex current) {
+void corefm::listDoubleClicked(QModelIndex current)
+{
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
     if (mods == Qt::ControlModifier || mods == Qt::ShiftModifier) {
       return;
@@ -552,7 +555,8 @@ void corefm::listDoubleClicked(QModelIndex current) {
  * @brief Reaction for change of path edit (location edit)
  * @param path
  */
-void corefm::pathEditChanged(QString path) {
+void corefm::pathEditChanged(QString path)
+{
     QString info = path;
     if (!QFileInfo(path).exists()) return;
     info.replace("~",QDir::homePath());
@@ -562,7 +566,8 @@ void corefm::pathEditChanged(QString path) {
 /**
  * @brief Reaction for change of clippboard content
  */
-void corefm::clipboardChanged(){
+void corefm::clipboardChanged()
+{
     if (QApplication::clipboard()->mimeData()->hasUrls()) {
       ui->actionPaste->setEnabled(1);
       ui->paste->setVisible(1);

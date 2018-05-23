@@ -8,6 +8,8 @@ FIX MUST BE SIMPLE.
 
 
 corebox
+0 - fix the start name in find widget in tabcloserequest.
+0 - dobule click not working.
 0 - closing the corebox needs to inform the app.
 1 - need two theme (dark and light)
 1 - round border is no working in messageengine>>messagebox.
@@ -18,6 +20,7 @@ corebox
 1 - tab text align left.
 
 globalfunction
+0 - first letter to capital letter in fStringList function.
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
@@ -40,6 +43,7 @@ Search
 2 - if path is given ,find is not working.but locate is working.
 
 corefm
+0 - vlc is not opening with file >> mimelist.
 0 - pathedit is always in focus, even outside clicked.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,both crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
@@ -77,18 +81,18 @@ start
 1 - option to sidebar or tab button(+).
 
 coreimage
-0 - set black pixmap on app start.
+0 - move cImage lable to code.
 1 - ctrl + wheel = zoom shortcut.
 
 coreplayer
+0 - fix the path problem.
 1 - video thumbnails of play-list.
 1 - move to qtAV engine
 0 - after stop clicked player widget turns white color.
 
 corepdf
-0 - fix the closing issue in corebox
 0 - fix the stylesheet.
-0 - fix the savetorecent not working.
+0 - close according to qpdfwidget.
 
 coreshot
 3 - add active window option.

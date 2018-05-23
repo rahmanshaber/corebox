@@ -428,13 +428,12 @@ border: 1px rgb(67, 67, 67);
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
+background-color:#323232; 
 }
 
 QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
+background-color: #323232 ;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -474,13 +473,12 @@ background-color: rgb(48, 140, 198);
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
+background-color:#323232; 
 }
 
 QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
+background-color: #323232 ;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -516,13 +514,12 @@ background-color: rgb(48, 140, 198);
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
+background-color:#323232; 
 }
 
 QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
+background-color: #323232 ;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -576,8 +573,8 @@ background-color: #323232 ;
         </property>
         <property name="iconSize">
          <size>
-          <width>26</width>
-          <height>26</height>
+          <width>30</width>
+          <height>30</height>
          </size>
         </property>
         <property name="checkable">
@@ -604,13 +601,12 @@ background-color: #323232 ;
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
+background-color:#323232; 
 }
 
 QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
+background-color: #323232 ;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -743,13 +739,12 @@ margin-bottom: -4px;
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
+background-color:#323232; 
 }
 
 QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
+background-color: #323232 ;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -760,8 +755,8 @@ background-color: rgb(48, 140, 198);
         </property>
         <property name="iconSize">
          <size>
-          <width>26</width>
-          <height>26</height>
+          <width>30</width>
+          <height>30</height>
          </size>
         </property>
         <property name="checkable">
