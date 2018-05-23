@@ -155,8 +155,8 @@ bool coreimage::loadFile(const QString &fileName)
         reader.setAutoTransform(true);
         const QImage newImage = reader.read();
         if (newImage.isNull()) {
-            messageEngine(tr("Cannot load %1: %2")
-                          .arg(QDir::toNativeSeparators(fileName), reader.errorString()),"Warning");
+            messageEngine(tr("Cannot load \n%1 \n%2")
+                          .arg(QFileInfo(fileName).baseName(), reader.errorString()),"Warning");
             return false;
         }
         setImage(newImage);
