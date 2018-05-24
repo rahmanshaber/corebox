@@ -14,11 +14,11 @@
 * See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Changes in latest release
-* Total 60+ fixes in this release.
+* Total 80 fixes in this release.
 * full trash support.
 * redesinged coreaction.
 * added drive list in corefm.
-* changed properties ui in corefm and more in [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
+* added a pdf viewer and more in [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Build
 * To build see the buidinfo.txt in doc folder [here](https://github.com/rahmanshaber/corebox/blob/master/docs/buildinfo.txt "Title") 
@@ -29,6 +29,7 @@
 * qt5-svg5
 * qt5-multimedia
 * qt5-x11extras
+* qt5-webengine
 * file
 * libmagic-dev/libmagic-mgc/libmagic1
 * engrampa(for Archive support)
