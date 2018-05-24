@@ -1,5 +1,5 @@
 
-version 2.1
+Version 2.1
 
 - fixed battery pointer that caused compiling error in armv8 on dashboard app .
 - fixed button ui in corescreenshot app.
@@ -20,7 +20,7 @@ version 2.1
 - fixed corepad's tab related problems.
 - QScreen moved to golbalfunctions.
 - fixed coreaction focuseout problem.
-- redesinged coreaction.
+- redesigned coreaction.
 - coreaction's widget is now customizable.
 - fixed coreaction setting bug.
 - coreaction is now lighter in system resource.
@@ -33,7 +33,7 @@ version 2.1
 - fixed recent path not opening with double click in start.
 - now opening a video file in coreplayer automatically plays it.
 - changed properties ui in corefm.
-- fixed dobule clicking file goes to rename mode in corefm.
+- fixed double clicking file goes to rename mode in corefm.
 - dashborad now show used network in general section.
 - fixed if dir's file is changed corefm will detect now.
 - added sendto some common places(like desktop,downloads,home) in corefm.
@@ -49,18 +49,18 @@ version 2.1
 - addend option to send a file to a drive in corefm.
 - added option to open file in selected app in openAppEngine.
 - fixed mouse wheel >>next image not working sometimes in coreimage.
-- opening file with syestem apps now shows in recent activities in start.
-- change in some icons & removed unused icon from resoures file.
+- opening file with system apps now shows in recent activities in start.
+- change in some icons & removed unused icon from resources file.
 - mimelist save folder moved to .config/corebox.
 - fixed all the time opening start when opening other app.
-- fixed system app not showing in the recent activites.
+- fixed system app not showing in the recent activities.
 - trash a picture from coreimage, will also delete entry from path qstringlist.
 - fixed empty trash not working in corefm.
-- removed trash widget from corefm and defult mime path from settings.
+- removed trash widget from corefm and default mime path from settings.
 - added show real file type in corefm and settings.
 - fixed coreaction settings and view mode settings.
 - now, app will update when clicked from window.(only coreboxapps).
-- fixed corefm keeps the multipal file size and count in status bar.
+- fixed corefm keeps the multiple file size and count in status bar.
 - added resize icon and moved it to window button .
 - added new Coreapp ,CorePDF with it's library qpdflib.
 - redesigned corebox folder structure.
@@ -72,14 +72,14 @@ version 2.1
 - fixed corepdf closing and savetorecent problem.
 - fixed some ui elements in coreplayer.
 - fixed vlc is not opening with file >> mimelist.
-- fixed speeddile dobule click dose not work in start.
+- fixed speeddile double click dose not work in start.
 - added first letter to capital letter in fStringList function in globalfunction.
-- redesinged the about app and fixed the github page not opening.
+- redesigned the about app and fixed the github page not opening.
 - fixed dashboard singnal problem.
 - fixed the close issue in corepdf
 
 
-version 2,Released date Monday, March 26, 2018
+Version 2,Released date Monday, March 26, 2018
 
 - fixed tabengine in corebox.
 - fixed rename problem in corefm.
@@ -121,4 +121,3 @@ version 2,Released date Monday, March 26, 2018
 - added display page in dashboard app.
 - added new information in help app.
 - added some links in README.md file.
-

@@ -1,4 +1,5 @@
 
+
 FIX MUST BE SIMPLE.
 
 0-bug/fix
@@ -8,7 +9,7 @@ FIX MUST BE SIMPLE.
 
 
 corebox
-0 - dobule click not working.
+0 - double click not working.
 0 - closing the corebox needs to inform the app.
 1 - need two theme (dark and light)
 1 - round border is no working in messageengine>>messagebox.
@@ -26,9 +27,9 @@ bookmarks
 1 - one button to bookmark all the opened tabs.
 
 dashboard
-0 - fix the pages and there numberring.
+0 - fix the pages and there numbering.
 1 - remove unwanted partition
-1 - selected drive will show only it's pertition.
+1 - selected drive will show only it's partition.
 1 - mount specific partition on corebox startup.
 1 - add drive frame in drive view.
 
@@ -45,7 +46,7 @@ corefm
 0 - pathedit is always in focus, even outside clicked.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,both crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
-3 - set custom icom in home's folder.
+3 - set custom icon in home's folder.
 1 - add tree package.
 0 - preview is not working.
 3 - Finish movement of mime-related code from FileUtils to MimeUtils
@@ -79,7 +80,7 @@ start
 1 - option to sidebar or tab button(+).
 
 coreimage
-0 - move cImage lable to code.
+0 - move cImage label to code.
 1 - ctrl + wheel = zoom shortcut.
 
 coreplayer
