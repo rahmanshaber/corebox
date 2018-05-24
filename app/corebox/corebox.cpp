@@ -540,9 +540,7 @@ void CoreBox::on_corepad_clicked()
 
 void CoreBox::on_box_clicked()
 {
-//    messageEngine("Thanks for using CoreBox", "Info");
-    corepdf *d = new corepdf;
-    d->eclose();
+    messageEngine("Thanks for using CoreBox", "Info");
 }
 
 

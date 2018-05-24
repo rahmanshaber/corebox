@@ -39,7 +39,6 @@
         <file>icons/delete_w.svg</file>
         <file>icons/desktop_b.svg</file>
         <file>icons/desktop_w.svg</file>
-        <file>icons/devloper.svg</file>
         <file>icons/down_b.svg</file>
         <file>icons/down_w.svg</file>
         <file>icons/download_b..svg</file>
@@ -48,7 +47,6 @@
         <file>icons/drive_w.svg</file>
         <file>icons/edit_b.svg</file>
         <file>icons/edit_w.svg</file>
-        <file>icons/extra.svg</file>
         <file>icons/flip_b.svg</file>
         <file>icons/flip_w.svg</file>
         <file>icons/font_b.svg</file>
@@ -78,7 +76,6 @@
         <file>icons/next_w.svg</file>
         <file>icons/open_b.svg</file>
         <file>icons/open_w.svg</file>
-        <file>icons/other.svg</file>
         <file>icons/paste_b.svg</file>
         <file>icons/paste_w.svg</file>
         <file>icons/pause.svg</file>
@@ -87,7 +84,6 @@
         <file>icons/previous_w.svg</file>
         <file>icons/properties_b.svg</file>
         <file>icons/properties_w.svg</file>
-        <file>icons/QT.svg</file>
         <file>icons/redo_b.svg</file>
         <file>icons/redo_w.svg</file>
         <file>icons/refresh_b.svg</file>
@@ -128,7 +124,6 @@
         <file>icons/undo_w.svg</file>
         <file>icons/up_b.svg</file>
         <file>icons/up_w.svg</file>
-        <file>icons/videogames.svg</file>
         <file>icons/view_icon_b.svg</file>
         <file>icons/view_icon_w.svg</file>
         <file>icons/view_list_b.svg</file>

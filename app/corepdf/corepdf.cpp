@@ -25,17 +25,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 corepdf::corepdf(QWidget *parent):QWidget(parent)
 {
-
-//    setObjectName("corepdf");
-
     QVBoxLayout * mainLayout = new QVBoxLayout();
     PdfWidget = new QPdfWidget();
     setObjectName("corepdf");
     mainLayout->setContentsMargins(0,0,0,0);
     mainLayout->addWidget(PdfWidget);
-//    cShot     = new QPushButton("close");
-//    connect(cShot,SIGNAL(clicked()),this,SLOT(eclose()));
-//    mainLayout->addWidget(cShot);
     setLayout(mainLayout);
 }
 
@@ -44,21 +38,12 @@ corepdf::~corepdf()
     delete PdfWidget;
 }
 
-void corepdf::eclose()
-{
-    QPdfWidget *cpdf = this->findChild<QPdfWidget*>("QPdfWidget");
-        if (cpdf != nullptr) {
-            cpdf->closeDocument();
-        } else {
-            qWarning() << "Not found!";
-        }
-}
 
 void corepdf::openPdfFile(const QString path)
 {
     workFilePath = path;
 
-//    connect(PdfWidget, &QPdfWidget::initialized, [this,path]() {
+    connect(PdfWidget, &QPdfWidget::initialized, [this,path]() {
 //        PdfWidget->setToolbarVisible(false);
         QFile f(path);
         if (f.open(QIODevice::ReadOnly)) {
@@ -66,7 +51,7 @@ void corepdf::openPdfFile(const QString path)
             PdfWidget->loadData(data);
             f.close();
         }
-//    });
+    });
 
 }
 
@@ -74,5 +59,7 @@ void corepdf::closeEvent(QCloseEvent *event)
 {
     event->ignore();
     saveToRecent("CorePDF", workFilePath);
+    QPdfWidget *cpdf = qobject_cast<QPdfWidget*>(this->children().at(1));
+    cpdf->closeDocument();
     event->accept();
 }

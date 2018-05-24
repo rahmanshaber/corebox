@@ -74,6 +74,7 @@ version 2.1
 - fixed vlc is not opening with file >> mimelist.
 - fixed speeddile dobule click dose not work in start.
 - added first letter to capital letter in fStringList function in globalfunction.
+- redesinged the about app and fixed the github page not opening.
 
 
 version 2,Released date Monday, March 26, 2018

@@ -268,8 +268,8 @@ void coreplayer::updateDurationInfo(qint64 currentInfo)
     ui->duration->setText(time);
 }
 
-void coreplayer::openPlayer(const QString path) {
-
+void coreplayer::creatPlayList(const QString path)
+{
     QFileInfo sp(path);
     QString selectedFilePath;
     QModelIndex index = mModel->index(0, 0);
@@ -296,6 +296,13 @@ void coreplayer::openPlayer(const QString path) {
          ui->numberOfFiles->setVisible(1);
          ui->numberOfFiles->setText(QString("Included Files: %1").arg(mNumberOfFiles));
     }
+}
+
+void coreplayer::openPlayer(const QString path)
+{
+    //send path to creat playlist.
+    creatPlayList(path);
+
     if(!path.isEmpty()){
         for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
             b->setEnabled(true);

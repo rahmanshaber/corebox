@@ -60,7 +60,7 @@ color: #ffffff;
 border: 1px #0C2C45;
 }</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0">
+     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0">
       <property name="spacing">
        <number>5</number>
       </property>
@@ -107,22 +107,6 @@ border: 1px #0C2C45;
          <bool>true</bool>
         </property>
        </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Preferred</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item>
        <spacer name="verticalSpacer_3">
@@ -178,13 +162,13 @@ border-radius: 10px;
          <number>1</number>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <property name="verticalSpacing">
-          <number>2</number>
-         </property>
-         <item row="4" column="0">
+         <item row="3" column="0">
           <widget class="QLabel" name="label_4">
            <property name="text">
             <string>Licensed under GPLv2</string>
+           </property>
+           <property name="indent">
+            <number>10</number>
            </property>
           </widget>
          </item>
@@ -201,6 +185,9 @@ border-radius: 10px;
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
            </property>
+           <property name="margin">
+            <number>2</number>
+           </property>
           </widget>
          </item>
          <item row="1" column="0">
@@ -213,28 +200,18 @@ border-radius: 10px;
            <property name="text">
             <string>CoreBox is a combination of some common apps with bookmarks</string>
            </property>
+           <property name="indent">
+            <number>10</number>
+           </property>
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QLabel" name="label_19">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Visit the website &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="margin">
-            <number>0</number>
-           </property>
-           <property name="indent">
-            <number>0</number>
-           </property>
-           <property name="openExternalLinks">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
           <widget class="QLabel" name="label_10">
            <property name="text">
             <string>Build with Qt 5.10.1 (GCC 8.1., 64 bit)</string>
+           </property>
+           <property name="indent">
+            <number>10</number>
            </property>
           </widget>
          </item>
@@ -266,10 +243,29 @@ border-radius: 10px;
          <property name="verticalSpacing">
           <number>5</number>
          </property>
-         <item row="4" column="0">
+         <item row="3" column="0">
           <widget class="QLabel" name="label_21">
            <property name="text">
             <string>Release date Monday,March 26,2018. </string>
+           </property>
+           <property name="indent">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack out the manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <property name="indent">
+            <number>10</number>
+           </property>
+           <property name="openExternalLinks">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -283,25 +279,18 @@ border-radius: 10px;
            <property name="text">
             <string>Info</string>
            </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_20">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack the github page for more info &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_18">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack out the manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="margin">
-            <number>0</number>
+            <number>2</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_19">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack out  the GITHUB page &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="indent">
-            <number>0</number>
+            <number>10</number>
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>
@@ -340,12 +329,18 @@ border-radius: 10px;
            <property name="text">
             <string>Devlopers</string>
            </property>
+           <property name="margin">
+            <number>2</number>
+           </property>
           </widget>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_12">
            <property name="text">
             <string>Saber and Abrar</string>
+           </property>
+           <property name="indent">
+            <number>10</number>
            </property>
           </widget>
          </item>
@@ -373,6 +368,9 @@ border-radius: 10px;
            <property name="text">
             <string>Big Thanks to Qt for there free and Open Source Freamwork.</string>
            </property>
+           <property name="indent">
+            <number>10</number>
+           </property>
           </widget>
          </item>
          <item row="0" column="0">
@@ -385,6 +383,9 @@ border-radius: 10px;
            <property name="text">
             <string>Qt </string>
            </property>
+           <property name="margin">
+            <number>2</number>
+           </property>
           </widget>
          </item>
          <item row="2" column="0">
@@ -393,8 +394,10 @@ border-radius: 10px;
             <bool>false</bool>
            </property>
            <property name="styleSheet">
-            <string notr="true">
-Text-align:left;</string>
+            <string notr="true">QPushButton{
+Text-align:left;
+padding: 0px 0px 0px 8px;
+}</string>
            </property>
            <property name="text">
             <string>Click it for more Qt info</string>
@@ -432,7 +435,7 @@ border-radius: 10px;
             <number>0</number>
            </property>
            <property name="indent">
-            <number>0</number>
+            <number>10</number>
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>
@@ -443,6 +446,9 @@ border-radius: 10px;
           <widget class="QLabel" name="label_13">
            <property name="text">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses icon from &lt;a href=&quot;https://material.io/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="indent">
+            <number>10</number>
            </property>
           </widget>
          </item>
@@ -455,7 +461,7 @@ border-radius: 10px;
             <number>0</number>
            </property>
            <property name="indent">
-            <number>0</number>
+            <number>10</number>
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>
@@ -472,6 +478,9 @@ border-radius: 10px;
            <property name="text">
             <string>Other</string>
            </property>
+           <property name="margin">
+            <number>2</number>
+           </property>
           </widget>
          </item>
          <item row="4" column="0">
@@ -483,7 +492,7 @@ border-radius: 10px;
             <number>0</number>
            </property>
            <property name="indent">
-            <number>0</number>
+            <number>10</number>
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>
@@ -519,12 +528,18 @@ border-radius: 10px;
            <property name="text">
             <string>Thanks</string>
            </property>
+           <property name="margin">
+            <number>2</number>
+           </property>
           </widget>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_15">
            <property name="text">
             <string>Thanks to Manjro's forum for Packaging</string>
+           </property>
+           <property name="indent">
+            <number>10</number>
            </property>
           </widget>
          </item>
@@ -537,7 +552,7 @@ border-radius: 10px;
             <number>0</number>
            </property>
            <property name="indent">
-            <number>0</number>
+            <number>10</number>
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>

@@ -94,6 +94,7 @@ private:
     QString folderpath;
     QString filepath;
 
+    void creatPlayList(const QString path);
 private slots:
     void seekLeft();
     void seekRight();

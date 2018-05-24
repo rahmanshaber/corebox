@@ -20,7 +20,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QWidget>
 #include <QPdfWidget>
 #include <QCloseEvent>
-#include <QPushButton>
 
 class corepdf : public QWidget
 {
@@ -36,11 +35,7 @@ public:
 protected:
     void closeEvent(QCloseEvent *event);
 
-public slots:
-    void eclose();
-
 private:
-    QPushButton * cShot;
     QPdfWidget *PdfWidget;
 };
 
