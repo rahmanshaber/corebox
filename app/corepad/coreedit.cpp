@@ -15,20 +15,23 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreedit.h"
-#include <QDebug>
 
 
 coreedit::coreedit(QWidget *parent) : QPlainTextEdit(parent)
 {
-    setStyleSheet("QMenu::item{background-color: rgb(0, 170, 0);color: rgb(255, 255, 255);}"
+    //fix it
+    setStyleSheet("QWidget{background-color: #2E2F30;}"
+                  "QMenu::item{background-color: #000000);color: #ffffff;}"
                   "QMenu::item::selected{background-color: rgb(0, 85, 127);color: rgb(255,255,255);}");
+
     lineNumberArea = new LineNumberArea(this);
-//---------------------------- Setting the CoreEdit background -----------------------------------------
+//---------------------------- Set the CoreEdit background -----------------------------------------
     QPalette p = palette();
     p.setColor(QPalette::Text, "#B9A388");  //Text color set to white.
     p.setColor(QPalette::Active, QPalette::Base, "#2E2F30");  //Active base color black.
     p.setColor(QPalette::Inactive, QPalette::Base,"#2E2F30"); //Inactive base color black.
     setPalette(p);
+
 //------------------------------------------------------------------------------------------------------
 //---------------------------- Connecting to slots and signals -----------------------------------------
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));

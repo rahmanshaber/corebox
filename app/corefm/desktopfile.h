@@ -47,6 +47,7 @@ private:
   QString type;
   QStringList categories;
   QStringList mimeType;
+
 };
 
 #endif // DESKTOPFILE_H

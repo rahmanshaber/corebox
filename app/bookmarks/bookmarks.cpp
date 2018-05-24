@@ -28,7 +28,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)
 {
-    qDebug() << "bookmarks opening";
     ui->setupUi(this);
     ui->bookmarkEditBox->setVisible(false);
     ui->addSectionBox->setVisible(false);
@@ -43,7 +42,6 @@ bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)
 
 bookmarks::~bookmarks()
 {
-    qDebug() <<"bookmark closing";
     delete ui;
 }
 

@@ -7,7 +7,6 @@
 #define PROC_CPUINFO "/proc/cpuinfo"
 #define PROC_STAT    "/proc/stat"
 
-#include <QDebug>
 #include <QVector>
 
 

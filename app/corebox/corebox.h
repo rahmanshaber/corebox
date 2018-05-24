@@ -30,6 +30,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../settings/settingsmanage.h"
 #include "globalfunctions.h"
 
+
 namespace Ui {
 class CoreBox;
 }

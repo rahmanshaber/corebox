@@ -100,6 +100,7 @@ private:
     void scaleImage(double factor);
     void adjustScrollBar(QScrollBar *scrollBar, double factor);
     void shotcuts();
+
 };
 
 #endif // COREIMAGE_H

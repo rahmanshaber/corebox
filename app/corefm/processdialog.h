@@ -21,6 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QProcess>
 #include <QListWidget>
 
+
 /**
  * @class ProcessDialog
  * @brief Represents dialog which is shown during custom action
@@ -31,8 +32,8 @@ class ProcessDialog : public QDialog {
   Q_OBJECT
 
 public:
-  explicit ProcessDialog(QProcess* proc, const QString &procName = "",
-                         QWidget *parent = 0);
+  explicit ProcessDialog(QProcess* proc, const QString &procName = "",QWidget *parent = 0);
+
 protected slots:
   void onProcFinished();
   void onProcStarted();

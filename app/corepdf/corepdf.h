@@ -21,6 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QPdfWidget>
 #include <QCloseEvent>
 
+
 class corepdf : public QWidget
 {
     Q_OBJECT
@@ -37,6 +38,7 @@ protected:
 
 private:
     QPdfWidget *PdfWidget;
+
 };
 
 #endif // COREPDF_H

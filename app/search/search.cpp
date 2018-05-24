@@ -32,7 +32,6 @@ using namespace QtConcurrent;
 
 search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
 {
-    qDebug() << "search opening";
     ui->setupUi(this);
     ui->searchFF->setFocus();
     ui->results->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
@@ -46,7 +45,6 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
 search::~search()
 {
     delete ui;
-    qDebug() << "Search Closing";
 }
 
 void search::shotcuts(){

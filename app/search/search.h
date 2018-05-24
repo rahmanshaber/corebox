@@ -72,6 +72,7 @@ private slots:
     void on_more_clicked(bool checked);
     void on_searchFF_textChanged(const QString &arg1);
     void on_setfolder_clicked();
+
 };
 
 #endif // SEARCH_H

@@ -62,6 +62,7 @@ private:
     myModelItem* mParent;
     QFileInfo mFileInfo;
     QString mAbsFilePath;
+
 };
 
 

@@ -81,6 +81,7 @@ private:
     void play(int index);
     void setCurrentIndex(int currentIndex);
     void shotcuts();
+    void creatPlayList(const QString path);
 
     int mNumberOfFiles;
     QMediaPlayer::State playerState;
@@ -94,7 +95,6 @@ private:
     QString folderpath;
     QString filepath;
 
-    void creatPlayList(const QString path);
 private slots:
     void seekLeft();
     void seekRight();
@@ -117,6 +117,7 @@ private slots:
     void on_next_clicked();
     void on_medialist_doubleClicked(const QModelIndex &index);
     void on_playlist_clicked(bool checked);
+
 };
 
 #endif // COREPLAYER_H

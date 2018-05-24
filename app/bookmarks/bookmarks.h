@@ -44,6 +44,7 @@ public:
     void callBookMarkDialog(QWidget *parent, QString currentPath);
 
     void reload();
+
 private slots:
     void on_section_itemClicked(QListWidgetItem *item);
     void on_addSection_clicked();

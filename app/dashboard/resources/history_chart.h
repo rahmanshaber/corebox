@@ -2,7 +2,6 @@
 #define HISTORYCHART_H
 
 #include <QWidget>
-#include <QDebug>
 #include <QtCharts>
 #include <QTimer>
 

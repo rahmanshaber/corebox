@@ -32,7 +32,6 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     timer(new QTimer(this)),
     im(InfoManager::ins())
 {
-    qDebug() << "coreaction opening";
     ui->setupUi(this);
 
     widget();
@@ -43,7 +42,6 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
 
 coreaction::~coreaction()
 {
-    qDebug()<<"coreaction closing";
     delete ui;
 }
 

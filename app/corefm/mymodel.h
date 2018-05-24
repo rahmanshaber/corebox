@@ -94,8 +94,7 @@ public slots:
   void clearIconCache();
 
 signals:
-  void dragDropPaste(const QMimeData *data, QString newPath,
-                     myModel::DragMode mode = DM_UNKNOWN);
+  void dragDropPaste(const QMimeData *data, QString newPath,myModel::DragMode mode = DM_UNKNOWN);
   void thumbUpdate(const QModelIndex index);
 
 protected:
@@ -129,6 +128,7 @@ private:
   QHash<int, QString> watchers;
   QTimer eventTimer;
   int lastEventID;
+
 };
 
 #endif // MYMODEL_H

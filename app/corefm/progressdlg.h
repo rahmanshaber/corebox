@@ -44,6 +44,7 @@ private:
 
     qint64 runningTotal;
     int oldSeconds;
+
 };
 
 

@@ -34,6 +34,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "dashboard/battery.h"
 #include "dashboard/lib/info_manager.h"
 
+
 namespace Ui {
 class coreaction;
 }
@@ -66,9 +67,7 @@ private:
 
     void widget();
     void tryicon();
-
     void collectNotes();
-
     void sysWsetup();
     void networkWsetup();
     void widgetList();
@@ -109,6 +108,7 @@ private slots:
 
     void actionshow();
     void batteryCheck();
+
 };
 
 #endif // COREACTION_H

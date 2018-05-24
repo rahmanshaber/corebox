@@ -35,9 +35,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coretime/coretime.h"
 #include "corepdf/corepdf.h"
 
+
 CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
 {
-    qDebug() << "CoreBox opening";
     ui->setupUi(this);
 
     //set a icon set for the whole app
@@ -71,13 +71,13 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
 //    QFileIconProvider   provider;
 //    QIcon   icon = provider.icon(info);
 
-    QString name = "chromium";
-    QIcon   icon =  QIcon::fromTheme(name.toLower());
-    ui->start->setIcon(icon);
+//    QString name = "chromium";
+//    QIcon   icon =  QIcon::fromTheme(name.toLower());
+//    ui->start->setIcon(icon);
 }
 
-CoreBox::~CoreBox() {
-    qDebug()<<"corebox closing";
+CoreBox::~CoreBox()
+{
     delete ui;
 }
 

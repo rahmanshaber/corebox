@@ -17,7 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "mimeutils.h"
 
 #include <QProcess>
-#include <QDebug>
 #include <QMessageBox>
 #include <magic.h>
 

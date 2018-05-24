@@ -106,6 +106,7 @@ Q_SIGNALS:
     void changed();
     void low();
     void full();
+
 };
 
 #endif // BATTERY_H

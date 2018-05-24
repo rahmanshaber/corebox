@@ -19,7 +19,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "timer.h"
 
-#include <QDebug>
 #include <QWidget>
 #include <QTime>
 #include <QDateTime>

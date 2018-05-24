@@ -51,6 +51,7 @@ private slots:
 
 private:
     Ui::help *ui;
+
 };
 
 #endif // HELP_H

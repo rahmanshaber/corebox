@@ -23,7 +23,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
-    qDebug() << "corescreenshot opening";
     cPreview  = new PreviewWidget();
     cShot     = new QPushButton("Take a new screenshot");
     cSave     = new QPushButton("Save");
@@ -99,8 +98,6 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 
 MainWindow::~MainWindow()
 {
-    qDebug()<<"coreshot closing";
-
     delete cPreview;
     delete cShot;
     delete cSave;

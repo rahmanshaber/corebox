@@ -36,7 +36,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
   ,slideShowTimer(nullptr)
 {
-    qDebug() << "coreimage opening";
     ui->setupUi(this);
 
     scaleFactor = 1.0;
@@ -68,7 +67,6 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
 
 coreimage::~coreimage()
 {
-    qDebug()<<"coreimage closing";
     if(slideShowTimer)
       delete slideShowTimer;
     delete ui;

@@ -16,8 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "bookmarkdialog.h"
 
-#include <QDebug>
-
 
 bookmarkDialog::bookmarkDialog(QWidget *parent)
     :QDialog(parent)
@@ -32,7 +30,6 @@ bookmarkDialog::bookmarkDialog(QWidget *parent)
     ,bookMarkName(new QLineEdit)
     ,sectionName(new QComboBox)
 {
-    qDebug() << "bookmarkDialog opening";
     setWindowTitle("Add to Bookmark");
     setWindowIcon(QIcon(":/icons/Bookmarks.svg"));
 
@@ -92,7 +89,6 @@ bookmarkDialog::bookmarkDialog(QWidget *parent)
 
 bookmarkDialog::~bookmarkDialog()
 {
-    qDebug() <<"bookmarkdialog closing";
     delete accept;
     delete cancel;
     delete lSection;

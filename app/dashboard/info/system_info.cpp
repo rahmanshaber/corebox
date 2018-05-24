@@ -40,7 +40,7 @@ SystemInfo::SystemInfo()
         if (name.isEmpty())
             name = CommandUtil::exec("whoami").trimmed();
     } catch (QString &ex) {
-        qCritical() << ex;
+//        qCritical() << ex;
     }
 
     username = name;

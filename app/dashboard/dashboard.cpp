@@ -29,9 +29,48 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 {
-    qDebug() << "dashboard opening";
     ui->setupUi(this);
 
+    setupBatteryPage();
+    setupDisksPage();
+    setupDisplayPage();
+
+    //fix it
+    //for unknown bug ,first remove all page then add each
+    for (int i = 0; i < ui->pages->count(); i++) {
+        ui->pages->removeWidget(ui->pages->widget(i));
+    }
+    sysinfo *infoo = new sysinfo();
+    ui->pages->insertWidget(0, infoo);
+    ui->pages->insertWidget(1, ui->pageDrives);
+    ui->pages->insertWidget(2, ui->pageBattery);
+    ResourcesPage *resourcePage = new ResourcesPage();
+    ui->pages->insertWidget(3, resourcePage);
+    ui->pages->insertWidget(4,ui->pageDisplay);
+
+    ui->pages->setCurrentIndex(0);
+    ui->mm->setText("Select a partition to ");
+}
+
+dashboard::~dashboard()
+{
+    delete disks;
+    delete ui;
+}
+
+void dashboard::setupBatteryPage()
+{
+    m_upower = new UPower(this);
+    foreach (Battery *bat, *m_upower->batteries()) {
+        batteries.append(bat->path());
+        ui->batteriesList->addItem(bat->model());
+    }
+
+    ui->batteriesList->setCurrentIndex(0);
+}
+
+void dashboard::setupDisksPage()
+{
     disks = new UDisks2(this);
     connect(disks, &UDisks2::filesystemAdded, this, &dashboard::udisks2_filesystemAdded);
     connect(disks, &UDisks2::filesystemRemoved, this, &dashboard::udisks2_filesystemRemoved);
@@ -55,8 +94,6 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
         ui->drives->item(i)->setIcon(QIcon(":/icons/drive_hdd_w.svg"));
     }
 
-    setdisplaypage();
-
 //    QStringList s = disks->blockDevices();
 //    QStringList l = s.filter(QRegularExpression(QStringLiteral("[a-z]{3}")));
 //    ui->blocks->addItems(l);
@@ -66,44 +103,17 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
            ui->blocks->item(i)->setIcon(QIcon(":/icons/drive_w.svg"));
     }
 
-    disks = new UDisks2(this);
-    connect(disks, SIGNAL(blockDeviceAdded(QString)), this, SLOT(blockDevicesChanged()));
-    connect(disks, SIGNAL(blockDeviceChanged(QString)), this, SLOT(blockDevicesChanged()));
-    connect(disks, SIGNAL(blockDeviceRemoved(QString)), this, SLOT(blockDevicesChanged()));
-    connect(disks, SIGNAL(filesystemAdded(QString)), this, SLOT(blockDevicesChanged()));
+//    disks = new UDisks2(this);
+//    connect(disks, SIGNAL(blockDeviceAdded(QString)), this, SLOT(blockDevicesChanged()));
+//    connect(disks, SIGNAL(blockDeviceChanged(QString)), this, SLOT(blockDevicesChanged()));
+//    connect(disks, SIGNAL(blockDeviceRemoved(QString)), this, SLOT(blockDevicesChanged()));
+//    connect(disks, SIGNAL(filesystemAdded(QString)), this, SLOT(blockDevicesChanged()));
 
-    m_upower = new UPower(this);
-    foreach (Battery *bat, *m_upower->batteries()) {
-        batteries.append(bat->path());
-        ui->batteriesList->addItem(bat->model());
-    }
-
-    ui->batteriesList->setCurrentIndex(0);
-    ui->mm->setText("Select a partition to ");
     ui->mount_2->setEnabled(0);
     ui->unmount_2->setEnabled(0);
-
-    for (int i = 0; i < ui->pages->count(); i++) {
-        ui->pages->removeWidget(ui->pages->widget(i));
-    }
-
-    sysinfo *infoo = new sysinfo();
-    ui->pages->insertWidget(0, infoo);
-    ui->pages->insertWidget(1, ui->pageDrives);
-    ui->pages->insertWidget(2, ui->pageBattery);
-    ResourcesPage *resourcePage = new ResourcesPage();
-    ui->pages->insertWidget(3, resourcePage);
-    ui->pages->insertWidget(4,ui->pageDisplay);
-
-    ui->pages->setCurrentIndex(0);
 }
 
-dashboard::~dashboard()
-{
-    qDebug() <<"dashboard closing";
-    delete disks;
-    delete ui;
-}
+
 void dashboard::on_drives_currentTextChanged(const QString &currentText)
 {
     auto dr = disks->drive(currentText);
@@ -353,7 +363,7 @@ void dashboard::on_Bdisplay_clicked()
     pageClick(ui->Bdisplay, 4, tr("Display"));
 }
 
-void dashboard::setdisplaypage()
+void dashboard::setupDisplayPage()
 {
     QStringList left;
     left << "Name        " << "Size        " << "Manufacturer        " << "Model      "
@@ -418,5 +428,6 @@ void dashboard::setdisplaypage()
 
 void dashboard::reload()
 {
+    setupDisksPage();
     on_batteriesList_currentIndexChanged(ui->batteriesList->currentIndex());
 }

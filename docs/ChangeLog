@@ -75,6 +75,8 @@ version 2.1
 - fixed speeddile dobule click dose not work in start.
 - added first letter to capital letter in fStringList function in globalfunction.
 - redesinged the about app and fixed the github page not opening.
+- fixed dashboard singnal problem.
+- fixed the close issue in corepdf
 
 
 version 2,Released date Monday, March 26, 2018

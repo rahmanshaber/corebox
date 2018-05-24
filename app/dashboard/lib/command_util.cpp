@@ -3,7 +3,6 @@
 #include <QProcess>
 #include <QTextStream>
 #include <QStandardPaths>
-#include <QDebug>
 
 
 CommandUtil::CommandUtil()
@@ -18,7 +17,7 @@ QString CommandUtil::sudoExec(const QString &cmd, QStringList args)
     try {
         result = CommandUtil::exec("pkexec", args);
     } catch (QString &ex) {
-        qCritical() << ex;
+//        qCritical() << ex;
     }
 
     return result;

@@ -21,13 +21,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFile>
 #include <QIcon>
 #include <QFileDialog>
-#include <QDebug>
 #include <QTreeWidgetItem>
 
 
 settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
 {
-    qDebug() << "settings opening";
     ui->setupUi(this);
 
     setupCoreBoxPage();
@@ -39,7 +37,6 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
 
 settings::~settings()
 {
-    qDebug()<<"settings closing";
     delete ui;
 }
 

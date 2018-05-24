@@ -17,7 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "desktopfile.h"
 
 #include <QFile>
-#include <QDebug>
 
 #include "properties.h"
 

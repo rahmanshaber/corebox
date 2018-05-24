@@ -29,7 +29,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
    , playerState(QMediaPlayer::StoppedState)
 {
-    qDebug() << "coreplayer opening";
     ui->setupUi(this);
 
     mModel = new QStandardItemModel(this);
@@ -76,11 +75,11 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
 
 coreplayer::~coreplayer()
 {
-    qDebug()<<"corepalyer closing";
     delete ui;
 }
 
-void coreplayer::shotcuts(){
+void coreplayer::shotcuts()
+{
     QShortcut* shortcut;
 
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this);
@@ -108,13 +107,14 @@ void coreplayer::shotcuts(){
     //volumn up down by up down arrow
 }
 
-void coreplayer::closeEvent(QCloseEvent *event) {
+void coreplayer::closeEvent(QCloseEvent *event)
+{
     Q_UNUSED(event);
     on_stop_clicked();
 }
 
-void coreplayer::videoMimes() {
-
+void coreplayer::videoMimes()
+{
     QMimeDatabase mime;
     QList<QMimeType> d = mime.allMimeTypes();
 
@@ -129,8 +129,8 @@ void coreplayer::videoMimes() {
     videomimes.sort();
 }
 
-QStringList coreplayer::getVideos(const QString path) {
-
+QStringList coreplayer::getVideos(const QString path)
+{
     QDir dir(path);
     QStringList videos;
     for (QString file : dir.entryList()) {
@@ -146,8 +146,8 @@ QStringList coreplayer::getVideos(const QString path) {
     return videos;
 }
 
-void coreplayer::audioMimes() {
-
+void coreplayer::audioMimes()
+{
     QMimeDatabase mime;
     QList<QMimeType> d = mime.allMimeTypes();
 
@@ -163,8 +163,8 @@ void coreplayer::audioMimes() {
 
 }
 
-QStringList coreplayer::getAudios(const QString path) {
-
+QStringList coreplayer::getAudios(const QString path)
+{
     QDir dir(path);
     QStringList audios;
     for (QString file : dir.entryList()) {

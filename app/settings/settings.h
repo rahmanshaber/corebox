@@ -71,6 +71,7 @@ private:
     void setupCoreActionPage();
     void setupCoreFMPage();
     void setupCoreShotPage();
+
 };
 
 #endif // SETTINGS_H

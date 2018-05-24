@@ -37,7 +37,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 QString formatSize(qint64);
 
 
-
 class UDisks2;
 namespace Ui {
 class dashboard;
@@ -72,6 +71,7 @@ private slots:
     void on_drives_itemSelectionChanged();
     void on_Bdisplay_clicked();
 
+
 public:
     explicit dashboard(QWidget *parent = 0);
     ~dashboard();
@@ -81,12 +81,16 @@ public:
     QStringList batteries;
 
     void reload();
+
 private:
     Ui::dashboard *ui;
     UDisks2 *disks;
     sysinfo *info;
     ResourcesPage *resource;
-    void setdisplaypage();
+
+    void setupDisplayPage();
+    void setupBatteryPage();
+    void setupDisksPage();
 };
 
 #endif // DASHBOARD_H

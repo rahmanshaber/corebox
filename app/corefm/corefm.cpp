@@ -36,7 +36,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {
-    qDebug() << "corefm opening";
     ui->setupUi(this);
 
     // Create mime utils

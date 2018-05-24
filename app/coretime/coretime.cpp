@@ -36,7 +36,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
 {
-    qDebug() << "coretime opening";
     ui->setupUi(this);
 
     //Create / load Schedule

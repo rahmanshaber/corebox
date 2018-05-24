@@ -41,6 +41,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../bookmarks/bookmarks.h"
 #include "../bookmarks/bookmarkdialog.h"
 
+
 namespace Ui {
 class corefm;
 }

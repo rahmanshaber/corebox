@@ -35,13 +35,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QtCore/QMap>
 #include <QDateTime>
 #include <QSettings>
-#include <QDebug>
 
 
 corepaint::corepaint( QWidget *parent):QWidget(parent),
     ui(new Ui::corepaint), mPrevInstrumentSetted(false)
 {
-    qDebug() << "corepaint opening";
     ui->setupUi(this);
 
     mUndoStackGroup = new QUndoGroup(this);
@@ -64,7 +62,6 @@ corepaint::corepaint( QWidget *parent):QWidget(parent),
 
 corepaint::~corepaint()
 {
-    qDebug()<<"corepaint closing";
     delete ui;
 }
 

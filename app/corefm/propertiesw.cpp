@@ -28,7 +28,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 propertiesw::propertiesw(const QString paths,QWidget *parent) :QWidget(parent),ui(new Ui::propertiesw)
 {
-    qDebug() << "propertiesw opening";
     ui->setupUi(this);
 
     pathName = paths;
@@ -47,14 +46,13 @@ propertiesw::propertiesw(const QString paths,QWidget *parent) :QWidget(parent),u
     this->setAttribute(Qt::WA_DeleteOnClose,1);
 }
 
-propertiesw::~propertiesw(){
-
-    qDebug() << "propertiesw closing";
+propertiesw::~propertiesw()
+{
     delete ui;
 }
 
-void propertiesw::general(){
-
+void propertiesw::general()
+{
     QFile file(pathName);
     QMimeDatabase db;
     QMimeType mime = db.mimeTypeForFile(file, QMimeDatabase::MatchContent);
@@ -88,8 +86,8 @@ void propertiesw::general(){
     }
 }
 
-void propertiesw::details(){
-
+void propertiesw::details()
+{
     QStringList image,media;
     image << "jpg" << "jpeg" << "png" << "bmp" << "ico" << "svg" << "gif";
     media << "webm" << "mkv" << "flv" << "avi" << "mov" << "m4a"
@@ -116,8 +114,8 @@ void propertiesw::details(){
     }
 }
 
-void propertiesw::permission(){
-
+void propertiesw::permission()
+{
     checkboxesChanged();
     connect(ui->permissionsNumeric, SIGNAL(textChanged(QString)), this,SLOT(numericChanged(QString)));
 
@@ -143,8 +141,8 @@ void propertiesw::permission(){
     }
 }
 
-void propertiesw::partition(const QString path){
-
+void propertiesw::partition(const QString path)
+{
     QString t= formatSize(QStorageInfo(path).bytesTotal());
     QString f= formatSize(QStorageInfo(path).bytesFree());
 //    QString s = QString::number((double) t - f);
@@ -153,15 +151,15 @@ void propertiesw::partition(const QString path){
     ui->sizetotal->setText("Total : " + t);
 }
 
-void propertiesw::checkboxesChanged(){
-
+void propertiesw::checkboxesChanged()
+{
     ui->permissionsNumeric->setText(QString("%1%2%3").arg(ui->ownerRead->isChecked()*4 + ui->ownerWrite->isChecked()*2 + ui->ownerExec->isChecked())
                                 .arg(ui->groupRead->isChecked()*4 + ui->groupWrite->isChecked()*2 + ui->groupExec->isChecked())
                                 .arg(ui->otherRead->isChecked()*4 + ui->otherWrite->isChecked()*2 + ui->otherExec->isChecked()));
 }
 
-void propertiesw::numericChanged(QString text){
-
+void propertiesw::numericChanged(QString text)
+{
     if(text.count() != 3) return;
 
     int owner = QString(text.at(0)).toInt();

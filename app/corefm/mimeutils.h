@@ -52,6 +52,7 @@ private:
   bool defaultsChanged;
   QString defaultsFileName;
   Properties* defaults;
+
 };
 
 #endif // MIMEUTILS_H

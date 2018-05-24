@@ -68,6 +68,7 @@ coretime
 1 - show a message (not a messagebox) before 5 minutes of alarm time
 
 corepad
+0 - fix the frame in page.
 0 - save dialog shows up when closing ,without changing the txt file.
 
 setting
@@ -88,8 +89,7 @@ coreplayer
 0 - after stop clicked player widget turns white color.
 
 corepdf
-0 - fix the stylesheet.
-0 - close according to qpdfwidget.
+0 - fix the space in path issue.
 
 coreshot
 3 - add active window option.

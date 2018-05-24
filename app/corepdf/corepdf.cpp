@@ -18,7 +18,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QFile>
 #include <QVBoxLayout>
-#include <QDebug>
 #include <QPushButton>
 
 #include "corebox/globalfunctions.h"

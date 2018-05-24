@@ -24,7 +24,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
 {
-    qDebug() << "corepad opening";
     ui->setupUi(this);
 
     ui->searchbox->setVisible(false);
@@ -34,7 +33,6 @@ corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
 
 corepad::~corepad()
 {
-    qDebug()<<"corepad closing";
     delete ui;
 }
 
@@ -124,9 +122,9 @@ void corepad::quiting() {
 void corepad::closeEvent(QCloseEvent *event) {
     event->ignore();
     for (int i = 0; i < ui->notes->count(); i++) {
-        qDebug() << i << ui->notes->count();
+//        qDebug() << i << ui->notes->count();
         if (ui->notes->tabText(i).contains("*")) {
-            qDebug() << i;
+//            qDebug() << i;
             QMessageBox::StandardButton reply;
             reply = QMessageBox::warning(this, "Warning!", "Do you want to discard the changes?", QMessageBox::Yes | QMessageBox::No);
             if (reply == QMessageBox::Yes) {
@@ -139,14 +137,14 @@ void corepad::closeEvent(QCloseEvent *event) {
         } else {
             saveToRecent("CorePad", workFilePath);
             ui->notes->removeTab(i);
-            qDebug() << "else" << i << ui->notes->count();
+//            qDebug() << "else" << i << ui->notes->count();
         }
 //        on_notes_tabCloseRequested(i);
     }
 
 
     if (ui->notes->count() == 0) {
-        qDebug() << "count" << ui->notes->count();
+//        qDebug() << "count" << ui->notes->count();
         event->accept();
     }
     else event->ignore();
