@@ -338,11 +338,10 @@ QStringList fStringList(QStringList left, QStringList right, QFont font) // add 
 {
     QFontMetrics *fm = new QFontMetrics(font);
     int large = 0;
+
     for (int i = 0; i < left.count(); i++) {
-        int index;
         if (large < fm->width(left.at(i))) {
             large = fm->width(left.at(i));
-            index = i;
         }
     }
 
@@ -355,7 +354,11 @@ QStringList fStringList(QStringList left, QStringList right, QFont font) // add 
     }
 
     for (int i = 0; i < left.count(); i++) {
-        left.replace(i, left.at(i) + ": " + right.at(i));
+        QString total = left.at(i);
+        QString firstWoard = total.at(0).toUpper();
+        QString otherWord = total.right(total.length() - 1 );
+        QString s = left.at(i);
+        left.replace(i, firstWoard + otherWord + ": " + right.at(i));
     }
 
     return left;

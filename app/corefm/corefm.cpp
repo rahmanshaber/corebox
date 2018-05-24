@@ -60,6 +60,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 
     tabs = new tabBar(modelList->folderIcons);
     tabs->setTabsClosable(true);
+    ui->mk->addWidget(tabs);
     connect(tabs, SIGNAL(tabCloseRequested(int)), tabs, SLOT(closeTab(int)));
     tabs->setStyleSheet("QTabBar::tab:!selected{background-color:#353536;color:#B4B4B4;}"
                         "QTabBar::tab:selected{background-color:#F2F2F2;font-weight: bold;color:#000000;}"
@@ -90,7 +91,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->viewlist->setFocusPolicy(Qt::NoFocus);
     listSelectionModel = ui->viewlist->selectionModel();
     ui->viewlist->setContextMenuPolicy(Qt::CustomContextMenu);
-
     ui->viewtree->setModel(modelView);
     ui->viewtree->setSelectionModel(listSelectionModel);
     ui->viewtree->setFocusPolicy(Qt::NoFocus);
@@ -115,7 +115,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     connect(ui->icon, SIGNAL(clicked(bool)), this, SLOT(on_icon_clicked(bool)));
 
     ui->paste->setVisible(0);
-    ui->mk->addWidget(tabs);
+
     ui->emptyTrash->setVisible(0);
     ui->showthumb->setVisible(0);
     ui->showthumb->setChecked(0);

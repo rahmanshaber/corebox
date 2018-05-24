@@ -8,7 +8,6 @@ FIX MUST BE SIMPLE.
 
 
 corebox
-0 - fix the start name in find widget in tabcloserequest.
 0 - dobule click not working.
 0 - closing the corebox needs to inform the app.
 1 - need two theme (dark and light)
@@ -20,7 +19,7 @@ corebox
 1 - tab text align left.
 
 globalfunction
-0 - first letter to capital letter in fStringList function.
+
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
@@ -43,7 +42,6 @@ Search
 2 - if path is given ,find is not working.but locate is working.
 
 corefm
-0 - vlc is not opening with file >> mimelist.
 0 - pathedit is always in focus, even outside clicked.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,both crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
@@ -76,7 +74,6 @@ setting
 1 - add option to backup corbox config folder as a zip and restore the settings.
 
 start
-0 - speeddile dobule click dose not work
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 
@@ -104,7 +101,6 @@ help
 
 app
 1 - terminal app
-1 - pdf viewer
 1 - file reamer
 
 packaging

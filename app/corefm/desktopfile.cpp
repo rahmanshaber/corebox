@@ -49,6 +49,8 @@ DesktopFile::DesktopFile(const QString &fileName) {
   if (categories.first().compare("") == 0) {
     categories.removeFirst();
   }
+
+  if(fileName.endsWith("vlc.desktop")){exec = "vlc";};
 }
 
 QString DesktopFile::getFileName() const {

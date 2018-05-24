@@ -157,7 +157,7 @@ border: 1px #0C2C45;
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QFrame" name="corebox">
+       <widget class="QFrame" name="coreboxs">
         <property name="styleSheet">
          <string notr="true">QFrame{
 background-color: #27527F;
@@ -181,33 +181,29 @@ border-radius: 10px;
          <property name="verticalSpacing">
           <number>2</number>
          </property>
-         <item row="0" column="0" rowspan="6">
-          <widget class="QPushButton" name="pushButton">
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_4">
            <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../icons.qrc">
-             <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
+            <string>Licensed under GPLv2</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>CoreBox v.2.1</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
           <widget class="QLabel" name="label_2">
            <property name="font">
             <font>
@@ -219,7 +215,7 @@ border-radius: 10px;
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
+         <item row="2" column="0">
           <widget class="QLabel" name="label_19">
            <property name="text">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Visit the website &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -235,29 +231,7 @@ border-radius: 10px;
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>Licensed under GPLv2</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label">
-           <property name="font">
-            <font>
-             <pointsize>20</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>CoreBox v.2.1</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
+         <item row="3" column="0">
           <widget class="QLabel" name="label_10">
            <property name="text">
             <string>Build with Qt 5.10.1 (GCC 8.1., 64 bit)</string>
@@ -268,7 +242,13 @@ border-radius: 10px;
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="info">
+       <widget class="QFrame" name="infos">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="styleSheet">
          <string notr="true">QFrame{
 background-color: #27527F;
@@ -283,51 +263,17 @@ border-radius: 10px;
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QGridLayout" name="gridLayout_6">
-         <property name="leftMargin">
-          <number>2</number>
-         </property>
-         <property name="topMargin">
-          <number>2</number>
-         </property>
-         <property name="rightMargin">
-          <number>2</number>
-         </property>
-         <property name="bottomMargin">
-          <number>2</number>
-         </property>
-         <property name="horizontalSpacing">
+         <property name="verticalSpacing">
           <number>5</number>
          </property>
-         <property name="verticalSpacing">
-          <number>0</number>
-         </property>
-         <item row="0" column="0" rowspan="3">
-          <widget class="QPushButton" name="pushButton_6">
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_21">
            <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../icons.qrc">
-             <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
+            <string>Release date Monday,March 26,2018. </string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="0">
           <widget class="QLabel" name="label_16">
            <property name="font">
             <font>
@@ -339,10 +285,17 @@ border-radius: 10px;
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_20">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack the github page for more info &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
           <widget class="QLabel" name="label_18">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack the github page for more info &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Cheack out the manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Release date Monday,March 26,2018. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack out the manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="margin">
             <number>0</number>
@@ -377,51 +330,7 @@ border-radius: 10px;
          <number>0</number>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
-         <property name="leftMargin">
-          <number>2</number>
-         </property>
-         <property name="topMargin">
-          <number>2</number>
-         </property>
-         <property name="rightMargin">
-          <number>2</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <property name="horizontalSpacing">
-          <number>5</number>
-         </property>
-         <property name="verticalSpacing">
-          <number>0</number>
-         </property>
-         <item row="0" column="0" rowspan="3">
-          <widget class="QPushButton" name="devloper">
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../icons.qrc">
-             <normaloff>:/icons/devloper.svg</normaloff>:/icons/devloper.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
+         <item row="0" column="0">
           <widget class="QLabel" name="label_11">
            <property name="font">
             <font>
@@ -433,7 +342,7 @@ border-radius: 10px;
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="1" column="0">
           <widget class="QLabel" name="label_12">
            <property name="text">
             <string>Saber and Abrar</string>
@@ -444,7 +353,7 @@ border-radius: 10px;
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="qt">
+       <widget class="QFrame" name="qts">
         <property name="styleSheet">
          <string notr="true">QFrame{
 background-color: #27527F;
@@ -459,58 +368,14 @@ border-radius: 10px;
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QGridLayout" name="gridLayout">
-         <property name="leftMargin">
-          <number>2</number>
-         </property>
-         <property name="topMargin">
-          <number>2</number>
-         </property>
-         <property name="rightMargin">
-          <number>2</number>
-         </property>
-         <property name="bottomMargin">
-          <number>2</number>
-         </property>
-         <property name="horizontalSpacing">
-          <number>5</number>
-         </property>
-         <property name="verticalSpacing">
-          <number>0</number>
-         </property>
-         <item row="0" column="0" rowspan="4">
-          <widget class="QPushButton" name="devloper_2">
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../icons.qrc">
-             <normaloff>:/icons/QT.svg</normaloff>:/icons/QT.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
+         <item row="1" column="0">
           <widget class="QLabel" name="label_9">
            <property name="text">
             <string>Big Thanks to Qt for there free and Open Source Freamwork.</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="0">
           <widget class="QLabel" name="label_5">
            <property name="font">
             <font>
@@ -522,7 +387,7 @@ border-radius: 10px;
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
+         <item row="2" column="0">
           <widget class="QPushButton" name="aboutqt">
            <property name="autoFillBackground">
             <bool>false</bool>
@@ -543,7 +408,7 @@ Text-align:left;</string>
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="other">
+       <widget class="QFrame" name="others">
         <property name="styleSheet">
          <string notr="true">QFrame{
 background-color: #27527F;
@@ -558,69 +423,7 @@ border-radius: 10px;
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
-         <property name="leftMargin">
-          <number>2</number>
-         </property>
-         <property name="topMargin">
-          <number>2</number>
-         </property>
-         <property name="rightMargin">
-          <number>2</number>
-         </property>
-         <property name="bottomMargin">
-          <number>2</number>
-         </property>
-         <property name="horizontalSpacing">
-          <number>5</number>
-         </property>
-         <property name="verticalSpacing">
-          <number>0</number>
-         </property>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_7">
-           <property name="font">
-            <font>
-             <pointsize>20</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Other</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="label_8">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses DamaDamas-icon from &lt;a href=&quot;https://github.com/sonakinci41/DamaDamas-icon-theme&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="margin">
-            <number>0</number>
-           </property>
-           <property name="indent">
-            <number>0</number>
-           </property>
-           <property name="openExternalLinks">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses udisks2 from &lt;a href=&quot;https://github.com/cmdrkotori/udisks2&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="margin">
-            <number>0</number>
-           </property>
-           <property name="indent">
-            <number>0</number>
-           </property>
-           <property name="openExternalLinks">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
+         <item row="1" column="0">
           <widget class="QLabel" name="label_6">
            <property name="text">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses qtfm from &lt;a href=&quot;https://github.com/RomanVolak/qtfm&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -636,36 +439,54 @@ border-radius: 10px;
            </property>
           </widget>
          </item>
-         <item row="0" column="0" rowspan="5">
-          <widget class="QPushButton" name="pushButton_4">
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_13">
            <property name="text">
-            <string/>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses icon from &lt;a href=&quot;https://material.io/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="icon">
-            <iconset resource="../icons.qrc">
-             <normaloff>:/icons/other.svg</normaloff>:/icons/other.svg</iconset>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses udisks2 from &lt;a href=&quot;https://github.com/cmdrkotori/udisks2&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="iconSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
+           <property name="margin">
+            <number>0</number>
            </property>
-           <property name="flat">
+           <property name="indent">
+            <number>0</number>
+           </property>
+           <property name="openExternalLinks">
             <bool>true</bool>
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="label_13">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses icon from &lt;a href=&quot;https://material.io/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>Other</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uses DamaDamas-icon from &lt;a href=&quot;https://github.com/sonakinci41/DamaDamas-icon-theme&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+           <property name="openExternalLinks">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -688,25 +509,7 @@ border-radius: 10px;
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
-         <property name="leftMargin">
-          <number>2</number>
-         </property>
-         <property name="topMargin">
-          <number>2</number>
-         </property>
-         <property name="rightMargin">
-          <number>2</number>
-         </property>
-         <property name="bottomMargin">
-          <number>2</number>
-         </property>
-         <property name="horizontalSpacing">
-          <number>5</number>
-         </property>
-         <property name="verticalSpacing">
-          <number>0</number>
-         </property>
-         <item row="0" column="1">
+         <item row="0" column="0">
           <widget class="QLabel" name="label_14">
            <property name="font">
             <font>
@@ -718,33 +521,14 @@ border-radius: 10px;
            </property>
           </widget>
          </item>
-         <item row="0" column="0" rowspan="4">
-          <widget class="QPushButton" name="pushButton_5">
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_15">
            <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../icons.qrc">
-             <normaloff>:/icons/videogames.svg</normaloff>:/icons/videogames.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>100</width>
-             <height>100</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
+            <string>Thanks to Manjro's forum for Packaging</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="1" column="0">
           <widget class="QLabel" name="label_17">
            <property name="text">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Thanks to Manjaro's Qt app list from &lt;a href=&quot;https://wiki.manjaro.org/index.php?title=List_of_Qt_Applications&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -757,13 +541,6 @@ border-radius: 10px;
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_15">
-           <property name="text">
-            <string>Thanks to Manjro's forum for Packaging</string>
            </property>
           </widget>
          </item>

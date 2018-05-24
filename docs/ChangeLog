@@ -71,6 +71,9 @@ version 2.1
 - removed reload & clear button from start.
 - fixed corepdf closing and savetorecent problem.
 - fixed some ui elements in coreplayer.
+- fixed vlc is not opening with file >> mimelist.
+- fixed speeddile dobule click dose not work in start.
+- added first letter to capital letter in fStringList function in globalfunction.
 
 
 version 2,Released date Monday, March 26, 2018

@@ -111,3 +111,9 @@ void Start::reload()
     }
 }
 
+
+void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item)
+{
+    BookmarkManage bk;
+    openAppEngine(bk.bookmarkPath("Speed Dial",item->text()));
+}

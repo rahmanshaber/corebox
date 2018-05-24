@@ -47,6 +47,8 @@ private slots:
     void on_appCollect_itemDoubleClicked(QListWidgetItem *item);
     void resizeEvent(QResizeEvent *event);
 
+    void on_speedDialB_itemDoubleClicked(QListWidgetItem *item);
+
 private:
     SettingsManage sm;
     Ui::Start *ui;

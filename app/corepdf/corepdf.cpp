@@ -25,10 +25,18 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 corepdf::corepdf(QWidget *parent):QWidget(parent)
 {
-//    openPdfFile("/home/shaber/Desktop/p.pdf");
 
 //    setObjectName("corepdf");
-    setStyleSheet("QWidget{background-color: #3E3E3E;border: 1px #2A2A2A;}");
+
+    QVBoxLayout * mainLayout = new QVBoxLayout();
+    PdfWidget = new QPdfWidget();
+    setObjectName("corepdf");
+    mainLayout->setContentsMargins(0,0,0,0);
+    mainLayout->addWidget(PdfWidget);
+//    cShot     = new QPushButton("close");
+//    connect(cShot,SIGNAL(clicked()),this,SLOT(eclose()));
+//    mainLayout->addWidget(cShot);
+    setLayout(mainLayout);
 }
 
 corepdf::~corepdf()
@@ -49,26 +57,17 @@ void corepdf::eclose()
 void corepdf::openPdfFile(const QString path)
 {
     workFilePath = path;
-    QVBoxLayout * mainLayout = new QVBoxLayout();
-    PdfWidget = new QPdfWidget();
-    setObjectName("QPdfWidget");
 
-    connect(PdfWidget, &QPdfWidget::initialized, [this,path]() {
-        PdfWidget->setToolbarVisible(false);
+//    connect(PdfWidget, &QPdfWidget::initialized, [this,path]() {
+//        PdfWidget->setToolbarVisible(false);
         QFile f(path);
         if (f.open(QIODevice::ReadOnly)) {
             QByteArray data = f.readAll();
             PdfWidget->loadData(data);
             f.close();
         }
-    });
+//    });
 
-    cShot     = new QPushButton("close");
-    connect(cShot,SIGNAL(clicked()),this,SLOT(eclose()));
-    mainLayout->setContentsMargins(0,0,0,0);
-    mainLayout->addWidget(PdfWidget);
-    mainLayout->addWidget(cShot);
-    setLayout(mainLayout);
 }
 
 void corepdf::closeEvent(QCloseEvent *event)
