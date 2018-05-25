@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/docs">
+        <file>screenshots/a1.png</file>
+        <file>screenshots/a2.png</file>
+        <file>screenshots/a3.png</file>
+        <file>screenshots/a4.png</file>
+        <file>buildinfo.txt</file>
+        <file>ChangeLog</file>
+        <file>docs.qrc</file>
+        <file>PKGBUILD</file>
+        <file>To-Do.txt</file>
+    </qresource>
+</RCC>

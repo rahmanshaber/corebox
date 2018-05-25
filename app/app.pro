@@ -13,42 +13,6 @@ LIBS += -L$$OUT_PWD/../library/qpdflib
 LIBS += -lqpdf
 LIBS += -lmagic
 
-# install
-isEmpty(PREFIX) {
-    PREFIX = /usr
-}
- 
-isEmpty(BINDIR) {
-    BINDIR = $$PREFIX/bin
-}
- 
-isEmpty(DATADIR) {
-    DATADIR = $$PREFIX/share
-}
-
-isEmpty(ETCDIR) {
-    ETCDIR = /etc
-}
-
-isEmpty(LIBDIR) {
-    LIBDIR = $$PREFIX/lib
-}
-
-target.path = $$BINDIR
-sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS *.pro
-sources.path = .
-desktop.files += CoreBox.desktop
-desktop.path = $$DATADIR/applications
-icon.files += coreBox.svg
-icon.path = $$DATADIR/icons
-INSTALLS += target desktop icon
-
-DEFINES += QT_DEPRECATED_WARNINGS
-
-RESOURCES += \
-    icons.qrc \
-    other.qrc
-
 FORMS += \
     about/about.ui \
     bookmarks/bookmarks.ui \
@@ -237,3 +201,52 @@ SOURCES += \
     corepad/coreedit.cpp \
     main.cpp \
     corepdf/corepdf.cpp
+
+RESOURCES += \
+    icons.qrc \
+    other.qrc \
+    ../docs/docs.qrc \
+
+# Enable warnings and threading support
+CONFIG += thread silent warn_off build_all
+
+# Disable Debug on Release
+# CONFIG(release):DEFINES += QT_NO_DEBUG_OUTPUT
+
+# Build location
+
+BUILD_PREFIX = $$(NB_BUILD_DIR)
+
+isEmpty( BUILD_PREFIX ) {
+        BUILD_PREFIX = ./build
+}
+
+greaterThan(QT_MAJOR_VERSION, 4) {
+        MOC_DIR 	= $$BUILD_PREFIX/moc-qt5
+        OBJECTS_DIR = $$BUILD_PREFIX/obj-qt5
+        RCC_DIR		= $$BUILD_PREFIX/qrc-qt5
+        UI_DIR      = $$BUILD_PREFIX/uic-qt5
+}
+
+unix {
+        isEmpty(PREFIX) {
+                PREFIX = /usr
+        }
+        BINDIR = $$PREFIX/bin
+
+        INSTALLS += target desktop icons data mime templates
+        target.path = $$BINDIR
+
+        QMAKE_RPATHDIR += $$PREFIX/lib/corebox/
+
+        desktop.path = $$PREFIX/share/applications/
+        desktop.files = ../CoreBox.desktop
+
+        icons.path = $$PREFIX/share/icons/hicolor/256x256/apps/
+        icons.files = ../CoreBox.png
+
+        data.path = $$PREFIX/share/corebox/
+        data.files = ../docs/ChangeLog ../docs/ReleaseNotes
+}
+
+DEFINES += QT_DEPRECATED_WARNINGS
