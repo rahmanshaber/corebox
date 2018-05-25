@@ -2,7 +2,7 @@
 Name=CoreBox
 GenericName=CoreBox
 Comment=Combination of some common desktop apps
-Exec=CoreBox
+Exec=coreBox
 Icon=CoreBox
 Type=Application
 Categories=Utility;FileTools;Core;Qt;System;FileTools;
