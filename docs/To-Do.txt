@@ -20,7 +20,8 @@ corebox
 1 - tab text align left.
 
 globalfunction
-
+0 - remove the icon path from saverecent function.
+0 - add a app icon get option.
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)

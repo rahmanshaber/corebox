@@ -83,7 +83,7 @@ QScrollBar::sub-page:vertical {
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-217</y>
         <width>837</width>
         <height>900</height>
        </rect>
@@ -520,7 +520,7 @@ padding: 50px 5px 20px 20px;
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>70</height>
+              <height>60</height>
              </size>
             </property>
             <property name="frameShape">
@@ -751,7 +751,7 @@ padding: 50px 5px 20px 20px;
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>70</height>
+              <height>60</height>
              </size>
             </property>
             <property name="frameShape">
@@ -905,13 +905,13 @@ padding: 10px 5px 0px 5px;
              <bool>false</bool>
             </attribute>
             <attribute name="horizontalHeaderDefaultSectionSize">
-             <number>200</number>
+             <number>120</number>
             </attribute>
             <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
              <bool>true</bool>
             </attribute>
             <attribute name="horizontalHeaderStretchLastSection">
-             <bool>false</bool>
+             <bool>true</bool>
             </attribute>
             <attribute name="verticalHeaderVisible">
              <bool>false</bool>

@@ -25,8 +25,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QPainter>
 #include <QFile>
 #include <QProcess>
-#include <sys/vfs.h>
-#include <sys/stat.h>
+//#include <sys/vfs.h>
+//#include <sys/stat.h>
 
 #include "corefm/udisks2.h"
 #include "resources/resources_page.h"
@@ -62,7 +62,6 @@ private slots:
     void on_refresh_clicked();
     void on_mount_2_clicked();
     void on_unmount_2_clicked();
-    void pageClick(QPushButton *btn, int i, QString title);
     void on_Bresource_clicked();
     void on_Bdrives_clicked();
     void on_Bbattery_clicked();
@@ -71,11 +70,9 @@ private slots:
     void on_drives_itemSelectionChanged();
     void on_Bdisplay_clicked();
 
-
 public:
     explicit dashboard(QWidget *parent = 0);
     ~dashboard();
-    QString getDriveInfo(QString);
     UPower *m_upower;
     Battery *m_model;
     QStringList batteries;
@@ -91,6 +88,9 @@ private:
     void setupDisplayPage();
     void setupBatteryPage();
     void setupDisksPage();
+    QString getDriveInfo(const QString path);
+    void pageClick(QPushButton *btn, int i, QString title);
+
 };
 
 #endif // DASHBOARD_H

@@ -158,30 +158,35 @@ void coretime::ToggleTue(bool isEnabled)
     Active->setIsTueEnabled(isEnabled);
     UpdateListWidget();
 }
+
 void coretime::ToggleWed(bool isEnabled)
 {
     Schedule *Active=this->_Schedules->GetSchedule(ui->listWidget->currentRow());
     Active->setIsWedEnabled(isEnabled);
     UpdateListWidget();
 }
+
 void coretime::ToggleThur(bool isEnabled)
 {
     Schedule *Active=this->_Schedules->GetSchedule(ui->listWidget->currentRow());
     Active->setIsThurEnabled(isEnabled);
     UpdateListWidget();
 }
+
 void coretime::ToggleFri(bool isEnabled)
 {
     Schedule *Active=this->_Schedules->GetSchedule(ui->listWidget->currentRow());
     Active->setIsFriEnabled(isEnabled);
     UpdateListWidget();
 }
+
 void coretime::ToggleSat(bool isEnabled)
 {
     Schedule *Active=this->_Schedules->GetSchedule(ui->listWidget->currentRow());
     Active->setIsSatEnabled(isEnabled);
     UpdateListWidget();
 }
+
 void coretime::ToggleSun(bool isEnabled)
 {
     Schedule *Active=this->_Schedules->GetSchedule(ui->listWidget->currentRow());
@@ -383,11 +388,13 @@ void coretime::UpdateListWidget()
     ui->listWidget->setCurrentRow(index);
 }
 
-void coretime::counting() {
+void coretime::counting()
+{
     ui->sw->setText(msToTime(timeToms(ui->sw->text()) + 1));
 }
 
-QString coretime::msToTime(quint64 ms) {
+QString coretime::msToTime(quint64 ms)
+{
     unsigned int h = ms / 1000 /60 /60;
     unsigned int m = (ms / 1000 /60) - (h * 60);
     unsigned int s = (ms / 1000) - ((m + (h * 60)) * 60);
@@ -400,7 +407,8 @@ QString coretime::msToTime(quint64 ms) {
     return diff;
 }
 
-quint64 coretime::timeToms(QString time) {
+quint64 coretime::timeToms(QString time)
+{
     quint64 total;
     QTime dt = QDateTime::fromString(time, "hh:mm:ss.zzz").time();
     total = ((((dt.hour()) * 60) * 60) * 1000) + ((dt.minute() * 60) * 1000) + (dt.second() * 1000) + dt.msec();
@@ -440,25 +448,30 @@ void coretime::on_addalarm_clicked()
 
 //======================Stopwatch=====================Start==================================
 
-void coretime::start() {
+void coretime::start()
+{
     forStopWatch->start(1);
 }
 
-void coretime::resume() {
+void coretime::resume()
+{
     forStopWatch->start();;
 }
 
-void coretime::pause() {
+void coretime::pause()
+{
     int remain = forStopWatch->remainingTime();
     forStopWatch->stop();
     forStopWatch->setInterval(remain);
 }
 
-void coretime::stop() {
+void coretime::stop()
+{
     forStopWatch->stop();
 }
 
-void coretime::updateStopwatch() {
+void coretime::updateStopwatch()
+{
     if (!(ui->timerText->text() == "00:00:00")) {
         QTime time = QDateTime::fromString(ui->timerText->text(), "hh:mm:ss").time();
         qint64 total = ((time.hour() * 60) * 60) + (time.minute() * 60) + (time.second() - 1);

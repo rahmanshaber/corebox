@@ -230,16 +230,14 @@ void dashboard::on_unmount_2_clicked()
     }
 }
 
-QString dashboard::getDriveInfo(QString path)
+QString dashboard::getDriveInfo(const QString path)
 {
-    struct statfs info;
-    statfs(path.toLocal8Bit(), &info);
+    double t = QStorageInfo(path).bytesTotal();
+    double f = QStorageInfo(path).bytesFree();
 
-    if(info.f_blocks == 0) return "";
-
-    return QString("%1  /  %2  (%3%)").arg(formatSize((qint64) (info.f_blocks - info.f_bavail)*info.f_bsize))
-                       .arg(formatSize((qint64) info.f_blocks*info.f_bsize))
-                       .arg((info.f_blocks - info.f_bavail)*100/info.f_blocks);
+    return QString("%1  /  %2  (%3%)").arg(formatSize(f))
+                       .arg(formatSize(t))
+                       .arg((t - f)*100/t);
 }
 
 void dashboard::on_blocks_itemSelectionChanged()
