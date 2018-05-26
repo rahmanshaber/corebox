@@ -8,7 +8,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET   = coreBox
 
 INCLUDEPATH += ../library/qpdflib
-LIBS += -L$$OUT_PWD/../library/qpdflib
+
+CONFIG(debug, debug|release) {
+    LIBS += -L$$OUT_PWD/../library/qpdflib/debug
+} else {
+    LIBS += -L$$OUT_PWD/../library/qpdflib/release
+}
+
+LIBS += qpdf.lib
 
 LIBS += -lqpdf
 LIBS += -lmagic
