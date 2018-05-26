@@ -1,7 +1,6 @@
 TEMPLATE = app
 
 QT += core gui dbus multimedia multimediawidgets charts concurrent #svg printsupport
-CONFIG += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -9,16 +8,11 @@ TARGET   = coreBox
 
 INCLUDEPATH += ../library/qpdflib
 
-CONFIG(debug, debug|release) {
-    LIBS += -L$$OUT_PWD/../library/qpdflib/debug
-} else {
-    LIBS += -L$$OUT_PWD/../library/qpdflib/release
+isEqual( QT_MAJOR_VERSION, 5 ) {
+        LIBS += -L$$OUT_PWD/../library/qpdflib
 }
 
-LIBS += qpdf.lib
-
-LIBS += -lqpdf
-LIBS += -lmagic
+LIBS += -lmagic -lqpdf
 
 FORMS += \
     about/about.ui \
@@ -213,6 +207,12 @@ RESOURCES += \
     icons.qrc \
     other.qrc \
     ../docs/docs.qrc \
+
+# C99/C++11 Support for Qt5
+isEqual( QT_MAJOR_VERSION, 5 ) {
+        QMAKE_CFLAGS += -std=c99
+        QMAKE_CXXFLAGS += -std=c++11
+}
 
 # Enable warnings and threading support
 CONFIG += thread silent warn_off build_all
