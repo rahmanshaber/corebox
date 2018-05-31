@@ -608,9 +608,6 @@ background-color:rgb(48, 140, 198);
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPlainTextEdit" name="plainTextEdit"/>
-      </item>
      </layout>
     </widget>
    </item>

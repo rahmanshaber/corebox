@@ -20,7 +20,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTableWidgetItem>
 #include <QWidget>
 #include <QToolButton>
-#include <QProcess>
+
+#include "coreimage/coreimage.h"
+#include "corepad/corepad.h"
+#include "../corebox/corebox.h"
+
 
 namespace Ui {
 class search;
@@ -33,28 +37,30 @@ class search : public QWidget
 public:
     explicit search(QWidget *parent = 0);
     ~search();
+    Ui::search *ui;
 
-    void setPath(const QString &path);
+    void shotcuts();
+    void setPath(QString path);
 
 private:
-    Ui::search *ui;
-    QProcess *cProcess;
-
     QStringList all;
     QStringList media;
     QStringList image;
     QStringList other;
     QStringList folder;
+    QStringList populateItems(QString text);
+    QStringList populateByType();
 
-    void callProcess(bool find);
-    void populateItems(const QString &text);
-    const QStringList &populateByType();
+    QString processOutput;
+    QString processCall(bool find);
 
-    void toTable(const QStringList &list);
-    void shotcuts();
+    void toTable(QStringList list);
 
 private slots:
+    void find();
+    void locate();
     void checkChange(QToolButton *a, QToolButton *b, QToolButton *c, QToolButton *d, QToolButton *e);
+
     void on_findCMD_clicked();
     void on_locateCMD_clicked();
     void on_typeAll_clicked();
@@ -66,6 +72,7 @@ private slots:
     void on_more_clicked(bool checked);
     void on_searchFF_textChanged(const QString &arg1);
     void on_setfolder_clicked();
+
 };
 
 #endif // SEARCH_H

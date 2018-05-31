@@ -1039,7 +1039,6 @@ background-color: rgb(48, 140, 198);
     <widget class="QTabWidget" name="notes">
      <property name="styleSheet">
       <string notr="true">QTabWidget QTabBar{
-border-color: #EFEFEF;
 background-color: #EFEFEF;
 height: 30px;
 }
