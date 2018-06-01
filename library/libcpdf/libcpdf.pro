@@ -1,5 +1,5 @@
 TEMPLATE = lib
-TARGET = qpdf
+TARGET = cpdf
 
 CONFIG += dll
 CONFIG += c++11
@@ -10,7 +10,7 @@ QT += widgets\
       webenginewidgets\
       webchannel
 
-DEFINES += QPDFLIB_BUILD
+DEFINES += CPDFLIB_BUILD
 
 HEADERS =\
     qpdfwidget.h \
@@ -34,7 +34,7 @@ unix {
 
         target.path			= $$PREFIX/lib/
 
-        QMAKE_PKGCONFIG_NAME = libarchive-qt
+        QMAKE_PKGCONFIG_NAME = libcpdf
         QMAKE_PKGCONFIG_DESCRIPTION = A Qt based archiving solution with libarchive backend
         QMAKE_PKGCONFIG_PREFIX  = $$INSTALL_PREFIX
         QMAKE_PKGCONFIG_LIBDIR  = $$target.path

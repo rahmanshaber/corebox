@@ -6,13 +6,13 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET   = coreBox
 
-INCLUDEPATH += ../library/qpdflib
+INCLUDEPATH += ../library/libcpdf
 
 isEqual( QT_MAJOR_VERSION, 5 ) {
-        LIBS += -L$$OUT_PWD/../library/qpdflib
+        LIBS += -L$$OUT_PWD/../library/libcpdf
 }
 
-LIBS += -lmagic -lqpdf
+LIBS += -lmagic -lcpdf
 
 FORMS += \
     about/about.ui \

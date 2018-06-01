@@ -82,7 +82,7 @@ void coreaction::tryicon()  //setup coreaction tryicon
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(ShowWindow(QSystemTrayIcon::ActivationReason)));
 }
 
-void coreaction::widgetList()
+void coreaction::widgetList() //setup all enabled widgets for settings
 {
     ui->timeW->hide();
     ui->batteryW->setVisible(0);
@@ -138,7 +138,7 @@ void coreaction::widgetList()
 
 }
 
-void coreaction::loadsettings()
+void coreaction::loadsettings() //load setting ini
 {
     SettingsManage sm;
     sm.createDefaultSettings();

@@ -1,2 +1,2 @@
 TEMPLATE = subdirs
-SUBDIRS += qpdflib
+SUBDIRS += libcpdf
