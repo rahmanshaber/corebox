@@ -167,21 +167,8 @@ AppsName nameToInt(QString appName)
 QIcon appsIconPath(QString appName)
 {
     QString str = ":/icons/";
-    if (appName == "CoreFM" || appName == "corefm") {
-        return QIcon(str + "CoreFM.svg");
-    } else if (appName == "CoreImage" || appName == "coreimage") {
-        return QIcon(str + "CoreImage.svg");
-    } else if (appName == "CorePad" || appName == "corepad") {
-        return QIcon(str + "CorePad.svg");
-    } else if (appName == "CorePaint" || appName == "corepaint") {
-        return QIcon(str + "CorePaint.svg");
-    } else if (appName == "CorePlayer" || appName == "coreplayer") {
-        return QIcon(str + "CorePlayer.svg");
-    } else if (appName == "CorePDF" || appName == "corepdf") {
-        return QIcon(str + "CorePDF.svg");
-    } else if (appName == "CoreTime" || appName == "coretime") {
-        return QIcon(str + "CoreTime.svg");
-    } else if (appName == "DashBoard" || appName == "dashboard") {
+
+    if (appName == "DashBoard" || appName == "dashboard") {
         return QIcon(str + "DashBoard.svg");
     } else if (appName == "Bookmarks" || appName == "bookmarks") {
         return QIcon(str + "Bookmarks.svg");
@@ -195,6 +182,22 @@ QIcon appsIconPath(QString appName)
         return QIcon(str + "Help.svg");
     } else if (appName == "Settings" || appName == "settings") {
         return QIcon(str + "Settings.svg");
+    } else if (appName == "CoreImage" || appName == "coreimage") {
+        return QIcon(str + "CoreImage.svg");
+    } else if (appName == "CorePad" || appName == "corepad") {
+        return QIcon(str + "CorePad.svg");
+    } else if (appName == "CorePaint" || appName == "corepaint") {
+        return QIcon(str + "CorePaint.svg");
+    } else if (appName == "CorePlayer" || appName == "coreplayer") {
+        return QIcon(str + "CorePlayer.svg");
+    } else if (appName == "CorePDF" || appName == "corepdf") {
+        return QIcon(str + "CorePDF.svg");
+    } else if (appName == "CoreTime" || appName == "coretime") {
+        return QIcon(str + "CoreTime.svg");
+    } else if (appName == "CoreFM" || appName == "corefm") {
+        return QIcon(str + "CoreFM.svg");
+    } else if (appName == "CoreTerminal" || appName == "coreterminal") {
+        return QIcon(str + "CoreTerminal.svg");
     } else if (!appName.isNull() || !appName.isEmpty()) {
         return QIcon::fromTheme(appName);
     } else {

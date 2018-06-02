@@ -12,6 +12,8 @@ QT += widgets\
 
 DEFINES += CPDFLIB_BUILD
 
+VERSION += 0.1.1
+
 HEADERS =\
     qpdfwidget.h \
     pdfjsbridge.h

@@ -29,7 +29,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
 {
-    qDebug() << "search opening";
     ui->setupUi(this);
     ui->searchFF->setFocus();
     ui->results->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
@@ -80,7 +79,8 @@ void search::setPath(const QString &path)
  * @brief Create a process based on that. And the process will collect the info.
  * @param find Use find or locate process for searching.
  */
-void search::callProcess(bool find) {
+void search::callProcess(bool find)
+{
     QString programName;
     QString argument;
     QString path = ui->folderPath->text();
@@ -174,7 +174,8 @@ void search::populateItems(const QString &text)
  * @brief Return to the specific item type
  * @return A list by type
  */
-const QStringList& search::populateByType() {
+const QStringList& search::populateByType()
+{
     if (ui->typeFolder->isChecked()) {
         return folder;
     } else if (ui->typeMedia->isChecked()) {
@@ -194,8 +195,8 @@ const QStringList& search::populateByType() {
  * @brief Arrage items from a specific string list to table
  * @param A specific list which contains file icon, file path and seffix(Seperated with '$$$$$')
  */
-void search::toTable(const QStringList &list) {
-
+void search::toTable(const QStringList &list)
+{
     QFuture<void> f = QtConcurrent::run([this, list](){
         QStringList temp;
 
@@ -233,13 +234,15 @@ void search::toTable(const QStringList &list) {
     });
 }
 
-void search::shotcuts(){
+void search::shotcuts()
+{
     QShortcut* shortcut;
     shortcut = new QShortcut(QKeySequence(Qt::Key_Enter), this);
     connect(shortcut, &QShortcut::activated, this, &search::on_locateCMD_clicked);
 }
 
-void search::checkChange(QToolButton *a, QToolButton *b, QToolButton *c, QToolButton *d, QToolButton *e) {
+void search::checkChange(QToolButton *a, QToolButton *b, QToolButton *c, QToolButton *d, QToolButton *e)
+{
     if (a->isChecked()) {
         b->setChecked(false);
         c->setChecked(false);

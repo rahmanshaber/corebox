@@ -1,4 +1,12 @@
 
+version 2.2
+- added coreterminal to be independent.
+- added corearchiver to archive file.
+- fix search ui.
+
+
+
+
 Version 2.1,Released date Friday, June 1, 2018
 
 - fixed battery pointer that caused compiling error in armv8 on dashboard app .
@@ -78,6 +86,8 @@ Version 2.1,Released date Friday, June 1, 2018
 - fixed dashboard singnal problem.
 - fixed the close issue in corepdf.
 - fixed corepdf library issue.
+- fixed corepad closing issue.
+- search is now in qconcarent.
 
 
 Version 2,Released date Monday, March 26, 2018

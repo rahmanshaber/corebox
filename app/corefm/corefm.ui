@@ -306,13 +306,8 @@ background-color: #1268A4;
          <enum>Qt::CustomContextMenu</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">QListView{
-padding: 0px 0px 0px 0px;
-}
-
-QListView::item{
-Text-align:left;
-padding: 5px 5px 5px 10px;
+         <string notr="true">QListView::item{
+padding: 5px 5px 5px 0px;
 }
 
 QListView::item:selected {
@@ -320,7 +315,6 @@ background-color: #1268A4;
 }
 
 QListView::item:hover {
-padding: 5px 5px 5px 0px;
  background-color: #1268A4;
 }</string>
         </property>
@@ -356,6 +350,9 @@ padding: 5px 5px 5px 0px;
           <width>24</width>
           <height>24</height>
          </size>
+        </property>
+        <property name="isWrapping" stdset="0">
+         <bool>false</bool>
         </property>
         <property name="wordWrap">
          <bool>true</bool>

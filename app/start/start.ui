@@ -354,7 +354,7 @@ padding: 50px 5px 20px 20px;
              </property>
              <property name="icon">
               <iconset resource="../icons.qrc">
-               <normaloff>:/icons/slideshow_b.svg</normaloff>:/icons/slideshow_b.svg</iconset>
+               <normaloff>:/icons/CoreTerminal.svg</normaloff>:/icons/CoreTerminal.svg</iconset>
              </property>
             </item>
             <item>

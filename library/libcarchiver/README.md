@@ -1,4 +1,6 @@
-libarchive-qt
+# libarchive-qt
+
+## Overview
 A Qt based archiving solution with libarchive backend
 
 This is a simple archiving library for Qt.

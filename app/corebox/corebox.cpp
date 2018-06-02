@@ -245,7 +245,7 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
     case CoreTerminal: {
         coreterminal *trm =new coreterminal();
 
-        ui->windows->insertTab(n, trm, QIcon(":/icons/CorePDF.svg"), "CoreTerminal");
+        ui->windows->insertTab(n, trm, QIcon(":/icons/CoreTerminal.svg"), "CoreTerminal");
         ui->windows->setCurrentIndex(n);
         break;
     }

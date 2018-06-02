@@ -35,6 +35,12 @@
    </property>
    <item row="0" column="0" rowspan="5">
     <widget class="QWidget" name="shortcut" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
        <width>200</width>

@@ -1079,7 +1079,7 @@ QTabBar::close-button {
       <bool>true</bool>
      </property>
      <property name="tabBarAutoHide">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
    </item>

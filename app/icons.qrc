@@ -145,5 +145,6 @@
         <file>icons/drive_usb_w.svg</file>
         <file>icons/expand_b.svg</file>
         <file>icons/CorePDF.svg</file>
+        <file>icons/CoreTerminal.svg</file>
     </qresource>
 </RCC>
