@@ -34,6 +34,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreaction/coreaction.h"
 #include "coretime/coretime.h"
 #include "corepdf/corepdf.h"
+#include "coreterminal/coreterminal.h"
 
 
 CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
@@ -241,6 +242,13 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
         ui->windows->setCurrentIndex(n);
         break;
     }
+    case CoreTerminal: {
+        coreterminal *trm =new coreterminal();
+
+        ui->windows->insertTab(n, trm, QIcon(":/icons/CorePDF.svg"), "CoreTerminal");
+        ui->windows->setCurrentIndex(n);
+        break;
+    }
     case CoreRenamer: {
 
         break;
@@ -338,6 +346,13 @@ void CoreBox::on_windows_tabCloseRequested(int index)
 //        cpdf->eclose();
         if (cpdf->close()){
             cpdf->deleteLater();
+            ui->windows->removeTab(index);
+        }
+    } else if (appName == "CoreTerminal") {
+        corepdf *ctrm = ui->windows->findChild<corepdf*>("coreterminal");
+//        cpdf->eclose();
+        if (ctrm->close()){
+            ctrm->deleteLater();
             ui->windows->removeTab(index);
         }
     }
@@ -540,7 +555,7 @@ void CoreBox::on_corepad_clicked()
 
 void CoreBox::on_box_clicked()
 {
-    messageEngine("Thanks for using CoreBox", "Info");
+    messageEngine("Thanks for using CoreBox\nVersion 2.2", "Info");
 }
 
 

@@ -157,6 +157,8 @@ AppsName nameToInt(QString appName)
         return CoreRenamer;
     } else if (appName == "CorePDF" || appName == "corepdf") {
         return CorePDF;
+    } else if (appName == "CoreTerminal" || appName == "coreterminal") {
+        return CoreTerminal;
     } else {
         return damn;
     }

@@ -51,7 +51,8 @@ enum AppsName {
     CoreTime,
     CoreRenamer,
     Corebox,
-    CorePDF
+    CorePDF,
+    CoreTerminal
 };
 
  bool moveToTrash(QString fileName);

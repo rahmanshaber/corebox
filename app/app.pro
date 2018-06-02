@@ -12,6 +12,17 @@ isEqual( QT_MAJOR_VERSION, 5 ) {
         LIBS += -L$$OUT_PWD/../library/libcpdf
 }
 
+INCLUDEPATH += ../library/libcterminal
+DEPENDPATH  += .
+
+LIBS += -L../library/libcterminal -lctermianl
+
+
+INCLUDEPATH += . ../library/libcarchiver/
+
+LIBS += -L../library/libcarchiver/ -lcarchiver
+
+
 LIBS += -lmagic -lcpdf
 
 FORMS += \
@@ -119,7 +130,9 @@ HEADERS += \
     start/start.h \
     corepad/coreedit.h \
     corefm/clickoutlistview.h \
-    corepdf/corepdf.h
+    corepdf/corepdf.h \
+    corearchiver/corearchiver.h \
+    coreterminal/coreterminal.h
 
 SOURCES += \
     about/about.cpp \
@@ -201,7 +214,9 @@ SOURCES += \
     start/start.cpp \
     corepad/coreedit.cpp \
     main.cpp \
-    corepdf/corepdf.cpp
+    corepdf/corepdf.cpp \
+    corearchiver/corearchiver.cpp \
+    coreterminal/coreterminal.cpp
 
 RESOURCES += \
     icons.qrc \

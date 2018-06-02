@@ -21,6 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QStyleFactory>
 #include "corepad/corepad.h"
 
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);

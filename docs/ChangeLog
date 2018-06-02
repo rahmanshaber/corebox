@@ -1,5 +1,5 @@
 
-Version 2.1
+Version 2.1,Released date Friday, June 1, 2018
 
 - fixed battery pointer that caused compiling error in armv8 on dashboard app .
 - fixed button ui in corescreenshot app.
@@ -76,7 +76,8 @@ Version 2.1
 - added first letter to capital letter in fStringList function in globalfunction.
 - redesigned the about app and fixed the github page not opening.
 - fixed dashboard singnal problem.
-- fixed the close issue in corepdf
+- fixed the close issue in corepdf.
+- fixed corepdf library issue.
 
 
 Version 2,Released date Monday, March 26, 2018

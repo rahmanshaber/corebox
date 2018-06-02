@@ -1,2 +1,7 @@
 TEMPLATE = subdirs
-SUBDIRS += libcpdf
+
+SUBDIRS += \
+      libcpdf \
+      libcarchiver \
+      libcterminal \
+

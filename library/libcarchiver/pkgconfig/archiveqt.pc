@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib/
+includedir=${prefix}/include/
+qt_config=lex yacc warn_on uic resources qt warn_on release incremental link_prl gdb_dwarf_index shared def_files_disabled exceptions no_mocdepend release stl qt_no_framework silent warn_on create_pc create_prl no_install_prl link_pkgconfig dll shared moc thread
+
+Name: libarchive-qt
+Description: A Qt based archiving solution with libarchive backend
+Version: 1.1.0
+Libs: -L${libdir} -larchiveqt
+Libs.private: -L/usr/lib/x86_64-linux-gnu  -larchive -lz -lbz2 -llzma -lQtCore -lpthread
+Cflags:  -I${includedir}

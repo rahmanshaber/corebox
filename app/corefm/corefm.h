@@ -40,6 +40,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../corebox/globalfunctions.h"
 #include "../bookmarks/bookmarks.h"
 #include "../bookmarks/bookmarkdialog.h"
+#include "../corearchiver/corearchiver.h"
 
 
 namespace Ui {
@@ -215,6 +216,7 @@ private:
 
     QFileSystemWatcher *watcher;
 
+    QString currentdir;
     QString selcitempath;
     int selcitem;
 

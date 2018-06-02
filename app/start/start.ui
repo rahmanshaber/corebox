@@ -83,7 +83,7 @@ QScrollBar::sub-page:vertical {
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-217</y>
+        <y>0</y>
         <width>837</width>
         <height>900</height>
        </rect>
@@ -346,6 +346,15 @@ padding: 50px 5px 20px 20px;
              <property name="icon">
               <iconset resource="../icons.qrc">
                <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>CoreTerminal</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../icons.qrc">
+               <normaloff>:/icons/slideshow_b.svg</normaloff>:/icons/slideshow_b.svg</iconset>
              </property>
             </item>
             <item>

@@ -420,6 +420,7 @@ void corefm::dirLoaded()
 
     ui->totalitem->setText("Total : " + QString("%1 items").arg(items.count()));
     ui->selecteditem->clear();
+    currentdir = ui->pathEdit->currentText();
 
     if(items.count()==0){messageEngine("Folder is empty", "Info");}
     if(ui->showthumb->isChecked()) QtConcurrent::run(modelList,&myModel::loadThumbs,items);
@@ -1058,8 +1059,8 @@ void corefm::progressFinished(int ret,QStringList newFiles)
  * @brief Creates menu for opening file in selected application
  * @return menu
  */
-QMenu* corefm::createOpenWithMenu() {
-
+QMenu* corefm::createOpenWithMenu()
+{
     QMenu *openMenu = new QMenu(tr("Open with"));
 
     // Adding CoreApps
@@ -1238,7 +1239,8 @@ QMenu* corefm::globalmenu(){
 /**
  * @brief Selects application for opening file
  */
-void corefm::selectApp() {
+void corefm::selectApp()
+{
 
     // Select application in the dialog
     ApplicationDialog *dialog = new ApplicationDialog(this);
@@ -1254,7 +1256,8 @@ void corefm::selectApp() {
 /**
  * @brief Opens file in application
  */
-void corefm::openInApp() {
+void corefm::openInApp()
+{
     QAction* action = dynamic_cast<QAction*>(sender());
     if (action) {
       mimeUtils->openInApp(action->data().toString(), curIndex, this);
@@ -1955,7 +1958,8 @@ void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos){
     globalmenu()->exec(ui->viewtree->mapToGlobal(pos));
 }
 
-void corefm::on_actionSelectAll_triggered() {
+void corefm::on_actionSelectAll_triggered()
+{
     if(ui->view->currentIndex() == 0){
         ui->viewlist->selectAll();
     } else {
@@ -1963,8 +1967,8 @@ void corefm::on_actionSelectAll_triggered() {
     }
 }
 
-void corefm::on_Tools_clicked(bool checked){
-
+void corefm::on_Tools_clicked(bool checked)
+{
     if(checked){
         ui->tools->show();
     }
@@ -2133,7 +2137,8 @@ void corefm::on_SBookMarkIt_clicked(){
     }
 }
 
-void corefm::on_searchHere_clicked(){
+void corefm::on_searchHere_clicked()
+{
 
     QString path = ui->pathEdit->itemText(0);
 
@@ -2141,8 +2146,8 @@ void corefm::on_searchHere_clicked(){
     cBox->tabEngine(Search, path);
 }
 
-void corefm::on_actionExtract_Here_triggered(){
-
+void corefm::on_actionExtract_Here_triggered()
+{
     QProcess p1;
     QString commad = "engrampa -h \"" + selcitempath + "\"";
     p1.start(commad.toLatin1());
@@ -2150,13 +2155,19 @@ void corefm::on_actionExtract_Here_triggered(){
     on_actionRefresh_triggered();
 }
 
-void corefm::on_actionCreate_Archive_triggered(){
+void corefm::on_actionCreate_Archive_triggered()
+{
+//    corearchiver *arc = new corearchiver();
 
-    QProcess p1;
-    QString commd = "engrampa \"" + selcitempath + "\" -d";
-    p1.start(commd.toLatin1());
-    p1.waitForFinished();
-    on_actionRefresh_triggered();
+//    QDir *p(currentdir);
+//    arc->compress(selcitempath,p);
+//    qDebug()<< selcitempath << selcitem;
+
+//    QProcess p1;
+//    QString commd = "engrampa \"" + selcitempath + "\" -d";
+//    p1.start(commd.toLatin1());
+//    p1.waitForFinished();
+//    on_actionRefresh_triggered();
 }
 
 void corefm::on_STrash_clicked(){
