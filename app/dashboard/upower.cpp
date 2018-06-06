@@ -61,8 +61,8 @@ void UPower::createDBusInterface() {
             return;
         }
 
-        connect(m_interface, SIGNAL(DeviceAdded(QString)), this, SLOT(addBattery(QString)));
-        connect(m_interface, SIGNAL(DeviceRemoved(QString)), this, SLOT(removeBattery(QString)));
+        connect(m_interface, SIGNAL(DeviceAdded(QDBusObjectPath)), this, SLOT(addBattery(QDBusObjectPath)));
+        connect(m_interface, SIGNAL(DeviceRemoved(QDBusObjectPath)), this, SLOT(removeBattery(QDBusObjectPath)));
     }
 
     m_available = true;
@@ -77,7 +77,7 @@ void UPower::refreshBatteries() {
         while( !argument.atEnd() ) {
             QDBusObjectPath path;
             argument >> path;
-            addBattery(path.path());
+            addBattery(path);
         }
     }
 }
@@ -86,8 +86,8 @@ void UPower::clearBattery() {
     m_batteries->clear();
 }
 
-bool UPower::addBattery(const QString &path) {
-    Battery *battery = new Battery(path);
+bool UPower::addBattery(const QDBusObjectPath &path) {
+    Battery *battery = new Battery(path.path());
 
     if(addBattery(battery)) {
         return true;
@@ -115,8 +115,8 @@ void UPower::removeBattery(Battery *battery) {
     battery->deleteLater();
 }
 
-void UPower::removeBattery(const QString &path) {
-    removeBattery(m_batteries->value(path, 0));
+void UPower::removeBattery(const QDBusObjectPath &path) {
+    removeBattery(m_batteries->value(path.path(), 0));
 }
 
 Battery *UPower::battery(const QString &path) const {

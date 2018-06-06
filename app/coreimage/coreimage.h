@@ -32,7 +32,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../corepaint/corepaint.h"
 
 
-QString formatSize(qint64 num);
+//QString formatSize(qint64 num);
 
 
 namespace Ui {
@@ -93,6 +93,7 @@ private:
     QString currentImagePath;
     QImage image;
     double scaleFactor;
+    QLabel *cImageLabel;
 
     QStringList getImages(const QString path);
     bool saveFile(const QString &fileName);

@@ -9,7 +9,7 @@
 <img src="docs/screenshots/a4.png" width="500">
 
 ### Download
-* Version 2.1 released date Monday, March 26, 2018.
+* Version 2.1 released Friday, June 1, 2018.
 * Here is the app download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
 * See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
@@ -32,7 +32,6 @@
 * qt5-webengine
 * file
 * libmagic-dev/libmagic-mgc/libmagic1
-* engrampa(for Archive support)
 
 ### Known Bugs
 * Opening two dashboard ,crash the whole app.

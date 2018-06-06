@@ -132,7 +132,8 @@ void ResourcesPage::updateMemoryChart()
     memoryChart->setSeriesList(seriesList);
 }
 
-void ResourcesPage::updateCpuChart() {
+void ResourcesPage::updateCpuChart()
+{
     static int second = 0;
     QList<int> cpuPercents = im->getCpuPercents();
     QVector<QLineSeries*> seriesList = cpuChart->getSeriesList();
@@ -141,7 +142,7 @@ void ResourcesPage::updateCpuChart() {
         int p = cpuPercents.at(j + 1);
 
         for (int i = 0; i < (second < 61 ? second : 61); i++)
-            seriesList.at(j)->replace(i, (i + 1), seriesList.at(j)->at(i).y());
+            seriesList.at(j)->replace(i, (i + 1), seriesList.at(j)->at(i).y()); //fix me
 
         seriesList.at(j)->insert(0, QPointF(0, p));
         seriesList.at(j)->setName(QString("CPU%1 %2%").arg(j+1).arg(p));

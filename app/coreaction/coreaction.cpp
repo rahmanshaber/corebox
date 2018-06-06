@@ -78,7 +78,7 @@ void coreaction::tryicon()  //setup coreaction tryicon
 
     connect(QAquit, SIGNAL(triggered()),this,SLOT(close()));
     connect(QAshow, SIGNAL(triggered()),this,SLOT(actionshow()));
-    connect(QAabout, SIGNAL(triggered()), this, SLOT(on_about_clicked()));
+    connect(QAabout, &QAction::triggered, this, &coreaction::coreBoxAbout);
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(ShowWindow(QSystemTrayIcon::ActivationReason)));
 }
 
@@ -180,7 +180,7 @@ void coreaction::batteryCheck()
     }
 }
 
-void coreaction::on_about_clicked()
+void coreaction::coreBoxAbout()
 {
     about *ab = new about();
     ab->show();
@@ -334,12 +334,12 @@ void coreaction::on_division_clicked()
     ui->calcview->setText("");
 }
 
-void coreaction::on_percentage_clicked()
-{
-    z = 5;
-    varA = ui->calcview->text().toFloat();
-    ui->calcview->setText("");
-}
+//void coreaction::on_percentage_clicked()
+//{
+//    z = 5;
+//    varA = ui->calcview->text().toFloat();
+//    ui->calcview->setText("");
+//}
 //--------------------Calculator----------------------End---------------------------
 
 

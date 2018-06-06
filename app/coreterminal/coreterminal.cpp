@@ -13,116 +13,220 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreterminal.h"
+#include "../corebox/corebox.h"
 
-#include <QApplication>
 #include <QDebug>
-#include <QHBoxLayout>
-#include <QShortcut>
-#include <QIcon>
-#include <QProcessEnvironment>
+#include <QTabWidget>
 
-coreterminal::coreterminal(QWidget *parent)
-    : QWidget(parent)
+
+coreterminal::coreterminal(QWidget *parent) : QTermWidget(0, parent)
 {
-    setWindowIcon(QIcon::fromTheme("utilities-terminal"));
-    //QIcon::setThemeName("oxygen");
-
-    QTermWidget *console = new QTermWidget();
-
-    console->setStyleSheet("QScrollBar:vertical {"
-                           "background-color: rgba( 0, 0, 0, 72% );"
-                           "max-width: 8px;"
-                           "border-radius: 4px;"
-                           "padding: 1px; }"
-                           "QScrollBar::handle:vertical {"
-                           "background-color: silver;"
-                           "max-width: 6px;"
-                           "border-radius: 3px; }"
-                           "QScrollBar::sub-page:vertical {"
-                           "background-color: rgba( 0, 0, 0, 72% ); }"
-                           "QScrollBar::add-page:vertical {"
-                           "background-color: rgba( 0, 0, 0, 72% ); }"
-                           "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
-                           "width: 0px; height: 0px; }"
-                           );
-
-    console->setTerminalOpacity(.95);
-    console->setWindowOpacity(.95);
+    // Terminal Opacity
+    setTerminalOpacity(.95);
 
     /* Set the enivronment variable TERM as xterm */
     QProcessEnvironment procEnv = QProcessEnvironment::systemEnvironment();
     procEnv.insert("TERM", "xterm-256color");
-    console->setEnvironment(QStringList() << "TERM=xterm-256color" << "COLORFGBG=15;0");
-    console->setBlinkingCursor(true);
+    setEnvironment(procEnv.toStringList());
 
-    /* Choose any of them for a default
-     *
-     * availableColorSchemes:
-        "DarkPastels",
-        "BreezeModified",
-        "BlackOnLightYellow",
-        "WhiteOnBlack",
-        "SolarizedLight",
-        "BlackOnWhite",
-        "GreenOnBlack",
-        "Solarized",
-        "BlackOnRandomLight",
-        "Linux"
-        */
-    console->setColorScheme("Linux");
-    /* Choose any of them for a default
-     *
-     * availableKeyBindings:
-     *  "linux",
-     *  "macbook",
-     *  "default",
-     *  "vt420pc",
-     *  "solaris"
-     *
+    // Available Color Schemes
+    /*  BlackOnLightYellow.schema
+        BlackOnRandomLight.colorscheme
+        BlackOnWhite.schema
+        DarkPastels.colorscheme
+        GreenOnBlack.colorscheme
+        Linux.colorscheme
+        Transparent.colorscheme
+        WhiteOnBlack.schema
      */
-    console->setKeyBindings("linux");
+    setColorScheme("Linux");
+    setKeyBindings("linux");
+    setScrollBarPosition(QTermWidget::ScrollBarRight);
+    setStyleSheet("QScrollBar:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% );"
+                  "max-width: 8px;"
+                  "border-radius: 4px;"
+                  "padding: 1px; }"
+                  "QScrollBar::handle:vertical {"
+                  "background-color: silver;"
+                  "max-width: 6px;"
+                  "border-radius: 3px; }"
+                  "QScrollBar::sub-page:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% ); }"
+                  "QScrollBar::add-page:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% ); }"
+                  "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                  "width: 0px; height: 0px; }"
+                  );
 
-    console->setMotionAfterPasting(2);
-    console->setFlowControlEnabled(true);
-    console->setFlowControlWarningEnabled(true);
+    // Set font
+    //setTerminalFont();
 
-    console->setScrollBarPosition(QTermWidget::ScrollBarRight);
+    //How many lines going to be in one window.
+    setHistorySize(100000);
 
-    //For Test a widget is created here.
-    //You can do like qPDF
-    QWidget *main = new QWidget(this);
-    QHBoxLayout *hl = new QHBoxLayout();
-    hl->setContentsMargins(0,0,0,0);
-    hl->addWidget(console);
+    setShellProgram("/bin/bash");
 
-    main->resize(600,400);
-    main->setLayout(hl);
+    setMotionAfterPasting(2);
+    setFlowControlEnabled(true);
+    setFlowControlWarningEnabled(true);
 
-    console->setFocusPolicy(Qt::StrongFocus);
-    console->setFocus();
-    //console->show();
-    //Some shortcuts i collected from newbreeze if you want to add them, then keep them
-    QShortcut *shortcut;
+    startShellProgram();
+    watcher->addPath(QString("/proc/%1/").arg(getShellPID()));
+    oldCWD = QFileInfo(QString("/proc/%1/cwd").arg(getShellPID())).symLinkTarget();
+    connect(watcher, SIGNAL(directoryChanged(const QString&)), this, SLOT(handleFSWSignals(QString)));
 
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_F), this);
-    connect(shortcut, &QShortcut::activated, console, &QTermWidget::toggleShowSearchBar);
-
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_X), this);
-    connect(shortcut, &QShortcut::activated, console, &QTermWidget::clear);
-
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_C), this);
-    connect(shortcut, &QShortcut::activated, console, &QTermWidget::copyClipboard);
-
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_V), this);
-    connect(shortcut, &QShortcut::activated, console, &QTermWidget::pasteClipboard);
-
-    // real startup
-    QObject::connect(console, SIGNAL(finished()), this, SLOT(close()));
-
-    qDebug() << console->environment();
+    setFocus();
 }
 
-coreterminal::~coreterminal()
+coreterminal::coreterminal(QString workDir, QWidget *parent) : QTermWidget(0, parent)
 {
+    // Terminal Opacity
+    setTerminalOpacity(.95);
+
+    /* Set the enivronment variable TERM as xterm */
+    QProcessEnvironment procEnv = QProcessEnvironment::systemEnvironment();
+    procEnv.insert("TERM", "xterm-256color");
+    setEnvironment(procEnv.toStringList());
+
+    // Available Color Schemes
+    /*  BlackOnLightYellow.schema
+        BlackOnRandomLight.colorscheme
+        BlackOnWhite.schema
+        DarkPastels.colorscheme
+        GreenOnBlack.colorscheme
+        Linux.colorscheme
+        Transparent.colorscheme
+        WhiteOnBlack.schema
+     */
+    setColorScheme("Linux");
+    setScrollBarPosition(QTermWidget::ScrollBarRight);
+    setStyleSheet("QScrollBar:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% );"
+                  "max-width: 8px;"
+                  "border-radius: 4px;"
+                  "padding: 1px; }"
+                  "QScrollBar::handle:vertical {"
+                  "background-color: silver;"
+                  "max-width: 6px;"
+                  "border-radius: 3px; }"
+                  "QScrollBar::sub-page:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% ); }"
+                  "QScrollBar::add-page:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% ); }"
+                  "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                  "width: 0px; height: 0px; }"
+                  );
+
+    // Set font
+    //setTerminalFont();
+
+    //How many lines going to be in one window.
+    setHistorySize(100000);
+
+    setWorkingDirectory(workDir);
+
+    setShellProgram("/bin/bash");
+
+    setMotionAfterPasting(2);
+    setFlowControlEnabled(true);
+    setFlowControlWarningEnabled(true);
+
+    startShellProgram();
+
+    setFocus();
 
 }
+
+coreterminal::coreterminal(QString workDir, QString command, QWidget *parent) : QTermWidget(0, parent)
+{
+    // Terminal Opacity
+    setTerminalOpacity(.95);
+    setWindowOpacity(.95);
+
+    /* Set the enivronment variable TERM as xterm */
+    QProcessEnvironment procEnv = QProcessEnvironment::systemEnvironment();
+    procEnv.insert("TERM", "xterm-256color");
+    setEnvironment(procEnv.toStringList());
+
+    // Available Color Schemes
+    /*  BlackOnLightYellow.schema
+        BlackOnRandomLight.colorscheme
+        BlackOnWhite.schema
+        DarkPastels.colorscheme
+        GreenOnBlack.colorscheme
+        Linux.colorscheme
+        Transparent.colorscheme
+        WhiteOnBlack.schema
+     */
+    setColorScheme("Linux");
+    setKeyBindings("linux");
+    setScrollBarPosition(QTermWidget::ScrollBarRight);
+    setStyleSheet("QScrollBar:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% );"
+                  "max-width: 8px;"
+                  "border-radius: 4px;"
+                  "padding: 1px; }"
+                  "QScrollBar::handle:vertical {"
+                  "background-color: silver;"
+                  "max-width: 6px;"
+                  "border-radius: 3px; }"
+                  "QScrollBar::sub-page:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% ); }"
+                  "QScrollBar::add-page:vertical {"
+                  "background-color: rgba( 0, 0, 0, 72% ); }"
+                  "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                  "width: 0px; height: 0px; }"
+                  );
+
+    // Set font
+    //setTerminalFont();
+
+    //How many lines going to be in one window.
+    setHistorySize(100000);
+
+    setWorkingDirectory(workDir);
+    qDebug() << workDir << "\nOPOP";
+    QStringList shArgs = QStringList() << "-il" << "-c" << command;			//.split( QRegExp( "\\s+" ), QString::SkipEmptyParts );
+
+    setShellProgram("/bin/bash");
+    if (!command.isEmpty())
+        setArgs(shArgs);
+
+    setMotionAfterPasting(2);
+    setFlowControlEnabled(true);
+    setFlowControlWarningEnabled(true);
+
+    startShellProgram();
+
+    setFocus();
+
+    connect(this, &coreterminal::finished, [this]() {
+        CoreBox *cBox = static_cast<CoreBox*>(qApp->activeWindow());
+        cBox->closeCurrentTab();
+    });
+}
+
+QString coreterminal::currentWorkingDirectory()
+{
+    QString cwd = QString("/proc/%1/cwd").arg(getShellPID());
+    return QFileInfo(cwd).symLinkTarget();
+}
+
+void coreterminal::handleFSWSignals(QString)
+{
+    if (QFileInfo(QString("/proc/%1/cwd").arg(getShellPID())).symLinkTarget() == oldCWD)
+        return;
+
+    oldCWD = QFileInfo(QString("/proc/%1/cwd").arg(getShellPID())).symLinkTarget();
+    emit chDir(oldCWD);
+}
+
+void coreterminal::closeEvent(QCloseEvent *cEvent)
+{
+    cEvent->ignore();
+    emit finished();
+    sendText("exit\n");
+    cEvent->accept();
+}
+

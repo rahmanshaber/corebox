@@ -620,7 +620,7 @@ background-color:rgb(48, 140, 198);
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="fonudpage">
       <layout class="QHBoxLayout" name="horizontalLayout_2">

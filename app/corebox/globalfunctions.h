@@ -57,7 +57,6 @@ enum AppsName {
 
  bool moveToTrash(QString fileName);
  bool saveToRecent(QString appName, QString pathName);
- bool saveToRecent(QString appName, QString pathName, QString iconPath);
  void messageEngine(QString message, QString messageType);
  void openAppEngine(QString path);
 

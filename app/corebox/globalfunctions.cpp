@@ -69,7 +69,7 @@ bool moveToTrash(QString fileName) // moves a file or folder to trash folder
     return false;
 }
 
-bool saveToRecent(QString appName, QString pathName, QString iconPath) // save file path and app name for recent activites
+bool saveToRecent(QString appName, QString pathName) // save file path and app name for recent activites
 {
     SettingsManage sm;
     if (sm.getDisableRecent() == true) {
@@ -77,18 +77,11 @@ bool saveToRecent(QString appName, QString pathName, QString iconPath) // save f
             sm.cSetting->beginGroup("Recent");
             int keysCount = sm.cSetting->childKeys().count();
             sm.cSetting->endGroup();
-            QString icon = "";
-            (iconPath.isNull() || iconPath.isEmpty()) ? icon = "" : icon = QString("$$$" + iconPath);
-            sm.setSpecificValue("Recent", QString::number(keysCount), appName + "$$$" + pathName + "$$$" + QDateTime::currentDateTime().toString() + icon);
+            sm.setSpecificValue("Recent", QString::number(keysCount), appName + "$$$" + pathName + "$$$" + QDateTime::currentDateTime().toString());
             return true;
         }
     }
     return false;
-}
-
-bool saveToRecent(QString appName, QString pathName) // send file to recent activies list
-{
-    return saveToRecent(appName, pathName, NULL);
 }
 
 void messageEngine(QString message, QString messageType) // engine show any message with type in desktop corner

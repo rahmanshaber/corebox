@@ -75,6 +75,11 @@ private:
     QString files;
     QList<ScreenWidget*> cSnapWidgets;
 
+    WId getActiveWindowId();
+    QRect getWindowFrame(WId wid);
+
+    void shootActiveWindow();
+
 };
 
 #endif // MAINWINDOW_H

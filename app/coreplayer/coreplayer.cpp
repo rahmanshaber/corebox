@@ -24,7 +24,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QtWidgets>
 #include <QVideoWidget>
 #include <QStandardItemModel>
-
+#include <QtConcurrent>
 
 coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
    , playerState(QMediaPlayer::StoppedState)
@@ -125,7 +125,6 @@ void coreplayer::videoMimes()
                 videomimes.append(s.name());
     }
 
-//    audiomimes.replace(audiomimes.indexOf("audio/mpeg"), "audio/mp3");//error
     videomimes.sort();
 }
 
@@ -268,34 +267,57 @@ void coreplayer::updateDurationInfo(qint64 currentInfo)
     ui->duration->setText(time);
 }
 
-void coreplayer::creatPlayList(const QString path)
+void coreplayer::creatPlayList(const QString &path)
 {
     QFileInfo sp(path);
-    QString selectedFilePath;
-    QModelIndex index = mModel->index(0, 0);
-    sp.isDir() ? selectedFilePath = path : selectedFilePath = sp.path();
     mModel->clear();
-    ui->folderLineEdit->setText(selectedFilePath);
-    QStringList list1 = getAudios(selectedFilePath);
-    QStringList list2 = getVideos(selectedFilePath);
-    QStringList lists;
-    lists.append(list1);
-    lists.append(list2);
-    list1.clear();
-    list2.clear();
-    lists = lists.toSet().toList();
-    for (int i = 0; i < lists.count(); ++i) {
-        mModel->appendRow((new QStandardItem(QFileInfo(lists.at(i)).fileName())));
-        if (sp.isFile() && (sp.fileName() == mModel->index(i, 0).data().toString())) {
-            index = mModel->index(i, 0);
+    ui->folderLineEdit->setText( sp.isDir() ? path : sp.path());
+    QFuture<QStringList> f = QtConcurrent::run(this, &coreplayer::getList, path);
+
+    QFutureWatcher<QStringList> *fw = new QFutureWatcher<QStringList>();
+    fw->setFuture(f);
+    connect(fw, &QFutureWatcher<QStringList>::finished, [&, f, path]() {
+        QModelIndex index = mModel->index(0, 0);
+        QStringList uList;
+        uList = f.resultAt(0);
+        uList = uList.toSet().toList();
+        for (int i = 0; i < uList.count(); ++i) {
+            mModel->appendRow((new QStandardItem(QFileInfo(uList.at(i)).fileName())));
+            if (QFileInfo(path).isFile() && (QFileInfo(path).fileName() == mModel->index(i, 0).data().toString())) {
+                index = mModel->index(i, 0);
+            }
+        }
+        mModel->sort(0);
+        mNumberOfFiles = uList.count();
+        if(mNumberOfFiles > 0){
+             ui->numberOfFiles->setVisible(1);
+             ui->numberOfFiles->setText(QString("Included Files: %1").arg(mNumberOfFiles));
+        }
+    });
+}
+
+QStringList coreplayer::getList(const QString &path) {
+    QStringList uList;
+
+    QDir dir(QFileInfo(path).isDir() ? path : QFileInfo(path).path());
+    for (QString file : dir.entryList()) {
+        if (file == "." || file == "..") {
+            continue;
+        }
+        //for each audio check the file.
+        foreach (QString s, audiomimes) {
+            if ((QFileInfo(file).completeSuffix()) == (s.split("/").at(1)) || QFileInfo(file).suffix() == s.split("/").at(1)) {
+                uList.append(path + "/" + file);
+            }
+        }
+        //for each video check the file.
+        foreach (QString s, videomimes) {
+            if (QFileInfo(file).completeSuffix() == s.split("/").at(1) || QFileInfo(file).suffix() == s.split("/").at(1)) {
+                uList.append(path + "/" + file);
+            }
         }
     }
-    mModel->sort(0);
-    mNumberOfFiles = lists.count();
-    if(mNumberOfFiles > 0){
-         ui->numberOfFiles->setVisible(1);
-         ui->numberOfFiles->setText(QString("Included Files: %1").arg(mNumberOfFiles));
-    }
+    return uList;
 }
 
 void coreplayer::openPlayer(const QString path)
@@ -324,7 +346,7 @@ void coreplayer::on_open_clicked()
     mimes.append(audiomimes);
     mimes.append(videomimes);
     dialog.setMimeTypeFilters(mimes);
-    dialog.selectMimeTypeFilter("audio/mp3");
+    dialog.selectMimeTypeFilter("video/mp4");
     if (dialog.exec() == QDialog::Accepted) { //if dialog pressed accept means open then do this.
 //        openPlayer(QFileInfo(dialog.selectedFiles().first()).path());
         filepath = dialog.selectedFiles().first();

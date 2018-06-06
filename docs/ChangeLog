@@ -1,10 +1,24 @@
 
-version 2.2
+Version 2.2
+
 - added coreterminal to be independent.
 - added corearchiver to archive file.
-- fix search ui.
-
-
+- fixed search ui.
+- removed the icon path variable from saverecent function.
+- fix the pages and there numbering.
+- updated the battery widget in dashboard and coreaction.
+- added delete selected area in corepaint.
+- added the opening terminal in current folder in corefm.
+- added extrat and comprass with corearciver in corefm.
+- mime list creation in qconcarent in settings.
+- move cImage label to code in coreimage.
+- image list in qconcarent in coreimage.
+- fixed coreterminal crashes on closing.
+- fix the window size of coreterminal
+- fixed coreterminal's type "man ls" shows this "terminal is not ready"
+- fixed coreterminal background in black.
+- add active window screenshot option corescreenshot.
+- removed engrampa from depedencies.
 
 
 Version 2.1,Released date Friday, June 1, 2018

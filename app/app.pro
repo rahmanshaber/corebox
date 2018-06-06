@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += core gui dbus multimedia multimediawidgets charts concurrent #svg printsupport
+QT += core gui dbus multimedia multimediawidgets charts concurrent x11extras#svg printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,7 +15,7 @@ isEqual( QT_MAJOR_VERSION, 5 ) {
 INCLUDEPATH += ../library/libcterminal
 DEPENDPATH  += .
 
-LIBS += -L../library/libcterminal -lctermianl
+LIBS += -L../library/libcterminal -lcterminal -lX11
 
 
 INCLUDEPATH += . ../library/libcarchiver/
@@ -264,8 +264,8 @@ unix {
         desktop.path = $$PREFIX/share/applications/
         desktop.files = ../CoreBox.desktop
 
-        icons.path = $$PREFIX/share/icons/hicolor/256x256/apps/
-        icons.files = ../CoreBox.png
+        icons.path = $$PREFIX/share/icons/hicolor/scalable/apps/
+        icons.files = ../CoreBox.svg
 
         data.path = $$PREFIX/share/corebox/
         data.files = ../docs/ChangeLog ../docs/ReleaseNotes

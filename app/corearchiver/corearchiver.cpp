@@ -24,7 +24,7 @@ corearchiver::corearchiver(QWidget *parent) : QWidget(parent)
     setWindowIcon( QIcon::fromTheme("archive") );
 
     /* Name Lyt */
-    QLineEdit *nameLE = new QLineEdit( this );
+    nameLE = new QLineEdit( this );
     nameLE->setPlaceholderText( "Type the archive name here" );
     connect( nameLE, SIGNAL( textChanged( QString ) ), this, SLOT( updateFileName( QString ) ) );
 
@@ -108,7 +108,8 @@ corearchiver::corearchiver(QWidget *parent) : QWidget(parent)
 
 corearchiver::~corearchiver()
 {
-
+    delete nameLE;
+    delete locationLE;
 }
 
 
@@ -136,7 +137,12 @@ void corearchiver::compress(QStringList archiveList , QDir currentDir)
     qDebug() << "List Files : " << archiveList;
     arc->setWorkingDir(currentDir.path());
     arc->updateInputFiles( archiveList );
-    QtConcurrent::run( arc, &LibArchive::create );
+    QFuture<void> f = QtConcurrent::run( arc, &LibArchive::create );
+    QFutureWatcher<void> *fw = new QFutureWatcher<void>();
+    fw->setFuture(f);
+    connect(fw, &QFutureWatcher<void>::finished, [&]() {
+        deleteLater();
+    });
 }
 
 /**
@@ -152,12 +158,16 @@ void corearchiver::extract(QString archiveFilePath , QDir dest)
 
     LibArchive arc( archiveFilePath );
     arc.setDestination( destP );
-    QtConcurrent::run( arc, &LibArchive::extract );
+    QFuture<void> f = QtConcurrent::run( arc, &LibArchive::extract );
+    QFutureWatcher<void> *fw = new QFutureWatcher<void>();
+    fw->setFuture(f);
+    connect(fw, &QFutureWatcher<void>::finished, [&]() {
+        deleteLater();
+    });
 }
 
 void corearchiver::updateFileName( QString fn )
 {
-
     archiveName = QString( fn );
 }
 

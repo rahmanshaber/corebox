@@ -19,7 +19,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFileDialog>
 #include <QClipboard>
 #include <QSpinBox>
-
+#include <QX11Info>
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
@@ -85,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
     this->setWindowTitle("CoreShot");
     setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A;padding: 5px 5px 5px 5px;}");
 
-    QString p ="QPushButton{border: 1px solid rgb(67, 67, 67);padding: 3px 2px 3px 2px;}QPushButton:hover {background-color: rgb(48, 140, 198)}QPushButton:checked{background-color:rgb(48, 140, 198);}";
+    QString p = "QPushButton{border: 1px solid rgb(67, 67, 67);padding: 3px 2px 3px 2px;}QPushButton:hover {background-color: rgb(48, 140, 198)}QPushButton:checked{background-color:rgb(48, 140, 198);}";
 
     cPreview->setStyleSheet(p);
     cShot->setStyleSheet(p);
@@ -94,6 +96,11 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
     cCancel->setStyleSheet(p);
     cType->setStyleSheet(p);
     cCorePaint->setStyleSheet(p);
+
+    //
+    // Add Active window option
+    cType->addItem("Active Window");
+    //
 }
 
 MainWindow::~MainWindow()
@@ -117,6 +124,10 @@ void MainWindow::waitAndTakeScreen()
 void MainWindow::takeScreen()
 {
     int index = cType->currentIndex();
+    if (index == 2) {
+        QTimer::singleShot(cdelaySec->value() * 1000, this, &MainWindow::shootActiveWindow);
+        return;
+    }
     ScreenWidget * snapWidget = cSnapWidgets.at(index);
     if (index == 0) {
         snapWidget->showFullScreen();
@@ -142,7 +153,7 @@ void MainWindow::emitToS()
 void MainWindow::save()
 {
     QString fileName = sm.getSCSaveLocation();
-    QFile file(fileName);
+    QFile file(fileName + "/Screenshot_" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss") + ".png");
     cPreview->originalPixmap().save(&file, "PNG");
     file.close();
     files = fileName;
@@ -153,8 +164,10 @@ void MainWindow::save()
 void MainWindow::saveAs()
 {
     QString filename = QFileDialog::getSaveFileName(this,tr("Save Screenshot"),sm.getSCSaveLocation(), tr("Image (*.png)"));
-    QFile file(filename);
-    cPreview->originalPixmap().save(&file,"PNG");
+    QFile file(filename + ".png");
+
+    cPreview->originalPixmap().save(&file, "PNG");
+
     file.close();
     files = filename;
     messageEngine("Screenshot Saved", "Info");
@@ -197,8 +210,112 @@ void MainWindow::on_cType_IndexChanged(int index) {
     if (index == 0) {
         cdelaylbl->setVisible(false);
         cdelaySec->setVisible(false);
-    } else if (index == 1){
+    } else if (index == 1) {
+        cdelaylbl->setVisible(true);
+        cdelaySec->setVisible(true);
+    } else if (index == 2) {
         cdelaylbl->setVisible(true);
         cdelaySec->setVisible(true);
     }
+}
+
+void MainWindow::shootActiveWindow() {
+    // Current window rectangle.
+    QRect rect = getWindowFrame(getActiveWindowId());
+    // Current whole screen.
+    QScreen *screen = QGuiApplication::primaryScreen();
+
+    auto cwposX = rect.topLeft().x();
+    auto cwposY = rect.topLeft().y();
+    auto cwHeight = rect.topLeft().y() + rect.height();
+    auto cwWidth = rect.topLeft().x() + rect.width();
+    auto scHeight = screen->size().height();
+    auto scWidth = screen->size().width();
+    auto scposX = screen->availableGeometry().x();
+    auto scposY = screen->availableGeometry().y();
+
+    if (cwHeight > scHeight) {
+        cwHeight = rect.height() - (cwHeight - screen->availableSize().height());
+        if (cwposY < 0) {
+            cwposY = scposY;
+            cwHeight = cwHeight + rect.y();
+        }
+    } else {
+        cwHeight = rect.height();
+        if (cwposY < 0) {
+            cwposY = scposY;
+            cwHeight = rect.y() + rect.height() - cwposY;
+        }
+    }
+
+    if (cwWidth > scWidth) {
+        cwWidth = rect.width() - (cwWidth - screen->availableSize().width());
+        if (cwposX < 0) {
+            cwposX = scposX;
+            cwWidth = cwWidth + rect.x();
+        }
+    } else {
+        cwWidth = rect.width();
+        if (cwposX < 0) {
+            cwposX = scposX;
+            cwWidth = rect.x() + rect.width() - cwposX;
+        }
+    }
+    auto pixmap = screen->grabWindow(QApplication::desktop()->winId(),
+                                     cwposX, cwposY, cwWidth, cwHeight);
+
+    cPreview->setOriginalPixmap(pixmap);
+
+    cSave->setVisible(true);
+    cSaveAs->setVisible(true);
+    cCorePaint->setVisible(true);
+    this->setWindowState(Qt::WindowNoState);
+}
+
+WId MainWindow::getActiveWindowId()
+{
+    WId root = WId(QX11Info::appRootWindow());
+    Atom atom = XInternAtom(QX11Info::display(), "_NET_ACTIVE_WINDOW", false);
+    unsigned long type, resultLen, rest;
+    int format;
+    WId result = 0;
+    unsigned char* data = NULL;
+    if(XGetWindowProperty(QX11Info::display(), root, atom, 0, 1, false,
+        XA_WINDOW, &type, &format, &resultLen, &rest, &data) == Success) {
+      result = *reinterpret_cast<long*>(data);
+      XFree(data);
+    }
+    return result;
+}
+
+QRect MainWindow::getWindowFrame(WId wid)
+{
+    QRect result;
+    XWindowAttributes wa;
+    if(XGetWindowAttributes(QX11Info::display(), wid, &wa)) {
+      Window child;
+      int x, y;
+      // translate to root coordinate
+      XTranslateCoordinates(QX11Info::display(), wid, wa.root, 0, 0, &x, &y, &child);
+      //qDebug("%d, %d, %d, %d", x, y, wa.width, wa.height);
+      result.setRect(x, y, wa.width, wa.height);
+
+      // get the frame widths added by the window manager
+      Atom atom = XInternAtom(QX11Info::display(), "_NET_FRAME_EXTENTS", false);
+      unsigned long type, resultLen, rest;
+      int format;
+      unsigned char* data = NULL;
+      if(XGetWindowProperty(QX11Info::display(), wid, atom, 0, LONG_MAX, false,
+        XA_CARDINAL, &type, &format, &resultLen, &rest, &data) == Success) {
+      }
+      if(data) { // left, right, top, bottom
+        long* offsets = reinterpret_cast<long*>(data);
+        result.setLeft(result.left() - offsets[0]);
+        result.setRight(result.right() + offsets[1]);
+        result.setTop(result.top() - offsets[2]);
+        result.setBottom(result.bottom() + offsets[3]);
+        XFree(data);
+      }
+    }
+    return result;
 }

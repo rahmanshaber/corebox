@@ -20,6 +20,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "libarchiveqt.h"
 
+
 class corearchiver : public QWidget
 {
     Q_OBJECT
@@ -32,8 +33,8 @@ public:
     void extract(QString archiveFilePath, QDir dest);
 
     QString archiveName, location, format, workingDir;
+    QLineEdit *nameLE;
     QLineEdit *locationLE;
-    LibArchive *archive();
     QStringList filePathList;
 
 private Q_SLOTS:

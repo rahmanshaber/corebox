@@ -102,37 +102,6 @@ border: 1px rgb(67, 67, 67);
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="cImageLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="mouseTracking">
-         <bool>true</bool>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>0</number>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -691,7 +660,6 @@ background-color: #1D2025;
      </layout>
      <zorder>slideShow</zorder>
      <zorder>title</zorder>
-     <zorder>cImageLabel</zorder>
      <zorder>cOpen</zorder>
      <zorder>cSave</zorder>
      <zorder>cSaveAs</zorder>

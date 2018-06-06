@@ -37,7 +37,10 @@ void Battery::createInterface() {
     if(m_interface==0 || !m_interface->isValid()) {
         m_interface = new QDBusInterface("org.freedesktop.UPower", m_path,
                                          "org.freedesktop.UPower.Device", QDBusConnection::systemBus(), this);
-        connect(m_interface, SIGNAL(Changed()), this, SIGNAL(changed()));
+        //
+        // There is actually no such signal named 'Changed' at upower dbus.
+        // connect(m_interface, SIGNAL(Changed()), this, SIGNAL(changed()));
+        //
         if(!m_interface->isValid()) {
             delete m_interface;
             m_interface = 0;

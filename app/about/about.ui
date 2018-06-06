@@ -180,7 +180,7 @@ border-radius: 10px;
             </font>
            </property>
            <property name="text">
-            <string>CoreBox v.2.1</string>
+            <string>CoreBox v.2.2</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -198,7 +198,7 @@ border-radius: 10px;
             </font>
            </property>
            <property name="text">
-            <string>CoreBox is a combination of some common apps with bookmarks</string>
+            <string>CoreBox is a combination of some common apps</string>
            </property>
            <property name="indent">
             <number>10</number>
@@ -208,7 +208,7 @@ border-radius: 10px;
          <item row="2" column="0">
           <widget class="QLabel" name="label_10">
            <property name="text">
-            <string>Build with Qt 5.10.1 (GCC 8.1., 64 bit)</string>
+            <string>Build with Qt 5.11 (GCC 8.1., 64 bit)</string>
            </property>
            <property name="indent">
             <number>10</number>

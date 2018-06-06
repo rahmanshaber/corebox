@@ -1,6 +1,6 @@
 QT      += widgets
 
-TARGET   = ctermianl
+TARGET   = cterminal
 TEMPLATE = lib
 
 DEFINES += CTERMINAL_LIBRARY
@@ -8,7 +8,10 @@ DEFINES += CTERMINAL_LIBRARY
 DEFINES += KB_LAYOUT_DIR=\\\"/usr/share/cterminal/kb-layouts\\\"
 DEFINES += COLORSCHEMES_DIR=\\\"/usr/share/cterminal/color-schemes\\\"
 
-VERSION += 0.1.0
+#DEFINES += BUNDLE_KEYBOARDLAYOUTS
+#DEFINES += BUNDLE_COLORSCHEMES
+
+VERSION += 0.9.0
 
 LIBS    += -lutil -lX11
 
@@ -25,7 +28,7 @@ unix {
                 PREFIX = /usr
         }
 
-        INSTALLS	+= target
+        INSTALLS	+= target includes data1 data2 data3 data4
         CONFIG		+= create_pc no_install_prl link_pkgconfig
         contains(DEFINES, LIB64): target.path = $$INSTALL_PREFIX/lib64
         else: target.path = $$INSTALL_PREFIX/lib
@@ -34,8 +37,17 @@ unix {
         includes.files  = qtermwidget.h Emulation.h Filter.h
         includes.path   = $$PREFIX/include/
 
-        data.path = $$PREFIX/share/$$TARGET/
-        data.files = ./kb-layouts/*.keytab ./color-schemes/*.*schem* ./kb-layouts/historic/*.keytab ./color-schemes/historic/*.*schem*
+        data1.path = $$PREFIX/share/$$TARGET/kb-layouts/
+        data1.files = ./kb-layouts/*.keytab
+
+        data2.path = $$PREFIX/share/$$TARGET/kb-layouts/historic
+        data2.files = ./kb-layouts/historic/*.keytab
+
+        data3.path = $$PREFIX/share/$$TARGET/color-schemes/
+        data3.files = ./color-schemes/*.*schem*
+
+        data4.path = $$PREFIX/share/$$TARGET/color-schemes/historic
+        data4.files = ./color-schemes/historic/*.*schem*
 
         QMAKE_PKGCONFIG_NAME = libcterminal
         QMAKE_PKGCONFIG_DESCRIPTION = Terminal emulator in Qt 5
@@ -106,3 +118,6 @@ HEADERS += \
 
 FORMS += \
         SearchBar.ui
+
+RESOURCES += ./kb-layouts/kb-layouts.qrc \
+             ./color-schemes/color-schemes.qrc

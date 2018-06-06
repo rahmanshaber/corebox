@@ -81,7 +81,7 @@ private:
     void play(int index);
     void setCurrentIndex(int currentIndex);
     void shotcuts();
-    void creatPlayList(const QString path);
+    void creatPlayList(const QString &path);
 
     int mNumberOfFiles;
     QMediaPlayer::State playerState;
@@ -94,6 +94,8 @@ private:
 
     QString folderpath;
     QString filepath;
+
+    QStringList getList(const QString &path);
 
 private slots:
     void seekLeft();

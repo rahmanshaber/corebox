@@ -243,8 +243,14 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
         break;
     }
     case CoreTerminal: {
-        coreterminal *trm =new coreterminal();
-
+        QString workDir = QDir::homePath();
+        if(!arg.isEmpty() && arg.contains("$$$")){
+            workDir = arg.split("$$$").at(1);
+            arg = arg.split("$$$").at(0);
+        }
+//        arg = arg.split("$$$").at(0);
+        //arg.isEmpty() ? workDir = QDir::homePath() : workDir = QDir::currentPath();
+        coreterminal *trm = new coreterminal(workDir, arg);
         ui->windows->insertTab(n, trm, QIcon(":/icons/CoreTerminal.svg"), "CoreTerminal");
         ui->windows->setCurrentIndex(n);
         break;
@@ -262,6 +268,7 @@ void CoreBox::on_windows_tabCloseRequested(int index)
 {
     QString appName = ui->windows->tabBar()->tabText(index);
 
+    qDebug() << appName;
     if (appName == "Bookmarks") {
         bookmarks *cbook = ui->windows->findChild<bookmarks*>("bookmarks");
         if (cbook->close()){
@@ -349,8 +356,8 @@ void CoreBox::on_windows_tabCloseRequested(int index)
             ui->windows->removeTab(index);
         }
     } else if (appName == "CoreTerminal") {
-        corepdf *ctrm = ui->windows->findChild<corepdf*>("coreterminal");
-//        cpdf->eclose();
+        qDebug() << "From close tab requested...";
+        coreterminal *ctrm = ui->windows->findChild<coreterminal*>();
         if (ctrm->close()){
             ctrm->deleteLater();
             ui->windows->removeTab(index);

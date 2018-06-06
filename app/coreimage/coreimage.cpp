@@ -31,7 +31,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QSpacerItem>
 #include <QtWidgets>
 #include <QDateTime>
-
+#include <QtConcurrent>
 
 coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
   ,slideShowTimer(nullptr)
@@ -40,8 +40,10 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
 
     scaleFactor = 1.0;
 
-    ui->cImageLabel->setBackgroundRole(QPalette::Base);
-    ui->cImageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    cImageLabel = new QLabel();
+
+    cImageLabel->setBackgroundRole(QPalette::Base);
+    cImageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
     ui->scrollArea->setBackgroundRole(QPalette::Dark);
     ui->scrollArea->setStyleSheet("background-color:rgb(0,0,0);");
@@ -70,6 +72,7 @@ coreimage::~coreimage()
     if(slideShowTimer)
       delete slideShowTimer;
     delete ui;
+    delete cImageLabel;
 }
 
 void coreimage::shotcuts()
@@ -184,7 +187,7 @@ void coreimage::setImage(const QImage &newImage)
     scaleFactor = 1.0;
 
     ui->horizontalLayout_3->removeItem(hSpacer);
-    ui->scrollArea->setWidget(ui->cImageLabel);
+    ui->scrollArea->setWidget(cImageLabel);
 
     int iw = image.width();
     int ih = image.height();
@@ -192,22 +195,23 @@ void coreimage::setImage(const QImage &newImage)
     int ch = ui->scrollArea->height();
 
     if (image.height() < ui->scrollArea->height() && image.width() < ui->scrollArea->width()){
-        ui->cImageLabel->setPixmap((QPixmap::fromImage(image)));
-        ui->cImageLabel->adjustSize();
-    }
-    else{
-        ui->cImageLabel->setPixmap(QPixmap::fromImage(image));
+        cImageLabel->setPixmap(QPixmap::fromImage(image));
+        cImageLabel->adjustSize();
+    } else {
+        cImageLabel->setPixmap(QPixmap::fromImage(image));
         QSize t2(iw, ih);
         t2.scale(cw, ch, Qt::KeepAspectRatio);
-        ui->cImageLabel->resize(t2);
+        cImageLabel->resize(t2);
     }
     if (!(images.count() > 0)) {
-        QStringList l = getImages(QFileInfo(currentImagePath).path());
-        for (int i = 0; i < l.count(); ++i) {
-            QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap(l.at(i))), l.at(i));
-            item->setFont(QFont(item->font().family(), 1));
-            ui->thumnailView->addItem(item);
-        }
+        QtConcurrent::run([this]() {
+            QStringList l = getImages(QFileInfo(currentImagePath).path());
+            for (int i = 0; i < l.count(); ++i) {
+                QListWidgetItem *item = new QListWidgetItem(QIcon(QPixmap(l.at(i))), l.at(i));
+                item->setFont(QFont(item->font().family(), 1));
+                ui->thumnailView->addItem(item);
+            }
+        });
     }
 
     QFileInfo info (currentImagePath);
@@ -222,7 +226,7 @@ void coreimage::setImage(const QImage &newImage)
     ui->width->setText("Width : " + w + " px ; ");
     ui->size->setText("Size : " + formatSize(info.size()) + " ; ");
     ui->type->setText("Type : " + typ + " ; ");
-    ui->thumnailView->item(images.indexOf(currentImagePath))->setSelected(true);
+    //ui->thumnailView->item(images.indexOf(currentImagePath))->setSelected(true);
 }
 
 void coreimage::resizeEvent(QResizeEvent *event) {
@@ -234,14 +238,14 @@ void coreimage::resizeEvent(QResizeEvent *event) {
     int ch = ui->scrollArea->height();
 
     if (image.height() < ui->scrollArea->height() && image.width() < ui->scrollArea->width()){
-        ui->cImageLabel->setPixmap((QPixmap::fromImage(image)));
-        ui->cImageLabel->adjustSize();
+        cImageLabel->setPixmap((QPixmap::fromImage(image)));
+        cImageLabel->adjustSize();
     }
     else{
-        ui->cImageLabel->setPixmap(QPixmap::fromImage(image));
+        cImageLabel->setPixmap(QPixmap::fromImage(image));
         QSize t2(iw, ih);
         t2.scale(cw, ch, Qt::KeepAspectRatio);
-        ui->cImageLabel->resize(t2);
+        cImageLabel->resize(t2);
     }
 }
 
@@ -271,9 +275,9 @@ static void initializeImageFileDialog(QFileDialog &dialog, QFileDialog::AcceptMo
 
 void coreimage::scaleImage(double factor)
 {
-    Q_ASSERT(ui->cImageLabel->pixmap());
+    Q_ASSERT(cImageLabel->pixmap());
     scaleFactor *= factor;
-    ui->cImageLabel->resize(scaleFactor * ui->cImageLabel->pixmap()->size());
+    cImageLabel->resize(scaleFactor * cImageLabel->pixmap()->size());
 
     adjustScrollBar(ui->scrollArea->horizontalScrollBar(), factor);
     adjustScrollBar(ui->scrollArea->verticalScrollBar(), factor);
@@ -298,7 +302,7 @@ void coreimage::on_cZoomOut_clicked()
 
 void coreimage::on_cNormalSize_clicked()
 {
-    ui->cImageLabel->adjustSize();
+    cImageLabel->adjustSize();
     scaleFactor = 1.0;
 }
 
@@ -307,7 +311,7 @@ void coreimage::on_cRotateLeft_clicked()
     QTransform tran;
     tran.rotate(-90);
     image = image.transformed(tran);
-    ui->cImageLabel->setPixmap(QPixmap::fromImage(image));
+    cImageLabel->setPixmap(QPixmap::fromImage(image));
 }
 
 void coreimage::on_cRotateRight_clicked()
@@ -315,7 +319,7 @@ void coreimage::on_cRotateRight_clicked()
     QTransform tran;
     tran.rotate(90);
     image = image.transformed(tran);
-    ui->cImageLabel->setPixmap(QPixmap::fromImage(image));
+    cImageLabel->setPixmap(QPixmap::fromImage(image));
 }
 
 void coreimage::on_cFlipVertical_clicked()
@@ -324,7 +328,7 @@ void coreimage::on_cFlipVertical_clicked()
     tran.scale(1, -1);
     tran.translate(0, -image.rect().height());
     image = image.transformed(tran);
-    ui->cImageLabel->setPixmap(QPixmap::fromImage(image));
+    cImageLabel->setPixmap(QPixmap::fromImage(image));
 }
 
 void coreimage::on_cFlipHorizontal_clicked()
@@ -333,7 +337,7 @@ void coreimage::on_cFlipHorizontal_clicked()
     tran.scale(-1, 1);
     tran.translate(-image.rect().width(), 0);
     image = image.transformed(tran);
-    ui->cImageLabel->setPixmap(QPixmap::fromImage(image));
+    cImageLabel->setPixmap(QPixmap::fromImage(image));
 }
 
 bool coreimage::saveFile(const QString &fileName)
@@ -476,18 +480,18 @@ void coreimage::on_thumnailView_itemClicked(QListWidgetItem *item)
 
 void coreimage::mousePressEvent(QMouseEvent *event)
 {
-  mousePressed = true;
-  mousePos = event->globalPos();
+    mousePressed = true;
+    mousePos = event->globalPos();
 
-  if (ui->cImageLabel->underMouse()){
-      wndPos = ui->cImageLabel->pos();
-  }
+    if (cImageLabel->underMouse()){
+      wndPos = cImageLabel->pos();
+    }
 }
 
 void coreimage::mouseMoveEvent(QMouseEvent *event)
 {
-  if (ui->cImageLabel->underMouse() && mousePressed){
-      ui->cImageLabel->move(wndPos + (event->globalPos() - mousePos));
+  if (cImageLabel->underMouse() && mousePressed){
+      cImageLabel->move(wndPos + (event->globalPos() - mousePos));
   }
 }
 
@@ -506,7 +510,7 @@ void coreimage::on_cTrashIt_clicked()
     images.removeAt(index);
 //    qDebug() << images.count();
     if (images.count() == 0) {
-        ui->cImageLabel->setPicture(QPicture());
+        cImageLabel->setPicture(QPicture());
 //        qDebug() << images.count();
     } else if (images.count() > 0) {
         if (index == 0) on_cNext_clicked();

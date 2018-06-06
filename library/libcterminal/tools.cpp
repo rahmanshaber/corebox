@@ -4,7 +4,6 @@
 #include <QDir>
 #include <QtDebug>
 
-
 /*! Helper function to get possible location of layout files.
 By default the KB_LAYOUT_DIR is used (linux/BSD/macports).
 But in some cases (apple bundle) there can be more locations).
@@ -28,11 +27,17 @@ QString get_kb_layout_dir()
         return rval;
     }
 
+    // subdir in the resource
+    d.setPath(":/");
+    if (d.exists())
+        return d.path() + "/";
+
     // subdir in the app location
     d.setPath(QCoreApplication::applicationDirPath() + "/kb-layouts/");
     //qDebug() << d.path();
     if (d.exists())
         return QCoreApplication::applicationDirPath() + "/kb-layouts/";
+
 #ifdef Q_WS_MAC
     d.setPath(QCoreApplication::applicationDirPath() + "/../Resources/kb-layouts/");
     if (d.exists())
@@ -73,6 +78,11 @@ const QStringList get_color_schemes_dirs()
 
     if (d.exists())
         rval << k.append("/");
+
+    // subdir in the resource
+    d.setPath(":/");
+    if (d.exists())
+        return QStringList() << d.path() + "/" << d.path() + "/historic/";
 
     // subdir in the app location
     d.setPath(QCoreApplication::applicationDirPath() + "/color-schemes/");

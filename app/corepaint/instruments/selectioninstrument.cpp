@@ -22,6 +22,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QPainter>
 #include <QApplication>
 #include <QClipboard>
+#include <QDebug>
 
 
 SelectionInstrument::SelectionInstrument(QObject *parent):AbstractSelection(parent)
@@ -176,6 +177,7 @@ void SelectionInstrument::clearSelectionBackground(ImageArea &imageArea)
 {
     if (!mIsSelectionAdjusting)
     {
+        makeUndoCommand(imageArea);
         QPainter blankPainter(imageArea.getImage());
         blankPainter.setPen(Qt::white);
         blankPainter.setBrush(QBrush(Qt::white));
@@ -183,6 +185,12 @@ void SelectionInstrument::clearSelectionBackground(ImageArea &imageArea)
         blankPainter.drawRect(QRect(mTopLeftPoint, mBottomRightPoint - QPoint(1, 1)));
         blankPainter.end();
         mImageCopy = *imageArea.getImage();
+        //
+        // Changes at here those are not before //Abrar
+        imageArea.update();
+        mIsSelectionExists = false;
+        imageArea.restoreCursor();
+        //
     }
 }
 

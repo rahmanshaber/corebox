@@ -1,5 +1,3 @@
-
-
 FIX MUST BE SIMPLE.
 
 0-bug/fix
@@ -21,32 +19,34 @@ corebox
 
 globalfunction
 0 - getfilesize in qconcarent.
-0 - remove the icon path from saverecent function.
 0 - add a app icon get option.
+1 - file moved message.
+1 - finished copying message.
+1 - file deleted & delete failed message.
+
+start
+1 - start button in side of tab(+).
+1 - option to sidebar or tab button(+).
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
 
 dashboard
-0 - fix the pages and there numbering.
 1 - remove unwanted partition
 1 - selected drive will show only it's partition.
 1 - mount specific partition on corebox startup.
 1 - add drive frame in drive view.
-
-corepaint
-0 - add delete selected area as a pushbutton and shortcut(del).
-1 - set all the instrument cursor.
 
 Search
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
 2 - if path is given ,find is not working.but locate is working.
 
+setting
+1 - add option to backup corbox config folder as a zip and restore the settings.
+
 corefm
-0 - add the opening terminal in current folder also in superuser mode.
-0 - add extrat and comprass with core arciver.
 0 - pathedit is always in focus, even outside clicked.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,both crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
@@ -58,10 +58,8 @@ corefm
 3 - Some *.desktop file has more groups(sections) and each group can contain
     exec command, but only first is read, this must be fixed
 
-messageengine
-1 - file moved message.
-1 - finished copying message.
-1 - file deleted & delete failed message.
+corepaint
+1 - set all the instrument cursor.
 
 coretime
 0 - fix the timer start/pause button .
@@ -72,18 +70,7 @@ coretime
 1 - set reminder option.
 1 - show a message (not a messagebox) before 5 minutes of alarm time
 
-corepad
-
-setting
-0 - mime list creation in qconcarent.
-1 - add option to backup corbox config folder as a zip and restore the settings.
-
-start
-1 - start button in side of tab(+).
-1 - option to sidebar or tab button(+).
-
 coreimage
-0 - move cImage label to code.
 1 - ctrl + wheel = zoom shortcut.
 
 coreplayer
@@ -95,15 +82,15 @@ coreplayer
 corepdf
 0 - fix the space in path issue.
 
+corepad
+
+corearchiver
+
 coreshot
-3 - add active window option.
 
 coreaction
 
 coreterminal
-0 - crashes on closing
-0 - fix the window size
-0 - type "man ls" shows this "terminal is not ready"
 
 
 help

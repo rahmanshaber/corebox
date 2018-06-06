@@ -94,6 +94,9 @@ void corepaint::shotcuts()
     connect(shortcut, &QShortcut::activated, this, &corepaint::on_newtab_clicked);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_B), this);
     connect(shortcut, &QShortcut::activated, this, &corepaint::on_bookMarkIt_clicked);
+
+    shortcut = new QShortcut(QKeySequence(Qt::Key_Delete), this);
+    connect(shortcut, &QShortcut::activated, this, &corepaint::on_delet_clicked);
 }
 
 void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
@@ -605,6 +608,6 @@ void corepaint::redo() {
 
 void corepaint::on_delet_clicked()
 {
-    //if (ImageArea *imageArea = getCurrentImageArea())
-    //   imageArea->clearBackground();
+    if (ImageArea *imageArea = getCurrentImageArea())
+       imageArea->clearBackground();
 }

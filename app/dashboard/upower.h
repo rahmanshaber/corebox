@@ -21,7 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QObject>
 #include <QMap>
-
+#include <QDBusObjectPath>
 
 class QDBusInterface;
 class QDBusServiceWatcher;
@@ -77,8 +77,8 @@ private Q_SLOTS:
     void createDBusInterface();
     void clearBattery();
 
-    bool addBattery(const QString &path);
-    void removeBattery(const QString &path);
+    bool addBattery(const QDBusObjectPath &path);
+    void removeBattery(const QDBusObjectPath &path);
     void refreshBatteries();
 
 Q_SIGNALS:

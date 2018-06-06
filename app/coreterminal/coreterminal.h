@@ -12,21 +12,47 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
-#ifndef CORETERMINAL_H
-#define CORETERMINAL_H
+#ifndef CORETERMWIDGET_H
+#define CORETERMWIDGET_H
 
-#include <QWidget>
+#pragma once
 
 #include "qtermwidget.h"
+#include <iostream>
+#include <fstream>
+
+#include <QFileSystemWatcher>
+#include <QFileInfo>
+#include <QProcessEnvironment>
+#include <QCloseEvent>
+#include <QWidget>
 
 
-class coreterminal : public QWidget
+class coreterminal : public QTermWidget
 {
     Q_OBJECT
 
-public:
-    explicit coreterminal(QWidget *parent = 0);
-    ~coreterminal();
+public :
+    coreterminal(QWidget *parent = 0);
+    coreterminal(QString workDir, QWidget *parent = 0);
+    coreterminal(QString workDir, QString command, QWidget *parent = 0);
+
+    QString currentWorkingDirectory();
+
+private:
+    QString oldCWD;
+
+private slots:
+    void handleFSWSignals(QString);
+
+protected:
+    void closeEvent(QCloseEvent *cEvent);
+
+Q_SIGNALS:
+    void chDir(QString);
+
 };
 
-#endif // CORETERMINAL_H
+static QFileSystemWatcher *watcher = new QFileSystemWatcher();
+
+#endif // CORETERMWIDGET_H

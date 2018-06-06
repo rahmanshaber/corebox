@@ -1229,7 +1229,6 @@ QMenu* corefm::globalmenu(){
         popup->addSeparator();
         popup->addMenu(subnew);
         popup->addAction(ui->actionTerminal);
-
         popup->addSeparator();
         popup->addAction(ui->actionProperties);
     }
@@ -1835,24 +1834,38 @@ void corefm::on_SHome_clicked()
 void corefm::on_actionTerminal_triggered()
 {
     QString term = sm.getTerminal();//here we collect the selected terminal name from settings.
-
     QStringList args(term.split(" "));
     QString name = args.at(0);
     args.removeAt(0);
-    QProcess::startDetached(name, args, ui->pathEdit->currentText());
+
+    if (name == "CoreTerminal") {
+        CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+        qDebug() << "Current Dir : " << QDir::currentPath();
+        QDir::setCurrent(ui->pathEdit->currentText());
+        qDebug() << "Current Dir : " << QDir::currentPath();
+        QString command = "";
+        for (int i = 0; i < args.count(); i++) {
+            command = command + " " + args.at(i);
+        }
+
+        cBox->tabEngine(CoreTerminal, command + "$$$" + ui->pathEdit->currentText());
+    } else {
+        QProcess::startDetached(name, args, ui->pathEdit->currentText());
+    }
+
     QString mess = term + " opening " ;
     messageEngine(mess, "Info");
 }
 
-void corefm::on_actionShowThumbnails_triggered(){
-
+void corefm::on_actionShowThumbnails_triggered()
+{
     if (currentView != 2) on_icon_clicked(true);
     else on_detaile_clicked(true);
     on_actionRefresh_triggered();
 }
 
-void corefm::setSortColumn(QAction *columnAct) {
-
+void corefm::setSortColumn(QAction *columnAct)
+{
     // Set root index
     if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
       QModelIndex i = modelList->index(ui->pathEdit->currentText());
@@ -1876,7 +1889,8 @@ void corefm::setSortColumn(QAction *columnAct) {
  * @brief Sets sort column
  * @param action
  */
-void corefm::toggleSortBy(QAction *action) {
+void corefm::toggleSortBy(QAction *action)
+{
     setSortColumn(action);
     modelView->sort(currentSortColumn, currentSortOrder);
 }
@@ -1895,8 +1909,7 @@ void corefm::on_actionAscending_triggered(bool checked)
     if(checked){
         currentSortOrder = Qt::AscendingOrder;
         modelView->sort(currentSortColumn, Qt::AscendingOrder);
-    }
-    else{
+    } else{
         currentSortOrder = Qt::DescendingOrder;
         modelView->sort(currentSortColumn, Qt::DescendingOrder);
     }
@@ -1907,8 +1920,8 @@ void corefm::on_actionAscending_triggered(bool checked)
  * @param index
  * @param run
  */
-void corefm::executeFile(QModelIndex index, bool run) {
-
+void corefm::executeFile(QModelIndex index, bool run)
+{
     // Index of file
     QModelIndex srcIndex = modelView->mapToSource(index);
 
@@ -1921,40 +1934,39 @@ void corefm::executeFile(QModelIndex index, bool run) {
     }
 }
 
-void corefm::goTo(const QString path) {
-
+void corefm::goTo(const QString path)
+{
     if (!path.isEmpty()){
         QModelIndex i = modelTree->mapFromSource(modelList->index(path));
         tree->setCurrentIndex(i);
         on_actionRefresh_triggered();
-    }
-    else  {
+    } else  {
         QModelIndex i = modelTree->mapFromSource(modelList->index(startPath));
         tree->setCurrentIndex(i);
         on_actionRefresh_triggered();
     }
 }
 
-void corefm::on_SDesktop_clicked(){
-
+void corefm::on_SDesktop_clicked()
+{
     QModelIndex i = modelTree->mapFromSource(modelList->index(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)));
     tree->setCurrentIndex(i);
 }
 
-void corefm::on_SDownloads_clicked(){
-
+void corefm::on_SDownloads_clicked()
+{
     QModelIndex i = modelTree->mapFromSource(modelList->index(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)));
     tree->setCurrentIndex(i);
     on_actionRefresh_triggered();
 }
 
-void corefm::on_viewlist_customContextMenuRequested(const QPoint &pos){
-
+void corefm::on_viewlist_customContextMenuRequested(const QPoint &pos)
+{
     globalmenu()->exec(ui->viewlist->mapToGlobal(pos));
 }
 
-void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos){
-
+void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos)
+{
     globalmenu()->exec(ui->viewtree->mapToGlobal(pos));
 }
 
@@ -1971,8 +1983,7 @@ void corefm::on_Tools_clicked(bool checked)
 {
     if(checked){
         ui->tools->show();
-    }
-    else{
+    } else{
         ui->tools->hide();
     }
 }
@@ -2013,8 +2024,8 @@ void corefm::on_actionCorePDF_triggered()
     cBox->tabEngine(CorePDF, selcitempath);
 }
 
-void corefm::on_actionCoreBox_triggered(){
-
+void corefm::on_actionCoreBox_triggered()
+{
     CoreBox *cBox = new CoreBox();
     cBox->show();
     QTabWidget *cTab = cBox->findChild<QTabWidget*>("windows");
@@ -2026,8 +2037,8 @@ void corefm::on_actionCoreBox_triggered(){
     cTab->insertTab(n, cfm,QIcon(":/icons/CoreFM.svg"),"CoreFM");
 }
 
-void corefm::on_icon_clicked(bool checked){
-
+void corefm::on_icon_clicked(bool checked)
+{
     // Set root index
     if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
       QModelIndex i = modelList->index(ui->pathEdit->currentText());
@@ -2061,8 +2072,8 @@ void corefm::on_icon_clicked(bool checked){
     on_actionRefresh_triggered();
 }
 
-void corefm::on_detaile_clicked(bool checked){
-
+void corefm::on_detaile_clicked(bool checked)
+{
     if (checked) {
         ui->icon->setChecked(false);
         ui->view->setCurrentIndex(1);
@@ -2089,24 +2100,23 @@ void corefm::on_detaile_clicked(bool checked){
     on_actionRefresh_triggered();
 }
 
-void corefm::on_actionTrash_it_triggered(){
-
+void corefm::on_actionTrash_it_triggered()
+{
     if (selcitem != 0) {
         moveToTrash(selcitempath);
         on_actionRefresh_triggered();
     }
 }
 
-void corefm::on_showHidden_clicked(bool checked){
-
+void corefm::on_showHidden_clicked(bool checked)
+{
     if(!checked){
         if (curIndex.isHidden()) {
           listSelectionModel->clear();
         }
         modelView->setFilterRegExp("no");
         modelTree->setFilterRegExp("no");
-    }
-    else if (checked){
+    } else if (checked){
         modelView->setFilterRegExp("");
         modelTree->setFilterRegExp("");
     }
@@ -2114,16 +2124,16 @@ void corefm::on_showHidden_clicked(bool checked){
     dirLoaded();
 }
 
-void corefm::on_showthumb_clicked(bool checked){
-
+void corefm::on_showthumb_clicked(bool checked)
+{
     Q_UNUSED(checked);
     if (currentView != 2) on_icon_clicked(true);
     else on_detaile_clicked(true);
     on_actionRefresh_triggered();
 }
 
-void corefm::on_SBookMarkIt_clicked(){
-
+void corefm::on_SBookMarkIt_clicked()
+{
     bookmarks bookMarks;
     QString path;
 
@@ -2139,7 +2149,6 @@ void corefm::on_SBookMarkIt_clicked(){
 
 void corefm::on_searchHere_clicked()
 {
-
     QString path = ui->pathEdit->itemText(0);
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
@@ -2148,44 +2157,37 @@ void corefm::on_searchHere_clicked()
 
 void corefm::on_actionExtract_Here_triggered()
 {
-    QProcess p1;
-    QString commad = "engrampa -h \"" + selcitempath + "\"";
-    p1.start(commad.toLatin1());
-    p1.waitForFinished();
-    on_actionRefresh_triggered();
+    corearchiver *arc = new corearchiver();
+    arc->extract(selcitempath, QDir(QFileInfo(selcitempath).path()));
 }
 
 void corefm::on_actionCreate_Archive_triggered()
 {
-//    corearchiver *arc = new corearchiver();
-
-//    QDir *p(currentdir);
-//    arc->compress(selcitempath,p);
-//    qDebug()<< selcitempath << selcitem;
-
-//    QProcess p1;
-//    QString commd = "engrampa \"" + selcitempath + "\" -d";
-//    p1.start(commd.toLatin1());
-//    p1.waitForFinished();
-//    on_actionRefresh_triggered();
+    corearchiver *arc = new corearchiver();
+    arc->resize(500, 100);
+    arc->archiveName = QFileInfo(selcitempath).fileName();
+    arc->workingDir = QFileInfo(selcitempath).path();
+    arc->filePathList = QStringList() << selcitempath;
+    arc->nameLE->setText(arc->archiveName);
+    arc->show();
 }
 
-void corefm::on_STrash_clicked(){
-
+void corefm::on_STrash_clicked()
+{
     QModelIndex i = modelTree->mapFromSource(modelList->index(QDir::homePath() + "/.local/share/Trash/files"));
     tree->setCurrentIndex(i);
     on_actionRefresh_triggered();
     ui->emptyTrash->setVisible(1);
 }
 
-void corefm::on_emptyTrash_clicked(){
-
+void corefm::on_emptyTrash_clicked()
+{
     on_actionSelectAll_triggered();
     on_actionDelete_triggered();
 }
 
-void corefm::blockDevicesChanged() {
-
+void corefm::blockDevicesChanged()
+{
     ui->partitions->clear();
 
     //Add detected block devices

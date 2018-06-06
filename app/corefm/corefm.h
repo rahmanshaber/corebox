@@ -157,8 +157,6 @@ private slots:
     void on_actionRun_triggered();
     void sendToPath();
 
-
-
 private:
     SettingsManage sm;
     void writeSettings();

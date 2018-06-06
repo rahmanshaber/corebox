@@ -1162,7 +1162,7 @@ QScrollBar::sub-page:vertical {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>551</width>
+            <width>589</width>
             <height>780</height>
            </rect>
           </property>
@@ -1536,6 +1536,11 @@ QComboBox::drop-down {
                 <property name="frame">
                  <bool>true</bool>
                 </property>
+                <item>
+                 <property name="text">
+                  <string>CoreTerminal</string>
+                 </property>
+                </item>
                 <item>
                  <property name="text">
                   <string>xterm</string>

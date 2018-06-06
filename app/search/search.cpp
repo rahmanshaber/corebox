@@ -37,6 +37,7 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
     ui->findCMD->setEnabled(0);
     ui->locateCMD->setEnabled(0);
     shotcuts();
+    ui->results->setFocusPolicy(Qt::NoFocus);
 
     cProcess = new QProcess(this);
 
@@ -79,6 +80,7 @@ void search::setPath(const QString &path)
  * @brief Create a process based on that. And the process will collect the info.
  * @param find Use find or locate process for searching.
  */
+
 void search::callProcess(bool find)
 {
     QString programName;

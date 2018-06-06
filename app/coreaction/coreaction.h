@@ -76,6 +76,8 @@ public slots:
     void ShowWindow(QSystemTrayIcon::ActivationReason Reason);
 
 private slots:
+    //void on_percentage_clicked();
+
     void on_one_clicked();
     void on_two_clicked();
     void on_three_clicked();
@@ -93,11 +95,10 @@ private slots:
     void on_subtract_clicked();
     void on_add_clicked();
     void on_division_clicked();
-    void on_percentage_clicked();
 
     void showTime();
     void on_hide_clicked();
-    void on_about_clicked();
+    void coreBoxAbout();
 
     void on_corepad_clicked();
     void on_screenshot_clicked();

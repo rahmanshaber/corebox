@@ -141,9 +141,7 @@ void MimeUtils::openInApp(QString exe, const QFileInfo &file,QObject *processOwn
     args.append(/*"\"" + */file.filePath()/* + "\""*/);
   }
 
-//  qDebug() << name << args;//lala
-  DesktopFile df = DesktopFile("/usr/share/applications/" + name);
-  saveToRecent(name,args,df.getIcon());
+  saveToRecent(name,args);
 
   // Start application
   QProcess *myProcess = new QProcess(processOwner);

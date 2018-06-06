@@ -63,7 +63,6 @@ void SettingsManage::createDefaultSettings()
         cSetting->setValue("Show-Calculator", true);
         cSetting->setValue("Show-Note", true);
         cSetting->endGroup();
-
     }
 }
 
