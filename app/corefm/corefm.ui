@@ -55,7 +55,7 @@
      </property>
      <property name="styleSheet">
       <string notr="true">QWidget{
-background-color: #2E2E2E;
+background-color: #2C3133;
 color:#E6E6E6; 
 border: 1px rgb(67, 67, 67);
 }</string>
@@ -473,9 +473,9 @@ background-color: #1268A4;
         <colorrole role="WindowText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
@@ -491,18 +491,18 @@ background-color: #1268A4;
         <colorrole role="Text">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="ButtonText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
@@ -529,9 +529,9 @@ background-color: #1268A4;
         <colorrole role="WindowText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
@@ -547,18 +547,18 @@ background-color: #1268A4;
         <colorrole role="Text">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="ButtonText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
@@ -585,9 +585,9 @@ background-color: #1268A4;
         <colorrole role="WindowText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
@@ -603,18 +603,18 @@ background-color: #1268A4;
         <colorrole role="Text">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="ButtonText">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>230</red>
+           <green>230</green>
+           <blue>230</blue>
           </color>
          </brush>
         </colorrole>
@@ -645,7 +645,7 @@ background-color: #1268A4;
      <property name="styleSheet">
       <string notr="true">QWidget{
 background-color:#363941;
-color: #FFFFFF;
+color: #E6E6E6;
 }</string>
      </property>
      <property name="frameShape">
@@ -655,7 +655,7 @@ color: #FFFFFF;
       <enum>QFrame::Raised</enum>
      </property>
      <property name="lineWidth">
-      <number>0</number>
+      <number>1</number>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <property name="spacing">
@@ -867,6 +867,9 @@ QComboBox:focus{
           <height>26</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>Search</string>
+        </property>
         <property name="styleSheet">
          <string notr="true">QToolButton{
 border: 1px solid rgb(67, 67, 67);
@@ -1016,9 +1019,9 @@ background-color: #1268A4;
            <colorrole role="WindowText">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
@@ -1034,18 +1037,18 @@ background-color: #1268A4;
            <colorrole role="Text">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="ButtonText">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
@@ -1072,9 +1075,9 @@ background-color: #1268A4;
            <colorrole role="WindowText">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
@@ -1090,18 +1093,18 @@ background-color: #1268A4;
            <colorrole role="Text">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="ButtonText">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
@@ -1128,9 +1131,9 @@ background-color: #1268A4;
            <colorrole role="WindowText">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
@@ -1146,18 +1149,18 @@ background-color: #1268A4;
            <colorrole role="Text">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="ButtonText">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>230</red>
+              <green>230</green>
+              <blue>230</blue>
              </color>
             </brush>
            </colorrole>
@@ -1230,6 +1233,9 @@ background-color: #1268A4;
           <height>26</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string>paste</string>
+        </property>
         <property name="styleSheet">
          <string notr="true">QToolButton{
 border: 1px solid rgb(67, 67, 67);
@@ -1286,18 +1292,18 @@ background-color: #1268A4;
      </property>
      <property name="styleSheet">
       <string notr="true">QWidget{
-background-color: #000000;;
-color: #ffffff;
+background-color: #363941;;
+color: #E6E6E6;
 }</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Plain</enum>
      </property>
      <property name="lineWidth">
-      <number>0</number>
+      <number>1</number>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <property name="spacing">
@@ -1910,15 +1916,15 @@ background-color: rgb(48, 140, 198);
     <widget class="QStackedWidget" name="view">
      <property name="styleSheet">
       <string notr="true">QWidget {
-background-color:#F2F2F2 ;
-color:#000000; 
+background-color:#232729 ;
+color:#E6E6E6; 
 }</string>
      </property>
      <property name="lineWidth">
       <number>0</number>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="pagelist">
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -1955,9 +1961,15 @@ color:#000000;
 padding: 5px 5px 0px 5px;
 }
 
+QListView::item {
+color:#E6E6E6;
+background-color:transparent;
+}
+
+
 QListView::item:selected {
 background-color:#1793D1 ;
-color:#000000; 
+color:#E6E6E6; 
 }
 </string>
          </property>
@@ -2015,26 +2027,33 @@ color:#000000;
          </property>
          <property name="styleSheet">
           <string notr="true">QTreeView::item{
+padding: 0px 0px 0px 5px;
+background-color:transparent;
+color:#E6E6E6;
 border-bottom-style:solid;
 border-width:1;
-border-color: #E6E6E6;
+border-color: #2E3335;
 }
+
 QTreeView::item:selected {
 background-color:#1793D1 ;
-color:#000000; 
+color:#E6E6E6; 
 }
 
 QHeaderView{ 
 padding-left: 4px;
-background-color:#E6E6E6 ;
-color:#000000;
+background-color:#232729 ;
+color:#606364;
 }
+
 QHeaderView::section { 
-background-color:#E6E6E6;
-color:#000000;
+padding: 1px 3px 1px 3px;
+background-color:#232729;
+color:#606364;
 border: 1px #ffffff;
 padding-top: 4px;
 font: 12pt &quot;Cantarell&quot;;
+font-style: normal;
 }
 </string>
          </property>
@@ -2097,17 +2116,17 @@ font: 12pt &quot;Cantarell&quot;;
      <property name="styleSheet">
       <string notr="true">QWidget{
 padding: 1px 5px 1px 2px;
-background-color: #F2F2F2 ;
-color: #000000;
+background-color: #232729 ;
+color: #E6E6E6;
 border: 1px  #F2F2F2;
 }
 </string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Plain</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <property name="spacing">

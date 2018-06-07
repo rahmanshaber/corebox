@@ -12,16 +12,14 @@ isEqual( QT_MAJOR_VERSION, 5 ) {
         LIBS += -L$$OUT_PWD/../library/libcpdf
 }
 
-INCLUDEPATH += ../library/libcterminal
+
 DEPENDPATH  += .
 
+INCLUDEPATH += ../library/libcterminal
 LIBS += -L../library/libcterminal -lcterminal -lX11
 
-
 INCLUDEPATH += . ../library/libcarchiver/
-
 LIBS += -L../library/libcarchiver/ -lcarchiver
-
 
 LIBS += -lmagic -lcpdf
 

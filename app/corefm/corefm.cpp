@@ -62,10 +62,10 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->mk->addWidget(tabs);
     connect(tabs, SIGNAL(tabCloseRequested(int)), tabs, SLOT(closeTab(int)));
     tabs->setStyleSheet("QTabBar::tab:!selected{background-color:#353536;color:#B4B4B4;}"
-                        "QTabBar::tab:selected{background-color:#F2F2F2;font-weight: bold;color:#000000;}"
+                        "QTabBar::tab:selected{background-color:#232729;font-weight: bold;color:#E6E6E6;}"
                         "QTabBar::close-button {image: url(:/icons/close_b.svg);subcontrol-position: right;}"
-                        "QTabBar::tab{text-align:left;background-color: #136ba2;border-style: 1px rgb(67, 67, 67);height: 30px;color: #136ba2;padding: 0px 5px 0px 5px;}"
-                        "QTabBar{background-color: #353536;height: 30px;}");
+                        "QTabBar::tab{text-align:left;background-color: #136ba2;border-style: 1px #B4B4B4;height:25px;color: #136ba2;padding: 0px 5px 0px 5px;}"
+                        "QTabBar{background-color: #353536;height: 25px;}");
 
     modelTree = new mainTreeFilterProxyModel();
     modelTree->setSourceModel(modelList);
@@ -112,6 +112,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     connect(ui->zoomout,SIGNAL(pressed()),this,SLOT(zoomOutAction()));
     connect(ui->detaile, SIGNAL(clicked(bool)), this, SLOT(on_detaile_clicked(bool)));
     connect(ui->icon, SIGNAL(clicked(bool)), this, SLOT(on_icon_clicked(bool)));
+    connect(ui->paste,SIGNAL(pressed()), this, SLOT(on_actionPaste_triggered()));
 
     ui->paste->setVisible(0);
 
@@ -125,7 +126,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->newTab->setDefaultAction(ui->actionNewTab);
     ui->copy->setDefaultAction(ui->actionCopy);
     ui->cut->setDefaultAction(ui->actionCut);
-    ui->paste->setDefaultAction(ui->actionPaste);
     ui->properties->setDefaultAction(ui->actionProperties);
     ui->deleteit->setDefaultAction(ui->actionDelete);
     ui->up->setDefaultAction(ui->actionUp);

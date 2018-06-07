@@ -19,6 +19,8 @@ Version 2.2
 - fixed coreterminal background in black.
 - add active window screenshot option corescreenshot.
 - removed engrampa from depedencies.
+- fixed paste icon in corfm.
+- dark ui in corefm.
 
 
 Version 2.1,Released date Friday, June 1, 2018
