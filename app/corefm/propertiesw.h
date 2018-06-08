@@ -56,7 +56,7 @@ private:
     void details();
     void partition(const QString path);
     void detailimage(const QString imagepath);
-
+    bool executable(QString path);
 };
 
 #endif // PROPERTIESW_H

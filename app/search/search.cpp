@@ -42,7 +42,7 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
     cProcess = new QProcess(this);
 
     connect(cProcess, &QProcess::started, [&]() {
-        ui->label_2->setText("Collecting Information...\nPlease wait for a moment...");
+        ui->status->setText("Collecting Information...\nPlease wait for a moment...");
     });
 
     connect(cProcess, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
@@ -166,7 +166,7 @@ void search::populateItems(const QString &text)
     QFutureWatcher<void>* r = new QFutureWatcher<void>();
     r->setFuture(future);
     connect(r, &QFutureWatcher<void>::finished, [&](){
-        ui->label_2->setText("NO ITEM FOUND.");
+        ui->status->setText("NO ITEM FOUND.");
         ui->stackedWidget->setCurrentIndex(0);
         toTable(populateByType());
     });

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1056</width>
-    <height>515</height>
+    <width>1001</width>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -652,7 +652,7 @@ color: #E6E6E6;
       <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Plain</enum>
      </property>
      <property name="lineWidth">
       <number>1</number>
@@ -1281,13 +1281,13 @@ background-color: #1268A4;
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>30</height>
+       <height>25</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>30</height>
+       <height>25</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -1313,13 +1313,13 @@ color: #E6E6E6;
        <number>2</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="rightMargin">
        <number>2</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>1</number>
       </property>
       <item>
        <widget class="QToolButton" name="cut">
@@ -1332,13 +1332,13 @@ color: #E6E6E6;
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1380,13 +1380,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1428,13 +1428,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1476,13 +1476,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1540,13 +1540,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1583,13 +1583,13 @@ background-color:rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1626,13 +1626,13 @@ background-color:rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1674,13 +1674,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1722,13 +1722,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1783,13 +1783,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="font">
@@ -1836,13 +1836,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1878,13 +1878,13 @@ background-color: rgb(48, 140, 198);
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>26</height>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>26</height>
+          <height>23</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -2055,6 +2055,7 @@ padding-top: 4px;
 font: 12pt &quot;Cantarell&quot;;
 font-style: normal;
 }
+
 </string>
          </property>
          <property name="frameShape">
@@ -2293,7 +2294,7 @@ border: 1px  #F2F2F2;
   <action name="actionRefresh">
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/refresh_w.svg</normaloff>:/icons/refresh_w.svg</iconset>
+     <normaloff>:/icons/refresh_b.svg</normaloff>:/icons/refresh_b.svg</iconset>
    </property>
    <property name="text">
     <string>Refresh</string>

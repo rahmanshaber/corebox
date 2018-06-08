@@ -1,117 +1,38 @@
-/*
-CoreArchiver is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; version 2
-of the License.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, see {http://www.gnu.org/licenses/}. */
-
 #include "corearchiver.h"
+#include "ui_corearchiver.h"
 
-#include <QtWidgets>
 #include <QtConcurrent>
 
 
-corearchiver::corearchiver(QWidget *parent) : QWidget(parent)
+corearchiver::corearchiver(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::corearchiver)
 {
-    setWindowTitle("CoreArchiver - Create an Archive" );
-    setWindowIcon( QIcon::fromTheme("archive") );
+    ui->setupUi(this);
 
-    /* Name Lyt */
-    nameLE = new QLineEdit( this );
-    nameLE->setPlaceholderText( "Type the archive name here" );
-    connect( nameLE, SIGNAL( textChanged( QString ) ), this, SLOT( updateFileName( QString ) ) );
+    connect( ui->nameLE, SIGNAL( textChanged( QString ) ), this, SLOT( updateFileName( QString ) ) );
+    connect( ui->locationTB, SIGNAL( clicked() ), this, SLOT( updateDirName() ) );
 
-    QLabel *nameLbl = new QLabel( "Archive &Name:" );
-    nameLbl->setBuddy( nameLE );
+    //add the archive formate type
+    ui->formatsCB->addItems( QStringList() << ".zip" << ".tar.xz" << ".tar.gz" << ".tar.bz2" << ".7z");
+    ui->formatsCB->addItems( QStringList() << ".tar" << ".iso" << ".cpio" << ".shar" << ".tar.Z" << ".ar" << ".xar" );
+    connect( ui->formatsCB, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( updateFormat( QString ) ) );
 
-    QHBoxLayout *nLyt = new QHBoxLayout();
-    nLyt->addWidget( nameLbl );
-    nLyt->addWidget( nameLE );
-
-    /* Location Lyt */
-    locationLE = new QLineEdit( this );
-    locationLE->setPlaceholderText( "Click browse to select where the archive will be stored" );
-    locationLE->setDisabled( true );
-
-    QLabel *locationLbl = new QLabel( "&Location:", this );
-    locationLbl->setBuddy( locationLE );
-
-    QToolButton *locationTB = new QToolButton( this );
-    locationTB->setIcon( QIcon::fromTheme( "folder" ) );
-    connect( locationTB, SIGNAL( clicked() ), this, SLOT( updateDirName() ) );
-
-    QHBoxLayout *lLyt = new QHBoxLayout();
-    lLyt->addWidget( locationLbl );
-    lLyt->addWidget( locationLE );
-    lLyt->addWidget( locationTB );
-
-    /* Format Layout */
-    QComboBox *formatsCB = new QComboBox( this );
-    formatsCB->addItems( QStringList() << ".zip" << ".tar.xz" << ".tar.gz" << ".tar.bz2" << ".7z");
-    formatsCB->addItems( QStringList() << ".tar" << ".iso" << ".cpio" << ".shar" << ".tar.Z" << ".ar" << ".xar" );
-    connect( formatsCB, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( updateFormat( QString ) ) );
-
-    QLabel *formatsLbl = new QLabel( "&Format:", this );
-    formatsLbl->setBuddy( formatsCB );
-
-    /* WHAT IS ADVACNED? WHY DID I ADD THIS? */
-    QCheckBox *advanced = new QCheckBox( "Ad&vanced", this );
-    advanced->setDisabled( true );
-    advanced->setStyleSheet( "color:gray;");
-    advanced->hide();
-
-    QHBoxLayout *fLyt = new QHBoxLayout();
-    fLyt->addWidget( advanced );
-    fLyt->addStretch();
-    fLyt->addWidget( formatsLbl );
-    fLyt->addWidget( formatsCB );
-
-    /* Buttons */
-    QToolButton *createArc = new QToolButton( this );
-    createArc->setText("Create &Archive");
-    createArc->setObjectName("okBtn");
-
-    connect( createArc, &QToolButton::clicked, [this](){
-        qDebug() << "Archive Destination : " << location << "\nFrom line edit setting : " << locationLE->text();
+    connect( ui->createArc, &QToolButton::clicked, [this](){
+//        qDebug() << "Archive Destination : " << location << "\nFrom line edit setting : " << ui->locationLE->text();
         compress(filePathList, !workingDir.isEmpty() ? QDir(workingDir) : QDir::current());
     } );
 
-    QToolButton *cancel = new QToolButton(this);
-    cancel->setText("&Cancel" );
-    cancel->setObjectName( "cancelBtn" );
-    connect( cancel, SIGNAL( clicked() ), this, SLOT(close()));
+    connect( ui->cancel, SIGNAL( clicked() ), this, SLOT(close()));
 
-    QHBoxLayout *bLyt = new QHBoxLayout();
-    bLyt->addStretch();
-    bLyt->addWidget( createArc );
-    bLyt->addWidget(cancel);
-
-    /* Final Layout */
-    QVBoxLayout *baseLyt = new QVBoxLayout();
-    baseLyt->addLayout( nLyt );
-    baseLyt->addLayout( lLyt );
-    baseLyt->addLayout( fLyt );
-    //baseLyt->addWidget( Separator::horizontal() );
-    baseLyt->addLayout( bLyt );
-
-    setLayout( baseLyt );
-
-    format = formatsCB->currentText();
+    format = ui->formatsCB->currentText();
+    ui->nameLE->setText(archiveName);
 }
 
 corearchiver::~corearchiver()
 {
-    delete nameLE;
-    delete locationLE;
+    delete ui;
 }
-
 
 void corearchiver::compress(QStringList archiveList , QDir currentDir)
 {
@@ -175,7 +96,7 @@ void corearchiver::updateDirName()
 {
     QString loc = QFileDialog::getExistingDirectory( this, "NewBreeze - Choose Directory", QDir::currentPath() );
     if ( not loc.isEmpty() ) {
-        locationLE->setText( loc );
+        ui->locationLE->setText( loc );
         location = loc;
     }
 }

@@ -1,100 +1,87 @@
-NewBreeze v3.0.0
+CoreBox v2.2
 ================
 
-This is a completely native style GUI application. NewBreeze Native UI has been deprecated and removed. The main application itself is now natively styled. These are the
-few changes in NewBreeze 3.
+These are the some big changes in CoreBox 2.2.
 
-=> Qt5 Support
-   - Qt5 is now the preferred version. Changes may or may not be backwards compatible.
-   - This release onwards Qt5 builds are supported. Use qmake -qt5 to build using Qt5.
+=> CoreBox
+   - Added new app CoreTerminal and CoreArchiver.
+   - Removed engrampa as moved to CoreArchiver
 
-=> User interface rebuilt, integrating code from NewBreeze and NewBreezeUI
+=> Start
    - File/Folder filtering
 
-=> NBIconManager
-    - NBIconManager now replaces old NBIconProvider
-    - NBIconManager supports different icons for different sizes.
-    - Very fast loading of icons
+=> BookMarks
+    -
+    -
+    -
 
-=> NBFileSystemWatcher( QFileSystemWatcher )
-    - NBFileSystemWatcher was earlier rewritten with a cleaner code based on the inotify-example.c from http://www.lanedo.com/users/amorgado/fanotify/inotify-example.c
-    - The above code was buggy and hence has been replaced with enhanced subclass of QFileSystemWatcher.
+=> DashBord
+    - Updated the battery info functions.
+    -
 
-=> NBItemViewModel( QAbsractItemModel )
-   - Formerly NBFileSystemModel, now it models Applications, Catalogs, and the FileSystem
-   - Code cleanup for better performance.
-   - NBItemViewModel provides upto 50% faster thumbnails loading for images.
+=> Search
+   - Fixed some gui issue.
+   -
+   -
 
-=> NBIconView( QAbstractItemView )
-   - Per-folder views are now enabled. Each folder remembers its previous state ( size, grouping, list view, etc )
-   - Mac-style partial folding of categories is now enabled. (Double-click to hide, '-' button to fold, '+' button to unfold/unhide)
-   - Fixed the small issue of mouse/cursor selection conflict.
-   - Fixed the SegFault with cursor up and down movements.
-   - List View and Tiles view are fixed and working fine.
-   - Discontinuous cursor movements have been fixed.
-   - IconOverlays give quick access to Open, Peek and Node IO Menu (cut, copy, paste) without right-click.
+=> Settings
+   -
+   -
+   -
+   -
 
-=> Properties
-   - An elementary Accidental Delete Protection (ADP) has been added. However it is not yet completely implemented.
-   - ADP is rather buggy. It may not be advisable to enable it for all nodes.
+=> CoreAction
+   -
+   -
+   -
 
-=> NBAddressBar redesigned
-   - NBBreadCrumbsBar is now called NBCrumbsBar.
-   - It redesigned to make sure long paths do not run out of the widget.
-   - The full path can be displayed using FlowLayout at anytime by pressing ▣
-   - A simple menu has been added
+=> CoreFM
+   - Added CoreArchiver and CoreTerminal support.
+   - Dark ui in corefm.
 
-=> NBSidePanel and NBSideBar
-   - NBSidePanel: Redesigned sidepanel with elegant menu listing the devices and bookmarks.
-   - NBSideBar: A mac-like side panel
-   - Devices ( or their tool tips ) show the space usage.
-   - User can switch between classic and modern side panels from the
+=> CorePaint
+   - Selected area deletetion with del key press
+   -
+   -
+   -
 
-=> NBButton
-   - NBButton has been rewritten to be a subclass of QPushButton, with better styling.
-   - Issues with NBSegmentControl has caused me to go back to NBButtons, which have better appearance.
+=> CoreTime
+   -
+   -
+   -
+   -
 
-=> NBPreviewInterface
-   - NBPreviewInterface is deprecated and deleted.
+=> CoreImage
+   -
+   -
 
-=> NBPluginInterface
-   - All plugins are updated to use the standard NBPluginInteface.
-   - NBPluginInterface can be used easily to extend Preview support for NewBreeze.
-   - Defaults Plugins will now be shipped with NewBreeze rather than as a separate repo.
+=> CorePlayer
+   -
 
-=> NBArchive extended
-   - NBArchive is now rebuilt using libarchive for archive processing
-   - GZip, BZip2, and XZ files are processed independently
-   - Archive creation now shows a pretty dialog with some options
-   - Archive creation and extraction is done via QtConcurrent::run(...) [Needs improvements]
-   - Archive previews are now available, though it needs some improvements
+=> CorePDF
+   -
+   -
+   -
 
-=> Terminals
-   - An inbuilt terminal plugin is available.
-   - Terminals can now be added in the settings.
-   - User can choose the terminal program.
+=> CorePad
+   -
+   -
+   -
+   -
+   -
 
-=> SuperStart: A Super start to your day
-   - All Drives are shown as you start NewBreeze.
-   - Find all the important files and folders as soon as you start NewBreeze.
-   - Press Ctrl+U to add selected file(s)/folder(s) to SuperStart.
-   - In SuperStart, press Delete to remove them, F2 change the display name.
-     Note that changing display name does not rename the actual file on the hard drive.
-   - A basic context menu is available
+=> CoreTerminal
+   -
+   -
+   -
 
-=> NewBreeze Vault: Requires 'encfs'
-   NOTE: This is work in progress. The first basic implementation is completed.
-   - You can now access all your encrypted files and folders with out having to remember every password.
-   - Currently, all the encrypted files and folders are being stored in and retrieved from an encrypted database.
-   - Each added file or folder will be encrypted using a randomly generated unique 8196 bit (1 kiB) key.
-   - NBCrypt Plugin is deprecated and a dummy will be installed in its place. (Will be removed in V3 stable release.)
-   - Create a new ecrypted directory by pressing Ctrl+Shift+U.
-   - Existing files/directories can be encrypted by choosing Actions > Encrypt in the context menu.
+=> CoreArchiver
+   - Added dark ui.
+   -
+   -
+   -
 
-=> Startup Wizard
-   - If you are using NewBreeze for the first time, the Startup Wizard shows.
-   - You can do some basic settings which are all accessible in NB Settings Dialog.
-   - Eventually the Startup Wizard will serve as a feature tour guide.
-
-=> BugReporter
-   - A very basic interface which creates a simple issue on the github issue page.
+=> CoreShot
+   - Added active window screenshot
+   -
+   -

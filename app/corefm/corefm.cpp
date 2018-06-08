@@ -113,6 +113,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     connect(ui->detaile, SIGNAL(clicked(bool)), this, SLOT(on_detaile_clicked(bool)));
     connect(ui->icon, SIGNAL(clicked(bool)), this, SLOT(on_icon_clicked(bool)));
     connect(ui->paste,SIGNAL(pressed()), this, SLOT(on_actionPaste_triggered()));
+    connect(ui->refresh,SIGNAL(pressed()), this, SLOT(on_actionRefresh_triggered()));
 
     ui->paste->setVisible(0);
 
@@ -131,7 +132,7 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     ui->up->setDefaultAction(ui->actionUp);
     ui->back->setDefaultAction(ui->actionBack);
     ui->terminal->setDefaultAction(ui->actionTerminal);
-    ui->refresh->setDefaultAction(ui->actionRefresh);
+//    ui->refresh->setDefaultAction(ui->actionRefresh);
     ui->newfolder->setDefaultAction(ui->actionNewFolder);
     ui->newtext->setDefaultAction(ui->actionNewTextFile);
 
@@ -501,7 +502,7 @@ void corefm::listItemPressed(QModelIndex current)
 
 int corefm::addTab(const QString path)
 {
-    if (tabs->count() < 10) {
+    if (tabs->count() < 4) {
         if(tabs->count() == 0) tabs->addNewTab(ui->pathEdit->currentText(),currentView);
         return tabs->addNewTab(path,currentView);
     } else {
@@ -1885,21 +1886,13 @@ void corefm::setSortColumn(QAction *columnAct)
     }
 }
 
-/**
- * @brief Sets sort column
- * @param action
- */
-void corefm::toggleSortBy(QAction *action)
+void corefm::toggleSortBy(QAction *action) //Sets sort column
 {
     setSortColumn(action);
     modelView->sort(currentSortColumn, currentSortOrder);
 }
 
-/**
- * @brief Sets sort order
- * @param order
- */
-void corefm::on_actionAscending_triggered(bool checked)
+void corefm::on_actionAscending_triggered(bool checked) //Sets sort order
 {
     if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
       QModelIndex i = modelList->index(ui->pathEdit->currentText());
@@ -2164,11 +2157,9 @@ void corefm::on_actionExtract_Here_triggered()
 void corefm::on_actionCreate_Archive_triggered()
 {
     corearchiver *arc = new corearchiver();
-    arc->resize(500, 100);
     arc->archiveName = QFileInfo(selcitempath).fileName();
     arc->workingDir = QFileInfo(selcitempath).path();
     arc->filePathList = QStringList() << selcitempath;
-    arc->nameLE->setText(arc->archiveName);
     arc->show();
 }
 

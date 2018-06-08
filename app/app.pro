@@ -44,7 +44,8 @@ FORMS += \
     help/help.ui \
     search/search.ui \
     settings/settings.ui \
-    start/start.ui
+    start/start.ui \
+    corearchiver/corearchiver.ui
 
 HEADERS += \
     about/about.h \
@@ -129,8 +130,8 @@ HEADERS += \
     corepad/coreedit.h \
     corefm/clickoutlistview.h \
     corepdf/corepdf.h \
-    corearchiver/corearchiver.h \
-    coreterminal/coreterminal.h
+    coreterminal/coreterminal.h \
+    corearchiver/corearchiver.h
 
 SOURCES += \
     about/about.cpp \
@@ -213,8 +214,8 @@ SOURCES += \
     corepad/coreedit.cpp \
     main.cpp \
     corepdf/corepdf.cpp \
-    corearchiver/corearchiver.cpp \
-    coreterminal/coreterminal.cpp
+    coreterminal/coreterminal.cpp \
+    corearchiver/corearchiver.cpp
 
 RESOURCES += \
     icons.qrc \

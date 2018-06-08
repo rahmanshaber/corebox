@@ -456,46 +456,45 @@ void CoreBox::changeEvent(QEvent *event)
 
 void CoreBox::mousePressEvent(QMouseEvent *event)
 {
-    mousePressed = true;
-    mousePos = event->globalPos();
-
-
-    if(event->buttons()== Qt::LeftButton){
-
-    qDebug() << "1st Left mouse clicked";
+    if(ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse() && event->buttons()== Qt::LeftButton){
+        isMouseDown = true;
+        isLeftDown = true;
+        mousePos = event->globalPos();
+        wndPos = this->pos();
+        qDebug() << "1st Left mouse clicked";
     }
-    else if (event->buttons()== Qt::RightButton){
-
-    qDebug() << "1st Right mouse clicked";
-    }
-
-//    if ( event->button() == Qt::LeftButton ){
-//        qDebug() << "left button is pressed";
-//        mousePressed = true;
+//    else if (event->buttons()== Qt::RightButton){
+//        isMouseDown = true;
+//        isRightDown = true;
 //        mousePos = event->globalPos();
-
-//        if (ui->windows->tabBar()->underMouse())
-//          wndPos = this->pos();
+//        wndPos = this->pos();
+//        qDebug() << "1st Right mouse clicked";
 //    }
-//    if (event->button() == Qt::RightButton) {
-//              QTabWidget::mousePressEvent(newEvent); // propagate right as left
-//         }
-//         QTabWidget::mousePressEvent(event); // propagate original event (ie., right as right)
-
-    if (ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse())
-      wndPos = this->pos();
 }
 
 void CoreBox::mouseMoveEvent(QMouseEvent *event)
 {
-    if ((ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse()) && mousePressed)
-      move(wndPos + (event->globalPos() - mousePos));
+    if(isMouseDown==true){
+//        int mousePointx = wndPos.x() + (event->globalX() - mousePos.x());
+//        int mousePointy = wndPos.y() + (event->globalY() - mousePos.y());
+
+        if ((ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse()) && isLeftDown == true){
+            move(wndPos + (event->globalPos() - mousePos));
+            qDebug() << "2nd Left mouse clicked";
+        }
+//        else if (isRightDown == true){
+//            resize((mousePointx),(mousePointy));
+//            qDebug() << "2nd Right mouse clicked";
+//        }
+    }
 }
 
 void CoreBox::mouseReleaseEvent(QMouseEvent *event)
 {
-  Q_UNUSED(event);
-  mousePressed = false;
+    Q_UNUSED(event);
+    isMouseDown = false;
+    isLeftDown = false;
+    isRightDown = false;
 }
 
 bool CoreBox::eventFilter(QObject *obj, QEvent *evt)

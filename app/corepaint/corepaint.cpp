@@ -55,9 +55,9 @@ corepaint::corepaint( QWidget *parent):QWidget(parent),
         ui->bookMarkIt->setEnabled(false);
     }
 
+    loadSettings();
     initializeMainMenu();
     shotcuts();
-    loadSettings();
 }
 
 corepaint::~corepaint()
@@ -65,7 +65,8 @@ corepaint::~corepaint()
     delete ui;
 }
 
-void corepaint::loadSettings() {
+void corepaint::loadSettings()
+{
     saveLocation = sm.getSCSaveLocation();
 }
 
@@ -78,12 +79,10 @@ void corepaint::shotcuts()
     connect(shortcut, &QShortcut::activated, this, &corepaint::on_save_clicked);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), this);
     connect(shortcut, &QShortcut::activated, this, &corepaint::on_saveas_clicked);
-
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(undo()));
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(redo()));
-
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_C), this);
     connect(shortcut, &QShortcut::activated, this, &corepaint::on_copy_clicked);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_X), this);
@@ -94,19 +93,17 @@ void corepaint::shotcuts()
     connect(shortcut, &QShortcut::activated, this, &corepaint::on_newtab_clicked);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_B), this);
     connect(shortcut, &QShortcut::activated, this, &corepaint::on_bookMarkIt_clicked);
-
     shortcut = new QShortcut(QKeySequence(Qt::Key_Delete), this);
     connect(shortcut, &QShortcut::activated, this, &corepaint::on_delet_clicked);
 }
 
 void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
 {
-    if (ui->paintTabs->count() < 10) {
+    if (ui->paintTabs->count() < 4) {
         ImageArea *imageArea;
         QString fileName;
 
-        if(isOpen && filePath.isEmpty())
-        {
+        if(isOpen && filePath.isEmpty()) {
             imageArea = new ImageArea(isOpen, "", this);
             fileName = imageArea->getFileName();
         } else if(isOpen && !filePath.isEmpty()) {
@@ -116,6 +113,7 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
             imageArea = new ImageArea(false, "", this);
             fileName = (tr("UntitledImage_") + QString::number(ui->paintTabs->count()));
         }
+
         if (!imageArea->getFileName().isNull()) {
             QScrollArea *scrollArea = new QScrollArea();
             scrollArea->setAttribute(Qt::WA_DeleteOnClose);
@@ -150,6 +148,7 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
             ui->saveas->setEnabled(true);
             ui->bookMarkIt->setEnabled(true);
         }
+
         if (!fileName.isEmpty()) {
             messageEngine("File Opened Successfully.", "Info");
         } else {

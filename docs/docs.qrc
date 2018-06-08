@@ -6,8 +6,8 @@
         <file>screenshots/a4.png</file>
         <file>buildinfo.txt</file>
         <file>ChangeLog</file>
-        <file>docs.qrc</file>
         <file>PKGBUILD</file>
         <file>To-Do.txt</file>
+        <file>ReleaseNotes</file>
     </qresource>
 </RCC>

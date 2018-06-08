@@ -42,7 +42,7 @@ propertiesw::propertiesw(const QString paths,QWidget *parent) :QWidget(parent),u
     int y = screensize().height() * .6;
     this->setFixedSize(x,y);
 
-    connect(ui->ok,SIGNAL(pressed()),this,SLOT(close()));
+    connect( ui->close, SIGNAL( clicked() ), this, SLOT(close()));
     this->setAttribute(Qt::WA_DeleteOnClose,1);
 }
 
@@ -80,7 +80,7 @@ void propertiesw::general()
     ui->owner->setText(info.owner());
     ui->group->setText(info.group());
     ui->executable->setText("File is not Executable");
-    if(info.isExecutable() && !info.isDir()){
+    if(executable(pathName) == true){
         ui->executable->setText("File is Executable");
         ui->executableB->setChecked(1);
     }
@@ -136,8 +136,8 @@ void propertiesw::permission()
     ui->permissions->setAttribute(Qt::WA_TransparentForMouseEvents);
     ui->permissions->setFocusPolicy(Qt::NoFocus);
 
-    if(info.isDir()){
-        ui->executableB->setVisible(0);
+    if(executable(pathName) == true){
+        ui->executableB->setVisible(1);
     }
 }
 
@@ -192,6 +192,16 @@ void propertiesw::on_executableB_clicked(bool checked)
         p1.start(commd.toLatin1());
         p1.waitForFinished();
     }
+//    QFile::Permissions perms = NULL;
+
+//    if ( checked)
+//        perms |= ( ( ui->executableB->checkState() == Qt::Checked ) ? QFile::ExeOwner : ( QFile::permissions( pathName ) & QFile::ExeOwner ) );
+
+//    if ( checked)
+//        perms |= ( ( ui->executableB->checkState() == Qt::Checked ) ? QFile::ExeGroup : ( QFile::permissions( pathName ) & QFile::ExeGroup ) );
+
+//    if ( checked)
+//        perms |= ( ( ui->executableB->checkState() == Qt::Checked ) ? QFile::ExeOther : ( QFile::permissions( pathName ) & QFile::ExeOther ) );
 }
 
 void propertiesw::detailimage(const QString imagepath)
@@ -244,3 +254,28 @@ void propertiesw::detailmedia(QMediaPlayer::MediaStatus status)
         ui->detail->setFocusPolicy(Qt::NoFocus);
     }
 }
+
+bool propertiesw::executable( QString path ) {
+
+    QMimeDatabase mimeDb;
+    struct stat statbuf;
+    if ( stat( path.toLocal8Bit().data(), &statbuf ) != 0 )
+        return false;
+
+    if ( ( statbuf.st_mode & S_IXUSR ) ) {
+        QMimeType m = mimeDb.mimeTypeForFile( path );
+        if ( m.name() == "application/x-executable" )
+            return true;
+
+        else if ( m.name() == "application/x-sharedlib" )
+            return true;
+
+        else if ( m.allAncestors().contains( "application/x-executable" ) )
+            return true;
+
+        /* Default is false */
+        return false;
+    }
+
+    return false;
+};

@@ -38,7 +38,7 @@ dashboard
 1 - mount specific partition on corebox startup.
 1 - add drive frame in drive view.
 
-Search
+search
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
 2 - if path is given ,find is not working.but locate is working.
@@ -85,6 +85,7 @@ corepdf
 corepad
 
 corearchiver
+0 - not getting filename.
 
 coreshot
 

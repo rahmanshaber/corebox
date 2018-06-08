@@ -21,6 +21,11 @@ Version 2.2
 - removed engrampa from depedencies.
 - fixed paste icon in corfm.
 - dark ui in corefm.
+- fixed search result ui.
+- fixed file trash problem in coreimage
+- fixed After install corebox icon fixed.
+- dark ui in corearchiver and added icon.
+- moved corearchiver ui in desinger.
 
 
 Version 2.1,Released date Friday, June 1, 2018

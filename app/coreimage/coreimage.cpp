@@ -96,20 +96,22 @@ void coreimage::shotcuts()
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cZoomIn_clicked);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Minus), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cZoomOut_clicked);
-
-//    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Space), this);
-//    connect(shortcut, &QShortcut::activated, this, &coreimage::on_slideShow_clicked);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_B), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_bookMarkIt_clicked);
+//    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Space), this);
+//    connect(shortcut, &QShortcut::activated, this, &coreimage::on_slideShow_clicked);
+
 }
 
-void coreimage::closeEvent(QCloseEvent *event) {
+void coreimage::closeEvent(QCloseEvent *event)
+{
     event->ignore();
     saveToRecent("CoreImage", currentImagePath);
     event->accept();
 }
 
-void coreimage::wheelEvent(QWheelEvent *event) {
+void coreimage::wheelEvent(QWheelEvent *event)
+{
     int delta = event->delta();
     ui->scrollArea->verticalScrollBar()->setEnabled(false);
     ui->scrollArea->horizontalScrollBar()->setEnabled(false);
@@ -130,7 +132,8 @@ void coreimage::wheelEvent(QWheelEvent *event) {
     }
 }
 
-QStringList coreimage::getImages(const QString path) {
+QStringList coreimage::getImages(const QString path)
+{
     QDir dir(path);
     //QStringList images;
     for (QString file : dir.entryList()) {
@@ -229,8 +232,8 @@ void coreimage::setImage(const QImage &newImage)
     //ui->thumnailView->item(images.indexOf(currentImagePath))->setSelected(true);
 }
 
-void coreimage::resizeEvent(QResizeEvent *event) {
-
+void coreimage::resizeEvent(QResizeEvent *event)
+{
     Q_UNUSED(event);
     int iw = image.width();
     int ih = image.height();
@@ -373,8 +376,7 @@ void coreimage::on_cTools_clicked(bool checked)
 {
     if(checked){
         ui->shortcut->setVisible(true);
-    }
-    else{
+    } else{
         ui->shortcut->setVisible(false);
     }
 }
@@ -490,34 +492,32 @@ void coreimage::mousePressEvent(QMouseEvent *event)
 
 void coreimage::mouseMoveEvent(QMouseEvent *event)
 {
-  if (cImageLabel->underMouse() && mousePressed){
-      cImageLabel->move(wndPos + (event->globalPos() - mousePos));
-  }
+    if (cImageLabel->underMouse() && mousePressed){
+        cImageLabel->move(wndPos + (event->globalPos() - mousePos));
+    }
 }
 
 void coreimage::mouseReleaseEvent(QMouseEvent *event)
 {
-  Q_UNUSED(event);
-  mousePressed = false;
+    Q_UNUSED(event);
+    mousePressed = false;
 }
 
 void coreimage::on_cTrashIt_clicked()
 {
-    moveToTrash(currentImagePath);
-
     int index = images.indexOf(currentImagePath);
-//    qDebug() << index;
-    images.removeAt(index);
-//    qDebug() << images.count();
-    if (images.count() == 0) {
-        cImageLabel->setPicture(QPicture());
-//        qDebug() << images.count();
-    } else if (images.count() > 0) {
-        if (index == 0) on_cNext_clicked();
-        else if (index < (images.count() - 1)) {
-            on_cPrevious_clicked();
-        } else {
-            on_cNext_clicked();
+
+    if(moveToTrash(currentImagePath) == true){
+        images.removeAt(index);
+        if (images.count() == 0) {
+            cImageLabel->setPicture(QPicture());
+        } else if (images.count() > 0) {
+            if (index == 0) on_cNext_clicked();
+            else if (index < (images.count() - 1)) {
+                on_cPrevious_clicked();
+            } else {
+                on_cNext_clicked();
+            }
         }
     }
 }

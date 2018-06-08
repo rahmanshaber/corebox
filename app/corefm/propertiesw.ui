@@ -38,7 +38,7 @@ border: 1px rgb(67, 67, 67);
     <number>2</number>
    </property>
    <property name="topMargin">
-    <number>20</number>
+    <number>10</number>
    </property>
    <property name="rightMargin">
     <number>2</number>
@@ -87,7 +87,7 @@ QTabBar::tab:!selected {
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
        <property name="leftMargin">
-        <number>10</number>
+        <number>20</number>
        </property>
        <property name="topMargin">
         <number>10</number>
@@ -298,6 +298,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="3" column="2">
         <widget class="QLabel" name="size">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -310,6 +316,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="5" column="2">
         <widget class="QLabel" name="location">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -325,6 +337,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="4" column="2">
         <widget class="QLabel" name="type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -337,6 +355,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="8" column="2">
         <widget class="QLabel" name="modified">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -349,6 +373,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="9" column="2">
         <widget class="QLabel" name="created">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -361,6 +391,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="11" column="2">
         <widget class="QLabel" name="owner">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -373,6 +409,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="12" column="2">
         <widget class="QLabel" name="group">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -385,6 +427,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="13" column="2">
         <widget class="QLabel" name="executable">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>11</pointsize>
@@ -397,6 +445,12 @@ QTabBar::tab:!selected {
        </item>
        <item row="0" column="2">
         <widget class="QLabel" name="fileName">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -421,7 +475,7 @@ QTabBar::tab:!selected {
         <number>2</number>
        </property>
        <property name="leftMargin">
-        <number>10</number>
+        <number>20</number>
        </property>
        <property name="topMargin">
         <number>20</number>
@@ -474,7 +528,7 @@ QTabBar::tab:!selected {
         <number>20</number>
        </property>
        <property name="leftMargin">
-        <number>10</number>
+        <number>20</number>
        </property>
        <property name="topMargin">
         <number>20</number>
@@ -693,7 +747,7 @@ QTabBar::tab:!selected {
       </attribute>
       <layout class="QGridLayout" name="gridLayout_5">
        <property name="leftMargin">
-        <number>10</number>
+        <number>20</number>
        </property>
        <property name="topMargin">
         <number>20</number>
@@ -808,7 +862,7 @@ QTabBar::tab:!selected {
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="ok">
+      <widget class="QPushButton" name="close">
        <property name="font">
         <font>
          <pointsize>12</pointsize>

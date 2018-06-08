@@ -104,7 +104,7 @@ void MimeUtils::openInApp(const QFileInfo &file, QObject *processOwner) {
     DesktopFile df = DesktopFile("/usr/share/applications/" + app);
     openInApp(df.getExec(), file, processOwner);
   } else {
-      messageEngine(tr("No default application for mime: %1!").arg(mime),"Warning");
+      messageEngine(tr("No default application for mime:\n %1!").arg(mime),"Warning");
   }
 }
 

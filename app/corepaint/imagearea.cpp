@@ -113,7 +113,7 @@ ImageArea::~ImageArea()
 
 void ImageArea::initializeImage()
 {
-    mImage = new QImage(200,200,QImage::Format_ARGB32_Premultiplied);  //shaber image area
+    mImage = new QImage(200,200,QImage::Format_ARGB32_Premultiplied);
 }
 
 void ImageArea::open()

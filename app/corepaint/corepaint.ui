@@ -2270,24 +2270,24 @@ background-color: rgb(48, 140, 198);
      <property name="styleSheet">
       <string notr="true">QTabWidget QTabBar{
 background-color: #333333;
-height: 30px;
+height: 25px;
 }
 
 QTabWidget QTabBar::tab{
 background-color: #136ba2;
 color: #ffffff;
 border-style: none;
-height: 30px;
+height: 25px;
 width: 130px;
 padding: 0px 5px 0px 5px;
 }
 
 QTabWidget QTabBar::tab:selected{
-background-color: #9F9F9F;
+background-color: #232729;
 color: #000000;
 }
 QTabWidget QTabBar::tab:!selected{
-background-color:  #EFEFEF;
+background-color:  #353536;
 color:#000000;
 }</string>
      </property>

@@ -146,5 +146,6 @@
         <file>icons/expand_b.svg</file>
         <file>icons/CorePDF.svg</file>
         <file>icons/CoreTerminal.svg</file>
+        <file>icons/CoreArchiver.svg</file>
     </qresource>
 </RCC>

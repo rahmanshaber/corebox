@@ -1041,14 +1041,14 @@ background-color: rgb(48, 140, 198);
       <string notr="true">QTabWidget QTabBar{
 border-color: #EFEFEF;
 background-color: #EFEFEF;
-height: 30px;
+height: 25px;
 }
 
 QTabWidget QTabBar::tab{
 background-color: #136ba2;
 color: #ffffff;
 border-right:none;
-height: 30px;
+height: 25px;
 width: 130px;
 padding: 0px 5px 0px 5px;
 }
