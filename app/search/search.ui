@@ -42,20 +42,8 @@ border: 1px rgb(67, 67, 67);
 }</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>10</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
       <property name="bottomMargin">
-       <number>10</number>
+       <number>0</number>
       </property>
       <item>
        <widget class="QFrame" name="searchbar">
@@ -311,7 +299,7 @@ border:1px solid gray;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
+             <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -330,43 +318,51 @@ border:1px solid gray;
          <enum>QFrame::NoFrame</enum>
         </property>
         <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
+         <enum>QFrame::Plain</enum>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <property name="topMargin">
           <number>10</number>
          </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QToolButton" name="typeAll">
            <property name="minimumSize">
             <size>
-             <width>80</width>
-             <height>50</height>
+             <width>0</width>
+             <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>50</width>
-             <height>100</height>
+             <height>30</height>
             </size>
            </property>
            <property name="font">
             <font>
              <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
+color : #E6E6E6;
 border: 1px rgb(67, 67, 67);
-background-color:#E6E6E6; 
-border-radius: 10px;
+padding: 5px 5px 5px 5px;
 }
 
-QToolButton:checked{
-background-color:rgb(48, 140, 198); 
-}</string>
+QToolButton:checked
+{
+border:none;
+border-bottom: 2px solid #DCDCDC;
+color: #DCDCDC; 
+font-weight: bold;
+}
+</string>
            </property>
            <property name="text">
             <string>All</string>
@@ -395,32 +391,36 @@ background-color:rgb(48, 140, 198);
           <widget class="QToolButton" name="typePicture">
            <property name="minimumSize">
             <size>
-             <width>80</width>
-             <height>50</height>
+             <width>0</width>
+             <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>80</width>
-             <height>50</height>
+             <height>30</height>
             </size>
            </property>
            <property name="font">
             <font>
-             <pointsize>16</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
+color : #E6E6E6;
 border: 1px rgb(67, 67, 67);
-background-color:#E6E6E6;
-border-radius: 10px;
+padding: 5px 5px 5px 5px;
 }
 
-QToolButton:checked{
-background-color:rgb(48, 140, 198); 
+QToolButton:checked
+{
+border:none;
+border-bottom: 2px solid #DCDCDC;
+color: #DCDCDC; 
+font-weight: bold;
 }
 </string>
            </property>
@@ -445,33 +445,36 @@ background-color:rgb(48, 140, 198);
           <widget class="QToolButton" name="typeFolder">
            <property name="minimumSize">
             <size>
-             <width>80</width>
-             <height>50</height>
+             <width>0</width>
+             <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>80</width>
-             <height>50</height>
+             <height>30</height>
             </size>
            </property>
            <property name="font">
             <font>
              <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
+color : #E6E6E6;
 border: 1px rgb(67, 67, 67);
-background-color:#E6E6E6; 
-border-radius: 10px;
+padding: 5px 5px 5px 5px;
 }
 
-QToolButton:checked{
-background-color:rgb(48, 140, 198); 
-}</string>
+QToolButton:checked
+{
+border:none;
+border-bottom: 2px solid #DCDCDC;
+color: #DCDCDC; 
+font-weight: bold;
+}
+</string>
            </property>
            <property name="text">
             <string>Folder</string>
@@ -485,6 +488,9 @@ background-color:rgb(48, 140, 198);
            <property name="checkable">
             <bool>true</bool>
            </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextOnly</enum>
            </property>
@@ -494,32 +500,36 @@ background-color:rgb(48, 140, 198);
           <widget class="QToolButton" name="typeMedia">
            <property name="minimumSize">
             <size>
-             <width>80</width>
-             <height>50</height>
+             <width>0</width>
+             <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>80</width>
-             <height>50</height>
+             <height>30</height>
             </size>
            </property>
            <property name="font">
             <font>
              <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
+color : #E6E6E6;
 border: 1px rgb(67, 67, 67);
-background-color:#E6E6E6; 
-border-radius: 10px;
+padding: 5px 5px 5px 5px;
 }
 
-QToolButton:checked{
-background-color:rgb(48, 140, 198); 
+QToolButton:checked
+{
+border:none;
+border-bottom: 2px solid #DCDCDC;
+color: #DCDCDC; 
+font-weight: bold;
 }
 </string>
            </property>
@@ -544,32 +554,36 @@ background-color:rgb(48, 140, 198);
           <widget class="QToolButton" name="typeother">
            <property name="minimumSize">
             <size>
-             <width>80</width>
-             <height>50</height>
+             <width>0</width>
+             <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>80</width>
-             <height>50</height>
+             <height>30</height>
             </size>
            </property>
            <property name="font">
             <font>
              <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
+color : #E6E6E6;
 border: 1px rgb(67, 67, 67);
-background-color:#E6E6E6; 
-border-radius: 10px;
+padding: 5px 5px 5px 5px;
 }
 
-QToolButton:checked{
-background-color:rgb(48, 140, 198); 
+QToolButton:checked
+{
+border:none;
+border-bottom: 2px solid #DCDCDC;
+color: #DCDCDC; 
+font-weight: bold;
 }
 </string>
            </property>
@@ -590,22 +604,35 @@ background-color:rgb(48, 140, 198);
            </property>
           </widget>
          </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="itemCount">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>0 item(s) found</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
         </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="itemCount">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>0 item(s) found</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
        </widget>
       </item>
      </layout>

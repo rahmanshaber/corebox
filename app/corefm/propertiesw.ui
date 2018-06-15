@@ -60,7 +60,9 @@ QTabWidget::pane { /* The tab widget frame */
 	padding: 5px 0px;
 }
 
-QTabWidget::tab-bar { alignment: center; }
+QTabWidget::tab-bar { 
+alignment: center; 
+}
 
 /* Style the tab using the tab sub-control. Note that
     it reads QTabBar _not_ QTabWidget */

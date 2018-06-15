@@ -128,7 +128,9 @@ border: 1px rgb(67, 67, 67);
        <widget class="QListWidget" name="section">
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -155,7 +157,7 @@ QListView::item:hover {
        <widget class="QPushButton" name="addSection">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -197,7 +199,9 @@ background-color: #171717;
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -233,7 +237,7 @@ background-color: #171717;
        <widget class="QPushButton" name="cTools">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">

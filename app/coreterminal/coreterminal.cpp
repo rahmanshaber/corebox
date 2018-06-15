@@ -17,7 +17,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QDebug>
 #include <QTabWidget>
-
+#include <QShortcut>
 
 coreterminal::coreterminal(QWidget *parent) : QTermWidget(0, parent)
 {
@@ -205,6 +205,13 @@ coreterminal::coreterminal(QString workDir, QString command, QWidget *parent) : 
         CoreBox *cBox = static_cast<CoreBox*>(qApp->activeWindow());
         cBox->closeCurrentTab();
     });
+
+    QShortcut *shortcut;
+
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_C), this);
+    connect(shortcut, &QShortcut::activated, this, &coreterminal::copyClipboard);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_V), this);
+    connect(shortcut, &QShortcut::activated, this, &coreterminal::pasteClipboard);
 }
 
 QString coreterminal::currentWorkingDirectory()

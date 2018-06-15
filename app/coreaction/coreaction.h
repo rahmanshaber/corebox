@@ -29,7 +29,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../corebox/globalfunctions.h"
 #include "../corebox/corebox.h"
 #include "about/about.h"
-#include "corescreenshot/mainwindow.h"
+#include "coreshot/coreshot.h"
 #include "dashboard/upower.h"
 #include "dashboard/battery.h"
 #include "dashboard/lib/info_manager.h"

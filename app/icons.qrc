@@ -74,8 +74,6 @@
         <file>icons/new_tab_w.svg</file>
         <file>icons/next_b.svg</file>
         <file>icons/next_w.svg</file>
-        <file>icons/open_b.svg</file>
-        <file>icons/open_w.svg</file>
         <file>icons/paste_b.svg</file>
         <file>icons/paste_w.svg</file>
         <file>icons/pause.svg</file>
@@ -147,5 +145,31 @@
         <file>icons/CorePDF.svg</file>
         <file>icons/CoreTerminal.svg</file>
         <file>icons/CoreArchiver.svg</file>
+        <file>icons/instruments-icons/colorpicker_b.svg</file>
+        <file>icons/instruments-icons/colorpicker_w.svg</file>
+        <file>icons/instruments-icons/curve_b.svg</file>
+        <file>icons/instruments-icons/curve_w.svg</file>
+        <file>icons/instruments-icons/ellipse_b.svg</file>
+        <file>icons/instruments-icons/ellipse_w.svg</file>
+        <file>icons/instruments-icons/eraser_b.svg</file>
+        <file>icons/instruments-icons/eraser_w.svg</file>
+        <file>icons/instruments-icons/fill_b.svg</file>
+        <file>icons/instruments-icons/fill_w.svg</file>
+        <file>icons/instruments-icons/line_b.svg</file>
+        <file>icons/instruments-icons/line_w.svg</file>
+        <file>icons/instruments-icons/pen_b.svg</file>
+        <file>icons/instruments-icons/pen_w.svg</file>
+        <file>icons/instruments-icons/rectangle_b.svg</file>
+        <file>icons/instruments-icons/rectangle_w.svg</file>
+        <file>icons/instruments-icons/select_b.svg</file>
+        <file>icons/instruments-icons/select_w.svg</file>
+        <file>icons/instruments-icons/spray_b.svg</file>
+        <file>icons/instruments-icons/spray_w.svg</file>
+        <file>icons/instruments-icons/text_b.svg</file>
+        <file>icons/instruments-icons/text_w.svg</file>
+        <file>icons/instruments-icons/triangle_b.svg</file>
+        <file>icons/instruments-icons/triangle_w.svg</file>
+        <file>icons/folder_b.svg</file>
+        <file>icons/folder_w.svg</file>
     </qresource>
 </RCC>

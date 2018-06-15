@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>coreshot</class>
+ <widget class="QWidget" name="coreshot">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>689</width>
+    <height>345</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>CoreShot</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../icons.qrc">
+    <normaloff>:/icons/CoreShot.svg</normaloff>:/icons/CoreShot.svg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+background-color: #2A2A2A;
+color: #ffffff;
+border: 1px #2A2A2A;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>8</number>
+   </property>
+   <property name="topMargin">
+    <number>8</number>
+   </property>
+   <property name="rightMargin">
+    <number>8</number>
+   </property>
+   <property name="bottomMargin">
+    <number>8</number>
+   </property>
+   <item>
+    <widget class="PreviewWidget" name="shotPreview">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="newShot">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: 1px solid rgb(67, 67, 67);
+padding: 3px 5px 3px 5px;
+}
+QPushButton:hover {
+background-color: rgb(48, 140, 198)
+}
+
+QPushButton:checked{
+background-color:rgb(48, 140, 198);
+}</string>
+       </property>
+       <property name="text">
+        <string>New Screenshot</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="openInCorePaint">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: 1px solid rgb(67, 67, 67);
+padding: 3px 5px 3px 5px;
+}
+QPushButton:hover {
+background-color: rgb(48, 140, 198)
+}
+
+QPushButton:checked{
+background-color:rgb(48, 140, 198);
+}</string>
+       </property>
+       <property name="text">
+        <string>Open in Corepaint</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="save">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: 1px solid rgb(67, 67, 67);
+padding: 3px 5px 3px 5px;
+}
+QPushButton:hover {
+background-color: rgb(48, 140, 198)
+}
+
+QPushButton:checked{
+background-color:rgb(48, 140, 198);
+}</string>
+       </property>
+       <property name="text">
+        <string>Save</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveAs">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: 1px solid rgb(67, 67, 67);
+padding: 3px 5px 3px 5px;
+}
+QPushButton:hover {
+background-color: rgb(48, 140, 198)
+}
+
+QPushButton:checked{
+background-color:rgb(48, 140, 198);
+}</string>
+       </property>
+       <property name="text">
+        <string>Save as</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: 1px solid rgb(67, 67, 67);
+padding: 3px 5px 3px 5px;
+}
+QPushButton:hover {
+background-color: rgb(48, 140, 198)
+}
+
+QPushButton:checked{
+background-color:rgb(48, 140, 198);
+}</string>
+       </property>
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>PreviewWidget</class>
+   <extends>QLabel</extends>
+   <header location="global">coreshot/previewwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

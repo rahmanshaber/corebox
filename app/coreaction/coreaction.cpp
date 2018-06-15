@@ -17,6 +17,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreaction.h"
 #include "ui_coreaction.h"
 
+#include "coreshot/coreshotdialog.h"
+
 #include <QDesktopWidget>
 #include <QDateTime>
 #include <QTimer>
@@ -353,7 +355,7 @@ void coreaction::on_corepad_clicked()
 
 void coreaction::on_screenshot_clicked()
 {
-    MainWindow *w = new MainWindow();
+    CoreShotDialog *w = new CoreShotDialog();
     w->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     w->show();
     this->hide();

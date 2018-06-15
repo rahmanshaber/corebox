@@ -45,7 +45,8 @@ FORMS += \
     search/search.ui \
     settings/settings.ui \
     start/start.ui \
-    corearchiver/corearchiver.ui
+    corearchiver/corearchiver.ui \
+    coreshot/coreshot.ui
 
 HEADERS += \
     about/about.h \
@@ -95,12 +96,6 @@ HEADERS += \
     corepaint/imagearea.h \
     corepaint/undocommand.h \
     coreplayer/coreplayer.h \
-    corescreenshot/mainwindow.h \
-    corescreenshot/modefullscreen.h \
-    corescreenshot/modeselectarea.h \
-    corescreenshot/previewwidget.h \
-    corescreenshot/rectarea.h \
-    corescreenshot/screenwidget.h \
     coretime/alarm.h \
     coretime/coretime.h \
     coretime/fileio.h \
@@ -131,7 +126,14 @@ HEADERS += \
     corefm/clickoutlistview.h \
     corepdf/corepdf.h \
     coreterminal/coreterminal.h \
-    corearchiver/corearchiver.h
+    corearchiver/corearchiver.h \
+    coreshot/coreshot.h \
+    coreshot/modefullscreen.h \
+    coreshot/modeselectarea.h \
+    coreshot/previewwidget.h \
+    coreshot/rectarea.h \
+    coreshot/screenwidget.h \
+    coreshot/coreshotdialog.h
 
 SOURCES += \
     about/about.cpp \
@@ -180,12 +182,6 @@ SOURCES += \
     corepaint/imagearea.cpp \
     corepaint/undocommand.cpp \
     coreplayer/coreplayer.cpp \
-    corescreenshot/mainwindow.cpp \
-    corescreenshot/modefullscreen.cpp \
-    corescreenshot/modeselectarea.cpp \
-    corescreenshot/previewwidget.cpp \
-    corescreenshot/rectarea.cpp \
-    corescreenshot/screenwidget.cpp \
     coretime/alarm.cpp \
     coretime/coretime.cpp \
     coretime/fileio.cpp \
@@ -215,7 +211,14 @@ SOURCES += \
     main.cpp \
     corepdf/corepdf.cpp \
     coreterminal/coreterminal.cpp \
-    corearchiver/corearchiver.cpp
+    corearchiver/corearchiver.cpp \
+    coreshot/coreshot.cpp \
+    coreshot/modefullscreen.cpp \
+    coreshot/modeselectarea.cpp \
+    coreshot/previewwidget.cpp \
+    coreshot/rectarea.cpp \
+    coreshot/screenwidget.cpp \
+    coreshot/coreshotdialog.cpp
 
 RESOURCES += \
     icons.qrc \

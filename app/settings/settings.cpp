@@ -17,6 +17,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "settings.h"
 #include "ui_settings.h"
 
+#include "corearchiver/corearchiver.h"
+
 #include <QDir>
 #include <QFile>
 #include <QIcon>
@@ -420,4 +422,24 @@ void settings::on_corefm_clicked()
 void settings::on_corescrshot_clicked()
 {
     pageClick(ui->corescrshot,3, tr("CoreScreenShot"));
+}
+
+void settings::on_browSave_clicked()
+{
+    QString path = QFileDialog::getExistingDirectory(this, "Select a folder");
+    if (path.count())
+        ui->backupPath->setText(path);
+}
+
+void settings::on_backUp_clicked()
+{
+    QString path = QDir::homePath() + "/.config/coreBox";
+    QString settingsFile = "coreBox.conf";
+    QString bookFile = "CoreBoxBook";
+
+    corearchiver *arc = new corearchiver();
+    arc->setFilename("CoreBox_Backup");
+    arc->filePathList = QStringList() << path + "/" + settingsFile << path + "/" + bookFile;
+    arc->setFolderPath(ui->backupPath->text());
+    arc->compress(QStringList() << path + "/" + settingsFile << path + "/" + bookFile, path);
 }

@@ -125,7 +125,7 @@ border: 1px rgb(67, 67, 67);
        <widget class="QPushButton" name="open">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -147,22 +147,12 @@ background-color: #3E4A58;
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
+          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
           <width>22</width>
           <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="folderLineEdit">
-        <property name="maximumSize">
-         <size>
-          <width>43453</width>
-          <height>16777215</height>
          </size>
         </property>
        </widget>
@@ -217,11 +207,26 @@ QListView::item:hover {
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
          <string>Included Files: 0</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="folderLineEdit">
+        <property name="maximumSize">
+         <size>
+          <width>43453</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
         </property>
        </widget>
       </item>

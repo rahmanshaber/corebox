@@ -5,7 +5,7 @@ Version 2.2
 - added corearchiver to archive file.
 - fixed search ui.
 - removed the icon path variable from saverecent function.
-- fix the pages and there numbering.
+- fixed the pages and there numbering.
 - updated the battery widget in dashboard and coreaction.
 - added delete selected area in corepaint.
 - added the opening terminal in current folder in corefm.
@@ -14,7 +14,7 @@ Version 2.2
 - move cImage label to code in coreimage.
 - image list in qconcarent in coreimage.
 - fixed coreterminal crashes on closing.
-- fix the window size of coreterminal
+- fixed the window size of coreterminal
 - fixed coreterminal's type "man ls" shows this "terminal is not ready"
 - fixed coreterminal background in black.
 - add active window screenshot option corescreenshot.
@@ -26,6 +26,18 @@ Version 2.2
 - fixed After install corebox icon fixed.
 - dark ui in corearchiver and added icon.
 - moved corearchiver ui in desinger.
+- globalfunction add a app icon get option.
+- fixed getting filename at corearchiver.
+- fixed zooming problem of coreimage.
+- added backup option of coreapps & corebox settings and bookmark at settings.
+- fixed bookmarking home folder problem at corefm.
+- copy, paste shortcut at coreterminal.
+- coreshot at new ui.
+- added all the instruments icons.
+- search ui has some changes.
+- changed folder icon.
+- reduced font size in all app's sidebar.
+- fixed shot preview dialog ui.
 
 
 Version 2.1,Released date Friday, June 1, 2018

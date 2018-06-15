@@ -875,7 +875,7 @@ border: 1px #161616;
        <widget class="QPushButton" name="corebox">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -911,7 +911,7 @@ color: #57585D ;
        <widget class="QPushButton" name="corefm">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -947,7 +947,7 @@ color: #57585D ;
        <widget class="QPushButton" name="corepad">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -983,7 +983,7 @@ color: #57585D ;
        <widget class="QPushButton" name="coreimage">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -992,7 +992,7 @@ Text-align:left;
 padding: 5px 5px 5px 5px;
 }
 QPushButton:checked{
-background-color:#073B63; 
+background-color:#3A4055; 
 }
 QPushButton:!checked{
 color: #57585D ;
@@ -1019,7 +1019,7 @@ color: #57585D ;
        <widget class="QPushButton" name="corepaint">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1055,7 +1055,7 @@ color: #57585D ;
        <widget class="QPushButton" name="corescrshot">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1091,7 +1091,7 @@ color: #57585D ;
        <widget class="QPushButton" name="coretime">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1127,7 +1127,7 @@ color: #57585D ;
        <widget class="QPushButton" name="corerenamer">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1163,7 +1163,7 @@ color: #57585D ;
        <widget class="QPushButton" name="coreplayer">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1199,7 +1199,7 @@ color: #57585D ;
        <widget class="QPushButton" name="dashboard">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1235,7 +1235,7 @@ color: #57585D ;
        <widget class="QPushButton" name="start">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1271,7 +1271,7 @@ color: #57585D ;
        <widget class="QPushButton" name="search">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1298,7 +1298,7 @@ color: #57585D ;
        <widget class="QPushButton" name="helpus">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">

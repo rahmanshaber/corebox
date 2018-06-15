@@ -103,6 +103,9 @@ background-color:  #308CC6;
 }</string>
      </property>
      <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
       <string>Current folder</string>
      </property>
     </widget>

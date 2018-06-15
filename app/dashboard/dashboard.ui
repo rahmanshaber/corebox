@@ -235,7 +235,7 @@ border: 1px #3F67C0;
        <widget class="QPushButton" name="Bgeneral">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -274,7 +274,7 @@ background-color:#1B252F;
        <widget class="QPushButton" name="Bdrives">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -313,7 +313,7 @@ background-color:#1B252F;
        <widget class="QPushButton" name="Bbattery">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -352,7 +352,7 @@ background-color:#1B252F;
        <widget class="QPushButton" name="Bresource">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -391,7 +391,7 @@ background-color:#1B252F;
        <widget class="QPushButton" name="Bdisplay">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">

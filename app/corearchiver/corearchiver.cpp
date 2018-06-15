@@ -25,6 +25,7 @@ corearchiver::corearchiver(QWidget *parent) :
 
     connect( ui->cancel, SIGNAL( clicked() ), this, SLOT(close()));
 
+    ui->locationLE->setEnabled(false);
     format = ui->formatsCB->currentText();
     ui->nameLE->setText(archiveName);
 }
@@ -34,8 +35,34 @@ corearchiver::~corearchiver()
     delete ui;
 }
 
+/*
+ * Info :
+ *
+ * location = where the compressed file will be located
+ * working dir = where the file is taken from
+ *
+ *
+*/
+
+void corearchiver::setFilename(QString fileName) {
+    archiveName = fileName;
+    ui->nameLE->setText(archiveName);
+}
+
+void corearchiver::setFolderPath(QString path) {
+    workingDir = path;
+    location = path;
+}
+
 void corearchiver::compress(QStringList archiveList , QDir currentDir)
 {
+    ui->nameLE->setEnabled(false);
+    ui->locationLE->setEnabled(false);
+    ui->locationTB->setEnabled(false);
+    ui->formatsCB->setEnabled(false);
+    ui->createArc->setEnabled(false);
+    ui->cancel->setEnabled(false);
+
     QDir::setCurrent(currentDir.path());
 
     qDebug() << "Current Dir : " << QDir::currentPath() << "\nGiven Dir : " << currentDir.path();
@@ -96,6 +123,7 @@ void corearchiver::updateDirName()
 {
     QString loc = QFileDialog::getExistingDirectory( this, "NewBreeze - Choose Directory", QDir::currentPath() );
     if ( not loc.isEmpty() ) {
+        ui->locationLE->setEnabled(true);
         ui->locationLE->setText( loc );
         location = loc;
     }

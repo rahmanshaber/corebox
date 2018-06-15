@@ -1,4 +1,4 @@
-﻿/*
+/*
 CoreBox is combination of some common desktop apps.
 
 CoreBox is free software; you can redistribute it and/or
@@ -18,18 +18,16 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_start.h"
 
 #include <QTableWidgetItem>
-
+#include <QFont>
 
 Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
 {
     ui->setupUi(this);
 
-    ui->recents->setFocusPolicy(Qt::NoFocus);
+    //ui->recents->setFocusPolicy(Qt::NoFocus);
     loadsettings();
 
-    ui->coreappsSection->setFixedHeight(ui->view->height());
-    ui->speeddilalSection->setFixedHeight(ui->view->height());
-
+    on_coreApps_clicked();
     reload();
 }
 
@@ -38,9 +36,29 @@ Start::~Start()
     delete ui;
 }
 
+//void Start::setSizeWid(QList<QWidget *> widgets) {
+//    foreach (QWidget *widget, widgets) {
+//        QPushButton *btn = static_cast<QPushButton*>(widget);
+//        if (btn)
+//            qDebug() << btn->objectName();
+//        else
+//            qDebug() << "Nothing";
+//        int w = qApp->activeWindow()->size().width() / 4;
+//        int h = qApp->activeWindow()->size().height() / 8;
+//        if (btn->isChecked()) {
+//            btn->setFont(QFont(widget->font().family(), (int)h/4, 1));
+//            btn->setMinimumSize(w, h);
+//        } else {
+//            btn->setFont(QFont(widget->font().family(), (int)h/8, 1));
+//            btn->setMinimumSize((int)w/2, (int)h/2);
+//        }
+//    }
+
+//}
+
 void Start::loadsettings()
 {
-    ui->recentSection->setVisible(sm.getDisableRecent());
+//    ui->recentSection->setVisible(sm.getDisableRecent());
 }
 
 void Start::on_recents_itemDoubleClicked(QTableWidgetItem *item)
@@ -51,9 +69,10 @@ void Start::on_recents_itemDoubleClicked(QTableWidgetItem *item)
 void Start::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    ui->coreappsSection->setFixedHeight(ui->view->height());
-    ui->recentSection->setFixedHeight(ui->view->height());
-    ui->speeddilalSection->setFixedHeight(ui->view->height());
+    //setSizeWid(QWidgetList() << ui->coreApps << ui->speedDial << ui->recentActivites);
+//    ui->coreappsSection->setFixedHeight(ui->view->height());
+//    ui->recentSection->setFixedHeight(ui->view->height());
+//    ui->speeddilalSection->setFixedHeight(ui->view->height());
 }
 
 void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item)
@@ -107,7 +126,7 @@ void Start::reload()
         sm.cSetting->endGroup();
 
         ui->recents->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
-        ui->recentSection->setFixedHeight(ui->view->height());
+//        ui->recentSection->setFixedHeight(ui->view->height());
     }
 }
 
@@ -116,4 +135,34 @@ void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item)
 {
     BookmarkManage bk;
     openAppEngine(bk.bookmarkPath("Speed Dial",item->text()));
+}
+
+void Start::on_coreApps_clicked()
+{
+    ui->pages->setCurrentIndex(0);
+    ui->coreApps->setChecked(1);
+    ui->speedDial->setChecked(0);
+    ui->recentActivites->setChecked(0);
+
+    //setSizeWid(QWidgetList() << ui->coreApps << ui->speedDial << ui->recentActivites);
+}
+
+void Start::on_speedDial_clicked()
+{
+    ui->pages->setCurrentIndex(1);
+    ui->speedDial->setChecked(1);
+    ui->coreApps->setChecked(0);
+    ui->recentActivites->setChecked(0);
+
+    //setSizeWid(QWidgetList() << ui->coreApps << ui->speedDial << ui->recentActivites);
+}
+
+void Start::on_recentActivites_clicked()
+{
+    ui->pages->setCurrentIndex(2);
+    ui->recentActivites->setChecked(1);
+    ui->speedDial->setChecked(0);
+    ui->coreApps->setChecked(0);
+
+    //setSizeWid(QWidgetList() << ui->coreApps << ui->speedDial << ui->recentActivites);
 }

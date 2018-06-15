@@ -49,10 +49,17 @@ private slots:
 
     void on_speedDialB_itemDoubleClicked(QListWidgetItem *item);
 
+    void on_coreApps_clicked();
+
+    void on_speedDial_clicked();
+
+    void on_recentActivites_clicked();
+
 private:
     SettingsManage sm;
     Ui::Start *ui;
 
+    //void setSizeWid(QList<QWidget*> widgets);
 };
 
 #endif // START_H

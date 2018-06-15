@@ -40,7 +40,13 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
 
     scaleFactor = 1.0;
 
-    cImageLabel = new QLabel();
+    cImageLabel = new QLabel(ui->scrollArea);
+    cImageLabel->setFrameShape(QLabel::NoFrame);
+    cImageLabel->setFrameShadow(QLabel::Plain);
+    cImageLabel->setText("");
+    cImageLabel->setLineWidth(0);
+    cImageLabel->setScaledContents(true);
+    cImageLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
     cImageLabel->setBackgroundRole(QPalette::Base);
     cImageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);

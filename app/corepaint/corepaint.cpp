@@ -117,6 +117,7 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
         if (!imageArea->getFileName().isNull()) {
             QScrollArea *scrollArea = new QScrollArea();
             scrollArea->setAttribute(Qt::WA_DeleteOnClose);
+            //color for core paint
             scrollArea->setBackgroundRole(QPalette::Dark);
             scrollArea->setWidget(imageArea);
 
@@ -165,11 +166,11 @@ void corepaint::initializeMainMenu()
     ui->actioniundo = mUndoStackGroup->createUndoAction(this);
     ui->undo->setDefaultAction(ui->actioniundo);
     ui->actioniredo = mUndoStackGroup->createRedoAction(this);
-    ui->redo->setDefaultAction( ui->actioniredo);
+    ui->redo->setDefaultAction(ui->actioniredo);
 
-    connect(ui->actionCursor, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
-    mInstrumentsActMap.insert(CURSOR, ui->actionCursor);
-    ui->cursor->setDefaultAction(ui->actionCursor);
+    connect(ui->actionSelect, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
+    mInstrumentsActMap.insert(CURSOR, ui->actionSelect);
+    ui->select->setDefaultAction(ui->actionSelect);
 
     connect(ui->actionEraser, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
     mInstrumentsActMap.insert(ERASER, ui->actionEraser);

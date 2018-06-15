@@ -140,7 +140,7 @@ Text-align:left;
        <widget class="QPushButton" name="cOpen">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -163,7 +163,7 @@ background-color: #00619D;
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
+          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -177,7 +177,7 @@ background-color: #00619D;
        <widget class="QPushButton" name="cNew">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -214,7 +214,7 @@ background-color: #00619D;
        <widget class="QPushButton" name="cSave">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -251,7 +251,7 @@ background-color: #00619D;
        <widget class="QPushButton" name="cSaveAs">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -291,7 +291,7 @@ background-color: #00619D;
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -331,7 +331,7 @@ background-color: #00619D;
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -368,7 +368,7 @@ background-color: #00619D;
        <widget class="QPushButton" name="cPaste">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -408,7 +408,7 @@ background-color: #00619D;
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -448,7 +448,7 @@ background-color: #00619D;
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -485,7 +485,7 @@ background-color: #00619D;
        <widget class="QPushButton" name="search">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -537,7 +537,7 @@ background-color: #00619D;
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -604,7 +604,7 @@ background-color: #00619D;
           <widget class="QPushButton" name="pushButton_4">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>11</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -659,10 +659,10 @@ QComboBox::drop-down {
 }</string>
            </property>
            <property name="currentText">
-            <string>15</string>
+            <string>10</string>
            </property>
            <property name="currentIndex">
-            <number>10</number>
+            <number>5</number>
            </property>
            <property name="maxVisibleItems">
             <number>5</number>
@@ -795,7 +795,7 @@ QComboBox::drop-down {
        <widget class="QPushButton" name="bookMarkIt">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1039,13 +1039,13 @@ background-color: rgb(48, 140, 198);
     <widget class="QTabWidget" name="notes">
      <property name="styleSheet">
       <string notr="true">QTabWidget QTabBar{
-border-color: #EFEFEF;
-background-color: #EFEFEF;
+border-color: #2F323A;
+background-color: #2F323A;
 height: 25px;
 }
 
 QTabWidget QTabBar::tab{
-background-color: #136ba2;
+background-color: #2F323A;
 color: #ffffff;
 border-right:none;
 height: 25px;
@@ -1059,7 +1059,7 @@ color: #ffffff;
 }
 
 QTabWidget QTabBar::tab:!selected{
-background-color:  #EFEFEF;
+background-color:  #2F323A;
 color:#000000;
 }
 

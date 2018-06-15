@@ -125,7 +125,7 @@ color:#ffffff;
        <widget class="QPushButton" name="SHome">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -161,7 +161,7 @@ background-color: #1268A4;
        <widget class="QPushButton" name="SDesktop">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="toolTip">
@@ -212,7 +212,7 @@ background-color: #1268A4;
        <widget class="QPushButton" name="SDownloads">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -248,7 +248,7 @@ background-color: #1268A4;
        <widget class="QPushButton" name="STrash">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -299,7 +299,7 @@ background-color: #1268A4;
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="contextMenuPolicy">
@@ -376,7 +376,7 @@ QListView::item:hover {
        <widget class="QPushButton" name="SBookMarkIt">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -415,7 +415,7 @@ background-color: #1268A4;
        <widget class="QPushButton" name="Tools">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">

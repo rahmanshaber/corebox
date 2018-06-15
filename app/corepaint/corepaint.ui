@@ -121,7 +121,9 @@ border: 1px rgb(67, 67, 67);
        <widget class="QTabWidget" name="page">
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -154,7 +156,7 @@ background-color:  #3D3D3D;
          <enum>QTabWidget::South</enum>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="filePage">
          <attribute name="title">
@@ -180,7 +182,7 @@ background-color:  #3D3D3D;
            <widget class="QPushButton" name="newtab">
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -216,7 +218,7 @@ background-color: #212F39;
            <widget class="QPushButton" name="open">
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -238,7 +240,7 @@ background-color: #212F39;
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
+              <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -252,7 +254,7 @@ background-color: #212F39;
            <widget class="QPushButton" name="saveas">
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -288,7 +290,7 @@ background-color: #212F39;
            <widget class="QPushButton" name="save">
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -371,7 +373,7 @@ background-color: #212F39;
             </property>
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -419,7 +421,7 @@ background-color: #212F39;
             </property>
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -467,7 +469,7 @@ background-color: #212F39;
             </property>
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -515,7 +517,7 @@ background-color: #212F39;
             </property>
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -563,7 +565,7 @@ background-color: #212F39;
             </property>
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -611,7 +613,7 @@ background-color: #212F39;
             </property>
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
             <property name="styleSheet">
@@ -682,7 +684,9 @@ background-color: #212F39;
            <widget class="QToolBox" name="toolBox">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
@@ -713,7 +717,7 @@ color: white;
                <x>0</x>
                <y>0</y>
                <width>220</width>
-               <height>267</height>
+               <height>276</height>
               </rect>
              </property>
              <attribute name="label">
@@ -736,7 +740,7 @@ color: white;
                <number>0</number>
               </property>
               <item>
-               <widget class="QToolButton" name="cursor">
+               <widget class="QToolButton" name="select">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -751,7 +755,7 @@ color: white;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -770,7 +774,7 @@ background-color: #212F39;
 </string>
                 </property>
                 <property name="text">
-                 <string>coursor</string>
+                 <string>select</string>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -805,7 +809,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -832,8 +836,8 @@ background-color: #212F39;
                 </property>
                 <property name="iconSize">
                  <size>
-                  <width>22</width>
-                  <height>22</height>
+                  <width>20</width>
+                  <height>20</height>
                  </size>
                 </property>
                 <property name="toolButtonStyle">
@@ -860,7 +864,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -887,15 +891,15 @@ background-color: #212F39;
                 </property>
                 <property name="iconSize">
                  <size>
-                  <width>22</width>
-                  <height>22</height>
+                  <width>20</width>
+                  <height>20</height>
                  </size>
                 </property>
                 <property name="toolButtonStyle">
                  <enum>Qt::ToolButtonTextBesideIcon</enum>
                 </property>
                 <property name="autoRaise">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -915,7 +919,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -942,8 +946,8 @@ background-color: #212F39;
                 </property>
                 <property name="iconSize">
                  <size>
-                  <width>22</width>
-                  <height>22</height>
+                  <width>20</width>
+                  <height>20</height>
                  </size>
                 </property>
                 <property name="toolButtonStyle">
@@ -964,7 +968,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -991,8 +995,8 @@ background-color: #212F39;
                 </property>
                 <property name="iconSize">
                  <size>
-                  <width>22</width>
-                  <height>22</height>
+                  <width>20</width>
+                  <height>20</height>
                  </size>
                 </property>
                 <property name="toolButtonStyle">
@@ -1020,8 +1024,8 @@ background-color: #212F39;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>93</width>
-               <height>292</height>
+               <width>88</width>
+               <height>270</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1117,7 +1121,7 @@ background-color: #212F39;
                    </property>
                    <property name="font">
                     <font>
-                     <pointsize>14</pointsize>
+                     <pointsize>11</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -1210,7 +1214,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1230,6 +1234,10 @@ background-color: #212F39;
                 </property>
                 <property name="text">
                  <string>line</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../icons.qrc">
+                  <normaloff>:/icons/instruments-icons/line_w.svg</normaloff>:/icons/instruments-icons/line_w.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1264,7 +1272,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1318,7 +1326,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1372,7 +1380,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1426,7 +1434,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1480,7 +1488,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1529,7 +1537,7 @@ background-color: #212F39;
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>22</height>
+                  <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -1540,7 +1548,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1588,7 +1596,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1646,8 +1654,8 @@ background-color: #212F39;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>88</width>
-               <height>101</height>
+               <width>220</width>
+               <height>276</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1743,7 +1751,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1762,7 +1770,7 @@ background-color: #212F39;
 </string>
                 </property>
                 <property name="text">
-                 <string/>
+                 <string>clolorpicker</string>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1803,7 +1811,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1822,7 +1830,7 @@ background-color: #212F39;
 </string>
                 </property>
                 <property name="text">
-                 <string/>
+                 <string>fill</string>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1863,7 +1871,7 @@ background-color: #212F39;
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>14</pointsize>
+                  <pointsize>11</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -1882,7 +1890,7 @@ background-color: #212F39;
 </string>
                 </property>
                 <property name="text">
-                 <string/>
+                 <string>spray</string>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1926,7 +1934,7 @@ background-color: #212F39;
        <widget class="QPushButton" name="bookMarkIt">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -2312,18 +2320,6 @@ color:#000000;
     </widget>
    </item>
   </layout>
-  <action name="actionCursor">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/cursor.png</normaloff>:/corepaint/icons/instruments-icons/cursor.png</iconset>
-   </property>
-   <property name="text">
-    <string>Cursor</string>
-   </property>
-  </action>
   <action name="actioniundo">
    <property name="text">
     <string>iundo</string>
@@ -2339,8 +2335,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/text.png</normaloff>:/corepaint/icons/instruments-icons/text.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/text_w.svg</normaloff>:/icons/instruments-icons/text_w.svg</iconset>
    </property>
    <property name="text">
     <string>Text</string>
@@ -2351,8 +2347,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/curve.png</normaloff>:/corepaint/icons/instruments-icons/curve.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/curve_w.svg</normaloff>:/icons/instruments-icons/curve_w.svg</iconset>
    </property>
    <property name="text">
     <string>Curve</string>
@@ -2363,8 +2359,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/ellipse.png</normaloff>:/corepaint/icons/instruments-icons/ellipse.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/ellipse_w.svg</normaloff>:/icons/instruments-icons/ellipse_w.svg</iconset>
    </property>
    <property name="text">
     <string>Ellipse</string>
@@ -2375,8 +2371,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/rectangle.png</normaloff>:/corepaint/icons/instruments-icons/rectangle.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/rectangle_w.svg</normaloff>:/icons/instruments-icons/rectangle_w.svg</iconset>
    </property>
    <property name="text">
     <string>Rectangle</string>
@@ -2387,8 +2383,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/fill.png</normaloff>:/corepaint/icons/instruments-icons/fill.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/fill_w.svg</normaloff>:/icons/instruments-icons/fill_w.svg</iconset>
    </property>
    <property name="text">
     <string>Fill</string>
@@ -2399,8 +2395,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/spray.png</normaloff>:/corepaint/icons/instruments-icons/spray.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/spray_w.svg</normaloff>:/icons/instruments-icons/spray_w.svg</iconset>
    </property>
    <property name="text">
     <string>Spray</string>
@@ -2411,8 +2407,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/line.png</normaloff>:/corepaint/icons/instruments-icons/line.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/line_w.svg</normaloff>:/icons/instruments-icons/line_w.svg</iconset>
    </property>
    <property name="text">
     <string>Line</string>
@@ -2423,8 +2419,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/pencil.png</normaloff>:/corepaint/icons/instruments-icons/pencil.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/pen_w.svg</normaloff>:/icons/instruments-icons/pen_w.svg</iconset>
    </property>
    <property name="text">
     <string>Pen</string>
@@ -2435,8 +2431,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/loupe.png</normaloff>:/corepaint/icons/instruments-icons/loupe.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/search_w.svg</normaloff>:/icons/search_w.svg</iconset>
    </property>
    <property name="text">
     <string>Magnifier</string>
@@ -2447,8 +2443,8 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/pipette.png</normaloff>:/corepaint/icons/instruments-icons/pipette.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/colorpicker_w.svg</normaloff>:/icons/instruments-icons/colorpicker_w.svg</iconset>
    </property>
    <property name="text">
     <string>Colorpicker</string>
@@ -2459,11 +2455,20 @@ color:#000000;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>:/corepaint/icons/instruments-icons/lastic.png</normaloff>:/corepaint/icons/instruments-icons/lastic.png</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/eraser_w.svg</normaloff>:/icons/instruments-icons/eraser_w.svg</iconset>
    </property>
    <property name="text">
     <string>Eraser</string>
+   </property>
+  </action>
+  <action name="actionSelect">
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/instruments-icons/select_w.svg</normaloff>:/icons/instruments-icons/select_w.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Select</string>
    </property>
   </action>
  </widget>

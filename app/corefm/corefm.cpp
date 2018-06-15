@@ -155,6 +155,9 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
     //left mouse click at viewlist
     connect(ui->viewlist, &ClickOutListview::clickedOut, this, &corefm::pressed);
     connect(ui->viewtree, &ClickOutTreeview::clickedOut, this, &corefm::pressed);
+
+
+    selcitem = 0;
 }
 
 corefm::~corefm()
@@ -2157,8 +2160,8 @@ void corefm::on_actionExtract_Here_triggered()
 void corefm::on_actionCreate_Archive_triggered()
 {
     corearchiver *arc = new corearchiver();
-    arc->archiveName = QFileInfo(selcitempath).fileName();
-    arc->workingDir = QFileInfo(selcitempath).path();
+    arc->setFilename(QFileInfo(selcitempath).fileName());
+    arc->setFolderPath(QFileInfo(selcitempath).path());
     arc->filePathList = QStringList() << selcitempath;
     arc->show();
 }

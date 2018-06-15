@@ -7,7 +7,8 @@ FIX MUST BE SIMPLE.
 
 
 corebox
-0 - double click not working.
+0 - icon and title not changing perfectly
+3 - double click not working.
 0 - closing the corebox needs to inform the app.
 1 - need two theme (dark and light)
 1 - round border is no working in messageengine>>messagebox.
@@ -27,6 +28,7 @@ globalfunction
 start
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
+1 - recent activities as date wise
 
 bookmarks
 1 - one click to open all the bookmark in one section(only first 8 of them)
@@ -44,7 +46,8 @@ search
 2 - if path is given ,find is not working.but locate is working.
 
 setting
-1 - add option to backup corbox config folder as a zip and restore the settings.
+0 - fix the defult backup folder path.
+0 - backup must archive whole corbox folder in config.
 
 corefm
 0 - pathedit is always in focus, even outside clicked.
@@ -62,6 +65,7 @@ corepaint
 1 - set all the instrument cursor.
 
 coretime
+0 - stopwatch timing is not perfect
 0 - fix the timer start/pause button .
 0 - save the alarm list in config folder.(another file if possible.
 0 - improve the alarm .
@@ -83,22 +87,36 @@ corepdf
 0 - fix the space in path issue.
 
 corepad
+0 - new pad>>bookmark it>>icon is fulty.
+0 - saving a new page>> saving dialog>name has a * ,remove it.
+0 - remove the page border.
 
 corearchiver
-0 - not getting filename.
+1 - Inform user when extracting is finished
+1 - Inform user when compressing is finished
+
 
 coreshot
+1 - take fullscreen shot using x11
+0 - active window and full screen in capturing the choreshot window.
 
 coreaction
+1 - load the widgets if needed [seperate them]
+1 - notes to other file
 
 coreterminal
 
+coreRenamer
+  - upcoming
 
 help
 1 - add some recommendation
+1 - show changelog what we done so far
+
+3rd party library
+3 - check library and its version before building from our app using qmake
 
 app
-1 - terminal app
 1 - file reamer
 
 packaging

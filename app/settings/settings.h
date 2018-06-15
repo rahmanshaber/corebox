@@ -62,6 +62,9 @@ private slots:
     void on_coreaction_clicked();
     void on_corefm_clicked();
     void on_corescrshot_clicked();
+    void on_browSave_clicked();
+
+    void on_backUp_clicked();
 
 private:
     Ui::settings *ui;

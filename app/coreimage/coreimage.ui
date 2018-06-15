@@ -121,7 +121,9 @@ border: 1px rgb(67, 67, 67);
        <widget class="QPushButton" name="cOpen">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -144,7 +146,7 @@ background-color: #1D2025;
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
+          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -158,7 +160,9 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cSave">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -195,7 +199,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cSaveAs">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -232,7 +236,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cRotateLeft">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -269,7 +273,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cRotateRight">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -306,7 +310,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cFlipVertical">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -343,7 +347,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cFlipHorizontal">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -380,7 +384,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cZoomIn">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -417,7 +421,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cZoomOut">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -454,7 +458,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="cNormalSize">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -491,7 +495,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="slideShow">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -531,7 +535,9 @@ background-color: #1D2025;
        <widget class="QPushButton" name="containingfolder">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -554,7 +560,7 @@ background-color: #1D2025;
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/open_w.svg</normaloff>:/icons/open_w.svg</iconset>
+          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -568,7 +574,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="openincorepaint">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -618,7 +624,7 @@ background-color: #1D2025;
        <widget class="QPushButton" name="bookMarkIt">
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="styleSheet">

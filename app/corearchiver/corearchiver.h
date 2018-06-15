@@ -24,6 +24,9 @@ public:
     QString archiveName, location, format, workingDir;
     QStringList filePathList;
 
+    void setFilename(QString fileName);
+    void setFolderPath(QString path);
+
 private Q_SLOTS:
     void updateFileName( QString );
     void updateDirName();

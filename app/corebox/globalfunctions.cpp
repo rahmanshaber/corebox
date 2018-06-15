@@ -192,7 +192,8 @@ QIcon appsIconPath(QString appName)
     } else if (appName == "CoreTerminal" || appName == "coreterminal") {
         return QIcon(str + "CoreTerminal.svg");
     } else if (!appName.isNull() || !appName.isEmpty()) {
-        return QIcon::fromTheme(appName);
+        SettingsManage sm;
+        return QIcon::fromTheme(appName, QIcon::fromTheme(sm.getThemeName()));
     } else {
         return QIcon();
     }
