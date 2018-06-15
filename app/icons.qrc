@@ -16,8 +16,6 @@
         <file>icons/bookit_w.svg</file>
         <file>icons/Bookmarks.svg</file>
         <file>icons/Box.svg</file>
-        <file>icons/checkbox_not.svg</file>
-        <file>icons/checkbox.svg</file>
         <file>icons/close_b.svg</file>
         <file>icons/close_w.svg</file>
         <file>icons/copy_b.svg</file>
@@ -171,5 +169,9 @@
         <file>icons/instruments-icons/triangle_w.svg</file>
         <file>icons/folder_b.svg</file>
         <file>icons/folder_w.svg</file>
+        <file>icons/toggle_off_b.svg</file>
+        <file>icons/toggle_off_w.svg</file>
+        <file>icons/toggle_on_b.svg</file>
+        <file>icons/toggle_on_w.svg</file>
     </qresource>
 </RCC>

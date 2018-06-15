@@ -62,16 +62,13 @@ border: 1px #2A2A2A;
       <widget class="QPushButton" name="newShot">
        <property name="styleSheet">
         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
+border: 1px solid #434343;
 padding: 3px 5px 3px 5px;
 }
 QPushButton:hover {
-background-color: rgb(48, 140, 198)
+background-color: #308CC6;
 }
-
-QPushButton:checked{
-background-color:rgb(48, 140, 198);
-}</string>
+</string>
        </property>
        <property name="text">
         <string>New Screenshot</string>
@@ -95,16 +92,13 @@ background-color:rgb(48, 140, 198);
       <widget class="QPushButton" name="openInCorePaint">
        <property name="styleSheet">
         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
+border: 1px solid #434343;
 padding: 3px 5px 3px 5px;
 }
 QPushButton:hover {
-background-color: rgb(48, 140, 198)
+background-color: #308CC6;
 }
-
-QPushButton:checked{
-background-color:rgb(48, 140, 198);
-}</string>
+</string>
        </property>
        <property name="text">
         <string>Open in Corepaint</string>
@@ -115,16 +109,13 @@ background-color:rgb(48, 140, 198);
       <widget class="QPushButton" name="save">
        <property name="styleSheet">
         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
+border: 1px solid #434343;
 padding: 3px 5px 3px 5px;
 }
 QPushButton:hover {
-background-color: rgb(48, 140, 198)
+background-color: #308CC6;
 }
-
-QPushButton:checked{
-background-color:rgb(48, 140, 198);
-}</string>
+</string>
        </property>
        <property name="text">
         <string>Save</string>
@@ -135,16 +126,13 @@ background-color:rgb(48, 140, 198);
       <widget class="QPushButton" name="saveAs">
        <property name="styleSheet">
         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
+border: 1px solid #434343;
 padding: 3px 5px 3px 5px;
 }
 QPushButton:hover {
-background-color: rgb(48, 140, 198)
+background-color: #308CC6;
 }
-
-QPushButton:checked{
-background-color:rgb(48, 140, 198);
-}</string>
+</string>
        </property>
        <property name="text">
         <string>Save as</string>
@@ -155,16 +143,13 @@ background-color:rgb(48, 140, 198);
       <widget class="QPushButton" name="cancel">
        <property name="styleSheet">
         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
+border: 1px solid #434343;
 padding: 3px 5px 3px 5px;
 }
 QPushButton:hover {
-background-color: rgb(48, 140, 198)
+background-color: #308CC6;
 }
-
-QPushButton:checked{
-background-color:rgb(48, 140, 198);
-}</string>
+</string>
        </property>
        <property name="text">
         <string>Cancel</string>

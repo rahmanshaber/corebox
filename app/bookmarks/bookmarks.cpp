@@ -99,27 +99,27 @@ void bookmarks::on_reload_clicked()
  */
 void bookmarks::callBookMarkDialog(QWidget *parent, QString currentPath)
 {
-    QFileInfo info(currentPath);
-    BookmarkManage bm;
-    QString str = bm.checkingBookPathEx(currentPath);
-    if (str.isEmpty() || str.isNull()) {
-        bookmarkDialog *bkdlg = new bookmarkDialog(parent);
-        QPixmap pix = geticon(currentPath).pixmap(QSize(bkdlg->iconLabel->width(),bkdlg->iconLabel->height()));
-        bkdlg->pathLabel->setText(currentPath);
-        bkdlg->bookMarkName->setText(info.fileName() + "");
-        bkdlg->checkPath();
-        bkdlg->iconLabel->setPixmap(pix);
-        if (bkdlg->exec() == 0) {
-            if (bkdlg->accepted) {
-                bk.addBookmark(bkdlg->sectionName->currentText(), bkdlg->bookMarkName->text(), currentPath);
-            } else if (!bkdlg->accepted) {
-                bkdlg->close();
-            }
-        }
-        sectionRefresh();
-    } else {
-        messageEngine(str, "Info");
-    }
+//    QFileInfo info(currentPath);
+//    BookmarkManage bm;
+//    QString str = bm.checkingBookPathEx(currentPath);
+//    if (str.isEmpty() || str.isNull()) {
+//        bookmarkDialog *bkdlg = new bookmarkDialog(parent);
+//        QPixmap pix = geticon(currentPath).pixmap(QSize(bkdlg->iconLabel->width(),bkdlg->iconLabel->height()));
+//        bkdlg->pathLabel->setText(currentPath);
+//        bkdlg->bookMarkName->setText(info.fileName() + "");
+//        bkdlg->checkPath();
+//        bkdlg->iconLabel->setPixmap(pix);
+//        if (bkdlg->exec() == 0) {
+//            if (bkdlg->accepted) {
+//                bk.addBookmark(bkdlg->sectionName->currentText(), bkdlg->bookMarkName->text(), currentPath);
+//            } else if (!bkdlg->accepted) {
+//                bkdlg->close();
+//            }
+//        }
+//        sectionRefresh();
+//    } else {
+//        messageEngine(str, "Info");
+//    }
 }
 
 void bookmarks::on_selectSection_currentIndexChanged(const QString &arg1)

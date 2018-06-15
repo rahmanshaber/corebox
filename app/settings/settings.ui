@@ -573,8 +573,22 @@ color: #ffffff;
             </property>
            </widget>
           </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Show Recent Activities in Start</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="1">
-           <widget class="QCheckBox" name="isMaximized">
+           <widget class="QPushButton" name="isMaximized">
             <property name="maximumSize">
              <size>
               <width>45</width>
@@ -590,40 +604,32 @@ color: #ffffff;
              <enum>Qt::LeftToRight</enum>
             </property>
             <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string/>
             </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_9">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
             </property>
-            <property name="text">
-             <string>Show Recent Activities in Start</string>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QCheckBox" name="isRecentDisable">
+           <widget class="QPushButton" name="isRecentDisable">
             <property name="maximumSize">
              <size>
               <width>45</width>
@@ -635,22 +641,19 @@ QCheckBox::indicator:unchecked {
               <pointsize>11</pointsize>
              </font>
             </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -755,7 +758,7 @@ color: #ffffff;
           <item row="0" column="3">
            <widget class="QPushButton" name="browSave">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -768,7 +771,7 @@ color: #ffffff;
             </property>
             <property name="maximumSize">
              <size>
-              <width>20</width>
+              <width>1677215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -813,7 +816,7 @@ background-color: rgb(48, 140, 198);
 }</string>
             </property>
             <property name="text">
-             <string>/home</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -893,70 +896,6 @@ color: #ffffff;
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QCheckBox" name="isTime">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="isSystem">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_16">
             <property name="font">
@@ -985,70 +924,6 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="isCalander">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QCheckBox" name="isCalculator">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
           <item row="5" column="0">
            <widget class="QLabel" name="label_19">
             <property name="font">
@@ -1060,38 +935,6 @@ QCheckBox::indicator:unchecked {
             </property>
             <property name="text">
              <string>Show Calculator Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="1">
-           <widget class="QCheckBox" name="isBattery">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
             </property>
            </widget>
           </item>
@@ -1123,70 +966,6 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="9" column="1">
-           <widget class="QCheckBox" name="isNetwork">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="1">
-           <widget class="QCheckBox" name="isNotes">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
           <item row="10" column="0">
            <widget class="QLabel" name="label_20">
             <property name="font">
@@ -1198,6 +977,314 @@ QCheckBox::indicator:unchecked {
             </property>
             <property name="text">
              <string>Show Notes Widget</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="isTime">
+            <property name="maximumSize">
+             <size>
+              <width>45</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="isSystem">
+            <property name="maximumSize">
+             <size>
+              <width>45</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox::indicator {
+    width: 45px;
+    height: 25px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox.svg);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/checkbox_not.svg);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="isCalander">
+            <property name="maximumSize">
+             <size>
+              <width>45</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox::indicator {
+    width: 45px;
+    height: 25px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox.svg);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/checkbox_not.svg);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QPushButton" name="isCalculator">
+            <property name="maximumSize">
+             <size>
+              <width>45</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox::indicator {
+    width: 45px;
+    height: 25px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox.svg);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/checkbox_not.svg);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QPushButton" name="isBattery">
+            <property name="maximumSize">
+             <size>
+              <width>45</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox::indicator {
+    width: 45px;
+    height: 25px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox.svg);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/checkbox_not.svg);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QPushButton" name="isNetwork">
+            <property name="maximumSize">
+             <size>
+              <width>45</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox::indicator {
+    width: 45px;
+    height: 25px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox.svg);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/checkbox_not.svg);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <widget class="QPushButton" name="isNotes">
+            <property name="maximumSize">
+             <size>
+              <width>45</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox::indicator {
+    width: 45px;
+    height: 25px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox.svg);
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/checkbox_not.svg);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../icons.qrc">
+              <normaloff>:/icons/toggle_off_w.svg</normaloff>
+              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1270,7 +1357,7 @@ QScrollBar::sub-page:vertical {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>551</width>
+            <width>589</width>
             <height>780</height>
            </rect>
           </property>
@@ -1322,67 +1409,6 @@ color: #ffffff;
 }</string>
              </property>
              <layout class="QGridLayout" name="gridLayout">
-              <item row="5" column="4">
-               <widget class="QPushButton" name="browseF">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>20</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>...</string>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="showTool">
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="tristate">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
               <item row="8" column="0">
                <widget class="QLabel" name="label_13">
                 <property name="font">
@@ -1392,26 +1418,6 @@ QCheckBox::indicator:unchecked {
                 </property>
                 <property name="text">
                  <string>View Mode : </string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="1" colspan="4">
-               <widget class="QComboBox" name="view">
-                <property name="styleSheet">
-                 <string notr="true">QComboBox {
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}
-
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: #ffffff;
-    selection-background-color: #F1A873;
-}
-
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}</string>
                 </property>
                </widget>
               </item>
@@ -1439,39 +1445,6 @@ QComboBox::drop-down {
                 </property>
                </widget>
               </item>
-              <item row="4" column="4">
-               <widget class="QCheckBox" name="showrealmime">
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="tristate">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="0" colspan="2">
                <widget class="QLabel" name="label_12">
                 <property name="font">
@@ -1496,41 +1469,14 @@ QCheckBox::indicator:unchecked {
                 </property>
                </widget>
               </item>
-              <item row="0" column="4">
-               <widget class="QCheckBox" name="checkThumbs">
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="tristate">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
               <item row="5" column="1" colspan="3">
                <widget class="QLineEdit" name="startPath">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="font">
                  <font>
                   <pointsize>11</pointsize>
@@ -1544,6 +1490,144 @@ QCheckBox::indicator:unchecked {
                 </property>
                 <property name="text">
                  <string>/</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QPushButton" name="checkThumbs">
+                <property name="maximumSize">
+                 <size>
+                  <width>45</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../icons.qrc">
+                  <normaloff>:/icons/toggle_off_w.svg</normaloff>
+                  <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QPushButton" name="showTool">
+                <property name="maximumSize">
+                 <size>
+                  <width>45</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../icons.qrc">
+                  <normaloff>:/icons/toggle_off_w.svg</normaloff>
+                  <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QPushButton" name="showrealmime">
+                <property name="maximumSize">
+                 <size>
+                  <width>45</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../icons.qrc">
+                  <normaloff>:/icons/toggle_off_w.svg</normaloff>
+                  <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QPushButton" name="browseF">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>...</string>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="1" colspan="3">
+               <widget class="QComboBox" name="view">
+                <property name="styleSheet">
+                 <string notr="true">QComboBox {
+    border: 1px solid #ffffff;
+    padding: 5px 5px 5px 10px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #546070;
+    color: #ffffff;
+    selection-background-color: #F1A873;
+}
+
+QComboBox::drop-down {
+    background-color: #3C3C43;
+}</string>
                 </property>
                </widget>
               </item>
@@ -1992,7 +2076,7 @@ color: #ffffff;
           <item>
            <widget class="QPushButton" name="browseS">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -2005,7 +2089,7 @@ color: #ffffff;
             </property>
             <property name="maximumSize">
              <size>
-              <width>20</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>

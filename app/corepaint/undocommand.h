@@ -29,10 +29,12 @@ public:
 
     virtual void undo();
     virtual void redo();
+
 private:
     QImage mPrevImage;
     QImage mCurrImage;
     ImageArea& mImageArea;
+
 };
 
 #endif // UNDOCOMMAND_H

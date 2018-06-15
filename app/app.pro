@@ -46,11 +46,12 @@ FORMS += \
     settings/settings.ui \
     start/start.ui \
     corearchiver/corearchiver.ui \
-    coreshot/coreshot.ui
+    coreshot/coreshot.ui \
+    bookmarks/bookmarkdialog.ui \
+    coreshot/coreshotdialog.ui
 
 HEADERS += \
     about/about.h \
-    bookmarks/bookmarkdialog.h \
     bookmarks/bookmarkmanage.h \
     bookmarks/bookmarks.h \
     coreaction/coreaction.h \
@@ -133,11 +134,11 @@ HEADERS += \
     coreshot/previewwidget.h \
     coreshot/rectarea.h \
     coreshot/screenwidget.h \
+    bookmarks/bookmarkdialog.h \
     coreshot/coreshotdialog.h
 
 SOURCES += \
     about/about.cpp \
-    bookmarks/bookmarkdialog.cpp \
     bookmarks/bookmarkmanage.cpp \
     bookmarks/bookmarks.cpp \
     coreaction/coreaction.cpp \
@@ -218,6 +219,7 @@ SOURCES += \
     coreshot/previewwidget.cpp \
     coreshot/rectarea.cpp \
     coreshot/screenwidget.cpp \
+    bookmarks/bookmarkdialog.cpp \
     coreshot/coreshotdialog.cpp
 
 RESOURCES += \

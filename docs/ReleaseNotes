@@ -8,7 +8,7 @@ These are the some big changes in CoreBox 2.2.
    - Removed engrampa as moved to CoreArchiver
 
 => Start
-   - File/Folder filtering
+   - UI is now more fast.
 
 => BookMarks
     -
@@ -20,12 +20,12 @@ These are the some big changes in CoreBox 2.2.
     -
 
 => Search
-   - Fixed some gui issue.
+   - Search is now faster and better UI.
    -
    -
 
 => Settings
-   -
+   - Now it is possible to backup settings and bookmarks as a archive.
    -
    -
    -
@@ -71,7 +71,7 @@ These are the some big changes in CoreBox 2.2.
    -
 
 => CoreTerminal
-   -
+   - Added copy past option.
    -
    -
 
@@ -83,5 +83,5 @@ These are the some big changes in CoreBox 2.2.
 
 => CoreShot
    - Added active window screenshot
-   -
+   - A new way to capture screenshot.
    -

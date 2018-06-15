@@ -31,6 +31,9 @@ start
 1 - recent activities as date wise
 
 bookmarks
+0 - fix all open bkdialog from bookmark.cpp line 100.
+0 - fix the bookmark status lable hide/show.
+0 - fix the icon size in bookmarkdialog.
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
 
@@ -98,7 +101,8 @@ corearchiver
 
 coreshot
 1 - take fullscreen shot using x11
-0 - active window and full screen in capturing the choreshot window.
+0 - active window and full screen in capturing also the choreshot window.
+0 - delay is not working.
 
 coreaction
 1 - load the widgets if needed [seperate them]

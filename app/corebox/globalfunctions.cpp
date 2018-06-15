@@ -110,8 +110,8 @@ void messageEngine(QString message, QString messageType) // engine show any mess
 
     int x = screensize().width() - (mbox->width() + 10);
     int y = screensize().height() - (mbox->height() + 10);
-
     mbox->move(x,y);
+
     QTimer::singleShot(3000, mbox, SLOT(close()));
 
 }

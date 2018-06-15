@@ -17,19 +17,16 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef BOOKMARKDIALOG_H
 #define BOOKMARKDIALOG_H
 
+#include <QWidget>
+
 #include "bookmarkmanage.h"
 #include "../corebox/globalfunctions.h"
 
-#include <QDialog>
-#include <QWidget>
-#include <QPushButton>
-#include <QLabel>
-#include <QLineEdit>
-#include <QComboBox>
-#include <QShortcut>
+namespace Ui {
+class bookmarkDialog;
+}
 
-
-class bookmarkDialog : public QDialog
+class bookmarkDialog : public QWidget
 {
     Q_OBJECT
 
@@ -40,29 +37,17 @@ public:
     void checkPath();
 
     bool accepted = false;
-    bool canceled;
-
-    QPushButton *accept;
-    QPushButton *cancel;
-
-    QLabel *statusLabel;
-    QLabel *lSection;
-    QLabel *lbkName;
-    QLabel *lpath;
-    QLabel *iconLabel;
-    QLabel *pathLabel;
-
-    QLineEdit *bookMarkName;
-    QComboBox *sectionName;
 
 private slots:
-    void ok_clicked();
+    void on_done_clicked();
     void bookMarkName_Changed();
     void item_Changed();
+    void on_bkSection_currentIndexChanged(const QString &arg1);
+    void on_bkName_textChanged(const QString &arg1);
 
 private:
+    Ui::bookmarkDialog *ui;
     BookmarkManage bk;
-
 };
 
 #endif // BOOKMARKDIALOG_H

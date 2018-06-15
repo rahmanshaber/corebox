@@ -1,44 +1,49 @@
-#include "coreshotdialog.h"
-#include "coreshot/coreshot.h"
+/*
+CoreBox is combination of some common desktop apps.
 
-#include <QTimer>
-#include <QHBoxLayout>
-#include <QPushButton>
-#include <QSpinBox>
+CoreBox is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2
+of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see {http://www.gnu.org/licenses/}. */
+
+#include "coreshotdialog.h"
+#include "ui_coreshotdialog.h"
+
 #include <QX11Info>
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 
-CoreShotDialog::CoreShotDialog(QWidget *parent) : QWidget(parent)
+
+coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),
+    ui(new Ui::coreshotdialog)
 {
-    setWindowFlags(Qt::FramelessWindowHint);
+    ui->setupUi(this);
 
-    QHBoxLayout *hl = new QHBoxLayout();
-    hl->setContentsMargins(0, 0, 0, 0);
+    startsetup();
 
-    QPushButton *cancel = new QPushButton("X");
-    QPushButton *capSc = new QPushButton("Capture Screen");
-    QPushButton *capWi = new QPushButton("Capture Window");
-    QPushButton *capSe = new QPushButton("Capture Selection");
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint );
 
-    QSpinBox *delay = new QSpinBox();
-    delay->setValue(0);
+    // set the window position
+    int mx = (screensize().width()/2) - ((this->width()/2) + 10);
+    int my = screensize().height() - (this->height() + 10);
+    this->move(mx,my);
+}
 
-    cancel->setMinimumSize(20, 20);
-    capSc->setMinimumSize(50, 40);
-    capWi->setMinimumSize(50, 40);
-    capSe->setMinimumSize(50, 40);
-    delay->setMinimumSize(25, 40);
+coreshotdialog::~coreshotdialog()
+{
+    delete ui;
+}
 
-    hl->addWidget(cancel);
-    hl->addWidget(capSc);
-    hl->addWidget(capWi);
-    hl->addWidget(capSe);
-    hl->addWidget(delay);
-
-    setLayout(hl);
-    //resize(230, 40);
-
+void coreshotdialog::startsetup()
+{
     selcArea = new ModeSelectArea();
     fullSc = new ModeFullscreen();
 
@@ -52,26 +57,28 @@ CoreShotDialog::CoreShotDialog(QWidget *parent) : QWidget(parent)
         passToShotPreview();
     });
 
-    connect(capSc, &QPushButton::clicked, [this, delay]() {
+    ui->delay->setValue(0);
+    int delay = ui->delay->value();
+
+    connect(ui->captureScreen, &QPushButton::clicked, [this, delay]() {
         this->setWindowState(Qt::WindowMinimized);
-        QTimer::singleShot(delay->value() * 1000, this, SLOT(shootFullScreen()));
+        QTimer::singleShot(delay * 1000, this, SLOT(shootFullScreen()));
     });
 
-    connect(capWi, &QPushButton::clicked, [this, delay]() {
+    connect(ui->captureWindow, &QPushButton::clicked, [this, delay]() {
         this->setWindowState(Qt::WindowMinimized);
-        QTimer::singleShot(delay->value() * 1000, this, SLOT(shootActiveWindow()));
+        QTimer::singleShot(delay * 1000, this, SLOT(shootActiveWindow()));
     });
 
-    connect(capSe, &QPushButton::clicked, [this, delay]() {
+    connect(ui->captureSelection, &QPushButton::clicked, [this, delay]() {
         this->setWindowState(Qt::WindowMinimized);
         QTimer::singleShot(200, this, SLOT(shootSelectArea()));
     });
 
-    connect(cancel, &QPushButton::clicked, this, &CoreShotDialog::close);
-
+    connect(ui->cancel, &QPushButton::clicked, this, &coreshotdialog::close);
 }
 
-void CoreShotDialog::passToShotPreview()
+void coreshotdialog::passToShotPreview()
 {
     coreshot *shootP = new coreshot();
     shootP->setPixmap(m_pixmap);
@@ -79,19 +86,19 @@ void CoreShotDialog::passToShotPreview()
     this->close();
 }
 
-void CoreShotDialog::shootFullScreen()
+void coreshotdialog::shootFullScreen()
 {
     fullSc->takeScreen();
     emit fullSc->subscreenTaken();
 }
 
-void CoreShotDialog::shootSelectArea()
+void coreshotdialog::shootSelectArea()
 {
     selcArea->showFullScreen();
     selcArea->takeScreen();
 }
 
-void CoreShotDialog::shootActiveWindow()
+void coreshotdialog::shootActiveWindow()
 {
     // Current window rectangle.
     QRect rect = getWindowFrame(getActiveWindowId());
@@ -145,7 +152,7 @@ void CoreShotDialog::shootActiveWindow()
     passToShotPreview();
 }
 
-WId CoreShotDialog::getActiveWindowId()
+WId coreshotdialog::getActiveWindowId()
 {
     WId root = WId(QX11Info::appRootWindow());
     Atom atom = XInternAtom(QX11Info::display(), "_NET_ACTIVE_WINDOW", false);
@@ -161,7 +168,7 @@ WId CoreShotDialog::getActiveWindowId()
     return result;
 }
 
-QRect CoreShotDialog::getWindowFrame(WId wid)
+QRect coreshotdialog::getWindowFrame(WId wid)
 {
     QRect result;
     XWindowAttributes wa;

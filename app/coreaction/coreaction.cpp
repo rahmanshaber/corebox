@@ -355,8 +355,7 @@ void coreaction::on_corepad_clicked()
 
 void coreaction::on_screenshot_clicked()
 {
-    CoreShotDialog *w = new CoreShotDialog();
-    w->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    coreshotdialog *w = new coreshotdialog();
     w->show();
     this->hide();
 }
