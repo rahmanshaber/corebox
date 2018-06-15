@@ -24,7 +24,7 @@ Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
 {
     ui->setupUi(this);
 
-    //ui->recents->setFocusPolicy(Qt::NoFocus);
+    ui->recents->setFocusPolicy(Qt::NoFocus);
     loadsettings();
 
     on_coreApps_clicked();
@@ -36,26 +36,6 @@ Start::~Start()
     delete ui;
 }
 
-//void Start::setSizeWid(QList<QWidget *> widgets) {
-//    foreach (QWidget *widget, widgets) {
-//        QPushButton *btn = static_cast<QPushButton*>(widget);
-//        if (btn)
-//            qDebug() << btn->objectName();
-//        else
-//            qDebug() << "Nothing";
-//        int w = qApp->activeWindow()->size().width() / 4;
-//        int h = qApp->activeWindow()->size().height() / 8;
-//        if (btn->isChecked()) {
-//            btn->setFont(QFont(widget->font().family(), (int)h/4, 1));
-//            btn->setMinimumSize(w, h);
-//        } else {
-//            btn->setFont(QFont(widget->font().family(), (int)h/8, 1));
-//            btn->setMinimumSize((int)w/2, (int)h/2);
-//        }
-//    }
-
-//}
-
 void Start::loadsettings()
 {
 //    ui->recentSection->setVisible(sm.getDisableRecent());
@@ -64,15 +44,6 @@ void Start::loadsettings()
 void Start::on_recents_itemDoubleClicked(QTableWidgetItem *item)
 {
     openAppEngine(ui->recents->item(item->row(),1)->text());
-}
-
-void Start::resizeEvent(QResizeEvent *event)
-{
-    Q_UNUSED(event);
-    //setSizeWid(QWidgetList() << ui->coreApps << ui->speedDial << ui->recentActivites);
-//    ui->coreappsSection->setFixedHeight(ui->view->height());
-//    ui->recentSection->setFixedHeight(ui->view->height());
-//    ui->speeddilalSection->setFixedHeight(ui->view->height());
 }
 
 void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item)
@@ -126,7 +97,6 @@ void Start::reload()
         sm.cSetting->endGroup();
 
         ui->recents->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
-//        ui->recentSection->setFixedHeight(ui->view->height());
     }
 }
 
@@ -143,8 +113,6 @@ void Start::on_coreApps_clicked()
     ui->coreApps->setChecked(1);
     ui->speedDial->setChecked(0);
     ui->recentActivites->setChecked(0);
-
-    //setSizeWid(QWidgetList() << ui->coreApps << ui->speedDial << ui->recentActivites);
 }
 
 void Start::on_speedDial_clicked()
@@ -153,8 +121,6 @@ void Start::on_speedDial_clicked()
     ui->speedDial->setChecked(1);
     ui->coreApps->setChecked(0);
     ui->recentActivites->setChecked(0);
-
-    //setSizeWid(QWidgetList() << ui->coreApps << ui->speedDial << ui->recentActivites);
 }
 
 void Start::on_recentActivites_clicked()
@@ -163,6 +129,4 @@ void Start::on_recentActivites_clicked()
     ui->recentActivites->setChecked(1);
     ui->speedDial->setChecked(0);
     ui->coreApps->setChecked(0);
-
-    //setSizeWid(QWidgetList() << ui->coreApps << ui->speedDial << ui->recentActivites);
 }

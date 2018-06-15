@@ -41,7 +41,8 @@ coreedit::coreedit(QWidget *parent) : QPlainTextEdit(parent)
     highlightCurrentLine();         //Highlight the current line.
 }
 
-int coreedit::lineNumberAreaWidth() {
+int coreedit::lineNumberAreaWidth()
+{
     int digits = 1;
     int max = qMax(1, blockCount());
     while (max >= 10) {
@@ -52,11 +53,13 @@ int coreedit::lineNumberAreaWidth() {
     return space;
 }
 
-void coreedit::updateLineNumberAreaWidth(int /* newBlockCount */) {
+void coreedit::updateLineNumberAreaWidth(int /* newBlockCount */)
+{
     setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
 }
 
-void coreedit::updateLineNumberArea(const QRect &rect, int dy) {
+void coreedit::updateLineNumberArea(const QRect &rect, int dy)
+{
     if (dy)
         lineNumberArea->scroll(0, dy);
     else

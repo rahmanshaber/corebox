@@ -46,42 +46,39 @@ border: 1px rgb(67, 67, 67);
       <property name="spacing">
        <number>15</number>
       </property>
+      <property name="leftMargin">
+       <number>25</number>
+      </property>
       <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
        <number>10</number>
       </property>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>13</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
       <item>
        <widget class="QPushButton" name="coreApps">
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 border: 1px rgb(67, 67, 67);
 padding: 5px 5px 5px 5px;
-font-size: 22px;
 }
 
-QPushButton:pressed
-{
-border:none;
-border-bottom: 2px solid #DCDCDC;
+QPushButton:checked{
 color: #DCDCDC; 
 font-weight: bold;
 }
-</string>
+
+QPushButton:!checked{
+color: #57585D ;
+}</string>
         </property>
         <property name="text">
          <string>CoreApps</string>
@@ -89,10 +86,18 @@ font-weight: bold;
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="speedDial">
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 border: 1px rgb(67, 67, 67);
@@ -100,14 +105,14 @@ padding: 5px 5px 5px 5px;
 font-size: 22px;
 }
 
-QPushButton:pressed
-{
-border:none;
-border-bottom: 2px solid #DCDCDC;
+QPushButton:checked{
 color: #DCDCDC; 
 font-weight: bold;
 }
-</string>
+
+QPushButton:!checked{
+color: #57585D ;
+}</string>
         </property>
         <property name="text">
          <string>Speed Dial</string>
@@ -122,6 +127,11 @@ font-weight: bold;
       </item>
       <item>
        <widget class="QPushButton" name="recentActivites">
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 border: 1px rgb(67, 67, 67);
@@ -129,14 +139,14 @@ padding: 5px 5px 5px 5px;
 font-size: 22px;
 }
 
-QPushButton:pressed
-{
-border:none;
-border-bottom: 2px solid #DCDCDC;
+QPushButton:checked{
 color: #DCDCDC; 
 font-weight: bold;
 }
-</string>
+
+QPushButton:!checked{
+color: #57585D ;
+}</string>
         </property>
         <property name="text">
          <string>Recent Activites</string>
@@ -165,10 +175,13 @@ font-weight: bold;
    <item>
     <widget class="QStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="pcoreApps">
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="leftMargin">
+        <number>25</number>
+       </property>
        <item>
         <widget class="QListWidget" name="appCollect">
          <property name="sizePolicy">
@@ -439,6 +452,9 @@ padding: 50px 5px 20px 20px;
      </widget>
      <widget class="QWidget" name="pspeedDial">
       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="leftMargin">
+        <number>25</number>
+       </property>
        <item>
         <widget class="QListWidget" name="speedDialB">
          <property name="sizePolicy">
@@ -556,6 +572,9 @@ padding: 50px 5px 20px 20px;
      </widget>
      <widget class="QWidget" name="precents">
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="leftMargin">
+        <number>45</number>
+       </property>
        <item>
         <widget class="QTableWidget" name="recents">
          <property name="minimumSize">

@@ -103,3 +103,12 @@ void help::on_corebox_clicked()
 {
     pageClick(ui->corebox,0, tr("CoreBox"));
 }
+
+void help::on_relesenotes_clicked()
+{
+    pageClick(ui->relesenotes,13, tr("Relese Notes"));
+    QFile p(":/docs/ReleaseNotes");
+    p.open(QFile::ReadOnly | QFile::Text );
+    QTextStream o(&p);
+    ui->pgreleasenotes->setText(o.readAll());
+}

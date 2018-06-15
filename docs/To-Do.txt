@@ -29,6 +29,7 @@ start
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 1 - recent activities as date wise
+1 - add reminder option.
 
 bookmarks
 0 - fix all open bkdialog from bookmark.cpp line 100.

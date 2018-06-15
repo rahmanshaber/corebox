@@ -713,13 +713,42 @@ color: #ffffff;
     border: 1px solid #ffffff;
     padding: 5px 5px 5px 10px;
 }
+
 QComboBox QAbstractItemView {
-    background-color: #546070;
+    background-color: #363941;
     color: #ffffff;
-    selection-background-color: #F1A873;
+    selection-background-color: #C2C2C2;
 }
+
 QComboBox::drop-down {
     background-color: #3C3C43;
+}
+
+QComboBox::down-arrow {
+    image: url();
+}
+
+QComboBox:focus{
+    border:1px solid #C2C2C2;
+}
+
+QScrollBar::groove:vertical {
+    background: red;
+    position: absolute;
+    left: 4px; right: 4px;
+}
+
+QScrollBar::handle:vertical {
+   background: #C0C0C0;
+   height:10px;
+}
+
+QScrollBar::add-page:vertical {
+    background: #363941;
+}
+
+QScrollBar::sub-page:vertical {
+    background: #363941;
 }</string>
             </property>
            </widget>
@@ -1357,8 +1386,8 @@ QScrollBar::sub-page:vertical {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>589</width>
-            <height>780</height>
+            <width>551</width>
+            <height>753</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">

@@ -830,19 +830,43 @@ background-color: rgb(48, 140, 198);
     border: 1px solid rgb(67, 67, 67);
     padding: 5px 5px 5px 10px;
 }
+
 QComboBox QAbstractItemView {
-    background-color: #546070;
+    background-color: #363941;
+    border: 1px solid #363941;
     color: #ffffff;
-    selection-background-color: #C2C2C2;
+    selection-background-color: #1268A4;
 }
+
 QComboBox::drop-down {
     background-color: #3C3C43;
 }
+
 QComboBox::down-arrow {
-    image: url(:/icons/down_w.svg);
+    image: url();
 }
+
 QComboBox:focus{
     border:1px solid #C2C2C2;
+}
+
+QScrollBar::groove:vertical {
+    background: red;
+    position: absolute;
+    left: 4px; right: 4px;
+}
+
+QScrollBar::handle:vertical {
+   background: #C0C0C0;
+   height:10px;
+}
+
+QScrollBar::add-page:vertical {
+    background: #363941;
+}
+
+QScrollBar::sub-page:vertical {
+    background: #363941;
 }</string>
         </property>
         <property name="editable">
@@ -1924,7 +1948,7 @@ color:#E6E6E6;
       <number>0</number>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="pagelist">
       <layout class="QVBoxLayout" name="verticalLayout">

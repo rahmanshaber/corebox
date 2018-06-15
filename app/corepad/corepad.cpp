@@ -45,11 +45,13 @@ corepad::~corepad()
     delete ui;
 }
 
-void corepad::openText(const QString &filePath) {
+void corepad::openText(const QString &filePath)
+{
     initializeNewTab(filePath);
 }
 
-bool corepad::initializeNewTab(const QString &filePath) {
+bool corepad::initializeNewTab(const QString &filePath)
+{
     int tabsCount = ui->notes->count();
     if (tabsCount < 10) {
         text = new coreedit();
@@ -95,7 +97,8 @@ bool corepad::initializeNewTab(const QString &filePath) {
     return false; //Return an exception - There is some other causes happening.
 }
 
-bool corepad::saveTo(const QString &filePath) {
+bool corepad::saveTo(const QString &filePath)
+{
     QFile file(filePath);
     if (!file.open(QIODevice::Truncate | QIODevice::Text | QIODevice::WriteOnly)) {
         return false;
@@ -107,7 +110,8 @@ bool corepad::saveTo(const QString &filePath) {
     return false;
 }
 
-void corepad::findS(QString searchS, bool reverse, QTextDocument::FindFlags flag) {
+void corepad::findS(QString searchS, bool reverse, QTextDocument::FindFlags flag)
+{
     if (!searchS.isNull()) {
         QTextCursor cr;
         text->find(searchS, flag);
@@ -118,7 +122,8 @@ void corepad::findS(QString searchS, bool reverse, QTextDocument::FindFlags flag
     }
 }
 
-bool corepad::closeTab(int index) {
+bool corepad::closeTab(int index)
+{
     ui->notes->setCurrentIndex(index);
     bool checkIsUpdate = isCurrentUpdated(index).toInt();
     bool checkIsSaved = isCurrentSaved(index).toInt();
@@ -154,7 +159,8 @@ bool corepad::closeTab(int index) {
 }
 
 //Accessing information through tab information
-QString corepad::currentFilePath(int index) {
+QString corepad::currentFilePath(int index)
+{
     //return tabInfo.at(tabInfo.indexOf(tabInfo.startsWith(QString::number(index)))).split("\t").at(3);
     for (int i = 0; i < tabInfo.count(); i++) {
         if (tabInfo.at(i).startsWith(QString::number(index)))
@@ -164,7 +170,8 @@ QString corepad::currentFilePath(int index) {
     //return tabInfo.startsWith(QString::number(index)).split("\t").at(3);
 }
 
-QString corepad::isCurrentSaved(int index) {
+QString corepad::isCurrentSaved(int index)
+{
     //return tabInfo.at(tabInfo.indexOf(tabInfo.startsWith(QString::number(index)))).split("\t").at(1);
     for (int i = 0; i < tabInfo.count(); i++) {
         if (tabInfo.at(i).startsWith(QString::number(index)))
@@ -174,7 +181,8 @@ QString corepad::isCurrentSaved(int index) {
     //return tabInfo.startsWith(QString::number(index)).split("\t").at(1);
 }
 
-QString corepad::isCurrentUpdated(int index) {
+QString corepad::isCurrentUpdated(int index)
+{
     //return tabInfo.at(tabInfo.indexOf(tabInfo.startsWith(QString::number(index)))).split("\t").at(2);
     for (int i = 0; i < tabInfo.count(); i++) {
         if (tabInfo.at(i).startsWith(QString::number(index)))
@@ -186,7 +194,8 @@ QString corepad::isCurrentUpdated(int index) {
 //=============================================
 
 //Saving information at tab information
-bool corepad::setCurrent(int index, int isSaved, int isUpdated, const QString &filePath) {
+bool corepad::setCurrent(int index, int isSaved, int isUpdated, const QString &filePath)
+{
     tabInfo.removeAt(index);
     tabInfo.insert(index, QString("%1\t%2\t%3\t%4").arg(index).arg(isSaved).arg(isUpdated).arg(filePath));
     return true;
