@@ -34,6 +34,7 @@ Version 2.2
 - fixed bookmarking home folder problem at corefm.
 - copy, paste shortcut at coreterminal.
 - coreshot at new ui.
+
 - added all the instruments icons.
 - search ui has some changes.
 - changed folder icon.
@@ -48,6 +49,9 @@ Version 2.2
 - adde every library version in lib README.md.
 - sepearted all the ui config from constractor from every coreapps.
 - fixed linenumberwidth in corepad.
+- fixed appsIcon function.
+- moved all folder creation in one function in globalfunctions.
+- fixed the thumbnail view in coreimage
 
 
 Version 2.1,Released date Friday, June 1, 2018

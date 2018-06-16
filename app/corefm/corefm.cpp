@@ -38,11 +38,11 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {
     ui->setupUi(this);
 
-    // Setup drive mount folder
-    QString p = QDir::homePath() + "/.coreBox";
-    if(!QDir(p).exists()){
-        QDir::home().mkdir(".coreBox");
-    }
+//    // Setup drive mount folder
+//    QString p = QDir::homePath() + "/.coreBox";
+//    if(!QDir(p).exists()){
+//        QDir::home().mkdir(".coreBox");
+//    }
 
     startsetup();
     loadSettings();
@@ -2346,7 +2346,7 @@ void corefm::on_partitions_itemClicked(QListWidgetItem *item)
 //        qDebug() << "Mounting MTP device " + item->data(Qt::UserRole + 1).toString() + ", " + item->data(Qt::UserRole + 2).toString();
 
         QString mtpDirName = "mtp" + item->data(Qt::UserRole + 1).toString() + "," + item->data(Qt::UserRole + 2).toString();
-        QDir::home().mkdir(".coreBox");
+//        QDir::home().mkdir(".coreBox");
         QDir(QDir::homePath() + "/.coreBox").mkdir(mtpDirName);
         QProcess *mountProcess = new QProcess(this);
 
@@ -2394,7 +2394,7 @@ void corefm::on_partitions_itemClicked(QListWidgetItem *item)
         }
         else {
             QString iosDirName = "ios" + id;
-            QDir::home().mkdir(".coreBox");
+//            QDir::home().mkdir(".coreBox");
             QDir(QDir::homePath() + "/.coreBox").mkdir(iosDirName);
 
             QProcess* mountProcess = new QProcess();

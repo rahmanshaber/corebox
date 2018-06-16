@@ -426,9 +426,10 @@ void coreaction::sysWsetup()
 
     ui->rambar->setValue(memPercent);
 
+    //remove
     //set drive bar value
-    int drivePercent = ((double)QStorageInfo("/").bytesTotal() - QStorageInfo("/").bytesFree() / (double)QStorageInfo("/").bytesTotal()) * 100.0;
-    ui->drivebar->setValue(drivePercent);
+//    int drivePercent = ((double)QStorageInfo("/").bytesTotal() - QStorageInfo("/").bytesFree() / (double)QStorageInfo("/").bytesTotal()) * 100.0;
+//    ui->drivebar->setValue(drivePercent);
 }
 
 void coreaction::networkWsetup()

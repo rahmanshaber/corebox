@@ -20,12 +20,12 @@ These are the some big changes in CoreBox 2.2.
     -
 
 => Search
-   - Search is now faster and better UI.
+   - Search is now faster and have better UI.
    -
    -
 
 => Settings
-   - Now it is possible to backup settings and bookmarks as a archive.
+   - Now it is possible to backup settings and bookmarks as an archive.
    -
    -
    -
@@ -40,7 +40,7 @@ These are the some big changes in CoreBox 2.2.
    - Dark ui in corefm.
 
 => CorePaint
-   - Selected area deletetion with del key press
+   - Selected area delete with del key press.
    -
    -
    -
@@ -52,8 +52,8 @@ These are the some big changes in CoreBox 2.2.
    -
 
 => CoreImage
-   -
-   -
+   - Fixed the thumbnail view
+   -.
 
 => CorePlayer
    -
@@ -71,13 +71,13 @@ These are the some big changes in CoreBox 2.2.
    -
 
 => CoreTerminal
+   - New app
    - Added copy past option.
-   -
    -
 
 => CoreArchiver
+   - New app.
    - Added dark ui.
-   -
    -
    -
 

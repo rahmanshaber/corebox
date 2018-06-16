@@ -69,6 +69,33 @@ bool moveToTrash(QString fileName) // moves a file or folder to trash folder
     return false;
 }
 
+void setupFolder()
+{
+    qDebug()<< "setupFolder";
+    // Setup drive mount folder
+    QString d = QDir::homePath() + "/.coreBox";
+    if(!QDir(d).exists()){
+        QDir::home().mkdir(".coreBox");
+    }
+
+    // Setup corebox folder for bookmarks
+    QString b = QDir::homePath() + ".config/coreBox";
+    if (!QDir(b).exists()) {
+        QDir::home().mkdir(".config/coreBox");
+    }
+
+    // Setup trash folder
+    QString t = QDir::homePath() + ".local/share/Trash";
+    if (!QDir(t).exists()) {
+        QDir trash = QDir::home();
+        trash.cd(".local/share/");
+        trash.mkdir("Trash");
+        trash.cd("Trash");
+        trash.mkdir("files");
+        trash.mkdir("info");
+    }
+}
+
 bool saveToRecent(QString appName, QString pathName) // save file path and app name for recent activites
 {
     SettingsManage sm;
@@ -157,7 +184,7 @@ AppsName nameToInt(QString appName)
     }
 }
 
-QIcon appsIconPath(QString appName)
+QIcon appsIcon(QString appName)
 {
     QString str = ":/icons/";
 

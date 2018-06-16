@@ -58,11 +58,12 @@ enum AppsName {
  bool saveToRecent(QString appName, QString pathName);
  void messageEngine(QString message, QString messageType);
  void openAppEngine(QString path);
+ void setupFolder();
 
  QRect screensize();
 
  AppsName nameToInt(QString appName);
- QIcon appsIconPath(QString appName);
+ QIcon appsIcon(QString appName);
 
  QString formatSize(qint64 num);
 

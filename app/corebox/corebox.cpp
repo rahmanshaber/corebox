@@ -67,6 +67,8 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
     BookmarkManage bk;
     bk.checkBook();
 
+    setupFolder();
+
 }
 
 CoreBox::~CoreBox()
@@ -375,7 +377,7 @@ void CoreBox::on_windows_currentChanged(int index) // set window titel related t
 {
     QString title = ui->windows->tabText(index);
     this->setWindowTitle(title);
-    this->setWindowIcon(appsIconPath(title));
+    this->setWindowIcon(appsIcon(title));
 }
 
 void CoreBox::on_windows_tabBarClicked(int index) // reload the apps if related app is clicked

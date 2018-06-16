@@ -88,7 +88,7 @@ void Start::reload()
 
         for (int i = 0; i < sList.count(); ++i) {
             r = sm.cSetting->value(sList.at(i)).toString().split("$$$");
-            item = new QTableWidgetItem(r.count() == 3 ? appsIconPath(r.at(0)) : appsIconPath(r.at(2)), r.at(0));
+            item = new QTableWidgetItem(r.count() == 3 ? appsIcon(r.at(0)) : appsIcon(r.at(2)), r.at(0));
             ui->recents->setItem(i, 0, item);
             ui->recents->setItem(i, 1, new QTableWidgetItem(r.at(1)));
             ui->recents->setItem(i, 2, new QTableWidgetItem(r.at(2)));

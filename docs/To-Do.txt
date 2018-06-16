@@ -20,19 +20,21 @@ corebox
 0 - restore the backup file in same folder.
 
 globalfunction
+0 - remove the trash path cheacking.
 0 - getfilesize in qconcarent.
-0 - add a app icon get option.
 1 - file moved message.
 1 - finished copying message.
 1 - file deleted & delete failed message.
 
 start
+0 - fix the recent activity option in settings
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 1 - recent activities as date wise
 1 - add reminder option.
 
 bookmarks
+0 - fix bookmark file cheack as folder makeing moved to globalfunctions.
 0 - fix all open bkdialog function from bookmark.cpp line 100.
 0 - fix the bookmark status lable hide/show.
 0 - fix the icon size in bookmarkdialog.

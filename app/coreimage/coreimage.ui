@@ -719,7 +719,7 @@ background-color: #1D2025;
         <property name="geometry">
          <rect>
           <x>102</x>
-          <y>29</y>
+          <y>14</y>
           <width>553</width>
           <height>446</height>
          </rect>
@@ -735,7 +735,7 @@ background-color: #1D2025;
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>130</height>
+         <height>160</height>
         </size>
        </property>
        <property name="font">
@@ -747,37 +747,44 @@ background-color: #1D2025;
         <string>Thumbnail View</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QWidget{
+        <string notr="true">QListView{
 background-color: #232323;
-border: 1px rgb(0, 0, 0);
-padding: 10px 5px 5px 5px;
+padding:5px 5px 5px 5px;
 }
 
-
-QScrollBar::groove {
+QScrollBar::horizontal {
     background: red;
     position: absolute;
-    left: 4px; right: 4px;
 }
 
-QScrollBar::handle {
-   background: white;
-    height:10px;
+QScrollBar::handle:horizontal {
+   background: #363941;
+   height:10px;
 }
 
-QScrollBar::add-page {
-    background: #172027;
+QScrollBar::add-page:horizontal {
+    background: #232323;
 }
 
-QScrollBar::sub-page{
-    background: #172027;
-}</string>
+QScrollBar::sub-page:horizontal {
+    background: #232323;
+}
+</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::NoFrame</enum>
        </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
        <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
         <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustToContents</enum>
        </property>
        <property name="autoScroll">
         <bool>true</bool>
@@ -832,7 +839,7 @@ QScrollBar::sub-page{
        </property>
        <property name="gridSize">
         <size>
-         <width>130</width>
+         <width>150</width>
          <height>130</height>
         </size>
        </property>
