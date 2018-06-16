@@ -21,6 +21,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QWidget>
 #include <QToolButton>
 #include <QProcess>
+#include <QShortcut>
+#include <QFileDialog>
+
+#include <corebox/globalfunctions.h>
+
 
 namespace Ui {
 class search;
@@ -48,10 +53,10 @@ private:
 
     void callProcess(bool find);
     void populateItems(const QString &text);
-    const QStringList &populateByType();
-
     void toTable(const QStringList &list);
     void shotcuts();
+    void startsetup();
+    const QStringList &populateByType();
 
 private slots:
     void checkChange(QToolButton *a, QToolButton *b, QToolButton *c, QToolButton *d, QToolButton *e);

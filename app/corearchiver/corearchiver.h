@@ -50,6 +50,8 @@ private Q_SLOTS:
 
 private:
     Ui::corearchiver *ui;
+    void startsetup();
+
 };
 
 #endif // COREARCHIVER_H

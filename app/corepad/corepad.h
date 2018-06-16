@@ -22,6 +22,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QCloseEvent>
 #include "coreedit.h"
 
+
 namespace Ui {
 class corepad;
 }
@@ -64,6 +65,7 @@ private slots:
     void on_nextW_clicked();
     void on_previousW_clicked();
     void quitClicked();
+    void on_fontShow_clicked();
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -82,14 +84,11 @@ private:
     QString currentFilePath(int index);
     QString isCurrentSaved(int index);
     QString isCurrentUpdated(int index);
-    //_______________________________________________
 
     //Saving information at tab information
     bool setCurrent(int index, int isSaved, int isUpdated, const QString &filePath);
-    //___________________________________
 
     void shotcuts();
-
     void reIndex();
 };
 

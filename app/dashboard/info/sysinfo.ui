@@ -369,7 +369,7 @@ QProgressBar::chunk {
       <item>
        <widget class="QLabel" name="usedN">
         <property name="text">
-         <string>Used network</string>
+         <string>Ofline</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>

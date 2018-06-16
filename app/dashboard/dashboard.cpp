@@ -34,11 +34,6 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
     setupDisksPage();
     setupDisplayPage();
 
-    //fixed
-    //for unknown bug ,first remove all page then add each
-//    for (int i = 0; i < ui->pages->count(); i++) {
-//        ui->pages->removeWidget(ui->pages->widget(i));
-//    }
     sysinfo *infoo = new sysinfo();
     QHBoxLayout *hl = new QHBoxLayout();
     hl->setContentsMargins(0, 0, 0, 0);
@@ -50,7 +45,6 @@ dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
     hl2->setContentsMargins(0, 0, 0, 0);
     hl2->addWidget(resourcePage);
     ui->pages->widget(3)->setLayout(hl2);
-
 
     ui->pages->setCurrentIndex(0);
     ui->mm->setText("Select a partition to ");

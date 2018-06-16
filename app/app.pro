@@ -6,22 +6,18 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET   = coreBox
 
-INCLUDEPATH += ../library/libcpdf
-
-isEqual( QT_MAJOR_VERSION, 5 ) {
-        LIBS += -L$$OUT_PWD/../library/libcpdf
-}
-
-
 DEPENDPATH  += .
 
-INCLUDEPATH += ../library/libcterminal
+INCLUDEPATH += ../library/libcpdf/
+LIBS += -L../library/libcterminal -lcpdf
+
+INCLUDEPATH += ../library/libcterminal/
 LIBS += -L../library/libcterminal -lcterminal -lX11
 
 INCLUDEPATH += . ../library/libcarchiver/
 LIBS += -L../library/libcarchiver/ -lcarchiver
 
-LIBS += -lmagic -lcpdf
+LIBS += -lmagic
 
 FORMS += \
     about/about.ui \
@@ -49,6 +45,7 @@ FORMS += \
     coreshot/coreshot.ui \
     bookmarks/bookmarkdialog.ui \
     coreshot/coreshotdialog.ui
+
 
 HEADERS += \
     about/about.h \
@@ -134,8 +131,9 @@ HEADERS += \
     coreshot/previewwidget.h \
     coreshot/rectarea.h \
     coreshot/screenwidget.h \
+    coreshot/coreshotdialog.h \
     bookmarks/bookmarkdialog.h \
-    coreshot/coreshotdialog.h
+
 
 SOURCES += \
     about/about.cpp \
@@ -219,8 +217,9 @@ SOURCES += \
     coreshot/previewwidget.cpp \
     coreshot/rectarea.cpp \
     coreshot/screenwidget.cpp \
+    coreshot/coreshotdialog.cpp \
     bookmarks/bookmarkdialog.cpp \
-    coreshot/coreshotdialog.cpp
+
 
 RESOURCES += \
     icons.qrc \

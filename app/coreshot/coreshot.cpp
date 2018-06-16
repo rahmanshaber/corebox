@@ -34,7 +34,8 @@ coreshot::~coreshot()
     delete ui;
 }
 
-void coreshot::setPixmap(QPixmap &pix) {
+void coreshot::setPixmap(QPixmap &pix)
+{
     ui->shotPreview->setOriginalPixmap(pix);
 }
 

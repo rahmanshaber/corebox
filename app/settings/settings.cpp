@@ -26,6 +26,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTreeWidgetItem>
 #include <QtConcurrent>
 
+
 settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
 {
     ui->setupUi(this);
@@ -58,6 +59,9 @@ void settings::setupCoreBoxPage()
     }
     ui->cmbIconTheme->addItems(iconThemes);
     ui->cmbIconTheme->setCurrentText(currentTheme);
+
+    // set the backup path
+    ui->backupPath->setText(sm.getBackupPath());
 }
 
 void settings::setupCoreActionPage()

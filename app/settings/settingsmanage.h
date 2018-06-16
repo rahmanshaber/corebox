@@ -23,6 +23,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 class SettingsManage
 {
+
 public:
     SettingsManage();
     QSettings *cSetting;
@@ -99,6 +100,9 @@ public:
 
     bool setSHowTime(bool showTime);
     bool getShowTime();
+
+    bool setBackupPath(QString path);
+    QString getBackupPath();
 
 };
 

@@ -22,6 +22,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDialog>
 #include <QTextEdit>
 
+
 class TextDialog : public QDialog
 {
     Q_OBJECT
@@ -42,6 +43,7 @@ private slots:
     void selectFont();    
     void cancel();
     void reject();
+
 };
 
 #endif // TEXTDIALOG_H

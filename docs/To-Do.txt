@@ -3,7 +3,7 @@ FIX MUST BE SIMPLE.
 0-bug/fix
 1-features
 2-fixed-test is needed
-3-impossible for us.
+3-impossible for us now.
 
 
 corebox
@@ -17,6 +17,7 @@ corebox
 3 - separate process for per app.
 1 - limit the openable window.
 1 - tab text align left.
+0 - restore the backup file in same folder.
 
 globalfunction
 0 - getfilesize in qconcarent.
@@ -32,7 +33,7 @@ start
 1 - add reminder option.
 
 bookmarks
-0 - fix all open bkdialog from bookmark.cpp line 100.
+0 - fix all open bkdialog function from bookmark.cpp line 100.
 0 - fix the bookmark status lable hide/show.
 0 - fix the icon size in bookmarkdialog.
 1 - one click to open all the bookmark in one section(only first 8 of them)
@@ -45,15 +46,18 @@ dashboard
 1 - add drive frame in drive view.
 
 search
+0 - shortcut is not working.
+0 - show the typefram from ui if any search result is found.
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
 2 - if path is given ,find is not working.but locate is working.
 
 setting
-0 - fix the defult backup folder path.
 0 - backup must archive whole corbox folder in config.
+0 - changes in app dose not save when corebox is closed.(not app)
 
 corefm
+0 - find mime file creation function.
 0 - pathedit is always in focus, even outside clicked.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,both crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
@@ -66,7 +70,7 @@ corefm
     exec command, but only first is read, this must be fixed
 
 corepaint
-1 - set all the instrument cursor.
+1 - add triangle instrument.
 
 coretime
 0 - stopwatch timing is not perfect
@@ -91,16 +95,17 @@ corepdf
 0 - fix the space in path issue.
 
 corepad
+0 - fix the linenumber area space.
 0 - new pad>>bookmark it>>icon is fulty.
 0 - saving a new page>> saving dialog>name has a * ,remove it.
-0 - remove the page border.
+0 - remove the page whole border.
 
 corearchiver
 1 - Inform user when extracting is finished
 1 - Inform user when compressing is finished
 
-
 coreshot
+0 - active window cpture is not working.
 1 - take fullscreen shot using x11
 0 - active window and full screen in capturing also the choreshot window.
 0 - delay is not working.
@@ -116,7 +121,6 @@ coreRenamer
 
 help
 1 - add some recommendation
-1 - show changelog what we done so far
 
 3rd party library
 3 - check library and its version before building from our app using qmake

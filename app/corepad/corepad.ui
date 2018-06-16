@@ -601,7 +601,7 @@ background-color: #00619D;
           <number>0</number>
          </property>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="fontShow">
            <property name="font">
             <font>
              <pointsize>11</pointsize>

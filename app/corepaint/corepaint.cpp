@@ -230,7 +230,7 @@ void corepaint::initializeMainMenu()
     ui->cc->addWidget(mPColorChooser);
     ui->cc->addWidget(mSColorChooser);
 
-    connect(ui->pensize, SIGNAL(valueChanged(int)), this, SLOT(penValueChanged(int)));
+    connect(ui->toolSize, SIGNAL(valueChanged(int)), this, SLOT(penValueChanged(int)));
 }
 
 void corepaint::penValueChanged(const int &value)

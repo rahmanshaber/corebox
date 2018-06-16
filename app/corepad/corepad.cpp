@@ -35,6 +35,7 @@ corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
     ui->setupUi(this);
 
     ui->searchbox->setVisible(false);
+    ui->fontSize->setVisible(0);
 
     shotcuts();
 }
@@ -470,4 +471,15 @@ void corepad::closeEvent(QCloseEvent *event) {
         event->accept();
     }
     else event->ignore();
+}
+
+
+void corepad::on_fontShow_clicked()
+{
+    if(!ui->fontSize->isVisible()){
+        ui->fontSize->setVisible(1);
+    }else{
+        ui->fontSize->setVisible(0);
+    }
+
 }

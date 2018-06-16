@@ -43,6 +43,7 @@ protected:
   QMap<QString, QTreeWidgetItem*> applications;
   QTreeWidgetItem* findCategory(const DesktopFile &app);
   void createCategories();
+
 };
 
 #endif // APPLICATIONDIALOG_H

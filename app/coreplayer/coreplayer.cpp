@@ -26,6 +26,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QStandardItemModel>
 #include <QtConcurrent>
 
+
 coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
    , playerState(QMediaPlayer::StoppedState)
 {

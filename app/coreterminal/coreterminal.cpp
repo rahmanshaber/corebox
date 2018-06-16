@@ -1,5 +1,5 @@
 /*
-CoreTerminal is free software; you can redistribute it and/or
+CoreBox is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; version 2
 of the License.
@@ -18,6 +18,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDebug>
 #include <QTabWidget>
 #include <QShortcut>
+
 
 coreterminal::coreterminal(QWidget *parent) : QTermWidget(0, parent)
 {

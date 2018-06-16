@@ -32,9 +32,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../corepaint/corepaint.h"
 
 
-//QString formatSize(qint64 num);
-
-
 namespace Ui {
 class coreimage;
 }

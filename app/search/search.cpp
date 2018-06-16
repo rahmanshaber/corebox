@@ -17,25 +17,41 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "search.h"
 #include "ui_search.h"
 
-#include "coreimage/coreimage.h"
-#include "corepad/corepad.h"
-#include "corebox/corebox.h"
-
 #include <QIcon>
 #include <QMimeDatabase>
 #include <QMimeType>
 #include <QFileInfo>
 #include <QtConcurrent>
 
+
 search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
 {
     ui->setupUi(this);
+
+    startsetup();
+}
+
+search::~search()
+{
+    delete ui;
+    delete cProcess;
+    all.clear();
+    media.clear();
+    image.clear();
+    other.clear();
+    folder.clear();
+}
+
+void search::startsetup()
+{
     ui->searchFF->setFocus();
     ui->results->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     ui->pathfream->setVisible(0);
     ui->typeframe->setEnabled(false);
     ui->findCMD->setEnabled(0);
     ui->locateCMD->setEnabled(0);
+    ui->typeframe->setVisible(0);
+    ui->resultPage->setVisible(0);
     shotcuts();
     ui->results->setFocusPolicy(Qt::NoFocus);
 
@@ -52,17 +68,6 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
         populateItems(cProcess->readAllStandardOutput());
         cProcess->close();
     });
-}
-
-search::~search()
-{
-    delete ui;
-    delete cProcess;
-    all.clear();
-    media.clear();
-    image.clear();
-    other.clear();
-    folder.clear();
 }
 
 /**
@@ -167,7 +172,7 @@ void search::populateItems(const QString &text)
     r->setFuture(future);
     connect(r, &QFutureWatcher<void>::finished, [&](){
         ui->status->setText("NO ITEM FOUND.");
-        ui->stackedWidget->setCurrentIndex(0);
+        ui->resultPage->setCurrentIndex(0);
         toTable(populateByType());
     });
 }
@@ -203,7 +208,7 @@ void search::toTable(const QStringList &list)
         QStringList temp;
 
         if (list.count() > 0) {
-            ui->stackedWidget->setCurrentIndex(0);
+            ui->resultPage->setCurrentIndex(0);
             ui->results->clearContents();//Clear the rows from the table
             ui->results->setRowCount(list.count());//set row count by list item count
 
@@ -220,7 +225,7 @@ void search::toTable(const QStringList &list)
             }
 
         } else {
-            ui->stackedWidget->setCurrentIndex(1);
+            ui->resultPage->setCurrentIndex(1);
             ui->itemCount->setText("0 item(s) found");
         }
     });
@@ -260,7 +265,7 @@ void search::on_findCMD_clicked()
     if (ui->searchFF->text().isEmpty()) {
         return;
     } else {
-        ui->stackedWidget->setCurrentIndex(1);
+        ui->resultPage->setCurrentIndex(1);
         ui->results->clearContents();
         callProcess(true);
     }
@@ -271,7 +276,7 @@ void search::on_locateCMD_clicked()
     if (ui->searchFF->text().isEmpty()) {
         return;
     } else {
-        ui->stackedWidget->setCurrentIndex(1);
+        ui->resultPage->setCurrentIndex(1);
         ui->results->clearContents();
         callProcess(false);
     }

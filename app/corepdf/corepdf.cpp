@@ -22,6 +22,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "corebox/globalfunctions.h"
 
+
 corepdf::corepdf(QWidget *parent):QWidget(parent)
 {
     QVBoxLayout * mainLayout = new QVBoxLayout();

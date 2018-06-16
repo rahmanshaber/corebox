@@ -25,6 +25,7 @@ Version 2.2
 - fixed file trash problem in coreimage
 - fixed After install corebox icon fixed.
 - dark ui in corearchiver and added icon.
+- dark ui in bookmarkit dialog.
 - moved corearchiver ui in desinger.
 - globalfunction add a app icon get option.
 - fixed getting filename at corearchiver.
@@ -40,9 +41,13 @@ Version 2.2
 - fixed shot preview dialog ui.
 - ui changes in start.
 - added release note file in help app.
-
-
-
+- saved backup file path in setting
+- changed the settings toogle icon.
+- moved toolsize in status bar of corepaint.
+- seted all the instrument cursor in corepaint.
+- adde every library version in lib README.md.
+- sepearted all the ui config from constractor from every coreapps.
+- fixed linenumberwidth in corepad.
 
 
 Version 2.1,Released date Friday, June 1, 2018

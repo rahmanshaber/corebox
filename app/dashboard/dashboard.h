@@ -25,8 +25,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QPainter>
 #include <QFile>
 #include <QProcess>
-//#include <sys/vfs.h>
-//#include <sys/stat.h>
 
 #include "corefm/udisks2.h"
 #include "resources/resources_page.h"
@@ -34,7 +32,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corefm/udisks2.h"
 #include "../corebox/corebox.h"
 #include "../corebox/globalfunctions.h"
-QString formatSize(qint64);
 
 
 class UDisks2;

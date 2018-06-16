@@ -29,9 +29,10 @@ coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),
 
     startsetup();
 
+    // Set window as a framless
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint );
 
-    // set the window position
+    // Set the window position
     int mx = (screensize().width()/2) - ((this->width()/2) + 10);
     int my = screensize().height() - (this->height() + 10);
     this->move(mx,my);

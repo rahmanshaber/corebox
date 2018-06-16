@@ -362,12 +362,13 @@ void ImageArea::paintEvent(QPaintEvent *event)
 
 void ImageArea::restoreCursor()
 {
+    // set up mousepointer icon
     switch(DataSingleton::Instance()->getInstrument())
     {
     case INSTRUMENTS_COUNT:
         break;
     case MAGNIFIER:
-        mPixmap = new QPixmap(":/media/instruments-icons/cursor_loupe.png");
+        mPixmap = new QPixmap(":/icons/search_b.svg");
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;
@@ -385,7 +386,7 @@ void ImageArea::restoreCursor()
         setCursor(*mCurrentCursor);
         break;
     case COLORPICKER:
-        mPixmap = new QPixmap(":/media/instruments-icons/cursor_pipette.png");
+        mPixmap = new QPixmap(":/icons/instruments-icons/colorpicker_b.svg");
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;
@@ -394,12 +395,12 @@ void ImageArea::restoreCursor()
         setCursor(*mCurrentCursor);
         break;
     case SPRAY:
-        mPixmap = new QPixmap(":/media/instruments-icons/cursor_spray.png");
+        mPixmap = new QPixmap(":/icons/instruments-icons/spray_b.svg");
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;
     case FILL:
-        mPixmap = new QPixmap(":/media/instruments-icons/cursor_fill.png");
+        mPixmap = new QPixmap(":/icons/instruments-icons/fill_b.svg");
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;

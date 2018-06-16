@@ -20,6 +20,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTableWidgetItem>
 #include <QFont>
 
+
 Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
 {
     ui->setupUi(this);

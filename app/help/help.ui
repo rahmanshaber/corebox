@@ -148,7 +148,7 @@ color: #FFFFFF;
    <item row="1" column="1">
     <widget class="QStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>13</number>
+      <number>12</number>
      </property>
      <widget class="QWidget" name="pcorebox">
       <layout class="QVBoxLayout" name="verticalLayout_5">

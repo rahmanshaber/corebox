@@ -19,6 +19,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QWidget>
 
+
 class ImagePreview : public QWidget
 {
     Q_OBJECT
@@ -31,6 +32,7 @@ protected:
 
 private:
     QImage *mImage;
+
 };
 
 #endif // IMAGEPREVIEW_H

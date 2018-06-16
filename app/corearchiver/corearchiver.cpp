@@ -26,6 +26,16 @@ corearchiver::corearchiver(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    startsetup();
+}
+
+corearchiver::~corearchiver()
+{
+    delete ui;
+}
+
+void corearchiver::startsetup()
+{
     connect( ui->nameLE, SIGNAL( textChanged( QString ) ), this, SLOT( updateFileName( QString ) ) );
     connect( ui->locationTB, SIGNAL( clicked() ), this, SLOT( updateDirName() ) );
 
@@ -44,11 +54,6 @@ corearchiver::corearchiver(QWidget *parent) :
     ui->locationLE->setEnabled(false);
     format = ui->formatsCB->currentText();
     ui->nameLE->setText(archiveName);
-}
-
-corearchiver::~corearchiver()
-{
-    delete ui;
 }
 
 /*

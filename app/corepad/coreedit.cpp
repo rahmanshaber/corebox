@@ -25,6 +25,7 @@ coreedit::coreedit(QWidget *parent) : QPlainTextEdit(parent)
                   "QMenu::item::selected{background-color: rgb(0, 85, 127);color: rgb(255,255,255);}");
     lineNumberArea = new LineNumberArea(this);
     this->lineNumberArea->setContentsMargins(-5, 0,0,0);
+    this->lineNumberArea->setFixedWidth(20);
 //---------------------------- Setting the CoreEdit background -----------------------------------------
     QPalette p = palette();
     p.setColor(QPalette::Text, "#B9A388");  //Text color set to white.

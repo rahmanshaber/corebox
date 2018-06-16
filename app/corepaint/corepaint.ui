@@ -1025,7 +1025,7 @@ background-color: #212F39;
                <x>0</x>
                <y>0</y>
                <width>88</width>
-               <height>270</height>
+               <height>234</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1047,157 +1047,6 @@ background-color: #212F39;
               <property name="bottomMargin">
                <number>0</number>
               </property>
-              <item>
-               <widget class="QFrame" name="frame_4">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>400</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QSpinBox {
-    border-width: 3;
-}</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Plain</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_3">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QToolButton" name="toolButton">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>32</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
-                   </property>
-                   <property name="text">
-                    <string>Tool Size</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>:/icons/tools.png</normaloff>:/icons/tools.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>22</width>
-                     <height>22</height>
-                    </size>
-                   </property>
-                   <property name="toolButtonStyle">
-                    <enum>Qt::ToolButtonTextBesideIcon</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QSpinBox" name="pensize">
-                   <property name="minimumSize">
-                    <size>
-                     <width>60</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>30</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>14</pointsize>
-                    </font>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>SizeVerCursor</cursorShape>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QSpinBox {
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}</string>
-                   </property>
-                   <property name="buttonSymbols">
-                    <enum>QAbstractSpinBox::NoButtons</enum>
-                   </property>
-                   <property name="specialValueText">
-                    <string notr="true"/>
-                   </property>
-                   <property name="minimum">
-                    <number>1</number>
-                   </property>
-                   <property name="maximum">
-                    <number>20</number>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item>
                <widget class="QToolButton" name="line">
                 <property name="sizePolicy">
@@ -1234,10 +1083,6 @@ background-color: #212F39;
                 </property>
                 <property name="text">
                  <string>line</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/instruments-icons/line_w.svg</normaloff>:/icons/instruments-icons/line_w.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -1654,8 +1499,8 @@ background-color: #212F39;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>220</width>
-               <height>276</height>
+               <width>88</width>
+               <height>101</height>
               </rect>
              </property>
              <attribute name="label">
@@ -2182,6 +2027,37 @@ background-color: rgb(48, 140, 198);
        </widget>
       </item>
       <item>
+       <widget class="QSlider" name="toolSize">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Tool Size</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="value">
+         <number>4</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -2463,6 +2339,9 @@ color:#000000;
    </property>
   </action>
   <action name="actionSelect">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
      <normaloff>:/icons/instruments-icons/select_w.svg</normaloff>:/icons/instruments-icons/select_w.svg</iconset>

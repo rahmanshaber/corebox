@@ -18,13 +18,13 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define CORESHOT_H
 
 #include <QWidget>
+#include <QPixmap>
 
 #include "corepaint/corepaint.h"
 #include "../corebox/corebox.h"
 #include "../settings/settingsmanage.h"
 #include "../corebox/globalfunctions.h"
 
-#include <QPixmap>
 
 namespace Ui {
 class coreshot;

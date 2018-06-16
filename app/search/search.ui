@@ -254,6 +254,12 @@ color: #57585D ;
       </item>
       <item>
        <widget class="QFrame" name="pathfream">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>48</height>
+         </size>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -639,7 +645,7 @@ font-weight: bold;
     </widget>
    </item>
    <item>
-    <widget class="QStackedWidget" name="stackedWidget">
+    <widget class="QStackedWidget" name="resultPage">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>

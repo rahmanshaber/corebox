@@ -17,6 +17,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "bookmarkdialog.h"
 #include "ui_bookmarkdialog.h"
 
+
 bookmarkDialog::bookmarkDialog(QWidget *parent) :QWidget(parent),
     ui(new Ui::bookmarkDialog)
 {

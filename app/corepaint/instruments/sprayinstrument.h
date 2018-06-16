@@ -25,6 +25,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 class SprayInstrument : public AbstractInstrument
 {
     Q_OBJECT
+
 public:
     explicit SprayInstrument(QObject *parent = 0);
     

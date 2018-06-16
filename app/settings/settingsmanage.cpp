@@ -34,10 +34,11 @@ void SettingsManage::createDefaultSettings()
         cSetting->setValue("Maximized", false);
         cSetting->setValue("Recent-Disable", true);
         cSetting->setValue("Force-Theme", QIcon::themeName());
+        cSetting->setValue("Backup-Path", QDir::homePath());
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreFM");
-        cSetting->setValue("Terminal", "xterm");
+        cSetting->setValue("Terminal", "CoreTerminal");
         cSetting->setValue("Startup-Path", QDir::homePath());
         cSetting->setValue("Real-Mime-Types", true);
         cSetting->setValue("Zoom", 80);
@@ -102,6 +103,14 @@ bool SettingsManage::setDisableRecent(bool showRecent) {
 
 bool SettingsManage::getDisableRecent() {
     return getSpecificValue("CoreBox", "Recent-Disable").toBool();
+}
+
+bool SettingsManage::setBackupPath(QString path) {
+    return setSpecificValue("CoreBox", "Backup-Path", path);
+}
+
+QString SettingsManage::getBackupPath() {
+    return getSpecificValue("CoreBox", "Backup-Path").toString();
 }
 
 //-------------------------CoreBox--------------------------------------

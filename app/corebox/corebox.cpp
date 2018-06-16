@@ -67,14 +67,6 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
     BookmarkManage bk;
     bk.checkBook();
 
-//    QFileInfo info("/usr/share/applications/chromium.desktop");
-//    qDebug()<< info.isReadable();
-//    QFileIconProvider   provider;
-//    QIcon   icon = provider.icon(info);
-
-//    QString name = "chromium";
-//    QIcon   icon =  QIcon::fromTheme(name.toLower());
-//    ui->start->setIcon(icon);
 }
 
 CoreBox::~CoreBox()

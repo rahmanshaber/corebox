@@ -66,6 +66,7 @@ public slots:
 private:
     Ui::coreplayer *ui;
 
+    QStringList getList(const QString &path);
     QStringList getAudios(const QString path);
     QStringList getVideos(const QString path);
     QStringList videomimes;
@@ -91,11 +92,8 @@ private:
     QAbstractItemView *medialist;
     qint64 duration;
     QStandardItemModel *mModel;
-
     QString folderpath;
     QString filepath;
-
-    QStringList getList(const QString &path);
 
 private slots:
     void seekLeft();
