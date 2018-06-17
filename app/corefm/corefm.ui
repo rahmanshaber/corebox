@@ -1797,7 +1797,7 @@ background-color: rgb(48, 140, 198);
        </spacer>
       </item>
       <item>
-       <widget class="QToolButton" name="newTab">
+       <widget class="QToolButton" name="newPage">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -1836,7 +1836,7 @@ background-color: rgb(48, 140, 198);
 }</string>
         </property>
         <property name="text">
-         <string>New Tab</string>
+         <string>New Page</string>
         </property>
         <property name="iconSize">
          <size>
@@ -2342,7 +2342,7 @@ border: 1px  #F2F2F2;
     <string>NewTextFile</string>
    </property>
   </action>
-  <action name="actionNewTab">
+  <action name="actionNewPage">
    <property name="icon">
     <iconset resource="../icons.qrc">
      <normaloff>:/icons/new_tab_b.svg</normaloff>:/icons/new_tab_b.svg</iconset>
@@ -2494,6 +2494,11 @@ border: 1px  #F2F2F2;
    </property>
    <property name="text">
     <string>CorePDF</string>
+   </property>
+  </action>
+  <action name="action_Rename">
+   <property name="text">
+    <string>&amp;Rename</string>
    </property>
   </action>
  </widget>

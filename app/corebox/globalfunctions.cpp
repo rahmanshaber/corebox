@@ -73,19 +73,19 @@ void setupFolder()
 {
     qDebug()<< "setupFolder";
     // Setup drive mount folder
-    QString d = QDir::homePath() + "/.coreBox";
+    const QString d = QDir::homePath() + "/.coreBox";
     if(!QDir(d).exists()){
         QDir::home().mkdir(".coreBox");
     }
 
     // Setup corebox folder for bookmarks
-    QString b = QDir::homePath() + ".config/coreBox";
+    const QString b = QDir::homePath() + ".config/coreBox";
     if (!QDir(b).exists()) {
         QDir::home().mkdir(".config/coreBox");
     }
 
     // Setup trash folder
-    QString t = QDir::homePath() + ".local/share/Trash";
+    const QString t = QDir::homePath() + ".local/share/Trash";
     if (!QDir(t).exists()) {
         QDir trash = QDir::home();
         trash.cd(".local/share/");
@@ -96,7 +96,7 @@ void setupFolder()
     }
 }
 
-bool saveToRecent(QString appName, QString pathName) // save file path and app name for recent activites
+bool saveToRecent(QString appName, const QString pathName) // save file path and app name for recent activites
 {
     SettingsManage sm;
     if (sm.getDisableRecent() == true) {
@@ -218,6 +218,8 @@ QIcon appsIcon(QString appName)
         return QIcon(str + "CoreFM.svg");
     } else if (appName == "CoreTerminal" || appName == "coreterminal") {
         return QIcon(str + "CoreTerminal.svg");
+    } else if (appName == "CoreRenamer" || appName == "corerenamer") {
+        return QIcon(str + "CoreRenamer.svg");
     } else if (!appName.isNull() || !appName.isEmpty()) {
         SettingsManage sm;
         return QIcon::fromTheme(appName, QIcon::fromTheme(sm.getThemeName()));
@@ -253,12 +255,12 @@ qint64 getfilesize(QString path) //get size of single file in int
     return output.split("\n").at(1).split("	").at(0).toLongLong();
 }
 
-QString getFileSize(QString path) //get size of single file in string
+QString getFileSize(const QString path) //get size of single file in string
 {
     return formatSize(getfilesize(path));
 }
 
-QString getMultipleFileSize(QStringList paths) // get file size of multiple files
+QString getMultipleFileSize(const QStringList paths) // get file size of multiple files
 {
     QString pathNames;
     for (int i = 0; i < paths.count(); i++) {
@@ -274,7 +276,7 @@ QString getMultipleFileSize(QStringList paths) // get file size of multiple file
     return formatSize(l.at(l.count() - 2).split("\t").at(0).toLongLong());
 }
 
-void openAppEngine(QString path) // engine send right file to coreapps or system
+void openAppEngine(const QString path) // engine send right file to coreapps or system
 {
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     QFileInfo info(path);
@@ -339,7 +341,7 @@ QString checkIsValidDir(QString str) // cheack if a folder/dir is valid
     return NULL;
 }
 
-QString checkIsValidFile(QString str) // cheack if a file is valid
+QString checkIsValidFile(const QString str) // cheack if a file is valid
 {
     if (str.isEmpty() || str.isNull()) {
         return NULL;
@@ -405,7 +407,7 @@ QStringList fStringList(QStringList left, QStringList right, QFont font) // add 
     return left;
 }
 
-QString getMountPathByName(QString displayName) // get mount path by partition display name
+QString getMountPathByName(const QString displayName) // get mount path by partition display name
 {
     if(displayName.isNull() || displayName.isEmpty()) return NULL;
 

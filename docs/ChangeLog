@@ -1,6 +1,7 @@
 
 Version 2.2
 
+
 - added coreterminal to be independent.
 - added corearchiver to archive file.
 - fixed search ui.
@@ -9,7 +10,7 @@ Version 2.2
 - updated the battery widget in dashboard and coreaction.
 - added delete selected area in corepaint.
 - added the opening terminal in current folder in corefm.
-- added extrat and comprass with corearciver in corefm.
+- added extra and compress with corearciver in corefm.
 - mime list creation in qconcarent in settings.
 - move cImage label to code in coreimage.
 - image list in qconcarent in coreimage.
@@ -18,7 +19,7 @@ Version 2.2
 - fixed coreterminal's type "man ls" shows this "terminal is not ready"
 - fixed coreterminal background in black.
 - add active window screenshot option corescreenshot.
-- removed engrampa from depedencies.
+- removed engrampa from dependencies.
 - fixed paste icon in corfm.
 - dark ui in corefm.
 - fixed search result ui.
@@ -26,7 +27,7 @@ Version 2.2
 - fixed After install corebox icon fixed.
 - dark ui in corearchiver and added icon.
 - dark ui in bookmarkit dialog.
-- moved corearchiver ui in desinger.
+- moved corearchiver ui in designer.
 - globalfunction add a app icon get option.
 - fixed getting filename at corearchiver.
 - fixed zooming problem of coreimage.
@@ -43,15 +44,18 @@ Version 2.2
 - ui changes in start.
 - added release note file in help app.
 - saved backup file path in setting
-- changed the settings toogle icon.
+- changed the settings toggle icon.
 - moved toolsize in status bar of corepaint.
 - seted all the instrument cursor in corepaint.
-- adde every library version in lib README.md.
-- sepearted all the ui config from constractor from every coreapps.
+- added every library version in lib README.md.
+- separated all the ui config from constructor from every coreapps.
 - fixed linenumberwidth in corepad.
 - fixed appsIcon function.
 - moved all folder creation in one function in globalfunctions.
-- fixed the thumbnail view in coreimage
+- fixed the thumbnail view in coreimage.
+- added new app CoreRenamer.
+- added corerenamer integration with corefm.
+- removed duplicate declaration from header file of corefm
 
 
 Version 2.1,Released date Friday, June 1, 2018

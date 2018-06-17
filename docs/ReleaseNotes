@@ -4,7 +4,7 @@ CoreBox v2.2
 These are the some big changes in CoreBox 2.2.
 
 => CoreBox
-   - Added new app CoreTerminal and CoreArchiver.
+   - Added new app CoreTerminal , CoreRenamer and CoreArchiver.
    - Removed engrampa as moved to CoreArchiver
 
 => Start
@@ -15,7 +15,7 @@ These are the some big changes in CoreBox 2.2.
     -
     -
 
-=> DashBord
+=> DashBoard
     - Updated the battery info functions.
     -
 

@@ -55,9 +55,9 @@ enum AppsName {
 };
 
  bool moveToTrash(QString fileName);
- bool saveToRecent(QString appName, QString pathName);
+ bool saveToRecent(QString appName, QString const  pathName);
  void messageEngine(QString message, QString messageType);
- void openAppEngine(QString path);
+ void openAppEngine(const QString path);
  void setupFolder();
 
  QRect screensize();
@@ -67,18 +67,18 @@ enum AppsName {
 
  QString formatSize(qint64 num);
 
- QString getFileSize(QString path);
+ QString getFileSize(const QString path);
  QString getMultipleFileSize(QStringList paths);
 
  qint64 getfilesize(QString path);
 
- QString checkIsValidDir(QString str);
- QString checkIsValidFile(QString str);
+ QString checkIsValidDir(const QString str);
+ QString checkIsValidFile(const QString str);
 
  QIcon geticon(const QString &filePath);
  QStringList fStringList(QStringList left, QStringList right, QFont font);
 
- QString getMountPathByName(QString displayName);
+ QString getMountPathByName(const QString displayName);
 
 
 #endif // GLOBALFUNCTIONS_H

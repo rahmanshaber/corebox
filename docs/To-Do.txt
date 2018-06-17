@@ -7,7 +7,9 @@ FIX MUST BE SIMPLE.
 
 
 corebox
-0 - icon and title not changing perfectly
+0 - fix all the stylesheet.
+0 - fix the close function(it finds all the tab, related to the given name and closes them all).
+0 - icon and title not changing perfectly.????
 3 - double click not working.
 0 - closing the corebox needs to inform the app.
 1 - need two theme (dark and light)
@@ -20,34 +22,40 @@ corebox
 0 - restore the backup file in same folder.
 
 globalfunction
-0 - remove the trash path cheacking.
+0 - tabengine path in const.
+0 - fix the check dir function and use it in coreapps (const path).
+0 - remove the trash path checking.
 0 - getfilesize in qconcarent.
 1 - file moved message.
 1 - finished copying message.
 1 - file deleted & delete failed message.
 
 start
-0 - fix the recent activity option in settings
+0 - recent activity dose not collecting the data.
+0 - fix the recent activity option in settings.
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 1 - recent activities as date wise
 1 - add reminder option.
 
 bookmarks
-0 - fix bookmark file cheack as folder makeing moved to globalfunctions.
+0 - send path in const.
+0 - fix bookmark file check as folder making moved to globalfunctions.
 0 - fix all open bkdialog function from bookmark.cpp line 100.
-0 - fix the bookmark status lable hide/show.
+0 - fix the bookmark status label hide/show.
 0 - fix the icon size in bookmarkdialog.
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
 
 dashboard
+0 - dashbord lib in separate folder.
 1 - remove unwanted partition
 1 - selected drive will show only it's partition.
 1 - mount specific partition on corebox startup.
 1 - add drive frame in drive view.
 
 search
+0 - send path in const.
 0 - shortcut is not working.
 0 - show the typefram from ui if any search result is found.
 1 - if search opened from FM hide locate option.
@@ -55,10 +63,14 @@ search
 2 - if path is given ,find is not working.but locate is working.
 
 setting
-0 - backup must archive whole corbox folder in config.
+0 - all saving path in const.
+0 - backup path in const.
+0 - backup must archive , whole corbox folder in config.
 0 - changes in app dose not save when corebox is closed.(not app)
 
 corefm
+0 - send path in const to every app.
+0 - fix contex menu open folder action.
 0 - find mime file creation function.
 0 - pathedit is always in focus, even outside clicked.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,both crash
@@ -72,6 +84,9 @@ corefm
     exec command, but only first is read, this must be fixed
 
 corepaint
+1 - triangle instrument in corepaint.
+0 - fix the corepaint paint area background color also whole ui.
+0 - save the changes>>yes>cancel>>closes the corebox(it should not).
 1 - add triangle instrument.
 
 coretime
@@ -79,7 +94,7 @@ coretime
 0 - fix the timer start/pause button .
 0 - save the alarm list in config folder.(another file if possible.
 0 - improve the alarm .
-0 - snooze.ui>>> alling the button in center
+0 - snooze.ui>>> ailing the button in center
 0 - need a done button for alarm completion.
 1 - set reminder option.
 1 - show a message (not a messagebox) before 5 minutes of alarm time
@@ -97,29 +112,45 @@ corepdf
 0 - fix the space in path issue.
 
 corepad
+1 - color separation text in .
+0 - remove all comments from .
+0 - save the changes>>yes>cancel>>closes the corebox(it should not).
 0 - fix the linenumber area space.
-0 - new pad>>bookmark it>>icon is fulty.
+0 - new pad>>bookmark it>>icon is faulty.
 0 - saving a new page>> saving dialog>name has a * ,remove it.
 0 - remove the page whole border.
 
 corearchiver
+0 - path in const .
 1 - Inform user when extracting is finished
 1 - Inform user when compressing is finished
 
 coreshot
-0 - active window cpture is not working.
+0 - path in const.
+0 - active window capture is not working.
 1 - take fullscreen shot using x11
 0 - active window and full screen in capturing also the choreshot window.
 0 - delay is not working.
 
 coreaction
-1 - load the widgets if needed [seperate them]
+0 - all widgets in ui.
+1 - load the widgets if needed [separate them]
 1 - notes to other file
 
 coreterminal
+0 - path in const.
+0 - not taking path from corefm.
+0 - two terminal crash terminal app.
 
 coreRenamer
-  - upcoming
+0 - path in const.
+0 - remove the file separator option(fixed separator "-")
+0 - fix the folder path sending corefm>>corebox
+0 - fix the list that showing outside of layout.
+0 - refresh list will refresh the list with the current name changes form the file(not from corerenamer)
+0 - add a button to clear current selected files.
+0 - add files button dose not work.
+0 - change the ui .
 
 help
 1 - add some recommendation
@@ -127,10 +158,10 @@ help
 3rd party library
 3 - check library and its version before building from our app using qmake
 
-app
-1 - file reamer
+New app
 
-packaging
+
+Packaging
 0 - fix the fonts in appimage.
 
 in-future

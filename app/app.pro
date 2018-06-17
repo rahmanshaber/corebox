@@ -44,7 +44,8 @@ FORMS += \
     corearchiver/corearchiver.ui \
     coreshot/coreshot.ui \
     bookmarks/bookmarkdialog.ui \
-    coreshot/coreshotdialog.ui
+    coreshot/coreshotdialog.ui \
+    corerenamer/corerenamer.ui
 
 
 HEADERS += \
@@ -133,6 +134,8 @@ HEADERS += \
     coreshot/screenwidget.h \
     coreshot/coreshotdialog.h \
     bookmarks/bookmarkdialog.h \
+    corerenamer/corerenamer.h \
+    corerenamer/undocommands.h
 
 
 SOURCES += \
@@ -219,6 +222,7 @@ SOURCES += \
     coreshot/screenwidget.cpp \
     coreshot/coreshotdialog.cpp \
     bookmarks/bookmarkdialog.cpp \
+    corerenamer/corerenamer.cpp
 
 
 RESOURCES += \

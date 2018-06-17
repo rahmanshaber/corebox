@@ -63,13 +63,11 @@ void corefm::startsetup()
     mimeUtils->setDefaultsFileName(name);
 
     // Setup startup path
-    QString startP;
     if (sm.getStartupPath() == "") {
-        startP = QDir::homePath();
+        startPath = QDir::homePath();
     } else {
-        startP = sm.getStartupPath();
+        startPath = sm.getStartupPath();
     }
-    startPath = startP;
 
     // Create filesystem model
     bool realMime = sm.getIsRealMimeType();
@@ -136,7 +134,7 @@ void corefm::startsetup()
     ui->partitions->setFocusPolicy(Qt::NoFocus);
 
     // Setup all the tool buttons to related actions
-    ui->newTab->setDefaultAction(ui->actionNewTab);
+    ui->newPage->setDefaultAction(ui->actionNewPage);
     ui->copy->setDefaultAction(ui->actionCopy);
     ui->cut->setDefaultAction(ui->actionCut);
     ui->properties->setDefaultAction(ui->actionProperties);
@@ -165,7 +163,7 @@ void corefm::startsetup()
     connect(ui->viewtree, &ClickOutTreeview::clickedOut, this, &corefm::pressed);
 
     // Set all int values to zero
-    selcitem = 0;
+    selectItemCount = 0;
 }
 
 void corefm::shotcuts()
@@ -195,7 +193,7 @@ void corefm::shotcuts()
     shortcut = new QShortcut(QKeySequence(Qt::CTRL +Qt::Key_Shift + Qt::Key_N), this);
     connect(shortcut, &QShortcut::activated, this, &corefm::on_actionNewFolder_triggered);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Space), this);
-    connect(shortcut, &QShortcut::activated, this, &corefm::on_actionNewTab_triggered);
+    connect(shortcut, &QShortcut::activated, this, &corefm::on_actionNewPage_triggered);
     shortcut = new QShortcut(QKeySequence(Qt::Key_R), this);
     connect(shortcut, &QShortcut::activated, this, &corefm::on_actionRefresh_triggered);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_B), this);
@@ -327,8 +325,6 @@ void corefm::loadSettings()
         ui->detaile->setChecked(1);
     }
 
-    // Load defult terminal
-    term = sm.getTerminal();
 }
 
 void corefm::closeEvent(QCloseEvent *event)
@@ -435,7 +431,6 @@ void corefm::dirLoaded()
 
     ui->totalitem->setText("Total : " + QString("%1 items").arg(items.count()));
     ui->selecteditem->clear();
-    currentdir = ui->pathEdit->currentText();
 
     if(items.count()==0){messageEngine("Folder is empty", "Info");}
     if(ui->showthumb->isChecked()) QtConcurrent::run(modelList,&myModel::loadThumbs,items);
@@ -456,10 +451,10 @@ void corefm::listSelectionChanged(const QItemSelection selected, const QItemSele
     if(listSelectionModel->selectedRows(0).count()) items = listSelectionModel->selectedRows(0);
     else items = listSelectionModel->selectedIndexes();
 
-    selcitem = items.count();
+    selectItemCount = items.count();
 
     ui->selecteditem->clear();
-    if(selcitem == 0)
+    if(selectItemCount == 0)
     {
         curIndex = ui->pathEdit->itemText(0);
         return;
@@ -467,19 +462,17 @@ void corefm::listSelectionChanged(const QItemSelection selected, const QItemSele
 
     curIndex = modelList->filePath(modelView->mapToSource(listSelectionModel->currentIndex()));
 
-    QStringList li;
+    QStringList selectedFilesPath;
     foreach (QModelIndex item, listSelectionModel->selectedIndexes()) {
-        li.append(modelList->filePath(modelView->mapToSource(item)));
+        selectedFilesPath.append(modelList->filePath(modelView->mapToSource(item)));
     }
 
-    if (selcitem == 1) {
+    if (selectItemCount == 1) {
        ui->name->setText(curIndex.fileName());
        ui->size->setText(formatSize(curIndex.size()));
-       selcitempath = curIndex.absoluteFilePath();
     }else {
        ui->name->setText(ui->pathEdit->currentText());
-       ui->size->setText(getMultipleFileSize(li));
-       selcitempath = ui->pathEdit->itemText(0);
+       ui->size->setText(getMultipleFileSize(selectedFilesPath));
     }
 
     ui->selecteditem->setText("Selected : " + QString("%1 items").arg(items.count()));
@@ -1151,8 +1144,7 @@ QMenu* corefm::globalmenu(){
     QMenu *innew = new QMenu(tr("Open in.."));
     QMenu *arrageItems = new QMenu(tr("Arrage Items"));
 
-    QFileInfo info(selcitempath);
-    QFile file(selcitempath);
+    QFile file(curIndex.filePath());
     QMimeDatabase db;
     QMimeType mime = db.mimeTypeForFile(file, QMimeDatabase::MatchContent);
     QString extrainfo = mime.name();
@@ -1163,7 +1155,7 @@ QMenu* corefm::globalmenu(){
     sortByActGrp->addAction(ui->actionSize);
     connect(sortByActGrp, SIGNAL(triggered(QAction*)), SLOT(toggleSortBy(QAction*)));
 
-    innew->addAction(ui->actionNewTab);
+    innew->addAction(ui->actionNewPage);
     innew->addAction(ui->actionCoreFM);
     innew->addAction(ui->actionCoreBox);
 
@@ -1182,24 +1174,20 @@ QMenu* corefm::globalmenu(){
         return popup;
     }
 
-    QModelIndexList items;
-    if(listSelectionModel->selectedRows(0).count()) items = listSelectionModel->selectedRows(0);
-    else items = listSelectionModel->selectedIndexes();
-    int sec = items.count();
-
-    if (sec > 1) {
+    if (selectItemCount > 1) { // multipal file
         popup->addSeparator();
         popup->addMenu(sendto());
         popup->addSeparator();
         popup->addAction(ui->actionCut);
         popup->addAction(ui->actionCopy);
+        popup->addAction(ui->action_Rename);
         popup->addSeparator();
         popup->addAction(ui->actionTrash_it);
         popup->addSeparator();
     }
 
-    else  if(sec == 1){
-      if(info.isFile()){ //file
+    else  if(selectItemCount == 1){
+      if(curIndex.isFile()){ // file
           popup->addAction(ui->actionOpen);
           popup->addMenu(createOpenWithMenu());
           popup->addAction(ui->actionRun);
@@ -1209,7 +1197,8 @@ QMenu* corefm::globalmenu(){
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
         }
-      if(info.isDir()){ //folder
+      if(curIndex.isDir()){ // folder
+          popup->addAction(ui->actionOpen);
           popup->addMenu(innew);
           popup->addSeparator();
           popup->addMenu(sendto());
@@ -1217,21 +1206,21 @@ QMenu* corefm::globalmenu(){
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
           popup->addAction(ui->actionPaste);
-          popup->addSeparator();
-
         }
       popup->addSeparator();
       popup->addAction(ui->actionRename);
-      popup->addSeparator();
       popup->addAction(ui->actionTrash_it);
+      popup->addSeparator();
+      popup->addAction(ui->actionTerminal);
       popup->addAction(ui->actionCreate_Archive);
       if(extrainfo.contains("application")){
           popup->addAction(ui->actionExtract_Here);
       }
       popup->addSeparator();
+      popup->addSeparator();
       popup->addAction(ui->actionProperties);
     }
-    else{ //Whitespace
+    else{ // whitespace
         on_actionRefresh_triggered();
         popup->addAction(ui->actionSelectAll);
         popup->addSeparator();
@@ -1586,9 +1575,9 @@ void corefm::on_actionOpen_triggered()
       executeFile(index, 0);
     }
 
-//    //openfolder
-//    QModelIndex i = listSelectionModel->currentIndex();
-//    tree->setCurrentIndex(modelTree->mapFromSource(i));
+    //openfolder
+    QModelIndex i = listSelectionModel->currentIndex();
+    tree->setCurrentIndex(modelTree->mapFromSource(i));
 }
 
 void corefm::on_actionDelete_triggered()
@@ -1772,13 +1761,8 @@ void corefm::on_actionPaste_triggered()
 
 void corefm::on_actionProperties_triggered()
 {
-    QString path;
+    QString path = curIndex.filePath();
 
-    if(selcitem==1){
-       path = selcitempath;
-    }else{
-       path = ui->pathEdit->itemText(0);
-    }
     properties = new propertiesw(path);
 }
 
@@ -1834,7 +1818,7 @@ void corefm::on_actionNewTextFile_triggered()
     else ui->viewtree->edit(fileIndex);
 }
 
-void corefm::on_actionNewTab_triggered()
+void corefm::on_actionNewPage_triggered()
 {
     if(curIndex.isDir())
         addTab(curIndex.filePath());
@@ -1848,16 +1832,20 @@ void corefm::on_SHome_clicked()
 
 void corefm::on_actionTerminal_triggered()
 {
-    QString term = sm.getTerminal();//here we collect the selected terminal name from settings.
-    QStringList args(term.split(" "));
+    QString defultTerminal = sm.getTerminal(); // selected terminal name from settings.
+    QStringList args(defultTerminal.split(" "));
     QString name = args.at(0);
     args.removeAt(0);
 
+    QString path = curIndex.filePath();
+
+    qDebug()<<"curindex "<< path;
+
     if (name == "CoreTerminal") {
         CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-        qDebug() << "Current Dir : " << QDir::currentPath();
-        QDir::setCurrent(ui->pathEdit->currentText());
-        qDebug() << "Current Dir : " << QDir::currentPath();
+//        qDebug() << "Current Dir : " << QDir::currentPath();
+        QDir::setCurrent(path);
+//        qDebug() << "Current Dir : " << QDir::currentPath();
         QString command = "";
         for (int i = 0; i < args.count(); i++) {
             command = command + " " + args.at(i);
@@ -1865,10 +1853,10 @@ void corefm::on_actionTerminal_triggered()
 
         cBox->tabEngine(CoreTerminal, command + "$$$" + ui->pathEdit->currentText());
     } else {
-        QProcess::startDetached(name, args, ui->pathEdit->currentText());
+        QProcess::startDetached(name, args, path);
     }
 
-    QString mess = term + " opening " ;
+    QString mess = defultTerminal + " opening " ;
     messageEngine(mess, "Info");
 }
 
@@ -1954,96 +1942,6 @@ void corefm::goTo(const QString path)
     }
 }
 
-void corefm::on_SDesktop_clicked()
-{
-    QModelIndex i = modelTree->mapFromSource(modelList->index(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)));
-    tree->setCurrentIndex(i);
-}
-
-void corefm::on_SDownloads_clicked()
-{
-    QModelIndex i = modelTree->mapFromSource(modelList->index(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)));
-    tree->setCurrentIndex(i);
-    on_actionRefresh_triggered();
-}
-
-void corefm::on_viewlist_customContextMenuRequested(const QPoint &pos)
-{
-    globalmenu()->exec(ui->viewlist->mapToGlobal(pos));
-}
-
-void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos)
-{
-    globalmenu()->exec(ui->viewtree->mapToGlobal(pos));
-}
-
-void corefm::on_actionSelectAll_triggered()
-{
-    if(ui->view->currentIndex() == 0){
-        ui->viewlist->selectAll();
-    } else {
-        ui->viewtree->selectAll();
-    }
-}
-
-void corefm::on_Tools_clicked(bool checked)
-{
-    if(checked){
-        ui->tools->show();
-    } else{
-        ui->tools->hide();
-    }
-}
-
-void corefm::on_actionCorePlayer_triggered(){
-
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(CorePlayer, selcitempath);
-}
-
-void corefm::on_actionCorePad_triggered(){
-
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(CorePad, selcitempath);
-}
-
-void corefm::on_actionCoreFM_triggered(){
-
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(CoreFM, QFileInfo(selcitempath).path());
-}
-
-void corefm::on_actionCoreImage_triggered(){
-
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(CoreImage, selcitempath);
-}
-
-void corefm::on_actionCorePaint_triggered(){
-
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(CorePaint, selcitempath);
-}
-
-void corefm::on_actionCorePDF_triggered()
-{
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
-    cBox->tabEngine(CorePDF, selcitempath);
-}
-
-void corefm::on_actionCoreBox_triggered()
-{
-    CoreBox *cBox = new CoreBox();
-    cBox->show();
-    QTabWidget *cTab = cBox->findChild<QTabWidget*>("windows");
-    int n = cTab->count();
-
-    corefm *cfm = new corefm();
-    QString go = selcitempath;
-    cfm->goTo(go);
-    cTab->insertTab(n, cfm,QIcon(":/icons/CoreFM.svg"),"CoreFM");
-}
-
 void corefm::on_icon_clicked(bool checked)
 {
     // Set root index
@@ -2107,10 +2005,99 @@ void corefm::on_detaile_clicked(bool checked)
     on_actionRefresh_triggered();
 }
 
+void corefm::on_SDesktop_clicked()
+{
+    QModelIndex i = modelTree->mapFromSource(modelList->index(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)));
+    tree->setCurrentIndex(i);
+}
+
+void corefm::on_SDownloads_clicked()
+{
+    QModelIndex i = modelTree->mapFromSource(modelList->index(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)));
+    tree->setCurrentIndex(i);
+    on_actionRefresh_triggered();
+}
+
+void corefm::on_viewlist_customContextMenuRequested(const QPoint &pos)
+{
+    globalmenu()->exec(ui->viewlist->mapToGlobal(pos));
+}
+
+void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos)
+{
+    globalmenu()->exec(ui->viewtree->mapToGlobal(pos));
+}
+
+void corefm::on_actionSelectAll_triggered()
+{
+    if(ui->view->currentIndex() == 0){
+        ui->viewlist->selectAll();
+    } else {
+        ui->viewtree->selectAll();
+    }
+}
+
+void corefm::on_Tools_clicked(bool checked)
+{
+    if(checked){
+        ui->tools->show();
+    } else{
+        ui->tools->hide();
+    }
+}
+
+void corefm::on_actionCorePlayer_triggered(){
+
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    cBox->tabEngine(CorePlayer, curIndex.filePath());
+}
+
+void corefm::on_actionCorePad_triggered(){
+
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    cBox->tabEngine(CorePad, curIndex.filePath());
+}
+
+void corefm::on_actionCoreFM_triggered(){
+
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    cBox->tabEngine(CoreFM, QFileInfo(curIndex.filePath()).path());
+}
+
+void corefm::on_actionCoreImage_triggered(){
+
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    cBox->tabEngine(CoreImage, curIndex.filePath());
+}
+
+void corefm::on_actionCorePaint_triggered(){
+
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    cBox->tabEngine(CorePaint, curIndex.filePath());
+}
+
+void corefm::on_actionCorePDF_triggered()
+{
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    cBox->tabEngine(CorePDF, curIndex.filePath());
+}
+
+void corefm::on_actionCoreBox_triggered()
+{
+    CoreBox *cBox = new CoreBox();
+    cBox->show();
+    QTabWidget *cTab = cBox->findChild<QTabWidget*>("windows");
+    int n = cTab->count();
+
+    corefm *cfm = new corefm();
+    cfm->goTo(curIndex.filePath());
+    cTab->insertTab(n, cfm,QIcon(":/icons/CoreFM.svg"),"CoreFM");
+}
+
 void corefm::on_actionTrash_it_triggered()
 {
-    if (selcitem != 0) {
-        moveToTrash(selcitempath);
+    if (selectItemCount != 0) {
+        moveToTrash(curIndex.filePath());
         on_actionRefresh_triggered();
     }
 }
@@ -2142,16 +2129,8 @@ void corefm::on_showthumb_clicked(bool checked)
 void corefm::on_SBookMarkIt_clicked()
 {
     bookmarks bookMarks;
-    QString path;
 
-    if (selcitem == 0) {
-        path = ui->pathEdit->itemText(0);
-        bookMarks.callBookMarkDialog(this,path);
-    }
-    if (selcitem == 1) {
-        path =  selcitempath;
-        bookMarks.callBookMarkDialog(this,path);
-    }
+    bookMarks.callBookMarkDialog(this,curIndex.filePath());
 }
 
 void corefm::on_searchHere_clicked()
@@ -2165,15 +2144,15 @@ void corefm::on_searchHere_clicked()
 void corefm::on_actionExtract_Here_triggered()
 {
     corearchiver *arc = new corearchiver();
-    arc->extract(selcitempath, QDir(QFileInfo(selcitempath).path()));
+    arc->extract(curIndex.filePath(), QDir(QFileInfo(curIndex.filePath()).path()));
 }
 
 void corefm::on_actionCreate_Archive_triggered()
 {
     corearchiver *arc = new corearchiver();
-    arc->setFilename(QFileInfo(selcitempath).fileName());
-    arc->setFolderPath(QFileInfo(selcitempath).path());
-    arc->filePathList = QStringList() << selcitempath;
+    arc->setFilename(QFileInfo(curIndex.filePath()).fileName());
+    arc->setFolderPath(QFileInfo(curIndex.filePath()).path());
+    arc->filePathList = QStringList() << curIndex.filePath();
     arc->show();
 }
 
@@ -2499,3 +2478,25 @@ void corefm::sendToPath()
 }
 
 
+
+void corefm::on_action_Rename_triggered()
+{
+//    QModelIndexList selList;
+//    if(listSelectionModel->selectedRows(0).count()) selList = listSelectionModel->selectedRows(0);
+//    else selList = listSelectionModel->selectedIndexes();
+
+//    if(selList.count() == 0) selList << modelView->mapFromSource(modelList->index(ui->pathEdit->currentText()));
+
+//    QStringList paths;
+
+//    foreach(QModelIndex item, selList)
+//        paths.append(modelList->filePath(modelView->mapToSource(item)));
+
+//    qDebug()<< "paths"<<paths;
+//    qDebug()<< "modelList"<< modelList;
+
+    qDebug()<< curIndex.filePath();
+
+    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    cBox->tabEngine(CoreRenamer, curIndex.filePath());
+}

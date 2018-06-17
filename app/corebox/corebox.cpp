@@ -35,6 +35,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coretime/coretime.h"
 #include "corepdf/corepdf.h"
 #include "coreterminal/coreterminal.h"
+#include "corerenamer/corerenamer.h"
 
 
 CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
@@ -242,14 +243,19 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
             workDir = arg.split("$$$").at(1);
             arg = arg.split("$$$").at(0);
         }
-//        arg = arg.split("$$$").at(0);
-        //arg.isEmpty() ? workDir = QDir::homePath() : workDir = QDir::currentPath();
         coreterminal *trm = new coreterminal(workDir, arg);
         ui->windows->insertTab(n, trm, QIcon(":/icons/CoreTerminal.svg"), "CoreTerminal");
         ui->windows->setCurrentIndex(n);
         break;
     }
     case CoreRenamer: {
+        corerenamer *cFM = new corerenamer();
+
+//        QString str = checkIsValidDir(arg);
+//        if (!str.isEmpty() || !str.isNull()) cFM->goTo(str);
+
+        ui->windows->insertTab(n, cFM, QIcon(":/icons/CoreRenemer.svg"), "CoreRenamer");
+        ui->windows->setCurrentIndex(n);
 
         break;
     }
@@ -350,10 +356,17 @@ void CoreBox::on_windows_tabCloseRequested(int index)
             ui->windows->removeTab(index);
         }
     } else if (appName == "CoreTerminal") {
-        qDebug() << "From close tab requested...";
+//        qDebug() << "From close tab requested...";
         coreterminal *ctrm = ui->windows->findChild<coreterminal*>();
         if (ctrm->close()){
             ctrm->deleteLater();
+            ui->windows->removeTab(index);
+        }
+    } else if (appName == "CoreRenamer") {
+//        qDebug() << "From close tab requested...";
+        corerenamer *cren = ui->windows->findChild<corerenamer*>();
+        if (cren->close()){
+            cren->deleteLater();
             ui->windows->removeTab(index);
         }
     }

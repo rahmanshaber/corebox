@@ -132,7 +132,7 @@ private slots:
     void on_actionRefresh_triggered();
     void on_actionNewFolder_triggered();
     void on_actionNewTextFile_triggered();
-    void on_actionNewTab_triggered();
+    void on_actionNewPage_triggered();
     void on_actionTerminal_triggered();
     void on_actionShowThumbnails_triggered();
     void on_actionAscending_triggered(bool checked);
@@ -148,6 +148,7 @@ private slots:
     void on_searchHere_clicked();
     void on_actionExtract_Here_triggered();
     void on_actionCreate_Archive_triggered();
+    void on_action_Rename_triggered();
     void on_STrash_clicked();
     void on_emptyTrash_clicked();
     void on_partitions_itemClicked(QListWidgetItem *item);
@@ -161,6 +162,7 @@ private:
     SettingsManage sm;
     void writeSettings();
     void shotcuts();
+    void startsetup();
 
     void recurseFolder(const QString path, QString parent, QStringList *);//delete
     int showReplaceMsgBox(const QFileInfo &f1, const QFileInfo &f2);
@@ -174,6 +176,7 @@ private:
     int zoomDetail;
     int currentView;        // 0=list, 1=icons, 2=details
     int currentSortColumn;  // 0=name, 1=size, 3=date
+    int selectItemCount;
     Qt::SortOrder currentSortOrder;
 
     QCompleter *customComplete;
@@ -183,10 +186,12 @@ private:
     myProgressDialog * progress;
     propertiesw * properties;
     QSettings *sett;
+    CoreBox corebox_;
+    UDisks2 *udisks;
 
+    QFileSystemWatcher *watcher;
     QTreeView *tree;
 
-    QString term;
     QFileInfo curIndex;
     QModelIndex backIndex;
 
@@ -211,17 +216,6 @@ private:
     QAction *focusAddressAct;
     QAction *focusTreeAct;
     QAction *focusListAct;
-
-    QFileSystemWatcher *watcher;
-
-    QString currentdir;
-    QString selcitempath;
-    int selcitem;
-
-    CoreBox corebox_;
-    UDisks2 *udisks;
-
-    void startsetup();
 };
 
 //---------------------------------------------------------------------------------
