@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>687</width>
-    <height>584</height>
+    <height>626</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -576,98 +576,33 @@ padding: 50px 5px 20px 20px;
         <number>45</number>
        </property>
        <item>
-        <widget class="QTableWidget" name="recents">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>450</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="autoFillBackground">
-          <bool>true</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QTableView::item{
-border-bottom-style:solid;
-border-width:1;
-border-color: #323232;
-}
-
-QTableView {
-selection-background-color:#232730 ;
-selection-color:#ffffff; 
-padding: 10px 5px 0px 5px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="horizontalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOff</enum>
-         </property>
-         <property name="autoScroll">
-          <bool>false</bool>
-         </property>
-         <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
-         </property>
-         <property name="showDropIndicator" stdset="0">
-          <bool>false</bool>
-         </property>
-         <property name="dragDropOverwriteMode">
-          <bool>false</bool>
-         </property>
-         <property name="selectionMode">
-          <enum>QAbstractItemView::SingleSelection</enum>
-         </property>
-         <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectRows</enum>
-         </property>
+        <widget class="QTreeWidget" name="treeWidget">
          <property name="iconSize">
           <size>
-           <width>22</width>
-           <height>22</height>
+           <width>24</width>
+           <height>24</height>
           </size>
          </property>
-         <property name="showGrid">
-          <bool>false</bool>
-         </property>
-         <property name="rowCount">
-          <number>1</number>
-         </property>
-         <property name="columnCount">
-          <number>0</number>
-         </property>
-         <attribute name="horizontalHeaderVisible">
-          <bool>false</bool>
-         </attribute>
-         <attribute name="horizontalHeaderDefaultSectionSize">
-          <number>120</number>
-         </attribute>
-         <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+         <property name="animated">
           <bool>true</bool>
-         </attribute>
-         <attribute name="horizontalHeaderStretchLastSection">
+         </property>
+         <property name="wordWrap">
           <bool>true</bool>
-         </attribute>
-         <attribute name="verticalHeaderVisible">
+         </property>
+         <property name="headerHidden">
+          <bool>true</bool>
+         </property>
+         <attribute name="headerVisible">
           <bool>false</bool>
          </attribute>
-         <attribute name="verticalHeaderDefaultSectionSize">
-          <number>30</number>
+         <attribute name="headerCascadingSectionResizes">
+          <bool>false</bool>
          </attribute>
-         <row/>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>

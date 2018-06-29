@@ -151,7 +151,7 @@ void ImageArea::open(const QString &filePath)
     else
     {
         QApplication::restoreOverrideCursor();
-        messageEngine(tr("Can't open file \"%1\".").arg(filePath) ,"Warning");
+        messageEngine(tr("Can't open file \"%1\".").arg(filePath) ,MessageType::Warning);
     }
 }
 
@@ -164,7 +164,7 @@ bool ImageArea::save()
     clearSelection();
     if (!mImage->save(mFilePath))
     {
-        messageEngine(tr("Can't save file \"%1\".").arg(mFilePath),"Warning");
+        messageEngine(tr("Can't save file \"%1\".").arg(mFilePath),MessageType::Warning);
         return false;
     }
     mIsEdited = false;
@@ -215,7 +215,7 @@ bool ImageArea::saveAs()
         else
         {
             result = false;
-            messageEngine(tr("Can't save file \"%1\".").arg(filePath) ,"Warning");
+            messageEngine(tr("Can't save file \"%1\".").arg(filePath) ,MessageType::Warning);
 
         }
     } else { result = false;}

@@ -18,10 +18,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define COREPAD_H
 
 #include <QWidget>
-#include <QTextDocument>
 #include <QCloseEvent>
 #include "coreedit.h"
-
 
 namespace Ui {
 class corepad;

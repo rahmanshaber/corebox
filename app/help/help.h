@@ -19,8 +19,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QWidget>
 #include <QPushButton>
-#include <QTextStream>
-#include <QFile>
 
 
 namespace Ui {

@@ -221,14 +221,12 @@ QString BookmarkManage::checkingBookPath(QString sectionn, QString bookPath)
 {
     QLineEdit *line = new QLineEdit();
 
-    //foreach (QString section, getBookSections()) {
-        foreach (QString bName, getBookNames(sectionn)) {
-            if (!QString::compare(bookmarkPath(sectionn, bName), bookPath, Qt::CaseSensitive)) {
-                line->setText("Path exists in this section.");
-                return line->text();
-            } else { line->setText(""); continue;}
-        }
-    //}
+    foreach (QString bName, getBookNames(sectionn)) {
+        if (!QString::compare(bookmarkPath(sectionn, bName), bookPath, Qt::CaseSensitive)) {
+            line->setText("Path exists in this section.");
+            return line->text();
+        } else { line->setText(""); continue;}
+    }
     return line->text();
 }
 

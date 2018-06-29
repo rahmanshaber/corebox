@@ -1,7 +1,6 @@
 
 Version 2.2
 
-
 - added coreterminal to be independent.
 - added corearchiver to archive file.
 - fixed search ui.
@@ -35,7 +34,6 @@ Version 2.2
 - fixed bookmarking home folder problem at corefm.
 - copy, paste shortcut at coreterminal.
 - coreshot at new ui.
-
 - added all the instruments icons.
 - search ui has some changes.
 - changed folder icon.
@@ -56,9 +54,45 @@ Version 2.2
 - added new app CoreRenamer.
 - added corerenamer integration with corefm.
 - removed duplicate declaration from header file of corefm
+- fixed same tab close crashed
+- removed libmagic from depedency
+- tabengine path in const.
+- fix the reload fuction.
+- recent activity dose not collecting the data.
+- fix the recent activity option in settings.
+- fix all open bkdialog function from bookmark
+- send path in const to bookmarkit.
+- fix the icon size in bookmarkdialog.
+- dashbord lib in separate folder named libcsys.
+- seperate all the pages.
+- add library version of libcsys.
+- fixed search is always stuck at collecting information.
+- added search keyworad saving.
+- search activity to treewidget at date wise.
+- send path to search in const.
+- fixed shortcut is not working.
+- qprocess output to text stream in search app.
+- get error message when process not done in search app.
+- backup now archive whole corbox folder in config folder.
+- fixed contex menu open folder action in corefm.
+- fixed after saving a new file , book mark button dose not work.
+- linenumber area space to fit 999 number.
+- add syntex highlighting in corepad.
+- saving a new page>> saving dialog>name has a * ,fixed it.
+- remove the page whole border in corepad.
+- name box is in focuse in corearchiver.
+- fixed active window capture is not working.
+- fixed active window and full screen in capturing also the choreshot window.
+- fixed delay is not working.
+- all widgets in separet ui.
+- notes widget text in separate file.
+- fixed search is not taking path from corefm.
+- fixed two terminal crash both terminal app.
+- fixed add files button dose not work in corerenamer and many ui and bug fixes.
 
 
-Version 2.1,Released date Friday, June 1, 2018
+
+Version 2.1,Released date Friday, June 1, 2018.
 
 - fixed battery pointer that caused compiling error in armv8 on dashboard app .
 - fixed button ui in corescreenshot app.
@@ -141,7 +175,7 @@ Version 2.1,Released date Friday, June 1, 2018
 - search is now in qconcarent.
 
 
-Version 2,Released date Monday, March 26, 2018
+Version 2,Released date Monday, March 26, 2018.
 
 - fixed tabengine in corebox.
 - fixed rename problem in corefm.

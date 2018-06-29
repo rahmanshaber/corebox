@@ -179,7 +179,6 @@ QRectF RectArea::bottomMiddleCorner()
 {
     QRectF r = QRectF(0,0, cCornerSize, cCornerSize);
     r.moveCenter(QPointF(rect().center().x(), rect().bottom()-cCornerSize/2 -1));
-
     return r;
 }
 

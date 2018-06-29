@@ -4,7 +4,10 @@
 #include <QWidget>
 #include <QUndoStack>
 #include <QTableWidgetItem>
+#include <QStandardItemModel>
 
+#include <QSortFilterProxyModel>
+#include <QCollator>
 
 namespace Ui {
 class corerenamer;
@@ -23,7 +26,8 @@ public:
     explicit corerenamer(QWidget *parent = 0);
     ~corerenamer();
 
-    void addFiles(QStringList list);
+    void addFiles(const QStringList &list);
+    void addPath(const QString &path);
 
 private slots:
     void on_bAddFiles_clicked();
@@ -44,8 +48,16 @@ private slots:
     void on_rename_clicked();
     void on_bRefreshList_clicked();
 
+    void on_clearItem_clicked();
+
+    void on_gAddOldFileName_clicked(bool checked);
+
+    void on_gAddNewFileName_clicked(bool checked);
+
 private:
     Ui::corerenamer *ui;
+    QSortFilterProxyModel *customSortM;
+    QStandardItemModel *m_Model;
 
     QUndoStack *uStack;
     void createActions();
@@ -85,15 +97,22 @@ private:
      * \brief casitivity Text casing.
      * \param i 0 = UPPERCASE, 1 = Capitalize Each, 2 = lower
      */
-    void casitivity(int i);
+    void casitivity(int c);
 
     QString CapitalizeEachWord(const QString &str);
-    QString getNew(QTableWidgetItem *text);
-    QString getOld(QTableWidgetItem *text);
+    QString getNew(QStandardItem *item);
+    QString getOld(QStandardItem *item);
 
     bool setAddText();
     bool setRemText();
     bool setRepText();
+
+};
+
+class customSortProxyM : public QSortFilterProxyModel
+{
+protected:
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 };
 
 #endif // CORERENAMER_H

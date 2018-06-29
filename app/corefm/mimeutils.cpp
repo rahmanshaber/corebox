@@ -18,7 +18,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QProcess>
 #include <QMessageBox>
-#include <magic.h>
+//#include <magic.h>
 
 #include "fileutils.h"
 #include "../corebox/corebox.h"
@@ -57,12 +57,18 @@ MimeUtils::~MimeUtils() {
  * @param path path to file
  * @return mime type
  */
+#include <QDebug>
+#include <QMimeDatabase>
+#include <QMimeType>
 QString MimeUtils::getMimeType(const QString &path) {
-  magic_t cookie = magic_open(MAGIC_MIME);
-  magic_load(cookie, 0);
-  QString temp = magic_file(cookie, path.toLocal8Bit());
-  magic_close(cookie);
-  return temp.left(temp.indexOf(";"));
+//  magic_t cookie = magic_open(MAGIC_MIME);
+//  magic_load(cookie, 0);
+//  QString temp = magic_file(cookie, path.toLocal8Bit());
+//  magic_close(cookie);
+//  QString f = temp.left(temp.indexOf(";"));
+  QMimeDatabase m;
+  //qDebug() << m.mimeTypeForFile(path).name();
+  return m.mimeTypeForFile(path).name();
 }
 
 /**
@@ -104,7 +110,7 @@ void MimeUtils::openInApp(const QFileInfo &file, QObject *processOwner) {
     DesktopFile df = DesktopFile("/usr/share/applications/" + app);
     openInApp(df.getExec(), file, processOwner);
   } else {
-      messageEngine(tr("No default application for mime:\n %1!").arg(mime),"Warning");
+      messageEngine(tr("No default application for mime:\n %1!").arg(mime),MessageType::Warning);
   }
 }
 

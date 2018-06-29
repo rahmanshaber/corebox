@@ -35,6 +35,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QtCore/QMap>
 #include <QDateTime>
 #include <QSettings>
+#include <QShortcut>
 
 
 corepaint::corepaint( QWidget *parent):QWidget(parent),
@@ -118,7 +119,10 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
             QScrollArea *scrollArea = new QScrollArea();
             scrollArea->setAttribute(Qt::WA_DeleteOnClose);
             //color for core paint
-            scrollArea->setBackgroundRole(QPalette::Dark);
+            scrollArea->setStyleSheet("QScrollArea { background-color: rgb(0, 0, 0); }");
+
+            //scrollArea->setBackgroundRole(QPalette::Shadow);
+
             scrollArea->setWidget(imageArea);
 
             ui->paintTabs->addTab(scrollArea,fileName);
@@ -151,13 +155,13 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
         }
 
         if (!fileName.isEmpty()) {
-            messageEngine("File Opened Successfully.", "Info");
+            messageEngine("File Opened Successfully.", MessageType::Info);
         } else {
-            messageEngine("File not Opened Successfully.", "Info");
+            messageEngine("File not Opened Successfully.", MessageType::Info);
         }
     }
     else {
-        messageEngine("Reached page limite.", "Warning");
+        messageEngine("Reached page limit.", MessageType::Warning);
     }
 }
 
@@ -512,9 +516,9 @@ void corepaint::on_save_clicked()
                                       tr("Untitled Image") : getCurrentImageArea()->getFileName() );
 
         filepath = getCurrentImageArea()->mFilePath;
-        messageEngine("File Saved", "Info");
+        messageEngine("File Saved", MessageType::Info);
     } else {
-        messageEngine("File not Saved", "Info");
+        messageEngine("File not Saved", MessageType::Info);
     }
 }
 
@@ -525,9 +529,9 @@ void corepaint::on_saveas_clicked()
                                       tr("Untitled Image") : getCurrentImageArea()->getFileName() );
 
         filepath = getCurrentImageArea()->mFilePath;
-        messageEngine("File Saved", "Info");
+        messageEngine("File Saved", MessageType::Info);
     } else {
-        messageEngine("File not Saved", "Info");
+        messageEngine("File not Saved", MessageType::Info);
     }
 }
 
@@ -567,7 +571,7 @@ void corepaint::on_bookMarkIt_clicked()
 {
     if (!QFile(filepath).exists()) {
         QString mess = "File: " + currentFile + "' not exists Or not saved";
-        messageEngine(mess, "Info");
+        messageEngine(mess, MessageType::Info);
     } else {
         bookmarks bookMarks;
         bookMarks.callBookMarkDialog(this, filepath);

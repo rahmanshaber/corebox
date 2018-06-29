@@ -17,6 +17,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreaction.h"
 #include "ui_coreaction.h"
 
+#include "../corebox/globalfunctions.h"
+#include "../corebox/corebox.h"
+#include "about/about.h"
+#include "dashboard/upower.h"
+#include "dashboard/battery.h"
 #include "coreshot/coreshotdialog.h"
 
 #include <QDesktopWidget>
@@ -25,16 +30,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFile>
 #include <QDoubleValidator>
 
-
-float varA, varB, result;
-int z = 0, varC, varD;
-
 coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     ui(new Ui::coreaction),
-    timer(new QTimer(this)),
-    im(InfoManager::ins())
+    timer(new QTimer(this))
 {
     ui->setupUi(this);
+
 
     widget();
     loadsettings();
@@ -84,60 +85,133 @@ void coreaction::tryicon()  //setup coreaction tryicon
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(ShowWindow(QSystemTrayIcon::ActivationReason)));
 }
 
+#include "wcalender.h"
+#include "wsystem.h"
+#include "wnetwork.h"
+#include "wcalculator.h"
+#include "wnotes.h"
+#include "wbattery.h"
 void coreaction::widgetList() //setup all enabled widgets for settings
 {
     ui->timeW->hide();
-    ui->batteryW->setVisible(0);
-    ui->sysW->setVisible(0);
-    ui->networkW->setVisible(0);
-    ui->calandarW->setVisible(0);
-    ui->calculatorW->setVisible(0);
-    ui->notesW->setVisible(0);
+    checkWTime();
+    checkWCalendar();
+    checkWSystem();
+    checkWNetwork();
+    checkWCalculator();
+    checkWNotes();
+    checkWBattery();
+}
 
+bool coreaction::checkWTime()
+{
     if(sm.getShowTime() == 1){
         ui->timeW->setVisible(1);
         QTimer *timer = new QTimer(this);
         showTime();
         connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
         timer->start(1000);
+        return true;
+    } else {
+        ui->timeW->setVisible(0);
     }
+    return false;
+}
 
-    if(sm.getShowBattery() == 1){
-        ui->batteryW->setVisible(1);
-        QTimer *timer = new QTimer(this);
-        batteryCheck();
-        connect(timer, SIGNAL(timeout()), this, SLOT(batteryCheck()));
-        timer->start(5000);
-    }
-
-    if(sm.getShowSystem() == 1){
-        ui->sysW->setVisible(1);
-        sysWsetup();
-        connect(timer, &QTimer::timeout, this, &coreaction::sysWsetup);
-        timer->start(1 * 1000);
-    }
-
-    if(sm.getShowNetwork() == 1){
-        ui->networkW->setVisible(1);
-        networkWsetup();
-        connect(timer, &QTimer::timeout, this, &coreaction::networkWsetup);
-        timer->start(1 * 1000);
-    }
-
+bool coreaction::checkWCalendar()
+{
+    wCalender *wcd = ui->widgetsL->findChild<wCalender*>("wCalender");
     if(sm.getShowCalander() == 1){
-        ui->calandarW->setVisible(1);
-    }
+        if (wcd)
+            return true;
 
+        ui->verticalLayout_6->insertWidget(0, new wCalender(ui->widgetsL));
+        return true;
+    } else {
+        if (wcd)
+            wcd->deleteLater();
+    }
+    return false;
+}
+
+bool coreaction::checkWSystem()
+{
+    wSystem *wsys = ui->widgetsL->findChild<wSystem*>("wSystem");
+    if(sm.getShowSystem() == 1){
+        if (wsys)
+            return true;
+
+        ui->verticalLayout_6->insertWidget(1, new wSystem(ui->widgetsL));
+        return true;
+    } else {
+        if (wsys)
+            wsys->deleteLater();
+    }
+    return false;
+}
+
+bool coreaction::checkWNetwork()
+{
+    wNetwork *wnw = ui->widgetsL->findChild<wNetwork*>("wNetwork");
+    if(sm.getShowNetwork() == 1){
+        if (wnw)
+            return true;
+
+        ui->verticalLayout_6->insertWidget(2, new wNetwork(ui->widgetsL));
+        return true;
+    } else {
+        if (wnw)
+            wnw->deleteLater();
+    }
+    return false;
+}
+
+bool coreaction::checkWCalculator()
+{
+    wCalculator *wcl = ui->widgetsL->findChild<wCalculator*>("wCalculator");
     if(sm.getShowCalculator() == 1){
-        ui->calculatorW->setVisible(true);
-        ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));
-    }
+        if (wcl)
+            return true;
 
+        ui->verticalLayout_6->insertWidget(3, new wCalculator(ui->widgetsL));
+        return true;
+    } else {
+        if (wcl)
+            wcl->deleteLater();
+    }
+    return false;
+}
+
+bool coreaction::checkWNotes()
+{
+    wNotes *wno = ui->widgetsL->findChild<wNotes*>("wNotes");
     if(sm.getShowNote() == 1){
-        ui->notesW->setVisible(1);
-        collectNotes();
-    }
+        if (wno)
+            return true;
 
+        ui->verticalLayout_6->insertWidget(4, new wNotes(ui->widgetsL));
+        return true;
+    } else {
+        if (wno)
+            wno->deleteLater();
+    }
+    return false;
+}
+
+bool coreaction::checkWBattery()
+{
+    wBattery *wbt = ui->widgetsL->findChild<wBattery*>("wBattery");
+    if(sm.getShowBattery() == 1){
+        if (wbt)
+            return true;
+
+        ui->verticalLayout_6->insertWidget(5, new wBattery(ui->widgetsL));
+        return true;
+    } else {
+        if (wbt)
+            wbt->deleteLater();
+    }
+    return false;
 }
 
 void coreaction::loadsettings() //load setting ini
@@ -152,35 +226,6 @@ void coreaction::actionshow()
     this->show();
 }
 
-
-void coreaction::batteryCheck()
-{
-    UPower *u = new UPower(this);
-
-    Battery *b = nullptr;
-    foreach (Battery *bat, *u->batteries()) {
-        b = u->batteries()->value(bat->path());
-    }
-    if (!b)
-        return;
-
-    ui->batteryProg->setValue(b->percentage());
-
-    switch( b->state() ) {
-        case Battery::FullyCharged:
-            ui->batteryStatus->setText( tr( "Full" ) );
-            break;
-        case Battery::Discharging:
-            ui->batteryStatus->setText( tr( "Discharging" ) );
-            break;
-        case Battery::Charging:
-            ui->batteryStatus->setText( tr( "Charging" ) );
-            break;
-        default:
-            ui->batteryStatus->setText( tr( "No Battery" ) );
-            break;
-    }
-}
 
 void coreaction::coreBoxAbout()
 {
@@ -215,7 +260,7 @@ void coreaction::ShowWindow(QSystemTrayIcon::ActivationReason Reason)
 {
     if (Reason == QSystemTrayIcon::DoubleClick || Reason == QSystemTrayIcon::Trigger) {
         if (!this->isVisible()) {
-            batteryCheck();
+            //batteryCheck();
             this->show();
             QTimer::singleShot(8000, this, SLOT(hide()));
         } else {
@@ -228,122 +273,6 @@ void coreaction::on_hide_clicked()
 {
     this->hide();
 }
-
-//--------------------Calculator----------------------Start---------------------------
-void coreaction::on_one_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "1");
-}
-
-void coreaction::on_two_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "2");
-}
-
-void coreaction::on_three_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "3");
-}
-
-void coreaction::on_four_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "4");
-}
-
-void coreaction::on_five_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "5");
-}
-
-void coreaction::on_six_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "6");
-}
-
-void coreaction::on_seven_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "7");
-}
-
-void coreaction::on_eight_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "8");
-}
-
-void coreaction::on_nine_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "9");
-}
-
-void coreaction::on_zero_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + "0");
-}
-
-void coreaction::on_dot_clicked()
-{
-    ui->calcview->setText(ui->calcview->text() + ".");
-}
-
-void coreaction::on_equal_clicked()
-{
-    varB = ui->calcview->text().toFloat();
-    switch(z)
-    {
-    case 1 : result = varA + varB ;break;
-    case 2 : result = varA - varB ;break;
-    case 3 : result = varA * varB ;break;
-    case 4 : result = varA / varB ;break;
-    case 5 :
-        varC = varA;
-        varD = varB;
-        result = varC % varD ;break;
-    }
-    QString sss = QString::number(result);
-    ui->calcview->setText(sss);
-}
-
-void coreaction::on_clear_clicked()
-{
-    ui->calcview->setText("");
-}
-
-void coreaction::on_multiply_clicked()
-{
-    z = 3;
-    varA = ui->calcview->text().toFloat();
-    ui->calcview->setText("");
-}
-
-void coreaction::on_subtract_clicked()
-{
-    z = 2;
-    varA = ui->calcview->text().toFloat();
-    ui->calcview->setText("");
-}
-
-void coreaction::on_add_clicked()
-{
-    z = 1;
-    varA = ui->calcview->text().toFloat();
-    ui->calcview->setText("");
-}
-
-void coreaction::on_division_clicked()
-{
-    z = 4;
-    varA = ui->calcview->text().toFloat();
-    ui->calcview->setText("");
-}
-
-//void coreaction::on_percentage_clicked()
-//{
-//    z = 5;
-//    varA = ui->calcview->text().toFloat();
-//    ui->calcview->setText("");
-//}
-//--------------------Calculator----------------------End---------------------------
-
 
 void coreaction::on_corepad_clicked()
 {
@@ -395,36 +324,36 @@ void coreaction::on_search_clicked()
 void coreaction::closeEvent(QCloseEvent *event) {
 
     Q_UNUSED(event);
-    sm.cSetting->beginGroup("Notes");
-    sm.cSetting->setValue("Note1", ui->plainTextEdit->toPlainText());
-    sm.cSetting->setValue("Note2", ui->plainTextEdit_2->toPlainText());
-    sm.cSetting->endGroup();
+    //sm.cSetting->beginGroup("Notes");
+    //sm.cSetting->setValue("Note1", ui->plainTextEdit->toPlainText());
+    //sm.cSetting->setValue("Note2", ui->plainTextEdit_2->toPlainText());
+    //sm.cSetting->endGroup();
 
     QTimer::singleShot(100, qApp, SLOT(quit()));
 }
 
 void coreaction::collectNotes() {
 
-    sm.cSetting->beginGroup("Notes");
-    ui->plainTextEdit->setPlainText(sm.cSetting->value("Note1").toString());
-    ui->plainTextEdit_2->setPlainText(sm.cSetting->value("Note2").toString());
-    sm.cSetting->endGroup();
+    //sm.cSetting->beginGroup("Notes");
+    //ui->plainTextEdit->setPlainText(sm.cSetting->value("Note1").toString());
+    //ui->plainTextEdit_2->setPlainText(sm.cSetting->value("Note2").toString());
+    //sm.cSetting->endGroup();
 }
 
 void coreaction::sysWsetup()
 {
     //set cpu bar value
-    int cpuPercent = im->getCpuPercents().at(0);
-    ui->cpubar->setValue(cpuPercent);
+//    int cpuPercent = im->getCpuPercents().at(0);
+//    //ui->cpubar->setValue(cpuPercent);
 
-    //set ram bar value
-    im->updateMemoryInfo();
-    int memPercent = 0;
+//    //set ram bar value
+//    im->updateMemoryInfo();
+//    int memPercent = 0;
 
-    if (im->getMemTotal())
-        memPercent = ((double)im->getMemUsed() / (double)im->getMemTotal()) * 100.0;
+//    if (im->getMemTotal())
+//        memPercent = ((double)im->getMemUsed() / (double)im->getMemTotal()) * 100.0;
 
-    ui->rambar->setValue(memPercent);
+    //ui->rambar->setValue(memPercent);
 
     //remove
     //set drive bar value
@@ -434,26 +363,26 @@ void coreaction::sysWsetup()
 
 void coreaction::networkWsetup()
 {
-    static quint64 l_RXbytes = im->getRXbytes();
-    static quint64 l_TXbytes = im->getTXbytes();
-    static quint64 max_RXbytes = 1L << 20; // 1 MEBI
-    static quint64 max_TXbytes = 1L << 20; // 1 MEBI
+//    static quint64 l_RXbytes = im->getRXbytes();
+//    static quint64 l_TXbytes = im->getTXbytes();
+//    static quint64 max_RXbytes = 1L << 20; // 1 MEBI
+//    static quint64 max_TXbytes = 1L << 20; // 1 MEBI
 
-    quint64 RXbytes = im->getRXbytes();
-    quint64 TXbytes = im->getTXbytes();
+//    quint64 RXbytes = im->getRXbytes();
+//    quint64 TXbytes = im->getTXbytes();
 
-    quint64 d_RXbytes = (RXbytes - l_RXbytes);
-    quint64 d_TXbytes = (TXbytes - l_TXbytes);
+//    quint64 d_RXbytes = (RXbytes - l_RXbytes);
+//    quint64 d_TXbytes = (TXbytes - l_TXbytes);
 
-    QString downText = formatSize(d_RXbytes);
-    QString upText = formatSize(d_TXbytes);
+//    QString downText = formatSize(d_RXbytes);
+//    QString upText = formatSize(d_TXbytes);
 
-    ui->dspeed->setText(downText);
-    ui->uspeed->setText(upText);
+//    ui->dspeed->setText(downText);
+//    ui->uspeed->setText(upText);
 
-    max_RXbytes = qMax(max_RXbytes, d_RXbytes);
-    max_TXbytes = qMax(max_TXbytes, d_TXbytes);
+//    max_RXbytes = qMax(max_RXbytes, d_RXbytes);
+//    max_TXbytes = qMax(max_TXbytes, d_TXbytes);
 
-    l_RXbytes = RXbytes;
-    l_TXbytes = TXbytes;
+//    l_RXbytes = RXbytes;
+//    l_TXbytes = TXbytes;
 }

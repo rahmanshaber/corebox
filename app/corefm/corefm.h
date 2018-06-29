@@ -32,7 +32,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFileSystemWatcher>
 #include <QMouseEvent>
 #include <QListView>
+#include <QCompleter>
 #include <QAbstractItemView>
+#include <QActionGroup>
 
 #include "udisks2.h"
 #include "../corebox/corebox.h"

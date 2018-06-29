@@ -18,13 +18,18 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corebox.h"
 
 #include <QProcess>
+#include <QScreen>
+#include <QMimeDatabase>
+#include <QMimeType>
+#include <QStyle>
+#include <QStorageInfo>
 #include <QDebug>
 
 #include <corefm/mimeutils.h>
 #include "corepad/corepad.h"
 
 
-bool moveToTrash(QString fileName) // moves a file or folder to trash folder
+bool moveToTrash(const QString &fileName) // moves a file or folder to trash folder
 {
     if (getfilesize(fileName) >= 1073741824) {
         QMessageBox::StandardButton replyC;
@@ -62,7 +67,7 @@ bool moveToTrash(QString fileName) // moves a file or folder to trash folder
             trashinfo.write(QString("Path=" + fileLocation + "\n").toUtf8());
             trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());trashinfo.close();
 
-            messageEngine("File Moved to Trash", "Info");
+            messageEngine("File Moved to Trash", MessageType::Info);
             return true;
         }
     }
@@ -71,10 +76,10 @@ bool moveToTrash(QString fileName) // moves a file or folder to trash folder
 
 void setupFolder()
 {
-    qDebug()<< "setupFolder";
+    qDebug() << "setupFolder";
     // Setup drive mount folder
     const QString d = QDir::homePath() + "/.coreBox";
-    if(!QDir(d).exists()){
+    if(!QDir(d).exists()) {
         QDir::home().mkdir(".coreBox");
     }
 
@@ -96,43 +101,98 @@ void setupFolder()
     }
 }
 
-bool saveToRecent(QString appName, const QString pathName) // save file path and app name for recent activites
+// ======================== Recent Activity =============================
+QString sentDateText(const QString &dateTime) {
+    // Can get error if date time format is not like this dd.MM.yyyy (28.06.2018)
+    QDate temp = QDateTime::fromString(dateTime, "dd.MM.yyyy").date();
+    int givenD = temp.day();
+    int currnD = QDateTime::currentDateTime().toString("dd").toInt();
+    int givenM = temp.month();
+    int currnM = QDateTime::currentDateTime().toString("MM").toInt();
+    int givenY = temp.year();
+    int currnY = QDateTime::currentDateTime().toString("yyyy").toInt();
+
+    if (givenY == currnY) {
+        if (givenM == currnM) {
+            if (givenD == currnD)
+                return "Today";
+            else if ((currnD - givenD) < 32)
+                return QString("%1 day(s) ago").arg(currnD - givenD);
+            else
+                return QString("%1.%2.%3").arg(givenD, givenM, givenY);
+        } else if ((currnM - givenM) < 13)
+            return QString("%1 month(s) ago").arg(currnM - givenM);
+        else
+            return QString("%1.%2.%3").arg(givenD, givenM, givenY);
+    } else
+        return QString("%1.%2.%3").arg(givenD, givenM, givenY);
+
+    return NULL;
+}
+
+bool checkRecentActivityFile() {
+    QFile file(QDir::homePath() + "/.config/coreBox/RecentActivity");
+    if (file.exists()) {
+        return true;
+    }
+    return false;
+}
+
+bool saveToRecent(QString appName, const QString &pathName) // save file path and app name for recent activites
 {
     SettingsManage sm;
-    if (sm.getDisableRecent() == true) {
-        if (!pathName.isEmpty()) {
-            sm.cSetting->beginGroup("Recent");
-            int keysCount = sm.cSetting->childKeys().count();
-            sm.cSetting->endGroup();
-            sm.setSpecificValue("Recent", QString::number(keysCount), appName + "$$$" + pathName + "$$$" + QDateTime::currentDateTime().toString());
+    if (sm.getDisableRecent() == false) {
+        if (appName.count() && pathName.count()) {
+            QSettings recentActivity(QDir::homePath() + "/.config/coreBox/RecentActivity", QSettings::IniFormat);
+            QDateTime currentDT = QDateTime::currentDateTime();
+            QString group = currentDT.toString("dd.MM.yyyy");
+            QString key = currentDT.toString("hh.mm.ss");
+            recentActivity.beginGroup(group);
+            recentActivity.setValue(key, appName + "\t\t\t" + pathName);
+            recentActivity.endGroup();
             return true;
         }
     }
     return false;
 }
 
-void messageEngine(QString message, QString messageType) // engine show any message with type in desktop corner
+// =========================================================================
+
+void messageEngine(const QString &message, MessageType messageType) // engine show any message with type in desktop corner
 {
     QLabel *l = new QLabel(message);
     QFont f ("Arial", 14, QFont::Bold);
     QWidget *mbox = new QWidget();
     QVBoxLayout *bi = new QVBoxLayout();
+    QVBoxLayout *bii = new QVBoxLayout();
+    QFrame *frame = new QFrame();
+    frame->setStyleSheet("QFrame { border-radius: 10px; }");
+    bii->addWidget(frame);
+    frame->setLayout(bi);
     mbox->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::ToolTip);
-    mbox->setMinimumSize(230,50);
-    mbox->setLayout(bi);
+    mbox->setAttribute(Qt::WA_TranslucentBackground);
+    mbox->setMinimumSize(230, 50);
+    mbox->setLayout(bii);
+    l->setStyleSheet("QLabel { padding: 10px; }");
     l->setFont(f);
+    l->setAlignment(Qt::AlignCenter);
     bi->addWidget(l);
-    bi->setContentsMargins(6, 6, 6, 6);
-    if (messageType == "Info") {
-        mbox->setStyleSheet("QWidget{background-color: #2A2A2A;color: #ffffff;border: 1px #2A2A2A; border-radius: 10px; padding: 5px 5px 5px 5px;}");
-    } else if (messageType == "Warning") {
-        mbox->setStyleSheet("QWidget{background-color: red;color: #ffffff;border: 1px #2A2A2A; border-radius: 10px; padding: 5px 5px 5px 5px;}");
-    } else if (messageType == "Tips") {
-        mbox->setStyleSheet("QWidget{background-color: blue;color: #ffffff;border: 1px #2A2A2A; border-radius: 10px; padding: 5px 5px 5px 5px;}");
+    bi->setContentsMargins(0, 0, 0, 0);
+    QString stylesheet;
+    if (messageType == MessageType::Info) {
+        stylesheet = "QWidget { background-color: rgba(35, 35, 35, 150); color: #ffffff; border: 1px #2A2A2A; border-radius: 10px; }";
+    } else if (messageType == MessageType::Warning) {
+        stylesheet = "QWidget { background-color: rgba(240, 0, 0, 150); color: #ffffff; border: 1px #2A2A2A; border-radius: 10px; }";
+    } else if (messageType == MessageType::Tips) {
+        stylesheet = "QWidget { background-color: rgba(0, 0, 240, 150); color: #ffffff; border: 1px #2A2A2A; border-radius: 10px; }";
     } else {
         return;
     }
+
     mbox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+
+    addDropShadow(mbox, 60, 25, stylesheet);
+
     mbox->show();
 
     int x = screensize().width() - (mbox->width() + 10);
@@ -218,8 +278,8 @@ QIcon appsIcon(QString appName)
         return QIcon(str + "CoreFM.svg");
     } else if (appName == "CoreTerminal" || appName == "coreterminal") {
         return QIcon(str + "CoreTerminal.svg");
-    } else if (appName == "CoreRenamer" || appName == "corerenamer") {
-        return QIcon(str + "CoreRenamer.svg");
+    } else if (appName == "CoreRenamer" || appName == "corerenamer") {        
+        return QIcon(str + "CoreRenemer.svg");
     } else if (!appName.isNull() || !appName.isEmpty()) {
         SettingsManage sm;
         return QIcon::fromTheme(appName, QIcon::fromTheme(sm.getThemeName()));
@@ -276,12 +336,12 @@ QString getMultipleFileSize(const QStringList paths) // get file size of multipl
     return formatSize(l.at(l.count() - 2).split("\t").at(0).toLongLong());
 }
 
-void openAppEngine(const QString path) // engine send right file to coreapps or system
+void openAppEngine(const QString &path) // engine send right file to coreapps or system
 {
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     QFileInfo info(path);
     if(!info.exists() && !path.isEmpty()){
-        messageEngine("File not exists","Warning");
+        messageEngine("File not exists", MessageType::Warning);
         return;
     }
 
@@ -372,9 +432,9 @@ QIcon geticon(const QString &filePath) // gives a file or folder icon from syste
     icon = QIcon::fromTheme(mType.iconName());
 
     if (icon.isNull())
-      return QApplication::style()->standardIcon(QStyle::SP_FileIcon);
+        return QApplication::style()->standardIcon(QStyle::SP_FileIcon);
     else
-      return icon;
+        return icon;
 }
 
 QStringList fStringList(QStringList left, QStringList right, QFont font) // add two stringlist with ":"
@@ -418,4 +478,117 @@ QString getMountPathByName(const QString displayName) // get mount path by parti
         }
     }
     return NULL;
+}
+
+#include <QDirIterator>
+
+qint64 getF(QStringList paths)
+{
+    qint64 totalSize = 0;
+    Q_FOREACH( QString path, paths ) {
+//        if ( *terminate )
+//            return;
+
+        if ( QFileInfo( path ).isDir() ) {
+            //recurseProperties( path );
+            QDirIterator it( path, QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::Hidden, QDirIterator::Subdirectories );
+            while ( it.hasNext() ) {
+//                if ( *terminate )
+//                    return;
+
+                it.next();
+                if( it.fileInfo().isDir() ) {
+                    if ( it.filePath() == path )
+                        continue;
+
+                    //folders++;
+
+                    //if( folders % 32 == 0 ) {
+                        //emit updateSignal();
+                    //}
+                }
+
+                else {
+                    //files++;
+                    totalSize += it.fileInfo().size();
+                }
+            }
+        }
+
+        else {
+            //files++;
+            totalSize += getSize( path );
+        }
+    }
+
+    qDebug() << "SIZE : " << totalSize;
+    //emit updateSignal();
+    return totalSize;
+}
+
+#include <fcntl.h>
+#include <dirent.h>
+#include <sys/stat.h>
+
+qint64 getSize(QString path)
+{
+
+    struct stat statbuf;
+    if ( stat( path.toLocal8Bit().constData(), &statbuf ) != 0 )
+        return 0;
+
+    switch( statbuf.st_mode & S_IFMT ) {
+        case S_IFREG: {
+
+            return statbuf.st_size;
+        }
+
+        case S_IFDIR: {
+            DIR* d_fh;
+            struct dirent* entry;
+            QString longest_name;
+
+            while ( ( d_fh = opendir( path.toLocal8Bit().constData() ) ) == NULL ) {
+                qWarning() << "Couldn't open directory:" << path;
+                return statbuf.st_size;
+            }
+
+            quint64 size = statbuf.st_size;
+
+            longest_name = QString( path );
+            if ( not longest_name.endsWith( "/" ) )
+                longest_name += "/";
+
+            while( ( entry = readdir( d_fh ) ) != NULL ) {
+
+                /* Don't descend up the tree or include the current directory */
+                if ( strcmp( entry->d_name, ".." ) != 0 && strcmp( entry->d_name, "." ) != 0 ) {
+
+                    if ( entry->d_type == DT_DIR ) {
+
+                        /* Recurse into that folder */
+                        size += getSize( longest_name + entry->d_name );
+                    }
+
+                    else {
+
+                        /* Get the size of the current file */
+                        size += getSize( longest_name + entry->d_name );
+                    }
+                }
+            }
+
+            closedir( d_fh );
+            return size;
+        }
+
+        default: {
+
+            /* Return 0 for all other nodes: chr, blk, lnk, symlink etc */
+            return 0;
+        }
+    }
+
+    /* Should never come till here */
+    return 0;
 }

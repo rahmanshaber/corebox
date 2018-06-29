@@ -9,7 +9,7 @@ TARGET   = coreBox
 DEPENDPATH  += .
 
 INCLUDEPATH += ../library/libcpdf/
-LIBS += -L../library/libcterminal -lcpdf
+LIBS += -L../library/libcpdf -lcpdf
 
 INCLUDEPATH += ../library/libcterminal/
 LIBS += -L../library/libcterminal -lcterminal -lX11
@@ -17,7 +17,10 @@ LIBS += -L../library/libcterminal -lcterminal -lX11
 INCLUDEPATH += . ../library/libcarchiver/
 LIBS += -L../library/libcarchiver/ -lcarchiver
 
-LIBS += -lmagic
+INCLUDEPATH += ../library/libcsys/
+LIBS += -L../library/libcsys/ -lcsys
+
+#LIBS += -lmagic
 
 FORMS += \
     about/about.ui \
@@ -32,10 +35,6 @@ FORMS += \
     coreplayer/coreplayer.ui \
     coretime/coretime.ui \
     coretime/snooze.ui \
-    dashboard/info/circlebar.ui \
-    dashboard/info/sysinfo.ui \
-    dashboard/resources/history_chart.ui \
-    dashboard/resources/resources_page.ui \
     dashboard/dashboard.ui \
     help/help.ui \
     search/search.ui \
@@ -45,7 +44,22 @@ FORMS += \
     coreshot/coreshot.ui \
     bookmarks/bookmarkdialog.ui \
     coreshot/coreshotdialog.ui \
-    corerenamer/corerenamer.ui
+    corerenamer/corerenamer.ui \
+    coreaction/wsystem.ui \
+    coreaction/wcalender.ui \
+    coreaction/wnetwork.ui \
+    coreaction/wcalculator.ui \
+    coreaction/wbattery.ui \
+    coreaction/wnotes.ui \
+    dashboard/General/circlebar.ui \
+#    dashboard/General/dashboard_page.ui \
+    dashboard/General/linebar.ui \
+    dashboard/Resources/history_chart.ui \
+    dashboard/Resources/resources_page.ui \
+    dashboard/General/sysinfo.ui \
+    dashboard/pbattery.ui \
+    dashboard/pdrives.ui \
+    dashboard/pdisplay.ui
 
 
 HEADERS += \
@@ -102,17 +116,6 @@ HEADERS += \
     coretime/schedulecollection.h \
     coretime/snooze.h \
     coretime/timer.h \
-    dashboard/info/circlebar.h \
-    dashboard/info/sysinfo.h \
-    dashboard/info/system_info.h \
-    dashboard/lib/command_util.h \
-    dashboard/lib/cpu_info.h \
-    dashboard/lib/info_manager.h \
-    dashboard/lib/memory_info.h \
-    dashboard/lib/network_info.h \
-    dashboard/lib/stacer-core_global.h \
-    dashboard/resources/history_chart.h \
-    dashboard/resources/resources_page.h \
     dashboard/battery.h \
     dashboard/dashboard.h \
     dashboard/upower.h \
@@ -135,7 +138,26 @@ HEADERS += \
     coreshot/coreshotdialog.h \
     bookmarks/bookmarkdialog.h \
     corerenamer/corerenamer.h \
-    corerenamer/undocommands.h
+    corerenamer/undocommands.h \
+    coreaction/wsystem.h \
+    coreaction/wcalender.h \
+    coreaction/wnetwork.h \
+    coreaction/wcalculator.h \
+    coreaction/wbattery.h \
+    coreaction/wnotes.h \
+    corepad/chighlighter.h \
+    dashboard/signal_mapper.h \
+    dashboard/utilities.h \
+    dashboard/General/circlebar.h \
+#    dashboard/General/dashboard_page.h \
+    dashboard/General/linebar.h \
+    dashboard/Managers/info_manager.h \
+    dashboard/Resources/history_chart.h \
+    dashboard/Resources/resources_page.h \
+    dashboard/General/sysinfo.h \
+    dashboard/pbattery.h \
+    dashboard/pdrives.h \
+    dashboard/pdisplay.h
 
 
 SOURCES += \
@@ -191,16 +213,6 @@ SOURCES += \
     coretime/schedulecollection.cpp \
     coretime/snooze.cpp \
     coretime/timer.cpp \
-    dashboard/info/circlebar.cpp \
-    dashboard/info/sysinfo.cpp \
-    dashboard/info/system_info.cpp \
-    dashboard/lib/command_util.cpp \
-    dashboard/lib/cpu_info.cpp \
-    dashboard/lib/info_manager.cpp \
-    dashboard/lib/memory_info.cpp \
-    dashboard/lib/network_info.cpp \
-    dashboard/resources/history_chart.cpp \
-    dashboard/resources/resources_page.cpp \
     dashboard/battery.cpp \
     dashboard/dashboard.cpp \
     dashboard/upower.cpp \
@@ -222,7 +234,25 @@ SOURCES += \
     coreshot/screenwidget.cpp \
     coreshot/coreshotdialog.cpp \
     bookmarks/bookmarkdialog.cpp \
-    corerenamer/corerenamer.cpp
+    corerenamer/corerenamer.cpp \
+    coreaction/wsystem.cpp \
+    coreaction/wcalender.cpp \
+    coreaction/wnetwork.cpp \
+    coreaction/wcalculator.cpp \
+    coreaction/wbattery.cpp \
+    coreaction/wnotes.cpp \
+    corepad/chighlighter.cpp \
+    dashboard/signal_mapper.cpp \
+    dashboard/General/circlebar.cpp \
+#    dashboard/General/dashboard_page.cpp \
+    dashboard/General/linebar.cpp \
+    dashboard/Managers/info_manager.cpp \
+    dashboard/Resources/history_chart.cpp \
+    dashboard/Resources/resources_page.cpp \
+    dashboard/General/sysinfo.cpp \
+    dashboard/pbattery.cpp \
+    dashboard/pdrives.cpp \
+    dashboard/pdisplay.cpp
 
 
 RESOURCES += \

@@ -20,8 +20,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QWidget>
 #include <QFileDialog>
 
-#include "libarchiveqt.h"
-
 namespace Ui {
 class corearchiver;
 }
@@ -34,19 +32,19 @@ public:
     explicit corearchiver(QWidget *parent = 0);
     ~corearchiver();
 
-    void compress(QStringList filePathList, QDir currentDir);
-    void extract(QString archiveFilePath, QDir dest);
+    void compress(const QStringList &filePathList, const QDir &currentDir);
+    void extract(const QString &archiveFilePath, const QDir &dest);
 
     QString archiveName, location, format, workingDir;
     QStringList filePathList;
 
-    void setFilename(QString fileName);
-    void setFolderPath(QString path);
+    void setFilename(const QString &fileName);
+    void setFolderPath(const QString &path);
 
 private Q_SLOTS:
-    void updateFileName( QString );
+    void updateFileName(const QString & );
     void updateDirName();
-    void updateFormat( QString );
+    void updateFormat(const QString & );
 
 private:
     Ui::corearchiver *ui;

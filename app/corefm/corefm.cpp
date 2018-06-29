@@ -32,7 +32,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QSettings>
 #include <QDateTime>
 #include <QtConcurrent/QtConcurrent>
-
+#include <QShortcut>
 
 corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {
@@ -432,7 +432,7 @@ void corefm::dirLoaded()
     ui->totalitem->setText("Total : " + QString("%1 items").arg(items.count()));
     ui->selecteditem->clear();
 
-    if(items.count()==0){messageEngine("Folder is empty", "Info");}
+    if(items.count()==0){messageEngine("Folder is empty", MessageType::Info);}
     if(ui->showthumb->isChecked()) QtConcurrent::run(modelList,&myModel::loadThumbs,items);
 }
 
@@ -513,7 +513,7 @@ int corefm::addTab(const QString path)
         if(tabs->count() == 0) tabs->addNewTab(ui->pathEdit->currentText(),currentView);
         return tabs->addNewTab(path,currentView);
     } else {
-        messageEngine("Reached page limite", "Warning");
+        messageEngine("Reached page limite", MessageType::Warning);
     }
     return -1;
 }
@@ -553,6 +553,7 @@ void corefm::listDoubleClicked(QModelIndex current)
     }
     if (modelList->isDir(modelView->mapToSource(current))) {
       QModelIndex i = modelView->mapToSource(current);
+      qDebug() << i;
       tree->setCurrentIndex(modelTree->mapFromSource(i));
     } else {
       executeFile(current, 0);
@@ -1507,7 +1508,7 @@ void corefm::zoomInAction()
         }
     }
 
-    messageEngine(QString(tr("Zoom: %1")).arg(zoomLevel), "Info");
+    messageEngine(QString(tr("Zoom: %1")).arg(zoomLevel), MessageType::Info);
 }
 
 void corefm::zoomOutAction()
@@ -1544,7 +1545,7 @@ void corefm::zoomOutAction()
         }
     }
 
-    messageEngine(QString(tr("Zoom: %1")).arg(zoomLevel), "Info");
+    messageEngine(QString(tr("Zoom: %1")).arg(zoomLevel), MessageType::Info);
 }
 
 void corefm::on_actionRename_triggered()
@@ -1563,21 +1564,24 @@ void corefm::on_actionRename_triggered()
 void corefm::on_actionOpen_triggered()
 {
     //openFile
-    QModelIndexList items;
-    if (listSelectionModel->selectedRows(0).count()) {
-      items = listSelectionModel->selectedRows(0);
-    } else {
-      items = listSelectionModel->selectedIndexes();
-    }
+//    QModelIndexList items;
+//    if (listSelectionModel->selectedRows(0).count()) {
+//      items = listSelectionModel->selectedRows(0);
+//    } else {
+//      items = listSelectionModel->selectedIndexes();
+//    }
+
+    listDoubleClicked(listSelectionModel->currentIndex());
+
 
     // Executes each file of selection
-    foreach (QModelIndex index, items) {
-      executeFile(index, 0);
-    }
+    //foreach (QModelIndex index, items) {
+    //    executeFile(index, 0);
+    //}
 
     //openfolder
-    QModelIndex i = listSelectionModel->currentIndex();
-    tree->setCurrentIndex(modelTree->mapFromSource(i));
+    //QModelIndex i = listSelectionModel->currentIndex();
+    //tree->setCurrentIndex(modelTree->mapFromSource(i));
 }
 
 void corefm::on_actionDelete_triggered()
@@ -1632,7 +1636,7 @@ void corefm::on_actionDelete_triggered()
     // Display error message if deletion failed
     if(!ok) {
       QString msg = tr("Could not delete some items...do you have the permissions?");
-      messageEngine(msg, "Warning");
+      messageEngine(msg, MessageType::Warning);
     }
 
     return;
@@ -1701,7 +1705,7 @@ void corefm::on_actionCut_triggered()
     modelTree->invalidate();
     listSelectionModel->clear();
     ui->paste->setVisible(true);
-    messageEngine("File moves successfully.", "Info");
+    messageEngine("File moves successfully.", MessageType::Info);
 }
 
 void corefm::on_actionCopy_triggered()
@@ -1756,7 +1760,7 @@ void corefm::on_actionPaste_triggered()
     pasteLauncher(QApplication::clipboard()->mimeData(), newPath, cutList);
     ui->paste->setVisible(false);
     on_actionRefresh_triggered();
-    messageEngine("Paste Completed.", "Info");
+    messageEngine("Paste Completed.", MessageType::Info);
 }
 
 void corefm::on_actionProperties_triggered()
@@ -1785,7 +1789,7 @@ void corefm::on_actionNewFolder_triggered()
     // Check whether current directory is writeable
     QModelIndex newDir;
     if (!QFileInfo(ui->pathEdit->itemText(0)).isWritable()) {
-      messageEngine("Read only...cannot create folder", "Warning");
+      messageEngine("Read only...cannot create folder", MessageType::Warning);
       return;
     }
 
@@ -1804,7 +1808,7 @@ void corefm::on_actionNewTextFile_triggered()
     // Check whether current directory is writeable
     QModelIndex fileIndex;
     if (!QFileInfo(ui->pathEdit->itemText(0)).isWritable()) {
-      messageEngine("Read only...cannot create file", "Warning");
+      messageEngine("Read only...cannot create file", MessageType::Warning);
       return;
     }
 
@@ -1839,25 +1843,25 @@ void corefm::on_actionTerminal_triggered()
 
     QString path = curIndex.filePath();
 
-    qDebug()<<"curindex "<< path;
+    qDebug()<< "curindex "<< path;
 
     if (name == "CoreTerminal") {
         CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
 //        qDebug() << "Current Dir : " << QDir::currentPath();
-        QDir::setCurrent(path);
+//        QDir::setCurrent(path);
 //        qDebug() << "Current Dir : " << QDir::currentPath();
-        QString command = "";
-        for (int i = 0; i < args.count(); i++) {
-            command = command + " " + args.at(i);
-        }
+//        QString command = "";
+//        for (int i = 0; i < args.count(); i++) {
+//            command = command + " " + args.at(i);
+//        }
 
-        cBox->tabEngine(CoreTerminal, command + "$$$" + ui->pathEdit->currentText());
+        cBox->tabEngine(CoreTerminal, /*command + "$$$" + ui->pathEdit->currentText()*/ path);
     } else {
         QProcess::startDetached(name, args, path);
     }
 
     QString mess = defultTerminal + " opening " ;
-    messageEngine(mess, "Info");
+    messageEngine(mess, MessageType::Info);
 }
 
 void corefm::on_actionShowThumbnails_triggered()
@@ -2135,7 +2139,7 @@ void corefm::on_SBookMarkIt_clicked()
 
 void corefm::on_searchHere_clicked()
 {
-    QString path = ui->pathEdit->itemText(0);
+    const QString path = ui->pathEdit->itemText(0);
 
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(Search, path);
@@ -2403,7 +2407,7 @@ void corefm::on_partitions_itemClicked(QListWidgetItem *item)
                 QApplication::processEvents();
             }
             if (mountpoint == "") {
-                messageEngine("Couldn't mount " + udisks->blockDevice(dev)->dev,"Warning");
+                messageEngine("Couldn't mount " + udisks->blockDevice(dev)->dev, MessageType::Warning);
             }
             else {
                 goTo(mountpoint);
@@ -2427,7 +2431,7 @@ void corefm::on_actionDesktop_triggered()
     ui->paste->setVisible(false);
     on_actionRefresh_triggered();
 
-    messageEngine("Send Completed.", "Info");
+    messageEngine("Send Completed.", MessageType::Info);
 }
 
 void corefm::on_actionHome_triggered()
@@ -2441,7 +2445,7 @@ void corefm::on_actionHome_triggered()
     ui->paste->setVisible(false);
     on_actionRefresh_triggered();
 
-    messageEngine("send Completed.", "Info");
+    messageEngine("send Completed.", MessageType::Info);
 }
 
 void corefm::pressed()
@@ -2473,7 +2477,7 @@ void corefm::sendToPath()
         ui->paste->setVisible(false);
         on_actionRefresh_triggered();
 
-        messageEngine("send Completed.", "Info");
+        messageEngine("send Completed.", MessageType::Info);
     }
 }
 

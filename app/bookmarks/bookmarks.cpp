@@ -28,6 +28,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)
 {
     ui->setupUi(this);
+
     ui->bookmarkEditBox->setVisible(false);
     ui->addSectionBox->setVisible(false);
     ui->deleteSection->setVisible(false);
@@ -96,29 +97,31 @@ void bookmarks::on_reload_clicked()
  * @param currentPath : Path which needs to bookmarked.
  * @param iconPath : Apps icon path from resource.
  */
-void bookmarks::callBookMarkDialog(QWidget *parent, QString currentPath)
+void bookmarks::callBookMarkDialog(QWidget *parent, const QString &currentPath)
 {
-//    QFileInfo info(currentPath);
-//    BookmarkManage bm;
-//    QString str = bm.checkingBookPathEx(currentPath);
-//    if (str.isEmpty() || str.isNull()) {
-//        bookmarkDialog *bkdlg = new bookmarkDialog(parent);
-//        QPixmap pix = geticon(currentPath).pixmap(QSize(bkdlg->iconLabel->width(),bkdlg->iconLabel->height()));
-//        bkdlg->pathLabel->setText(currentPath);
-//        bkdlg->bookMarkName->setText(info.fileName() + "");
-//        bkdlg->checkPath();
-//        bkdlg->iconLabel->setPixmap(pix);
-//        if (bkdlg->exec() == 0) {
-//            if (bkdlg->accepted) {
-//                bk.addBookmark(bkdlg->sectionName->currentText(), bkdlg->bookMarkName->text(), currentPath);
-//            } else if (!bkdlg->accepted) {
-//                bkdlg->close();
-//            }
-//        }
-//        sectionRefresh();
-//    } else {
-//        messageEngine(str, "Info");
-//    }
+    QFileInfo info(currentPath);
+    BookmarkManage bm;
+    const QString str = bm.checkingBookPathEx(currentPath);
+    if (str.isEmpty() || str.isNull()) {
+        bookmarkDialog *bkdlg = new bookmarkDialog(parent);
+        QIcon ico = geticon(currentPath);
+        QPixmap pix = ico.pixmap(QSize(120, 120));
+        bkdlg->setBookPath(currentPath);
+        bkdlg->setBookName(info.fileName() + "");
+        bkdlg->checkPath();
+        bkdlg->setBookIcon(pix);
+
+        if (bkdlg->exec() == 0) {
+            if (bkdlg->accepted) {
+                bk.addBookmark(bkdlg->getSectionName(), bkdlg->getBookName(), currentPath);
+            } else if (!bkdlg->accepted) {
+                bkdlg->close();
+            }
+        }
+        sectionRefresh();
+    } else {
+        messageEngine(str, MessageType::Info);
+    }
 }
 
 void bookmarks::on_selectSection_currentIndexChanged(const QString &arg1)
@@ -171,7 +174,7 @@ void bookmarks::on_deleteSection_clicked()
     if (reply == QMessageBox::Yes) {
         bk.delSection(ui->section->currentItem()->text());
         ui->section->takeItem(ui->section->currentIndex().row());
-        messageEngine("Section Deleted", "Info");
+        messageEngine("Section Deleted", MessageType::Info);
     }
     sectionRefresh();
 }
@@ -184,7 +187,7 @@ void bookmarks::on_sectionDone_clicked()
     ui->sectionName->setText("");
     ui->sectionStatus->setText("");
     ui->addSectionBox->setVisible(false);
-    messageEngine("Section Added", "Info");
+    messageEngine("Section Added", MessageType::Info);
     on_cTools_clicked();
 }
 
@@ -232,7 +235,7 @@ void bookmarks::on_bookmarkDelete_clicked()
         bk.delbookmark(ui->boklist->selectedItems().at(0)->text(), ui->section->currentItem()->text());
         int r = ui->boklist->currentItem()->row();
         ui->boklist->removeRow(r);
-        messageEngine("Bookmark Deleted", "Info");
+        messageEngine("Bookmark Deleted", MessageType::Info);
     }
     ui->bookmarkCount->setText(QString::number(ui->boklist->rowCount()) + " item(s)");
     sectionRefresh();
@@ -251,7 +254,7 @@ void bookmarks::on_editDone_clicked()
     } else {
         ui->boklist->removeRow(ui->boklist->currentRow());
     }
-    messageEngine("Edit Done", "Info");
+    messageEngine("Edit Done", MessageType::Info);
     sectionRefresh();
     on_editCancel_clicked();
 }

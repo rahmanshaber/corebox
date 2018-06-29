@@ -18,7 +18,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -192,6 +192,39 @@ background-color: #1793D1;
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="cancelProc">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+Text-align:left;
+color:#E6E6E6; 
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton:pressed{
+background-color:#1793D1; 
+}
+
+QPushButton:hover {
+background-color: #1793D1;
+}</string>
+           </property>
+           <property name="text">
+            <string>Cancel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -250,6 +283,7 @@ color: #57585D ;
         <zorder>findCMD</zorder>
         <zorder>locateCMD</zorder>
         <zorder>searchFF</zorder>
+        <zorder>cancelProc</zorder>
        </widget>
       </item>
       <item>
@@ -645,7 +679,7 @@ font-weight: bold;
     </widget>
    </item>
    <item>
-    <widget class="QStackedWidget" name="resultPage">
+    <widget class="QStackedWidget" name="infoPage">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -653,7 +687,7 @@ font-weight: bold;
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="fonudpage">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -816,11 +850,84 @@ border: 1px rgb(67, 67, 67);
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="activity">
+      <property name="styleSheet">
+       <string notr="true">QWidget{
+background-color:#F2F2F2 ;
+color:#000000; 
+border: 1px rgb(67, 67, 67);
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>15</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Search Activity</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTreeWidget" name="activityList">
+         <property name="animated">
+          <bool>true</bool>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <attribute name="headerVisible">
+          <bool>false</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>searchFF</tabstop>
+  <tabstop>findCMD</tabstop>
+  <tabstop>typeAll</tabstop>
+  <tabstop>typePicture</tabstop>
+  <tabstop>typeFolder</tabstop>
+  <tabstop>typeMedia</tabstop>
+  <tabstop>typeother</tabstop>
+  <tabstop>results</tabstop>
+  <tabstop>more</tabstop>
+  <tabstop>folderPath</tabstop>
+  <tabstop>setfolder</tabstop>
+  <tabstop>locateCMD</tabstop>
+  <tabstop>title</tabstop>
+ </tabstops>
  <resources>
   <include location="../icons.qrc"/>
  </resources>

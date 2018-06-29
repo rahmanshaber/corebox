@@ -59,7 +59,7 @@ void coreshot::on_save_clicked()
     ui->shotPreview->originalPixmap().save(&file, "PNG");
     file.close();
     files = fileName;
-    messageEngine("Screenshot Saved", "Info");
+    messageEngine("Screenshot Saved", MessageType::Info);
     this->close();
 }
 
@@ -72,7 +72,7 @@ void coreshot::on_saveAs_clicked()
 
     file.close();
     files = filename;
-    messageEngine("Screenshot Saved", "Info");
+    messageEngine("Screenshot Saved", MessageType::Info);
     this->close();
 }
 

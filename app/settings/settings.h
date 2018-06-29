@@ -22,11 +22,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QPushButton>
 
 #include "settingsmanage.h"
-#include "corefm/mimeutils.h"
-#include "corefm/fileutils.h"
-#include "corefm/applicationdialog.h"
-#include "../corebox/corebox.h"
-#include "../corebox/globalfunctions.h"
 
 
 namespace Ui {

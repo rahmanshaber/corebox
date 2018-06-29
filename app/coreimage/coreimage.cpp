@@ -15,8 +15,13 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreimage.h"
-#include "../corebox/corebox.h"
+#include "corebox/corebox.h"
 #include "ui_coreimage.h"
+
+#include "corebox/globalfunctions.h"
+#include "bookmarks//bookmarks.h"
+#include "bookmarks/bookmarkdialog.h"
+#include "corepaint/corepaint.h"
 
 #include <QFileDialog>
 #include <QStandardPaths>
@@ -32,8 +37,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QtWidgets>
 #include <QDateTime>
 #include <QtConcurrent>
+#include <QShortcut>
 
-coreimage::coreimage(QWidget *parent) :QWidget(parent),ui(new Ui::coreimage)
+coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
   ,slideShowTimer(nullptr)
 {
     ui->setupUi(this);
@@ -112,6 +118,7 @@ void coreimage::shotcuts()
 void coreimage::closeEvent(QCloseEvent *event)
 {
     event->ignore();
+    qDebug() << "Current Image : " << currentImagePath;
     saveToRecent("CoreImage", currentImagePath);
     event->accept();
 }
@@ -166,7 +173,7 @@ bool coreimage::loadFile(const QString &fileName)
         const QImage newImage = reader.read();
         if (newImage.isNull()) {
             messageEngine(tr("Cannot load \n%1 \n%2")
-                          .arg(QFileInfo(fileName).baseName(), reader.errorString()),"Warning");
+                          .arg(QFileInfo(fileName).baseName(), reader.errorString()),MessageType::Warning);
             return false;
         }
         setImage(newImage);
@@ -354,11 +361,11 @@ bool coreimage::saveFile(const QString &fileName)
     QImageWriter writer(fileName);
 
     if (!writer.write(image)) {
-        messageEngine(tr("Cannot write %1: %2").arg(QDir::toNativeSeparators(fileName)).arg(writer.errorString()), "Info");
+        messageEngine(tr("Cannot write %1: %2").arg(QDir::toNativeSeparators(fileName)).arg(writer.errorString()), MessageType::Info);
 
         return false;
     } else {
-        messageEngine("Image Saved", "Info");
+        messageEngine("Image Saved", MessageType::Info);
     }
     return true;
 }
@@ -367,7 +374,7 @@ void coreimage::on_cSave_clicked()
 {
     QImageWriter wr(currentImagePath);
     if (wr.write(image)) {
-        messageEngine("Image Saved", "Info");
+        messageEngine("Image Saved", MessageType::Info);
     }
 }
 

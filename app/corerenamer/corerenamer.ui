@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>869</width>
-    <height>518</height>
+    <width>928</width>
+    <height>524</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>corerenamer</string>
+   <string>CoreRenamer</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../icons.qrc">
+    <normaloff>:/icons/CoreRenemer.svg</normaloff>:/icons/CoreRenemer.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
@@ -27,6 +31,24 @@ QPushButton{
 QPushButton:hover {
    background-color: #308CC6;
    border: 1px gray;
+}
+
+.QPushButton:!enabled {
+	color: gray;
+	border: 1px solid gray;
+}
+.QGroupBox:!enabled {
+	color: gray;
+	border: 1px solid gray;
+}
+.QCheckBox:!enabled {
+	color: gray;
+}
+.QRadioButton:!enabled {
+	color: gray;
+}
+.QLabel:!enabled {
+	color: gray;
 }
 
 QGroupBox {
@@ -108,7 +130,7 @@ QLineEdit{
     <number>0</number>
    </property>
    <item row="0" column="0" colspan="2">
-    <widget class="QFrame" name="frame">
+    <widget class="QFrame" name="frame_00">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -132,6 +154,13 @@ QLineEdit{
        <widget class="QPushButton" name="bRefreshList">
         <property name="text">
          <string>Refresh List</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="clearItem">
+        <property name="text">
+         <string>Clear Item</string>
         </property>
        </widget>
       </item>
@@ -205,8 +234,14 @@ QLineEdit{
       </property>
       <item>
        <widget class="QGroupBox" name="groupBox">
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="title">
-         <string>Selected</string>
+         <string>File List</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <property name="spacing">
@@ -225,28 +260,25 @@ QLineEdit{
           <number>0</number>
          </property>
          <item>
-          <widget class="QTableWidget" name="filesList">
-           <property name="editTriggers">
-            <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked</set>
+          <widget class="QTableView" name="FLists">
+           <property name="selectionMode">
+            <enum>QAbstractItemView::ExtendedSelection</enum>
            </property>
            <property name="selectionBehavior">
             <enum>QAbstractItemView::SelectRows</enum>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>24</width>
-             <height>24</height>
-            </size>
            </property>
            <property name="showGrid">
             <bool>false</bool>
            </property>
            <property name="gridStyle">
-            <enum>Qt::NoPen</enum>
+            <enum>Qt::DotLine</enum>
            </property>
-           <attribute name="horizontalHeaderVisible">
+           <property name="sortingEnabled">
             <bool>true</bool>
-           </attribute>
+           </property>
+           <property name="cornerButtonEnabled">
+            <bool>false</bool>
+           </property>
            <attribute name="horizontalHeaderHighlightSections">
             <bool>false</bool>
            </attribute>
@@ -261,24 +293,11 @@ QLineEdit{
         </layout>
        </widget>
       </item>
-      <item>
-       <widget class="QGroupBox" name="gChangedFiles">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="title">
-         <string>Changes</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QFrame" name="frame">
+    <widget class="QFrame" name="frame_01">
      <layout class="QGridLayout" name="gridLayout_6">
       <property name="leftMargin">
        <number>5</number>
@@ -304,7 +323,7 @@ QLineEdit{
          <item row="0" column="0">
           <widget class="QLabel" name="ladtcpos">
            <property name="text">
-            <string>Cursor Position : </string>
+            <string>From : </string>
            </property>
           </widget>
          </item>
@@ -348,55 +367,10 @@ QLineEdit{
            </property>
           </widget>
          </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QGroupBox" name="gRemoveText">
-        <property name="title">
-         <string>Remove Text</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-        <property name="checked">
-         <bool>false</bool>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <property name="topMargin">
-          <number>13</number>
-         </property>
-         <item row="0" column="0">
-          <widget class="QLabel" name="lrmtcpos">
+         <item row="2" column="0">
+          <widget class="QCheckBox" name="addFromR">
            <property name="text">
-            <string>Cursor Position :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1" colspan="2">
-          <widget class="QLineEdit" name="removeTextCPos"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="lrmtccount">
-           <property name="text">
-            <string>Character Count : </string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1" colspan="2">
-          <widget class="QLineEdit" name="removeTextCCount"/>
-         </item>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="removeTextTextbtn">
-           <property name="text">
-            <string>Remove Text</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QPushButton" name="removeTextAllbtn">
-           <property name="text">
-            <string>Remove for all</string>
+            <string>From Right</string>
            </property>
           </widget>
          </item>
@@ -418,7 +392,7 @@ QLineEdit{
          <property name="topMargin">
           <number>13</number>
          </property>
-         <item row="1" column="1">
+         <item row="3" column="2">
           <widget class="QPushButton" name="upperCase">
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
@@ -428,7 +402,7 @@ QLineEdit{
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QComboBox" name="formatc">
            <item>
             <property name="text">
@@ -462,28 +436,28 @@ QLineEdit{
            </item>
           </widget>
          </item>
-         <item row="0" column="0">
+         <item row="0" column="1">
           <widget class="QLabel" name="lformat">
            <property name="text">
-            <string>Format : </string>
+            <string>Numbering : </string>
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
+         <item row="4" column="2">
           <widget class="QPushButton" name="capitalEach">
            <property name="text">
             <string>Capitalize Each Word</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
+         <item row="5" column="2">
           <widget class="QPushButton" name="lowerCase">
            <property name="text">
             <string>All to lower case</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="0" rowspan="3">
+         <item row="4" column="1" rowspan="2">
           <spacer name="spacer_04">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -495,6 +469,13 @@ QLineEdit{
             </size>
            </property>
           </spacer>
+         </item>
+         <item row="3" column="1">
+          <widget class="QCheckBox" name="numFromR">
+           <property name="text">
+            <string>From Right</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -520,42 +501,7 @@ QLineEdit{
          <property name="topMargin">
           <number>13</number>
          </property>
-         <item row="0" column="0" colspan="3">
-          <widget class="QGroupBox" name="gAddOldFileName">
-           <property name="title">
-            <string>Add old file's</string>
-           </property>
-           <property name="flat">
-            <bool>false</bool>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <property name="topMargin">
-             <number>13</number>
-            </property>
-            <item>
-             <widget class="QRadioButton" name="addOldFull">
-              <property name="text">
-               <string>Full Path</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="addOldOnly">
-              <property name="text">
-               <string>Only File Name</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="3" colspan="2">
+         <item row="0" column="4" colspan="2">
           <widget class="QGroupBox" name="gAddNewFileName">
            <property name="title">
             <string>Add new file's</string>
@@ -578,6 +524,15 @@ QLineEdit{
               <property name="text">
                <string>Full Path</string>
               </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -597,20 +552,6 @@ QLineEdit{
            </property>
           </widget>
          </item>
-         <item row="1" column="2">
-          <widget class="QComboBox" name="separatorC">
-           <item>
-            <property name="text">
-             <string>-&gt;</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>-</string>
-            </property>
-           </item>
-          </widget>
-         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="lsavepath">
            <property name="text">
@@ -618,10 +559,10 @@ QLineEdit{
            </property>
           </widget>
          </item>
-         <item row="2" column="1" colspan="2">
+         <item row="2" column="1" colspan="3">
           <widget class="QLineEdit" name="savePath"/>
          </item>
-         <item row="2" column="3">
+         <item row="2" column="4">
           <widget class="QPushButton" name="browseSave">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -640,7 +581,7 @@ QLineEdit{
            </property>
           </widget>
          </item>
-         <item row="2" column="4">
+         <item row="2" column="5">
           <widget class="QPushButton" name="saveRenamed">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -659,6 +600,51 @@ QLineEdit{
            </property>
            <property name="text">
             <string>Save</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="3">
+          <widget class="QGroupBox" name="gAddOldFileName">
+           <property name="title">
+            <string>Add old file's</string>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="topMargin">
+             <number>13</number>
+            </property>
+            <item>
+             <widget class="QRadioButton" name="addOldFull">
+              <property name="text">
+               <string>Full Path</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="addOldOnly">
+              <property name="text">
+               <string>Only File Name</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="separatorC">
+           <property name="text">
+            <string>-</string>
            </property>
           </widget>
          </item>
@@ -730,12 +716,73 @@ QLineEdit{
         </property>
        </spacer>
       </item>
+      <item row="1" column="0">
+       <widget class="QGroupBox" name="gRemoveText">
+        <property name="title">
+         <string>Remove Text</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <property name="topMargin">
+          <number>13</number>
+         </property>
+         <item row="2" column="0">
+          <widget class="QCheckBox" name="remFromR">
+           <property name="text">
+            <string>From Right</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="lrmtcpos">
+           <property name="text">
+            <string>From : </string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2" colspan="2">
+          <widget class="QLineEdit" name="removeTextCPos"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lrmtccount">
+           <property name="text">
+            <string>To : </string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2" colspan="2">
+          <widget class="QLineEdit" name="removeTextCCount"/>
+         </item>
+         <item row="2" column="2">
+          <widget class="QPushButton" name="removeTextTextbtn">
+           <property name="text">
+            <string>Remove Text</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QPushButton" name="removeTextAllbtn">
+           <property name="text">
+            <string>Remove for all</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

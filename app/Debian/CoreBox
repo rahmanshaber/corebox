@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=CoreBox
+Version=1.0
+Exec=coreBox
+Comment=COmbinatio
+Icon=/usr/share/corebox
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Categories=Utility;

@@ -17,11 +17,18 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "bookmarkdialog.h"
 #include "ui_bookmarkdialog.h"
 
+#include "corebox/globalfunctions.h"
 
-bookmarkDialog::bookmarkDialog(QWidget *parent) :QWidget(parent),
+bookmarkDialog::bookmarkDialog(QWidget *parent) : QDialog(parent),
     ui(new Ui::bookmarkDialog)
 {
     ui->setupUi(this);
+
+    connect(ui->cancel, &QPushButton::clicked, this, &bookmarkDialog::close);
+
+    ui->bkSection->clear();
+    ui->bkSection->addItems(bk.getBookSections());
+    ui->done->setEnabled(false);
 }
 
 bookmarkDialog::~bookmarkDialog()
@@ -37,7 +44,7 @@ void bookmarkDialog::on_done_clicked()
     if (ui->bkName->text().count() != 0 && ui->bkSection->currentText().count() != 0) {
         accepted = true;
         QTimer::singleShot(100, this, SLOT(close()));
-        messageEngine("Bookmark Added at '" + ui->bkSection->currentText() + "'", "Info");
+        messageEngine("Bookmark Added at '" + ui->bkSection->currentText() + "'", MessageType::Info);
     }
 }
 
@@ -72,6 +79,26 @@ void bookmarkDialog::checkPath()
         ui->done->setEnabled(true);
         ui->cancel->setText("Cancel");
     }
+}
+
+void bookmarkDialog::setBookIcon(QPixmap pix) {
+    ui->bkIcon->setPixmap(pix);
+}
+
+void bookmarkDialog::setBookPath(const QString &path) {
+    ui->path->setText(path);
+}
+
+void bookmarkDialog::setBookName(const QString &bName) {
+    ui->bkName->setText(bName);
+}
+
+QString bookmarkDialog::getBookName() {
+    return ui->bkName->text();
+}
+
+QString bookmarkDialog::getSectionName() {
+    return ui->bkSection->currentText();
 }
 
 void bookmarkDialog::item_Changed()

@@ -4,4 +4,5 @@ SUBDIRS += \
       libcpdf \
       libcarchiver \
       libcterminal \
+    libcsys
 

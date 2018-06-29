@@ -26,6 +26,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTreeWidgetItem>
 #include <QtConcurrent>
 
+#include "corefm/mimeutils.h"
+#include "corefm/fileutils.h"
+#include "corefm/applicationdialog.h"
+#include "../corebox/corebox.h"
+#include "../corebox/globalfunctions.h"
+
 
 settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
 {
@@ -384,7 +390,7 @@ void settings::on_ok_clicked()
     sm.setSHowNote(ui->isNotes->isChecked());
 
     //inform the user
-    messageEngine("Settings Applied\nCoreBox needs to restart", "Info");
+    messageEngine("Settings Applied\nCoreBox needs to restart", MessageType::Info);
     QIcon::setThemeName(sm.getThemeName());
 }
 
@@ -438,12 +444,13 @@ void settings::on_browSave_clicked()
 void settings::on_backUp_clicked()
 {
     QString path = QDir::homePath() + "/.config/coreBox";
-    QString settingsFile = "coreBox.conf";
-    QString bookFile = "CoreBoxBook";
+    QString cPath = QDir::homePath() + "/.config";
+    //QString settingsFile = "coreBox.conf";
+    //QString bookFile = "CoreBoxBook";
 
     corearchiver *arc = new corearchiver();
     arc->setFilename("CoreBox_Backup");
-    arc->filePathList = QStringList() << path + "/" + settingsFile << path + "/" + bookFile;
+    arc->filePathList = QStringList() << path;// + "/" + settingsFile << path + "/" + bookFile;
     arc->setFolderPath(ui->backupPath->text());
-    arc->compress(QStringList() << path + "/" + settingsFile << path + "/" + bookFile, path);
+    arc->compress(QStringList() << path /*+ "/" + settingsFile << path + "/" + bookFile*/, cPath);
 }

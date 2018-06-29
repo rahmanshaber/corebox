@@ -26,6 +26,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QStandardItemModel>
 #include <QtConcurrent>
 
+#include "corebox/corebox.h"
+#include "corebox/globalfunctions.h"
 
 coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
    , playerState(QMediaPlayer::StoppedState)
@@ -64,7 +66,7 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
     connect(ui->seekBar,SIGNAL(sliderMoved(int)),this,SLOT(seek(int)));
 
     if (!isPlayerAvailable()) {
-        messageEngine(tr("The QMediaPlayer object does not have a valid service\nPlease check the media service plugins are installed."),"Warning");
+        messageEngine(tr("The QMediaPlayer object does not have a valid service\nPlease check the media service plugins are installed."),MessageType::Warning);
      }
 
     ui->numberOfFiles->setVisible(0);
@@ -218,16 +220,16 @@ void coreplayer::statusChanged(QMediaPlayer::MediaStatus status)
 //        setStatusInfo(QString());
         break;
     case QMediaPlayer::LoadingMedia:
-        messageEngine("Loading...", "Info");
+        messageEngine("Loading...", MessageType::Info);
         break;
     case QMediaPlayer::StalledMedia:
-        messageEngine("Media Stalled", "Info");
+        messageEngine("Media Stalled", MessageType::Info);
         break;
     case QMediaPlayer::EndOfMedia:
         QApplication::alert(this);
         break;
     case QMediaPlayer::InvalidMedia:
-        messageEngine("InvalidMedia", "Warning");
+        messageEngine("Invalid Media", MessageType::Warning);
         break;
     }
 }
@@ -246,12 +248,12 @@ void coreplayer::handleCursor(QMediaPlayer::MediaStatus status)
 
 void coreplayer::bufferingProgress(int progress)
 {
-    messageEngine(tr("Buffering %4%").arg(progress), "Info");
+    messageEngine(tr("Buffering %4%").arg(progress), MessageType::Info);
 }
 
 void coreplayer::displayErrorMessage()
 {
-    messageEngine(player->errorString(), "Warning");
+    messageEngine(player->errorString(), MessageType::Warning);
 }
 
 void coreplayer::updateDurationInfo(qint64 currentInfo)
@@ -335,7 +337,7 @@ void coreplayer::openPlayer(const QString path)
         player->setMedia(QUrl::fromLocalFile(path));
         player->play();
         ui->play->setChecked(true);
-        messageEngine("Playing", "Info");
+        messageEngine("Playing", MessageType::Info);
     }
 
 }
@@ -353,14 +355,14 @@ void coreplayer::on_open_clicked()
         filepath = dialog.selectedFiles().first();
         folderpath = QFileInfo(dialog.selectedFiles().first()).path();
         openPlayer(filepath);
-        messageEngine("Files Collected", "Info");
+        messageEngine("Files Collected", MessageType::Info);
         for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
             b->setEnabled(true);
         }
         ui->seekBar->setEnabled(true);
         ui->volume->setEnabled(true);
     } else {
-        messageEngine("Files collection rejected", "Info");
+        messageEngine("Files collection rejected", MessageType::Info);
     }
 }
 
@@ -396,12 +398,12 @@ void coreplayer::on_play_clicked(bool checked)
         if(ui->medialist->currentIndex().row() != -1){play(ui->medialist->currentIndex().row());}
         else{play(0);}
         if(ui->shortcut->isVisible()){ui->shortcut->setVisible(false);}
-        messageEngine("Playing", "Info");
+        messageEngine("Playing", MessageType::Info);
     }
     else{
         setState(QMediaPlayer::PausedState);
         player->pause();
-        messageEngine("Paused", "Info");
+        messageEngine("Paused", MessageType::Info);
     }
 }
 
@@ -409,7 +411,7 @@ void coreplayer::on_mute_clicked(bool checked)
 {
     if (checked){
         player->setMuted(true);
-        messageEngine("Mute", "Info");
+        messageEngine("Mute", MessageType::Info);
     }
     else{
         player->setMuted(false);
@@ -500,7 +502,7 @@ void coreplayer::on_medialist_doubleClicked(const QModelIndex &index)
     on_stop_clicked();
     play(index.row());
     ui->play->setChecked(true);
-    messageEngine("Playing", "Info");
+    messageEngine("Playing", MessageType::Info);
 }
 
 void coreplayer::seekLeft() {

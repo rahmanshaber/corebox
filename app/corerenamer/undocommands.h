@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QUndoCommand>
+#include <QStandardItem>
 #include <QTableWidgetItem>
 
 enum COMMAND {
@@ -16,7 +17,7 @@ enum COMMAND {
 class ARRTextCommand : public QUndoCommand
 {
 public:
-    ARRTextCommand(QTableWidgetItem *item, const QString &addedT, COMMAND c, QUndoCommand *parent = 0)
+    ARRTextCommand(QStandardItem *item, const QString &addedT, COMMAND c, QUndoCommand *parent = 0)
         : QUndoCommand(parent), m_item(item), m_nText(addedT), m_oText(item->text()) {
         setText(getCommandText(c) + " " + item->text() + " " + m_nText);
     }
@@ -35,7 +36,7 @@ public:
     }
 
 private:
-    QTableWidgetItem *m_item;
+    QStandardItem *m_item;
     QString m_nText;
     QString m_oText;
 
@@ -53,47 +54,6 @@ private:
         }
         return "";
     }
-};
-
-
-
-class RemoveTextCommand : public QUndoCommand
-{
-public:
-    RemoveTextCommand(QTableWidgetItem *item, const QString &remedT, QUndoCommand *parent = 0)
-        : QUndoCommand(parent), m_item(item), m_nText(remedT), m_oText(item->text()) {
-        setText("Remmoved " + item->text() + " " + m_nText);
-    }
-
-    ~RemoveTextCommand() {
-        if (!m_item)
-            delete m_item;
-    }
-
-    void undo() override {
-        m_item->setText(m_oText);
-    }
-
-    void redo() override {
-        m_item->setText(m_nText);
-    }
-
-private:
-    QTableWidgetItem *m_item;
-    QString m_nText;
-    QString m_oText;
-};
-
-class ReplaceTextCommand : public QUndoCommand
-{
-public:
-    ReplaceTextCommand();
-};
-
-class FormatTextCommand : public QUndoCommand
-{
-public:
-    FormatTextCommand();
 };
 
 #endif // UNDOCOMMANDS_H

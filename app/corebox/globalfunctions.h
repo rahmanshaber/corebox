@@ -31,6 +31,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFileInfo>
 #include <QSettings>
 
+#include <QGraphicsDropShadowEffect>
+
 #include "../settings/settingsmanage.h"
 
 enum AppsName {
@@ -54,10 +56,19 @@ enum AppsName {
     CoreTerminal
 };
 
- bool moveToTrash(QString fileName);
- bool saveToRecent(QString appName, QString const  pathName);
- void messageEngine(QString message, QString messageType);
- void openAppEngine(const QString path);
+enum MessageType {
+    Info = 0,
+    Warning = 1,
+    Tips = 2
+};
+
+ QString sentDateText(const QString &dateTime);
+ bool checkRecentActivityFile();
+ bool saveToRecent(QString appName, const QString &pathName);
+
+ bool moveToTrash(const QString &fileName);
+ void messageEngine(const QString &message, MessageType messageType);
+ void openAppEngine(const QString &path);
  void setupFolder();
 
  QRect screensize();
@@ -72,6 +83,9 @@ enum AppsName {
 
  qint64 getfilesize(QString path);
 
+ qint64 getF(QStringList paths);
+ qint64 getSize(QString path);
+
  QString checkIsValidDir(const QString str);
  QString checkIsValidFile(const QString str);
 
@@ -80,5 +94,14 @@ enum AppsName {
 
  QString getMountPathByName(const QString displayName);
 
+ static void addDropShadow(QWidget *widget, const int alpha, const int blur = 25, const QString stylesheet = "") {
+     QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect(widget);
+     effect->setBlurRadius(blur);
+     effect->setColor(QColor(0, 0, 0, alpha));
+     effect->setOffset(0);
+     widget->setGraphicsEffect(effect);
+     if (!stylesheet.isNull())
+         widget->setStyleSheet(stylesheet);
+ }
 
 #endif // GLOBALFUNCTIONS_H

@@ -18,15 +18,14 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define BOOKMARKDIALOG_H
 
 #include <QWidget>
-
+#include <QDialog>
 #include "bookmarkmanage.h"
-#include "../corebox/globalfunctions.h"
 
 namespace Ui {
 class bookmarkDialog;
 }
 
-class bookmarkDialog : public QWidget
+class bookmarkDialog : public QDialog
 {
     Q_OBJECT
 
@@ -35,6 +34,12 @@ public:
     ~bookmarkDialog();
 
     void checkPath();
+
+    void setBookIcon(QPixmap pix);
+    void setBookPath(const QString &path);
+    void setBookName(const QString &bName);
+    QString getBookName();
+    QString getSectionName();
 
     bool accepted = false;
 

@@ -24,6 +24,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDate>
 #include <QDateTime>
 #include <QMessageBox>
+#include <QDebug>
 
 #include "corebox/corebox.h"
 #include "corebox/globalfunctions.h"
@@ -93,7 +94,7 @@ bool corepad::initializeNewTab(const QString &filePath)
         connect(text, &coreedit::textChanged, this, &corepad::textTextChanged);
         return true;
     } else {
-        messageEngine("Reached page limit.\nClose some tab.", "Warning");
+        messageEngine("Reached page limit.\nClose some tab.", MessageType::Warning);
     }
     return false; //Return an exception - There is some other causes happening.
 }
@@ -291,13 +292,13 @@ void corepad::on_cOpen_clicked()
 {
     workFilePath = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath() + "/Documents", tr("Text Files (*.*)"));
     if (workFilePath.isEmpty()) {
-        messageEngine("Empty File Name", "Warning");
+        messageEngine("Empty File Name", MessageType::Warning);
         return;
     }
     else {
         bool open = initializeNewTab(workFilePath);
-        if (open) messageEngine("File Opened", "Info");
-        else messageEngine("Can't open file", "Warning");
+        if (open) messageEngine("File Opened", MessageType::Info);
+        else messageEngine("Can't open file", MessageType::Warning);
     }
 }
 
@@ -312,9 +313,9 @@ bool corepad::on_cSave_clicked()
     int index = ui->notes->currentIndex();
     bool saved = isCurrentSaved(index).toInt(), updated = isCurrentUpdated(index).toInt();
     if (!saved && updated) {
-        workFilePath = QFileDialog::getSaveFileName(this, tr("Save File"), ui->notes->tabText(ui->notes->currentIndex()) ,tr("Text Files (*.*)"));
+        workFilePath = QFileDialog::getSaveFileName(this, tr("Save File"), ui->notes->tabText(ui->notes->currentIndex()).remove(0, 1) ,tr("Text Files (*.*)"));
         if (workFilePath.isEmpty()) {
-            messageEngine("Empty File Name", "Warning");
+            messageEngine("Empty File Name", MessageType::Warning);
             return false;
         } else {
             goto SAVE_FILE;
@@ -326,10 +327,10 @@ bool corepad::on_cSave_clicked()
         if (saveto) {
             setCurrent(index, 1, 0, workFilePath);
             ui->notes->setTabText(index, QFileInfo(workFilePath).fileName());
-            messageEngine("File Saved", "Info");
+            messageEngine("File Saved", MessageType::Info);
             return true;
         } else {
-            messageEngine("Can't open file", "Warning");
+            messageEngine("Can't open file", MessageType::Warning);
         }
     }
     return false;
@@ -347,7 +348,7 @@ void corepad::on_cSaveAs_clicked()
                                                       tr("Text Files (*.*)"));
     int index = ui->notes->currentIndex();
     if (fileName.isEmpty()) {
-        messageEngine("Empty File Name", "Warning");
+        messageEngine("Empty File Name", MessageType::Warning);
         return;
     }
     else {
@@ -355,9 +356,9 @@ void corepad::on_cSaveAs_clicked()
         if (saveto) {
             ui->notes->setTabText(index, QFileInfo(fileName).fileName());
             setCurrent(index, 1, 0, fileName);
-            messageEngine("File Saved", "Info");
+            messageEngine("File Saved", MessageType::Info);
         } else {
-            messageEngine("Can't open file", "Warning");
+            messageEngine("Can't open file", MessageType::Warning);
             return;
         }
     }
@@ -399,7 +400,11 @@ void corepad::on_addDate_clicked()
 
 void corepad::on_bookMarkIt_clicked()
 {
-    if (!workFilePath.isNull()) {
+    if (!currentFilePath(ui->notes->currentIndex()).isNull()) {
+        if (!QFileInfo(workFilePath).exists()) {
+            messageEngine("File Not saved.", MessageType::Warning);
+            return;
+        }
         bookmarks bookMarks;
         bookMarks.callBookMarkDialog(this, workFilePath);
     }
@@ -453,7 +458,7 @@ void corepad::quitClicked()
             deleteLater();
         }
     }
-    else messageEngine("There are still some changes needs to be saved.", "Warning");
+    else messageEngine("There are still some changes needs to be saved.", MessageType::Warning);
 }
 
 void corepad::closeEvent(QCloseEvent *event) {

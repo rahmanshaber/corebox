@@ -310,7 +310,7 @@ void coretime::PMWarning()
 {
     QString mess = "Your selected time is set for PM."
                    " If you intended to wake in the morning, now is your chance to fix it";
-    messageEngine(mess,"Warning");
+    messageEngine(mess, MessageType::Warning);
 }
 
 void coretime::displayTimeMode()

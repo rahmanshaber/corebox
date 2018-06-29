@@ -37,10 +37,17 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreterminal/coreterminal.h"
 #include "corerenamer/corerenamer.h"
 
+#include "../bookmarks/bookmarks.h"
+#include "../bookmarks/bookmarkmanage.h"
+#include "../settings/settings.h"
+#include "globalfunctions.h"
 
 CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
 {
     ui->setupUi(this);
+
+    //setWindowOpacity(0.95);
+    //setAttribute(Qt::WA_TranslucentBackground);
 
     //set a icon set for the whole app
     QIcon::setThemeName(sm.getThemeName());
@@ -79,7 +86,7 @@ CoreBox::~CoreBox()
 
 //===========================WindowBar========Start===============================================================
 
-void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
+void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in window
 {
     int n = ui->windows->count();
 
@@ -123,7 +130,7 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
     case CorePaint: {
         corepaint *cPAINT = new corepaint();
 
-        QString str = checkIsValidFile(arg);
+        const QString str = checkIsValidFile(arg);
         if (!str.isEmpty() || !str.isNull()) cPAINT->initializeNewTab(true, str);
         else cPAINT->initializeNewTab();
 
@@ -134,7 +141,7 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
     case CorePlayer: {
         coreplayer *cPLAYER = new coreplayer();
 
-        QString str = checkIsValidFile(arg);
+        const QString str = checkIsValidFile(arg);
         if (!str.isEmpty() || !str.isNull()) cPLAYER->openPlayer(str);
 
         ui->windows->insertTab(n, cPLAYER, QIcon(":/icons/CorePlayer.svg"), "CorePlayer");
@@ -204,7 +211,7 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
     case Search: {
         search *ser = new search();
 
-        QString str = checkIsValidDir(arg);
+        const QString str = checkIsValidDir(arg);
         if (!str.isEmpty() || !str.isNull()) ser->setPath(str);
 
         ui->windows->insertTab(n, ser, QIcon(":/icons/Search.svg"), "Search");
@@ -230,7 +237,7 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
     case CorePDF: {
         corepdf *cPDF = new corepdf();
 
-        QString str = checkIsValidFile(arg);
+        const QString str = checkIsValidFile(arg);
         if (!str.isEmpty() || !str.isNull()) cPDF->openPdfFile(str);
 
         ui->windows->insertTab(n, cPDF, QIcon(":/icons/CorePDF.svg"), "CorePDF");
@@ -238,12 +245,14 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
         break;
     }
     case CoreTerminal: {
-        QString workDir = QDir::homePath();
-        if(!arg.isEmpty() && arg.contains("$$$")){
-            workDir = arg.split("$$$").at(1);
-            arg = arg.split("$$$").at(0);
-        }
-        coreterminal *trm = new coreterminal(workDir, arg);
+        QString workDir = arg;
+        if (!arg.count())
+            workDir = QDir::homePath();
+
+        if (QFileInfo(workDir).isFile())
+            workDir = QFileInfo(arg).path();
+
+        coreterminal *trm = new coreterminal(workDir, "");
         ui->windows->insertTab(n, trm, QIcon(":/icons/CoreTerminal.svg"), "CoreTerminal");
         ui->windows->setCurrentIndex(n);
         break;
@@ -251,8 +260,8 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
     case CoreRenamer: {
         corerenamer *cFM = new corerenamer();
 
-//        QString str = checkIsValidDir(arg);
-//        if (!str.isEmpty() || !str.isNull()) cFM->goTo(str);
+        const QString str = checkIsValidDir(arg);
+        if (!str.isEmpty() || !str.isNull()) cFM->addPath(str);
 
         ui->windows->insertTab(n, cFM, QIcon(":/icons/CoreRenemer.svg"), "CoreRenamer");
         ui->windows->setCurrentIndex(n);
@@ -266,105 +275,102 @@ void CoreBox::tabEngine(AppsName i, QString arg) // engine to open app in window
 
 void CoreBox::on_windows_tabCloseRequested(int index)
 {
-    QString appName = ui->windows->tabBar()->tabText(index);
+    const QString appName = ui->windows->tabBar()->tabText(index);
 
-    qDebug() << appName;
     if (appName == "Bookmarks") {
-        bookmarks *cbook = ui->windows->findChild<bookmarks*>("bookmarks");
+        bookmarks *cbook = static_cast<bookmarks*>(ui->windows->widget(index));
         if (cbook->close()){
             cbook->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "About") {
-        about *cabout = ui->windows->findChild<about*>("about");
+        about *cabout = static_cast<about*>(ui->windows->widget(index));
         if (cabout->close()){
             cabout->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "DashBoard") {
-        dashboard *cdash = ui->windows->findChild<dashboard*>("dashboard");
+        dashboard *cdash = static_cast<dashboard*>(ui->windows->widget(index));
         if (cdash->close()){
             cdash->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "Start") {
-        Start *cstart = ui->windows->findChild<Start*>("Start");
+        Start *cstart = static_cast<Start*>(ui->windows->widget(index));
         if (cstart->close()){
             cstart->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "Search") {
-        search *csearch = ui->windows->findChild<search*>("search");
+        search *csearch = static_cast<search*>(ui->windows->widget(index));
         if (csearch->close()){
             csearch->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "Help") {
-        help *chelp = ui->windows->findChild<help*>("help");
+        help *chelp = static_cast<help*>(ui->windows->widget(index));
         if (chelp->close()){
             chelp->deleteLater();
             ui->windows->removeTab(index);
         }
-    }else if (appName == "Settings") {
-        settings *csettings = ui->windows->findChild<settings*>("settings");
+    } else if (appName == "Settings") {
+        settings *csettings = static_cast<settings*>(ui->windows->widget(index));
         if (csettings->close()){
             csettings->deleteLater();
             ui->windows->removeTab(index);
         }
     }
     else if (appName == "CorePaint") {
-        corepaint *cpaint = ui->windows->findChild<corepaint*>("corepaint");
+        corepaint *cpaint = static_cast<corepaint*>(ui->windows->widget(index));
         if (cpaint->close()){
             cpaint->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "CorePlayer") {
-        coreplayer *cplay = ui->windows->findChild<coreplayer*>("coreplayer");
+        coreplayer *cplay = static_cast<coreplayer*>(ui->windows->widget(index));
         if (cplay->close()){
             cplay->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "CoreFM") {
-        corefm *cfm = ui->windows->findChild<corefm*>("corefm");
+        corefm *cfm = static_cast<corefm*>(ui->windows->widget(index));
         if (cfm->close()){
             cfm->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "CorePad") {
-        corepad *cpad = ui->windows->findChild<corepad*>("corepad");
+        corepad *cpad = static_cast<corepad*>(ui->windows->widget(index));
         if (cpad->close()){
             cpad->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "CoreImage") {
-        coreimage *cimg = ui->windows->findChild<coreimage*>("coreimage");
+        coreimage *cimg = static_cast<coreimage*>(ui->windows->widget(index));
         if (cimg->close()){
             cimg->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "CoreTime") {
-        coretime *ctim = ui->windows->findChild<coretime*>("coretime");
+        coretime *ctim = static_cast<coretime*>(ui->windows->widget(index));
         if (ctim->close()){
             ctim->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "CorePDF") {
-        corepdf *cpdf = ui->windows->findChild<corepdf*>("corepdf");
+        corepdf *cpdf = static_cast<corepdf*>(ui->windows->widget(index));
 //        cpdf->eclose();
         if (cpdf->close()){
             cpdf->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "CoreTerminal") {
-//        qDebug() << "From close tab requested...";
-        coreterminal *ctrm = ui->windows->findChild<coreterminal*>();
+        coreterminal *ctrm = static_cast<coreterminal*>(ui->windows->widget(index));
         if (ctrm->close()){
             ctrm->deleteLater();
             ui->windows->removeTab(index);
         }
     } else if (appName == "CoreRenamer") {
-//        qDebug() << "From close tab requested...";
-        corerenamer *cren = ui->windows->findChild<corerenamer*>();
+        corerenamer *cren = static_cast<corerenamer*>(ui->windows->widget(index));
         if (cren->close()){
             cren->deleteLater();
             ui->windows->removeTab(index);
@@ -386,7 +392,7 @@ int CoreBox::filterEngine(QString name) // engine for find if a app is opened
     return 404;
 }
 
-void CoreBox::on_windows_currentChanged(int index) // set window titel related to current selected app
+void CoreBox::on_windows_currentChanged(int index) // set window title related to current selected app
 {
     QString title = ui->windows->tabText(index);
     this->setWindowTitle(title);
@@ -526,6 +532,29 @@ void CoreBox::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
+void CoreBox::paintEvent(QPaintEvent *event)
+{
+//    QRgb _blend(qRgba(0,0,0,0xff));
+//    QColor color(_blend);
+//    color.setAlphaF(0.75);
+//    _blend = color.rgba();
+
+//    QPainter paint(this);
+//    paint.setOpacity(0.8);
+
+//    const auto rects = (event->region() & contentsRect()).rects();
+//    //qDebug() << rects;
+//    for (const QRect &rect : rects)
+//    {
+//        QColor col(QColor::fromRgb(255,255,255));
+//        col.setAlpha(qAlpha(_blend));
+//        paint.save();
+//        paint.setCompositionMode(QPainter::CompositionMode_Source);
+//        paint.fillRect(rect, col);
+//        paint.restore();
+//    }
+}
+
 void CoreBox::on_bookmarks_clicked()
 {
     tabEngine(Bookmarks);
@@ -568,7 +597,24 @@ void CoreBox::on_corepad_clicked()
 
 void CoreBox::on_box_clicked()
 {
-    messageEngine("Thanks for using CoreBox\nVersion 2.2", "Info");
+    messageEngine("Thanks for using CoreBox\nVersion 2.2", MessageType::Info);
 }
 
+void CoreBox::on_bookAll_clicked()
+{
+    BookmarkManage bk;
+    if (bk.getBookSections().contains("LastUsed"))
+        bk.delSection("LastUsed");
 
+    int count = 0;
+    bk.addSection("LastUsed");
+    for (int i = 0; i < ui->windows->count(); i++) {
+        const QString path = ui->windows->widget(i)->windowFilePath();
+        if (path.count()) {
+            bk.addBookmark("LastUsed", QFileInfo(path).fileName(), path);
+            count++;
+        }
+    }
+
+    if (!count) bk.delSection("LastUsed");
+}

@@ -19,6 +19,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QtConcurrent>
 
+#include "libarchiveqt.h"
+
 
 corearchiver::corearchiver(QWidget *parent) :
     QWidget(parent),
@@ -45,7 +47,6 @@ void corearchiver::startsetup()
     connect( ui->formatsCB, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( updateFormat( QString ) ) );
 
     connect( ui->createArc, &QToolButton::clicked, [this](){
-//        qDebug() << "Archive Destination : " << location << "\nFrom line edit setting : " << ui->locationLE->text();
         compress(filePathList, !workingDir.isEmpty() ? QDir(workingDir) : QDir::current());
     } );
 
@@ -54,6 +55,7 @@ void corearchiver::startsetup()
     ui->locationLE->setEnabled(false);
     format = ui->formatsCB->currentText();
     ui->nameLE->setText(archiveName);
+    ui->nameLE->setFocus();
 }
 
 /*
@@ -65,19 +67,19 @@ void corearchiver::startsetup()
  *
 */
 
-void corearchiver::setFilename(QString fileName)
+void corearchiver::setFilename(const QString &fileName)
 {
     archiveName = fileName;
     ui->nameLE->setText(archiveName);
 }
 
-void corearchiver::setFolderPath(QString path)
+void corearchiver::setFolderPath(const QString &path)
 {
     workingDir = path;
     location = path;
 }
 
-void corearchiver::compress(QStringList archiveList , QDir currentDir)
+void corearchiver::compress(const QStringList &archiveList , const QDir &currentDir)
 {
     ui->nameLE->setEnabled(false);
     ui->locationLE->setEnabled(false);
@@ -120,9 +122,9 @@ void corearchiver::compress(QStringList archiveList , QDir currentDir)
  * @brief coreArc::extract Extract the archive at the archive path
  * @param archive Archive file path
  */
-void corearchiver::extract(QString archiveFilePath , QDir dest)
+void corearchiver::extract(const QString &archiveFilePath , const QDir &dest)
 {
-    QString destP = dest.path();
+    const QString destP = dest.path();
     // Create the dest folder if it does nor exist
     if (!QDir(destP).exists())
         QDir::current().mkdir( destP );
@@ -137,14 +139,14 @@ void corearchiver::extract(QString archiveFilePath , QDir dest)
     });
 }
 
-void corearchiver::updateFileName( QString fn )
+void corearchiver::updateFileName(const QString &fn)
 {
     archiveName = QString( fn );
 }
 
 void corearchiver::updateDirName()
 {
-    QString loc = QFileDialog::getExistingDirectory( this, "NewBreeze - Choose Directory", QDir::currentPath() );
+    const QString loc = QFileDialog::getExistingDirectory( this, "NewBreeze - Choose Directory", QDir::currentPath() );
     if ( not loc.isEmpty() ) {
         ui->locationLE->setEnabled(true);
         ui->locationLE->setText( loc );
@@ -152,7 +154,7 @@ void corearchiver::updateDirName()
     }
 }
 
-void corearchiver::updateFormat( QString fmt )
+void corearchiver::updateFormat(const QString &fmt )
 {
     format = QString( fmt );
 }

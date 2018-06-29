@@ -18,18 +18,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define COREPLAYER_H
 
 #include <QWidget>
-#include <QAbstractItemView>
-#include <QVideoProbe>
-#include <QVideoWidget>
-#include <QAudioProbe>
-#include <QStandardItemModel>
 #include <QMediaPlayer>
 #include <QCloseEvent>
 #include <QModelIndex>
 #include <QMediaPlaylist>
-
-#include "../corebox/corebox.h"
-#include "../corebox/globalfunctions.h"
 
 
 namespace Ui {

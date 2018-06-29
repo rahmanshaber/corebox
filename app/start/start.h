@@ -21,11 +21,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QResizeEvent>
 #include <QListWidgetItem>
 #include <QTableWidgetItem>
-
-#include "../settings/settingsmanage.h"
-#include "corebox/corebox.h"
-#include "bookmarks/bookmarkmanage.h"
-#include "corebox/globalfunctions.h"
+#include <QTreeWidgetItem>
+#include "settings/settingsmanage.h"
 
 
 namespace Ui {
@@ -39,20 +36,29 @@ class Start : public QWidget
 public:
     explicit Start(QWidget *parent = 0);
     ~Start();
-    void loadsettings();
     void reload();
 
+protected:
+    void paintEvent(QPaintEvent *event);
+
 private slots:
-    void on_recents_itemDoubleClicked(QTableWidgetItem *item);
+    void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
     void on_appCollect_itemDoubleClicked(QListWidgetItem *item);
     void on_speedDialB_itemDoubleClicked(QListWidgetItem *item);
+
     void on_coreApps_clicked();
     void on_speedDial_clicked();
     void on_recentActivites_clicked();
 
 private:
-    SettingsManage sm;
     Ui::Start *ui;
+    SettingsManage sm;
+
+    void loadsettings();
+    void loadSpeedDial();
+    void loadRecent();
+
+    bool isRecentEnable;
 };
 
 #endif // START_H

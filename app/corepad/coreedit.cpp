@@ -16,16 +16,17 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreedit.h"
 #include <QDebug>
-
+#include "chighlighter.h"
 
 coreedit::coreedit(QWidget *parent) : QPlainTextEdit(parent)
 {
-    setStyleSheet("QWidget{background-color: #2E2F30;}"
+    cHighlighter *highlighter = new cHighlighter(document());
+    setStyleSheet("QWidget{background-color: #2E2F30; border: none;}"
                   "QMenu::item{background-color: rgb(0, 0, 0);color: rgb(255, 255, 255);}"
-                  "QMenu::item::selected{background-color: rgb(0, 85, 127);color: rgb(255,255,255);}");
+                  "QMenu::item::selected{background-color: rgb(p0, 85, 127);color: rgb(255,255,255);}");
     lineNumberArea = new LineNumberArea(this);
-    this->lineNumberArea->setContentsMargins(-5, 0,0,0);
-    this->lineNumberArea->setFixedWidth(20);
+    this->lineNumberArea->setContentsMargins(0, 0, 0, 0);
+    //this->lineNumberArea->setMinimumWidth(20);
 //---------------------------- Setting the CoreEdit background -----------------------------------------
     QPalette p = palette();
     p.setColor(QPalette::Text, "#B9A388");  //Text color set to white.
@@ -39,14 +40,14 @@ coreedit::coreedit(QWidget *parent) : QPlainTextEdit(parent)
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
 //------------------------------------------------------------------------------------------------------
     updateLineNumberAreaWidth(0);   //Set the line number area.
-    highlightCurrentLine();         //Highlight the current line.
+    //highlightCurrentLine();         //Highlight the current line.
 }
 
 int coreedit::lineNumberAreaWidth()
 {
-    int digits = 1;
+    int digits = 2;
     int max = qMax(1, blockCount());
-    while (max >= 10) {
+    while (max >= 100) {
         max /= 10;
         ++digits;
     }
@@ -54,9 +55,9 @@ int coreedit::lineNumberAreaWidth()
     return space;
 }
 
-void coreedit::updateLineNumberAreaWidth(int /* newBlockCount */)
+void coreedit::updateLineNumberAreaWidth(int /*newBlockCount*/)
 {
-    setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
+    setViewportMargins(lineNumberAreaWidth() + 2, 0, 0, 0);
 }
 
 void coreedit::updateLineNumberArea(const QRect &rect, int dy)
@@ -73,7 +74,8 @@ void coreedit::resizeEvent(QResizeEvent *e)
 {
     QPlainTextEdit::resizeEvent(e);
     QRect cr = contentsRect();
-    lineNumberArea->setGeometry(QRect(cr.left(), cr.top(), lineNumberAreaWidth(), cr.height()));
+    // Geometry of the line number area
+    lineNumberArea->setGeometry(QRect(cr.left() - 2, cr.top(), lineNumberAreaWidth() + 3, cr.height() + 2));
 }
 
 void coreedit::highlightCurrentLine()
@@ -109,7 +111,7 @@ void coreedit::lineNumberAreaPaintEvent(QPaintEvent *event)
         if (block.isVisible() && bottom >= event->rect().top()) {
             QString number = QString::number(blockNumber + 1);
             painter.setPen("#ffffff");
-            painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(),Qt::AlignRight, number);
+            painter.drawText(-1, top, lineNumberArea->width() + 3, fontMetrics().height() + 2, Qt::AlignRight, number + " ");
         }
 
         block = block.next();

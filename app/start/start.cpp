@@ -19,17 +19,62 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QTableWidgetItem>
 #include <QFont>
+#include <QFileSystemWatcher>
+#include <QDebug>
+#include <QCollator>
+
+#include "corebox/corebox.h"
+#include "bookmarks/bookmarkmanage.h"
+#include "corebox/globalfunctions.h"
 
 
 Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
 {
     ui->setupUi(this);
+    //setWindowOpacity(0.95);
+    //setAttribute(Qt::WA_TranslucentBackground);
+    QFileSystemWatcher *watcher = new QFileSystemWatcher();
 
-    ui->recents->setFocusPolicy(Qt::NoFocus);
+    // Get recent activity enabled or not
+    isRecentEnable = !sm.getDisableRecent();
+
+    // Configure Settings
     loadsettings();
 
+    // Set coreapps page as active page
     on_coreApps_clicked();
-    reload();
+
+    // Configure Speed Dial
+    loadSpeedDial();
+
+    // Configure Recent Activity
+    if (!sm.getDisableRecent()) {
+        QString raFile = QDir::homePath() + "/.config/coreBox/RecentActivity";
+        QFile file(raFile);
+        if (!file.exists()) {
+            // You can get error
+            // Need a check here
+            file.open(QIODevice::ReadWrite | QIODevice::Text);
+            file.close();
+        }
+        watcher->addPath(raFile);
+        loadRecent();
+    }
+
+    watcher->addPath(QDir::homePath() + "/.config/coreBox/coreBox.conf");
+    watcher->addPath(QDir::homePath() + "/.config/coreBox/CoreBoxBook");
+
+//    connect(watcher, &QFileSystemWatcher::fileChanged, [this](const QString &path) {
+//        qDebug() << path;
+//        if (QFileInfo(path).fileName() == "RecentActivity") {
+//            loadRecent();
+//        } else if (QFileInfo(path).fileName() == "CoreBoxBook") {
+//            loadSpeedDial();
+//        } else if (QFileInfo(path).fileName() == "coreBox.conf") {
+//            isRecentEnable = !sm.getDisableRecent();
+//            loadsettings();
+//        }
+//    });
 }
 
 Start::~Start()
@@ -37,25 +82,26 @@ Start::~Start()
     delete ui;
 }
 
-void Start::loadsettings()
-{
-//    ui->recentSection->setVisible(sm.getDisableRecent());
-}
-
-void Start::on_recents_itemDoubleClicked(QTableWidgetItem *item)
-{
-    openAppEngine(ui->recents->item(item->row(),1)->text());
-}
-
+// ======== Core Apps ==========
+// Open CoreApps on double click
 void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item)
 {
-    CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
+    CoreBox *cBox = static_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(nameToInt(item->text()));
 }
+// =============================
 
-void Start::reload()
+
+// ======== Speed Dial ==========
+// Open Speed Dial on Double click
+void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item)
 {
-    //reload speeddial bookmarks
+    BookmarkManage bk;
+    openAppEngine(bk.bookmarkPath("Speed Dial",item->text()));
+}
+
+// Load Speed Dial
+void Start::loadSpeedDial() {
     ui->speedDialB->clear();
     BookmarkManage bk;
     QStringList list = bk.getBookNames("Speed Dial");
@@ -66,46 +112,93 @@ void Start::reload()
             ui->speedDialB->addItem(new QListWidgetItem(geticon(bk.bookmarkPath("Speed Dial", list.at(i))), list.at(i)));
         }
     }
+}
+// =============================
 
-    //reload recent activities list
-    if (sm.getDisableRecent() == true){
 
-        ui->recents->clear();
-        sm.cSetting->beginGroup("Recent");
+// ========== Recent activity ===========
+// Open Recent activity on double click
+void Start::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    QStringList s = item->text(column).split("\t\t\t");
+    openAppEngine(s.at(1));
+}
 
-        QTableWidgetItem *item;
-        QStringList sList = sm.cSetting->childKeys();
-        QStringList r;
-        if (sList.count() > 30) {
-            int extra = sList.count() - 30;
-            for (int i = 0; i < extra; ++i) {
-                sList.removeAt(sList.indexOf(QString::number(i)));
-            }
+// Load Recent Activity
+void Start::loadRecent()
+{
+    ui->treeWidget->clear();
+    QSettings recentActivity(QDir::homePath() + "/.config/coreBox/RecentActivity", QSettings::IniFormat);
+    QStringList topLevel = recentActivity.childGroups();
+    foreach (QString group, topLevel) {
+        QTreeWidgetItem *topTree = new QTreeWidgetItem();
+        QString groupL = sentDateText(group);
+        topTree->setText(0, groupL);
+        recentActivity.beginGroup(group);
+        QStringList keys = recentActivity.childKeys();
+        QCollator sort;
+        sort.setNumericMode(true);
+        std::sort(keys.begin(), keys.end(), sort);
+        foreach (QString key, keys) {
+            QTreeWidgetItem *child = new QTreeWidgetItem();
+            QString value = recentActivity.value(key).toString();
+            child->setText(0, value);
+            child->setIcon(0, geticon(value.split("\t\t\t").at(1)));
+            topTree->addChild(child);
         }
+        recentActivity.endGroup();
+        ui->treeWidget->insertTopLevelItem(0, topTree);
+    }
 
-        ui->recents->setColumnCount(3);
-        ui->recents->setRowCount(sList.count());
+    if (topLevel.count())
+        (ui->treeWidget->setExpanded(ui->treeWidget->model()->index(0, 0), true));
+}
+// =================================
 
-        for (int i = 0; i < sList.count(); ++i) {
-            r = sm.cSetting->value(sList.at(i)).toString().split("$$$");
-            item = new QTableWidgetItem(r.count() == 3 ? appsIcon(r.at(0)) : appsIcon(r.at(2)), r.at(0));
-            ui->recents->setItem(i, 0, item);
-            ui->recents->setItem(i, 1, new QTableWidgetItem(r.at(1)));
-            ui->recents->setItem(i, 2, new QTableWidgetItem(r.at(2)));
-        }
-        ui->recents->sortByColumn(2, Qt::DescendingOrder);
 
-        sm.cSetting->endGroup();
+// Load Settings
+void Start::loadsettings()
+{
+    // Check is recent disabled or not
+    if (sm.getDisableRecent()) {
+        //ui->pages->removeWidget(ui->precents);
+        ui->recentActivites->setVisible(0);
+        ui->treeWidget->clear();
+        ui->pages->setCurrentIndex(0);
 
-        ui->recents->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
+    } else {
+        //if (ui->pages->count() == 3) {
+        //    ui->recentActivites->setVisible(1);
+        //} else {
+            ui->recentActivites->setVisible(1);
+            loadRecent();
+        //    ui->pages->insertWidget(2, ui->precents);
+        //}
     }
 }
 
-
-void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item)
+// Don't delete
+void Start::paintEvent(QPaintEvent *event)
 {
-    BookmarkManage bk;
-    openAppEngine(bk.bookmarkPath("Speed Dial",item->text()));
+//    QRgb _blend(qRgba(0,0,0,0xff));
+//    QColor color(_blend);
+//    color.setAlphaF(0.75);
+//    _blend = color.rgba();
+
+//    QPainter paint(this);
+//    paint.setOpacity(0.8);
+
+//    const auto rects = (event->region() & contentsRect()).rects();
+//    //qDebug() << rects;
+//    for (const QRect &rect : rects)
+//    {
+//        QColor col(QColor::fromRgb(255,255,255));
+//        col.setAlpha(qAlpha(_blend));
+//        paint.save();
+//        paint.setCompositionMode(QPainter::CompositionMode_Source);
+//        paint.fillRect(rect, col);
+//        paint.restore();
+//    }
 }
 
 void Start::on_coreApps_clicked()
@@ -130,4 +223,13 @@ void Start::on_recentActivites_clicked()
     ui->recentActivites->setChecked(1);
     ui->speedDial->setChecked(0);
     ui->coreApps->setChecked(0);
+}
+
+void Start::reload()
+{
+    loadSpeedDial();
+    loadsettings();
+    if (!sm.getDisableRecent())
+        loadRecent();
+    else on_coreApps_clicked();
 }

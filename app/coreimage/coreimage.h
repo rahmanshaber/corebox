@@ -25,12 +25,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QListWidgetItem>
 #include <QPushButton>
 #include <QLabel>
-
-#include "../corebox/globalfunctions.h"
-#include "../bookmarks//bookmarks.h"
-#include "../bookmarks/bookmarkdialog.h"
-#include "../corepaint/corepaint.h"
-
+#include <QSpacerItem>
 
 namespace Ui {
 class coreimage;

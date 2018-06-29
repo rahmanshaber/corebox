@@ -1,0 +1,27 @@
+E: CoreBox: changelog-file-missing-in-native-package
+E: CoreBox: copyright-file-contains-full-gpl-license
+E: CoreBox: copyright-should-refer-to-common-license-file-for-gpl
+E: CoreBox: description-starts-with-package-name
+E: CoreBox: extended-description-is-empty
+E: CoreBox: bad-package-name
+E: CoreBox: package-not-lowercase
+W: CoreBox: non-standard-dir-perm usr/ 0775 != 0755
+W: CoreBox: non-standard-dir-perm usr/share/ 0775 != 0755
+W: CoreBox: non-standard-dir-perm usr/share/applications/ 0775 != 0755
+W: CoreBox: non-standard-file-perm usr/share/applications/CoreBox.desktop 0664 != 0644
+W: CoreBox: non-standard-dir-perm usr/share/corebox/ 0775 != 0755
+W: CoreBox: non-standard-dir-perm usr/share/doc/ 0775 != 0755
+W: CoreBox: non-standard-dir-perm usr/share/doc/CoreBox/ 0775 != 0755
+W: CoreBox: non-standard-file-perm usr/share/doc/CoreBox/copyright 0664 != 0644
+E: CoreBox: md5sums-lists-nonexistent-file usr/share/applications/CoreBox.deskto
+W: CoreBox: file-missing-in-md5sums usr/share/applications/CoreBox.desktop
+W: CoreBox: desktop-command-not-in-package usr/share/applications/CoreBox.desktop coreBox
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/CorePad.svg
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/anewtab.svg
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/Bookmarks.svg
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/Box.svg
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/Start.svg
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/CoreBox.svg
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/CoreImage.svg
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/DashBoard.svg
+W: CoreBox: executable-not-elf-or-script usr/share/corebox/CoreFM.svg

@@ -17,6 +17,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "help.h"
 #include "ui_help.h"
 
+#include <QTextStream>
+#include <QFile>
 
 help::help(QWidget *parent) :QWidget(parent),ui(new Ui::help)
 {

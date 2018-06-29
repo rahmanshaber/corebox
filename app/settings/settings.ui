@@ -583,7 +583,7 @@ color: #ffffff;
              </font>
             </property>
             <property name="text">
-             <string>Show Recent Activities in Start</string>
+             <string>Hide Recent Activities in Start</string>
             </property>
            </widget>
           </item>
@@ -654,6 +654,9 @@ color: #ffffff;
               <width>40</width>
               <height>40</height>
              </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1386,8 +1389,8 @@ QScrollBar::sub-page:vertical {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>551</width>
-            <height>753</height>
+            <width>587</width>
+            <height>842</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">

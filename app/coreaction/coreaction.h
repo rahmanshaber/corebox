@@ -26,13 +26,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTimer>
 
 #include "../settings/settingsmanage.h"
-#include "../corebox/globalfunctions.h"
-#include "../corebox/corebox.h"
-#include "about/about.h"
-#include "coreshot/coreshot.h"
-#include "dashboard/upower.h"
-#include "dashboard/battery.h"
-#include "dashboard/lib/info_manager.h"
+#include "dashboard/Managers/info_manager.h"
 
 
 namespace Ui {
@@ -72,29 +66,37 @@ private:
     void networkWsetup();
     void widgetList();
 
+    bool checkWTime();
+    bool checkWCalendar();
+    bool checkWSystem();
+    bool checkWNetwork();
+    bool checkWCalculator();
+    bool checkWNotes();
+    bool checkWBattery();
+
 public slots:
     void ShowWindow(QSystemTrayIcon::ActivationReason Reason);
 
 private slots:
-    //void on_percentage_clicked();
+//    //void on_percentage_clicked();
 
-    void on_one_clicked();
-    void on_two_clicked();
-    void on_three_clicked();
-    void on_four_clicked();
-    void on_five_clicked();
-    void on_six_clicked();
-    void on_seven_clicked();
-    void on_eight_clicked();
-    void on_nine_clicked();
-    void on_zero_clicked();
-    void on_dot_clicked();
-    void on_equal_clicked();
-    void on_clear_clicked();
-    void on_multiply_clicked();
-    void on_subtract_clicked();
-    void on_add_clicked();
-    void on_division_clicked();
+//    void on_one_clicked();
+//    void on_two_clicked();
+//    void on_three_clicked();
+//    void on_four_clicked();
+//    void on_five_clicked();
+//    void on_six_clicked();
+//    void on_seven_clicked();
+//    void on_eight_clicked();
+//    void on_nine_clicked();
+//    void on_zero_clicked();
+//    void on_dot_clicked();
+//    void on_equal_clicked();
+//    void on_clear_clicked();
+//    void on_multiply_clicked();
+//    void on_subtract_clicked();
+//    void on_add_clicked();
+//    void on_division_clicked();
 
     void showTime();
     void on_hide_clicked();
@@ -108,7 +110,7 @@ private slots:
     void on_search_clicked();
 
     void actionshow();
-    void batteryCheck();
+    //void batteryCheck();
 
 };
 

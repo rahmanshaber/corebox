@@ -17,19 +17,15 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef COREBOX_H
 #define COREBOX_H
 
-#include <QtWidgets>
+#include <QWidget>
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QCloseEvent>
 #include <QPoint>
 #include <QDir>
 
-#include "../bookmarks/bookmarks.h"
-#include "../bookmarks/bookmarkmanage.h"
-#include "../settings/settings.h"
 #include "../settings/settingsmanage.h"
 #include "globalfunctions.h"
-
 
 namespace Ui {
 class CoreBox;
@@ -43,12 +39,13 @@ public:
     explicit CoreBox(QWidget *parent = 0);
     ~CoreBox();
 
-    void tabEngine(AppsName i, QString arg = 0);
+    void tabEngine(AppsName i, const QString arg = 0);
     void closeCurrentTab();
     bool eventFilter(QObject *obj, QEvent *evt);
 
 protected:
-    void closeEvent(QCloseEvent*event);
+    void closeEvent(QCloseEvent *event);
+    void paintEvent(QPaintEvent *event);
 
     bool isMouseDown = false;
     bool isLeftDown = false;
@@ -76,6 +73,8 @@ private slots:
     void on_corefm_clicked();
     void on_corepad_clicked();
     void on_box_clicked();
+
+    void on_bookAll_clicked();
 
 private:
     SettingsManage sm;

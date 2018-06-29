@@ -21,12 +21,13 @@
 #include <QUndoStack>
 #include <QUndoView>
 
+#include <QStandardItem>
+#include <QAbstractItemModel>
+
 corerenamer::corerenamer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::corerenamer)
 {
-    ui->setupUi(this);
-
     ui->setupUi(this);
 
     uStack = new QUndoStack(this);
@@ -37,10 +38,10 @@ corerenamer::corerenamer(QWidget *parent) :
     ui->bUndo->setEnabled(false);
     ui->bRedo->setEnabled(false);
 
-    QUndoView *view = new QUndoView(uStack, this);
-    view->show();
-    view->resize(200, 200);
-    view->move(this->pos().x() + 250, this->pos().y() + 25);
+//    QUndoView *view = new QUndoView(uStack, this);
+//    view->show();
+//    view->resize(200, 200);
+//    view->move(this->pos().x() + 250, this->pos().y() + 25);
 
     connect(uStack, &QUndoStack::canUndoChanged, [this](bool canUndo) {
         ui->bUndo->setEnabled(canUndo);
@@ -48,6 +49,9 @@ corerenamer::corerenamer(QWidget *parent) :
     connect(uStack, &QUndoStack::canRedoChanged, [this](bool canRedo) {
         ui->bRedo->setEnabled(canRedo);
     });
+
+    customSortM = new customSortProxyM();
+    m_Model = new QStandardItemModel(0,3);
 
     createActions();
 }
@@ -98,38 +102,41 @@ QString corerenamer::CapitalizeEachWord(const QString &str)
     return total.remove(0, 1);
 }
 
-void corerenamer::addFiles(QStringList list)
+void corerenamer::addFiles(const QStringList &list)
 {
-    ui->filesList->clear();
+    m_Model->clear();
     uStack->clear();
-    QTableWidgetItem *sItem;
 
-    QString path = QFileInfo(list.at(0)).path();
+    m_Model->setColumnCount(3);
+    m_Model->setRowCount(0);
 
-    for (int i = 0; i < list.count(); i++)
-        list.replace(i, QString(list.at(i)).remove(path));
-
-    QCollator collator;
-    collator.setNumericMode(true);
-    std::sort(list.begin(), list.end(), collator);
-
-    for (int i = 0; i < list.count(); i++)
-        list.replace(i, path + list.at(i));
-
-    ui->filesList->setColumnCount(2);
-    ui->filesList->setHorizontalHeaderLabels(QStringList() << "Selected" << "Changed");
-    ui->filesList->setRowCount(list.count());
+    m_Model->setHeaderData(0, Qt::Horizontal, QObject::tr("Selected"));
+    m_Model->setHeaderData(1, Qt::Horizontal, QObject::tr("Changed"));
+    m_Model->setHeaderData(2, Qt::Horizontal, QObject::tr("Type"));
 
     for (int i = 0; i < list.count(); ++i) {
-        sItem = new QTableWidgetItem(QFileInfo(list.at(i)).completeBaseName());
-        ui->filesList->setItem(i, 0, sItem);
-        ui->filesList->setItem(i, 1, new QTableWidgetItem(""));
-        ui->filesList->item(i, 1)->setData(Qt::UserRole, list.at(i));
-        sItem->setIcon(fileIcon(list.at(i)));
-        sItem->setData(Qt::UserRole, list.at(i));
+        m_Model->insertRow(0);
+        m_Model->setData(m_Model->index(0, 0), fileIcon(list.at(i)).pixmap(24, 24), Qt::DecorationRole);
+        m_Model->setData(m_Model->index(0, 0), list.at(i), Qt::UserRole);
+        m_Model->setData(m_Model->index(0, 0), QFileInfo(list.at(i)).completeBaseName());
+        m_Model->setData(m_Model->index(0, 1), list.at(i), Qt::UserRole);
+        m_Model->setData(m_Model->index(0, 1), "");
+        m_Model->setData(m_Model->index(0, 2), QFileInfo(list.at(i)).suffix());
     }
 
-    ui->filesList->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    customSortM->setSourceModel(m_Model);
+    ui->FLists->setModel(customSortM);
+    ui->FLists->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+}
+
+void corerenamer::addPath(const QString &path)
+{
+    QDir dir(path);
+    QStringList filePaths;
+    foreach (QFileInfo f, dir.entryInfoList(QDir::Files, QDir::Name)) {
+        filePaths << f.filePath();
+    }
+    addFiles(filePaths);
 }
 
 QString corerenamer::addText(tPosition tpos, int pos, const QString &newText, const QString &selcText)
@@ -137,14 +144,14 @@ QString corerenamer::addText(tPosition tpos, int pos, const QString &newText, co
     int initialPos = 0;
     int addPos = pos;
 
-    qDebug() << "BEFORE " << selcText;
+    qDebug() << "BEFORE : " << selcText;
 
     if (tpos == FROMRIGHT) {
         initialPos = selcText.length();
         addPos = initialPos - pos;
     }
 
-    qDebug() << "AFTER " << QString(selcText).insert(addPos, newText);
+    qDebug() << "AFTER : " << QString(selcText).insert(addPos, newText);
 
     return  QString(selcText).insert(addPos, newText);
 }
@@ -186,19 +193,17 @@ bool corerenamer::setAddText()
     if (!ui->addTextEnter->text().count())
         return false;
 
-    // Ignore odd (1, 3, 5, ...) items
-    bool even = 1;
-    foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-        if (even) {
-            QString t = text->text();
-            if (ui->filesList->item(text->row(), 1)->text().count())
-                t = ui->filesList->item(text->row(), 1)->text();
-            QString addedT = addText(FROMLEFT, ui->addTextCPos->text().toInt(), ui->addTextEnter->text(), t);
-            uStack->push(new ARRTextCommand(ui->filesList->item(text->row(), 1), addedT, ADD));
+    foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+        if (i.column() == 0) {
+            QString sText = m_Model->item(i.row(), 0)->text();
+            QString cText = m_Model->item(i.row(), 1)->text();
+            if (cText.count())
+                sText = cText;
+            QString addedT = addText(ui->addFromR->isChecked() ? FROMRIGHT : FROMLEFT, ui->addTextCPos->text().toInt(), ui->addTextEnter->text(), sText);
+            uStack->push(new ARRTextCommand(m_Model->item(i.row(), 1), addedT, ADD));
         }
-
-        even = !even;
     }
+
     return true;
 }
 
@@ -210,19 +215,17 @@ bool corerenamer::setRemText()
     if (!ui->removeTextCCount->text().count())
         return false;
 
-    // Ignore odd (1, 3, 5, ...) items
-    bool even = 1;
-    foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-        if (even) {
-            QString t = text->text();
-            if (ui->filesList->item(text->row(), 1)->text().count())
-                t = ui->filesList->item(text->row(), 1)->text();
-            QString remedT = remText(FROMLEFT, ui->removeTextCPos->text().toInt(), ui->removeTextCCount->text().toInt(), t);
-            uStack->push(new ARRTextCommand(ui->filesList->item(text->row(), 1), remedT, REMOVE));
+    foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+        if (i.column() == 0) {
+            QString sText = m_Model->item(i.row(), 0)->text();
+            QString cText = m_Model->item(i.row(), 1)->text();
+            if (cText.count())
+                sText = cText;
+            QString remedT = remText(ui->remFromR->isChecked() ? FROMRIGHT : FROMLEFT, ui->removeTextCPos->text().toInt(), ui->removeTextCCount->text().toInt(), sText);
+            uStack->push(new ARRTextCommand(m_Model->item(i.row(), 1), remedT, REMOVE));
         }
-
-        even = !even;
     }
+
     return true;
 }
 
@@ -234,76 +237,75 @@ bool corerenamer::setRepText()
     //if (!ui->replaceTextWith->text().count())
     //    return false;
 
-    // Ignore odd (1, 3, 5, ...) items
-    bool even = 1;
-    foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-        if (even) {
-            QString t = text->text();
-            if (ui->filesList->item(text->row(), 1)->text().count())
-                t = ui->filesList->item(text->row(), 1)->text();
-            QString replaT = repText(ui->replaceTextText->text(), ui->replaceTextWith->text(), t);
-            uStack->push(new ARRTextCommand(ui->filesList->item(text->row(), 1), replaT, REPLACE));
-        }
+    foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+        if (i.column() == 0) {
+            QString sText = m_Model->item(i.row(), 0)->text();
+            QString cText = m_Model->item(i.row(), 1)->text();
+            if (cText.count())
+                sText = cText;
 
-        even = !even;
+            QString replaT = repText(ui->replaceTextText->text(), ui->replaceTextWith->text(), sText);
+            uStack->push(new ARRTextCommand(m_Model->item(i.row(), 1), replaT, REPLACE));
+        }
     }
+
     return true;
 }
 
 void corerenamer::on_addTextbtn_clicked()
 {
-    if (ui->filesList->selectedItems().count() < 1)
+    if (ui->FLists->selectionModel()->selectedIndexes().count() < 1)
         return;
 
     if (setAddText())
-        ui->filesList->clearSelection();
+        ui->FLists->clearSelection();
 }
 
 void corerenamer::on_addTextAllbtn_clicked()
 {
-    ui->filesList->selectAll();
+    ui->FLists->selectAll();
 
     if (setAddText())
-        ui->filesList->clearSelection();
+        ui->FLists->clearSelection();
 }
 
 void corerenamer::on_removeTextTextbtn_clicked()
 {
-    if (ui->filesList->selectedItems().count() < 1)
+    if (ui->FLists->selectionModel()->selectedIndexes().count() < 1)
         return;
 
     if (setRemText())
-        ui->filesList->clearSelection();
+        ui->FLists->clearSelection();
 }
 
 void corerenamer::on_removeTextAllbtn_clicked()
 {
-    ui->filesList->selectAll();
+    ui->FLists->selectAll();
 
     if (setRemText())
-        ui->filesList->clearSelection();
+        ui->FLists->clearSelection();
 }
 
 void corerenamer::on_replaceTextbtn_clicked()
 {
-    if (ui->filesList->selectedItems().count() < 1)
+    if (ui->FLists->selectionModel()->selectedIndexes().count() < 1)
         return;
 
     if (setRepText())
-        ui->filesList->clearSelection();
+        ui->FLists->clearSelection();
 }
 
 void corerenamer::on_replaceTextAllbtn_clicked()
 {
-    ui->filesList->selectAll();
+    ui->FLists->selectAll();
 
     if (setRepText())
-        ui->filesList->clearSelection();
+        ui->FLists->clearSelection();
 }
 
-void corerenamer::casitivity(int i)
+void corerenamer::casitivity(int c)
 {
-    if (ui->filesList->selectedItems().count() < 1)
+    if (ui->FLists->selectionModel()->selectedIndexes().count() < 1)
         return;
 
     if (ui->addTextCPos->text().isNull())
@@ -312,35 +314,29 @@ void corerenamer::casitivity(int i)
     if (ui->addTextEnter->text().isNull())
         return;
 
-    // Ignore odd (1, 3, 5, ...) items
-    bool even = 1;
-    foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-        QString name = text->text();
+    foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+        if (i.column() == 0) {
+            QString sText = m_Model->item(i.row(), 0)->text();
+            QString cText = m_Model->item(i.row(), 1)->text();
+            if (cText.count())
+                sText = cText;
 
-        if (ui->filesList->item(text->row(), 1)->text().count())
-            name = ui->filesList->item(text->row(), 1)->text();
-
-        switch (i) {
-        case 0:
-            name = name.toUpper();
-            break;
-        case 1:
-            qDebug() << name.at(0).toTitleCase();
-            name = CapitalizeEachWord(name);
-            break;
-        case 2:
-            name = name.toLower();
-            break;
-        default:
-            name = name;
-            break;
+            switch (c) {
+            case 0:
+                sText = sText.toUpper();
+                break;
+            case 1:
+                sText = CapitalizeEachWord(sText);
+                break;
+            case 2:
+                sText = sText.toLower();
+                break;
+            default:
+                sText = sText;
+                break;
+            }
+            uStack->push(new ARRTextCommand(m_Model->item(i.row(), 1), sText, CASE));
         }
-
-        if (even) {
-            uStack->push(new ARRTextCommand(ui->filesList->item(text->row(), 1), name, CASE));
-        }
-
-        even = !even;
     }
 }
 
@@ -361,32 +357,31 @@ void corerenamer::on_lowerCase_clicked()
 
 void corerenamer::on_formatc_activated(const QString &arg1)
 {
-    if (ui->filesList->selectedItems().count() < 1)
+    if (ui->FLists->selectionModel()->selectedIndexes().count() < 1)
         return;
 
-    // Ignore odd (1, 3, 5, ...) items
-    bool even = 1;
     int count = 0;
-    foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-        if (even) {
+    foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+        if (i.column() == 0) {
+            QString sText = m_Model->item(i.row(), 0)->text();
+            QString cText = m_Model->item(i.row(), 1)->text();
             QString arg = "";
             count++;
+
+            if (cText.count())
+                sText = cText;
+
             if (arg1.at(0) == '0') {
                 if (arg1.at(1) == '0') {
-                    arg = QString(text->row() > 8 ? text->row() > 98 ? "" : "0" : "00") + QString::number(count) + QString(arg1).remove(0, 3);
+                    arg = QString(i.row() > 8 ? i.row() > 98 ? "" : "0" : "00") + QString::number(count) + QString(arg1).remove(0, 3);
                 } else {
-                    arg = QString(text->row() > 8 ? "" : "0") + QString::number(count) + QString(arg1).remove(0, 2);
+                    arg = QString(i.row() > 8 ? "" : "0") + QString::number(count) + QString(arg1).remove(0, 2);
                 }
             } else arg = QString::number(count) + QString(arg1).remove(0, 1);
 
-            QString t = text->text();
-
-            if (ui->filesList->item(text->row(), 1)->text().count())
-                t = ui->filesList->item(text->row(), 1)->text();
-            uStack->push(new ARRTextCommand(ui->filesList->item(text->row(), 1), addText(FROMLEFT, 0, arg, t), NUMBER));
+            QString numing = addText(ui->numFromR->isChecked() ? FROMRIGHT : FROMLEFT, 0, arg, sText);
+            uStack->push(new ARRTextCommand(m_Model->item(i.row(), 1), numing, NUMBER));
         }
-
-        even = !even;
     }
 }
 
@@ -395,17 +390,17 @@ void corerenamer::on_browseSave_clicked()
     ui->savePath->setText(QFileDialog::getSaveFileName(this, "Save file"));
 }
 
-QString corerenamer::getOld(QTableWidgetItem *text) {
-    QString ofile = ui->filesList->item(text->row(), 1)->data(Qt::UserRole).toString();
+QString corerenamer::getOld(QStandardItem *item) {
+    QString ofile = m_Model->item(item->row(), 1)->data(Qt::UserRole).toString();
     if (ui->addOldOnly->isChecked()) {
         ofile = QFileInfo(ofile).fileName();
     }
     return ofile;
 }
 
-QString corerenamer::getNew(QTableWidgetItem *text) {
-    QString ofile = ui->filesList->item(text->row(), 1)->data(Qt::UserRole).toString();
-    QString cText = ui->filesList->item(text->row(), 1)->text();
+QString corerenamer::getNew(QStandardItem *item) {
+    QString ofile = m_Model->item(item->row(), 1)->data(Qt::UserRole).toString();
+    QString cText = m_Model->item(item->row(), 1)->text();
     if (!cText.count()) return "";
     QString suffix = QFileInfo(ofile).suffix().isNull() ? "" : "." + QFileInfo(ofile).suffix();
     QString nfile = cText.isNull() ? "" : QFileInfo(ofile).path() + "/" + cText + suffix;
@@ -415,6 +410,8 @@ QString corerenamer::getNew(QTableWidgetItem *text) {
     return nfile;
 }
 
+#include "corebox/globalfunctions.h"
+
 void corerenamer::on_saveRenamed_clicked()
 {
     QString filePath = ui->savePath->text();
@@ -422,48 +419,43 @@ void corerenamer::on_saveRenamed_clicked()
         return;
 
     QString textFile = "";
-    // Ignore odd (1, 3, 5, ...) items
-    bool even = 1;
-    if (ui->gAddOldFileName->isChecked() && ui->gAddNewFileName->isChecked()) {
-        ui->filesList->selectAll();
-        even = 1;
-        foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-            //qDebug() << "SELECTED : " << text->text();
-            if (even)
-                textFile.append(getOld(text) + " " + ui->separatorC->currentText() + " " + getNew(text) + "\n");
 
-            even = !even;
+    if (ui->gAddOldFileName->isChecked() && ui->gAddNewFileName->isChecked()) {
+        ui->FLists->selectAll();
+        QString separate = ui->separatorC->text().count() ? ui->separatorC->text() : "-";
+        foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+            if (i.column() == 0)
+                textFile.append(getOld(m_Model->item(i.row(), 0)) + " " + separate + " " + getNew(m_Model->item(i.row(), 0)) + "\n");
         }
     } else {
         if (ui->gAddNewFileName->isChecked()) {
-            ui->filesList->selectAll();
-            even = 1;
-            foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-                if (even) textFile.append(getNew(text) + "\n");
-                even = !even;
+            ui->FLists->selectAll();
+            foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+                if (i.column() == 0) textFile.append(getNew(m_Model->item(i.row(), 0)) + "\n");
             }
         } else if (ui->gAddOldFileName->isChecked()) {
-            ui->filesList->selectAll();
-            even = 1;
-            foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-                if (even) textFile.append(getOld(text) + "\n");
-                even = !even;
+            ui->FLists->selectAll();
+            foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+                if (i.column() == 0) textFile.append(getOld(m_Model->item(i.row(), 0)) + "\n");
             }
         } else {
             return;
         }
     }
 
-    ui->filesList->clearSelection();
+    ui->FLists->clearSelection();
 
     QFile file(filePath);
     if (file.exists()) {
         long reply = QMessageBox::warning(this, "Warning", "File exists.\nDo you want to overwrite it.", QMessageBox::Yes, QMessageBox::No);
         if (reply == QMessageBox::No) return;
     }
-    file.open(QIODevice::WriteOnly);
-    file.write(textFile.toLatin1());
-    file.close();
+    if (file.open(QIODevice::WriteOnly)) {
+        file.write(textFile.toLatin1());
+        file.close();
+        // Function from globalfunctions.cpp
+        messageEngine("Renamed List Saved.", Info);
+    }
 }
 
 void corerenamer::on_bUndo_clicked()
@@ -481,27 +473,68 @@ void corerenamer::on_rename_clicked()
     long reply = QMessageBox::information(this, "Permission", "Are you sure to rename those files?\nIf you once rename them it is not possible to go back...",
                                           QMessageBox::Yes, QMessageBox::No);
     if (reply == QMessageBox::Yes) {
-        ui->filesList->selectAll();
-        // Ignore odd (1, 3, 5, ...) items
-        bool even = 1;
-        foreach (QTableWidgetItem *text, ui->filesList->selectedItems()) {
-            if (even) {
-                if (ui->filesList->item(text->row(), 1)->text().count()) {
+        ui->FLists->selectAll();
+        foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+            if (i.column() == 0) {
+                QStandardItem *item = m_Model->item(i.row(), 1);
+                if (item->text().count()) {
                     // FIXME : IF FILE EXISTS THEN DO A ACTION
-                    QFile::rename(ui->filesList->item(text->row(), 1)->data(Qt::UserRole).toString(), getNew(text));
-                    ui->filesList->item(text->row(), 1)->setData(Qt::UserRole, getNew(text));
+                    QFile::rename(item->data(Qt::UserRole).toString(), getNew(m_Model->item(i.row(), 0)));
+                    item->setData(getNew(m_Model->item(i.row(), 0)), Qt::UserRole);
                 }
             }
-            even = !even;
         }
 
         uStack->clear();
-        ui->filesList->clearSelection();
+        ui->FLists->clearSelection();
+        // Function from globalfunctions.cpp
+        messageEngine("File Renamed Successfully.", Info);
     }
 }
 
 void corerenamer::on_bRefreshList_clicked()
 {
-    ui->filesList->clear();
+    if ( m_Model->rowCount() < 1 )
+        return;
+
     uStack->clear();
+    ui->FLists->selectAll();
+    foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+        m_Model->item(i.row(), 1)->setText("");
+    }
+    ui->FLists->selectionModel()->clearSelection();
+}
+
+void corerenamer::on_clearItem_clicked()
+{
+    foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+        if (!i.column())
+            m_Model->removeRow(i.row());
+    }
+}
+
+void corerenamer::on_gAddOldFileName_clicked(bool checked)
+{
+    if (!checked) {
+        if (!ui->gAddNewFileName->isChecked())
+            ui->gAddNewFileName->setChecked(1);
+    }
+}
+
+void corerenamer::on_gAddNewFileName_clicked(bool checked)
+{
+    if (!checked) {
+        if (!ui->gAddOldFileName->isChecked())
+            ui->gAddOldFileName->setChecked(1);
+    }
+}
+
+bool customSortProxyM::lessThan(const QModelIndex &left, const QModelIndex &right) const
+{
+    QVariant leftData = sourceModel()->data(left);
+    QVariant rightData = sourceModel()->data(right);
+
+    QCollator cola;
+    cola.setNumericMode(true);
+    return (cola.compare(leftData.toString(), rightData.toString()) < 0);
 }

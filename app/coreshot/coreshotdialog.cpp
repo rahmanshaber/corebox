@@ -21,6 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 
+#include "corebox/globalfunctions.h"
 
 coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),
     ui(new Ui::coreshotdialog)
@@ -32,10 +33,24 @@ coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),
     // Set window as a framless
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint );
 
+    setAttribute(Qt::WA_TranslucentBackground);
+
+    // Get some shadow effect for widget
+    // Function from globalfunctions.cpp
+    QString ss = "QPushButton{ background-color: rgb(60, 60, 60); padding: 3px 5px 3px 5px; border-radius: 3px;}"
+                 "QPushButton:hover { background-color: #808080; }";
+    addDropShadow(ui->cancel, 60, 25, QString("QPushButton{ background-color: rgb(60, 60, 60);  border-radius: 3px;}"
+                                                         "QPushButton:hover { background-color: red; }"));
+    addDropShadow(ui->captureScreen, 60, 25, ss);
+    addDropShadow(ui->captureSelection, 60, 25, ss);
+    addDropShadow(ui->captureWindow, 60, 25, ss);
+    addDropShadow(ui->delay, 60, 25, QString("QSpinBox { background-color: rgb(60, 60, 60); padding: 5px 5px 5px 10px; border-radius: 3px; }"));
+    //===============================
+
     // Set the window position
     int mx = (screensize().width()/2) - ((this->width()/2) + 10);
     int my = screensize().height() - (this->height() + 10);
-    this->move(mx,my);
+    this->move(mx, my);
 }
 
 coreshotdialog::~coreshotdialog()
@@ -58,22 +73,22 @@ void coreshotdialog::startsetup()
         passToShotPreview();
     });
 
-    ui->delay->setValue(0);
-    int delay = ui->delay->value();
-
-    connect(ui->captureScreen, &QPushButton::clicked, [this, delay]() {
+    connect(ui->captureScreen, &QPushButton::clicked, [this]() {
         this->setWindowState(Qt::WindowMinimized);
-        QTimer::singleShot(delay * 1000, this, SLOT(shootFullScreen()));
+        if (windowState() == Qt::WindowMinimized)
+            QTimer::singleShot((ui->delay->value() * 1000) + 200, this, SLOT(shootFullScreen()));
     });
 
-    connect(ui->captureWindow, &QPushButton::clicked, [this, delay]() {
+    connect(ui->captureWindow, &QPushButton::clicked, [this]() {
         this->setWindowState(Qt::WindowMinimized);
-        QTimer::singleShot(delay * 1000, this, SLOT(shootActiveWindow()));
+        if (windowState() == Qt::WindowMinimized)
+            QTimer::singleShot((ui->delay->value() * 1000) + 200, this, SLOT(shootActiveWindow()));
     });
 
-    connect(ui->captureSelection, &QPushButton::clicked, [this, delay]() {
+    connect(ui->captureSelection, &QPushButton::clicked, [this]() {
         this->setWindowState(Qt::WindowMinimized);
-        QTimer::singleShot(200, this, SLOT(shootSelectArea()));
+        if (windowState() == Qt::WindowMinimized)
+            QTimer::singleShot(200, this, SLOT(shootSelectArea()));
     });
 
     connect(ui->cancel, &QPushButton::clicked, this, &coreshotdialog::close);
@@ -84,7 +99,8 @@ void coreshotdialog::passToShotPreview()
     coreshot *shootP = new coreshot();
     shootP->setPixmap(m_pixmap);
     shootP->show();
-    this->close();
+    deleteLater();
+    //this->close();
 }
 
 void coreshotdialog::shootFullScreen()
@@ -145,8 +161,6 @@ void coreshotdialog::shootActiveWindow()
     auto pixmap = screen->grabWindow(QApplication::desktop()->winId(),
                                      cwposX, cwposY, cwWidth, cwHeight);
 
-//    cPreview->setOriginalPixmap(pixmap);
-    //ui->shotPreview->setPixmap(pixmap);
     m_pixmap = pixmap;
 
     this->setWindowState(Qt::WindowNoState);

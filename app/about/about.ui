@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>740</width>
-    <height>684</height>
+    <height>753</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -165,7 +165,7 @@ border-radius: 10px;
          <item row="3" column="0">
           <widget class="QLabel" name="label_4">
            <property name="text">
-            <string>Licensed under GPLv2</string>
+            <string>Licensed under GPL2</string>
            </property>
            <property name="indent">
             <number>10</number>
@@ -180,7 +180,7 @@ border-radius: 10px;
             </font>
            </property>
            <property name="text">
-            <string>CoreBox v.2.2</string>
+            <string>CoreBox v2.2</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -246,7 +246,7 @@ border-radius: 10px;
          <item row="3" column="0">
           <widget class="QLabel" name="label_21">
            <property name="text">
-            <string>Release date Monday,March 26,2018. </string>
+            <string>Released on Monday, March 26, 2018. </string>
            </property>
            <property name="indent">
             <number>10</number>
@@ -256,7 +256,7 @@ border-radius: 10px;
          <item row="2" column="0">
           <widget class="QLabel" name="label_18">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack out the manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Check out the Manjaro forum &lt;a href=&quot;https://forum.manjaro.org/t/checkout-this-new-app-corebox-desktop/41650/90&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="margin">
             <number>0</number>
@@ -287,7 +287,7 @@ border-radius: 10px;
          <item row="1" column="0">
           <widget class="QLabel" name="label_19">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cheack out  the GITHUB page &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Check out the GitHub page &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="indent">
             <number>10</number>
@@ -536,7 +536,7 @@ border-radius: 10px;
          <item row="2" column="0">
           <widget class="QLabel" name="label_15">
            <property name="text">
-            <string>Thanks to Manjro's forum for Packaging</string>
+            <string>Thanks to Manjaro's forum for Packaging</string>
            </property>
            <property name="indent">
             <number>10</number>

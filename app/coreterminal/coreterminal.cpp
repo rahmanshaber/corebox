@@ -80,7 +80,7 @@ coreterminal::coreterminal(QWidget *parent) : QTermWidget(0, parent)
     setFocus();
 }
 
-coreterminal::coreterminal(QString workDir, QWidget *parent) : QTermWidget(0, parent)
+coreterminal::coreterminal(const QString &workDir, QWidget *parent) : QTermWidget(0, parent)
 {
     // Terminal Opacity
     setTerminalOpacity(.95);
@@ -139,7 +139,7 @@ coreterminal::coreterminal(QString workDir, QWidget *parent) : QTermWidget(0, pa
 
 }
 
-coreterminal::coreterminal(QString workDir, QString command, QWidget *parent) : QTermWidget(0, parent)
+coreterminal::coreterminal(const QString &workDir, const QString &command, QWidget *parent) : QTermWidget(0, parent)
 {
     // Terminal Opacity
     setTerminalOpacity(.95);

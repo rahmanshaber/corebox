@@ -22,6 +22,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMimeType>
 #include <QFileInfo>
 #include <QtConcurrent>
+#include <QTextStream>
+#include <QListWidgetItem>
 
 
 search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
@@ -44,28 +46,125 @@ search::~search()
 
 void search::startsetup()
 {
-    ui->searchFF->setFocus();
     ui->results->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     ui->pathfream->setVisible(0);
-    ui->typeframe->setEnabled(false);
+
     ui->findCMD->setEnabled(0);
     ui->locateCMD->setEnabled(0);
+
     ui->typeframe->setVisible(0);
-    ui->resultPage->setVisible(0);
+    ui->cancelProc->setVisible(0);
+
+    // Add setting for deleting the search activity.
+    bool isActivityEnabled = true;
+
+    // Search Activity file Path
+    QString sActFile = QDir::homePath() + "/.config/coreBox/SearchActivity";
+    QSettings searchActF(sActFile);
+
+    int count = searchActF.childGroups().count();
+    if (isActivityEnabled) {
+        ui->activityList->clear();
+        QStringList toplevel = searchActF.childGroups();
+        foreach (QString group, toplevel) {
+            QTreeWidgetItem *topTree = new QTreeWidgetItem;
+            QString groupL = sentDateText(group);
+            topTree->setText(0, groupL);
+            searchActF.beginGroup(group);
+            QStringList keys = searchActF.childKeys();
+            QCollator sort;
+            sort.setNumericMode(1);
+            std::sort(keys.begin(), keys.end(), sort);
+            foreach (QString key, keys) {
+                QTreeWidgetItem *child = new QTreeWidgetItem;
+                QString value = searchActF.value(key).toString();
+                child->setText(0, value);
+                topTree->addChild(child);
+            }
+            searchActF.endGroup();
+            ui->activityList->insertTopLevelItem(0, topTree);
+        }
+
+        if (toplevel.count())
+            ui->activityList->setExpanded(ui->activityList->model()->index(0, 0), true);
+    }
+
+    bool isRecentActivityAvailable = true;
+    if (!count) isRecentActivityAvailable = 0;
+
+    if (isRecentActivityAvailable) {
+        ui->infoPage->setCurrentIndex(2);
+        // Collect the recent activity list
+//        QListWidgetItem *item;
+//        for (int i = 0; i < activityText.count(); i++) {
+//            // SearchedText$$$Path$$FoundItems
+//            QStringList l = activityText.at(i).split("$$$");
+//            item = new QListWidgetItem(l.at(0) + "\n" + l.at(2) + " items found");
+
+//            //item->setBackground();
+//            //item->setForeground();
+//            ui->activityList->addItem(item);
+//        }
+    } else {
+        ui->infoPage->setCurrentIndex(1);
+        ui->status->setText("Search for Something by file type\nEnter text you want to search.");
+    }
+
+    ui->searchFF->setFocus();
+
     shotcuts();
-    ui->results->setFocusPolicy(Qt::NoFocus);
 
     cProcess = new QProcess(this);
 
     connect(cProcess, &QProcess::started, [&]() {
         ui->status->setText("Collecting Information...\nPlease wait for a moment...");
+
+        ui->cancelProc->setVisible(1);
+        ui->findCMD->setEnabled(0);
+        ui->folderPath->setEnabled(0);
+        ui->activityList->setEnabled(0);
+        ui->locateCMD->setEnabled(0);
+        ui->typePicture->setEnabled(0);
+        ui->typeAll->setEnabled(0);
+        ui->typeFolder->setEnabled(0);
+        ui->typeMedia->setEnabled(0);
+        ui->typeother->setEnabled(0);
+        //ui->typeframe->setVisible(0);
+        ui->more->setEnabled(0);
+        ui->setfolder->setEnabled(0);
+        ui->title->setEnabled(0);
     });
+
+    connect(ui->cancelProc, &QPushButton::clicked, cProcess, &QProcess::kill);
 
     connect(cProcess, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
           [=](int exitCode, QProcess::ExitStatus exitStatus){
         Q_UNUSED(exitCode);
-        Q_UNUSED(exitStatus);
-        populateItems(cProcess->readAllStandardOutput());
+        //Q_UNUSED(exitStatus);
+        if (exitStatus == QProcess::NormalExit) {
+            QTextStream text(cProcess->readAllStandardOutput());
+            populateItems(text.readAll());
+        } else {
+            ui->infoPage->setCurrentIndex(1);
+            ui->status->setText("You select cancel for not to search");
+        }
+
+        ui->findCMD->setEnabled(1);
+        ui->folderPath->setEnabled(1);
+        ui->activityList->setEnabled(1);
+        ui->locateCMD->setEnabled(1);
+        ui->typePicture->setEnabled(1);
+        ui->typeAll->setEnabled(1);
+        ui->typeFolder->setEnabled(1);
+        ui->typeMedia->setEnabled(1);
+        ui->typeother->setEnabled(1);
+        //ui->typeframe->setVisible(1);
+        ui->more->setEnabled(1);
+        ui->setfolder->setEnabled(1);
+        ui->title->setEnabled(1);
+
+        ui->cancelProc->setVisible(0);
+
         cProcess->close();
     });
 }
@@ -85,7 +184,6 @@ void search::setPath(const QString &path)
  * @brief Create a process based on that. And the process will collect the info.
  * @param find Use find or locate process for searching.
  */
-
 void search::callProcess(bool find)
 {
     QString programName;
@@ -146,6 +244,9 @@ void search::populateItems(const QString &text)
 
         c = sf.count();//Collect the count of lines of process output
 
+        //if (c < 1)
+        //    toTable();
+
         for (int i = 0; i < c; ++i) {
             //Collect mime type from list (of all items)
             mType = mime.mimeTypeForFile(sf.at(i));
@@ -171,8 +272,30 @@ void search::populateItems(const QString &text)
     QFutureWatcher<void>* r = new QFutureWatcher<void>();
     r->setFuture(future);
     connect(r, &QFutureWatcher<void>::finished, [&](){
-        ui->status->setText("NO ITEM FOUND.");
-        ui->resultPage->setCurrentIndex(0);
+        //ui->status->setText("NO ITEM FOUND.");
+        ui->infoPage->setCurrentIndex(0);
+
+        // Check is search activity enabled or not
+
+        // Search Activity file Path
+        QString sActFile = QDir::homePath() + "/.config/coreBox/SearchActivity";
+        QSettings searchActF(sActFile);
+        QDateTime currentDT = QDateTime::currentDateTime();
+        QString group = currentDT.toString("dd.MM.yyyy");
+        QString key = currentDT.toString("hh.mm.ss");
+        searchActF.beginGroup(group);
+        QString path = "/";
+        if (QFileInfo(ui->folderPath->text()).isDir()) path = ui->folderPath->text();
+        searchActF.setValue(key, ui->searchFF->text() + "\t\t\t" + path);
+        searchActF.endGroup();
+//        QFile file(sActFile);
+//        if (file.open(QIODevice::Append | QIODevice::Text | QIODevice::ReadWrite)) {
+//            QString path = "/";
+//            if (QFileInfo(ui->folderPath->text()).isDir()) path = ui->folderPath->text();
+//            file.write(QString(ui->searchFF->text() + "$$$" + path + "$$$" + QString::number(all.count()) + "\n").toLatin1());
+//            file.close();
+//        }
+        ui->typeAll->setChecked(1);
         toTable(populateByType());
     });
 }
@@ -207,8 +330,9 @@ void search::toTable(const QStringList &list)
     QFuture<void> f = QtConcurrent::run([this, list](){
         QStringList temp;
 
+        // Collect Information and add it to tablewidget
         if (list.count() > 0) {
-            ui->resultPage->setCurrentIndex(0);
+            ui->infoPage->setCurrentIndex(0);
             ui->results->clearContents();//Clear the rows from the table
             ui->results->setRowCount(list.count());//set row count by list item count
 
@@ -225,7 +349,8 @@ void search::toTable(const QStringList &list)
             }
 
         } else {
-            ui->resultPage->setCurrentIndex(1);
+            ui->infoPage->setCurrentIndex(1);
+            ui->status->setText("NO ITEMS FOUND...");
             ui->itemCount->setText("0 item(s) found");
         }
     });
@@ -243,9 +368,12 @@ void search::toTable(const QStringList &list)
 
 void search::shotcuts()
 {
-    QShortcut* shortcut;
-    shortcut = new QShortcut(QKeySequence(Qt::Key_Enter), this);
-    connect(shortcut, &QShortcut::activated, this, &search::on_locateCMD_clicked);
+//    QShortcut* shortcut;
+
+//    shortcut = new QShortcut(QKeySequence(Qt::Key_Enter), ui->searchFF);
+//    connect(shortcut, &QShortcut::activated, this, &search::on_findCMD_clicked);
+
+    connect(ui->searchFF, &QLineEdit::returnPressed, this, &search::on_findCMD_clicked);
 }
 
 void search::checkChange(QToolButton *a, QToolButton *b, QToolButton *c, QToolButton *d, QToolButton *e)
@@ -265,7 +393,7 @@ void search::on_findCMD_clicked()
     if (ui->searchFF->text().isEmpty()) {
         return;
     } else {
-        ui->resultPage->setCurrentIndex(1);
+        ui->infoPage->setCurrentIndex(1);
         ui->results->clearContents();
         callProcess(true);
     }
@@ -276,7 +404,7 @@ void search::on_locateCMD_clicked()
     if (ui->searchFF->text().isEmpty()) {
         return;
     } else {
-        ui->resultPage->setCurrentIndex(1);
+        ui->infoPage->setCurrentIndex(1);
         ui->results->clearContents();
         callProcess(false);
     }
