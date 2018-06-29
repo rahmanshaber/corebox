@@ -22,3 +22,10 @@
 * Using version 0.9.0.
 * This library is licenced in GPLv2.
 * Here is the GitHub [page](https://github.com/lxqt/qtermwidget).
+
+### Csys
+* csys libray is for Dashboard.
+* Based on stacer-core.
+* Using version 1.0.9.
+* This library is licenced in MIT.
+* Here is the GitHub [page](https://github.com/oguzhaninan/Stacer/tree/native/stacer-core).
