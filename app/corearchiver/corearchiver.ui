@@ -10,6 +10,12 @@
     <height>162</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>CoreArchiver</string>
   </property>
@@ -18,11 +24,53 @@
     <normaloff>:/icons/CoreArchiver.svg</normaloff>:/icons/CoreArchiver.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget{
-background-color: #333333;
-color:#E6E6E6; 
-border: 1px rgb(67, 67, 67);
-}</string>
+   <string notr="true">/*CoreArchiver */
+QWidget{
+background-color: #2A2A2A;
+color: #E6E6E6;
+border: 1px #2A2A2A;
+}
+
+/*ToolButton */
+QToolButton{
+border: 1px solid #434343 ;
+padding: 3px 2px 3px 2px;
+}
+
+QToolButton:pressed{
+background-color: #308CC6; 
+}
+
+QToolButton:hover {
+background-color:  #308CC6; 
+}
+
+/*ComboBox */
+QComboBox {
+    border: 1px solid #434343 ;
+    padding: 5px 5px 5px 10px;
+}
+QComboBox QAbstractItemView {
+    background-color: #333333;
+    color: #ffffff;
+    selection-background-color: #C2C2C2;
+}
+QComboBox::drop-down {
+    background-color: #3C3C43;
+}
+QComboBox::down-arrow {
+    image: url(:/icons/down_w.svg);
+}
+QComboBox:focus{
+    border:1px solid #C2C2C2;
+}
+
+/*LineBox */
+QLineEdit{
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;
+}
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="topMargin">
@@ -43,28 +91,7 @@ border: 1px rgb(67, 67, 67);
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QComboBox" name="formatsCB">
-     <property name="styleSheet">
-      <string notr="true">QComboBox {
-    border: 1px solid #434343 ;
-    padding: 5px 5px 5px 10px;
-}
-QComboBox QAbstractItemView {
-    background-color: #333333;
-    color: #ffffff;
-    selection-background-color: #C2C2C2;
-}
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}
-QComboBox::down-arrow {
-    image: url(:/icons/down_w.svg);
-}
-QComboBox:focus{
-    border:1px solid #C2C2C2;
-}</string>
-     </property>
-    </widget>
+    <widget class="QComboBox" name="formatsCB"/>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_3">
@@ -75,19 +102,11 @@ QComboBox:focus{
    </item>
    <item row="1" column="5">
     <widget class="QToolButton" name="locationTB">
-     <property name="styleSheet">
-      <string notr="true">QToolButton{
-border: 1px solid #434343 ;
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color: #308CC6; 
-}
-
-QToolButton:hover {
-background-color:  #308CC6; 
-}</string>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="text">
       <string>...</string>
@@ -96,12 +115,6 @@ background-color:  #308CC6;
    </item>
    <item row="1" column="1" colspan="4">
     <widget class="QLineEdit" name="locationLE">
-     <property name="styleSheet">
-      <string notr="true">QLineEdit{
-    border: 1px solid #434343;
-    padding: 5px 5px 5px 10px;
-}</string>
-     </property>
      <property name="text">
       <string/>
      </property>
@@ -111,32 +124,10 @@ background-color:  #308CC6;
     </widget>
    </item>
    <item row="0" column="1" colspan="5">
-    <widget class="QLineEdit" name="nameLE">
-     <property name="styleSheet">
-      <string notr="true">QLineEdit{
-    color:#E6E6E6; 
-    border: 1px solid #434343;
-    padding: 5px 5px 5px 10px;
-}</string>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="nameLE"/>
    </item>
    <item row="3" column="5">
     <widget class="QToolButton" name="cancel">
-     <property name="styleSheet">
-      <string notr="true">QToolButton{
-border: 1px solid #434343 ;
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color: #308CC6; 
-}
-
-QToolButton:hover {
-background-color:  #308CC6; 
-}</string>
-     </property>
      <property name="text">
       <string>Cancel</string>
      </property>
@@ -144,20 +135,6 @@ background-color:  #308CC6;
    </item>
    <item row="3" column="4">
     <widget class="QToolButton" name="createArc">
-     <property name="styleSheet">
-      <string notr="true">QToolButton{
-border: 1px solid #434343 ;
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color: #308CC6; 
-}
-
-QToolButton:hover {
-background-color:  #308CC6; 
-}</string>
-     </property>
      <property name="text">
       <string>Create Archive</string>
      </property>

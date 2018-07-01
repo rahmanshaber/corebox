@@ -23,7 +23,7 @@ Version 2.2
 - dark ui in corefm.
 - fixed search result ui.
 - fixed file trash problem in coreimage
-- fixed After install corebox icon fixed.
+- fixed after install corebox icon fixed.
 - dark ui in corearchiver and added icon.
 - dark ui in bookmarkit dialog.
 - moved corearchiver ui in designer.
@@ -44,7 +44,7 @@ Version 2.2
 - saved backup file path in setting
 - changed the settings toggle icon.
 - moved toolsize in status bar of corepaint.
-- seted all the instrument cursor in corepaint.
+- added all the instrument cursor in corepaint.
 - added every library version in lib README.md.
 - separated all the ui config from constructor from every coreapps.
 - fixed linenumberwidth in corepad.
@@ -53,14 +53,14 @@ Version 2.2
 - fixed the thumbnail view in coreimage.
 - added new app CoreRenamer.
 - added corerenamer integration with corefm.
-- removed duplicate declaration from header file of corefm
-- fixed same tab close crashed
-- removed libmagic from depedency
+- removed duplicate declaration from header file of corefm.
+- fixed same tab close crashed.
+- removed libmagic from depedency.
 - tabengine path in const.
-- fix the reload fuction.
-- recent activity dose not collecting the data.
-- fix the recent activity option in settings.
-- fix all open bkdialog function from bookmark
+- fixed the reload fuction.
+- fixedrecent activity dose not collecting the data.
+- fixed the recent activity option in settings.
+- fixed all open bkdialog function from bookmark
 - send path in const to bookmarkit.
 - fix the icon size in bookmarkdialog.
 - dashbord lib in separate folder named libcsys.
@@ -77,7 +77,7 @@ Version 2.2
 - fixed contex menu open folder action in corefm.
 - fixed after saving a new file , book mark button dose not work.
 - linenumber area space to fit 999 number.
-- add syntex highlighting in corepad.
+- added syntex highlighting in corepad.
 - saving a new page>> saving dialog>name has a * ,fixed it.
 - remove the page whole border in corepad.
 - name box is in focuse in corearchiver.
@@ -89,7 +89,7 @@ Version 2.2
 - fixed search is not taking path from corefm.
 - fixed two terminal crash both terminal app.
 - fixed add files button dose not work in corerenamer and many ui and bug fixes.
-
+- round border in messageengine>>messagebox.
 
 
 Version 2.1,Released date Friday, June 1, 2018.

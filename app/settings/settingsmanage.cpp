@@ -105,11 +105,11 @@ bool SettingsManage::getDisableRecent() {
     return getSpecificValue("CoreBox", "Recent-Disable").toBool();
 }
 
-bool SettingsManage::setBackupPath(QString path) {
+bool SettingsManage::setBackupPath(const QString path) {
     return setSpecificValue("CoreBox", "Backup-Path", path);
 }
 
-QString SettingsManage::getBackupPath() {
+const QString SettingsManage::getBackupPath() {
     return getSpecificValue("CoreBox", "Backup-Path").toString();
 }
 
@@ -133,11 +133,11 @@ QString SettingsManage::getThemeName() {
     return getSpecificValue("CoreFM", "Force-Theme").toString();
 }
 
-bool SettingsManage::setStartupPath(QString path) {
+bool SettingsManage::setStartupPath(const QString path) {
     return setSpecificValue("CoreFM", "Startup-Path", path);
 }
 
-QString SettingsManage::getStartupPath() {
+const QString SettingsManage::getStartupPath() {
     return getSpecificValue("CoreFM", "Startup-Path").toString();
 }
 
@@ -217,11 +217,11 @@ bool SettingsManage::getViewMode() {
 
 //-------------------------CoreScreenshot------------------------------
 
-bool SettingsManage::setSCSaveLocation(QString path) {
+bool SettingsManage::setSCSaveLocation(const QString path) {
     return setSpecificValue("CoreScreenshot", "Save-Location", path);
 }
 
-QString SettingsManage::getSCSaveLocation() {
+const QString SettingsManage::getSCSaveLocation() {
     return getSpecificValue("CoreScreenshot", "Save-Location").toString();
 }
 

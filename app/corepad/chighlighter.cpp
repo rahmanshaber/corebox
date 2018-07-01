@@ -1,3 +1,19 @@
+/*
+CoreBox is combination of some common desktop apps.
+
+CoreBox is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2
+of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see {http://www.gnu.org/licenses/}. */
+
 #include "chighlighter.h"
 
 #include <QMessageBox>
@@ -46,12 +62,12 @@ cHighlighter::cHighlighter(QTextDocument *textDocument) : QSyntaxHighlighter(tex
     // C++ Class Rule
     rule.regEx = QRegExp( "\\b[A-Z][_A-Za-z0-9]*\\b" );
     rule.format.setFontWeight(QFont::Bold);
-    rule.format.setForeground(Qt::darkRed);
+    rule.format.setForeground(Qt::green);
     rulesList.append(rule);
 
     // C++ Quotes Rule
     rule.regEx = QRegExp( "\\b\".*\"\\b" );
-    rule.format.setForeground(Qt::blue);
+    rule.format.setForeground(Qt::magenta);
     rulesList.append(rule);
     rule.regEx = QRegExp( "\\b\'.*\'\\b" );
     rulesList.append( rule );

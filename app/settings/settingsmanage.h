@@ -35,8 +35,8 @@ public:
     QString getTerminal();
     bool setTerminal(QString termName);
 
-    QString getStartupPath();
-    bool setStartupPath(QString path);
+    const QString getStartupPath();
+    bool setStartupPath(const QString path);
 
     QString getThemeName();
     bool setThemeName(QString themeName);
@@ -65,8 +65,8 @@ public:
     bool getViewMode();
     bool setViewMode(bool mode);
 
-    QString getSCSaveLocation();
-    bool setSCSaveLocation(QString path);
+    const QString getSCSaveLocation();
+    bool setSCSaveLocation(const QString path);
 
     bool getBoxIsMaximize();
     bool setBoxIsMaximize(bool isMaximize);
@@ -101,8 +101,8 @@ public:
     bool setSHowTime(bool showTime);
     bool getShowTime();
 
-    bool setBackupPath(QString path);
-    QString getBackupPath();
+    bool setBackupPath(const QString path);
+    const QString getBackupPath();
 
 };
 

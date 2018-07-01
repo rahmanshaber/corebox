@@ -7,7 +7,6 @@ FIX MUST BE SIMPLE.
 
 
 corebox
-0 - fix the miltipal file send to archive and corerenamer.
 0 - remove focuse policy from the shortcut bar from all app.
 0 - icon and title not changing perfectly.
 0 - add file watcher for bookmark and speed dial
@@ -15,18 +14,15 @@ corebox
 3 - double click not working.
 0 - closing the corebox needs to inform the app.
 1 - need two theme (dark and light)
-1 - round border is no working in messageengine>>messagebox.
 1 - add display scale support
 1 - add option for using default window manager
 3 - separate process for per app.
 1 - limit the openable window.
 1 - tab text align left.
-0 - restore the backup file in same folder.
 
 globalfunction
-0 - fix the check dir function and use it in coreapps (const path).
 0 - remove the trash path checking.
-Y - 0 - getfilesize in qconcarent.
+0 - getfilesize in qconcarent.
 1 - file moved message.
 1 - finished copying message.
 1 - file deleted & delete failed message.
@@ -41,7 +37,7 @@ start
 
 bookmarks
 0 - fix bookmark file check as folder making moved to globalfunctions.
-Y - 0 - fix the bookmark status label hide/show.
+0 - fix the bookmark status label hide/show.
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
 
@@ -59,12 +55,12 @@ search
 2 - if path is given ,find is not working.but locate is working.
 
 setting
-0 - all saving path in const.
-0 - backup path in const.
+0 - restore the backup file in same folder.
 0 - changes in app dose not save when corebox is closed.(not app)
 0 - fix settings ui
 
 corefm
+0 - fix the miltipal file send to archive and corerenamer.
 0 - send path in const to every app.
 0 - pathedit is always in focus, even outside clicked.
 0 - open in new corefm >> open 2 corefm(not tab)>>close 1,both crash
@@ -140,7 +136,7 @@ help
 3 - check library and its version before building from our app using qmake
 
 New app
-
+-Backup
 
 Packaging
 0 - fix the fonts in appimage.

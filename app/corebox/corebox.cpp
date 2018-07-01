@@ -56,12 +56,12 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
     ui->windows->tabBar()->installEventFilter(this);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::SubWindow);
     ui->restoreButton->setVisible(false);
-    ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
+//    ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
 
     //make the resizeable window button
-    QSizeGrip *sizeGrip = new QSizeGrip(this);
-    sizeGrip->setStyleSheet("QWidget{background-color: #EFEFEF ; width: 16px;height: 16px; background-image: url(:/icons/expand_b.svg); background-repeat: no-repeat ;background-position: center center ;}");
-    ui->resize->addWidget(sizeGrip);
+//    QSizeGrip *sizeGrip = new QSizeGrip(this);
+//    sizeGrip->setStyleSheet("QWidget{background-color: #EFEFEF ; width: 16px;height: 16px; background-image: url(:/icons/expand_b.svg); background-repeat: no-repeat ;background-position: center center ;}");
+//    ui->resize->addWidget(sizeGrip);
 
     //setup window size and state
     if (sm.getBoxIsMaximize()) {

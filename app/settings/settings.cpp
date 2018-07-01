@@ -101,7 +101,7 @@ void settings::setupCoreFMPage()
     //setup mimes
     QtConcurrent::run([this]() {
         MimeUtils *mimeUtils = new MimeUtils(this);
-        QString tmp = "/.config/coreBox/mimeapps.list";
+        const QString tmp = "/.config/coreBox/mimeapps.list";
         mimeUtils->setDefaultsFileName(tmp);
         QStringList mimes = mimeUtils->getMimeTypes();
 
@@ -351,7 +351,7 @@ void settings::on_ok_clicked()
 
     //corefm
     MimeUtils *mimeUtils = new MimeUtils(this);
-    QString tmp = "/.config/coreBox/mimeapps.list";
+    const QString tmp = "/.config/coreBox/mimeapps.list";
     mimeUtils->setDefaultsFileName(tmp);
     for (int i = 0; i < ui->mimesWidget->topLevelItemCount(); ++i) {
       QTreeWidgetItem* cathegory = ui->mimesWidget->topLevelItem(i);
@@ -436,15 +436,15 @@ void settings::on_corescrshot_clicked()
 
 void settings::on_browSave_clicked()
 {
-    QString path = QFileDialog::getExistingDirectory(this, "Select a folder");
+    const QString path = QFileDialog::getExistingDirectory(this, "Select a folder");
     if (path.count())
         ui->backupPath->setText(path);
 }
 
 void settings::on_backUp_clicked()
 {
-    QString path = QDir::homePath() + "/.config/coreBox";
-    QString cPath = QDir::homePath() + "/.config";
+    const QString path = QDir::homePath() + "/.config/coreBox";
+    const QString cPath = QDir::homePath() + "/.config";
     //QString settingsFile = "coreBox.conf";
     //QString bookFile = "CoreBoxBook";
 

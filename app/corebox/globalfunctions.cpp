@@ -180,7 +180,7 @@ void messageEngine(const QString &message, MessageType messageType) // engine sh
     bi->setContentsMargins(0, 0, 0, 0);
     QString stylesheet;
     if (messageType == MessageType::Info) {
-        stylesheet = "QWidget { background-color: rgba(35, 35, 35, 150); color: #ffffff; border: 1px #2A2A2A; border-radius: 10px; }";
+        stylesheet = "QWidget { background-color: rgba(35, 35, 35, 200); color: #ffffff; border: 1px #2A2A2A; border-radius: 10px; }";
     } else if (messageType == MessageType::Warning) {
         stylesheet = "QWidget { background-color: rgba(240, 0, 0, 150); color: #ffffff; border: 1px #2A2A2A; border-radius: 10px; }";
     } else if (messageType == MessageType::Tips) {

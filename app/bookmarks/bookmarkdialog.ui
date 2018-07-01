@@ -18,11 +18,42 @@
     <normaloff>:/icons/Bookmarks.svg</normaloff>:/icons/Bookmarks.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget{
+   <string notr="true">/*BookmarkIt */
+QWidget{
 background-color: #2A2A2A;
-color: #ffffff;
+color: #E6E6E6;
 border: 1px #2A2A2A;
-}</string>
+}
+
+/*PushButton */
+QPushButton{
+border: 1px solid #434343;
+padding: 3px 5px 3px 5px;
+}
+QPushButton:hover {
+background-color: #308CC6;
+}
+
+/*LineBox */
+QLineEdit{
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;
+}
+
+/*ComboBox */
+QComboBox {
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;
+}
+QComboBox QAbstractItemView {
+    background-color: #546070;
+    color: #ffffff;
+    selection-background-color: #F1A873;
+}
+QComboBox::drop-down {
+    background-color: #3C3C43;
+}
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="2">
@@ -36,15 +67,7 @@ border: 1px #2A2A2A;
     </widget>
    </item>
    <item row="1" column="2">
-    <widget class="QLineEdit" name="bkName">
-     <property name="styleSheet">
-      <string notr="true">QLineEdit{
-    border: 1px solid #434343;
-    padding: 5px 5px 5px 10px;
-border-radius: 2px;
-}</string>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="bkName"/>
    </item>
    <item row="2" column="1">
     <widget class="QLabel" name="Lpath">
@@ -61,23 +84,7 @@ border-radius: 2px;
     </widget>
    </item>
    <item row="0" column="2">
-    <widget class="QComboBox" name="bkSection">
-     <property name="styleSheet">
-      <string notr="true">QComboBox {
-    border: 1px solid #434343;
-    padding: 5px 5px 5px 10px;
-border-radius: 2px;
-}
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: #ffffff;
-    selection-background-color: #F1A873;
-}
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}</string>
-     </property>
-    </widget>
+    <widget class="QComboBox" name="bkSection"/>
    </item>
    <item row="1" column="1">
     <widget class="QLabel" name="LbkName">
@@ -113,17 +120,6 @@ QComboBox::drop-down {
      </item>
      <item>
       <widget class="QPushButton" name="cancel">
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: 1px solid #434343;
-padding: 3px 5px 3px 5px;
-border-radius: 2px;
-}
-QPushButton:hover {
-background-color: #308CC6;
-}
-</string>
-       </property>
        <property name="text">
         <string>Cancel</string>
        </property>
@@ -131,17 +127,6 @@ background-color: #308CC6;
      </item>
      <item>
       <widget class="QPushButton" name="done">
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: 1px solid #434343;
-padding: 3px 5px 3px 5px;
-border-radius: 2px;
-}
-QPushButton:hover {
-background-color: #308CC6;
-}
-</string>
-       </property>
        <property name="text">
         <string>Done</string>
        </property>

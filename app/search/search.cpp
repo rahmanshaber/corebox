@@ -368,11 +368,6 @@ void search::toTable(const QStringList &list)
 
 void search::shotcuts()
 {
-//    QShortcut* shortcut;
-
-//    shortcut = new QShortcut(QKeySequence(Qt::Key_Enter), ui->searchFF);
-//    connect(shortcut, &QShortcut::activated, this, &search::on_findCMD_clicked);
-
     connect(ui->searchFF, &QLineEdit::returnPressed, this, &search::on_findCMD_clicked);
 }
 

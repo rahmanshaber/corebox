@@ -38,20 +38,89 @@ color: #ffffff;
    <property name="spacing">
     <number>2</number>
    </property>
-   <item row="0" column="0" colspan="5">
-    <widget class="QLabel" name="label_8">
+   <item row="3" column="1">
+    <widget class="QPushButton" name="eight">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>38</height>
+      </size>
+     </property>
      <property name="font">
       <font>
-       <pointsize>11</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
+       <pointsize>18</pointsize>
       </font>
      </property>
-     <property name="text">
-      <string>CALCULATOR</string>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:#848282;
+}
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+     <property name="text">
+      <string>8</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="3">
+    <widget class="QPushButton" name="division">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>38</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:rgb(255, 151, 57);
+    color: white;
+}
+QPushButton:pressed
+{
+	background-color: #FF9739;
+}</string>
+     </property>
+     <property name="text">
+      <string>/</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="two">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>38</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+
+	background-color:#848282;
+}
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+     </property>
+     <property name="text">
+      <string>2</string>
      </property>
     </widget>
    </item>
@@ -94,8 +163,8 @@ color: #ffffff;
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QPushButton" name="seven">
+   <item row="5" column="0">
+    <widget class="QPushButton" name="one">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -117,21 +186,12 @@ QPushButton:pressed
 }</string>
      </property>
      <property name="text">
-      <string>7</string>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>22</width>
-       <height>22</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
+      <string>1</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="eight">
+   <item row="6" column="2">
+    <widget class="QPushButton" name="dot">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -153,45 +213,12 @@ QPushButton:pressed
 }</string>
      </property>
      <property name="text">
-      <string>8</string>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
+      <string>.</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="nine">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>38</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	background-color:#848282;
-}
-QPushButton:pressed
-{
-	background-color: #3C3C3C;
-}</string>
-     </property>
-     <property name="text">
-      <string>9</string>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3">
-    <widget class="QPushButton" name="add">
+   <item row="4" column="3">
+    <widget class="QPushButton" name="subtract">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -208,99 +235,13 @@ QPushButton:pressed
 	background-color:rgb(255, 151, 57);
     color: white;
 }
-QPushButton:pressed{
+QPushButton:pressed
+{
 	background-color: #FF9739;
 }</string>
      </property>
      <property name="text">
-      <string>+</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="4">
-    <widget class="QPushButton" name="clear">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>38</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	background-color:rgb(255, 151, 57);
-    color: white;
-}
-QPushButton:pressed{
-	background-color: #FF9739;
-}</string>
-     </property>
-     <property name="text">
-      <string>C</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QPushButton" name="four">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>38</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	background-color:#848282;
-}
-QPushButton:pressed
-{
-	background-color: #3C3C3C;
-}</string>
-     </property>
-     <property name="text">
-      <string>4</string>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QPushButton" name="five">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>38</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	background-color:#848282;
-}
-QPushButton:pressed
-{
-	background-color: #3C3C3C;
-}</string>
-     </property>
-     <property name="text">
-      <string>5</string>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
+      <string>-</string>
      </property>
     </widget>
    </item>
@@ -334,8 +275,8 @@ QPushButton:pressed
      </property>
     </widget>
    </item>
-   <item row="4" column="3">
-    <widget class="QPushButton" name="subtract">
+   <item row="3" column="3">
+    <widget class="QPushButton" name="add">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -352,95 +293,12 @@ QPushButton:pressed
 	background-color:rgb(255, 151, 57);
     color: white;
 }
-QPushButton:pressed
-{
+QPushButton:pressed{
 	background-color: #FF9739;
 }</string>
      </property>
      <property name="text">
-      <string>-</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="4" rowspan="3">
-    <widget class="QPushButton" name="equal">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	background-color:#d7d7d7;
-}
-QPushButton:pressed
-{
-	background-color: #3C3C3C;
-}</string>
-     </property>
-     <property name="text">
-      <string>=</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QPushButton" name="one">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>38</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-	background-color:#848282;
-}
-QPushButton:pressed
-{
-	background-color: #3C3C3C;
-}</string>
-     </property>
-     <property name="text">
-      <string>1</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QPushButton" name="two">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>38</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-
-	background-color:#848282;
-}
-QPushButton:pressed
-{
-	background-color: #3C3C3C;
-}</string>
-     </property>
-     <property name="text">
-      <string>2</string>
+      <string>+</string>
      </property>
     </widget>
    </item>
@@ -499,6 +357,50 @@ QPushButton:pressed
      </property>
     </widget>
    </item>
+   <item row="0" column="0" colspan="5">
+    <widget class="QLabel" name="label_8">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>CALCULATOR</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QPushButton" name="clear">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>38</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:rgb(255, 151, 57);
+    color: white;
+}
+QPushButton:pressed{
+	background-color: #FF9739;
+}</string>
+     </property>
+     <property name="text">
+      <string>C</string>
+     </property>
+    </widget>
+   </item>
    <item row="6" column="0" colspan="2">
     <widget class="QPushButton" name="zero">
      <property name="minimumSize">
@@ -526,8 +428,8 @@ QPushButton:pressed
      </property>
     </widget>
    </item>
-   <item row="6" column="2">
-    <widget class="QPushButton" name="dot">
+   <item row="3" column="2">
+    <widget class="QPushButton" name="nine">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -549,12 +451,15 @@ QPushButton:pressed
 }</string>
      </property>
      <property name="text">
-      <string>.</string>
+      <string>9</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="6" column="3">
-    <widget class="QPushButton" name="division">
+   <item row="4" column="0">
+    <widget class="QPushButton" name="four">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -568,16 +473,111 @@ QPushButton:pressed
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-	background-color:rgb(255, 151, 57);
-    color: white;
+	background-color:#848282;
 }
 QPushButton:pressed
 {
-	background-color: #FF9739;
+	background-color: #3C3C3C;
 }</string>
      </property>
      <property name="text">
-      <string>/</string>
+      <string>4</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4" rowspan="3">
+    <widget class="QPushButton" name="equal">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:#d7d7d7;
+}
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+     </property>
+     <property name="text">
+      <string>=</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QPushButton" name="seven">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>38</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:#848282;
+}
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+     </property>
+     <property name="text">
+      <string>7</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="five">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>38</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:#848282;
+}
+QPushButton:pressed
+{
+	background-color: #3C3C3C;
+}</string>
+     </property>
+     <property name="text">
+      <string>5</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
      </property>
     </widget>
    </item>

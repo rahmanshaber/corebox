@@ -6,6 +6,9 @@ These are the some big changes in CoreBox 2.2.
 => CoreBox
    - Added new app CoreTerminal , CoreRenamer and CoreArchiver.
    - Removed engrampa as moved to CoreArchiver
+   - Reduced font size in all app's sidebar.
+   - Fixed tab close crash of same app.
+
 
 => Start
    - New look.
@@ -17,11 +20,12 @@ These are the some big changes in CoreBox 2.2.
 
 => DashBoard
     - Updated the battery info functions.
-    -
+    - Moved all core code to separete library.
+    - Battery charging and discharging time is showing now.
 
 => Search
    - Search is now faster and have better UI.
-   -
+   - "Enter" shortcut is now working.
    -
 
 => Settings
@@ -31,7 +35,7 @@ These are the some big changes in CoreBox 2.2.
    -
 
 => CoreAction
-   -
+   - All the widgets rebuild, now faster and ram efficent.
    -
    -
 
@@ -41,8 +45,8 @@ These are the some big changes in CoreBox 2.2.
 
 => CorePaint
    - Selected area delete with del key press.
-   -
-   -
+   - Moved toolsize in status bar.
+   - Added all the instrument cursor.
    -
 
 => CoreTime
@@ -52,8 +56,8 @@ These are the some big changes in CoreBox 2.2.
    -
 
 => CoreImage
-   - Fixed the thumbnail view
-   -.
+   - Fixed the thumbnail view.
+   -
 
 => CorePlayer
    -
@@ -64,9 +68,9 @@ These are the some big changes in CoreBox 2.2.
    -
 
 => CorePad
-   -
-   -
-   -
+   - Fixed linenumberwidth.
+   - Fixed all bug related to saving.
+   - Added syntex highlighting.
    -
    -
 
