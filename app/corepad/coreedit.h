@@ -17,6 +17,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef COREEDIT_H
 #define COREEDIT_H
 
+#include "chighlighter.h"
+
+#include <QDebug>
 #include <QPlainTextEdit>
 #include <QPainter>
 #include <QTextBlock>

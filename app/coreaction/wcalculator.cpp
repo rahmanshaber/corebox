@@ -1,14 +1,26 @@
+/*
+CoreBox is combination of some common desktop apps.
+
+CoreBox is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2
+of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see {http://www.gnu.org/licenses/}. */
+
 #include "wcalculator.h"
 #include "ui_wcalculator.h"
-
-#include <QDebug>
 
 float varA, varB, result;
 int z = 0, varC, varD;
 
-wCalculator::wCalculator(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::wCalculator)
+wCalculator::wCalculator(QWidget *parent) :QWidget(parent),ui(new Ui::wCalculator)
 {
     ui->setupUi(this);
     ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));

@@ -16,10 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "battery.h"
 
-#include <QtDBus/QDBusConnection>
-#include <QtDBus/QDBusInterface>
-#include <QSettings>
-
 
 Battery::Battery(const QString &path, QObject *parent)
     : QObject(parent), m_interface(0),

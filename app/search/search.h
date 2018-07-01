@@ -17,6 +17,13 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef SEARCH_H
 #define SEARCH_H
 
+#include <QIcon>
+#include <QMimeDatabase>
+#include <QMimeType>
+#include <QFileInfo>
+#include <QtConcurrent>
+#include <QTextStream>
+#include <QListWidgetItem>
 #include <QTableWidgetItem>
 #include <QWidget>
 #include <QToolButton>

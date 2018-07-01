@@ -24,7 +24,17 @@
     <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame [accessibleName=&quot;windowBar&quot;]{
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame [accessibleName=&quot;windowBar&quot;]{
 background-color: #111111;
 color: #111111;
 border: 1px #111111;
@@ -39,16 +49,6 @@ QPushButton:hover  [accessibleName=&quot;windowBar&quot;]{
 background-color: #1268A4;
 }
 </string>
-  </property>
-  <widget class="QWidget" name="centralWidget">
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">

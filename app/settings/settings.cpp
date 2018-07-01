@@ -17,21 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "settings.h"
 #include "ui_settings.h"
 
-#include "corearchiver/corearchiver.h"
-
-#include <QDir>
-#include <QFile>
-#include <QIcon>
-#include <QFileDialog>
-#include <QTreeWidgetItem>
-#include <QtConcurrent>
-
-#include "corefm/mimeutils.h"
-#include "corefm/fileutils.h"
-#include "corefm/applicationdialog.h"
-#include "../corebox/corebox.h"
-#include "../corebox/globalfunctions.h"
-
 
 settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
 {

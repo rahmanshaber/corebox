@@ -22,6 +22,17 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QCloseEvent>
 #include <QModelIndex>
 #include <QMediaPlaylist>
+#include <QMediaService>
+#include <QVideoProbe>
+#include <QAudioProbe>
+#include <QMediaMetaData>
+#include <QtWidgets>
+#include <QVideoWidget>
+#include <QStandardItemModel>
+#include <QtConcurrent>
+
+#include "corebox/corebox.h"
+#include "corebox/globalfunctions.h"
 
 
 namespace Ui {

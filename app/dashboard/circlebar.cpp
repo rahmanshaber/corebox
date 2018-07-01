@@ -1,15 +1,8 @@
 #include "circlebar.h"
 #include "ui_circlebar.h"
 
-CircleBar::~CircleBar()
-{
-    delete ui;
-    delete mChart;
-}
 
-CircleBar::CircleBar(const QString &title, const QStringList &colors, QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::CircleBar),
+CircleBar::CircleBar(const QString &title, const QStringList &colors, QWidget *parent) :QWidget(parent),ui(new Ui::CircleBar),
     mColors(colors),
     mChart(new QChart),
     mChartView(new QChartView(mChart)),
@@ -20,6 +13,12 @@ CircleBar::CircleBar(const QString &title, const QStringList &colors, QWidget *p
     ui->lblCircleChartTitle->setText(title);
 
     init();
+}
+
+CircleBar::~CircleBar()
+{
+    delete ui;
+    delete mChart;
 }
 
 void CircleBar::init()

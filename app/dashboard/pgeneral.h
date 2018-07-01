@@ -14,45 +14,56 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
-#ifndef PBATTERY_H
-#define PBATTERY_H
+#ifndef PGENERAL_H
+#define PGENERAL_H
 
 #include <QWidget>
-#include <QMetaProperty>
 #include <QStringListModel>
+#include <QSysInfo>
+#include <QtNetwork>
+#include <QFontMetrics>
+#include <QFont>
+#include <QObject>
 
-#include "upower.h"
-#include "battery.h"
 
+#include "dashboard/info_manager.h"
+#include "dashboard/circlebar.h"
+#include "Info/system_info.h"
 #include "corebox/globalfunctions.h"
 
-
 namespace Ui {
-class pBattery;
+class pgeneral;
 }
 
-class pBattery : public QWidget
+class pgeneral : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit pBattery(QWidget *parent = 0);
-    ~pBattery();
-
-    void reload();
+    explicit pgeneral(QWidget *parent = 0);
+    ~pgeneral();
 
 private slots:
-    void on_batteriesList_currentIndexChanged(int index);
-
-    void on_refresh_clicked();
+    void init();
+    void systemInformationInit();
+    void updateCpuBar();
+    void updateMemoryBar();
+    void updateNetworkBar();
 
 private:
-    Ui::pBattery *ui;
-    UPower *m_upower;
-    Battery *m_model;
-    QStringList batteries;
+    Ui::pgeneral *ui;
 
-    void setupBatteryPage();
+    CircleBar* cpuBar;
+    CircleBar* memBar;
+
+    QTimer *timer;
+    InfoManager *im;
+
+    QString cpuCore;
+    QString cpuModel;
+    QString cpuSpeed;
+    QString username;
+
 };
 
-#endif // PBATTERY_H
+#endif // PGENERAL_H

@@ -55,7 +55,7 @@ Version 2.2
 - added corerenamer integration with corefm.
 - removed duplicate declaration from header file of corefm.
 - fixed same tab close crashed.
-- removed libmagic from depedency.
+- removed libmagic from corefm depedency.
 - tabengine path in const.
 - fixed the reload fuction.
 - fixedrecent activity dose not collecting the data.

@@ -15,14 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "bookmarks.h"
-#include "bookmarkdialog.h"
 #include "ui_bookmarks.h"
 
-#include "corefm/corefm.h"
-#include "corepad/corepad.h"
-#include "coreimage/coreimage.h"
-#include "../corebox/corebox.h"
-#include "../corebox/globalfunctions.h"
+
 
 
 bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)

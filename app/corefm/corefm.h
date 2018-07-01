@@ -45,6 +45,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "../corearchiver/corearchiver.h"
 
 
+
 namespace Ui {
 class corefm;
 }
@@ -60,9 +61,9 @@ public:
 
     Ui::corefm *ui;
 
-    CoreBox& corebox() {
-        return corebox_;
-    }
+//    CoreBox& corebox() {
+//        return corebox_;
+//    }
 
     void goTo(const QString path);
 
@@ -187,8 +188,7 @@ private:
     tabBar *tabs;
     myProgressDialog * progress;
     propertiesw * properties;
-    QSettings *sett;
-    CoreBox corebox_;
+//    CoreBox corebox_;
     UDisks2 *udisks;
 
     QFileSystemWatcher *watcher;

@@ -15,29 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreimage.h"
-#include "corebox/corebox.h"
 #include "ui_coreimage.h"
 
-#include "corebox/globalfunctions.h"
-#include "bookmarks//bookmarks.h"
-#include "bookmarks/bookmarkdialog.h"
-#include "corepaint/corepaint.h"
-
-#include <QFileDialog>
-#include <QStandardPaths>
-#include <QImageReader>
-#include <QImageWriter>
-#include <QTransform>
-#include <QFileInfo>
-#include <QBuffer>
-#include <QDataStream>
-#include <QShortcut>
-#include <QAbstractScrollArea>
-#include <QSpacerItem>
-#include <QtWidgets>
-#include <QDateTime>
-#include <QtConcurrent>
-#include <QShortcut>
 
 coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
   ,slideShowTimer(nullptr)

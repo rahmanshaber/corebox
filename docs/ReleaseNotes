@@ -42,6 +42,7 @@ These are the some big changes in CoreBox 2.2.
 => CoreFM
    - Added CoreArchiver and CoreTerminal support.
    - Dark ui in corefm.
+   - Removed libmagic from depedency.
 
 => CorePaint
    - Selected area delete with del key press.

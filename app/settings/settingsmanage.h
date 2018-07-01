@@ -17,6 +17,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef SETTINGSMANAGE_H
 #define SETTINGSMANAGE_H
 
+#include <QDir>
+#include <QIcon>
+#include <QFileInfo>
 #include <QSettings>
 #include <QVariant>
 

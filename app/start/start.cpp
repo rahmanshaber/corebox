@@ -17,16 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "start.h"
 #include "ui_start.h"
 
-#include <QTableWidgetItem>
-#include <QFont>
-#include <QFileSystemWatcher>
-#include <QDebug>
-#include <QCollator>
-
-#include "corebox/corebox.h"
-#include "bookmarks/bookmarkmanage.h"
-#include "corebox/globalfunctions.h"
-
 
 Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
 {

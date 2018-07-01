@@ -18,6 +18,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define BOOKMARKS_H
 
 #include "bookmarkmanage.h"
+#include "bookmarkdialog.h"
 
 #include <QWidget>
 #include <QDir>
@@ -26,6 +27,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMimeData>
 #include <QMouseEvent>
 #include <QTableWidgetItem>
+
+#include "corefm/corefm.h"
+#include "corepad/corepad.h"
+#include "coreimage/coreimage.h"
+#include "corebox/corebox.h"
+#include "corebox/globalfunctions.h"
 
 
 namespace Ui {

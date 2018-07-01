@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += core gui dbus multimedia multimediawidgets charts concurrent x11extras#svg printsupport
+QT += core gui dbus multimedia multimediawidgets charts concurrent x11extras#svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,8 +20,6 @@ LIBS += -L../library/libcarchiver/ -lcarchiver
 INCLUDEPATH += ../library/libcsys/
 LIBS += -L../library/libcsys/ -lcsys
 
-#LIBS += -lmagic
-
 FORMS += \
     about/about.ui \
     bookmarks/bookmarks.ui \
@@ -35,7 +33,6 @@ FORMS += \
     coreplayer/coreplayer.ui \
     coretime/coretime.ui \
     coretime/snooze.ui \
-    dashboard/dashboard.ui \
     help/help.ui \
     search/search.ui \
     settings/settings.ui \
@@ -51,15 +48,15 @@ FORMS += \
     coreaction/wcalculator.ui \
     coreaction/wbattery.ui \
     coreaction/wnotes.ui \
-    dashboard/General/circlebar.ui \
-#    dashboard/General/dashboard_page.ui \
-    dashboard/General/linebar.ui \
-    dashboard/Resources/history_chart.ui \
-    dashboard/Resources/resources_page.ui \
-    dashboard/General/sysinfo.ui \
+    dashboard/circlebar.ui \
+    dashboard/dashboard.ui \
+    dashboard/history_chart.ui \
+    dashboard/linebar.ui \
     dashboard/pbattery.ui \
+    dashboard/pdisplay.ui \
     dashboard/pdrives.ui \
-    dashboard/pdisplay.ui
+    dashboard/pgeneral.ui \
+    dashboard/presources.ui
 
 
 HEADERS += \
@@ -116,9 +113,6 @@ HEADERS += \
     coretime/schedulecollection.h \
     coretime/snooze.h \
     coretime/timer.h \
-    dashboard/battery.h \
-    dashboard/dashboard.h \
-    dashboard/upower.h \
     help/help.h \
     search/search.h \
     settings/settings.h \
@@ -146,18 +140,20 @@ HEADERS += \
     coreaction/wbattery.h \
     coreaction/wnotes.h \
     corepad/chighlighter.h \
-    dashboard/signal_mapper.h \
-    dashboard/utilities.h \
-    dashboard/General/circlebar.h \
-#    dashboard/General/dashboard_page.h \
-    dashboard/General/linebar.h \
-    dashboard/Managers/info_manager.h \
-    dashboard/Resources/history_chart.h \
-    dashboard/Resources/resources_page.h \
-    dashboard/General/sysinfo.h \
+    dashboard/battery.h \
+    dashboard/circlebar.h \
+    dashboard/dashboard.h \
+    dashboard/history_chart.h \
+    dashboard/info_manager.h \
+    dashboard/linebar.h \
     dashboard/pbattery.h \
+    dashboard/pdisplay.h \
     dashboard/pdrives.h \
-    dashboard/pdisplay.h
+    dashboard/pgeneral.h \
+    dashboard/presources.h \
+    dashboard/signal_mapper.h \
+    dashboard/upower.h \
+    dashboard/utilities.h
 
 
 SOURCES += \
@@ -213,9 +209,6 @@ SOURCES += \
     coretime/schedulecollection.cpp \
     coretime/snooze.cpp \
     coretime/timer.cpp \
-    dashboard/battery.cpp \
-    dashboard/dashboard.cpp \
-    dashboard/upower.cpp \
     help/help.cpp \
     search/search.cpp \
     settings/settings.cpp \
@@ -242,17 +235,19 @@ SOURCES += \
     coreaction/wbattery.cpp \
     coreaction/wnotes.cpp \
     corepad/chighlighter.cpp \
-    dashboard/signal_mapper.cpp \
-    dashboard/General/circlebar.cpp \
-#    dashboard/General/dashboard_page.cpp \
-    dashboard/General/linebar.cpp \
-    dashboard/Managers/info_manager.cpp \
-    dashboard/Resources/history_chart.cpp \
-    dashboard/Resources/resources_page.cpp \
-    dashboard/General/sysinfo.cpp \
+    dashboard/battery.cpp \
+    dashboard/circlebar.cpp \
+    dashboard/dashboard.cpp \
+    dashboard/history_chart.cpp \
+    dashboard/info_manager.cpp \
+    dashboard/linebar.cpp \
     dashboard/pbattery.cpp \
+    dashboard/pdisplay.cpp \
     dashboard/pdrives.cpp \
-    dashboard/pdisplay.cpp
+    dashboard/pgeneral.cpp \
+    dashboard/presources.cpp \
+    dashboard/signal_mapper.cpp \
+    dashboard/upower.cpp
 
 
 RESOURCES += \

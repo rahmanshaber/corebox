@@ -1,10 +1,6 @@
 #include "history_chart.h"
 #include "ui_history_chart.h"
 
-HistoryChart::~HistoryChart()
-{
-    delete ui;
-}
 
 HistoryChart::HistoryChart(const QString &title, const int &seriesCount, QCategoryAxis* categoriAxisY, QWidget *parent) :
     QWidget(parent),
@@ -25,6 +21,11 @@ HistoryChart::HistoryChart(const QString &title, const int &seriesCount, QCatego
             mChart->setAxisY(mAxisY, mSeriesList.at(i));
         }
     }
+}
+
+HistoryChart::~HistoryChart()
+{
+    delete ui;
 }
 
 void HistoryChart::init()

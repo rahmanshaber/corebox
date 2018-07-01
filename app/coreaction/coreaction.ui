@@ -20,12 +20,11 @@
    <iconset resource="../icons.qrc">
     <normaloff>:/icons/CoreAction.svg</normaloff>:/icons/CoreAction.svg</iconset>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <property name="styleSheet">
-   <string notr="true">QWidget{
-background-color: #222222;
-border: 1px #494949;
-color: #ffffff;
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_11">
    <property name="spacing">

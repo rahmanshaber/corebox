@@ -16,9 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "upower.h"
 
-#include <QtDBus>
-#include <QtDebug>
-
 
 const QString UPower::m_consolkit_interface = "org.freedesktop.ConsoleKit";
 const QString UPower::m_consolkit_path      = "/org/freedesktop/ConsoleKit/Manager";

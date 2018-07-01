@@ -18,17 +18,36 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define COREPAINT_H
 
 #include "easypaintenums.h"
+#include "imagearea.h"
+#include "datasingleton.h"
+#include "widgets/colorchooser.h"
 
 #include <QWidget>
 #include <QMap>
 #include <QMenu>
 #include <QPushButton>
+#include <QApplication>
+#include <QAction>
+#include <QMenuBar>
+#include <QMessageBox>
+#include <QScrollArea>
+#include <QLabel>
+#include <QtEvents>
+#include <QPainter>
+#include <QInputDialog>
+#include <QUndoGroup>
+#include <QtCore/QTimer>
+#include <QtCore/QMap>
+#include <QDateTime>
+#include <QSettings>
+#include <QShortcut>
 
 #include "../settings/settingsmanage.h"
 #include "../corebox/globalfunctions.h"
 #include "../bookmarks/bookmarks.h"
 #include "../bookmarks/bookmarkdialog.h"
 #include "../corebox/corebox.h"
+
 
 QT_BEGIN_NAMESPACE
 class QAction;

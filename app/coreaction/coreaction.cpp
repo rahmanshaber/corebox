@@ -17,25 +17,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreaction.h"
 #include "ui_coreaction.h"
 
-#include "../corebox/globalfunctions.h"
-#include "../corebox/corebox.h"
-#include "about/about.h"
-#include "dashboard/upower.h"
-#include "dashboard/battery.h"
-#include "coreshot/coreshotdialog.h"
-
-#include <QDesktopWidget>
-#include <QDateTime>
-#include <QTimer>
-#include <QFile>
-#include <QDoubleValidator>
 
 coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
     ui(new Ui::coreaction),
     timer(new QTimer(this))
 {
     ui->setupUi(this);
-
 
     widget();
     loadsettings();

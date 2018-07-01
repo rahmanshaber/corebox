@@ -34,6 +34,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QtConcurrent/QtConcurrent>
 #include <QShortcut>
 
+
 corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {
     ui->setupUi(this);

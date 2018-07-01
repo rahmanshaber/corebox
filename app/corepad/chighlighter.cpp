@@ -16,7 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "chighlighter.h"
 
-#include <QMessageBox>
 
 cHighlighter::cHighlighter(QTextDocument *textDocument) : QSyntaxHighlighter(textDocument), m_text(textDocument)
 {

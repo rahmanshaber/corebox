@@ -13,11 +13,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreterminal.h"
-#include "../corebox/corebox.h"
-
-#include <QDebug>
-#include <QTabWidget>
-#include <QShortcut>
 
 
 coreterminal::coreterminal(QWidget *parent) : QTermWidget(0, parent)

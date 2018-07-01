@@ -2,6 +2,7 @@
 #define UTILITIES_H
 
 #include <QWidget>
+#include <QDebug>
 #include <QGraphicsDropShadowEffect>
 
 class Utilities

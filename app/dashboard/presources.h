@@ -14,49 +14,48 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
-#ifndef SYSINFO_H
-#define SYSINFO_H
-
-#include "circlebar.h"
+#ifndef PRESOURCES_H
+#define PRESOURCES_H
 
 #include <QWidget>
+#include <QTimer>
 
-#include "dashboard/Managers/info_manager.h"
-
+#include "dashboard/utilities.h"
+#include "dashboard/history_chart.h"
+#include "dashboard/info_manager.h"
 
 namespace Ui {
-class sysinfo;
+class presources;
 }
 
-class sysinfo : public QWidget
+class presources : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit sysinfo(QWidget *parent = 0);
-    ~sysinfo();
+    explicit presources(QWidget *parent = 0);
+    ~presources();
 
 private slots:
-    void init();
-    void systemInformationInit();
-    void updateCpuBar();
-    void updateMemoryBar();
-    void updateNetworkBar();
+    void updateCpuChart();
+    void updateCpuLoadAvg();
+    void updateDiskReadWrite();
+    void updateMemoryChart();
+    void updateNetworkChart();
 
 private:
-    Ui::sysinfo *ui;
+    Ui::presources *ui;
 
-    CircleBar* cpuBar;
-    CircleBar* memBar;
-
-    QTimer *timer;
     InfoManager *im;
+    QTimer *mTimer;
+    void init();
 
-    QString cpuCore;
-    QString cpuModel;
-    QString cpuSpeed;
-    QString username;
+    HistoryChart *mChartCpu;
+    HistoryChart *mChartCpuLoadAvg;
+    HistoryChart *mChartDiskReadWrite;
+    HistoryChart *mChartMemory;
+    HistoryChart *mChartNetwork;
 
 };
 
-#endif // SYSINFO_H
+#endif // PRESOURCES_H

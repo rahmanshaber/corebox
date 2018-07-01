@@ -24,9 +24,20 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMenu>
 #include <QSystemTrayIcon>
 #include <QTimer>
+#include <QDesktopWidget>
+#include <QDateTime>
+#include <QTimer>
+#include <QFile>
+#include <QDoubleValidator>
 
-#include "../settings/settingsmanage.h"
-#include "dashboard/Managers/info_manager.h"
+#include "settings/settingsmanage.h"
+#include "dashboard/info_manager.h"
+#include "corebox/globalfunctions.h"
+#include "corebox/corebox.h"
+#include "about/about.h"
+#include "dashboard/upower.h"
+#include "dashboard/battery.h"
+#include "coreshot/coreshotdialog.h"
 
 
 namespace Ui {

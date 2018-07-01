@@ -17,10 +17,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "bookmarkdialog.h"
 #include "ui_bookmarkdialog.h"
 
-#include "corebox/globalfunctions.h"
 
-bookmarkDialog::bookmarkDialog(QWidget *parent) : QDialog(parent),
-    ui(new Ui::bookmarkDialog)
+bookmarkDialog::bookmarkDialog(QWidget *parent) : QDialog(parent),ui(new Ui::bookmarkDialog)
 {
     ui->setupUi(this);
 

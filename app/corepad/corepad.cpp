@@ -17,18 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corepad.h"
 #include "ui_corepad.h"
 
-#include <QFile>
-#include <QFileDialog>
-#include <QShortcut>
-#include <QFileInfo>
-#include <QDate>
-#include <QDateTime>
-#include <QMessageBox>
-#include <QDebug>
-
-#include "corebox/corebox.h"
-#include "corebox/globalfunctions.h"
-#include "bookmarks/bookmarks.h"
 
 corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
 {

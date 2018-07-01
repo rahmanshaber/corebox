@@ -16,11 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "bookmarkmanage.h"
 
-#include <QSet>
-#include <QList>
-#include <QTextStream>
-#include <QLineEdit>
-
 
 void BookmarkManage::checkBookPath()
 {

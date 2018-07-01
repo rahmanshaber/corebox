@@ -30,10 +30,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMessageBox>
 #include <QFileInfo>
 #include <QSettings>
-
 #include <QGraphicsDropShadowEffect>
 
 #include "../settings/settingsmanage.h"
+
 
 enum AppsName {
     damn = -1,

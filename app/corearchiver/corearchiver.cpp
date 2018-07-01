@@ -17,10 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corearchiver.h"
 #include "ui_corearchiver.h"
 
-#include <QtConcurrent>
-
-#include "libarchiveqt.h"
-
 
 corearchiver::corearchiver(QWidget *parent) :
     QWidget(parent),

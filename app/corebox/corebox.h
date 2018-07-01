@@ -23,9 +23,16 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QCloseEvent>
 #include <QPoint>
 #include <QDir>
+#include <QDateTime>
+#include <QSettings>
+#include <QPoint>
 
-#include "../settings/settingsmanage.h"
+#include "settings/settingsmanage.h"
+#include "bookmarks/bookmarks.h"
+#include "bookmarks/bookmarkmanage.h"
+#include "settings/settings.h"
 #include "globalfunctions.h"
+
 
 namespace Ui {
 class CoreBox;

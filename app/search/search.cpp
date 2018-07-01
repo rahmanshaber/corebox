@@ -17,14 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "search.h"
 #include "ui_search.h"
 
-#include <QIcon>
-#include <QMimeDatabase>
-#include <QMimeType>
-#include <QFileInfo>
-#include <QtConcurrent>
-#include <QTextStream>
-#include <QListWidgetItem>
-
 
 search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
 {

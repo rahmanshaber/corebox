@@ -6,9 +6,9 @@
 #include <QtCharts>
 #include <QTimer>
 
-//#include "Managers/app_manager.h"
 #include "Utils/format_util.h"
 #include "dashboard/signal_mapper.h"
+
 
 namespace Ui {
     class HistoryChart;
@@ -32,9 +32,6 @@ private slots:
     void on_checkHistoryTitle_clicked(bool checked);
 
 private:
-    void init();
-
-private:
     Ui::HistoryChart *ui;
 
     QString mTitle;
@@ -44,6 +41,9 @@ private:
     QVector<QSplineSeries *> mSeriesList;
 
     QCategoryAxis *mAxisY;
+
+    void init();
+
 };
 
 #endif // HISTORYCHART_H

@@ -17,9 +17,22 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef COREPAD_H
 #define COREPAD_H
 
+#include <QFile>
+#include <QFileDialog>
+#include <QShortcut>
+#include <QFileInfo>
+#include <QDate>
+#include <QDateTime>
+#include <QMessageBox>
+#include <QDebug>
 #include <QWidget>
 #include <QCloseEvent>
+
+#include "corebox/corebox.h"
+#include "corebox/globalfunctions.h"
+#include "bookmarks/bookmarks.h"
 #include "coreedit.h"
+
 
 namespace Ui {
 class corepad;

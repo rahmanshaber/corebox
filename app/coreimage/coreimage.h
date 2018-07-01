@@ -26,6 +26,28 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QPushButton>
 #include <QLabel>
 #include <QSpacerItem>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QImageReader>
+#include <QImageWriter>
+#include <QTransform>
+#include <QFileInfo>
+#include <QBuffer>
+#include <QDataStream>
+#include <QShortcut>
+#include <QAbstractScrollArea>
+#include <QSpacerItem>
+#include <QtWidgets>
+#include <QDateTime>
+#include <QtConcurrent>
+#include <QShortcut>
+
+#include "corebox/corebox.h"
+#include "corebox/globalfunctions.h"
+#include "bookmarks//bookmarks.h"
+#include "bookmarks/bookmarkdialog.h"
+#include "corepaint/corepaint.h"
+
 
 namespace Ui {
 class coreimage;

@@ -1,29 +1,43 @@
- #include "resources_page.h"
-#include "ui_resources_page.h"
-#include "dashboard/utilities.h"
+/*
+CoreBox is combination of some common desktop apps.
 
-ResourcesPage::~ResourcesPage()
-{
-    delete ui;
-}
+CoreBox is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2
+of the License.
 
-ResourcesPage::ResourcesPage(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::ResourcesPage),
-    im(InfoManager::ins()),
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, see {http://www.gnu.org/licenses/}. */
+
+#include "presources.h"
+#include "ui_presources.h"
+
+
+presources::presources(QWidget *parent) :QWidget(parent),ui(new Ui::presources),
+    im(InfoManager::ins()),mTimer(new QTimer(this)),
     mChartCpu(new HistoryChart(tr("History of CPU"), im->getCpuCoreCount(), nullptr, this)),
     mChartCpuLoadAvg(new HistoryChart(tr("History of CPU Load Averages"), 3, nullptr, this)),
     mChartDiskReadWrite(new HistoryChart(tr("History of Disk Read Write"), 2, new QCategoryAxis, this)),
     mChartMemory(new HistoryChart(tr("History of Memory"), 2, nullptr, this)),
-    mChartNetwork(new HistoryChart(tr("History of Network"), 2, new QCategoryAxis, this)),
-    mTimer(new QTimer(this))
+    mChartNetwork(new HistoryChart(tr("History of Network"), 2, new QCategoryAxis, this))
 {
     ui->setupUi(this);
 
     init();
 }
 
-void ResourcesPage::init()
+presources::~presources()
+{
+    delete ui;
+}
+
+
+void presources::init()
 {
     mChartCpu->setYMax(100);
     mChartMemory->setYMax(100);
@@ -36,16 +50,16 @@ void ResourcesPage::init()
 
     Utilities::addDropShadow(widgets, 40);
 
-    connect(mTimer, &QTimer::timeout, this, &ResourcesPage::updateCpuChart);
-    connect(mTimer, &QTimer::timeout, this, &ResourcesPage::updateCpuLoadAvg);
-    connect(mTimer, &QTimer::timeout, this, &ResourcesPage::updateDiskReadWrite);
-    connect(mTimer, &QTimer::timeout, this, &ResourcesPage::updateMemoryChart);
-    connect(mTimer, &QTimer::timeout, this, &ResourcesPage::updateNetworkChart);
+    connect(mTimer, &QTimer::timeout, this, &presources::updateCpuChart);
+    connect(mTimer, &QTimer::timeout, this, &presources::updateCpuLoadAvg);
+    connect(mTimer, &QTimer::timeout, this, &presources::updateDiskReadWrite);
+    connect(mTimer, &QTimer::timeout, this, &presources::updateMemoryChart);
+    connect(mTimer, &QTimer::timeout, this, &presources::updateNetworkChart);
 
     mTimer->start(1000);
 }
 
-void ResourcesPage::updateDiskReadWrite()
+void presources::updateDiskReadWrite()
 {
     static int second = 0;
 
@@ -96,7 +110,7 @@ void ResourcesPage::updateDiskReadWrite()
     second++;
 }
 
-void ResourcesPage::updateCpuLoadAvg()
+void presources::updateCpuLoadAvg()
 {
     static int second, maxAvg = im->getCpuCoreCount();
 
@@ -131,7 +145,7 @@ void ResourcesPage::updateCpuLoadAvg()
     second++;
 }
 
-void ResourcesPage::updateNetworkChart()
+void presources::updateNetworkChart()
 {
     static int second = 0;
 
@@ -187,7 +201,7 @@ void ResourcesPage::updateNetworkChart()
     second++;
 }
 
-void ResourcesPage::updateMemoryChart()
+void presources::updateMemoryChart()
 {
     static int second = 0;
 
@@ -229,7 +243,7 @@ void ResourcesPage::updateMemoryChart()
     second++;
 }
 
-void ResourcesPage::updateCpuChart()
+void presources::updateCpuChart()
 {
     static int second = 0;
 

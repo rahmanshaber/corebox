@@ -22,6 +22,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QObject>
 #include <QMap>
 #include <QDBusObjectPath>
+#include <QtDBus>
+#include <QtDebug>
 
 
 class QDBusInterface;

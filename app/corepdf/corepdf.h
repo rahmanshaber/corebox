@@ -20,6 +20,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QWidget>
 #include <QPdfWidget>
 #include <QCloseEvent>
+#include <QFile>
+#include <QVBoxLayout>
+#include <QPushButton>
+#include <QDebug>
+
+#include "corebox/globalfunctions.h"
 
 
 class corepdf : public QWidget

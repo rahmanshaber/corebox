@@ -17,10 +17,22 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+#include <QDir>
+#include <QFile>
+#include <QIcon>
+#include <QFileDialog>
+#include <QTreeWidgetItem>
+#include <QtConcurrent>
 #include <QWidget>
 #include <QTreeWidgetItem>
 #include <QPushButton>
 
+#include "corefm/mimeutils.h"
+#include "corefm/fileutils.h"
+#include "corefm/applicationdialog.h"
+#include "corebox/corebox.h"
+#include "corebox/globalfunctions.h"
+#include "corearchiver/corearchiver.h"
 #include "settingsmanage.h"
 
 

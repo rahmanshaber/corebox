@@ -1,5 +1,6 @@
 #include "info_manager.h"
 
+
 InfoManager *InfoManager::instance = nullptr;
 
 InfoManager *InfoManager::ins()

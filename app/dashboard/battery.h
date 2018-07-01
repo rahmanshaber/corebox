@@ -18,6 +18,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define BATTERY_H
 
 #include <QObject>
+#include <QtDBus/QDBusConnection>
+#include <QtDBus/QDBusInterface>
+#include <QSettings>
 
 
 class QDBusInterface;

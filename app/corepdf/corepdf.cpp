@@ -16,12 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "corepdf.h"
 
-#include <QFile>
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QDebug>
-#include "corebox/globalfunctions.h"
-
 
 corepdf::corepdf(QWidget *parent):QWidget(parent)
 {

@@ -1,6 +1,6 @@
 # CoreBox
 
-## CoreBox is combination of some common desktop apps with bookmark support. It's like a window manager for CoreApps.
+## CoreBox is combination of some common desktop apps in same window.
 ## For Linux Only.
 
 <img src="docs/screenshots/a1.png" width="500">
@@ -31,7 +31,7 @@
 * qt5-x11extras
 * qt5-webengine
 * file
-* libmagic-dev/libmagic-mgc/libmagic1
+
 
 ### Known Bugs
 * Opening two dashboard ,crash the whole app.
@@ -39,9 +39,6 @@
 * Check the To-Do.txt in doc folder for known bugs.
 
 ### Help Us
-* Move the CorePlayer to QtAV. here is the [link](https://github.com/wang-bin/QtAV "Title") .
-  Please make simple player with qtav and send via email to us.
-  Please in qmake.not cmake.We tried the example's of QtAV .but they don't work.
 * We need to add package for this app.DEB is in top priority.so if any one could guide us how to do that it will be helpful.
 * Also add the app in AUR.
 * Some of the apps has old code,so they have some issue in them.Please review the code and help us fix them.

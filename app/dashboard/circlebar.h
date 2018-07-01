@@ -3,8 +3,8 @@
 
 #include <QWidget>
 #include <QtCharts>
-//#include "Managers/app_manager.h"
 #include "dashboard/signal_mapper.h"
+
 
 namespace Ui {
     class CircleBar;
@@ -27,9 +27,7 @@ private slots:
 private:
     Ui::CircleBar *ui;
 
-private:
     QStringList mColors;
-
     QChart *mChart;
     QChartView *mChartView;
     QPieSeries *mSeries;

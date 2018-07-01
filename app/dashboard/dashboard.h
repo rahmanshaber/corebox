@@ -22,14 +22,21 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QPainter>
 #include <QFile>
 #include <QProcess>
+#include <QMetaObject>
+#include <QMetaProperty>
+#include <QTreeWidgetItem>
+#include <QDir>
+#include <QSize>
 
-#include "Resources/resources_page.h"
 #include "pbattery.h"
 #include "pdisplay.h"
 #include "pdrives.h"
+#include "pgeneral.h"
+#include "presources.h"
+#include "battery.h"
+#include "upower.h"
 
 #include "Info/system_info.h"
-#include "General/sysinfo.h"
 #include "corebox/corebox.h"
 #include "corebox/globalfunctions.h"
 
@@ -58,11 +65,6 @@ public:
 
 private:
     Ui::dashboard *ui;
-    sysinfo *info;
-    ResourcesPage *resource;
-    pDisplay *display;
-    pDrives *drives;
-    pBattery *battery;
     void pageClick(QPushButton *btn, int i, QString title);
 
 };

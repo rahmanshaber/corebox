@@ -17,17 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreplayer.h"
 #include "ui_coreplayer.h"
 
-#include <QMediaService>
-#include <QVideoProbe>
-#include <QAudioProbe>
-#include <QMediaMetaData>
-#include <QtWidgets>
-#include <QVideoWidget>
-#include <QStandardItemModel>
-#include <QtConcurrent>
-
-#include "corebox/corebox.h"
-#include "corebox/globalfunctions.h"
 
 coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
    , playerState(QMediaPlayer::StoppedState)

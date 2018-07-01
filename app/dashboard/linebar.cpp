@@ -1,6 +1,7 @@
 #include "linebar.h"
 #include "ui_linebar.h"
 
+
 LineBar::~LineBar()
 {
     delete ui;

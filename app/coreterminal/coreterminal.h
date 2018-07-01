@@ -26,6 +26,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QProcessEnvironment>
 #include <QCloseEvent>
 #include <QWidget>
+#include <QDebug>
+#include <QTabWidget>
+#include <QShortcut>
+
+#include "../corebox/corebox.h"
 
 
 class coreterminal : public QTermWidget

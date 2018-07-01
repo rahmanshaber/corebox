@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ResourcesPage</class>
- <widget class="QWidget" name="ResourcesPage">
+ <class>presources</class>
+ <widget class="QWidget" name="presources">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>890</width>
-    <height>537</height>
+    <width>606</width>
+    <height>448</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Resources</string>
+   <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -39,8 +39,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>868</width>
-        <height>525</height>
+        <width>584</width>
+        <height>436</height>
        </rect>
       </property>
       <property name="sizePolicy">

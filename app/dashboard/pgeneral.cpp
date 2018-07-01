@@ -14,24 +14,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
-#include "sysinfo.h"
-#include "ui_sysinfo.h"
+#include "pgeneral.h"
+#include "ui_pgeneral.h"
 
-#include "Info/system_info.h"
-#include "corebox/globalfunctions.h"
 
-#include <QStringListModel>
-#include <QSysInfo>
-#include <QtNetwork>
-#include <QFontMetrics>
-#include <QFont>
-#include <QObject>
-
-sysinfo::sysinfo(QWidget *parent) :QWidget(parent),ui(new Ui::sysinfo),
-  cpuBar(new CircleBar(tr("CPU"), {"#A8E063", "#56AB2F"}, this)),
-  memBar(new CircleBar(tr("MEMORY"), {"#FFB75E", "#ED8F03"}, this)),
-  timer(new QTimer(this)),
-  im(InfoManager::ins())
+pgeneral::pgeneral(QWidget *parent) :QWidget(parent),ui(new Ui::pgeneral),
+    cpuBar(new CircleBar(tr("CPU"), {"#A8E063", "#56AB2F"}, this)),
+    memBar(new CircleBar(tr("MEMORY"), {"#FFB75E", "#ED8F03"}, this)),
+    timer(new QTimer(this)),
+    im(InfoManager::ins())
 {
     ui->setupUi(this);
 
@@ -39,12 +30,12 @@ sysinfo::sysinfo(QWidget *parent) :QWidget(parent),ui(new Ui::sysinfo),
     systemInformationInit();
 }
 
-sysinfo::~sysinfo()
+pgeneral::~pgeneral()
 {
     delete ui;
 }
 
-void sysinfo::init()
+void pgeneral::init()
 {
     // Circle bars
     ui->circleBarsLayout->addWidget(cpuBar);
@@ -52,9 +43,9 @@ void sysinfo::init()
     ui->circleBarsLayout->addWidget(ui->network);
 
     // connections
-    connect(timer, &QTimer::timeout, this, &sysinfo::updateCpuBar);
-    connect(timer, &QTimer::timeout, this, &sysinfo::updateMemoryBar);
-    connect(timer, &QTimer::timeout, this, &sysinfo::updateNetworkBar);
+    connect(timer, &QTimer::timeout, this, &pgeneral::updateCpuBar);
+    connect(timer, &QTimer::timeout, this, &pgeneral::updateMemoryBar);
+    connect(timer, &QTimer::timeout, this, &pgeneral::updateNetworkBar);
 
     timer->start(1 * 1000);
 
@@ -64,7 +55,7 @@ void sysinfo::init()
     updateNetworkBar();
 }
 
-void sysinfo::systemInformationInit()
+void pgeneral::systemInformationInit()
 {
     QDesktopWidget dw;
 
@@ -100,14 +91,14 @@ void sysinfo::systemInformationInit()
     ui->systemInfoList->setModel(systemInfoModel);
 }
 
-void sysinfo::updateCpuBar()
+void pgeneral::updateCpuBar()
 {
     int cpuUsedPercent = im->getCpuPercents().at(0);
 
     cpuBar->setValue(cpuUsedPercent, QString("%1%").arg(cpuUsedPercent));
 }
 
-void sysinfo::updateMemoryBar()
+void pgeneral::updateMemoryBar()
 {
     im->updateMemoryInfo();
 
@@ -121,7 +112,7 @@ void sysinfo::updateMemoryBar()
     memBar->setValue(memUsedPercent, QString("%1 / %2").arg(f_memUsed).arg(f_memTotal));
 }
 
-void sysinfo::updateNetworkBar()
+void pgeneral::updateNetworkBar()
 {
     QNetworkAccessManager manager;
     const auto config = manager.activeConfiguration();
@@ -161,4 +152,3 @@ void sysinfo::updateNetworkBar()
     l_RXbytes = RXbytes;
     l_TXbytes = TXbytes;
 }
-

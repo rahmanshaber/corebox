@@ -22,7 +22,15 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QListWidgetItem>
 #include <QTableWidgetItem>
 #include <QTreeWidgetItem>
+#include <QFont>
+#include <QFileSystemWatcher>
+#include <QDebug>
+#include <QCollator>
+
 #include "settings/settingsmanage.h"
+#include "corebox/corebox.h"
+#include "bookmarks/bookmarkmanage.h"
+#include "corebox/globalfunctions.h"
 
 
 namespace Ui {

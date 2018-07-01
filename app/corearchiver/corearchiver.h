@@ -19,6 +19,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QWidget>
 #include <QFileDialog>
+#include <QtConcurrent>
+
+#include "libarchiveqt.h"
+
 
 namespace Ui {
 class corearchiver;

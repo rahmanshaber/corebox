@@ -15,37 +15,29 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "dashboard.h"
-#include "battery.h"
-#include "upower.h"
 #include "ui_dashboard.h"
-
-#include <QMetaObject>
-#include <QMetaProperty>
-#include <QTreeWidgetItem>
-#include <QDir>
-#include <QSize>
 
 
 dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 {
     ui->setupUi(this);
 
-    sysinfo *infoo = new sysinfo(this);
+    pgeneral *infoo = new pgeneral(this);
     QHBoxLayout *hl = new QHBoxLayout();
     hl->setContentsMargins(0, 0, 0, 0);
     hl->addWidget(infoo);
     ui->pages->widget(0)->setLayout(hl);
 
-    drives = new pDrives(this);
+    pDrives *drives = new pDrives(this);
     ui->pDriveLayout->addWidget(drives);
 
-    battery = new pBattery(this);
+    pBattery *battery = new pBattery(this);
     ui->pBatteryLayout->addWidget(battery);
 
-    display = new pDisplay(this);
+    pDisplay *display = new pDisplay(this);
     ui->pDisplayLayout->addWidget(display);
 
-    ResourcesPage *resourcePage = new ResourcesPage(this);
+    presources *resourcePage = new presources(this);
     QHBoxLayout *hl2 = new QHBoxLayout();
     hl2->setContentsMargins(0, 0, 0, 0);
     hl2->addWidget(resourcePage);
@@ -96,5 +88,5 @@ void dashboard::on_Bdisplay_clicked()
 
 void dashboard::reload()
 {
-    battery->reload();
+//    battery->reload();
 }

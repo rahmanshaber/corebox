@@ -16,26 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "corepaint.h"
 #include "ui_corepaint.h"
-#include "imagearea.h"
-#include "datasingleton.h"
-#include "widgets/colorchooser.h"
-
-#include <QApplication>
-#include <QAction>
-#include <QMenu>
-#include <QMenuBar>
-#include <QMessageBox>
-#include <QScrollArea>
-#include <QLabel>
-#include <QtEvents>
-#include <QPainter>
-#include <QInputDialog>
-#include <QUndoGroup>
-#include <QtCore/QTimer>
-#include <QtCore/QMap>
-#include <QDateTime>
-#include <QSettings>
-#include <QShortcut>
 
 
 corepaint::corepaint( QWidget *parent):QWidget(parent),

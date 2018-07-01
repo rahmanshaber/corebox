@@ -17,10 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corebox.h"
 #include "ui_corebox.h"
 
-#include <QDateTime>
-#include <QSettings>
-#include <QPoint>
-
 #include "start/start.h"
 #include "about/about.h"
 #include "help/help.h"
@@ -37,10 +33,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreterminal/coreterminal.h"
 #include "corerenamer/corerenamer.h"
 
-#include "../bookmarks/bookmarks.h"
-#include "../bookmarks/bookmarkmanage.h"
-#include "../settings/settings.h"
-#include "globalfunctions.h"
 
 CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
 {

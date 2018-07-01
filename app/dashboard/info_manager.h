@@ -10,8 +10,10 @@
 #include <Info/system_info.h>
 #include <Info/process_info.h>
 
+
 class InfoManager
 {
+
 public:
     static InfoManager *ins();
 
@@ -41,15 +43,15 @@ public:
     QString getUserName() const;
 
 private:
-    static InfoManager *instance;
-
-private:
     CpuInfo ci;
     DiskInfo di;
     MemoryInfo mi;
     NetworkInfo ni;
     SystemInfo si;
     ProcessInfo pi;
+
+    static InfoManager *instance;
+
 };
 
 #endif // INFO_MANAGER_H
