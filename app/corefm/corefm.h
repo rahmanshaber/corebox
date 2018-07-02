@@ -161,6 +161,8 @@ private slots:
     void on_actionRun_triggered();
     void sendToPath();
 
+    void on_actionCoreRenamer_triggered();
+
 private:
     SettingsManage sm;
     void writeSettings();

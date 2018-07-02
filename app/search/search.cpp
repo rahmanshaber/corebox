@@ -81,24 +81,14 @@ void search::startsetup()
             ui->activityList->setExpanded(ui->activityList->model()->index(0, 0), true);
     }
 
-    bool isRecentActivityAvailable = true;
-    if (!count) isRecentActivityAvailable = 0;
+    bool isSearchActivityAvailable = true;
+    if (!count) isSearchActivityAvailable = 0;
 
-    if (isRecentActivityAvailable) {
+    if (isSearchActivityAvailable) {
         ui->infoPage->setCurrentIndex(2);
-        // Collect the recent activity list
-//        QListWidgetItem *item;
-//        for (int i = 0; i < activityText.count(); i++) {
-//            // SearchedText$$$Path$$FoundItems
-//            QStringList l = activityText.at(i).split("$$$");
-//            item = new QListWidgetItem(l.at(0) + "\n" + l.at(2) + " items found");
-
-//            //item->setBackground();
-//            //item->setForeground();
-//            ui->activityList->addItem(item);
-//        }
     } else {
         ui->infoPage->setCurrentIndex(1);
+        ui->typeframe->setVisible(0);
         ui->status->setText("Search for Something by file type\nEnter text you want to search.");
     }
 
@@ -266,6 +256,7 @@ void search::populateItems(const QString &text)
     connect(r, &QFutureWatcher<void>::finished, [&](){
         //ui->status->setText("NO ITEM FOUND.");
         ui->infoPage->setCurrentIndex(0);
+        ui->typeframe->setVisible(1);
 
         // Check is search activity enabled or not
 
@@ -325,6 +316,7 @@ void search::toTable(const QStringList &list)
         // Collect Information and add it to tablewidget
         if (list.count() > 0) {
             ui->infoPage->setCurrentIndex(0);
+            ui->typeframe->setVisible(1);
             ui->results->clearContents();//Clear the rows from the table
             ui->results->setRowCount(list.count());//set row count by list item count
 
@@ -342,6 +334,7 @@ void search::toTable(const QStringList &list)
 
         } else {
             ui->infoPage->setCurrentIndex(1);
+//            ui->typeframe->setVisible(0);
             ui->status->setText("NO ITEMS FOUND...");
             ui->itemCount->setText("0 item(s) found");
         }
@@ -381,7 +374,13 @@ void search::on_findCMD_clicked()
         return;
     } else {
         ui->infoPage->setCurrentIndex(1);
+        ui->typeframe->setVisible(0);
         ui->results->clearContents();
+        ui->typeAll->setChecked(0);
+        ui->typeMedia->setChecked(0);
+        ui->typeFolder->setChecked(0);
+        ui->typeother->setChecked(0);
+        ui->typePicture->setChecked(0);
         callProcess(true);
     }
 }
@@ -392,7 +391,13 @@ void search::on_locateCMD_clicked()
         return;
     } else {
         ui->infoPage->setCurrentIndex(1);
+        ui->typeframe->setVisible(0);
         ui->results->clearContents();
+        ui->typeAll->setChecked(0);
+        ui->typeMedia->setChecked(0);
+        ui->typeFolder->setChecked(0);
+        ui->typeother->setChecked(0);
+        ui->typePicture->setChecked(0);
         callProcess(false);
     }
 }
@@ -429,6 +434,7 @@ void search::on_typeother_clicked()
 
 void search::on_results_itemDoubleClicked(QTableWidgetItem *item)
 {
+    // Function from globalfunctions.cpp
     QString path = ui->results->item(item->row(), 1)->text() + "/" + ui->results->item(item->row(), 0)->text();
     openAppEngine(path);
 }

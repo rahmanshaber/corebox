@@ -86,7 +86,3 @@ void dashboard::on_Bdisplay_clicked()
     pageClick(ui->Bdisplay, 4, tr("Display"));
 }
 
-void dashboard::reload()
-{
-//    battery->reload();
-}

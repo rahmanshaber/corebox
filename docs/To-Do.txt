@@ -6,6 +6,8 @@ FIX MUST BE SIMPLE.
 3-impossible for us now.
 
 
+0 - fix the sort in bookmark,start,search (recent to old)
+
 corebox
 0 - remove focuse policy from the shortcut bar from all app.
 0 - icon and title not changing perfectly.
@@ -21,8 +23,8 @@ corebox
 1 - tab text align left.
 
 globalfunction
+0 - get file count in getfile size.
 0 - remove the trash path checking.
-0 - getfilesize in qconcarent.
 1 - file moved message.
 1 - finished copying message.
 1 - file deleted & delete failed message.
@@ -37,12 +39,10 @@ start
 
 bookmarks
 0 - fix bookmark file check as folder making moved to globalfunctions.
-0 - fix the bookmark status label hide/show.
 1 - one click to open all the bookmark in one section(only first 8 of them)
 1 - one button to bookmark all the opened tabs.
 
 dashboard
-0 - cpu and ram circle bar height is too big.
 0 - multiple dashboard crash the whole app
 1 - remove unwanted partition
 1 - selected drive will show only it's partition.
@@ -50,6 +50,7 @@ dashboard
 1 - add drive frame in drive view.
 
 search
+0 - auto fill the folder path and name .
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
 2 - if path is given ,find is not working.but locate is working.
@@ -60,10 +61,7 @@ setting
 0 - fix settings ui
 
 corefm
-0 - fix the miltipal file send to archive and corerenamer.
-0 - send path in const to every app.
 0 - pathedit is always in focus, even outside clicked.
-0 - open in new corefm >> open 2 corefm(not tab)>>close 1,both crash
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
 3 - set custom icon in home's folder.
 1 - add tree package.
@@ -74,7 +72,6 @@ corefm
     exec command, but only first is read, this must be fixed
 
 corepaint
-0 - fix the corepaint paint area background color also whole ui.
 0 - save the changes>>yes>cancel>>closes the corebox(it should not).
 1 - add triangle instrument.
 
@@ -102,32 +99,22 @@ corepdf
 0 - on first start corepdf cannot show any pdf file
 
 corepad
-0 - remove all comments from .
+0 - add the scroolbar stylesheet.
 0 - save the changes>>yes>cancel>>closes the corebox(it should not).
 
 corearchiver
-0 - path in const .
 1 - Inform user when extracting is finished
 1 - Inform user when compressing is finished
 
 coreshot
-0 - path in const.
 1 - take fullscreen shot using x11
 
 coreaction
-1 - load the widgets if needed [separate them]
-1 - notes to other file
 
 coreterminal
-Y - 0 - path in const.
 0 - treminal is not in focused.
 
 coreRenamer
-0 - path in const.
-0 - fix the folder path sending corefm>>corebox
-0 - refresh list will refresh the list with the current name changes form the file(not from corerenamer).
-0 - add a button to clear current selected files.
-0 - change the ui .
 
 help
 1 - add some recommendation

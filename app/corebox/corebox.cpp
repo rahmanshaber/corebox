@@ -398,9 +398,6 @@ void CoreBox::on_windows_tabBarClicked(int index) // reload the apps if related 
     if (appName == "Bookmarks") {
         bookmarks *cbook = ui->windows->findChild<bookmarks*>("bookmarks");
         cbook->reload();
-    } else if (appName == "DashBoard") {
-        dashboard *cdash = ui->windows->findChild<dashboard*>("dashboard");
-        cdash->reload();
     } else if (appName == "Start") {
         Start *cstart = ui->windows->findChild<Start*>("Start");
         cstart->reload();
@@ -589,6 +586,7 @@ void CoreBox::on_corepad_clicked()
 
 void CoreBox::on_box_clicked()
 {
+    // Function from globalfunctions.cpp
     messageEngine("Thanks for using CoreBox\nVersion 2.2", MessageType::Info);
 }
 

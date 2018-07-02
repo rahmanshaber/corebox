@@ -90,6 +90,16 @@ Version 2.2
 - fixed two terminal crash both terminal app.
 - fixed add files button dose not work in corerenamer and many ui and bug fixes.
 - round border in messageengine>>messagebox.
+- getfilesize in qconcarent.
+- fix contex menu open folder action in corefm.
+
+
+
+
+
+
+
+
 
 
 Version 2.1,Released date Friday, June 1, 2018.

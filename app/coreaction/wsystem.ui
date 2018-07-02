@@ -14,12 +14,9 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget{
-background-color: #1F2B38; ;
-color: #FFFFFF; 
-}</string>
+   <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -36,33 +33,57 @@ color: #FFFFFF;
     <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="label_5">
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>SYSTEM</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="cpu">
-     <property name="text">
-      <string>Cpu</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QProgressBar" name="cpubar">
+    <widget class="QFrame" name="Widget">
      <property name="styleSheet">
-      <string notr="true">QProgressBar {
+      <string notr="true">QWidget{
+background-color: #1F2B38; ;
+color: #FFFFFF; 
+}</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>SYSTEM</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="cpu">
+        <property name="text">
+         <string>Cpu</string>
+        </property>
+        <property name="indent">
+         <number>-1</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="cpubar">
+        <property name="styleSheet">
+         <string notr="true">QProgressBar {
     border: 1px solid grey;
     border-radius: 0px;
 }
@@ -72,26 +93,26 @@ QProgressBar::chunk {
     width: 20px;
 }
 </string>
-     </property>
-     <property name="value">
-      <number>24</number>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="name_2">
-     <property name="text">
-      <string>Ram</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QProgressBar" name="rambar">
-     <property name="styleSheet">
-      <string notr="true">QProgressBar {
+        </property>
+        <property name="value">
+         <number>24</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="name_2">
+        <property name="text">
+         <string>Ram</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="rambar">
+        <property name="styleSheet">
+         <string notr="true">QProgressBar {
     border: 1px solid grey;
     border-radius: 0px;
 }
@@ -99,13 +120,16 @@ QProgressBar::chunk {
     background-color: #F7A636;
     width: 20px;
 }</string>
-     </property>
-     <property name="value">
-      <number>24</number>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
+        </property>
+        <property name="value">
+         <number>24</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

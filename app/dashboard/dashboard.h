@@ -61,8 +61,6 @@ public:
     explicit dashboard(QWidget *parent = 0);
     ~dashboard();
 
-    void reload();
-
 private:
     Ui::dashboard *ui;
     void pageClick(QPushButton *btn, int i, QString title);

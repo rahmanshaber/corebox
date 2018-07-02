@@ -41,9 +41,8 @@ QString pDrives::getDriveInfo(const QString path)
     double t = QStorageInfo(path).bytesTotal();
     double f = QStorageInfo(path).bytesFree();
 
-    return QString("%1  /  %2  (%3%)").arg(formatSize(f))
-                       .arg(formatSize(t))
-                       .arg((t - f)*100/t);
+    // Function from globalfunctions.cpp
+    return QString("%1  /  %2  (%3%)").arg(formatSize(f)).arg(formatSize(t)).arg((t - f)*100/t);
 }
 
 void pDrives::setupDisksPage()

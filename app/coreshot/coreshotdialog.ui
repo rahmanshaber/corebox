@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>565</width>
-    <height>100</height>
+    <width>439</width>
+    <height>40</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,11 +18,7 @@
     <normaloff>:/icons/CoreShot.svg</normaloff>:/icons/CoreShot.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget{
-background-color: rgba(50, 50, 50, 240);
-color: #ffffff;
-border: 1px #2A2A2A;
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <property name="spacing">
@@ -42,9 +38,30 @@ border: 1px #2A2A2A;
    </property>
    <item>
     <widget class="QFrame" name="frame">
+     <property name="accessibleName">
+      <string>main</string>
+     </property>
      <property name="styleSheet">
-      <string notr="true">QFrame{
-border-radius: 10px;
+      <string notr="true">/*CoreShotDialog */
+QWidget{
+background-color: #2A2A2A;
+color: #ffffff;
+border: 1px #2A2A2A;
+}
+
+/*SpinBox */
+QSpinBox {
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;
+}
+
+/*PushButton */
+QPushButton{
+border: 1px solid #434343;
+padding: 3px 5px 3px 5px;
+}
+QPushButton:hover {
+background-color: #308CC6;
 }</string>
      </property>
      <property name="frameShape">
@@ -55,26 +72,26 @@ border-radius: 10px;
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
-       <number>10</number>
+       <number>5</number>
       </property>
       <property name="leftMargin">
-       <number>10</number>
+       <number>5</number>
       </property>
       <property name="topMargin">
-       <number>10</number>
+       <number>5</number>
       </property>
       <property name="rightMargin">
-       <number>10</number>
+       <number>5</number>
       </property>
       <property name="bottomMargin">
-       <number>10</number>
+       <number>5</number>
       </property>
       <item>
        <widget class="QPushButton" name="captureScreen">
         <property name="minimumSize">
          <size>
-          <width>80</width>
-          <height>80</height>
+          <width>0</width>
+          <height>29</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -89,8 +106,8 @@ border-radius: 10px;
        <widget class="QPushButton" name="captureWindow">
         <property name="minimumSize">
          <size>
-          <width>80</width>
-          <height>80</height>
+          <width>0</width>
+          <height>29</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -105,8 +122,8 @@ border-radius: 10px;
        <widget class="QPushButton" name="captureSelection">
         <property name="minimumSize">
          <size>
-          <width>80</width>
-          <height>80</height>
+          <width>0</width>
+          <height>29</height>
          </size>
         </property>
         <property name="text">
@@ -124,8 +141,8 @@ border-radius: 10px;
         </property>
         <property name="minimumSize">
          <size>
-          <width>80</width>
-          <height>80</height>
+          <width>0</width>
+          <height>0</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -139,32 +156,19 @@ border-radius: 10px;
       <item>
        <widget class="QPushButton" name="cancel">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
          <size>
-          <width>80</width>
-          <height>80</height>
+          <width>0</width>
+          <height>29</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
         </property>
         <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/close_w.svg</normaloff>:/icons/close_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
+         <string>Cancel</string>
         </property>
        </widget>
       </item>

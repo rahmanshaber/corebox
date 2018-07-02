@@ -143,6 +143,7 @@ void propertiesw::permission()
 
 void propertiesw::partition(const QString path)
 {
+    // Function from globalfunctions.cpp
     QString t= formatSize(QStorageInfo(path).bytesTotal());
     QString f= formatSize(QStorageInfo(path).bytesFree());
 //    QString s = QString::number((double) t - f);
@@ -214,7 +215,7 @@ void propertiesw::detailimage(const QString imagepath)
     QStringList right;
     left << "Name" << "Size" << "Type" << "Dimensions" << "Bitplane Count"
          << "Width" << "Height" ;
-    right << info.fileName() << formatSize(info.size()) << info.suffix().toUpper()
+    right << info.fileName() << formatSize(info.size()) << info.suffix().toUpper() // Function from globalfunctions.cpp
           << QString::number(image.width()) + " x "+ QString::number(image.height())
           << QString::number(image.bitPlaneCount()) << QString::number(image.width()) + " pixels"
           << QString::number(image.height()) + " pixels" ;

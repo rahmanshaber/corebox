@@ -20,9 +20,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFileDialog>
 #include "coreshot/coreshotdialog.h"
 
-coreshot::coreshot(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::coreshot)
+
+coreshot::coreshot(QWidget *parent) :QWidget(parent),ui(new Ui::coreshot)
 {
     ui->setupUi(this);
 
@@ -59,6 +58,7 @@ void coreshot::on_save_clicked()
     ui->shotPreview->originalPixmap().save(&file, "PNG");
     file.close();
     files = fileName;
+    // Function from globalfunctions.cpp
     messageEngine("Screenshot Saved", MessageType::Info);
     this->close();
 }
@@ -72,6 +72,7 @@ void coreshot::on_saveAs_clicked()
 
     file.close();
     files = filename;
+    // Function from globalfunctions.cpp
     messageEngine("Screenshot Saved", MessageType::Info);
     this->close();
 }

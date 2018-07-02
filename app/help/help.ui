@@ -56,7 +56,31 @@ QWidget [accessibleName=&quot;shortcut&quot;]{
 background-color: #2A2A2A;
 color: #ffffff;
 border: 1px #161616;
-}</string>
+}
+
+
+QScrollBar:vertical {
+background-color: rgba( 0, 0, 0, 72% );
+max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar::handle:vertical {
+background-color: silver;
+max-width: 6px;
+border-radius: 3px; }
+
+QScrollBar::sub-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+width: 0px; height: 0px; }
+
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">

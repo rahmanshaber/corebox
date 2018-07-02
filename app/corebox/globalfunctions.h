@@ -31,6 +31,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFileInfo>
 #include <QSettings>
 #include <QGraphicsDropShadowEffect>
+#include <QDirIterator>
+
+#include <fcntl.h>
+#include <dirent.h>
+#include <sys/stat.h>
 
 #include "../settings/settingsmanage.h"
 

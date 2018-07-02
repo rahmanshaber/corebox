@@ -226,9 +226,6 @@ bool corerenamer::setRepText()
     if (!ui->replaceTextText->text().count())
         return false;
 
-    //if (!ui->replaceTextWith->text().count())
-    //    return false;
-
     foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
         if (i.column() == 0) {
             QString sText = m_Model->item(i.row(), 0)->text();

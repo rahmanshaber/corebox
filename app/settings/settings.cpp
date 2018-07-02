@@ -97,9 +97,6 @@ void settings::setupCoreFMPage()
 
         foreach (QString mime, mimes) {
 
-          // Updates progress
-          //progressMime->setValue(progressMime->value() + 1);
-
           // Skip all 'inode' nodes including 'inode/directory'
           if (mime.startsWith("inode")) {
             continue;
@@ -375,6 +372,7 @@ void settings::on_ok_clicked()
     sm.setSHowNote(ui->isNotes->isChecked());
 
     //inform the user
+    // Function from globalfunctions.cpp
     messageEngine("Settings Applied\nCoreBox needs to restart", MessageType::Info);
     QIcon::setThemeName(sm.getThemeName());
 }

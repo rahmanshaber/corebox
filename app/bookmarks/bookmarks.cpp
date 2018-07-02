@@ -115,6 +115,7 @@ void bookmarks::callBookMarkDialog(QWidget *parent, const QString &currentPath)
         }
         sectionRefresh();
     } else {
+        // Function from globalfunctions.cpp
         messageEngine(str, MessageType::Info);
     }
 }
@@ -169,6 +170,7 @@ void bookmarks::on_deleteSection_clicked()
     if (reply == QMessageBox::Yes) {
         bk.delSection(ui->section->currentItem()->text());
         ui->section->takeItem(ui->section->currentIndex().row());
+        // Function from globalfunctions.cpp
         messageEngine("Section Deleted", MessageType::Info);
     }
     sectionRefresh();
@@ -182,6 +184,7 @@ void bookmarks::on_sectionDone_clicked()
     ui->sectionName->setText("");
     ui->sectionStatus->setText("");
     ui->addSectionBox->setVisible(false);
+    // Function from globalfunctions.cpp
     messageEngine("Section Added", MessageType::Info);
     on_cTools_clicked();
 }
@@ -230,6 +233,7 @@ void bookmarks::on_bookmarkDelete_clicked()
         bk.delbookmark(ui->boklist->selectedItems().at(0)->text(), ui->section->currentItem()->text());
         int r = ui->boklist->currentItem()->row();
         ui->boklist->removeRow(r);
+        // Function from globalfunctions.cpp
         messageEngine("Bookmark Deleted", MessageType::Info);
     }
     ui->bookmarkCount->setText(QString::number(ui->boklist->rowCount()) + " item(s)");
@@ -249,6 +253,7 @@ void bookmarks::on_editDone_clicked()
     } else {
         ui->boklist->removeRow(ui->boklist->currentRow());
     }
+    // Function from globalfunctions.cpp
     messageEngine("Edit Done", MessageType::Info);
     sectionRefresh();
     on_editCancel_clicked();
@@ -330,6 +335,7 @@ void bookmarks::on_boklist_itemDoubleClicked(QTableWidgetItem *item)
 {
     QString s = bk.bookmarkPath(ui->section->currentItem()->text(), ui->boklist->item(item->row(),0)->text());
 
+    // Function from globalfunctions.cpp
     openAppEngine(s);
 }
 

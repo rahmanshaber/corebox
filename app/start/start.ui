@@ -184,7 +184,7 @@ color: #57585D ;
    <item>
     <widget class="QStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="pcoreApps">
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -234,6 +234,29 @@ border-radius: 2px;
 QListView{
 padding: 50px 5px 20px 20px;
 }
+
+QScrollBar:vertical {
+background-color: rgba( 0, 0, 0, 72% );
+max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar::handle:vertical {
+background-color: silver;
+max-width: 6px;
+border-radius: 3px; }
+
+QScrollBar::sub-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+width: 0px; height: 0px; }
+
+
 </string>
          </property>
          <property name="frameShape">
@@ -510,6 +533,29 @@ border-radius: 2px;
 QListView{
 padding: 50px 5px 20px 20px;
 }
+
+
+QScrollBar:vertical {
+background-color: rgba( 0, 0, 0, 72% );
+max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar::handle:vertical {
+background-color: silver;
+max-width: 6px;
+border-radius: 3px; }
+
+QScrollBar::sub-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+width: 0px; height: 0px; }
+
 </string>
          </property>
          <property name="frameShape">
@@ -594,6 +640,30 @@ padding: 50px 5px 20px 20px;
         <widget class="QTreeWidget" name="treeWidget">
          <property name="focusPolicy">
           <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QScrollBar:vertical {
+background-color: rgba( 0, 0, 0, 72% );
+max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar::handle:vertical {
+background-color: silver;
+max-width: 6px;
+border-radius: 3px; }
+
+QScrollBar::sub-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+width: 0px; height: 0px; }
+
+</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>

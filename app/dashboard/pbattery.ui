@@ -30,7 +30,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="overview_2">
+    <widget class="QFrame" name="overviewF">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -523,7 +523,7 @@ QComboBox::drop-down {
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="morinfo">
+    <widget class="QFrame" name="morinfoF">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -631,7 +631,34 @@ color:#ffffff;
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">QWidget{background-color: #1B252F; ;color: #ffffff;padding: 5px 5px 5px 5px;}</string>
+         <string notr="true">QWidget{
+background-color: #1B252F;
+color: #ffffff;
+padding: 5px 5px 5px 5px;
+}
+
+QScrollBar:vertical {
+background-color: rgba( 0, 0, 0, 72% );
+max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar::handle:vertical {
+background-color: silver;
+max-width: 6px;
+border-radius: 3px; }
+
+QScrollBar::sub-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+width: 0px; height: 0px; }
+
+</string>
         </property>
        </widget>
       </item>

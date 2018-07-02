@@ -67,6 +67,7 @@ bool moveToTrash(const QString &fileName) // moves a file or folder to trash fol
             trashinfo.write(QString("Path=" + fileLocation + "\n").toUtf8());
             trashinfo.write(QString("DeletionDate=" + QDateTime::currentDateTime().toString("yyyy-MM-ddThh:mm:ss") + "\n").toUtf8());trashinfo.close();
 
+            // Function from globalfunctions.cpp
             messageEngine("File Moved to Trash", MessageType::Info);
             return true;
         }
@@ -102,7 +103,8 @@ void setupFolder()
 }
 
 // ======================== Recent Activity =============================
-QString sentDateText(const QString &dateTime) {
+QString sentDateText(const QString &dateTime)
+{
     // Can get error if date time format is not like this dd.MM.yyyy (28.06.2018)
     QDate temp = QDateTime::fromString(dateTime, "dd.MM.yyyy").date();
     int givenD = temp.day();
@@ -130,7 +132,8 @@ QString sentDateText(const QString &dateTime) {
     return NULL;
 }
 
-bool checkRecentActivityFile() {
+bool checkRecentActivityFile()
+{
     QFile file(QDir::homePath() + "/.config/coreBox/RecentActivity");
     if (file.exists()) {
         return true;
@@ -341,6 +344,7 @@ void openAppEngine(const QString &path) // engine send right file to coreapps or
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     QFileInfo info(path);
     if(!info.exists() && !path.isEmpty()){
+        // Function from globalfunctions.cpp
         messageEngine("File not exists", MessageType::Warning);
         return;
     }
@@ -480,8 +484,6 @@ QString getMountPathByName(const QString displayName) // get mount path by parti
     return NULL;
 }
 
-#include <QDirIterator>
-
 qint64 getF(QStringList paths)
 {
     qint64 totalSize = 0;
@@ -525,10 +527,6 @@ qint64 getF(QStringList paths)
     //emit updateSignal();
     return totalSize;
 }
-
-#include <fcntl.h>
-#include <dirent.h>
-#include <sys/stat.h>
 
 qint64 getSize(QString path)
 {

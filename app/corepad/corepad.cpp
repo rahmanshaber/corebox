@@ -20,7 +20,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
 {
-    qDebug() << "CorePad opening";
     ui->setupUi(this);
 
     ui->searchbox->setVisible(false);
@@ -82,6 +81,7 @@ bool corepad::initializeNewTab(const QString &filePath)
         connect(text, &coreedit::textChanged, this, &corepad::textTextChanged);
         return true;
     } else {
+        // Function from globalfunctions.cpp
         messageEngine("Reached page limit.\nClose some tab.", MessageType::Warning);
     }
     return false; //Return an exception - There is some other causes happening.
@@ -125,6 +125,7 @@ bool corepad::closeTab(int index)
         if (reply == QMessageBox::Save) {
             bool closed = on_cSave_clicked();
             if (closed) {
+                // Function from globalfunctions.cpp
                 saveToRecent("CorePad", currentFilePath(index));
                 goto CLOSE_THE_TAB;
             } else {
@@ -132,6 +133,7 @@ bool corepad::closeTab(int index)
             }
         } else if (reply == QMessageBox::Discard) {
             if (checkIsSaved)
+                // Function from globalfunctions.cpp
                 saveToRecent("CorePad", currentFilePath(index));
             goto CLOSE_THE_TAB;
         } else {
@@ -151,35 +153,29 @@ bool corepad::closeTab(int index)
 //Accessing information through tab information
 QString corepad::currentFilePath(int index)
 {
-    //return tabInfo.at(tabInfo.indexOf(tabInfo.startsWith(QString::number(index)))).split("\t").at(3);
     for (int i = 0; i < tabInfo.count(); i++) {
         if (tabInfo.at(i).startsWith(QString::number(index)))
             return tabInfo.at(i).split("\t").at(3);
     }
     return NULL;
-    //return tabInfo.startsWith(QString::number(index)).split("\t").at(3);
 }
 
 QString corepad::isCurrentSaved(int index)
 {
-    //return tabInfo.at(tabInfo.indexOf(tabInfo.startsWith(QString::number(index)))).split("\t").at(1);
     for (int i = 0; i < tabInfo.count(); i++) {
         if (tabInfo.at(i).startsWith(QString::number(index)))
             return tabInfo.at(i).split("\t").at(1);
     }
     return NULL;
-    //return tabInfo.startsWith(QString::number(index)).split("\t").at(1);
 }
 
 QString corepad::isCurrentUpdated(int index)
 {
-    //return tabInfo.at(tabInfo.indexOf(tabInfo.startsWith(QString::number(index)))).split("\t").at(2);
     for (int i = 0; i < tabInfo.count(); i++) {
         if (tabInfo.at(i).startsWith(QString::number(index)))
             return tabInfo.at(i).split("\t").at(2);
     }
     return NULL;
-    //return tabInfo.startsWith(QString::number(index)).split("\t").at(2);
 }
 //=============================================
 
@@ -280,6 +276,7 @@ void corepad::on_cOpen_clicked()
 {
     workFilePath = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath() + "/Documents", tr("Text Files (*.*)"));
     if (workFilePath.isEmpty()) {
+        // Function from globalfunctions.cpp
         messageEngine("Empty File Name", MessageType::Warning);
         return;
     }
@@ -303,6 +300,7 @@ bool corepad::on_cSave_clicked()
     if (!saved && updated) {
         workFilePath = QFileDialog::getSaveFileName(this, tr("Save File"), ui->notes->tabText(ui->notes->currentIndex()).remove(0, 1) ,tr("Text Files (*.*)"));
         if (workFilePath.isEmpty()) {
+            // Function from globalfunctions.cpp
             messageEngine("Empty File Name", MessageType::Warning);
             return false;
         } else {
@@ -315,9 +313,11 @@ bool corepad::on_cSave_clicked()
         if (saveto) {
             setCurrent(index, 1, 0, workFilePath);
             ui->notes->setTabText(index, QFileInfo(workFilePath).fileName());
+            // Function from globalfunctions.cpp
             messageEngine("File Saved", MessageType::Info);
             return true;
         } else {
+            // Function from globalfunctions.cpp
             messageEngine("Can't open file", MessageType::Warning);
         }
     }
@@ -336,6 +336,7 @@ void corepad::on_cSaveAs_clicked()
                                                       tr("Text Files (*.*)"));
     int index = ui->notes->currentIndex();
     if (fileName.isEmpty()) {
+        // Function from globalfunctions.cpp
         messageEngine("Empty File Name", MessageType::Warning);
         return;
     }
@@ -344,8 +345,10 @@ void corepad::on_cSaveAs_clicked()
         if (saveto) {
             ui->notes->setTabText(index, QFileInfo(fileName).fileName());
             setCurrent(index, 1, 0, fileName);
+            // Function from globalfunctions.cpp
             messageEngine("File Saved", MessageType::Info);
         } else {
+            // Function from globalfunctions.cpp
             messageEngine("Can't open file", MessageType::Warning);
             return;
         }
@@ -390,6 +393,7 @@ void corepad::on_bookMarkIt_clicked()
 {
     if (!currentFilePath(ui->notes->currentIndex()).isNull()) {
         if (!QFileInfo(workFilePath).exists()) {
+            // Function from globalfunctions.cpp
             messageEngine("File Not saved.", MessageType::Warning);
             return;
         }

@@ -99,7 +99,7 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
             QScrollArea *scrollArea = new QScrollArea();
             scrollArea->setAttribute(Qt::WA_DeleteOnClose);
             //color for core paint
-            scrollArea->setStyleSheet("QScrollArea { background-color: rgb(0, 0, 0); }");
+            scrollArea->setStyleSheet("QScrollArea { background-color: #464652; }");
 
             //scrollArea->setBackgroundRole(QPalette::Shadow);
 
@@ -135,12 +135,15 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
         }
 
         if (!fileName.isEmpty()) {
+            // Function from globalfunctions.cpp
             messageEngine("File Opened Successfully.", MessageType::Info);
         } else {
+            // Function from globalfunctions.cpp
             messageEngine("File not Opened Successfully.", MessageType::Info);
         }
     }
     else {
+        // Function from globalfunctions.cpp
         messageEngine("Reached page limit.", MessageType::Warning);
     }
 }
@@ -293,6 +296,7 @@ void corepaint::closeEvent(QCloseEvent *event)
     if(!isSomethingModified() || closeAllTabs())
     {
         event->ignore();
+        // Function from globalfunctions.cpp
         saveToRecent("CorePaint", currentFile);
         event->accept();
     }
@@ -496,8 +500,10 @@ void corepaint::on_save_clicked()
                                       tr("Untitled Image") : getCurrentImageArea()->getFileName() );
 
         filepath = getCurrentImageArea()->mFilePath;
+        // Function from globalfunctions.cpp
         messageEngine("File Saved", MessageType::Info);
     } else {
+        // Function from globalfunctions.cpp
         messageEngine("File not Saved", MessageType::Info);
     }
 }
@@ -509,8 +515,10 @@ void corepaint::on_saveas_clicked()
                                       tr("Untitled Image") : getCurrentImageArea()->getFileName() );
 
         filepath = getCurrentImageArea()->mFilePath;
+        // Function from globalfunctions.cpp
         messageEngine("File Saved", MessageType::Info);
     } else {
+        // Function from globalfunctions.cpp
         messageEngine("File not Saved", MessageType::Info);
     }
 }
@@ -550,6 +558,7 @@ void corepaint::on_zoomout_clicked()
 void corepaint::on_bookMarkIt_clicked()
 {
     if (!QFile(filepath).exists()) {
+        // Function from globalfunctions.cpp
         QString mess = "File: " + currentFile + "' not exists Or not saved";
         messageEngine(mess, MessageType::Info);
     } else {

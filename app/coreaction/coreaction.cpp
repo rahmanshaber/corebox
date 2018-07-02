@@ -72,12 +72,6 @@ void coreaction::tryicon()  //setup coreaction tryicon
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(ShowWindow(QSystemTrayIcon::ActivationReason)));
 }
 
-#include "wcalender.h"
-#include "wsystem.h"
-#include "wnetwork.h"
-#include "wcalculator.h"
-#include "wnotes.h"
-#include "wbattery.h"
 void coreaction::widgetList() //setup all enabled widgets for settings
 {
     ui->timeW->hide();
@@ -213,7 +207,6 @@ void coreaction::actionshow()
     this->show();
 }
 
-
 void coreaction::coreBoxAbout()
 {
     about *ab = new about();
@@ -308,68 +301,12 @@ void coreaction::on_search_clicked()
     this->hide();
 }
 
-void coreaction::closeEvent(QCloseEvent *event) {
-
+void coreaction::closeEvent(QCloseEvent *event)
+{
     Q_UNUSED(event);
-    //sm.cSetting->beginGroup("Notes");
-    //sm.cSetting->setValue("Note1", ui->plainTextEdit->toPlainText());
-    //sm.cSetting->setValue("Note2", ui->plainTextEdit_2->toPlainText());
-    //sm.cSetting->endGroup();
-
     QTimer::singleShot(100, qApp, SLOT(quit()));
 }
 
-void coreaction::collectNotes() {
 
-    //sm.cSetting->beginGroup("Notes");
-    //ui->plainTextEdit->setPlainText(sm.cSetting->value("Note1").toString());
-    //ui->plainTextEdit_2->setPlainText(sm.cSetting->value("Note2").toString());
-    //sm.cSetting->endGroup();
-}
 
-void coreaction::sysWsetup()
-{
-    //set cpu bar value
-//    int cpuPercent = im->getCpuPercents().at(0);
-//    //ui->cpubar->setValue(cpuPercent);
 
-//    //set ram bar value
-//    im->updateMemoryInfo();
-//    int memPercent = 0;
-
-//    if (im->getMemTotal())
-//        memPercent = ((double)im->getMemUsed() / (double)im->getMemTotal()) * 100.0;
-
-    //ui->rambar->setValue(memPercent);
-
-    //remove
-    //set drive bar value
-//    int drivePercent = ((double)QStorageInfo("/").bytesTotal() - QStorageInfo("/").bytesFree() / (double)QStorageInfo("/").bytesTotal()) * 100.0;
-//    ui->drivebar->setValue(drivePercent);
-}
-
-void coreaction::networkWsetup()
-{
-//    static quint64 l_RXbytes = im->getRXbytes();
-//    static quint64 l_TXbytes = im->getTXbytes();
-//    static quint64 max_RXbytes = 1L << 20; // 1 MEBI
-//    static quint64 max_TXbytes = 1L << 20; // 1 MEBI
-
-//    quint64 RXbytes = im->getRXbytes();
-//    quint64 TXbytes = im->getTXbytes();
-
-//    quint64 d_RXbytes = (RXbytes - l_RXbytes);
-//    quint64 d_TXbytes = (TXbytes - l_TXbytes);
-
-//    QString downText = formatSize(d_RXbytes);
-//    QString upText = formatSize(d_TXbytes);
-
-//    ui->dspeed->setText(downText);
-//    ui->uspeed->setText(upText);
-
-//    max_RXbytes = qMax(max_RXbytes, d_RXbytes);
-//    max_TXbytes = qMax(max_TXbytes, d_TXbytes);
-
-//    l_RXbytes = RXbytes;
-//    l_TXbytes = TXbytes;
-}

@@ -51,9 +51,10 @@ Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
         loadRecent();
     }
 
-    watcher->addPath(QDir::homePath() + "/.config/coreBox/coreBox.conf");
-    watcher->addPath(QDir::homePath() + "/.config/coreBox/CoreBoxBook");
+//    watcher->addPath(QDir::homePath() + "/.config/coreBox/coreBox.conf");
+//    watcher->addPath(QDir::homePath() + "/.config/coreBox/CoreBoxBook");
 
+    // I think overload.
 //    connect(watcher, &QFileSystemWatcher::fileChanged, [this](const QString &path) {
 //        qDebug() << path;
 //        if (QFileInfo(path).fileName() == "RecentActivity") {
@@ -73,8 +74,7 @@ Start::~Start()
 }
 
 // ======== Core Apps ==========
-// Open CoreApps on double click
-void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item)
+void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item) // open SpeedDial on CoreApps
 {
     CoreBox *cBox = static_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(nameToInt(item->text()));
@@ -83,15 +83,15 @@ void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item)
 
 
 // ======== Speed Dial ==========
-// Open Speed Dial on Double click
-void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item)
+void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item) // open SpeedDial on doubleclick
 {
+    // Function from globalfunctions.cpp
     BookmarkManage bk;
     openAppEngine(bk.bookmarkPath("Speed Dial",item->text()));
 }
 
-// Load Speed Dial
-void Start::loadSpeedDial() {
+void Start::loadSpeedDial() // populate SpeedDial list
+{
     ui->speedDialB->clear();
     BookmarkManage bk;
     QStringList list = bk.getBookNames("Speed Dial");
@@ -107,15 +107,15 @@ void Start::loadSpeedDial() {
 
 
 // ========== Recent activity ===========
-// Open Recent activity on double click
-void Start::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
+
+void Start::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column) // Open Recent activity on double click
 {
+    // Function from globalfunctions.cpp
     QStringList s = item->text(column).split("\t\t\t");
     openAppEngine(s.at(1));
 }
 
-// Load Recent Activity
-void Start::loadRecent()
+void Start::loadRecent() // populate RecentActivity list
 {
     ui->treeWidget->clear();
     QSettings recentActivity(QDir::homePath() + "/.config/coreBox/RecentActivity", QSettings::IniFormat);
@@ -146,8 +146,7 @@ void Start::loadRecent()
 // =================================
 
 
-// Load Settings
-void Start::loadsettings()
+void Start::loadsettings() // load settings
 {
     // Check is recent disabled or not
     if (sm.getDisableRecent()) {

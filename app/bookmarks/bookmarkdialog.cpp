@@ -42,6 +42,7 @@ void bookmarkDialog::on_done_clicked()
     if (ui->bkName->text().count() != 0 && ui->bkSection->currentText().count() != 0) {
         accepted = true;
         QTimer::singleShot(100, this, SLOT(close()));
+        // Function from globalfunctions.cpp
         messageEngine("Bookmark Added at '" + ui->bkSection->currentText() + "'", MessageType::Info);
     }
 }

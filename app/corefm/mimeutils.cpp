@@ -110,6 +110,7 @@ void MimeUtils::openInApp(const QFileInfo &file, QObject *processOwner) {
     DesktopFile df = DesktopFile("/usr/share/applications/" + app);
     openInApp(df.getExec(), file, processOwner);
   } else {
+      // Function from globalfunctions.cpp
       messageEngine(tr("No default application for mime:\n %1!").arg(mime),MessageType::Warning);
   }
 }
@@ -147,6 +148,7 @@ void MimeUtils::openInApp(QString exe, const QFileInfo &file,QObject *processOwn
     args.append(/*"\"" + */file.filePath()/* + "\""*/);
   }
 
+  // Function from globalfunctions.cpp
   saveToRecent(name,args);
 
   // Start application

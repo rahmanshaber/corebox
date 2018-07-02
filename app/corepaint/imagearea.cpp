@@ -151,6 +151,7 @@ void ImageArea::open(const QString &filePath)
     else
     {
         QApplication::restoreOverrideCursor();
+        // Function from globalfunctions.cpp
         messageEngine(tr("Can't open file \"%1\".").arg(filePath) ,MessageType::Warning);
     }
 }
@@ -164,6 +165,7 @@ bool ImageArea::save()
     clearSelection();
     if (!mImage->save(mFilePath))
     {
+        // Function from globalfunctions.cpp
         messageEngine(tr("Can't save file \"%1\".").arg(mFilePath),MessageType::Warning);
         return false;
     }
@@ -215,6 +217,7 @@ bool ImageArea::saveAs()
         else
         {
             result = false;
+            // Function from globalfunctions.cpp
             messageEngine(tr("Can't save file \"%1\".").arg(filePath) ,MessageType::Warning);
 
         }

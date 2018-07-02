@@ -34,21 +34,7 @@
     </sizepolicy>
    </property>
    <property name="styleSheet">
-    <string notr="true">QFrame [accessibleName=&quot;windowBar&quot;]{
-background-color: #111111;
-color: #111111;
-border: 1px #111111;
-}
-
-QPushButton  [accessibleName=&quot;windowBar&quot;]{
-border: 1px #2A2A2A;
-background-color: #111111; 
-}
-
-QPushButton:hover  [accessibleName=&quot;windowBar&quot;]{
-background-color: #1268A4;
-}
-</string>
+    <string notr="true"/>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -70,18 +56,29 @@ background-color: #1268A4;
      <number>0</number>
     </property>
     <item>
-     <widget class="QFrame" name="sidebar">
+     <widget class="QWidget" name="sidebar" native="true">
       <property name="minimumSize">
        <size>
         <width>40</width>
         <height>0</height>
        </size>
       </property>
-      <property name="accessibleName">
-       <string>windowBar</string>
-      </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QWidget {
+background-color: #111111;
+color: #111111;
+border: 1px #111111;
+}
+
+QPushButton{
+border: 1px #2A2A2A;
+background-color: #111111; 
+}
+
+QPushButton:hover  {
+background-color: #1268A4;
+}
+</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <property name="spacing">
@@ -115,9 +112,6 @@ background-color: #1268A4;
          </property>
          <property name="toolTip">
           <string>Corebox</string>
-         </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
          </property>
          <property name="text">
           <string notr="true"/>
@@ -170,9 +164,6 @@ background-color: #1268A4;
          <property name="toolTip">
           <string>Start</string>
          </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
-         </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
            <normaloff>:/icons/Start.svg</normaloff>:/icons/Start.svg</iconset>
@@ -204,9 +195,6 @@ background-color: #1268A4;
          </property>
          <property name="toolTip">
           <string>DashBoard</string>
-         </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
          </property>
          <property name="text">
           <string/>
@@ -243,9 +231,6 @@ background-color: #1268A4;
          <property name="toolTip">
           <string>Bookmarks</string>
          </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
-         </property>
          <property name="text">
           <string/>
          </property>
@@ -277,9 +262,6 @@ background-color: #1268A4;
            <width>40</width>
            <height>35</height>
           </size>
-         </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
          </property>
          <property name="text">
           <string/>
@@ -316,9 +298,6 @@ background-color: #1268A4;
          <property name="toolTip">
           <string>CoreFM</string>
          </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
-         </property>
          <property name="text">
           <string/>
          </property>
@@ -353,9 +332,6 @@ background-color: #1268A4;
          </property>
          <property name="toolTip">
           <string>CorePad</string>
-         </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
          </property>
          <property name="text">
           <string/>
@@ -392,9 +368,6 @@ background-color: #1268A4;
          <property name="toolTip">
           <string>CorePaint</string>
          </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
-         </property>
          <property name="text">
           <string/>
          </property>
@@ -430,9 +403,6 @@ background-color: #1268A4;
          <property name="toolTip">
           <string>CorePaint</string>
          </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
-         </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
            <normaloff>:/icons/bookit_w.svg</normaloff>:/icons/bookit_w.svg</iconset>
@@ -464,9 +434,6 @@ background-color: #1268A4;
          </property>
          <property name="toolTip">
           <string>Setttings</string>
-         </property>
-         <property name="accessibleName">
-          <string>windowBar</string>
          </property>
          <property name="styleSheet">
           <string notr="true"/>
@@ -504,9 +471,6 @@ background-color: #1268A4;
        </item>
        <item>
         <widget class="QFrame" name="frame">
-         <property name="accessibleName">
-          <string>windowBar</string>
-         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
