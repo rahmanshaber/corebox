@@ -85,17 +85,16 @@ Version 2.2
 - fixed active window and full screen in capturing also the choreshot window.
 - fixed delay is not working.
 - all widgets in separet ui.
-- notes widget text in separate file.
+- notes widget text and recentactivities in separate file.
 - fixed search is not taking path from corefm.
 - fixed two terminal crash both terminal app.
 - fixed add files button dose not work in corerenamer and many ui and bug fixes.
 - round border in messageengine>>messagebox.
 - getfilesize in qconcarent.
-- fix contex menu open folder action in corefm.
-
-
-
-
+- fixed contex menu open folder action in corefm.
+- fixed focuse policy from the shortcut bar from all app.
+- added one scroolbar stylesheet across the app.
+- moved window buttons to sidebar and fixed the dobule click to window miximize.
 
 
 

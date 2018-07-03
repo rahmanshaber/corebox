@@ -139,7 +139,6 @@
         <file>icons/drive_media_w.svg</file>
         <file>icons/drive_usb_b.svg</file>
         <file>icons/drive_usb_w.svg</file>
-        <file>icons/expand_b.svg</file>
         <file>icons/CorePDF.svg</file>
         <file>icons/CoreTerminal.svg</file>
         <file>icons/CoreArchiver.svg</file>
@@ -173,5 +172,6 @@
         <file>icons/toggle_off_w.svg</file>
         <file>icons/toggle_on_b.svg</file>
         <file>icons/toggle_on_w.svg</file>
+        <file>icons/expand_w.svg</file>
     </qresource>
 </RCC>

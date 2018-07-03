@@ -110,6 +110,9 @@ background-color: #1268A4;
            <height>35</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="toolTip">
           <string>Corebox</string>
          </property>
@@ -161,6 +164,9 @@ background-color: #1268A4;
            <height>35</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="toolTip">
           <string>Start</string>
          </property>
@@ -192,6 +198,9 @@ background-color: #1268A4;
            <width>40</width>
            <height>35</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="toolTip">
           <string>DashBoard</string>
@@ -228,6 +237,9 @@ background-color: #1268A4;
            <height>35</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="toolTip">
           <string>Bookmarks</string>
          </property>
@@ -263,6 +275,9 @@ background-color: #1268A4;
            <height>35</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -294,6 +309,9 @@ background-color: #1268A4;
            <width>40</width>
            <height>35</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="toolTip">
           <string>CoreFM</string>
@@ -330,6 +348,9 @@ background-color: #1268A4;
            <height>35</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="toolTip">
           <string>CorePad</string>
          </property>
@@ -364,6 +385,9 @@ background-color: #1268A4;
            <width>40</width>
            <height>35</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="toolTip">
           <string>CorePaint</string>
@@ -400,6 +424,9 @@ background-color: #1268A4;
            <height>35</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="toolTip">
           <string>CorePaint</string>
          </property>
@@ -431,6 +458,9 @@ background-color: #1268A4;
            <width>40</width>
            <height>35</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="toolTip">
           <string>Setttings</string>
@@ -501,6 +531,9 @@ background-color: #1268A4;
               <bold>true</bold>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="accessibleName">
              <string>windowBar</string>
             </property>
@@ -530,6 +563,9 @@ background-color: #1268A4;
               <bold>true</bold>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="accessibleName">
              <string>windowBar</string>
             </property>
@@ -556,6 +592,9 @@ background-color: #1268A4;
           </item>
           <item>
            <widget class="QPushButton" name="maximizeButton">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="accessibleName">
              <string>windowBar</string>
             </property>
@@ -582,6 +621,9 @@ background-color: #1268A4;
           </item>
           <item>
            <widget class="QPushButton" name="restoreButton">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="accessibleName">
              <string>windowBar</string>
             </property>
@@ -605,6 +647,13 @@ background-color: #1268A4;
              <bool>true</bool>
             </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="res">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+           </layout>
           </item>
          </layout>
         </widget>

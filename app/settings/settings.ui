@@ -196,6 +196,9 @@ border: 1px #34343C;
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
@@ -250,6 +253,9 @@ border: 1px #34343C;
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -295,6 +301,9 @@ color: #57585D ;
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -334,6 +343,9 @@ color: #57585D ;
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -369,6 +381,9 @@ color: #57585D ;
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
@@ -1392,8 +1407,8 @@ width: 0px; height: 0px; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>593</width>
-            <height>780</height>
+            <width>551</width>
+            <height>753</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">

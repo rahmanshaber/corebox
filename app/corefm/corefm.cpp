@@ -16,23 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "corefm.h"
 #include "ui_corefm.h"
-#include "mymodel.h"
-#include "progressdlg.h"
-#include "fileutils.h"
-#include "applicationdialog.h"
-
-#include <QtGui>
-#include <QInputDialog>
-#include <QApplication>
-#include <QMenu>
-#include <QAction>
-#include <sys/vfs.h>
-#include <fcntl.h>
-#include <QDebug>
-#include <QSettings>
-#include <QDateTime>
-#include <QtConcurrent/QtConcurrent>
-#include <QShortcut>
 
 
 corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
@@ -99,6 +82,9 @@ void corefm::startsetup()
     tree->hideColumn(2);
     tree->hideColumn(3);
     tree->hideColumn(4);
+    connect(ui->viewTree, SIGNAL(clicked(bool)), tree, SLOT(setVisible(bool)));
+
+
 
     modelView = new viewsSortProxyModel();
     modelView->setSourceModel(modelList);
@@ -114,8 +100,8 @@ void corefm::startsetup()
     ui->viewtree->setModel(modelView);
     ui->viewtree->setSelectionModel(listSelectionModel);
     ui->viewtree->setFocusPolicy(Qt::NoFocus);
-    int i = ui->navigationBar->sizeHint().width();
     ui->viewtree->setSortingEnabled(1);
+    int i = ui->navigationBar->sizeHint().width();
     ui->viewtree->setColumnWidth(0,i);
     ui->viewtree->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -2130,9 +2116,8 @@ void corefm::on_showHidden_clicked(bool checked)
     dirLoaded();
 }
 
-void corefm::on_showthumb_clicked(bool checked)
+void corefm::on_showthumb_pressed()
 {
-    Q_UNUSED(checked);
     if (currentView != 2) on_icon_clicked(true);
     else on_detaile_clicked(true);
     on_actionRefresh_triggered();
@@ -2523,4 +2508,10 @@ void corefm::on_actionCoreRenamer_triggered()
     const QString path(curIndex.filePath());
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
     cBox->tabEngine(CoreRenamer, path);
+}
+
+
+void corefm::on_viewTree_clicked(bool checked)
+{
+
 }

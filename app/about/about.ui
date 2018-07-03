@@ -83,6 +83,9 @@ border: 1px #0C2C45;
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
@@ -146,7 +149,7 @@ border: 1px #0C2C45;
          <string notr="true">QFrame{
 background-color: #27527F;
 color: #ffffff;
-border-radius: 10px;
+border-radius: 5px;
 }</string>
         </property>
         <property name="frameShape">
@@ -230,7 +233,7 @@ border-radius: 10px;
          <string notr="true">QFrame{
 background-color: #27527F;
 color: #ffffff;
-border-radius: 10px;
+border-radius: 5px;
 }</string>
         </property>
         <property name="frameShape">
@@ -306,7 +309,7 @@ border-radius: 10px;
          <string notr="true">QFrame{
 background-color: #27527F;
 color: #ffffff;
-border-radius: 10px;
+border-radius: 5px;
 }</string>
         </property>
         <property name="frameShape">
@@ -353,7 +356,7 @@ border-radius: 10px;
          <string notr="true">QFrame{
 background-color: #27527F;
 color: #ffffff;
-border-radius: 10px;
+border-radius: 5px;
 }</string>
         </property>
         <property name="frameShape">
@@ -416,7 +419,7 @@ padding: 0px 0px 0px 8px;
          <string notr="true">QFrame{
 background-color: #27527F;
 color: #ffffff;
-border-radius: 10px;
+border-radius: 5px;
 }</string>
         </property>
         <property name="frameShape">
@@ -508,7 +511,7 @@ border-radius: 10px;
          <string notr="true">QFrame{
 background-color: #27527F;
 color: #ffffff;
-border-radius: 10px;
+border-radius: 5px;
 }</string>
         </property>
         <property name="frameShape">

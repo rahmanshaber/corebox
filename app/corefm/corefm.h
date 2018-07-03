@@ -23,6 +23,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "tabbar.h"
 #include "fileutils.h"
 #include "mimeutils.h"
+#include "applicationdialog.h"
+#include "udisks2.h"
 
 #include <QWidget>
 #include <QSettings>
@@ -35,15 +37,25 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QCompleter>
 #include <QAbstractItemView>
 #include <QActionGroup>
+#include <QtGui>
+#include <QInputDialog>
+#include <QApplication>
+#include <QMenu>
+#include <QAction>
+#include <sys/vfs.h>
+#include <fcntl.h>
+#include <QDebug>
+#include <QSettings>
+#include <QDateTime>
+#include <QtConcurrent/QtConcurrent>
+#include <QShortcut>
 
-#include "udisks2.h"
 #include "../corebox/corebox.h"
 #include "../settings/settingsmanage.h"
 #include "../corebox/globalfunctions.h"
 #include "../bookmarks/bookmarks.h"
 #include "../bookmarks/bookmarkdialog.h"
 #include "../corearchiver/corearchiver.h"
-
 
 
 namespace Ui {
@@ -146,7 +158,6 @@ private slots:
     void on_detaile_clicked(bool checked);
     void on_actionTrash_it_triggered();
     void on_showHidden_clicked(bool checked);
-    void on_showthumb_clicked(bool checked);
     void on_SBookMarkIt_clicked();
     void on_searchHere_clicked();
     void on_actionExtract_Here_triggered();
@@ -160,11 +171,11 @@ private slots:
     void on_actionHome_triggered();
     void on_actionRun_triggered();
     void sendToPath();
-
     void on_actionCoreRenamer_triggered();
+    void on_showthumb_pressed();
+    void on_viewTree_clicked(bool checked);
 
 private:
-    SettingsManage sm;
     void writeSettings();
     void shotcuts();
     void startsetup();
@@ -188,10 +199,11 @@ private:
 
     MimeUtils *mimeUtils;
     tabBar *tabs;
-    myProgressDialog * progress;
-    propertiesw * properties;
+    myProgressDialog *progress;
+    propertiesw *properties;
 //    CoreBox corebox_;
     UDisks2 *udisks;
+    SettingsManage sm;
 
     QFileSystemWatcher *watcher;
     QTreeView *tree;

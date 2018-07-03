@@ -4,14 +4,17 @@ CoreBox v2.2
 These are the some big changes in CoreBox 2.2.
 
 => CoreBox
-   - Added new app CoreTerminal , CoreRenamer and CoreArchiver.
+   - Added new app CoreTerminal, CoreRenamer, CorePDF and CoreArchiver.
    - Removed engrampa as moved to CoreArchiver
    - Reduced font size in all app's sidebar.
    - Fixed tab close crash of same app.
+   - Full trash support for CoreFM and CoreImage.
+   - Moved window buttons to sidebar and fixed the DobuleClick to window miximize.
 
 
 => Start
    - New look.
+   - Redisinged RecentActivites.
 
 => BookMarks
     - BookmarkIt Dialog in dark ui.
@@ -22,6 +25,8 @@ These are the some big changes in CoreBox 2.2.
     - Updated the battery info functions.
     - Moved all core code to separete library.
     - Battery charging and discharging time is showing now.
+    - Updated the libcsys library.
+    - General page's network bar now show used network.
 
 => Search
    - Search is now faster and have better UI.
@@ -35,14 +40,16 @@ These are the some big changes in CoreBox 2.2.
    -
 
 => CoreAction
-   - All the widgets rebuild, now faster and ram efficent.
-   -
+   - All the widgets rebuild, now those are faster and ram efficent.
+   - Widgets list is now customizeable.
    -
 
 => CoreFM
    - Added CoreArchiver and CoreTerminal support.
    - Dark ui in corefm.
    - Removed libmagic from depedency.
+   - Added full interigation with CoreTerminal, CoreRenamer, CorePDF and CoreArchiver.
+   - Getting file size is faster now.
 
 => CorePaint
    - Selected area delete with del key press.
@@ -61,10 +68,10 @@ These are the some big changes in CoreBox 2.2.
    -
 
 => CorePlayer
-   -
+   - Fixed autoPlay problem.
 
 => CorePDF
-   -
+   - New app.
    -
    -
 
@@ -90,3 +97,8 @@ These are the some big changes in CoreBox 2.2.
    - Added active window screenshot
    - A new way to capture screenshot.
    -
+
+=> CoreRenamer
+    - New app.
+    -
+    -

@@ -124,6 +124,29 @@ void coreimage::wheelEvent(QWheelEvent *event)
     }
 }
 
+void coreimage::mousePressEvent(QMouseEvent *event)
+{
+    mousePressed = true;
+    mousePos = event->globalPos();
+
+    if (cImageLabel->underMouse()){
+      wndPos = cImageLabel->pos();
+    }
+}
+
+void coreimage::mouseMoveEvent(QMouseEvent *event)
+{
+    if (cImageLabel->underMouse() && mousePressed){
+        cImageLabel->move(wndPos + (event->globalPos() - mousePos));
+    }
+}
+
+void coreimage::mouseReleaseEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event);
+    mousePressed = false;
+}
+
 QStringList coreimage::getImages(const QString path)
 {
     QDir dir(path);
@@ -475,29 +498,6 @@ void coreimage::on_containingfolder_clicked()
 void coreimage::on_thumnailView_itemClicked(QListWidgetItem *item)
 {
     loadFile(images.at(ui->thumnailView->row(item)));
-}
-
-void coreimage::mousePressEvent(QMouseEvent *event)
-{
-    mousePressed = true;
-    mousePos = event->globalPos();
-
-    if (cImageLabel->underMouse()){
-      wndPos = cImageLabel->pos();
-    }
-}
-
-void coreimage::mouseMoveEvent(QMouseEvent *event)
-{
-    if (cImageLabel->underMouse() && mousePressed){
-        cImageLabel->move(wndPos + (event->globalPos() - mousePos));
-    }
-}
-
-void coreimage::mouseReleaseEvent(QMouseEvent *event)
-{
-    Q_UNUSED(event);
-    mousePressed = false;
 }
 
 void coreimage::on_cTrashIt_clicked()

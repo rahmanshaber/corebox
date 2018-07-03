@@ -67,6 +67,9 @@ border: 1px rgb(67, 67, 67);
              <pointsize>16</pointsize>
             </font>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
            </property>
@@ -135,6 +138,9 @@ border: 1px rgb(67, 67, 67);
              <pointsize>12</pointsize>
             </font>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 Text-align:left;
@@ -174,6 +180,9 @@ background-color: #1793D1;
              <pointsize>12</pointsize>
             </font>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 Text-align:left;
@@ -206,6 +215,9 @@ background-color: #1793D1;
             <font>
              <pointsize>12</pointsize>
             </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
@@ -250,6 +262,9 @@ background-color: #1793D1;
              <width>0</width>
              <height>30</height>
             </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
             <string notr="true">
@@ -337,6 +352,9 @@ border:1px solid gray;
          </item>
          <item>
           <widget class="QPushButton" name="setfolder">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -717,6 +735,9 @@ font-weight: bold;
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="styleSheet">
           <string notr="true">QTableView::item{
 border-bottom-style:solid;
@@ -892,10 +913,10 @@ border: 1px rgb(67, 67, 67);
         <number>15</number>
        </property>
        <property name="leftMargin">
-        <number>10</number>
+        <number>45</number>
        </property>
        <property name="topMargin">
-        <number>5</number>
+        <number>10</number>
        </property>
        <property name="rightMargin">
         <number>10</number>
@@ -919,6 +940,9 @@ border: 1px rgb(67, 67, 67);
        </item>
        <item>
         <widget class="QTreeWidget" name="activityList">
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="styleSheet">
           <string notr="true">QScrollBar:vertical {
 background-color: rgba( 0, 0, 0, 72% );

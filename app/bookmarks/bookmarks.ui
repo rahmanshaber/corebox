@@ -86,6 +86,9 @@ border: 1px rgb(67, 67, 67);
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">Text-align:left
 </string>
@@ -132,6 +135,9 @@ border: 1px rgb(67, 67, 67);
           <weight>50</weight>
           <bold>false</bold>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QListView{
@@ -183,6 +189,9 @@ width: 0px; height: 0px; }
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -227,6 +236,9 @@ background-color: #171717;
           <bold>false</bold>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -262,6 +274,9 @@ background-color: #171717;
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
@@ -721,6 +736,9 @@ color: #FFFFFF;
         <property name="enabled">
          <bool>true</bool>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QTableView::item{
 border-bottom-style:solid;
@@ -874,6 +892,9 @@ color: #FFFFFF;
           <height>26</height>
          </size>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="toolTip">
          <string>Reload</string>
         </property>
@@ -958,6 +979,9 @@ border: 1px solid rgb(67, 67, 67);
           <height>26</height>
          </size>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="toolTip">
          <string>Delete selected Bookmark</string>
         </property>
@@ -1007,6 +1031,9 @@ background-color: rgb(48, 140, 198);
           <width>26</width>
           <height>26</height>
          </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="toolTip">
          <string>Edit selected Bookmark</string>

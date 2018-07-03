@@ -117,7 +117,7 @@ void Start::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column) /
 
 void Start::loadRecent() // populate RecentActivity list
 {
-    ui->treeWidget->clear();
+    ui->recentActivitesL->clear();
     QSettings recentActivity(QDir::homePath() + "/.config/coreBox/RecentActivity", QSettings::IniFormat);
     QStringList topLevel = recentActivity.childGroups();
     foreach (QString group, topLevel) {
@@ -137,11 +137,11 @@ void Start::loadRecent() // populate RecentActivity list
             topTree->addChild(child);
         }
         recentActivity.endGroup();
-        ui->treeWidget->insertTopLevelItem(0, topTree);
+        ui->recentActivitesL->insertTopLevelItem(0, topTree);
     }
 
     if (topLevel.count())
-        (ui->treeWidget->setExpanded(ui->treeWidget->model()->index(0, 0), true));
+        (ui->recentActivitesL->setExpanded(ui->recentActivitesL->model()->index(0, 0), true));
 }
 // =================================
 
@@ -152,17 +152,12 @@ void Start::loadsettings() // load settings
     if (sm.getDisableRecent()) {
         //ui->pages->removeWidget(ui->precents);
         ui->recentActivites->setVisible(0);
-        ui->treeWidget->clear();
+        ui->recentActivitesL->clear();
         ui->pages->setCurrentIndex(0);
 
     } else {
-        //if (ui->pages->count() == 3) {
-        //    ui->recentActivites->setVisible(1);
-        //} else {
-            ui->recentActivites->setVisible(1);
-            loadRecent();
-        //    ui->pages->insertWidget(2, ui->precents);
-        //}
+        ui->recentActivites->setVisible(1);
+        loadRecent();
     }
 }
 
@@ -190,28 +185,33 @@ void Start::paintEvent(QPaintEvent *event)
 //    }
 }
 
+void Start::pageClick(QPushButton *btn, int i)
+{
+    // all button checked false
+    for (QPushButton *b : ui->pageButtons->findChildren<QPushButton*>())
+        b->setChecked(false);
+    btn->setChecked(true);
+    ui->pages->setCurrentIndex(i);
+}
+
 void Start::on_coreApps_clicked()
 {
-    ui->pages->setCurrentIndex(0);
-    ui->coreApps->setChecked(1);
-    ui->speedDial->setChecked(0);
-    ui->recentActivites->setChecked(0);
+    pageClick(ui->coreApps, 0);
 }
 
 void Start::on_speedDial_clicked()
 {
-    ui->pages->setCurrentIndex(1);
-    ui->speedDial->setChecked(1);
-    ui->coreApps->setChecked(0);
-    ui->recentActivites->setChecked(0);
+    pageClick(ui->speedDial, 1);
 }
 
 void Start::on_recentActivites_clicked()
 {
-    ui->pages->setCurrentIndex(2);
-    ui->recentActivites->setChecked(1);
-    ui->speedDial->setChecked(0);
-    ui->coreApps->setChecked(0);
+    pageClick(ui->recentActivites, 2);
+}
+
+void Start::on_savedSession_clicked()
+{
+    pageClick(ui->savedSession, 3);
 }
 
 void Start::reload()
@@ -222,3 +222,5 @@ void Start::reload()
         loadRecent();
     else on_coreApps_clicked();
 }
+
+

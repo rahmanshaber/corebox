@@ -888,6 +888,9 @@ p, li { white-space: pre-wrap; }
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
@@ -932,6 +935,9 @@ p, li { white-space: pre-wrap; }
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>CoreBox</string>
         </property>
@@ -959,6 +965,9 @@ p, li { white-space: pre-wrap; }
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>CoreFM</string>
         </property>
@@ -982,6 +991,9 @@ p, li { white-space: pre-wrap; }
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>CorePad</string>
@@ -1007,6 +1019,9 @@ p, li { white-space: pre-wrap; }
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>CoreImage</string>
         </property>
@@ -1030,6 +1045,9 @@ p, li { white-space: pre-wrap; }
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>CorePaint</string>
@@ -1055,6 +1073,9 @@ p, li { white-space: pre-wrap; }
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>CoreScreenShot</string>
         </property>
@@ -1078,6 +1099,9 @@ p, li { white-space: pre-wrap; }
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>CoreTime</string>
@@ -1103,6 +1127,9 @@ p, li { white-space: pre-wrap; }
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>CoreRenamer</string>
         </property>
@@ -1126,6 +1153,9 @@ p, li { white-space: pre-wrap; }
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>CorePlayer</string>
@@ -1151,6 +1181,9 @@ p, li { white-space: pre-wrap; }
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>DashBoard</string>
         </property>
@@ -1174,6 +1207,9 @@ p, li { white-space: pre-wrap; }
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>Start</string>
@@ -1199,6 +1235,9 @@ p, li { white-space: pre-wrap; }
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="text">
          <string>Search</string>
         </property>
@@ -1216,6 +1255,9 @@ p, li { white-space: pre-wrap; }
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>Help Us</string>
@@ -1243,6 +1285,9 @@ p, li { white-space: pre-wrap; }
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>Relese Notes</string>

@@ -16,9 +16,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_corerenamer.h"
 
 
-corerenamer::corerenamer(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::corerenamer)
+corerenamer::corerenamer(QWidget *parent) :QWidget(parent),ui(new Ui::corerenamer)
 {
     ui->setupUi(this);
 
@@ -29,6 +27,8 @@ corerenamer::corerenamer(QWidget *parent) :
 
     ui->bUndo->setEnabled(false);
     ui->bRedo->setEnabled(false);
+
+    ui->FLists->setColumnWidth(1,500);
 
 //    QUndoView *view = new QUndoView(uStack, this);
 //    view->show();
@@ -45,7 +45,8 @@ corerenamer::corerenamer(QWidget *parent) :
     customSortM = new customSortProxyM();
     m_Model = new QStandardItemModel(0,3);
 
-    createActions();
+    shotcuts();
+    startsetup(false);
 }
 
 corerenamer::~corerenamer()
@@ -53,7 +54,19 @@ corerenamer::~corerenamer()
     delete ui;
 }
 
-void corerenamer::createActions()
+void corerenamer::startsetup(bool set)
+{
+    ui->renameTools->setEnabled(set);
+    ui->bRedo->setEnabled(set);
+    ui->bRefreshList->setEnabled(set);
+    ui->bUndo->setEnabled(set);
+    ui->bRedo->setEnabled(set);
+    ui->clearItem->setEnabled(set);
+    ui->rename->setEnabled(set);
+    ui->FLists->setEnabled(set);
+}
+
+void corerenamer::shotcuts()
 {
     QShortcut *shortcut;
 
@@ -119,6 +132,8 @@ void corerenamer::addFiles(const QStringList &list)
     customSortM->setSourceModel(m_Model);
     ui->FLists->setModel(customSortM);
     ui->FLists->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+    startsetup(1);
 }
 
 void corerenamer::addPath(const QString &path)

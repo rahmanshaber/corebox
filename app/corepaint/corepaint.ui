@@ -461,6 +461,9 @@ border: 1px #3A4953;
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">Text-align:left</string>
         </property>
@@ -563,6 +566,9 @@ background-color:  #3D3D3D;
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
 Text-align:left;
@@ -598,6 +604,9 @@ background-color: #212F39;
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
@@ -635,6 +644,9 @@ background-color: #212F39;
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
 Text-align:left;
@@ -670,6 +682,9 @@ background-color: #212F39;
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
@@ -754,6 +769,9 @@ background-color: #212F39;
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
 Text-align:left;
@@ -801,6 +819,9 @@ background-color: #212F39;
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
@@ -850,6 +871,9 @@ background-color: #212F39;
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
 Text-align:left;
@@ -897,6 +921,9 @@ background-color: #212F39;
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
@@ -946,6 +973,9 @@ background-color: #212F39;
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
 Text-align:left;
@@ -993,6 +1023,9 @@ background-color: #212F39;
              <font>
               <pointsize>11</pointsize>
              </font>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
@@ -1402,8 +1435,8 @@ background-color: #212F39;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>88</width>
-               <height>234</height>
+               <width>220</width>
+               <height>276</height>
               </rect>
              </property>
              <attribute name="label">
@@ -2159,6 +2192,9 @@ background-color: #212F39;
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{

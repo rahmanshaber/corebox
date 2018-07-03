@@ -60,6 +60,9 @@ border: 1px #2A2A2A;
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="newShot">
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 border: 1px solid #434343;
@@ -90,6 +93,9 @@ background-color: #308CC6;
      </item>
      <item>
       <widget class="QPushButton" name="openInCorePaint">
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 border: 1px solid #434343;
@@ -107,6 +113,9 @@ background-color: #308CC6;
      </item>
      <item>
       <widget class="QPushButton" name="save">
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 border: 1px solid #434343;
@@ -124,6 +133,9 @@ background-color: #308CC6;
      </item>
      <item>
       <widget class="QPushButton" name="saveAs">
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 border: 1px solid #434343;
@@ -141,6 +153,9 @@ background-color: #308CC6;
      </item>
      <item>
       <widget class="QPushButton" name="cancel">
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 border: 1px solid #434343;

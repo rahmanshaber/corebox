@@ -82,11 +82,8 @@ private slots:
     void on_bRedo_clicked();
     void on_rename_clicked();
     void on_bRefreshList_clicked();
-
     void on_clearItem_clicked();
-
     void on_gAddOldFileName_clicked(bool checked);
-
     void on_gAddNewFileName_clicked(bool checked);
 
 private:
@@ -95,7 +92,6 @@ private:
     QStandardItemModel *m_Model;
 
     QUndoStack *uStack;
-    void createActions();
     QIcon fileIcon(const QString &filePath);
 
     /*!
@@ -141,7 +137,8 @@ private:
     bool setAddText();
     bool setRemText();
     bool setRepText();
-
+    void startsetup(bool set);
+    void shotcuts();
 };
 
 class customSortProxyM : public QSortFilterProxyModel

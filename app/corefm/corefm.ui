@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1007</width>
+    <width>1052</width>
     <height>514</height>
    </rect>
   </property>
@@ -315,187 +315,27 @@ border: 1px  #F2F2F2;
       <string notr="true">QWidget{
 background-color:#363941;
 color: #E6E6E6;
-}</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="lineWidth">
-      <number>1</number>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <property name="spacing">
-       <number>4</number>
-      </property>
-      <property name="leftMargin">
-       <number>2</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>2</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QToolButton" name="back">
-        <property name="minimumSize">
-         <size>
-          <width>26</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>26</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
+}
+
+QToolButton{
+border: 1px solid #434343;
 }
 
 QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
+background-color: #1268A4; 
 }
 
 QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
-        </property>
-        <property name="text">
-         <string>back</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/left_w.svg</normaloff>:/icons/left_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>24</width>
-          <height>24</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="up">
-        <property name="minimumSize">
-         <size>
-          <width>26</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>26</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
+background-color: #1268A4; 
 }
 
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
+QToolButton:checked{
+background-color: #1268A4;
 }
 
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
-        </property>
-        <property name="text">
-         <string>up</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/up_w.svg</normaloff>:/icons/up_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>24</width>
-          <height>24</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="refresh">
-        <property name="minimumSize">
-         <size>
-          <width>26</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>26</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-}
 
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
 
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
-        </property>
-        <property name="text">
-         <string>refresh</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/refresh_w.svg</normaloff>:/icons/refresh_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="pathEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="contextMenuPolicy">
-         <enum>Qt::NoContextMenu</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QComboBox {
+QComboBox {
     border: 1px solid rgb(67, 67, 67);
     padding: 5px 5px 5px 10px;
 }
@@ -539,6 +379,147 @@ background-color: rgba( 0, 0, 0, 72% ); }
 QScrollBar::add-line:vertical, 
 QScrollBar::sub-line:vertical {
 width: 0px; height: 0px; }</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="spacing">
+       <number>4</number>
+      </property>
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="back">
+        <property name="minimumSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>back</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/left_w.svg</normaloff>:/icons/left_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="up">
+        <property name="minimumSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>up</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/up_w.svg</normaloff>:/icons/up_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="refresh">
+        <property name="minimumSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>refresh</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/refresh_w.svg</normaloff>:/icons/refresh_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="pathEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>26</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::NoContextMenu</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
         <property name="editable">
          <bool>true</bool>
@@ -565,19 +546,6 @@ width: 0px; height: 0px; }</string>
         <property name="toolTip">
          <string>Search</string>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
-        </property>
         <property name="text">
          <string>...</string>
         </property>
@@ -594,7 +562,7 @@ background-color: rgb(48, 140, 198);
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="icon">
+       <widget class="QToolButton" name="icon">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -609,15 +577,6 @@ background-color: rgb(48, 140, 198);
         </property>
         <property name="toolTip">
          <string>Icon View</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-QPushButton:checked{
-background-color: #1268A4;
-}
-</string>
         </property>
         <property name="text">
          <string/>
@@ -641,7 +600,7 @@ background-color: #1268A4;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="detaile">
+       <widget class="QToolButton" name="detaile">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -656,16 +615,6 @@ background-color: #1268A4;
         </property>
         <property name="toolTip">
          <string>Detailed List</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-
-QPushButton:checked{
-background-color: #1268A4;
-}
-</string>
         </property>
         <property name="text">
          <string/>
@@ -689,7 +638,7 @@ background-color: #1268A4;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="emptyTrash">
+       <widget class="QToolButton" name="emptyTrash">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -883,19 +832,6 @@ background-color: #1268A4;
         <property name="toolTip">
          <string>Empty Trash</string>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-
-QPushButton:pressed{
-background-color: #1268A4; 
-}
-
-QPushButton:hover {
-background-color: #1268A4;
-}</string>
-        </property>
         <property name="text">
          <string>Empty Trash</string>
         </property>
@@ -909,8 +845,8 @@ background-color: #1268A4;
           <height>22</height>
          </size>
         </property>
-        <property name="flat">
-         <bool>false</bool>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>
@@ -930,19 +866,6 @@ background-color: #1268A4;
         </property>
         <property name="toolTip">
          <string>paste</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-}
-
-QToolButton:pressed{
-background-color: #1268A4; 
-}
-
-QToolButton:hover {
-background-color: #1268A4;
-}</string>
         </property>
         <property name="text">
          <string>Paste</string>
@@ -1015,6 +938,9 @@ border: 1px rgb(67, 67, 67);
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -1060,6 +986,9 @@ color:#ffffff;
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -1095,6 +1024,9 @@ background-color: #1268A4;
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="toolTip">
          <string notr="true"/>
@@ -1147,6 +1079,9 @@ background-color: #1268A4;
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -1182,6 +1117,9 @@ background-color: #1268A4;
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
@@ -1308,6 +1246,9 @@ QListView::item:hover {
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -1346,6 +1287,9 @@ background-color: #1268A4;
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
@@ -1419,6 +1363,24 @@ background-color: #1268A4;
       <string notr="true">QWidget{
 background-color: #363941;;
 color: #E6E6E6;
+}
+
+
+QToolButton{
+border: 1px solid #434343;
+padding: 3px 2px 3px 2px;
+}
+
+QToolButton:pressed{
+background-color: #1268A4; 
+}
+
+QToolButton:hover {
+background-color: #1268A4; 
+}
+
+QToolButton:checked{
+background-color: #1268A4;
 }</string>
      </property>
      <property name="frameShape">
@@ -1449,7 +1411,7 @@ color: #E6E6E6;
       <item>
        <widget class="QToolButton" name="cut">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1465,20 +1427,6 @@ color: #E6E6E6;
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
         </property>
         <property name="text">
          <string>Cut</string>
@@ -1497,7 +1445,7 @@ background-color: rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="copy">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1513,20 +1461,6 @@ background-color: rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
         </property>
         <property name="text">
          <string>Copy</string>
@@ -1545,7 +1479,7 @@ background-color: rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="deleteit">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1561,20 +1495,6 @@ background-color: rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
         </property>
         <property name="text">
          <string>Delete</string>
@@ -1593,7 +1513,7 @@ background-color: rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="properties">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1609,20 +1529,6 @@ background-color: rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
         </property>
         <property name="text">
          <string>Properties</string>
@@ -1655,9 +1561,9 @@ background-color: rgb(48, 140, 198);
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="showHidden">
+       <widget class="QToolButton" name="showHidden">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1673,21 +1579,6 @@ background-color: rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-
-QPushButton:checked{
-background-color:rgb(48, 140, 198); 
-}
-</string>
         </property>
         <property name="text">
          <string>Show Hidden</string>
@@ -1698,9 +1589,9 @@ background-color:rgb(48, 140, 198);
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="showthumb">
+       <widget class="QToolButton" name="showthumb">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1716,21 +1607,6 @@ background-color:rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-
-QPushButton:checked{
-background-color:rgb(48, 140, 198); 
-}
-</string>
         </property>
         <property name="text">
          <string>Preview</string>
@@ -1743,7 +1619,7 @@ background-color:rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="newfolder">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1759,20 +1635,6 @@ background-color:rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
         </property>
         <property name="text">
          <string>New Folder</string>
@@ -1791,7 +1653,7 @@ background-color: rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="newtext">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1807,20 +1669,6 @@ background-color: rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
         </property>
         <property name="text">
          <string>New Text</string>
@@ -1839,7 +1687,7 @@ background-color: rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="terminal">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1855,20 +1703,6 @@ background-color: rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
         </property>
         <property name="text">
          <string>Terminal</string>
@@ -1900,7 +1734,7 @@ background-color: rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="newPage">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1922,20 +1756,6 @@ background-color: rgb(48, 140, 198);
           <pointsize>10</pointsize>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
-        </property>
         <property name="text">
          <string>New Page</string>
         </property>
@@ -1953,7 +1773,7 @@ background-color: rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="zoomin">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1969,20 +1789,6 @@ background-color: rgb(48, 140, 198);
           <width>16777215</width>
           <height>23</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
         </property>
         <property name="text">
          <string>Zoom In</string>
@@ -1995,7 +1801,7 @@ background-color: rgb(48, 140, 198);
       <item>
        <widget class="QToolButton" name="zoomout">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -2013,24 +1819,23 @@ background-color: rgb(48, 140, 198);
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QToolButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 3px 2px 3px 2px;
-}
-
-QToolButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Zoom Out</string>
         </property>
         <property name="toolButtonStyle">
          <enum>Qt::ToolButtonTextOnly</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="viewTree">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -2065,7 +1870,7 @@ color:#E6E6E6;
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pagelist">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -2189,6 +1994,9 @@ width: 0px; height: 0px; }
             <pointsize>11</pointsize>
            </font>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true">QTreeView::item{
 padding: 0px 0px 0px 5px;
@@ -2220,10 +2028,15 @@ font: 12pt &quot;Cantarell&quot;;
 font-style: normal;
 }
 
-QScrollBar:horizontal,
 QScrollBar:vertical {
 background-color: rgba( 0, 0, 0, 72% );
 max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar:horizontal {
+background-color: rgba( 0, 0, 0, 72% );
+max-height: 8px;
 border-radius: 4px;
 padding: 1px; }
 

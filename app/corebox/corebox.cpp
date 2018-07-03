@@ -38,22 +38,20 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
 {
     ui->setupUi(this);
 
-    //setWindowOpacity(0.95);
-    //setAttribute(Qt::WA_TranslucentBackground);
-
     //set a icon set for the whole app
     QIcon::setThemeName(sm.getThemeName());
 
     //setup framless window
     ui->windows->tabBar()->installEventFilter(this);
+    ui->sidebar->installEventFilter(this);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::SubWindow);
     ui->restoreButton->setVisible(false);
 //    ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
 
     //make the resizeable window button
-//    QSizeGrip *sizeGrip = new QSizeGrip(this);
-//    sizeGrip->setStyleSheet("QWidget{background-color: #EFEFEF ; width: 16px;height: 16px; background-image: url(:/icons/expand_b.svg); background-repeat: no-repeat ;background-position: center center ;}");
-//    ui->resize->addWidget(sizeGrip);
+    QSizeGrip *sizeGrip = new QSizeGrip(this);
+    sizeGrip->setStyleSheet("QWidget{background-color: #111111 ; width: 16px;height: 16px; background-image: url(:/icons/expand_w.svg); background-repeat: no-repeat ;background-position: center center ;}");
+    ui->res->addWidget(sizeGrip);
 
     //setup window size and state
     if (sm.getBoxIsMaximize()) {
@@ -463,14 +461,14 @@ void CoreBox::mousePressEvent(QMouseEvent *event)
         isLeftDown = true;
         mousePos = event->globalPos();
         wndPos = this->pos();
-        qDebug() << "1st Left mouse clicked";
+//        qDebug() << "Left mouse clicked";
     }
 //    else if (event->buttons()== Qt::RightButton){
 //        isMouseDown = true;
 //        isRightDown = true;
 //        mousePos = event->globalPos();
 //        wndPos = this->pos();
-//        qDebug() << "1st Right mouse clicked";
+//        qDebug() << "Right mouse clicked";
 //    }
 }
 
@@ -482,11 +480,11 @@ void CoreBox::mouseMoveEvent(QMouseEvent *event)
 
         if ((ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse()) && isLeftDown == true){
             move(wndPos + (event->globalPos() - mousePos));
-            qDebug() << "2nd Left mouse clicked";
+//            qDebug() << "Left mouse clicked";
         }
 //        else if (isRightDown == true){
 //            resize((mousePointx),(mousePointy));
-//            qDebug() << "2nd Right mouse clicked";
+//            qDebug() << "Right mouse clicked";
 //        }
     }
 }
@@ -501,7 +499,7 @@ void CoreBox::mouseReleaseEvent(QMouseEvent *event)
 
 bool CoreBox::eventFilter(QObject *obj, QEvent *evt)
 {
-    if (obj == ui->windows && evt->type() == QEvent::MouseButtonDblClick){
+    if (obj == ui->sidebar && evt->type() == QEvent::MouseButtonDblClick){
         doubleClicked();
     }
 

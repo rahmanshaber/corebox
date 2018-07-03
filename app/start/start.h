@@ -57,6 +57,7 @@ private slots:
     void on_coreApps_clicked();
     void on_speedDial_clicked();
     void on_recentActivites_clicked();
+    void on_savedSession_clicked();
 
 private:
     Ui::Start *ui;
@@ -67,6 +68,7 @@ private:
     void loadRecent();
 
     bool isRecentEnable;
+    void pageClick(QPushButton *btn, int i);
 };
 
 #endif // START_H

@@ -83,6 +83,9 @@ border: 1px rgb(67, 67, 67);
           <pointsize>16</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">Text-align:left
 </string>
@@ -128,6 +131,9 @@ border: 1px rgb(67, 67, 67);
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 Text-align:left;
@@ -169,6 +175,9 @@ background-color: #3E4A58;
          <font>
           <pointsize>11</pointsize>
          </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QListView::item{
@@ -451,6 +460,9 @@ border: 1px rgb(67, 67, 67);
           <height>30</height>
          </size>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="toolTip">
          <string>Play/Pause</string>
         </property>
@@ -496,6 +508,9 @@ background-color: #323232 ;
           <height>30</height>
          </size>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="toolTip">
          <string>Previous</string>
         </property>
@@ -536,6 +551,9 @@ background-color: #323232 ;
           <width>30</width>
           <height>30</height>
          </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="toolTip">
          <string>Next</string>
@@ -581,6 +599,9 @@ background-color: #323232 ;
           <height>30</height>
          </size>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton:pressed{
 background-color:#323232; 
@@ -623,6 +644,9 @@ background-color: #323232 ;
           <width>30</width>
           <height>30</height>
          </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="toolTip">
          <string>Stop</string>
@@ -762,6 +786,9 @@ margin-bottom: -4px;
       </item>
       <item row="1" column="4">
        <widget class="QPushButton" name="playlist">
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="toolTip">
          <string>playlist</string>
         </property>

@@ -20,11 +20,62 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_6">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
-    <widget class="QTableView" name="FLists">
+    <widget class="QWidget" name="widget" native="true">
      <property name="styleSheet">
-      <string notr="true">QScrollBar:vertical {
+      <string notr="true">QWidget{
+background-color: #1E1E1E;
+border: 1px #1E1E1E;
+color: #9E9E9F;
+}
+</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTableView" name="FLists">
+        <property name="styleSheet">
+         <string notr="true">QTableView::item{
+border-bottom-style:solid;
+border-width:1;
+border-color: #323232;
+}
+
+QTableView {
+selection-background-color:#323232 ;
+selection-color:#1CB853; 
+}
+
+QHeaderView{ 
+padding-left: 4px;
+background-color:#1E1E1E ;
+color:#606364;
+}
+
+QHeaderView::section { 
+background-color:#1E1E1E;
+color:#606364;
+border: 1px #ffffff;
+}
+
+
+
+QScrollBar:vertical {
 background-color: rgba( 0, 0, 0, 72% );
 max-width: 8px;
 border-radius: 4px;
@@ -46,550 +97,696 @@ QScrollBar::sub-line:vertical {
 width: 0px; height: 0px; }
 
 </string>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="showDropIndicator" stdset="0">
-      <bool>false</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::ExtendedSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="showGrid">
-      <bool>false</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="cornerButtonEnabled">
-      <bool>false</bool>
-     </property>
-     <attribute name="horizontalHeaderHighlightSections">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderHighlightSections">
-      <bool>false</bool>
-     </attribute>
-    </widget>
-   </item>
-   <item>
-    <widget class="QFrame" name="frame_00">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>40</height>
-      </size>
-     </property>
-     <layout class="QHBoxLayout" name="buttons">
-      <property name="leftMargin">
-       <number>5</number>
-      </property>
-      <property name="topMargin">
-       <number>5</number>
-      </property>
-      <property name="rightMargin">
-       <number>5</number>
-      </property>
-      <property name="bottomMargin">
-       <number>5</number>
-      </property>
-      <item>
-       <widget class="QPushButton" name="bRefreshList">
-        <property name="text">
-         <string>Refresh List</string>
         </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="showDropIndicator" stdset="0">
+         <bool>false</bool>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <property name="gridStyle">
+         <enum>Qt::DotLine</enum>
+        </property>
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="cornerButtonEnabled">
+         <bool>false</bool>
+        </property>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>120</number>
+        </attribute>
+        <attribute name="horizontalHeaderHighlightSections">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderHighlightSections">
+         <bool>false</bool>
+        </attribute>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="clearItem">
-        <property name="text">
-         <string>Clear Item</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="bUndo">
-        <property name="text">
-         <string>Undo</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="bRedo">
-        <property name="text">
-         <string>Redo</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="spacer_01">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
+       <widget class="QFrame" name="tools">
+        <property name="maximumSize">
          <size>
-          <width>40</width>
-          <height>20</height>
+          <width>16777215</width>
+          <height>40</height>
          </size>
         </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="bAddFiles">
-        <property name="text">
-         <string>Add Files</string>
+        <property name="styleSheet">
+         <string notr="true">/*PushButton */
+QPushButton{
+border: 1px solid #434343;
+padding: 3px 5px 3px 5px;
+}
+
+
+
+QPushButton:pressed{
+background-color: #3E4A58;
+}
+
+QPushButton:hover {
+background-color: #3E4A58;
+}
+</string>
         </property>
+        <layout class="QHBoxLayout" name="buttons">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="bRefreshList">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Refresh List</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clearItem">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Clear Item</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="bUndo">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Undo</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="bRedo">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Redo</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_01">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="bAddFiles">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Add Files</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="rename">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Rename</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="rename">
-        <property name="text">
-         <string>Rename</string>
+       <widget class="QTabWidget" name="renameTools">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="currentIndex">
-      <number>4</number>
-     </property>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Add Text</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <property name="topMargin">
-        <number>15</number>
-       </property>
-       <item row="0" column="1" colspan="2">
-        <widget class="QLineEdit" name="addTextCPos"/>
-       </item>
-       <item row="2" column="1" rowspan="2" colspan="2">
-        <widget class="QLineEdit" name="addTextEnter">
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="maxLength">
-          <number>32767</number>
-         </property>
-         <property name="clearButtonEnabled">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="ladtcpos">
-         <property name="text">
-          <string>From : </string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="ladtentert">
-         <property name="text">
-          <string>Text to Add : </string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="3" rowspan="2">
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>365</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="5" column="1">
-        <spacer name="verticalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>51</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="6" column="2">
-        <widget class="QPushButton" name="addTextbtn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
+        <property name="styleSheet">
+         <string notr="true">QTabWidget QTabBar{
+background-color: #373737;
+border:none;
+height: 22px;
+}
+
+QTabWidget QTabBar::tab{
+text-align: left;
+background-color: #136ba2;
+border-style: 1px rgb(67, 67, 67);
+height: 22px;
+width: 80px;
+color: #136ba2;
+padding: 0px 5px 0px 5px;
+}
+
+QTabWidget QTabBar::tab:selected{
+background-color: #353536;
+font-weight: bold;
+color: #ffffff;
+}
+
+QTabWidget QTabBar::tab:!selected{
+background-color:#1E1E1E;
+color:  #B4B4B4;
+}
+
+QTabWidget QTabBar::tab:hover{
+background-color:  #353536;
+color:  #ffffff;
+}
+
+QWidget{
+background-color: #353536;
+color: #ffffff;
+border: 1px #353536;
+}
+
+/*PushButton */
+QPushButton{
+border: 1px solid gray;
+padding: 3px 5px 3px 5px;
+}
+
+QPushButton:pressed{
+background-color: #3E4A58;
+}
+
+QPushButton:hover {
+background-color: #3E4A58;
+}
+
+
+QLineEdit{
+    border: 1px solid gray;
+    padding: 5px 5px 5px 10px;
+}
+
+/*ComboBox */
+QComboBox {
+    border: 1px solid gray;
+    padding: 5px 5px 5px 10px;
+}
+QComboBox QAbstractItemView {
+    background-color: #546070;
+    color: #ffffff;
+    selection-background-color: #F1A873;
+}
+QComboBox::drop-down {
+    background-color: #3C3C43;
+}
+
+
+
+QGroupBox {
+    background-color: #353536;
+    border: 1px solid gray;
+    margin-top: 1ex; /* leave space at the top for the title */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left; /* position at the top center */
+    padding: 0 3px;
+    background-color: #353536;
+}</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="addText">
+         <attribute name="title">
           <string>Add Text</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QCheckBox" name="addFromR">
-         <property name="text">
-          <string>From Right</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Replace Text</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_5">
-       <item row="0" column="3" rowspan="5">
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>321</width>
-           <height>158</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="1" colspan="2">
-        <widget class="QLineEdit" name="replaceTextText"/>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="lrptrw">
-         <property name="text">
-          <string>Replace With : </string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" colspan="2">
-        <widget class="QLineEdit" name="replaceTextWith"/>
-       </item>
-       <item row="3" column="1">
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>87</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="replaceTextbtn">
-         <property name="text">
-          <string>Replace Text</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QPushButton" name="replaceTextAllbtn">
-         <property name="text">
-          <string>Replace for all</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="lrptrt">
-         <property name="text">
-          <string>Replace Text : </string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_3">
-      <attribute name="title">
-       <string>Remove Text</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_3">
-       <property name="topMargin">
-        <number>15</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>10</number>
-       </property>
-       <item row="5" column="2">
-        <widget class="QPushButton" name="removeTextAllbtn">
-         <property name="text">
-          <string>Remove for all</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1" colspan="2">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>39</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="lrmtccount">
-         <property name="text">
-          <string>To : </string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QPushButton" name="removeTextTextbtn">
-         <property name="text">
-          <string>Remove Text</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>362</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1" colspan="2">
-        <widget class="QLineEdit" name="removeTextCPos"/>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="lrmtcpos">
-         <property name="text">
-          <string>From : </string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" colspan="2">
-        <widget class="QLineEdit" name="removeTextCCount"/>
-       </item>
-       <item row="1" column="2">
-        <widget class="QCheckBox" name="remFromR">
-         <property name="text">
-          <string>From Right</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_4">
-      <attribute name="title">
-       <string>Format Text</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout">
-       <property name="topMargin">
-        <number>15</number>
-       </property>
-       <property name="horizontalSpacing">
-        <number>5</number>
-       </property>
-       <property name="verticalSpacing">
-        <number>10</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="lformat">
-         <property name="text">
-          <string>Numbering : </string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="QPushButton" name="lowerCase">
-         <property name="text">
-          <string>All to lower case</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="capitalEach">
-         <property name="text">
-          <string>Capitalize Each Word</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <widget class="QPushButton" name="upperCase">
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="text">
-          <string>All to UPPER CASE</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>237</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="3">
-        <widget class="QCheckBox" name="numFromR">
-         <property name="text">
-          <string>From Right</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="3">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>71</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="2">
-        <widget class="QComboBox" name="formatc">
-         <item>
-          <property name="text">
-           <string>1. </string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <property name="leftMargin">
+           <number>15</number>
           </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - </string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>01. </string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>01 - </string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>001. </string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>001 - </string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_5">
-      <attribute name="title">
-       <string>Save Text</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_6">
-       <property name="topMargin">
-        <number>15</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QGroupBox" name="gAddOldFileName">
-         <property name="title">
-          <string>Add old file's</string>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="topMargin">
-           <number>13</number>
+           <number>15</number>
           </property>
-          <item>
-           <widget class="QRadioButton" name="addOldFull">
-            <property name="text">
-             <string>Full Path</string>
+          <property name="rightMargin">
+           <number>15</number>
+          </property>
+          <property name="bottomMargin">
+           <number>15</number>
+          </property>
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="addTextCPos"/>
+          </item>
+          <item row="2" column="1" rowspan="2" colspan="2">
+           <widget class="QLineEdit" name="addTextEnter">
+            <property name="inputMask">
+             <string/>
             </property>
-            <property name="checked">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="maxLength">
+             <number>32767</number>
+            </property>
+            <property name="clearButtonEnabled">
              <bool>true</bool>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QRadioButton" name="addOldOnly">
+          <item row="0" column="0">
+           <widget class="QLabel" name="ladtcpos">
             <property name="text">
-             <string>Only File Name</string>
+             <string>From : </string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="3" rowspan="2">
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>365</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="1">
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>51</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="6" column="2">
+           <widget class="QPushButton" name="addTextbtn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="text">
+             <string>Add Text</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QCheckBox" name="addFromR">
+            <property name="text">
+             <string>From Right</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" rowspan="2">
+           <widget class="QLabel" name="ladtentert">
+            <property name="text">
+             <string>Text to Add : </string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QGroupBox" name="gAddNewFileName">
-         <property name="title">
-          <string>Add new file's</string>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <property name="topMargin">
-           <number>13</number>
+        <widget class="QWidget" name="replaceText">
+         <attribute name="title">
+          <string>Replace Text</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <property name="leftMargin">
+           <number>15</number>
           </property>
-          <item>
-           <widget class="QRadioButton" name="addNewFull">
+          <property name="topMargin">
+           <number>15</number>
+          </property>
+          <property name="rightMargin">
+           <number>15</number>
+          </property>
+          <property name="bottomMargin">
+           <number>15</number>
+          </property>
+          <item row="0" column="3" rowspan="5">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>321</width>
+              <height>158</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QLineEdit" name="replaceTextText"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lrptrw">
             <property name="text">
-             <string>Full Path</string>
+             <string>Replace With : </string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="2">
+           <widget class="QLineEdit" name="replaceTextWith"/>
+          </item>
+          <item row="3" column="1">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Preferred</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>87</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="4" column="1">
+           <widget class="QPushButton" name="replaceTextbtn">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="text">
+             <string>Replace Text</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QPushButton" name="replaceTextAllbtn">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="text">
+             <string>Replace for all</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lrptrt">
+            <property name="text">
+             <string>Replace Text : </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="formatText">
+         <attribute name="title">
+          <string>Format Text</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout">
+          <property name="leftMargin">
+           <number>15</number>
+          </property>
+          <property name="topMargin">
+           <number>15</number>
+          </property>
+          <property name="rightMargin">
+           <number>15</number>
+          </property>
+          <property name="bottomMargin">
+           <number>15</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>5</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>10</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="lformat">
+            <property name="text">
+             <string>Numbering : </string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QPushButton" name="lowerCase">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="text">
+             <string>All to lower case</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="capitalEach">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="text">
+             <string>Capitalize Each Word</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QPushButton" name="upperCase">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="text">
+             <string>All to UPPER CASE</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>237</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="3">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>71</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="2">
+           <widget class="QComboBox" name="formatc">
+            <item>
+             <property name="text">
+              <string>1. </string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>1 - </string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>01. </string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>01 - </string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>001. </string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>001 - </string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QCheckBox" name="numFromR">
+            <property name="text">
+             <string>From Right</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="removeText">
+         <attribute name="title">
+          <string>Remove Text</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <property name="leftMargin">
+           <number>15</number>
+          </property>
+          <property name="topMargin">
+           <number>15</number>
+          </property>
+          <property name="rightMargin">
+           <number>15</number>
+          </property>
+          <property name="bottomMargin">
+           <number>15</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>10</number>
+          </property>
+          <item row="5" column="2">
+           <widget class="QPushButton" name="removeTextAllbtn">
+            <property name="text">
+             <string>Remove for all</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" colspan="2">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>39</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lrmtccount">
+            <property name="text">
+             <string>To : </string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QPushButton" name="removeTextTextbtn">
+            <property name="text">
+             <string>Remove Text</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>362</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="removeTextCPos"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="lrmtcpos">
+            <property name="text">
+             <string>From : </string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="2">
+           <widget class="QLineEdit" name="removeTextCCount"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QCheckBox" name="remFromR">
+            <property name="text">
+             <string>From Right</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="saveText">
+         <attribute name="title">
+          <string>Save Text</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <property name="leftMargin">
+           <number>15</number>
+          </property>
+          <property name="topMargin">
+           <number>15</number>
+          </property>
+          <property name="rightMargin">
+           <number>15</number>
+          </property>
+          <property name="bottomMargin">
+           <number>15</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="gAddOldFileName">
+            <property name="title">
+             <string>Add old file's</string>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
             </property>
             <property name="checkable">
              <bool>true</bool>
@@ -597,111 +794,167 @@ width: 0px; height: 0px; }
             <property name="checked">
              <bool>true</bool>
             </property>
-            <property name="autoExclusive">
-             <bool>true</bool>
-            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="topMargin">
+              <number>13</number>
+             </property>
+             <item>
+              <widget class="QRadioButton" name="addOldFull">
+               <property name="text">
+                <string>Full Path</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="addOldOnly">
+               <property name="text">
+                <string>Only File Name</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
-          <item>
-           <widget class="QRadioButton" name="addNewOnly">
+          <item row="0" column="1">
+           <widget class="QGroupBox" name="gAddNewFileName">
+            <property name="title">
+             <string>Add new file's</string>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <property name="topMargin">
+              <number>13</number>
+             </property>
+             <item>
+              <widget class="QRadioButton" name="addNewFull">
+               <property name="text">
+                <string>Full Path</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="addNewOnly">
+               <property name="text">
+                <string>Only File Name</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="1" colspan="2">
+             <widget class="QLineEdit" name="separatorC">
+              <property name="text">
+               <string>-</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="lseparator">
+              <property name="text">
+               <string>File Separator : </string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="lsavepath">
+              <property name="text">
+               <string>Save Path : </string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QPushButton" name="browseSave">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="savePath"/>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>39</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="2">
+           <widget class="QPushButton" name="saveRenamed">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
-             <string>Only File Name</string>
+             <string>Save</string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-       </item>
-       <item row="1" column="0" colspan="2">
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="1" colspan="2">
-          <widget class="QLineEdit" name="separatorC">
-           <property name="text">
-            <string>-</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="lseparator">
-           <property name="text">
-            <string>File Separator : </string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="lsavepath">
-           <property name="text">
-            <string>Save Path : </string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="browseSave">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>30</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>...</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="savePath"/>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>39</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="2">
-        <widget class="QPushButton" name="saveRenamed">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>Save</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
