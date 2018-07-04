@@ -153,7 +153,8 @@ HEADERS += \
     dashboard/presources.h \
     dashboard/signal_mapper.h \
     dashboard/upower.h \
-    dashboard/utilities.h
+    dashboard/utilities.h \
+    start/slidingstackedwidget.h
 
 
 SOURCES += \
@@ -247,7 +248,8 @@ SOURCES += \
     dashboard/pgeneral.cpp \
     dashboard/presources.cpp \
     dashboard/signal_mapper.cpp \
-    dashboard/upower.cpp
+    dashboard/upower.cpp \
+    start/slidingstackedwidget.cpp
 
 
 RESOURCES += \

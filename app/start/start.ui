@@ -161,7 +161,7 @@ color: #57585D ;
     </widget>
    </item>
    <item>
-    <widget class="QStackedWidget" name="pages">
+    <widget class="slidingStackedWidget" name="pages">
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -688,6 +688,14 @@ width: 0px; height: 0px; }
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>slidingStackedWidget</class>
+   <extends>QStackedWidget</extends>
+   <header>start/slidingstackedwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../icons.qrc"/>
  </resources>

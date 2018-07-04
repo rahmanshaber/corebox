@@ -31,6 +31,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corebox/corebox.h"
 #include "bookmarks/bookmarkmanage.h"
 #include "corebox/globalfunctions.h"
+#include "slidingstackedwidget.h"
 
 
 namespace Ui {

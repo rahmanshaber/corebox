@@ -191,7 +191,7 @@ void Start::pageClick(QPushButton *btn, int i)
     for (QPushButton *b : ui->pageButtons->findChildren<QPushButton*>())
         b->setChecked(false);
     btn->setChecked(true);
-    ui->pages->setCurrentIndex(i);
+    ui->pages->slideInIdx(i);
 }
 
 void Start::on_coreApps_clicked()
