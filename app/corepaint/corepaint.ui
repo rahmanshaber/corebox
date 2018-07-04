@@ -443,14 +443,6 @@ Text-align:left;
 padding: 5px 5px 5px 5px;
 }
 
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}
-
 
 QToolButton{
 Text-align:left;
@@ -1079,7 +1071,7 @@ color: white;
                <x>0</x>
                <y>0</y>
                <width>220</width>
-               <height>266</height>
+               <height>263</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1317,8 +1309,8 @@ color: white;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>220</width>
-               <height>266</height>
+               <width>88</width>
+               <height>234</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1672,8 +1664,8 @@ color: white;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>220</width>
-               <height>266</height>
+               <width>88</width>
+               <height>101</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1904,7 +1896,13 @@ color: white;
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="bookMarkIt">
+       <widget class="QToolButton" name="bookMarkIt">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <pointsize>11</pointsize>
@@ -1931,6 +1929,9 @@ color: white;
         </property>
         <property name="checkable">
          <bool>true</bool>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>

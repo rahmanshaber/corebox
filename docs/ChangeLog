@@ -96,6 +96,8 @@ Version 2.2
 - added one scroolbar stylesheet across the app.
 - moved window buttons to sidebar and fixed the dobule click to window miximize.
 - fixed some bugs related to coreplayer playlist.
+- fixed mant ui imperfectionin all the apps.
+- fixed issue releated to executable in properties.
 
 
 

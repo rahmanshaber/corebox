@@ -60,6 +60,7 @@ setting
 0 - changes in app dose not save when corebox is closed.(not app)
 
 corefm
+0 - execut file with qt.
 0 - page text in root folder is showing blank.
 0 - pathedit is always in focus, even outside clicked.
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.

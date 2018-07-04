@@ -456,13 +456,14 @@ void search::on_searchFF_textChanged(const QString &arg1)
         ui->findCMD->setEnabled(0);
         ui->locateCMD->setEnabled(0);
         ui->typeframe->setEnabled(false);
-        ui->typeframe->setFocusPolicy(Qt::NoFocus);
+        ui->typeframe->setVisible(false);
+        ui->infoPage->setCurrentIndex(2);
     }
     else{
         ui->findCMD->setEnabled(1);
         ui->locateCMD->setEnabled(1);
         ui->typeframe->setEnabled(true); ;
-        ui->typeframe->setFocusPolicy(Qt::NoFocus);
+        ui->typeframe->setVisible(false);
     }
 }
 

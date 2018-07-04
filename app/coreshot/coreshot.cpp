@@ -25,6 +25,10 @@ coreshot::coreshot(QWidget *parent) :QWidget(parent),ui(new Ui::coreshot)
 {
     ui->setupUi(this);
 
+    int x = screensize().width()  * .55;
+    int y = screensize().height() * .6;
+    this->resize(x, y);
+
     files = "";
 }
 

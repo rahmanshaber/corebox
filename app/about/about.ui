@@ -134,29 +134,31 @@ border: 1px #0C2C45;
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="frame">
+    <widget class="QWidget" name="widget" native="true">
      <property name="styleSheet">
-      <string notr="true">QFrame{
+      <string notr="true">QWidget{
 background-color: #767676;
 color: #ffffff;
 border: 1px #0C2C45;
+}
+
+QFrame{
+background-color: #27527F;
+color: #ffffff;
+border-radius: 5px;
+}
+
+QPushButton{
+background-color: #27527F;
+Text-align:left;
+padding: 0px 0px 0px 8px;
 }</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QFrame" name="coreboxs">
         <property name="styleSheet">
-         <string notr="true">QFrame{
-background-color: #27527F;
-color: #ffffff;
-border-radius: 5px;
-}</string>
+         <string notr="true"/>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -235,13 +237,6 @@ border-radius: 5px;
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QFrame{
-background-color: #27527F;
-color: #ffffff;
-border-radius: 5px;
-}</string>
-        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -311,13 +306,6 @@ border-radius: 5px;
       </item>
       <item>
        <widget class="QFrame" name="devlopers">
-        <property name="styleSheet">
-         <string notr="true">QFrame{
-background-color: #27527F;
-color: #ffffff;
-border-radius: 5px;
-}</string>
-        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -358,13 +346,6 @@ border-radius: 5px;
       </item>
       <item>
        <widget class="QFrame" name="qts">
-        <property name="styleSheet">
-         <string notr="true">QFrame{
-background-color: #27527F;
-color: #ffffff;
-border-radius: 5px;
-}</string>
-        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -403,10 +384,7 @@ border-radius: 5px;
             <bool>false</bool>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-Text-align:left;
-padding: 0px 0px 0px 8px;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Click it for more Qt info</string>
@@ -421,13 +399,6 @@ padding: 0px 0px 0px 8px;
       </item>
       <item>
        <widget class="QFrame" name="others">
-        <property name="styleSheet">
-         <string notr="true">QFrame{
-background-color: #27527F;
-color: #ffffff;
-border-radius: 5px;
-}</string>
-        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -513,13 +484,6 @@ border-radius: 5px;
       </item>
       <item>
        <widget class="QFrame" name="thanks">
-        <property name="styleSheet">
-         <string notr="true">QFrame{
-background-color: #27527F;
-color: #ffffff;
-border-radius: 5px;
-}</string>
-        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>

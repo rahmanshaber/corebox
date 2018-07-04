@@ -44,7 +44,7 @@ border: 1px rgb(67, 67, 67);
     <widget class="QFrame" name="pageButtons">
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border: 1px rgb(67, 67, 67);
+border: 1px #434343;
 padding: 5px 5px 5px 5px;
 font-size: 22px;
 }

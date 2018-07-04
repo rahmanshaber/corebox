@@ -6,16 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>693</width>
-    <height>550</height>
+    <width>675</width>
+    <height>530</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <property name="styleSheet">
+   <string notr="true">QGroupBox {
+    font-size: 13px;
+    margin-top: -1ex;
+    background-color: #34343C;
+    color: #E6E6E6;
+    border: 1px  gray;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    background-color: #1F2B38;
+    color: #E6E6E6;
+    padding: 2px 5px 2px 5px;
+}
+
+QListWidget{
+background-color:#1B252F;
+color: #E6E6E6;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
-    <number>2</number>
+    <number>5</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -30,30 +52,42 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="alldrives">
+    <widget class="QGroupBox" name="alldrives">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>140</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true">QWidget{
 background-color:#1F2B38;
 color:#ffffff;
 }</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_4">
+     <property name="title">
+      <string>All Drives</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
       <property name="leftMargin">
-       <number>4</number>
+       <number>10</number>
       </property>
       <property name="topMargin">
-       <number>2</number>
-      </property>
-      <property name="rightMargin">
-       <number>2</number>
+       <number>20</number>
       </property>
       <property name="bottomMargin">
-       <number>2</number>
+       <number>10</number>
       </property>
-      <property name="horizontalSpacing">
-       <number>0</number>
-      </property>
-      <item row="1" column="1">
+      <item>
        <widget class="QListWidget" name="drives">
         <property name="minimumSize">
          <size>
@@ -71,7 +105,30 @@ color:#ffffff;
          <string notr="true">QWidget{
 background-color:#1B252F;
 color:#ffffff;
-}</string>
+}
+
+QScrollBar:vertical {
+background-color: rgba( 0, 0, 0, 72% );
+max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar::handle:vertical {
+background-color: silver;
+max-width: 6px;
+border-radius: 3px; }
+
+QScrollBar::sub-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+width: 0px; height: 0px; }
+
+</string>
         </property>
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -105,54 +162,29 @@ color:#ffffff;
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>All Drives</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <spacer name="horizontalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>5</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="partiton">
+    <widget class="QGroupBox" name="partiton">
      <property name="styleSheet">
       <string notr="true">QWidget{
 background-color:#1F2B38;
 color:#ffffff;
 }</string>
      </property>
+     <property name="title">
+      <string>Partition</string>
+     </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="leftMargin">
-       <number>4</number>
+       <number>10</number>
       </property>
       <property name="topMargin">
-       <number>2</number>
+       <number>20</number>
       </property>
       <property name="rightMargin">
-       <number>2</number>
+       <number>8</number>
       </property>
       <property name="bottomMargin">
        <number>3</number>
@@ -163,7 +195,7 @@ color:#ffffff;
       <property name="verticalSpacing">
        <number>5</number>
       </property>
-      <item row="4" column="3" rowspan="2">
+      <item row="2" column="2" rowspan="2">
        <widget class="QPushButton" name="mount_2">
         <property name="toolTip">
          <string>Mount the Pertition</string>
@@ -182,7 +214,7 @@ padding: 5px 10px 5px 10px;
         </property>
        </widget>
       </item>
-      <item row="1" column="1" rowspan="3" colspan="4">
+      <item row="0" column="0" rowspan="2" colspan="4">
        <widget class="QListWidget" name="blocks">
         <property name="styleSheet">
          <string notr="true">QWidget{
@@ -228,7 +260,7 @@ color:#ffffff;
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
+      <item row="3" column="1">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -241,7 +273,7 @@ color:#ffffff;
         </property>
        </spacer>
       </item>
-      <item row="4" column="4" rowspan="2">
+      <item row="2" column="3" rowspan="2">
        <widget class="QPushButton" name="unmount_2">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mount the Pertition&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -260,7 +292,7 @@ padding: 5px 10px 5px 10px;
         </property>
        </widget>
       </item>
-      <item row="4" column="1" rowspan="2">
+      <item row="2" column="0" rowspan="2">
        <widget class="QLabel" name="mm">
         <property name="font">
          <font>
@@ -272,90 +304,31 @@ padding: 5px 10px 5px 10px;
         </property>
        </widget>
       </item>
-      <item row="1" column="0" rowspan="5">
-       <spacer name="horizontalSpacer_7">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>3</width>
-          <height>130</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="0" colspan="5">
-       <widget class="QLabel" name="label_4">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Partition</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="properties">
+    <widget class="QGroupBox" name="properties">
      <property name="styleSheet">
       <string notr="true">QWidget{
 background-color:#1F2B38;
 color:#ffffff;
 }</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <property name="leftMargin">
-       <number>4</number>
-      </property>
-      <property name="topMargin">
-       <number>2</number>
-      </property>
-      <property name="rightMargin">
-       <number>2</number>
-      </property>
-      <property name="bottomMargin">
-       <number>2</number>
-      </property>
-      <property name="horizontalSpacing">
+     <property name="title">
+      <string>Properties</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
        <number>0</number>
       </property>
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="label_5">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Properties</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <spacer name="lo">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>5</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="1">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <item>
        <widget class="QListView" name="info">
         <property name="font">
          <font>
@@ -367,7 +340,30 @@ color:#ffffff;
          <string notr="true">QWidget{
 background-color: #1B252F; ;
 color: #ffffff;
-}</string>
+}
+
+QScrollBar:vertical {
+background-color: rgba( 0, 0, 0, 72% );
+max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar::handle:vertical {
+background-color: silver;
+max-width: 6px;
+border-radius: 3px; }
+
+QScrollBar::sub-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+width: 0px; height: 0px; }
+
+</string>
         </property>
        </widget>
       </item>
@@ -375,46 +371,33 @@ color: #ffffff;
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="logs">
+    <widget class="QGroupBox" name="logs">
      <property name="styleSheet">
       <string notr="true">QWidget{
 background-color:#1F2B38;
 color:#ffffff;
 }</string>
      </property>
+     <property name="title">
+      <string>Logs</string>
+     </property>
      <layout class="QGridLayout" name="gridLayout_6">
       <property name="leftMargin">
-       <number>4</number>
+       <number>10</number>
       </property>
       <property name="topMargin">
-       <number>2</number>
+       <number>20</number>
       </property>
       <property name="rightMargin">
-       <number>2</number>
+       <number>8</number>
       </property>
       <property name="bottomMargin">
-       <number>2</number>
+       <number>8</number>
       </property>
       <property name="horizontalSpacing">
        <number>0</number>
       </property>
-      <item row="1" column="0">
-       <spacer name="horizontalSpacer_9">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>5</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="1">
+      <item row="0" column="0">
        <widget class="QListWidget" name="msgs">
         <property name="maximumSize">
          <size>
@@ -433,18 +416,6 @@ color:#ffffff;
         </property>
         <property name="showDropIndicator" stdset="0">
          <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="label">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Logs</string>
         </property>
        </widget>
       </item>

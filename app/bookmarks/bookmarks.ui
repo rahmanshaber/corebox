@@ -196,8 +196,7 @@ background-color: #171717;
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-</string>
+         <string notr="true"/>
         </property>
        </widget>
       </item>
@@ -329,7 +328,7 @@ QLineEdit{
        <number>15</number>
       </property>
       <property name="topMargin">
-       <number>2</number>
+       <number>10</number>
       </property>
       <property name="rightMargin">
        <number>2</number>
@@ -408,7 +407,7 @@ border: 1px solid rgb(67, 67, 67);
       <item row="2" column="2">
        <widget class="QLabel" name="LpathName">
         <property name="text">
-         <string>Path Name</string>
+         <string>Bookmark Path</string>
         </property>
        </widget>
       </item>
@@ -1058,7 +1057,7 @@ color: #FFFFFF;
        <number>15</number>
       </property>
       <property name="topMargin">
-       <number>2</number>
+       <number>10</number>
       </property>
       <property name="rightMargin">
        <number>2</number>

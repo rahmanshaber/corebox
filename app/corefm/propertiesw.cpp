@@ -80,7 +80,7 @@ void propertiesw::general()
     ui->owner->setText(info.owner());
     ui->group->setText(info.group());
     ui->executable->setText("File is not Executable");
-    if(executable(pathName) == true){
+    if(info.isExecutable() == true){
         ui->executable->setText("File is Executable");
         ui->executableB->setChecked(1);
     }
@@ -136,8 +136,8 @@ void propertiesw::permission()
     ui->permissions->setAttribute(Qt::WA_TransparentForMouseEvents);
     ui->permissions->setFocusPolicy(Qt::NoFocus);
 
-    if(executable(pathName) == true){
-        ui->executableB->setVisible(1);
+    if(isExecutable(info.filePath()) == false){
+        ui->executableB->setVisible(0);
     }
 }
 
@@ -256,27 +256,19 @@ void propertiesw::detailmedia(QMediaPlayer::MediaStatus status)
     }
 }
 
-bool propertiesw::executable( QString path ) {
 
-    QMimeDatabase mimeDb;
-    struct stat statbuf;
-    if ( stat( path.toLocal8Bit().data(), &statbuf ) != 0 )
-        return false;
+bool propertiesw::isExecutable( const QString path )
+{
+    QStringList type;
+    type << "so" << "o" << "sh" << "deb" << "rpm" << "tar.gz"
+             << "tar" << "gz" << "ko" << "AppImage";
 
-    if ( ( statbuf.st_mode & S_IXUSR ) ) {
-        QMimeType m = mimeDb.mimeTypeForFile( path );
-        if ( m.name() == "application/x-executable" )
-            return true;
+    QString suffix = info.suffix();
 
-        else if ( m.name() == "application/x-sharedlib" )
-            return true;
+    if (type.contains(suffix, Qt::CaseInsensitive))
+        return true;
 
-        else if ( m.allAncestors().contains( "application/x-executable" ) )
-            return true;
-
-        /* Default is false */
-        return false;
-    }
 
     return false;
-};
+}
+

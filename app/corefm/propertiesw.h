@@ -23,7 +23,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QImageReader>
 #include <QMediaPlayer>
 
-
 namespace Ui {
 class propertiesw;
 }
@@ -56,7 +55,8 @@ private:
     void details();
     void partition(const QString path);
     void detailimage(const QString imagepath);
-    bool executable(QString path);
+
+    bool isExecutable(const QString path);
 };
 
 #endif // PROPERTIESW_H

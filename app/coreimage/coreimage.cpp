@@ -48,7 +48,7 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
             b->setEnabled(false);
         }
 
-        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+        for (QToolButton *b : ui->navigation->findChildren<QToolButton*>()){
             b->setEnabled(false);
         }
         ui->cTools->setEnabled(true);
@@ -186,7 +186,7 @@ bool coreimage::loadFile(const QString &fileName)
             b->setEnabled(true);
         }
 
-        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+        for (QToolButton *b : ui->navigation->findChildren<QToolButton*>()){
             b->setEnabled(true);
         }
         return true;
@@ -411,7 +411,6 @@ void coreimage::on_bookMarkIt_clicked()
 
 void coreimage::on_cPrevious_clicked()
 {
-    //QStringList images = getImages(QFileInfo(currentImagePath).path());
     if (images.count() != 0) {
         int currentIndex = images.indexOf(currentImagePath);
         if (currentIndex != 0) {
@@ -420,12 +419,10 @@ void coreimage::on_cPrevious_clicked()
             loadFile(images.at(images.count() - 1));
         }
     }
-//    qDebug()<< images;
 }
 
 void coreimage::on_cNext_clicked()
 {
-    //QStringList images = getImages(QFileInfo(currentImagePath).path());
     if (images.count() != 0) {
         int currentIndex = images.indexOf(currentImagePath);
         int lastIndex = images.count() - 1;

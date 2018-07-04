@@ -500,6 +500,7 @@ background-color: #34343C;
 }
 
 QGroupBox {
+    font-size: 13px;
     margin-top: -1ex;
     background-color: #34343C;
     color: #E6E6E6;
@@ -1187,7 +1188,28 @@ QCheckBox::indicator:unchecked {
        <item>
         <widget class="QScrollArea" name="scrollArea">
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">QScrollBar:vertical {
+background-color: rgba( 0, 0, 0, 72% );
+max-width: 8px;
+border-radius: 4px;
+padding: 1px; }
+
+QScrollBar::handle:vertical {
+background-color: silver;
+max-width: 6px;
+border-radius: 3px; }
+
+QScrollBar::sub-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-page:vertical {
+background-color: rgba( 0, 0, 0, 72% ); }
+
+QScrollBar::add-line:vertical, 
+QScrollBar::sub-line:vertical {
+width: 0px; height: 0px; }
+
+</string>
          </property>
          <property name="verticalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -1199,9 +1221,9 @@ QCheckBox::indicator:unchecked {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
-            <width>555</width>
-            <height>713</height>
+            <y>-363</y>
+            <width>558</width>
+            <height>731</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
@@ -1652,20 +1674,6 @@ color:#000000;
                 </column>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="mimetype">
-                <property name="text">
-                 <string>Mime type</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="application">
-                <property name="text">
-                 <string>Applications</string>
-                </property>
-               </widget>
-              </item>
               <item row="6" column="1">
                <widget class="QPushButton" name="moveAppAssocUp">
                 <property name="styleSheet">
@@ -1682,6 +1690,26 @@ background-color: rgb(48, 140, 198);
                 </property>
                 <property name="text">
                  <string>Move up</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QLabel" name="mimetype">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Mime type</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="2">
+               <widget class="QLabel" name="application">
+                <property name="text">
+                 <string>Applications for that mime type</string>
                 </property>
                </widget>
               </item>
