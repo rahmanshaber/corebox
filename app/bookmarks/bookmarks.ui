@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>931</width>
-    <height>528</height>
+    <width>843</width>
+    <height>497</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,86 +61,10 @@
 background-color: #2E3C54;
 color: #ffffff;
 border: 1px rgb(67, 67, 67);
-}</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="leftMargin">
-       <number>10</number>
-      </property>
-      <property name="topMargin">
-       <number>20</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>10</number>
-      </property>
-      <item>
-       <widget class="QPushButton" name="title">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">Text-align:left
-</string>
-        </property>
-        <property name="text">
-         <string>Bookmarks</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/Bookmarks.svg</normaloff>:/icons/Bookmarks.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>24</width>
-          <height>24</height>
-         </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QListWidget" name="section">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QListView{
+}
+
+
+QListView{
 padding: 0px 0px 0px 5px;
 }
 
@@ -178,6 +102,101 @@ QScrollBar::add-line:vertical,
 QScrollBar::sub-line:vertical {
 width: 0px; height: 0px; }
 
+
+
+QPushButton{
+Text-align:left;
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton:pressed{
+background-color: #171717; 
+}
+
+QPushButton:hover {
+background-color: #171717;
+}</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="title">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>Bookmarks</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/Bookmarks.svg</normaloff>:/icons/Bookmarks.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QListWidget" name="section">
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
 </string>
         </property>
        </widget>
@@ -193,18 +212,7 @@ width: 0px; height: 0px; }
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #171717; 
-}
-
-QPushButton:hover {
-background-color: #171717;
-}</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Add Section</string>
@@ -239,20 +247,6 @@ background-color: #171717;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #171717; 
-}
-
-QPushButton:hover {
-background-color: #171717;
-}</string>
-        </property>
         <property name="text">
          <string>Delete Section</string>
         </property>
@@ -277,20 +271,6 @@ background-color: #171717;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #171717; 
-}
-
-QPushButton:hover {
-background-color: #171717;
-}</string>
         </property>
         <property name="text">
          <string>Tools</string>
@@ -337,6 +317,11 @@ background-color: #171717;
       <string notr="true">QWidget{
 background-color: #323232 ;
 color: #FFFFFF;
+}
+
+QLineEdit{
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;
 }</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -477,12 +462,6 @@ border: 1px solid rgb(67, 67, 67);
           <height>26</height>
          </size>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QWidget{
-border: 1px solid rgb(67, 67, 67);
-}
-</string>
-        </property>
        </widget>
       </item>
       <item row="1" column="0">
@@ -495,19 +474,18 @@ border: 1px solid rgb(67, 67, 67);
         </property>
         <property name="styleSheet">
          <string notr="true">QComboBox {
-    border: 1px solid rgb(67, 67, 67);
-    padding: 5px 5px 5px 10px;
+    border: 1px solid #494949;
+    padding: 2px 2px 2px 10px;
 }
+
 QComboBox QAbstractItemView {
     background-color: #546070;
     color: #ffffff;
     selection-background-color: #F1A873;
 }
+
 QComboBox::drop-down {
     background-color: #3C3C43;
-}
-QComboBox::down-arrow {
-    image: url(:/icons/more_h_w.svg);
 }</string>
         </property>
         <property name="editable">
@@ -541,12 +519,6 @@ QComboBox::down-arrow {
           <width>300</width>
           <height>26</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QWidget{
-border: 1px solid rgb(67, 67, 67);
-}
-</string>
         </property>
        </widget>
       </item>
@@ -851,7 +823,24 @@ width: 0px; height: 0px; }
       <string notr="true">QWidget{
 background-color:#363941;
 color: #FFFFFF;
-}</string>
+}
+
+
+QPushButton{
+border: 1px solid rgb(67, 67, 67);
+}
+QPushButton:pressed{
+background-color:rgb(48, 140, 198); 
+}
+QPushButton:hover {
+background-color: rgb(48, 140, 198);
+}
+
+
+QWidget{
+border: 1px solid rgb(67, 67, 67);
+}
+</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -899,16 +888,7 @@ color: #FFFFFF;
          <string>Reload</string>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string/>
@@ -946,10 +926,7 @@ background-color: rgb(48, 140, 198);
          <string>Search</string>
         </property>
         <property name="styleSheet">
-         <string notr="true">QWidget{
-border: 1px solid rgb(67, 67, 67);
-}
-</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string/>
@@ -984,18 +961,6 @@ border: 1px solid rgb(67, 67, 67);
         </property>
         <property name="toolTip">
          <string>Delete selected Bookmark</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
         </property>
         <property name="text">
          <string/>
@@ -1039,16 +1004,7 @@ background-color: rgb(48, 140, 198);
          <string>Edit selected Bookmark</string>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string/>
@@ -1157,10 +1113,10 @@ color: #FFFFFF;
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QWidget{
-border: 1px solid rgb(67, 67, 67);
-}
-</string>
+         <string notr="true">QLineEdit{
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;
+}</string>
         </property>
        </widget>
       </item>

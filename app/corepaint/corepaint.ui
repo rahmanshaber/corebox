@@ -436,7 +436,35 @@ background-color: rgb(48, 140, 198);
 background-color: #3A4953;
 color: #ffffff;
 border: 1px #3A4953;
-}</string>
+}
+
+QPushButton{
+Text-align:left;
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton:pressed{
+background-color: #212F39; 
+}
+
+QPushButton:hover {
+background-color: #212F39;
+}
+
+
+QToolButton{
+Text-align:left;
+padding: 5px 5px 5px 5px;
+}
+
+QToolButton:checked{
+background-color: #212F39; 
+}
+
+QToolButton:hover {
+background-color: #212F39; 
+}
+</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
@@ -561,6 +589,12 @@ background-color:  #3D3D3D;
           </property>
           <item>
            <widget class="QPushButton" name="newtab">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>11</pointsize>
@@ -570,18 +604,7 @@ background-color:  #3D3D3D;
              <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>New Canvas</string>
@@ -600,6 +623,12 @@ background-color: #212F39;
           </item>
           <item>
            <widget class="QPushButton" name="open">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>11</pointsize>
@@ -607,20 +636,6 @@ background-color: #212F39;
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
             </property>
             <property name="text">
              <string>Open</string>
@@ -639,6 +654,12 @@ background-color: #212F39;
           </item>
           <item>
            <widget class="QPushButton" name="saveas">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>11</pointsize>
@@ -646,20 +667,6 @@ background-color: #212F39;
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
             </property>
             <property name="text">
              <string>Save As</string>
@@ -678,6 +685,12 @@ background-color: #212F39;
           </item>
           <item>
            <widget class="QPushButton" name="save">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>11</pointsize>
@@ -685,20 +698,6 @@ background-color: #212F39;
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
             </property>
             <property name="text">
              <string>Save</string>
@@ -752,6 +751,12 @@ background-color: #212F39;
           </property>
           <item>
            <widget class="QPushButton" name="resizeimage">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -772,20 +777,6 @@ background-color: #212F39;
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
-            </property>
             <property name="text">
              <string>Resize Image</string>
             </property>
@@ -803,6 +794,12 @@ background-color: #212F39;
           </item>
           <item>
            <widget class="QPushButton" name="resizecanvas">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -822,20 +819,6 @@ background-color: #212F39;
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
             </property>
             <property name="text">
              <string>Resize Canvas</string>
@@ -854,6 +837,12 @@ background-color: #212F39;
           </item>
           <item>
            <widget class="QPushButton" name="rotateright">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -873,20 +862,6 @@ background-color: #212F39;
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
             </property>
             <property name="text">
              <string>Rotate Right</string>
@@ -905,6 +880,12 @@ background-color: #212F39;
           </item>
           <item>
            <widget class="QPushButton" name="rotateleft">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -924,20 +905,6 @@ background-color: #212F39;
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
             </property>
             <property name="text">
              <string>Rotate Left</string>
@@ -956,6 +923,12 @@ background-color: #212F39;
           </item>
           <item>
            <widget class="QPushButton" name="zoomin">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -975,20 +948,6 @@ background-color: #212F39;
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
             </property>
             <property name="text">
              <string>Zoom In</string>
@@ -1007,6 +966,12 @@ background-color: #212F39;
           </item>
           <item>
            <widget class="QPushButton" name="zoomout">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -1026,20 +991,6 @@ background-color: #212F39;
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
             </property>
             <property name="text">
              <string>Zoom Out</string>
@@ -1128,7 +1079,7 @@ color: white;
                <x>0</x>
                <y>0</y>
                <width>220</width>
-               <height>276</height>
+               <height>266</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1170,19 +1121,7 @@ color: white;
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>select</string>
@@ -1222,21 +1161,6 @@ background-color: #212F39;
                  <font>
                   <pointsize>11</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
                 </property>
                 <property name="text">
                  <string>Cut</string>
@@ -1279,19 +1203,7 @@ background-color: #212F39;
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>Copy</string>
@@ -1333,21 +1245,6 @@ background-color: #212F39;
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
-                </property>
                 <property name="text">
                  <string>Paste</string>
                 </property>
@@ -1381,21 +1278,6 @@ background-color: #212F39;
                  <font>
                   <pointsize>11</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
                 </property>
                 <property name="text">
                  <string>Delete</string>
@@ -1436,7 +1318,7 @@ background-color: #212F39;
                <x>0</x>
                <y>0</y>
                <width>220</width>
-               <height>276</height>
+               <height>266</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1477,21 +1359,6 @@ background-color: #212F39;
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
-                </property>
                 <property name="text">
                  <string>line</string>
                 </property>
@@ -1530,21 +1397,6 @@ background-color: #212F39;
                  <font>
                   <pointsize>11</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
                 </property>
                 <property name="text">
                  <string>eliipse</string>
@@ -1585,21 +1437,6 @@ background-color: #212F39;
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
-                </property>
                 <property name="text">
                  <string>curve</string>
                 </property>
@@ -1638,21 +1475,6 @@ background-color: #212F39;
                  <font>
                   <pointsize>11</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
                 </property>
                 <property name="text">
                  <string>rectangle</string>
@@ -1693,21 +1515,6 @@ background-color: #212F39;
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
-                </property>
                 <property name="text">
                  <string>pen</string>
                 </property>
@@ -1746,21 +1553,6 @@ background-color: #212F39;
                  <font>
                   <pointsize>11</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
                 </property>
                 <property name="text">
                  <string>eraser</string>
@@ -1807,21 +1599,6 @@ background-color: #212F39;
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
-                </property>
                 <property name="text">
                  <string>text</string>
                 </property>
@@ -1854,21 +1631,6 @@ background-color: #212F39;
                  <font>
                   <pointsize>11</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
                 </property>
                 <property name="text">
                  <string>zoom</string>
@@ -1910,8 +1672,8 @@ background-color: #212F39;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>88</width>
-               <height>101</height>
+               <width>220</width>
+               <height>266</height>
               </rect>
              </property>
              <attribute name="label">
@@ -2010,21 +1772,6 @@ background-color: #212F39;
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
-                </property>
                 <property name="text">
                  <string>clolorpicker</string>
                 </property>
@@ -2070,21 +1817,6 @@ background-color: #212F39;
                   <pointsize>11</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
-                </property>
                 <property name="text">
                  <string>fill</string>
                 </property>
@@ -2129,21 +1861,6 @@ background-color: #212F39;
                  <font>
                   <pointsize>11</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
                 </property>
                 <property name="text">
                  <string>spray</string>
@@ -2195,20 +1912,6 @@ background-color: #212F39;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #212F39; 
-}
-
-QPushButton:hover {
-background-color: #212F39;
-}</string>
         </property>
         <property name="text">
          <string>Bookmark It</string>

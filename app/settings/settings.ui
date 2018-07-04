@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
-    <height>622</height>
+    <width>804</width>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -171,7 +171,21 @@ color: #FFFFFF;
 background-color: #34343C;
 color: #ffffff;
 border: 1px #34343C;
-}</string>
+}
+
+QPushButton{
+Text-align:left;
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton:checked{
+background-color:#45454D ;
+}
+
+QPushButton:!checked{
+color: #57585D ;
+}
+</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="spacing">
@@ -190,7 +204,13 @@ border: 1px #34343C;
        <number>10</number>
       </property>
       <item>
-       <widget class="QPushButton" name="title">
+       <widget class="QToolButton" name="title">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <pointsize>16</pointsize>
@@ -201,10 +221,6 @@ border: 1px #34343C;
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">Text-align:left
-</string>
         </property>
         <property name="text">
          <string notr="true">Settings</string>
@@ -219,8 +235,8 @@ border: 1px #34343C;
           <height>24</height>
          </size>
         </property>
-        <property name="flat">
-         <bool>true</bool>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>
@@ -257,19 +273,7 @@ border: 1px #34343C;
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:checked{
-background-color:#45454D ;
-}
-
-QPushButton:!checked{
-color: #57585D ;
-}
-</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>CoreBox</string>
@@ -304,21 +308,6 @@ color: #57585D ;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:checked{
-background-color:#45454D ;
-}
-
-QPushButton:!checked{
-color: #57585D ;
-}
-</string>
-        </property>
         <property name="text">
          <string>CoreAction</string>
         </property>
@@ -346,18 +335,6 @@ color: #57585D ;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-QPushButton:checked{
-background-color:#45454D; 
-}
-QPushButton:!checked{
-color: #57585D ;
-}</string>
-        </property>
         <property name="text">
          <string>CoreFM</string>
         </property>
@@ -384,19 +361,6 @@ color: #57585D ;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-QPushButton:checked{
-background-color:#45454D; 
-}
-QPushButton:!checked{
-color: #57585D ;
-}
-</string>
         </property>
         <property name="text">
          <string>CoreScreenShot</string>
@@ -511,16 +475,90 @@ padding: 3px 10px 3px 10px;
    </item>
    <item row="3" column="1">
     <widget class="QStackedWidget" name="pages">
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true">QWidget{
 background-color: #45454D;
-color: #ffffff;
+color: #E6E6E6;
 border: 1px #45454D;
+}
+
+QLineEdit{
+    background-color: #34343C;
+    color: #E6E6E6;
+    border: 1px solid #ffffff;
+    padding: 5px 5px 5px 10px;
+}
+
+QLabel{
+background-color: #34343C;
+color:#E6E6E6 ;
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton{
+background-color: #34343C;
+}
+
+QGroupBox {
+    margin-top: -1ex;
+    background-color: #34343C;
+    color: #E6E6E6;
+    border: 1px  gray;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    background-color: #34343C;
+    color:#F3AB79 ;
+    padding: 2px 5px 2px 5px;
+}
+
+
+QComboBox {
+   background-color: #34343C;
+    color: #E6E6E6;
+    border: 1px solid #ffffff;
+    padding: 5px 5px 5px 10px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #363941;
+    color: #ffffff;
+    selection-background-color: #C2C2C2;
+}
+
+QComboBox::drop-down {
+    background-color: #3C3C43;
+}
+
+QComboBox::down-arrow {
+    image: url();
+}
+
+QComboBox:focus{
+    border:1px solid #C2C2C2;
+}
+
+
+
+QScrollBar::groove:vertical {
+    background: red;
+    position: absolute;
+    left: 4px; right: 4px;
+}
+
+QScrollBar::handle:vertical {
+   background: #C0C0C0;
+   height:10px;
+}
+
+QScrollBar::add-page:vertical {
+    background: #363941;
+}
+
+QScrollBar::sub-page:vertical {
+    background: #363941;
 }</string>
      </property>
      <property name="currentIndex">
@@ -532,38 +570,16 @@ border: 1px #45454D;
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QLabel" name="generalB">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-color:#F3AB79 ;
-padding: 2px 10px 2px 0px;
-}
-</string>
-         </property>
-         <property name="text">
+        <widget class="QGroupBox" name="generalb">
+         <property name="title">
           <string>General</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="generalb">
-         <property name="styleSheet">
-          <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-}</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <property name="leftMargin">
            <number>8</number>
           </property>
           <property name="topMargin">
-           <number>8</number>
+           <number>20</number>
           </property>
           <property name="rightMargin">
            <number>8</number>
@@ -576,13 +592,6 @@ color: #ffffff;
           </property>
           <item row="0" column="0">
            <widget class="QLabel" name="label_3">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
             <property name="text">
              <string>Open as maximized at startup</string>
             </property>
@@ -590,13 +599,6 @@ color: #ffffff;
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_9">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
             <property name="text">
              <string>Hide Recent Activities in Start</string>
             </property>
@@ -651,11 +653,6 @@ color: #ffffff;
               <height>25</height>
              </size>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="text">
              <string/>
             </property>
@@ -679,40 +676,16 @@ color: #ffffff;
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="generalB_2">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-color:#F3AB79 ;
-padding: 2px 10px 2px 0px;
-}
-</string>
-         </property>
-         <property name="text">
+        <widget class="QGroupBox" name="lookfeel">
+         <property name="title">
           <string>Looks and Feel</string>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="lookfeel">
-         <property name="styleSheet">
-          <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-}</string>
-         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="topMargin">
+           <number>20</number>
+          </property>
           <item>
            <widget class="QLabel" name="label_2">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="text">
              <string>Icon theme :</string>
             </property>
@@ -727,47 +700,7 @@ color: #ffffff;
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">QComboBox {
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}
-
-QComboBox QAbstractItemView {
-    background-color: #363941;
-    color: #ffffff;
-    selection-background-color: #C2C2C2;
-}
-
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}
-
-QComboBox::down-arrow {
-    image: url();
-}
-
-QComboBox:focus{
-    border:1px solid #C2C2C2;
-}
-
-QScrollBar::groove:vertical {
-    background: red;
-    position: absolute;
-    left: 4px; right: 4px;
-}
-
-QScrollBar::handle:vertical {
-   background: #C0C0C0;
-   height:10px;
-}
-
-QScrollBar::add-page:vertical {
-    background: #363941;
-}
-
-QScrollBar::sub-page:vertical {
-    background: #363941;
-}</string>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -775,33 +708,14 @@ QScrollBar::sub-page:vertical {
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="generalB_3">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-color:#F3AB79 ;
-padding: 2px 10px 2px 0px;
-}
-</string>
-         </property>
-         <property name="text">
+        <widget class="QGroupBox" name="backup">
+         <property name="title">
           <string>Backup settings</string>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="backup">
-         <property name="styleSheet">
-          <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-}</string>
-         </property>
          <layout class="QGridLayout" name="gridLayout_6">
+          <property name="topMargin">
+           <number>20</number>
+          </property>
           <item row="0" column="3">
            <widget class="QPushButton" name="browSave">
             <property name="sizePolicy">
@@ -851,16 +765,14 @@ background-color: rgb(48, 140, 198);
           </item>
           <item row="0" column="1">
            <widget class="QLineEdit" name="backupPath">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLineEdit{
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string/>
@@ -869,11 +781,6 @@ background-color: rgb(48, 140, 198);
           </item>
           <item row="0" column="0">
            <widget class="QLabel" name="label_21">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="text">
              <string>Backup Path :</string>
             </property>
@@ -898,132 +805,32 @@ background-color: rgb(48, 140, 198);
       </layout>
      </widget>
      <widget class="QWidget" name="pcoreaction">
-      <layout class="QVBoxLayout" name="verticalLayout_6">
+      <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
-        <widget class="QLabel" name="label_14">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
+        <widget class="QGroupBox" name="showWB">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QLabel{
-color:#F3AB79 ;
-padding: 2px 10px 2px 0px;
-}
-</string>
+          <string notr="true"/>
          </property>
-         <property name="text">
+         <property name="title">
           <string>Show Widgets</string>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="showWB">
-         <property name="styleSheet">
-          <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-}</string>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
+          <property name="topMargin">
+           <number>20</number>
+          </property>
           <item row="0" column="0">
            <widget class="QLabel" name="label_15">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
             <property name="text">
              <string>Show Time Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_16">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Show System Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_18">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Show Calander Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_19">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Show Calculator Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Show Battery Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="0">
-           <widget class="QLabel" name="label_17">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Show Network Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="0">
-           <widget class="QLabel" name="label_20">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Show Notes Widget</string>
             </property>
            </widget>
           </item>
@@ -1035,11 +842,6 @@ color: #ffffff;
               <height>25</height>
              </size>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="text">
              <string/>
             </property>
@@ -1056,6 +858,13 @@ color: #ffffff;
             </property>
             <property name="checkable">
              <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Show System Widget</string>
             </property>
            </widget>
           </item>
@@ -1067,11 +876,6 @@ color: #ffffff;
               <height>25</height>
              </size>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="styleSheet">
              <string notr="true">QCheckBox::indicator {
     width: 45px;
@@ -1102,6 +906,13 @@ QCheckBox::indicator:unchecked {
             </property>
             <property name="checkable">
              <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Show Calander Widget</string>
             </property>
            </widget>
           </item>
@@ -1113,11 +924,6 @@ QCheckBox::indicator:unchecked {
               <height>25</height>
              </size>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="styleSheet">
              <string notr="true">QCheckBox::indicator {
     width: 45px;
@@ -1151,7 +957,14 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Show Calculator Widget</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
            <widget class="QPushButton" name="isCalculator">
             <property name="maximumSize">
              <size>
@@ -1159,11 +972,6 @@ QCheckBox::indicator:unchecked {
               <height>25</height>
              </size>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="styleSheet">
              <string notr="true">QCheckBox::indicator {
     width: 45px;
@@ -1197,7 +1005,14 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="7" column="1">
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Show Battery Widget</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
            <widget class="QPushButton" name="isBattery">
             <property name="maximumSize">
              <size>
@@ -1205,11 +1020,6 @@ QCheckBox::indicator:unchecked {
               <height>25</height>
              </size>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="styleSheet">
              <string notr="true">QCheckBox::indicator {
     width: 45px;
@@ -1243,7 +1053,14 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="9" column="1">
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string>Show Network Widget</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
            <widget class="QPushButton" name="isNetwork">
             <property name="maximumSize">
              <size>
@@ -1251,11 +1068,6 @@ QCheckBox::indicator:unchecked {
               <height>25</height>
              </size>
             </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
             <property name="styleSheet">
              <string notr="true">QCheckBox::indicator {
     width: 45px;
@@ -1289,18 +1101,20 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="10" column="1">
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>Show Notes Widget</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
            <widget class="QPushButton" name="isNotes">
             <property name="maximumSize">
              <size>
               <width>45</width>
               <height>25</height>
              </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
             </property>
             <property name="styleSheet">
              <string notr="true">QCheckBox::indicator {
@@ -1373,28 +1187,7 @@ QCheckBox::indicator:unchecked {
        <item>
         <widget class="QScrollArea" name="scrollArea">
          <property name="styleSheet">
-          <string notr="true">QScrollBar:vertical {
-background-color: rgba( 0, 0, 0, 72% );
-max-width: 8px;
-border-radius: 4px;
-padding: 1px; }
-
-QScrollBar::handle:vertical {
-background-color: silver;
-max-width: 6px;
-border-radius: 3px; }
-
-QScrollBar::sub-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-line:vertical, 
-QScrollBar::sub-line:vertical {
-width: 0px; height: 0px; }
-
-</string>
+          <string notr="true"/>
          </property>
          <property name="verticalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -1407,8 +1200,8 @@ width: 0px; height: 0px; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>551</width>
-            <height>753</height>
+            <width>555</width>
+            <height>713</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
@@ -1425,47 +1218,26 @@ width: 0px; height: 0px; }
             <number>0</number>
            </property>
            <item>
-            <widget class="QLabel" name="general">
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel{
-color:#F3AB79 ;
-padding: 2px 10px 2px 0px;
-}
-</string>
-             </property>
-             <property name="text">
+            <widget class="QGroupBox" name="generalF">
+             <property name="title">
               <string>General</string>
              </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QFrame" name="generalF">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-}</string>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
              </property>
              <layout class="QGridLayout" name="gridLayout">
+              <property name="topMargin">
+               <number>20</number>
+              </property>
+              <item row="4" column="0" colspan="2">
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Show Real FileType</string>
+                </property>
+               </widget>
+              </item>
               <item row="8" column="0">
                <widget class="QLabel" name="label_13">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
                 <property name="text">
                  <string>View Mode : </string>
                 </property>
@@ -1473,73 +1245,8 @@ color: #ffffff;
               </item>
               <item row="2" column="0" colspan="2">
                <widget class="QLabel" name="label_11">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
                 <property name="text">
                  <string>Show Toolbox</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="label_5">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Startup Path : </string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="2">
-               <widget class="QLabel" name="label_12">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Show Previews</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0" colspan="2">
-               <widget class="QLabel" name="label_8">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Show Real FileType</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1" colspan="3">
-               <widget class="QLineEdit" name="startPath">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLineEdit{
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}</string>
-                </property>
-                <property name="text">
-                 <string>/</string>
                 </property>
                </widget>
               </item>
@@ -1661,23 +1368,33 @@ color: #ffffff;
                 </property>
                </widget>
               </item>
+              <item row="5" column="1" colspan="3">
+               <widget class="QLineEdit" name="startPath">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>/</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Startup Path : </string>
+                </property>
+               </widget>
+              </item>
               <item row="8" column="1" colspan="3">
-               <widget class="QComboBox" name="view">
-                <property name="styleSheet">
-                 <string notr="true">QComboBox {
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}
-
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: #ffffff;
-    selection-background-color: #F1A873;
-}
-
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}</string>
+               <widget class="QComboBox" name="view"/>
+              </item>
+              <item row="0" column="0" colspan="2">
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>Show Previews</string>
                 </property>
                </widget>
               </item>
@@ -1685,47 +1402,22 @@ QComboBox::drop-down {
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="terminal">
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
+            <widget class="QGroupBox" name="terminalF">
              <property name="styleSheet">
-              <string notr="true">QLabel{
-color:#F3AB79 ;
-padding: 2px 10px 2px 0px;
-}
-</string>
+              <string notr="true"/>
              </property>
-             <property name="text">
+             <property name="title">
               <string>Terminal</string>
              </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QFrame" name="terminalF">
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-}</string>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout">
+              <property name="topMargin">
+               <number>20</number>
+              </property>
               <item>
                <widget class="QLabel" name="label">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
                 <property name="text">
                  <string>Terminal List : </string>
                 </property>
@@ -1754,25 +1446,6 @@ color: #ffffff;
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QComboBox {
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: #ffffff;
-    selection-background-color: #F1A873;
-}
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}</string>
                 </property>
                 <property name="currentIndex">
                  <number>0</number>
@@ -1841,37 +1514,22 @@ QComboBox::drop-down {
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_6">
-             <property name="font">
-              <font>
-               <pointsize>12</pointsize>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel{
-color:#F3AB79 ;
-padding: 2px 10px 2px 0px;
-}
-</string>
-             </property>
-             <property name="text">
+            <widget class="QGroupBox" name="grpAssoc">
+             <property name="title">
               <string>Set Default Application</string>
              </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QFrame" name="grpAssoc">
-             <property name="styleSheet">
-              <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-}</string>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
              </property>
              <layout class="QGridLayout" name="gridLayout_3">
+              <property name="topMargin">
+               <number>20</number>
+              </property>
               <item row="4" column="0" rowspan="4">
                <widget class="QListWidget" name="listAssoc">
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">QListView {
 background-color:#F2F2F2 ;
@@ -1952,6 +1610,9 @@ background-color: rgb(48, 140, 198);
                   <height>300</height>
                  </size>
                 </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">QTreeView {
 background-color:#F2F2F2 ;
@@ -1993,11 +1654,6 @@ color:#000000;
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="mimetype">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
                 <property name="text">
                  <string>Mime type</string>
                 </property>
@@ -2005,11 +1661,6 @@ color:#000000;
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="application">
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
                 <property name="text">
                  <string>Applications</string>
                 </property>
@@ -2046,47 +1697,22 @@ background-color: rgb(48, 140, 198);
      <widget class="QWidget" name="pcorescrshot">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLabel" name="label_10">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-color:#F3AB79 ;
-padding: 2px 10px 2px 0px;
-}
-</string>
-         </property>
-         <property name="text">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
           <string>General</string>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="frame_2">
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
-         <property name="styleSheet">
-          <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-}</string>
+         <property name="flat">
+          <bool>true</bool>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="topMargin">
+           <number>20</number>
+          </property>
           <item>
            <widget class="QLabel" name="label_4">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
             <property name="text">
              <string>Save Location</string>
             </property>
@@ -2107,17 +1733,6 @@ color: #ffffff;
           </item>
           <item>
            <widget class="QLineEdit" name="ssLocation">
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit{
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}</string>
-            </property>
             <property name="text">
              <string/>
             </property>
@@ -2169,7 +1784,6 @@ color: #ffffff;
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page"/>
     </widget>
    </item>
   </layout>

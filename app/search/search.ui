@@ -33,12 +33,47 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="options">
+    <widget class="QWidget" name="options" native="true">
      <property name="styleSheet">
       <string notr="true">QWidget{
 background-color:#64697D;
-color:#000000; 
+color: #E6E6E6;
 border: 1px rgb(67, 67, 67);
+}
+
+QToolButton{
+color : #E6E6E6;
+border: 1px rgb(67, 67, 67);
+padding: 5px 5px 5px 5px;
+}
+
+QToolButton:checked{
+border:none;
+border-bottom: 2px solid #DCDCDC;
+color: #DCDCDC; 
+font-weight: bold;
+}
+
+
+QLineEdit {
+    border: 1px solid #ffffff;
+    padding: 5px 5px 5px 10px;
+}
+
+
+
+QPushButton{
+Text-align:left;
+color:#E6E6E6; 
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton:pressed{
+background-color:#1793D1; 
+}
+
+QPushButton:hover {
+background-color: #1793D1;
 }</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
@@ -47,6 +82,9 @@ border: 1px rgb(67, 67, 67);
       </property>
       <item>
        <widget class="QFrame" name="searchbar">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <property name="leftMargin">
           <number>10</number>
@@ -61,7 +99,7 @@ border: 1px rgb(67, 67, 67);
           <number>10</number>
          </property>
          <item>
-          <widget class="QPushButton" name="title">
+          <widget class="QToolButton" name="title">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -74,8 +112,7 @@ border: 1px rgb(67, 67, 67);
             <enum>Qt::LeftToRight</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">Text-align:left
-</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string notr="true">Search</string>
@@ -90,8 +127,8 @@ border: 1px rgb(67, 67, 67);
              <height>24</height>
             </size>
            </property>
-           <property name="flat">
-            <bool>true</bool>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
           </widget>
          </item>
@@ -114,11 +151,7 @@ border: 1px rgb(67, 67, 67);
          <item>
           <widget class="QLineEdit" name="searchFF">
            <property name="styleSheet">
-            <string notr="true">QLineEdit {
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}
-</string>
+            <string notr="true"/>
            </property>
            <property name="clearButtonEnabled">
             <bool>true</bool>
@@ -140,21 +173,6 @@ border: 1px rgb(67, 67, 67);
            </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-Text-align:left;
-color:#E6E6E6; 
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color:#1793D1; 
-}
-
-QPushButton:hover {
-background-color: #1793D1;
-}</string>
            </property>
            <property name="text">
             <string>Find</string>
@@ -183,21 +201,6 @@ background-color: #1793D1;
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-Text-align:left;
-color:#E6E6E6; 
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color:#1793D1; 
-}
-
-QPushButton:hover {
-background-color: #1793D1;
-}</string>
-           </property>
            <property name="text">
             <string>Locate</string>
            </property>
@@ -220,19 +223,7 @@ background-color: #1793D1;
             <enum>Qt::NoFocus</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton{
-Text-align:left;
-color:#E6E6E6; 
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color:#1793D1; 
-}
-
-QPushButton:hover {
-background-color: #1793D1;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Cancel</string>
@@ -265,17 +256,6 @@ background-color: #1793D1;
            </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">
-QPushButton:checked{
-background-color:#45454D ;
-}
-
-QPushButton:!checked{
-color: #57585D ;
-}
-</string>
            </property>
            <property name="text">
             <string/>
@@ -332,16 +312,6 @@ color: #57585D ;
              <pointsize>11</pointsize>
             </font>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QLineEdit{
-border: 1px solid #ffffff;
-padding: 5px 5px 5px 10px;
-}
-
-QLineEdit:focus{
-border:1px solid gray;
-}</string>
-           </property>
            <property name="text">
             <string/>
            </property>
@@ -375,6 +345,9 @@ border:1px solid gray;
       </item>
       <item>
        <widget class="QFrame" name="typeframe">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -408,22 +381,6 @@ border:1px solid gray;
              <weight>50</weight>
              <bold>false</bold>
             </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-color : #E6E6E6;
-border: 1px rgb(67, 67, 67);
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked
-{
-border:none;
-border-bottom: 2px solid #DCDCDC;
-color: #DCDCDC; 
-font-weight: bold;
-}
-</string>
            </property>
            <property name="text">
             <string>All</string>
@@ -469,22 +426,6 @@ font-weight: bold;
              <bold>false</bold>
             </font>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-color : #E6E6E6;
-border: 1px rgb(67, 67, 67);
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked
-{
-border:none;
-border-bottom: 2px solid #DCDCDC;
-color: #DCDCDC; 
-font-weight: bold;
-}
-</string>
-           </property>
            <property name="text">
             <string>Picture</string>
            </property>
@@ -522,20 +463,7 @@ font-weight: bold;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QToolButton{
-color : #E6E6E6;
-border: 1px rgb(67, 67, 67);
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked
-{
-border:none;
-border-bottom: 2px solid #DCDCDC;
-color: #DCDCDC; 
-font-weight: bold;
-}
-</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>Folder</string>
@@ -578,22 +506,6 @@ font-weight: bold;
              <bold>false</bold>
             </font>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-color : #E6E6E6;
-border: 1px rgb(67, 67, 67);
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked
-{
-border:none;
-border-bottom: 2px solid #DCDCDC;
-color: #DCDCDC; 
-font-weight: bold;
-}
-</string>
-           </property>
            <property name="text">
             <string>Media</string>
            </property>
@@ -631,22 +543,6 @@ font-weight: bold;
              <weight>50</weight>
              <bold>false</bold>
             </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-color : #E6E6E6;
-border: 1px rgb(67, 67, 67);
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked
-{
-border:none;
-border-bottom: 2px solid #DCDCDC;
-color: #DCDCDC; 
-font-weight: bold;
-}
-</string>
            </property>
            <property name="text">
             <string>Other</string>

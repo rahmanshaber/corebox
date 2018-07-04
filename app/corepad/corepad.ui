@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>959</width>
-    <height>581</height>
+    <width>675</width>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -74,6 +74,33 @@ height: 1px;
 background-color: #2F323A;
 color: #ffffff;
 border: 1px rgb(67, 67, 67);
+}
+
+QPushButton{
+Text-align:left;
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton:pressed{
+background-color: #00619D;
+}
+
+QPushButton:hover {
+background-color: #00619D;
+}
+
+
+QComboBox {
+    border: 1px solid #ffffff;
+    padding: 2px 2px 2px 10px;
+}
+QComboBox QAbstractItemView {
+    background-color: #546070;
+    color: #ffffff;
+    selection-background-color: #F1A873;
+}
+QComboBox::drop-down {
+    background-color: #3C3C43;
 }</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
@@ -93,7 +120,13 @@ border: 1px rgb(67, 67, 67);
        <number>10</number>
       </property>
       <item>
-       <widget class="QPushButton" name="title">
+       <widget class="QToolButton" name="title">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <pointsize>16</pointsize>
@@ -101,12 +134,6 @@ border: 1px rgb(67, 67, 67);
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-}
-</string>
         </property>
         <property name="text">
          <string>CorePad</string>
@@ -120,6 +147,9 @@ Text-align:left;
           <width>24</width>
           <height>24</height>
          </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>
@@ -150,19 +180,7 @@ Text-align:left;
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Open</string>
@@ -189,21 +207,6 @@ background-color: #00619D;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
-        </property>
         <property name="text">
          <string>New Page</string>
         </property>
@@ -229,21 +232,6 @@ background-color: #00619D;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
-        </property>
         <property name="text">
          <string>Save</string>
         </property>
@@ -268,21 +256,6 @@ background-color: #00619D;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
         </property>
         <property name="text">
          <string>Save As</string>
@@ -312,21 +285,6 @@ background-color: #00619D;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
-        </property>
         <property name="text">
          <string>Cut</string>
         </property>
@@ -355,21 +313,6 @@ background-color: #00619D;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
-        </property>
         <property name="text">
          <string>Copy</string>
         </property>
@@ -394,21 +337,6 @@ background-color: #00619D;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
         </property>
         <property name="text">
          <string>Paste</string>
@@ -438,21 +366,6 @@ background-color: #00619D;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
-        </property>
         <property name="text">
          <string>Undo</string>
         </property>
@@ -478,21 +391,6 @@ background-color: #00619D;
           <pointsize>11</pointsize>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
-        </property>
         <property name="text">
          <string>Redo</string>
         </property>
@@ -517,21 +415,6 @@ background-color: #00619D;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:checked{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
         </property>
         <property name="text">
          <string>Search</string>
@@ -572,21 +455,6 @@ background-color: #00619D;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
         </property>
         <property name="text">
          <string>Add Date</string>
@@ -643,21 +511,6 @@ background-color: #00619D;
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
-           </property>
            <property name="text">
             <string>Font Size</string>
            </property>
@@ -681,18 +534,7 @@ background-color: #00619D;
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">QComboBox {
-    border: 1px solid #ffffff;
-    padding: 2px 2px 2px 10px;
-}
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: #ffffff;
-    selection-background-color: #F1A873;
-}
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}</string>
+            <string notr="true"/>
            </property>
            <property name="currentText">
             <string>10</string>
@@ -837,21 +679,6 @@ QComboBox::drop-down {
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-</string>
-        </property>
         <property name="text">
          <string>Bookmark It</string>
         </property>
@@ -888,9 +715,27 @@ background-color: #00619D;
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">QWidget{
+      <string notr="true">QFrame{
 background-color: #000000;
-}</string>
+color: #E6E6E6;
+}
+
+QToolButton{
+border: 1px solid #434343;
+}
+QToolButton:pressed{
+background-color: #1268A4; 
+}
+
+QToolButton:hover {
+background-color: #1268A4; 
+}
+
+
+QLineEdit{
+border: 1px solid rgb(67, 67, 67);
+}
+</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -915,7 +760,7 @@ background-color: #000000;
        <number>0</number>
       </property>
       <item>
-       <widget class="QPushButton" name="reload">
+       <widget class="QToolButton" name="reload">
         <property name="minimumSize">
          <size>
           <width>26</width>
@@ -929,16 +774,7 @@ background-color: #000000;
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string/>
@@ -952,9 +788,6 @@ background-color: rgb(48, 140, 198);
           <width>22</width>
           <height>22</height>
          </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -973,10 +806,7 @@ background-color: rgb(48, 140, 198);
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QWidget{
-background-color: rgb(255, 255, 255);
-border: 1px solid rgb(67, 67, 67);
-}</string>
+         <string notr="true"/>
         </property>
         <property name="placeholderText">
          <string>Search...</string>
@@ -984,7 +814,7 @@ border: 1px solid rgb(67, 67, 67);
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="previousW">
+       <widget class="QToolButton" name="previousW">
         <property name="minimumSize">
          <size>
           <width>26</width>
@@ -996,18 +826,6 @@ border: 1px solid rgb(67, 67, 67);
           <width>26</width>
           <height>26</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
         </property>
         <property name="text">
          <string/>
@@ -1022,13 +840,10 @@ background-color: rgb(48, 140, 198);
           <height>22</height>
          </size>
         </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="nextW">
+       <widget class="QToolButton" name="nextW">
         <property name="minimumSize">
          <size>
           <width>26</width>
@@ -1040,18 +855,6 @@ background-color: rgb(48, 140, 198);
           <width>26</width>
           <height>26</height>
          </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-}
-QPushButton:pressed{
-background-color:rgb(48, 140, 198); 
-}
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
         </property>
         <property name="text">
          <string/>
@@ -1065,9 +868,6 @@ background-color: rgb(48, 140, 198);
           <width>22</width>
           <height>22</height>
          </size>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
         </property>
        </widget>
       </item>

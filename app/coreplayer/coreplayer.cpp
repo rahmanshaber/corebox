@@ -23,10 +23,21 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
 {
     ui->setupUi(this);
 
+    startsetup();
+    audioMimes();
+    videoMimes();
+    shotcuts();
+}
+
+coreplayer::~coreplayer()
+{
+    delete ui;
+}
+
+void coreplayer::startsetup()
+{
     mModel = new QStandardItemModel(this);
-    mNumberOfFiles = 0;
     ui->shortcut->setVisible(0);
-    ui->folderLineEdit->setReadOnly(true);
     ui->medialist->setModel(mModel);
 
     player = new QMediaPlayer(this);
@@ -59,18 +70,8 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
         QString mess = tr("The QMediaPlayer object does not have a valid service\nPlease check the media service plugins are installed.") ;
         messageEngine(mess,MessageType::Warning);
      }
-
-    ui->numberOfFiles->setVisible(0);
-
-    audioMimes();
-    videoMimes();
-    shotcuts();
 }
 
-coreplayer::~coreplayer()
-{
-    delete ui;
-}
 
 void coreplayer::shotcuts()
 {
@@ -208,7 +209,6 @@ void coreplayer::statusChanged(QMediaPlayer::MediaStatus status)
     case QMediaPlayer::LoadedMedia:
     case QMediaPlayer::BufferingMedia:
     case QMediaPlayer::BufferedMedia:
-//        setStatusInfo(QString());
         break;
     case QMediaPlayer::LoadingMedia:
         // Function from globalfunctions.cpp
@@ -248,6 +248,7 @@ void coreplayer::bufferingProgress(int progress)
 
 void coreplayer::displayErrorMessage()
 {
+    // Function from globalfunctions.cpp
     messageEngine(player->errorString(), MessageType::Warning);
 }
 
@@ -261,15 +262,19 @@ void coreplayer::updateDurationInfo(qint64 currentInfo)
         if (duration > 3600)
             format = "hh:mm:ss";
         time = currentTime.toString(format) + " / " + totalTime.toString(format);
+
+        // play next file from playlist if no time left
+        if(currentTime==totalTime){
+            on_next_clicked();
+        }
     }
+
     ui->duration->setText(time);
 }
 
 void coreplayer::creatPlayList(const QString &path)
 {
-    QFileInfo sp(path);
     mModel->clear();
-    ui->folderLineEdit->setText( sp.isDir() ? path : sp.path());
     QFuture<QStringList> f = QtConcurrent::run(this, &coreplayer::getList, path);
 
     QFutureWatcher<QStringList> *fw = new QFutureWatcher<QStringList>();
@@ -286,15 +291,11 @@ void coreplayer::creatPlayList(const QString &path)
             }
         }
         mModel->sort(0);
-        mNumberOfFiles = uList.count();
-        if(mNumberOfFiles > 0){
-             ui->numberOfFiles->setVisible(1);
-             ui->numberOfFiles->setText(QString("Included Files: %1").arg(mNumberOfFiles));
-        }
     });
 }
 
-QStringList coreplayer::getList(const QString &path) {
+QStringList coreplayer::getList(const QString &path)
+{
     QStringList uList;
 
     QDir dir(QFileInfo(path).isDir() ? path : QFileInfo(path).path());
@@ -332,6 +333,9 @@ void coreplayer::openPlayer(const QString path)
         player->setMedia(QUrl::fromLocalFile(path));
         player->play();
         ui->play->setChecked(true);
+        ui->workingOn->setText(QFileInfo(path).fileName());
+        folderpath = QFileInfo(path).path();
+        qDebug()<< folderpath << QFileInfo(path).path();
         // Function from globalfunctions.cpp
         messageEngine("Playing", MessageType::Info);
     }
@@ -413,10 +417,7 @@ void coreplayer::on_mute_clicked(bool checked)
 {
     if (checked){
         player->setMuted(true);
-        // Function from globalfunctions.cpp
-        messageEngine("Mute", MessageType::Info);
-    }
-    else{
+    }else{
         player->setMuted(false);
     }
 }
@@ -462,7 +463,6 @@ void coreplayer::setCurrentIndex(int currentIndex)
 void coreplayer::setFolder(const QString &foldername)
 {
     mModel->clear();
-    ui->folderLineEdit->setText(foldername);
     QStringList list1 = getAudios(foldername);
     QStringList list2 = getVideos(foldername);
 
@@ -474,9 +474,7 @@ void coreplayer::setFolder(const QString &foldername)
         mModel->appendRow((new QStandardItem(QFileInfo(list2.at(i)).fileName())));
     }
 
-    mNumberOfFiles = list1.count() + list2.count();
-    ui->numberOfFiles->setText(QString("Included Files: %1")
-                                    .arg(mNumberOfFiles));
+    folderpath == foldername;
 }
 
 void coreplayer::play(int index)
@@ -488,11 +486,10 @@ void coreplayer::play(int index)
     } else if (mediaPlayerState == QMediaPlayer::PlayingState) {
         return;
     }
-    if (index == -1 || index >= mNumberOfFiles) {
+    if (index == -1 ) {
         return;
     }
-    auto filename = ui->folderLineEdit->text()
-            + "/" + mModel->index(index, 0).data().toString();
+    auto filename = folderpath + "/" + mModel->index(index, 0).data().toString();
     player->setMedia(QUrl::fromLocalFile(filename));
     player->play();
     ui->medialist->setCurrentIndex(mModel->index(index, 0));

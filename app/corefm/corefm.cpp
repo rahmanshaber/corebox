@@ -1187,6 +1187,17 @@ QMenu* corefm::globalmenu(){
           popup->addSeparator();
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
+          popup->addSeparator();
+          popup->addAction(ui->actionRename);
+          popup->addAction(ui->actionTrash_it);
+          popup->addSeparator();
+          popup->addAction(ui->actionCreate_Archive);
+          if(extrainfo.contains("application")){
+              popup->addAction(ui->actionExtract_Here);
+          }
+          popup->addSeparator();
+          popup->addSeparator();
+          popup->addAction(ui->actionProperties);
         }
       if(curIndex.isDir()){ // folder
           popup->addAction(ui->actionOpen);
@@ -1197,19 +1208,19 @@ QMenu* corefm::globalmenu(){
           popup->addAction(ui->actionCut);
           popup->addAction(ui->actionCopy);
           popup->addAction(ui->actionPaste);
+          popup->addSeparator();
+          popup->addAction(ui->actionRename);
+          popup->addAction(ui->actionTrash_it);
+          popup->addSeparator();
+          popup->addAction(ui->actionTerminal);
+          popup->addAction(ui->actionCreate_Archive);
+          if(extrainfo.contains("application")){
+              popup->addAction(ui->actionExtract_Here);
+          }
+          popup->addSeparator();
+          popup->addSeparator();
+          popup->addAction(ui->actionProperties);
         }
-      popup->addSeparator();
-      popup->addAction(ui->actionRename);
-      popup->addAction(ui->actionTrash_it);
-      popup->addSeparator();
-      popup->addAction(ui->actionTerminal);
-      popup->addAction(ui->actionCreate_Archive);
-      if(extrainfo.contains("application")){
-          popup->addAction(ui->actionExtract_Here);
-      }
-      popup->addSeparator();
-      popup->addSeparator();
-      popup->addAction(ui->actionProperties);
     }
     else{ // whitespace
         on_actionRefresh_triggered();

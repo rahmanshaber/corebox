@@ -55,6 +55,8 @@ void pDisplay::setupDisplayPage()
 
         QListView *p = new QListView();
         QWidget *w = new QWidget();
+        w->setAttribute(Qt::WA_TransparentForMouseEvents);
+        w->setFocusPolicy(Qt::NoFocus);
         QFont fl ("Cantarell", 14, QFont::Normal);
         QFont fp ("Ubuntu Mono", 11, QFont::Normal);
         QLabel *l = new QLabel("Screen : " + QString::number(i+1));
@@ -68,9 +70,10 @@ void pDisplay::setupDisplayPage()
               << QString::number(qApp->screens()[i]->physicalDotsPerInch()) << PhysicalSize
               << QString::number(qApp->screens()[i]->primaryOrientation());
 
-        QStringListModel *systemInfoModel = new QStringListModel(fStringList(left, right, p->font()));
 
-        p->setModel(systemInfoModel);
+        QStringListModel *displayInfo = new QStringListModel(fStringList(left, right, p->font()));
+
+        p->setModel(displayInfo);
 
         l->setFont(fl);
         p->setFont(fp);

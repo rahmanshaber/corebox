@@ -86,8 +86,8 @@ private:
     void setCurrentIndex(int currentIndex);
     void shotcuts();
     void creatPlayList(const QString &path);
+    void startsetup();
 
-    int mNumberOfFiles;
     QMediaPlayer::State playerState;
     QMediaPlayer *player;
     QVideoProbe *videoProbe;

@@ -30,7 +30,7 @@ HistoryChart::~HistoryChart()
 
 void HistoryChart::init()
 {
-    ui->lblHistoryTitle->setText(mTitle);
+    ui->checkHistoryTitle->setText(mTitle);
 
     // add series to chart
     for (int i = 0; i < mSeriesCount; i++) {

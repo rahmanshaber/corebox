@@ -58,7 +58,18 @@
 background-color: #666B71;
 color: #000000;
 border: 1px #34343C;
-}</string>
+}
+
+
+QPushButton{
+Text-align:left;
+padding: 5px 5px 5px 5px;
+}
+
+QPushButton:checked{
+background-color:#45454D ;
+}
+</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0">
       <property name="spacing">
@@ -77,7 +88,13 @@ border: 1px #34343C;
        <number>10</number>
       </property>
       <item>
-       <widget class="QPushButton" name="title">
+       <widget class="QToolButton" name="title">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <pointsize>16</pointsize>
@@ -88,10 +105,6 @@ border: 1px #34343C;
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">Text-align:left
-</string>
         </property>
         <property name="text">
          <string notr="true">CoreTime</string>
@@ -106,8 +119,8 @@ border: 1px #34343C;
           <height>24</height>
          </size>
         </property>
-        <property name="flat">
-         <bool>true</bool>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>
@@ -144,15 +157,7 @@ border: 1px #34343C;
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:checked{
-background-color:#45454D ;
-}
-</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Alarm</string>
@@ -185,16 +190,6 @@ background-color:#45454D ;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-QPushButton:checked{
-background-color:#45454D; 
-}
-</string>
-        </property>
         <property name="text">
          <string>StopWatch</string>
         </property>
@@ -225,16 +220,6 @@ background-color:#45454D;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-QPushButton:checked{
-background-color:#45454D; 
-}
-</string>
         </property>
         <property name="text">
          <string>Timer</string>
