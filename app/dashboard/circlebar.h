@@ -1,9 +1,10 @@
 #ifndef CIRCLEBAR_H
 #define CIRCLEBAR_H
 
+#include "dashboard/signal_mapper.h"
+
 #include <QWidget>
 #include <QtCharts>
-#include "dashboard/signal_mapper.h"
 
 
 namespace Ui {

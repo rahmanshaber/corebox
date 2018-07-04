@@ -64,18 +64,6 @@ void pgeneral::systemInformationInit()
     // get system information
     SystemInfo sysInfo;
 
-//    QStringList infos;
-//    infos
-//        << tr("UserName : %1")            .arg(sysInfo.getHostname())
-//        << tr("Platform : %1")            .arg(sysInfo.getPlatform())
-//        << tr("Distribution : %1")        .arg(sysInfo.getDistribution())
-//        << tr("Kernel Release : %1")      .arg(sysInfo.getKernel())
-//        << tr("CPU Model : %1")           .arg(sysInfo.getCpuModel())
-//        << tr("CPU Speed : %1 (Mhz)")     .arg(sysInfo.getCpuSpeed())
-//        << tr("CPU Core  : %1")           .arg(sysInfo.getCpuCore())
-//        << tr("Display Size : %1")        .arg(scr)
-//        << tr("Qt Toolkit Version : %1")  .arg(QT_VERSION_STR);
-
     QStringList left;
     left << "User Name" << "Platform" << "Distribution" << "Kernel Release"
          << "CPU Model" << "CPU Speed" << "CPU Core" << "Display Size"

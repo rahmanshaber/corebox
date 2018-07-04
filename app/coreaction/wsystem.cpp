@@ -18,9 +18,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_wsystem.h"
 
 
-wSystem::wSystem(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::wSystem),
+wSystem::wSystem(QWidget *parent) :QWidget(parent),ui(new Ui::wSystem),
     info(InfoManager::ins())
 {
     ui->setupUi(this);

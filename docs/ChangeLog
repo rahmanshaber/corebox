@@ -91,6 +91,7 @@ Version 2.2
 - fixed add files button dose not work in corerenamer and many ui and bug fixes.
 - round border in messageengine>>messagebox.
 - getfilesize in qconcarent.
+
 - fixed contex menu open folder action in corefm.
 - fixed focuse policy from the shortcut bar from all app.
 - added one scroolbar stylesheet across the app.
@@ -98,8 +99,8 @@ Version 2.2
 - fixed some bugs related to coreplayer playlist.
 - fixed mant ui imperfectionin all the apps.
 - fixed issue releated to executable in properties.
-
-
+- added sliding effect in start pages.
+- a big code cleanup and ui fixes.
 
 
 

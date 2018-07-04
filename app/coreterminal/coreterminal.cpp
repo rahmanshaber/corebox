@@ -182,7 +182,7 @@ coreterminal::coreterminal(const QString &workDir, const QString &command, QWidg
     setHistorySize(100000);
 
     setWorkingDirectory(workDir);
-    qDebug() << workDir << "\nOPOP";
+//    qDebug() << workDir << "\nOPOP";
     QStringList shArgs = QStringList() << "-il" << "-c" << command;			//.split( QRegExp( "\\s+" ), QString::SkipEmptyParts );
 
     setShellProgram("/bin/bash");

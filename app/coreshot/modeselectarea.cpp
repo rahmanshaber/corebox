@@ -16,10 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "modeselectarea.h"
 
-#include <QGuiApplication>
-#include <QScreen>
-#include <QCursor>
-
 
 ModeSelectArea::ModeSelectArea(QWidget *parent) : ScreenWidget(parent)
 {

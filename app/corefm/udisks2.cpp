@@ -16,8 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "udisks2.h"
 
-#include "corefm/corefm.h"
-
 
 // Custom type for unmarhsalling byte arrays
 typedef QList<unsigned char> dbus_ay;

@@ -334,7 +334,6 @@ void search::toTable(const QStringList &list)
 
         } else {
             ui->infoPage->setCurrentIndex(1);
-//            ui->typeframe->setVisible(0);
             ui->status->setText("NO ITEMS FOUND...");
             ui->itemCount->setText("0 item(s) found");
         }

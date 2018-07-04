@@ -15,6 +15,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef CORERENAMER_H
 #define CORERENAMER_H
 
+#include "undocommands.h"
+
 #include <QWidget>
 #include <QUndoStack>
 #include <QTableWidgetItem>
@@ -41,7 +43,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QStandardItem>
 #include <QAbstractItemModel>
 
-#include "undocommands.h"
+#include "corebox/globalfunctions.h"
 
 
 namespace Ui {

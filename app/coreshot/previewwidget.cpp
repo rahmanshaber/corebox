@@ -16,12 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "previewwidget.h"
 
-#include <QDrag>
-#include <QTemporaryDir>
-#include <QTemporaryFile>
-#include <QFileInfo>
-#include <QStandardPaths>
-
 
 PreviewWidget::PreviewWidget(QWidget *parent) : QLabel(parent)
 {

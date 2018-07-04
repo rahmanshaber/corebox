@@ -3,6 +3,7 @@
 
 #include <QObject>
 
+
 class SignalMapper : public QObject
 {
     Q_OBJECT

@@ -17,16 +17,20 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef CORESHOTDIALOG_H
 #define CORESHOTDIALOG_H
 
-#include <QWidget>
-#include <QPixmap>
-
 #include "coreshot/screenwidget.h"
 #include "coreshot/modeselectarea.h"
 #include "coreshot/modefullscreen.h"
 #include "coreshot/previewwidget.h"
 #include "coreshot/coreshot.h"
 
-#include "../corebox/globalfunctions.h"
+#include <QWidget>
+#include <QPixmap>
+#include <QX11Info>
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+#include <QMimeDatabase>
+
+#include "corebox/globalfunctions.h"
 
 
 namespace Ui {

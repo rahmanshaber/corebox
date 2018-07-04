@@ -17,8 +17,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef CORESHOT_H
 #define CORESHOT_H
 
+#include "coreshot/coreshotdialog.h"
+
+#include <QFileDialog>
 #include <QWidget>
 #include <QPixmap>
+
 
 #include "corepaint/corepaint.h"
 #include "../corebox/corebox.h"

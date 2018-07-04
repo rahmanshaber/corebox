@@ -25,11 +25,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFont>
 #include <QObject>
 
-
 #include "dashboard/info_manager.h"
 #include "dashboard/circlebar.h"
 #include "Info/system_info.h"
 #include "corebox/globalfunctions.h"
+
 
 namespace Ui {
 class pgeneral;

@@ -19,10 +19,42 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "easypaintenums.h"
 #include "additionaltools.h"
+#include "datasingleton.h"
+#include "undocommand.h"
+#include "instruments/abstractinstrument.h"
+#include "instruments/pencilinstrument.h"
+#include "instruments/lineinstrument.h"
+#include "instruments/eraserinstrument.h"
+#include "instruments/rectangleinstrument.h"
+#include "instruments/ellipseinstrument.h"
+#include "instruments/fillinstrument.h"
+#include "instruments/sprayinstrument.h"
+#include "instruments/magnifierinstrument.h"
+#include "instruments/colorpickerinstrument.h"
+#include "instruments/selectioninstrument.h"
+#include "instruments/curvelineinstrument.h"
+#include "instruments/textinstrument.h"
+#include "dialogs/resizedialog.h"
 
 #include <QWidget>
 #include <QImage>
 #include <QPixmap>
+#include <QSettings>
+#include <QApplication>
+#include <QPainter>
+#include <QFileDialog>
+#include <QMouseEvent>
+#include <QPaintEvent>
+#include <QTimer>
+#include <QImageReader>
+#include <QImageWriter>
+#include <QUndoStack>
+#include <QDir>
+#include <QClipboard>
+
+#include "../settings/settingsmanage.h"
+#include "../corebox/globalfunctions.h"
+
 
 QT_BEGIN_NAMESPACE
 class QUndoStack;
@@ -75,6 +107,7 @@ public:
     void pushUndoCommand(UndoCommand *command);
 
     QString mFilePath; /**< Path where located image. */
+
 private:
     void initializeImage();
     void open();
@@ -94,7 +127,6 @@ private:
     QUndoStack *mUndoStack;
     QVector<AbstractInstrument*> mInstrumentsHandlers;
     AbstractInstrument *mInstrumentHandler;
-
 
 signals:
     void sendPrimaryColorView();

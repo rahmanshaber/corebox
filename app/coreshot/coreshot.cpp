@@ -17,9 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreshot.h"
 #include "ui_coreshot.h"
 
-#include <QFileDialog>
-#include "coreshot/coreshotdialog.h"
-
 
 coreshot::coreshot(QWidget *parent) :QWidget(parent),ui(new Ui::coreshot)
 {

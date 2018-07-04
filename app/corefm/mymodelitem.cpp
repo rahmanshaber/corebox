@@ -16,8 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "mymodelitem.h"
 
-#include <QtGui>
-
 
 myModelItem::myModelItem(const QFileInfo& fileInfo, myModelItem* parent)
 {

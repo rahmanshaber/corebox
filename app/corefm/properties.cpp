@@ -16,9 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "properties.h"
 
-#include <QTextStream>
-#include <QStringList>
-#include <QFile>
 
 /**
  * @brief Creates properties
@@ -36,7 +33,8 @@ Properties::Properties(const QString &fileName, const QString &group)
  * @brief Creates properties
  * @param other properies
  */
-Properties::Properties(const Properties &other) {
+Properties::Properties(const Properties &other)
+{
   this->data = other.data;
 }
 
@@ -47,8 +45,8 @@ Properties::Properties(const Properties &other) {
  * @param group
  * @return true if load was successful
  */
-bool Properties::load(const QString &fileName, const QString &group) {
-
+bool Properties::load(const QString &fileName, const QString &group)
+{
   // NOTE: This class is used for reading of property files instead of QSettings
   // class, which considers separator ';' as comment
 
@@ -101,8 +99,8 @@ bool Properties::load(const QString &fileName, const QString &group) {
  * @param group
  * @return true if success
  */
-bool Properties::save(const QString &fileName, const QString &group) {
-
+bool Properties::save(const QString &fileName, const QString &group)
+{
   // Try open file
   QFile file(fileName);
   if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -130,7 +128,8 @@ bool Properties::save(const QString &fileName, const QString &group) {
  * @param key
  * @return true if property with given key is present in properties
  */
-bool Properties::contains(const QString &key) const {
+bool Properties::contains(const QString &key) const
+{
   return data.contains(key);
 }
 //---------------------------------------------------------------------------
@@ -141,7 +140,8 @@ bool Properties::contains(const QString &key) const {
  * @param defaultValue
  * @return value
  */
-QVariant Properties::value(const QString &key, const QVariant &defaultValue) {
+QVariant Properties::value(const QString &key, const QVariant &defaultValue)
+{
   return data.value(key, defaultValue);
 }
 
@@ -150,7 +150,8 @@ QVariant Properties::value(const QString &key, const QVariant &defaultValue) {
  * @param key
  * @param value
  */
-void Properties::set(const QString &key, const QVariant &value) {
+void Properties::set(const QString &key, const QVariant &value)
+{
   if (data.contains(key)) {
     data.take(key);
   }
@@ -162,6 +163,7 @@ void Properties::set(const QString &key, const QVariant &value) {
  * @param key
  * @param value
  */
-QStringList Properties::getKeys() const {
+QStringList Properties::getKeys() const
+{
   return data.keys();
 }

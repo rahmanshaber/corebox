@@ -111,7 +111,7 @@ coreshot
 1 - take fullscreen shot using x11.
 
 coreterminal
-1 - Add search bar at coreterminal (not needed for now).
+0 - Add search bar at coreterminal (not needed for now).
 0 - treminal is not in focused.
 2 - Open terminal as root for current directory is not supported.
 
@@ -141,3 +141,62 @@ in-future
 
 *remove unwanted function from all cpp files.
 *code merge
+
+
+
+
+
+
+
+
+
+
+
+corebox
+0 - limit the openable window.
+0 - fix the sort in bookmark,start,search (recent to old)
+0 - remove file watcher for bookmark and speed dial.
+globalfunction
+0 - checkIsValidDir in const not working
+0 - swicth case in setupfolder function.
+0 - get file count in getfile size.(newbreeze function)
+0 - remove the trash path checking.
+start
+0 - catch all the open tab and add them in separate file and add a listwidget in start SAVED SESSION.
+        (there is a saveSession button in corebox sideba)
+         (also remove the code releated to "bookmark all opened windows")
+0 - delete recent activity when hidden.
+bookmarks
+0 - fix bookmark file check as folder making moved to globalfunctions.
+search
+0 - auto fill the folder path and name from search activity.
+setting
+0 - restore the backup file in same folder.
+corefm
+0 - see the shortcut bar tree widget in tools widget.
+0 - execut file with qt ( see properties.cpp line 190)
+0 - page text in root folder is showing blank.
+0 - save all file in a folder to text as a action.
+coreterminal
+0 - treminal is not in focused.
+
+BUID A DEB PACKAGE
+
+scroolbar as coreterminal cheack if anywher it is not .
+
+terminal closes properly???
+don't delete in start.cpp  lines for why????
+remove the coreshot dialog / search comments.
+fix the zoom issue in coreimage.
+0 - on first start corepdf cannot show any pdf file. test it again.
+see the changelog after space.
+
+
+
+---------------------------
+//    CoreBox& corebox() {
+//        return corebox_;
+//    }
+
+why is there?? in corefm
+-----------------------------

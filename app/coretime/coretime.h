@@ -18,6 +18,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define CORETIME_H
 
 #include "timer.h"
+#include "alarm.h"
+#include "fileio.h"
+#include "schedulecollection.h"
+#include "snooze.h"
 
 #include <QWidget>
 #include <QTime>
@@ -25,6 +29,16 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QElapsedTimer>
 #include <QDialogButtonBox>
 #include <QListWidgetItem>
+#include <QCheckBox>
+#include <QLabel>
+#include <QCloseEvent>
+#include <QTimeEdit>
+#include <QTimer>
+#include <QFileDialog>
+#include <QDialogButtonBox>
+#include <QSlider>
+#include <QListWidgetItem>
+#include <QCalendarWidget>
 
 #include "../corebox/corebox.h"
 #include "../corebox/globalfunctions.h"

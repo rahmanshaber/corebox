@@ -16,8 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "datasingleton.h"
 
-#include <QtCore/QSettings>
-
 
 DataSingleton* DataSingleton::m_pInstance = 0;
 

@@ -21,6 +21,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "mimeutils.h"
 
 #include <QtGui>
+#include <sys/inotify.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+#include <QApplication>
 
 
 QString formatSize(qint64);

@@ -17,14 +17,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreshotdialog.h"
 #include "ui_coreshotdialog.h"
 
-#include <QX11Info>
-#include <X11/Xlib.h>
-#include <X11/Xatom.h>
 
-#include "corebox/globalfunctions.h"
-
-coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),
-    ui(new Ui::coreshotdialog)
+coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),ui(new Ui::coreshotdialog)
 {
     ui->setupUi(this);
 

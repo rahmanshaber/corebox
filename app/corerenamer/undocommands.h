@@ -28,6 +28,7 @@ enum COMMAND {
     CASE = 4
 };
 
+
 class ARRTextCommand : public QUndoCommand
 {
 public:

@@ -38,7 +38,6 @@ public:
 
 private:
     Ui::wNetwork *ui;
-
     InfoManager *info;
 
     void checkNetwork();

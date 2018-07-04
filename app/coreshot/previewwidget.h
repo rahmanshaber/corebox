@@ -22,6 +22,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMouseEvent>
 #include <QDrag>
 #include <QMimeData>
+#include <QTemporaryDir>
+#include <QTemporaryFile>
+#include <QFileInfo>
+#include <QStandardPaths>
 
 
 class PreviewWidget : public QLabel

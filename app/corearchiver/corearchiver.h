@@ -52,6 +52,7 @@ private Q_SLOTS:
 
 private:
     Ui::corearchiver *ui;
+
     void startsetup();
 
 };

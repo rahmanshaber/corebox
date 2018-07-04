@@ -15,38 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "imagearea.h"
-#include "datasingleton.h"
-#include "undocommand.h"
-#include "instruments/abstractinstrument.h"
-#include "instruments/pencilinstrument.h"
-#include "instruments/lineinstrument.h"
-#include "instruments/eraserinstrument.h"
-#include "instruments/rectangleinstrument.h"
-#include "instruments/ellipseinstrument.h"
-#include "instruments/fillinstrument.h"
-#include "instruments/sprayinstrument.h"
-#include "instruments/magnifierinstrument.h"
-#include "instruments/colorpickerinstrument.h"
-#include "instruments/selectioninstrument.h"
-#include "instruments/curvelineinstrument.h"
-#include "instruments/textinstrument.h"
-#include "dialogs/resizedialog.h"
-
-#include "../settings/settingsmanage.h"
-#include "../corebox/globalfunctions.h"
-
-#include <QSettings>
-#include <QApplication>
-#include <QPainter>
-#include <QFileDialog>
-#include <QMouseEvent>
-#include <QPaintEvent>
-#include <QTimer>
-#include <QImageReader>
-#include <QImageWriter>
-#include <QUndoStack>
-#include <QDir>
-#include <QClipboard>
 
 
 ImageArea::ImageArea(const bool &isOpen, const QString &filePath, QWidget *parent) :QWidget(parent)

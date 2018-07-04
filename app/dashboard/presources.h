@@ -24,6 +24,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "dashboard/history_chart.h"
 #include "dashboard/info_manager.h"
 
+
 namespace Ui {
 class presources;
 }

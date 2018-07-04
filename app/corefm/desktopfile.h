@@ -17,7 +17,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef DESKTOPFILE_H
 #define DESKTOPFILE_H
 
+#include "properties.h"
+
 #include <QStringList>
+#include <QFile>
 
 
 /**

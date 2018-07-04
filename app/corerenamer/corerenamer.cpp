@@ -151,14 +151,14 @@ QString corerenamer::addText(tPosition tpos, int pos, const QString &newText, co
     int initialPos = 0;
     int addPos = pos;
 
-    qDebug() << "BEFORE : " << selcText;
+//    qDebug() << "BEFORE : " << selcText;
 
     if (tpos == FROMRIGHT) {
         initialPos = selcText.length();
         addPos = initialPos - pos;
     }
 
-    qDebug() << "AFTER : " << QString(selcText).insert(addPos, newText);
+//    qDebug() << "AFTER : " << QString(selcText).insert(addPos, newText);
 
     return  QString(selcText).insert(addPos, newText);
 }
@@ -168,14 +168,14 @@ QString corerenamer::remText(tPosition tpos, int pos, int count, const QString &
     int initialPos = 0;
     int remPos = pos;
 
-    qDebug() << "BEFORE " << selcText;
+//    qDebug() << "BEFORE " << selcText;
 
     if (tpos == FROMRIGHT) {
         initialPos = selcText.length();
         remPos = initialPos - pos - count;
     }
 
-    qDebug() << "AFTER " << QString(selcText).remove(remPos, count);
+//    qDebug() << "AFTER " << QString(selcText).remove(remPos, count);
 
     return  QString(selcText).remove(remPos, count);
 }
@@ -394,7 +394,8 @@ void corerenamer::on_browseSave_clicked()
     ui->savePath->setText(QFileDialog::getSaveFileName(this, "Save file"));
 }
 
-QString corerenamer::getOld(QStandardItem *item) {
+QString corerenamer::getOld(QStandardItem *item)
+{
     QString ofile = m_Model->item(item->row(), 1)->data(Qt::UserRole).toString();
     if (ui->addOldOnly->isChecked()) {
         ofile = QFileInfo(ofile).fileName();
@@ -402,7 +403,8 @@ QString corerenamer::getOld(QStandardItem *item) {
     return ofile;
 }
 
-QString corerenamer::getNew(QStandardItem *item) {
+QString corerenamer::getNew(QStandardItem *item)
+{
     QString ofile = m_Model->item(item->row(), 1)->data(Qt::UserRole).toString();
     QString cText = m_Model->item(item->row(), 1)->text();
     if (!cText.count()) return "";
@@ -413,8 +415,6 @@ QString corerenamer::getNew(QStandardItem *item) {
     }
     return nfile;
 }
-
-#include "corebox/globalfunctions.h"
 
 void corerenamer::on_saveRenamed_clicked()
 {

@@ -16,11 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "mymodel.h"
 
-#include <sys/inotify.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include <QApplication>
-
 #include "corefm.h"
 
 
@@ -29,8 +24,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
  * @param realMime
  * @param mimeUtils
  */
-myModel::myModel(bool realMime, MimeUtils *mimeUtils) {
-
+myModel::myModel(bool realMime, MimeUtils *mimeUtils)
+{
   // Stores mime utils
   mimeUtilsPtr = mimeUtils;
 
@@ -86,7 +81,8 @@ myModel::myModel(bool realMime, MimeUtils *mimeUtils) {
 /**
  * @brief Deletes model of file system
  */
-myModel::~myModel() {
+myModel::~myModel()
+{
   delete rootItem;
   delete iconFactory;
 }
@@ -94,7 +90,8 @@ myModel::~myModel() {
 /**
  * @brief Deletes icon cache
  */
-void myModel::clearIconCache() {
+void myModel::clearIconCache()
+{
   folderIcons->clear();
   mimeIcons->clear();
   QFile(QDir::homePath() + "/.config/coreBox/folder.cache").remove();
@@ -105,7 +102,8 @@ void myModel::clearIconCache() {
  * @brief Sets whether use real mime types or not
  * @param realMimeTypes
  */
-void myModel::setRealMimeTypes(bool realMimeTypes) {
+void myModel::setRealMimeTypes(bool realMimeTypes)
+{
   this->realMimeTypes = realMimeTypes;
 }
 
@@ -113,7 +111,8 @@ void myModel::setRealMimeTypes(bool realMimeTypes) {
  * @brief Returns true if real mime types are used
  * @return true if real mime types are used
  */
-bool myModel::isRealMimeTypes() const {
+bool myModel::isRealMimeTypes() const
+{
   return realMimeTypes;
 }
 
@@ -121,7 +120,8 @@ bool myModel::isRealMimeTypes() const {
  * @brief Returns mime utils
  * @return mime utils
  */
-MimeUtils* myModel::getMimeUtils() const {
+MimeUtils* myModel::getMimeUtils() const
+{
   return mimeUtilsPtr;
 }
 

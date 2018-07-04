@@ -17,8 +17,16 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef ADDITIONALTOOLS_H
 #define ADDITIONALTOOLS_H
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <QImage>
+#include <QImage>
+#include <QPainter>
+#include <QLabel>
+#include <QTransform>
+#include <QSize>
+#include <QClipboard>
+#include <QApplication>
+
 
 QT_BEGIN_NAMESPACE
 class ImageArea;

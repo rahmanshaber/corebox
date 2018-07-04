@@ -20,6 +20,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 float varA, varB, result;
 int z = 0, varC, varD;
 
+
 wCalculator::wCalculator(QWidget *parent) :QWidget(parent),ui(new Ui::wCalculator)
 {
     ui->setupUi(this);
@@ -31,7 +32,6 @@ wCalculator::~wCalculator()
     delete ui;
 }
 
-//--------------------Calculator----------------------Start---------------------------
 void wCalculator::on_one_clicked()
 {
     ui->calcview->setText(ui->calcview->text() + "1");
@@ -144,4 +144,3 @@ void wCalculator::on_division_clicked()
 //    varA = ui->calcview->text().toFloat();
 //    ui->calcview->setText("");
 //}
-//--------------------Calculator----------------------End---------------------------

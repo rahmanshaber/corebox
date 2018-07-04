@@ -18,14 +18,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "imagearea.h"
 #include "dialogs/resizedialog.h"
 
-#include <QImage>
-#include <QPainter>
-#include <QLabel>
-#include <QTransform>
-#include <QSize>
-#include <QClipboard>
-#include <QApplication>
-
 
 AdditionalTools::AdditionalTools(ImageArea *pImageArea, QObject *parent) :QObject(parent)
 {

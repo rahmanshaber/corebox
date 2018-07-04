@@ -23,6 +23,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QObject>
 #include <QFileInfo>
+#include <QDirIterator>
+#include <sys/vfs.h>
 
 
 class ProgressWatcher;

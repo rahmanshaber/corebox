@@ -21,6 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMessageBox>
 #include <QSyntaxHighlighter>
 
+
 class cHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
@@ -38,6 +39,7 @@ private:
     Rule rule;
     QVector<Rule> rulesList;
     QTextDocument *m_text;
+
 };
 
 #endif // CHIGHLIGHTER_H

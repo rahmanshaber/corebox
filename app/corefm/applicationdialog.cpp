@@ -17,16 +17,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "applicationdialog.h"
 #include "fileutils.h"
 
-#include <QVBoxLayout>
-#include <QDialogButtonBox>
-#include <QLineEdit>
-#include <QFormLayout>
-#include <QCompleter>
 
-/**
- * @brief Constructor
- * @param parent
- */
 ApplicationDialog::ApplicationDialog(QWidget *parent) : QDialog(parent) {
 
   // Title and size

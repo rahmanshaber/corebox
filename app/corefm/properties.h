@@ -20,6 +20,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QVariant>
 #include <QObject>
 #include <QMap>
+#include <QTextStream>
+#include <QStringList>
+#include <QFile>
 
 /**
  * @class Properties

@@ -16,10 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "processdialog.h"
 
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QLabel>
-
 
 /**
  * @brief Creates dialog and connects it to process
@@ -78,7 +74,8 @@ ProcessDialog::ProcessDialog(QProcess* proc, const QString &procName,
 /**
  * @brief Reaction on process finish
  */
-void ProcessDialog::onProcFinished() {
+void ProcessDialog::onProcFinished()
+{
   //this->hide();
   this->deleteLater();
 }
@@ -86,14 +83,16 @@ void ProcessDialog::onProcFinished() {
 /**
  * @brief Reaction on process start
  */
-void ProcessDialog::onProcStarted() {
+void ProcessDialog::onProcStarted()
+{
   this->show();
 }
 
 /**
  * @brief Reaction on process standard output
  */
-void ProcessDialog::onProcStdOut() {
+void ProcessDialog::onProcStdOut()
+{
   QProcess* p = qobject_cast<QProcess*>(sender());
   QString text = QString::fromLocal8Bit(p->readAllStandardOutput());
   output->addItem(new QListWidgetItem(text, output));

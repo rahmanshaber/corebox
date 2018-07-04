@@ -17,13 +17,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "propertiesw.h"
 #include "ui_propertiesw.h"
 
-#include <sys/stat.h>
-#include <QImageReader>
-#include <QMimeDatabase>
-#include <QMediaMetaData>
-
 #include "corefm.h"
-#include "../corebox/globalfunctions.h"
 
 
 propertiesw::propertiesw(const QString paths,QWidget *parent) :QWidget(parent),ui(new Ui::propertiesw)

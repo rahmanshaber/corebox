@@ -24,6 +24,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QtDBus/QDBusConnection>
 #include <QXmlStreamReader>
 
+#include "corebox/globalfunctions.h"
+
+
 class UDisks2Block;
 class UDisks2Drive;
 class UDisks2Filesystem;

@@ -20,11 +20,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "easypaintenums.h"
 
 #include <QColor>
-#include <QtCore/QSize>
-#include <QtCore/QString>
-#include <QtCore/QMap>
+#include <QSize>
+#include <QString>
+#include <QMap>
 #include <QKeySequence>
 #include <QFont>
+#include <QSettings>
 
 
 class DataSingleton

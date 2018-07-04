@@ -453,7 +453,8 @@ void corepad::quitClicked()
     else messageEngine("There are still some changes needs to be saved.", MessageType::Warning);
 }
 
-void corepad::closeEvent(QCloseEvent *event) {
+void corepad::closeEvent(QCloseEvent *event)
+{
     event->ignore();
     int tabCount = ui->notes->count();
     int cc = 0;

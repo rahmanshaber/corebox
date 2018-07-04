@@ -22,6 +22,13 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QWidget>
 #include <QImageReader>
 #include <QMediaPlayer>
+#include <sys/stat.h>
+#include <QImageReader>
+#include <QMimeDatabase>
+#include <QMediaMetaData>
+
+#include "../corebox/globalfunctions.h"
+
 
 namespace Ui {
 class propertiesw;
@@ -55,7 +62,6 @@ private:
     void details();
     void partition(const QString path);
     void detailimage(const QString imagepath);
-
     bool isExecutable(const QString path);
 };
 

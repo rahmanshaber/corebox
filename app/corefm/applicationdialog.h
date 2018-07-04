@@ -21,28 +21,34 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include <QDialog>
 #include <QTreeWidget>
+#include <QVBoxLayout>
+#include <QDialogButtonBox>
+#include <QLineEdit>
+#include <QFormLayout>
+#include <QCompleter>
 
 
 class ApplicationDialog : public QDialog {
-  Q_OBJECT
+
+    Q_OBJECT
 
 public:
-  explicit ApplicationDialog(QWidget *parent = 0);
-  QString getCurrentLauncher() const;
+    explicit ApplicationDialog(QWidget *parent = 0);
+    QString getCurrentLauncher() const;
 
 protected slots:
-  void updateCommand(QTreeWidgetItem* current, QTreeWidgetItem* previous);
+    void updateCommand(QTreeWidgetItem* current, QTreeWidgetItem* previous);
 
 protected:
-  QTreeWidget* appList;
-  QLineEdit* edtCommand;
-  DesktopFile result;
-  QIcon defaultIcon;
-  QMap<QString, QStringList> catNames;
-  QMap<QString, QTreeWidgetItem*> categories;
-  QMap<QString, QTreeWidgetItem*> applications;
-  QTreeWidgetItem* findCategory(const DesktopFile &app);
-  void createCategories();
+    QTreeWidget* appList;
+    QLineEdit* edtCommand;
+    DesktopFile result;
+    QIcon defaultIcon;
+    QMap<QString, QStringList> catNames;
+    QMap<QString, QTreeWidgetItem*> categories;
+    QMap<QString, QTreeWidgetItem*> applications;
+    QTreeWidgetItem* findCategory(const DesktopFile &app);
+    void createCategories();
 
 };
 

@@ -16,22 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coretime.h"
 #include "ui_coretime.h"
-#include "timer.h"
-#include "alarm.h"
-#include "fileio.h"
-#include "schedulecollection.h"
-#include "snooze.h"
-
-#include <QCheckBox>
-#include <QLabel>
-#include <QCloseEvent>
-#include <QTimeEdit>
-#include <QTimer>
-#include <QFileDialog>
-#include <QDialogButtonBox>
-#include <QSlider>
-#include <QListWidgetItem>
-#include <QCalendarWidget>
 
 
 coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
@@ -109,9 +93,9 @@ coretime::~coretime()
 void coretime::SetupClock()
 {
     //Set up clock display
-    QTimer *CurrentTime=new QTimer(this);
-    connect(CurrentTime,SIGNAL(timeout()),this,SLOT(timeCheck()));
-    CurrentTime->start(500);
+//    QTimer *CurrentTime=new QTimer(this);
+//    connect(CurrentTime,SIGNAL(timeout()),this,SLOT(timeCheck()));
+//    CurrentTime->start(500);
 }
 
 void coretime::SetTime()

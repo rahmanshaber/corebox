@@ -20,6 +20,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDialog>
 #include <QProcess>
 #include <QListWidget>
+#include <QVBoxLayout>
+#include <QPushButton>
+#include <QLabel>
 
 
 /**

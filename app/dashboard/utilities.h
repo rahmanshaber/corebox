@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QGraphicsDropShadowEffect>
 
+
 class Utilities
 {
 public:

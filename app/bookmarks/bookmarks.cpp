@@ -18,8 +18,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_bookmarks.h"
 
 
-
-
 bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)
 {
     ui->setupUi(this);

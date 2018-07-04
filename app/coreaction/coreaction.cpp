@@ -18,8 +18,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_coreaction.h"
 
 
-coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),
-    ui(new Ui::coreaction),
+coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),ui(new Ui::coreaction),
     timer(new QTimer(this))
 {
     ui->setupUi(this);

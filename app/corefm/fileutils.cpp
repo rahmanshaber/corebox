@@ -16,9 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "fileutils.h"
 
-#include <QDirIterator>
-#include <sys/vfs.h>
-
 
 /**
  * @brief Recursive removes file or directory

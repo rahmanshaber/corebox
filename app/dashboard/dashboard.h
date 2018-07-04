@@ -17,6 +17,14 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef DASHBOARD_H
 #define DASHBOARD_H
 
+#include "pbattery.h"
+#include "pdisplay.h"
+#include "pdrives.h"
+#include "pgeneral.h"
+#include "presources.h"
+#include "battery.h"
+#include "upower.h"
+
 #include <QListWidgetItem>
 #include <QWidget>
 #include <QPainter>
@@ -27,14 +35,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTreeWidgetItem>
 #include <QDir>
 #include <QSize>
-
-#include "pbattery.h"
-#include "pdisplay.h"
-#include "pdrives.h"
-#include "pgeneral.h"
-#include "presources.h"
-#include "battery.h"
-#include "upower.h"
 
 #include "Info/system_info.h"
 #include "corebox/corebox.h"

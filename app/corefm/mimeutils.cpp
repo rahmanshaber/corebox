@@ -15,21 +15,25 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "mimeutils.h"
+#include "fileutils.h"
 
+#include <QFileInfo>
 #include <QProcess>
 #include <QMessageBox>
-//#include <magic.h>
+#include <QDebug>
+#include <QMimeDatabase>
+#include <QMimeType>
 
-#include "fileutils.h"
-#include "../corebox/corebox.h"
-#include "../corebox/globalfunctions.h"
+#include "corebox/corebox.h"
+#include "corebox/globalfunctions.h"
 
 
 /**
  * @brief Creates mime utils
  * @param parent
  */
-MimeUtils::MimeUtils(QObject *parent) : QObject(parent) {
+MimeUtils::MimeUtils(QObject *parent) : QObject(parent)
+{
   defaultsFileName = "/.config/coreBox/mimeapps.list";
   defaults = new Properties();
   loadDefaults();
@@ -39,7 +43,8 @@ MimeUtils::MimeUtils(QObject *parent) : QObject(parent) {
  * @brief Loads list of default applications for mimes
  * @return properties with default applications
  */
-void MimeUtils::loadDefaults() {
+void MimeUtils::loadDefaults()
+{
   defaults->load(QDir::homePath() + defaultsFileName, "Default Applications");
   defaultsChanged = false;
 }
@@ -47,7 +52,8 @@ void MimeUtils::loadDefaults() {
 /**
  * @brief Destructor
  */
-MimeUtils::~MimeUtils() {
+MimeUtils::~MimeUtils()
+{
   delete defaults;
 }
 
@@ -57,17 +63,10 @@ MimeUtils::~MimeUtils() {
  * @param path path to file
  * @return mime type
  */
-#include <QDebug>
-#include <QMimeDatabase>
-#include <QMimeType>
-QString MimeUtils::getMimeType(const QString &path) {
-//  magic_t cookie = magic_open(MAGIC_MIME);
-//  magic_load(cookie, 0);
-//  QString temp = magic_file(cookie, path.toLocal8Bit());
-//  magic_close(cookie);
-//  QString f = temp.left(temp.indexOf(";"));
+
+QString MimeUtils::getMimeType(const QString &path)
+{
   QMimeDatabase m;
-  //qDebug() << m.mimeTypeForFile(path).name();
   return m.mimeTypeForFile(path).name();
 }
 
@@ -75,8 +74,8 @@ QString MimeUtils::getMimeType(const QString &path) {
  * @brief Returns list of mime types
  * @return list of available mimetypes
  */
-QStringList MimeUtils::getMimeTypes() const {
-
+QStringList MimeUtils::getMimeTypes() const
+{
   // Check whether file with mime descriptions exists
   QFile file("/usr/share/mime/types");
   if (!file.exists()) {
@@ -103,7 +102,8 @@ QStringList MimeUtils::getMimeTypes() const {
  * @param file
  * @param processOwner
  */
-void MimeUtils::openInApp(const QFileInfo &file, QObject *processOwner) {
+void MimeUtils::openInApp(const QFileInfo &file, QObject *processOwner)
+{
   QString mime = getMimeType(file.filePath());
   QString app = defaults->value(mime).toString().split(";").first();
   if (!app.isEmpty()) {
@@ -121,8 +121,8 @@ void MimeUtils::openInApp(const QFileInfo &file, QObject *processOwner) {
  * @param file to be opened in executed application
  * @param processOwner process owner (default NULL)
  */
-void MimeUtils::openInApp(QString exe, const QFileInfo &file,QObject *processOwner) {
-
+void MimeUtils::openInApp(QString exe, const QFileInfo &file,QObject *processOwner)
+{
   // This is not the right the solution, but qpdfview won't start otherwise
   // TODO: Repair it correctly
   if (exe.contains("qpdfview")) {
@@ -162,7 +162,8 @@ void MimeUtils::openInApp(QString exe, const QFileInfo &file,QObject *processOwn
  * @brief Sets defaults file name (name of file where defaults are stored)
  * @param fileName
  */
-void MimeUtils::setDefaultsFileName(const QString &fileName) {
+void MimeUtils::setDefaultsFileName(const QString &fileName)
+{
   this->defaultsFileName = fileName;
   loadDefaults();
 }
@@ -172,14 +173,16 @@ void MimeUtils::setDefaultsFileName(const QString &fileName) {
  * @brief Returns defaults file name
  * @return name of file where defaults are stored
  */
-QString MimeUtils::getDefaultsFileName() const {
+QString MimeUtils::getDefaultsFileName() const
+{
   return defaultsFileName;
 }
 
 /**
  * @brief Generates default application-mime associations
  */
-void MimeUtils::generateDefaults() {
+void MimeUtils::generateDefaults()
+{
 
   // Load list of applications
   QList<DesktopFile> apps = FileUtils::getApplications();
@@ -241,7 +244,8 @@ void MimeUtils::generateDefaults() {
  * @param mime mime name
  * @param apps list of applications (desktop file names)
  */
-void MimeUtils::setDefault(const QString &mime, const QStringList &apps) {
+void MimeUtils::setDefault(const QString &mime, const QStringList &apps)
+{
   QString value = apps.join(";");
   if (value.compare(defaults->value(mime, "").toString()) != 0) {
     defaults->set(mime, value);
@@ -254,14 +258,16 @@ void MimeUtils::setDefault(const QString &mime, const QStringList &apps) {
  * @param mime
  * @return list of default applications name
  */
-QStringList MimeUtils::getDefault(const QString &mime) const {
+QStringList MimeUtils::getDefault(const QString &mime) const
+{
   return defaults->value(mime).toString().split(";");
 }
 
 /**
  * @brief Saves defaults
  */
-void MimeUtils::saveDefaults() {
+void MimeUtils::saveDefaults()
+{
   if (defaultsChanged) {
     defaults->save(QDir::homePath() + defaultsFileName, "Default Applications");
     defaultsChanged = false;

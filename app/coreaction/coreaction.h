@@ -72,7 +72,6 @@ private:
 
     QMenu *trayIconMenu;
     QDir currentDir;
-
     QTimer *timer;
     InfoManager *im;
 

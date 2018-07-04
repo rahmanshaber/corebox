@@ -18,8 +18,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_corepaint.h"
 
 
-corepaint::corepaint( QWidget *parent):QWidget(parent),
-    ui(new Ui::corepaint), mPrevInstrumentSetted(false)
+corepaint::corepaint( QWidget *parent):QWidget(parent),ui(new Ui::corepaint),
+    mPrevInstrumentSetted(false)
 {
     ui->setupUi(this);
 

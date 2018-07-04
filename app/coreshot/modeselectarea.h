@@ -25,6 +25,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QLabel>
 #include <QMouseEvent>
 #include <QPainter>
+#include <QGuiApplication>
+#include <QScreen>
+#include <QCursor>
 
 
 class ModeSelectArea : public ScreenWidget
