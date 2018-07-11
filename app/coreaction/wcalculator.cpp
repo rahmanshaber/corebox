@@ -137,10 +137,3 @@ void wCalculator::on_division_clicked()
     varA = ui->calcview->text().toFloat();
     ui->calcview->setText("");
 }
-
-//void wCalculator::on_percentage_clicked()
-//{
-//    z = 5;
-//    varA = ui->calcview->text().toFloat();
-//    ui->calcview->setText("");
-//}

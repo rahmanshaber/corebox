@@ -731,6 +731,7 @@ padding: 1px; }
 QScrollBar::handle:vertical {
 background-color: silver;
 max-width: 6px;
+min-height: 12px;
 border-radius: 3px; }
 
 QScrollBar::sub-page:vertical {

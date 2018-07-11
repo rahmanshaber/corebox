@@ -23,7 +23,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTableWidgetItem>
 #include <QTreeWidgetItem>
 #include <QFont>
-#include <QFileSystemWatcher>
 #include <QDebug>
 #include <QCollator>
 
@@ -47,11 +46,8 @@ public:
     ~Start();
     void reload();
 
-protected:
-    void paintEvent(QPaintEvent *event);
-
 private slots:
-    void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
+    void on_recentActivitesL_itemDoubleClicked(QTreeWidgetItem *item, int column);
     void on_appCollect_itemDoubleClicked(QListWidgetItem *item);
     void on_speedDialB_itemDoubleClicked(QListWidgetItem *item);
 
@@ -67,6 +63,7 @@ private:
     void loadsettings();
     void loadSpeedDial();
     void loadRecent();
+    void loadSession();
 
     bool isRecentEnable;
     void pageClick(QPushButton *btn, int i);

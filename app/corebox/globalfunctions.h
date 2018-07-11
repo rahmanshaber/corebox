@@ -38,6 +38,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "../settings/settingsmanage.h"
 
+enum sortOrder {
+    ASCENDING = 0,
+    DESCENDING = 1
+};
 
 enum AppsName {
     damn = -1,
@@ -66,6 +70,19 @@ enum MessageType {
     Tips = 2
 };
 
+enum FolderSetup {
+    BookmarkFolder = 0,
+    DriveMountFolder = 1,
+    TrashFolder
+};
+
+ QStringList sortDate(QStringList &dateList, sortOrder s = ASCENDING);
+ QStringList sortTime(QStringList &timeList, sortOrder s = ASCENDING);
+ QStringList sortList(QStringList &list, sortOrder s = ASCENDING);
+ QStringList sortDateTime(QStringList &dateTimeList, sortOrder s = ASCENDING);
+
+ bool deleteLastLine(const QString &filePath);
+
  QString sentDateText(const QString &dateTime);
  bool checkRecentActivityFile();
  bool saveToRecent(QString appName, const QString &pathName);
@@ -73,7 +90,7 @@ enum MessageType {
  bool moveToTrash(const QString &fileName);
  void messageEngine(const QString &message, MessageType messageType);
  void openAppEngine(const QString &path);
- void setupFolder();
+ void setupFolder(FolderSetup fs);
 
  QRect screensize();
 
@@ -87,7 +104,7 @@ enum MessageType {
 
  qint64 getfilesize(QString path);
 
- qint64 getF(QStringList paths);
+ qint64 getF(QStringList paths, int &folders, int &files);
  qint64 getSize(QString path);
 
  QString checkIsValidDir(const QString str);
@@ -97,6 +114,8 @@ enum MessageType {
  QStringList fStringList(QStringList left, QStringList right, QFont font);
 
  QString getMountPathByName(const QString displayName);
+
+ QString getFolderConts(QString &output, const QString &path);
 
  static void addDropShadow(QWidget *widget, const int alpha, const int blur = 25, const QString stylesheet = "") {
      QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect(widget);

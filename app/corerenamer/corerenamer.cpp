@@ -542,3 +542,35 @@ bool customSortProxyM::lessThan(const QModelIndex &left, const QModelIndex &righ
     cola.setNumericMode(true);
     return (cola.compare(leftData.toString(), rightData.toString()) < 0);
 }
+
+void corerenamer::on_doRemoveAddNum_clicked()
+{
+    if (ui->tDoRemoveAddNum->text().count()) {
+        ui->FLists->selectAll();
+        int totalCount = ui->FLists->selectionModel()->selectedIndexes().count();
+        int count = 0;
+        foreach (QModelIndex i, ui->FLists->selectionModel()->selectedIndexes()) {
+            if (i.column() == 0) {
+                QString aText = ui->tDoRemoveAddNum->text();
+                QString arg = "";
+                count++;
+
+                QString arg1;
+                if (totalCount > 100 && totalCount < 999) arg1 = "001. ";
+                else if (totalCount > 10 && totalCount < 99) arg1 = "01. ";
+                else arg1 = "1. ";
+
+                if (arg1.at(0) == '0') {
+                    if (arg1.at(1) == '0') {
+                        arg = QString(i.row() > 8 ? i.row() > 98 ? "" : "0" : "00") + QString::number(count) + QString(arg1).remove(0, 3);
+                    } else {
+                        arg = QString(i.row() > 8 ? "" : "0") + QString::number(count) + QString(arg1).remove(0, 2);
+                    }
+                } else arg = QString::number(count) + QString(arg1).remove(0, 1);
+
+                QString numing = addText(FROMLEFT, 0, arg, aText);
+                uStack->push(new ARRTextCommand(m_Model->item(i.row(), 1), numing, NUMBER));
+            }
+        }
+    }
+}

@@ -25,7 +25,7 @@ public:
             //if (!stylesheet.count())
                 widget->setStyleSheet(stylesheet);
 
-            qDebug() << "Widget : " << widget->styleSheet();
+            //qDebug() << "Widget : " << widget->styleSheet();
         }
     }
 

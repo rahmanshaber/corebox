@@ -87,6 +87,11 @@ bool corepad::initializeNewTab(const QString &filePath)
     return false; //Return an exception - There is some other causes happening.
 }
 
+int corepad::tabsCount()
+{
+    return ui->notes->count();
+}
+
 bool corepad::saveTo(const QString &filePath)
 {
     QFile file(filePath);

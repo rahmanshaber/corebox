@@ -51,8 +51,6 @@ void settings::setupCoreBoxPage()
     ui->cmbIconTheme->addItems(iconThemes);
     ui->cmbIconTheme->setCurrentText(currentTheme);
 
-    // set the backup path
-    ui->backupPath->setText(sm.getBackupPath());
 }
 
 void settings::setupCoreActionPage()
@@ -328,6 +326,10 @@ void settings::on_ok_clicked()
     //corebox
     sm.setBoxIsMaximize(ui->isMaximized->isChecked());
     sm.setDisableRecent(ui->isRecentDisable->isChecked());
+    if (ui->isRecentDisable->isChecked()) {
+        QFile f(QDir::homePath() + "/.config/coreBox/RecentActivity");
+        f.remove();
+    }
     sm.setThemeName(ui->cmbIconTheme->currentText());
     if(ui->isRecentDisable->isChecked() == false){sm.cSetting->remove("Recent");};
 
@@ -417,23 +419,52 @@ void settings::on_corescrshot_clicked()
     pageClick(ui->corescrshot,3, tr("CoreScreenShot"));
 }
 
-void settings::on_browSave_clicked()
-{
-    const QString path = QFileDialog::getExistingDirectory(this, "Select a folder");
-    if (path.count())
-        ui->backupPath->setText(path);
-}
-
 void settings::on_backUp_clicked()
 {
-    const QString path = QDir::homePath() + "/.config/coreBox";
+    const QString saveFilePath = QFileDialog::getExistingDirectory(this, "Select a folder to save the backup file");
+    const QString backupFilePath = QDir::homePath() + "/.config/coreBox";
     const QString cPath = QDir::homePath() + "/.config";
-    //QString settingsFile = "coreBox.conf";
-    //QString bookFile = "CoreBoxBook";
 
     corearchiver *arc = new corearchiver();
     arc->setFilename("CoreBox_Backup");
-    arc->filePathList = QStringList() << path;// + "/" + settingsFile << path + "/" + bookFile;
-    arc->setFolderPath(ui->backupPath->text());
-    arc->compress(QStringList() << path /*+ "/" + settingsFile << path + "/" + bookFile*/, cPath);
+    arc->filePathList = QStringList() << backupFilePath;
+    arc->setFolderPath(saveFilePath);
+    arc->compress(QStringList() << backupFilePath , cPath);
+
+    // Function from globalfunctions.cpp
+    messageEngine("Backup for settings seccessfully done.", MessageType::Info);
 }
+
+void settings::on_restore_clicked()
+{
+    // select the backup file
+    const QString path = QFileDialog::getOpenFileName(this, "Select the backup file");
+
+    //extrat the folder in .config folder
+    if (path.count()) {
+        if (QFileInfo(path).fileName().contains("CoreBox_Backup")) {
+            int files = 0;
+            QDirIterator it( QFileInfo(path).path(), QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks);
+            while ( it.hasNext() ) {
+                it.next();
+                if (it.fileInfo().isFile())
+                    files++;
+            }
+            if (files) {
+                long reply = QMessageBox::warning(this, "File Exists", "There are old settings file\nDo you want to overwrite them?", QMessageBox::Yes, QMessageBox::No);
+                if (reply == QMessageBox::No)
+                    return;
+                else {
+                    corearchiver *arc = new corearchiver;
+                    arc->extract(path, QDir(QDir::homePath() + "/.config/"));
+                    // Function from globalfunctions.cpp
+                    messageEngine("Backup for settings seccessfully done.", MessageType::Info);
+                }
+            }
+        } else {
+            // Function from globalfunctions.cpp
+            messageEngine("Wrong file selected!!!", MessageType::Warning);
+        }
+    }
+}
+

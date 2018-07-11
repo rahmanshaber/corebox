@@ -44,7 +44,10 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
     //setup framless window
     ui->windows->tabBar()->installEventFilter(this);
     ui->sidebar->installEventFilter(this);
-    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::SubWindow);
+
+    setWindowFlags(Qt::FramelessWindowHint |
+      Qt::WindowSystemMenuHint | Qt::SubWindow);
+
     ui->restoreButton->setVisible(false);
 //    ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
 
@@ -65,7 +68,9 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
     BookmarkManage bk;
     bk.checkBook();
 
-    setupFolder();
+    setupFolder(FolderSetup::BookmarkFolder);
+    setupFolder(FolderSetup::DriveMountFolder);
+    setupFolder(FolderSetup::TrashFolder);
 
 }
 
@@ -82,6 +87,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 
     switch (i) {
     case CoreFM: {
+        // Limit the openable tab to 10
+        if (n > 10){
+            messageEngine("Reached Window limite", MessageType::Warning);
+            return;
+        }
+
         corefm *cFM = new corefm();
 
         QString str = checkIsValidDir(arg);
@@ -92,6 +103,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         break;
     }
     case CoreImage: {
+        // Limit the openable tab to 10
+        if (n > 10){
+            messageEngine("Reached Window limite", MessageType::Warning);
+            return;
+        }
+
         coreimage *cIMG = new coreimage();
 
         QString str = checkIsValidFile(arg);
@@ -109,6 +126,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
             corepad *cPad = static_cast<corepad*>(ui->windows->currentWidget());
             cPad->initializeNewTab(checkIsValidFile(arg));
         } else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
+
             corepad *cPAD = new corepad();
             cPAD->openText(checkIsValidFile(arg));
 
@@ -118,6 +141,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         break;
     }
     case CorePaint: {
+        // Limit the openable tab to 10
+        if (n > 10){
+            messageEngine("Reached Window limite", MessageType::Warning);
+            return;
+        }
+
         corepaint *cPAINT = new corepaint();
 
         const QString str = checkIsValidFile(arg);
@@ -129,6 +158,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         break;
     }
     case CorePlayer: {
+        // Limit the openable tab to 10
+        if (n > 10){
+            messageEngine("Reached Window limite", MessageType::Warning);
+            return;
+        }
+
         coreplayer *cPLAYER = new coreplayer();
 
         const QString str = checkIsValidFile(arg);
@@ -143,6 +178,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
+
             ui->windows->insertTab(n, new dashboard(), QIcon(":/icons/DashBoard.svg"), "DashBoard");
             ui->windows->setCurrentIndex(n);
         }
@@ -153,6 +194,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
+
             ui->windows->insertTab(n, new bookmarks(), QIcon(":/icons/Bookmarks.svg"), "Bookmarks");
             ui->windows->setCurrentIndex(n);
         }
@@ -163,6 +210,11 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
             ui->windows->insertTab(n, new about(), QIcon(":/icons/About.svg"), "About");
             ui->windows->setCurrentIndex(n);
         }
@@ -173,6 +225,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
+
             ui->windows->insertTab(n, new Start(), QIcon(":/icons/Start.svg"), "Start");
             ui->windows->setCurrentIndex(n);
         }
@@ -183,6 +241,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
+
             ui->windows->insertTab(n, new help(), QIcon(":/icons/Help.svg"), "Help");
             ui->windows->setCurrentIndex(n);
         }
@@ -193,12 +257,24 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
+
             ui->windows->insertTab(n, new settings(), QIcon(":/icons/Settings.svg"), "Settings");
             ui->windows->setCurrentIndex(n);
         }
         break;
     }
     case Search: {
+        // Limit the openable tab to 10
+        if (n > 10){
+            messageEngine("Reached Window limite", MessageType::Warning);
+            return;
+        }
+
         search *ser = new search();
 
         const QString str = checkIsValidDir(arg);
@@ -213,6 +289,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
+
             ui->windows->insertTab(n, new coretime, QIcon(":/icons/CoreTime.svg"), "CoreTime");
             ui->windows->setCurrentIndex(n);
         }
@@ -225,6 +307,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         break;
     }
     case CorePDF: {
+        // Limit the openable tab to 10
+        if (n > 10){
+            messageEngine("Reached Window limite", MessageType::Warning);
+            return;
+        }
+
         corepdf *cPDF = new corepdf();
 
         const QString str = checkIsValidFile(arg);
@@ -235,6 +323,12 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         break;
     }
     case CoreTerminal: {
+        // Limit the openable tab to 10
+        if (n > 10){
+            messageEngine("Reached Window limite", MessageType::Warning);
+            return;
+        }
+
         QString workDir = arg;
         if (!arg.count())
             workDir = QDir::homePath();
@@ -242,12 +336,18 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         if (QFileInfo(workDir).isFile())
             workDir = QFileInfo(arg).path();
 
-        coreterminal *trm = new coreterminal(workDir, "");
+        coreterminal *trm = new coreterminal(workDir, "", this);
         ui->windows->insertTab(n, trm, QIcon(":/icons/CoreTerminal.svg"), "CoreTerminal");
         ui->windows->setCurrentIndex(n);
         break;
     }
     case CoreRenamer: {
+        // Limit the openable tab to 10
+        if (n > 10){
+            messageEngine("Reached Window limite", MessageType::Warning);
+            return;
+        }
+
         corerenamer *cFM = new corerenamer();
 
         const QString str = checkIsValidDir(arg);
@@ -266,7 +366,6 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
 void CoreBox::on_windows_tabCloseRequested(int index)
 {
     const QString appName = ui->windows->tabBar()->tabText(index);
-
     if (appName == "Bookmarks") {
         bookmarks *cbook = static_cast<bookmarks*>(ui->windows->widget(index));
         if (cbook->close()){
@@ -385,6 +484,7 @@ int CoreBox::filterEngine(QString name) // engine for find if a app is opened
 void CoreBox::on_windows_currentChanged(int index) // set window title related to current selected app
 {
     QString title = ui->windows->tabText(index);
+    ui->windows->currentWidget()->setFocus();
     this->setWindowTitle(title);
     this->setWindowIcon(appsIcon(title));
 }
@@ -588,21 +688,35 @@ void CoreBox::on_box_clicked()
     messageEngine("Thanks for using CoreBox\nVersion 2.2", MessageType::Info);
 }
 
-void CoreBox::on_bookAll_clicked()
+void CoreBox::on_saveSession_clicked()
 {
-    BookmarkManage bk;
-    if (bk.getBookSections().contains("LastUsed"))
-        bk.delSection("LastUsed");
-
-    int count = 0;
-    bk.addSection("LastUsed");
+    QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
+    session.beginGroup(QDateTime::currentDateTime().toString("hh.mm.ss - dd.MM.yyyy"));
     for (int i = 0; i < ui->windows->count(); i++) {
-        const QString path = ui->windows->widget(i)->windowFilePath();
-        if (path.count()) {
-            bk.addBookmark("LastUsed", QFileInfo(path).fileName(), path);
-            count++;
+        QString value = "";
+        switch (nameToInt(ui->windows->tabText(i))) {
+        case CoreFM:
+            value = static_cast<corefm*>(ui->windows->widget(i))->gCurrentPath();
+            break;
+        case CoreImage:
+            value = static_cast<coreimage*>(ui->windows->widget(i))->currentImagePath;
+            break;
+        case CorePad: {
+            corepad *cpad = static_cast<corepad*>(ui->windows->widget(i));
+            QString v = "";
+            for (int j = 0; j < cpad->tabsCount(); j++) {
+//                if (j == cpad->tabsCount() - 1)
+//                    v += cpad->currentFilePath(j);
+//                else
+                    v += cpad->currentFilePath(j) + "\t\t\t";
+            }
+            value = v;
         }
+        default:
+            value = "";
+            break;
+        }
+        session.setValue(ui->windows->tabText(i), value);
     }
-
-    if (!count) bk.delSection("LastUsed");
+    session.endGroup();
 }

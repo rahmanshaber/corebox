@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += core gui dbus multimedia multimediawidgets charts concurrent x11extras#svg
+QT += core gui dbus multimedia multimediawidgets charts concurrent x11extras #svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -56,7 +56,8 @@ FORMS += \
     dashboard/pdisplay.ui \
     dashboard/pdrives.ui \
     dashboard/pgeneral.ui \
-    dashboard/presources.ui
+    dashboard/presources.ui \
+    corefm/renamewindow.ui
 
 
 HEADERS += \
@@ -154,7 +155,8 @@ HEADERS += \
     dashboard/signal_mapper.h \
     dashboard/upower.h \
     dashboard/utilities.h \
-    start/slidingstackedwidget.h
+    start/slidingstackedwidget.h \
+    corefm/renamewindow.h
 
 
 SOURCES += \
@@ -249,7 +251,8 @@ SOURCES += \
     dashboard/presources.cpp \
     dashboard/signal_mapper.cpp \
     dashboard/upower.cpp \
-    start/slidingstackedwidget.cpp
+    start/slidingstackedwidget.cpp \
+    corefm/renamewindow.cpp
 
 
 RESOURCES += \
@@ -271,8 +274,6 @@ CONFIG += thread silent warn_off build_all
 
 # Build location
 
-BUILD_PREFIX = $$(NB_BUILD_DIR)
-
 isEmpty( BUILD_PREFIX ) {
         BUILD_PREFIX = ./build
 }
@@ -290,10 +291,9 @@ unix {
         }
         BINDIR = $$PREFIX/bin
 
-        INSTALLS += target desktop icons data mime templates
         target.path = $$BINDIR
 
-        QMAKE_RPATHDIR += $$PREFIX/lib/corebox/
+        #QMAKE_RPATHDIR += $$PREFIX/lib/corebox/
 
         desktop.path = $$PREFIX/share/applications/
         desktop.files = ../CoreBox.desktop
@@ -303,6 +303,8 @@ unix {
 
         data.path = $$PREFIX/share/corebox/
         data.files = ../docs/ChangeLog ../docs/ReleaseNotes
+
+        INSTALLS += target icons data desktop #mime templates
 }
 
 DEFINES += QT_DEPRECATED_WARNINGS

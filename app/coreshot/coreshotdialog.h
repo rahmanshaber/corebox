@@ -30,9 +30,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <X11/Xatom.h>
 #include <QMimeDatabase>
 
-#include "corebox/globalfunctions.h"
-
-
 namespace Ui {
 class coreshotdialog;
 }

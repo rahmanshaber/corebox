@@ -21,9 +21,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
 {
     ui->setupUi(this);
-    //setWindowOpacity(0.95);
-    //setAttribute(Qt::WA_TranslucentBackground);
-    QFileSystemWatcher *watcher = new QFileSystemWatcher();
 
     // Get recent activity enabled or not
     isRecentEnable = !sm.getDisableRecent();
@@ -47,25 +44,10 @@ Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
             file.open(QIODevice::ReadWrite | QIODevice::Text);
             file.close();
         }
-        watcher->addPath(raFile);
         loadRecent();
     }
 
-//    watcher->addPath(QDir::homePath() + "/.config/coreBox/coreBox.conf");
-//    watcher->addPath(QDir::homePath() + "/.config/coreBox/CoreBoxBook");
-
-    // I think overload.
-//    connect(watcher, &QFileSystemWatcher::fileChanged, [this](const QString &path) {
-//        qDebug() << path;
-//        if (QFileInfo(path).fileName() == "RecentActivity") {
-//            loadRecent();
-//        } else if (QFileInfo(path).fileName() == "CoreBoxBook") {
-//            loadSpeedDial();
-//        } else if (QFileInfo(path).fileName() == "coreBox.conf") {
-//            isRecentEnable = !sm.getDisableRecent();
-//            loadsettings();
-//        }
-//    });
+    loadSession();
 }
 
 Start::~Start()
@@ -85,9 +67,9 @@ void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item) // open Speed
 // ======== Speed Dial ==========
 void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item) // open SpeedDial on doubleclick
 {
-    // Function from globalfunctions.cpp
     BookmarkManage bk;
-    openAppEngine(bk.bookmarkPath("Speed Dial",item->text()));
+    // Function from globalfunctions.cpp openAppEngine(..)
+    openAppEngine(bk.bookmarkPath("Speed Dial", item->text()));
 }
 
 void Start::loadSpeedDial() // populate SpeedDial list
@@ -108,10 +90,13 @@ void Start::loadSpeedDial() // populate SpeedDial list
 
 // ========== Recent activity ===========
 
-void Start::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column) // Open Recent activity on double click
+void Start::on_recentActivitesL_itemDoubleClicked(QTreeWidgetItem *item, int column) // Open Recent activity on double click
 {
-    // Function from globalfunctions.cpp
+    if (!item->text(column).contains("\t\t\t"))
+        return;
+
     QStringList s = item->text(column).split("\t\t\t");
+    // Function from globalfunctions.cpp
     openAppEngine(s.at(1));
 }
 
@@ -120,15 +105,14 @@ void Start::loadRecent() // populate RecentActivity list
     ui->recentActivitesL->clear();
     QSettings recentActivity(QDir::homePath() + "/.config/coreBox/RecentActivity", QSettings::IniFormat);
     QStringList topLevel = recentActivity.childGroups();
+    sortDate(topLevel);
     foreach (QString group, topLevel) {
         QTreeWidgetItem *topTree = new QTreeWidgetItem();
         QString groupL = sentDateText(group);
         topTree->setText(0, groupL);
         recentActivity.beginGroup(group);
         QStringList keys = recentActivity.childKeys();
-        QCollator sort;
-        sort.setNumericMode(true);
-        std::sort(keys.begin(), keys.end(), sort);
+        sortTime(keys);
         foreach (QString key, keys) {
             QTreeWidgetItem *child = new QTreeWidgetItem();
             QString value = recentActivity.value(key).toString();
@@ -143,8 +127,38 @@ void Start::loadRecent() // populate RecentActivity list
     if (topLevel.count())
         (ui->recentActivitesL->setExpanded(ui->recentActivitesL->model()->index(0, 0), true));
 }
+
 // =================================
 
+void Start::loadSession()
+{
+    ui->sessionsList->clear();
+    QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
+    QStringList topLevel = session.childGroups();
+    sortDateTime(topLevel);
+    foreach (QString group, topLevel) {
+        QTreeWidgetItem *topTree = new QTreeWidgetItem();
+        QString groupL = sentDateText(group.split(" - ").at(1));
+        topTree->setText(0, groupL);
+        session.beginGroup(group);
+        QStringList keys = session.childKeys();
+        sortList(keys);
+        foreach (QString key, keys) {
+            QTreeWidgetItem *child = new QTreeWidgetItem();
+            QString value = session.value(key).toString();
+            child->setText(0, key + "\t\t\t" + value);
+            child->setIcon(0, geticon(value));
+            topTree->addChild(child);
+        }
+        session.endGroup();
+        ui->sessionsList->insertTopLevelItem(0, topTree);
+    }
+
+    if (topLevel.count())
+        (ui->sessionsList->setExpanded(ui->sessionsList->model()->index(0, 0), true));
+
+    qDebug() << topLevel.count();
+}
 
 void Start::loadsettings() // load settings
 {
@@ -159,30 +173,6 @@ void Start::loadsettings() // load settings
         ui->recentActivites->setVisible(1);
         loadRecent();
     }
-}
-
-// Don't delete
-void Start::paintEvent(QPaintEvent *event)
-{
-//    QRgb _blend(qRgba(0,0,0,0xff));
-//    QColor color(_blend);
-//    color.setAlphaF(0.75);
-//    _blend = color.rgba();
-
-//    QPainter paint(this);
-//    paint.setOpacity(0.8);
-
-//    const auto rects = (event->region() & contentsRect()).rects();
-//    //qDebug() << rects;
-//    for (const QRect &rect : rects)
-//    {
-//        QColor col(QColor::fromRgb(255,255,255));
-//        col.setAlpha(qAlpha(_blend));
-//        paint.save();
-//        paint.setCompositionMode(QPainter::CompositionMode_Source);
-//        paint.fillRect(rect, col);
-//        paint.restore();
-//    }
 }
 
 void Start::pageClick(QPushButton *btn, int i)

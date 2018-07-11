@@ -49,6 +49,8 @@ public:
     QString workFilePath;
     void openText(const QString &filePath);
     bool initializeNewTab(const QString &filePath);
+    int tabsCount();
+    QString currentFilePath(int index);
 
 private slots:
     void textCopyAvailable(bool b);
@@ -92,7 +94,7 @@ private:
     bool closeTab(int index);
 
     //Accessing information through tab information
-    QString currentFilePath(int index);
+
     QString isCurrentSaved(int index);
     QString isCurrentUpdated(int index);
 

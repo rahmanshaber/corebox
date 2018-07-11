@@ -17,6 +17,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreshotdialog.h"
 #include "ui_coreshotdialog.h"
 
+#include "corebox/globalfunctions.h"
 
 coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),ui(new Ui::coreshotdialog)
 {
@@ -26,20 +27,6 @@ coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),ui(new Ui::core
 
     // Set window as a framless
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint );
-
-//    setAttribute(Qt::WA_TranslucentBackground);
-
-    // Get some shadow effect for widget
-    // Function from globalfunctions.cpp
-//    QString ss = "QPushButton{ background-color: rgb(60, 60, 60); padding: 3px 5px 3px 5px; border-radius: 3px;}"
-//                 "QPushButton:hover { background-color: #808080; }";
-//    addDropShadow(ui->cancel, 60, 25, QString("QPushButton{ background-color: rgb(60, 60, 60);  border-radius: 3px;}"
-//                                                         "QPushButton:hover { background-color: red; }"));
-//    addDropShadow(ui->captureScreen, 60, 25, ss);
-//    addDropShadow(ui->captureSelection, 60, 25, ss);
-//    addDropShadow(ui->captureWindow, 60, 25, ss);
-//    addDropShadow(ui->delay, 60, 25, QString("QSpinBox { background-color: rgb(60, 60, 60); padding: 5px 5px 5px 10px; border-radius: 3px; }"));
-//    //===============================
 
     // Set the window position
     int mx = (screensize().width()/2) - ((this->width()/2) + 10);
@@ -94,7 +81,6 @@ void coreshotdialog::passToShotPreview()
     shootP->setPixmap(m_pixmap);
     shootP->show();
     deleteLater();
-    //this->close();
 }
 
 void coreshotdialog::shootFullScreen()

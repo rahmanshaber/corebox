@@ -80,8 +80,7 @@ private slots:
     void on_corefm_clicked();
     void on_corepad_clicked();
     void on_box_clicked();
-
-    void on_bookAll_clicked();
+    void on_saveSession_clicked();
 
 private:
     SettingsManage sm;

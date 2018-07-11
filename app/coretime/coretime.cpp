@@ -93,9 +93,9 @@ coretime::~coretime()
 void coretime::SetupClock()
 {
     //Set up clock display
-//    QTimer *CurrentTime=new QTimer(this);
-//    connect(CurrentTime,SIGNAL(timeout()),this,SLOT(timeCheck()));
-//    CurrentTime->start(500);
+    QTimer *CurrentTime=new QTimer(this);
+    connect(CurrentTime,SIGNAL(timeout()),this,SLOT(timeCheck()));
+    CurrentTime->start(500);
 }
 
 void coretime::SetTime()

@@ -38,5 +38,23 @@ int main(int argc, char *argv[])
     coreaction a;
     a.show();
 
+    // Get file folder size with file and folder count
+//    int files = 0, folders = 0;
+//    qDebug() << "File Size : " <<formatSize(getF(QStringList() << "/home/abrar", files, folders));
+//    qDebug() << "File count : " << files;
+//    qDebug() << "Folder count : " << folders;
+
+// Folder paths to text file
+//    QString out;
+//    getFolderConts(out, "/home/abrar/Desktop/Builds");
+//    QFile fi("/home/abrar/Desktop/HOO");
+//    fi.open(QIODevice::WriteOnly | QIODevice::Text);
+//    QTextStream t(&fi);
+//    t << out;
+//    fi.close();
+
+// Delete last lines at a file
+    //deleteLastLine("/home/abrar/.config/coreBox/RecentActivity1");
+
     return app.exec();
 }

@@ -30,6 +30,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QProcess>
 #include <QShortcut>
 #include <QFileDialog>
+#include <QTreeWidgetItem>
 
 #include <corebox/globalfunctions.h>
 
@@ -79,6 +80,8 @@ private slots:
     void on_searchFF_textChanged(const QString &arg1);
     void on_setfolder_clicked();
 
+    void on_activityList_itemClicked(QTreeWidgetItem *item, int column);
+    void on_clearActivity_clicked();
 };
 
 #endif // SEARCH_H

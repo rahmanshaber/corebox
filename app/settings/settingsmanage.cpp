@@ -28,9 +28,8 @@ void SettingsManage::createDefaultSettings()
 
         cSetting->beginGroup("CoreBox");
         cSetting->setValue("Maximized", false);
-        cSetting->setValue("Recent-Disable", true);
+        cSetting->setValue("Recent-Disable", false);
         cSetting->setValue("Force-Theme", QIcon::themeName());
-        cSetting->setValue("Backup-Path", QDir::homePath());
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreFM");
@@ -101,13 +100,6 @@ bool SettingsManage::getDisableRecent() {
     return getSpecificValue("CoreBox", "Recent-Disable").toBool();
 }
 
-bool SettingsManage::setBackupPath(const QString path) {
-    return setSpecificValue("CoreBox", "Backup-Path", path);
-}
-
-const QString SettingsManage::getBackupPath() {
-    return getSpecificValue("CoreBox", "Backup-Path").toString();
-}
 
 //-------------------------CoreBox--------------------------------------
 

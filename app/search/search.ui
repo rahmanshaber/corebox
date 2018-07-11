@@ -677,6 +677,7 @@ padding: 1px; }
 QScrollBar::handle:vertical {
 background-color: silver;
 max-width: 6px;
+min-height: 8px;
 border-radius: 3px; }
 
 QScrollBar::sub-page:vertical {
@@ -820,6 +821,30 @@ border: 1px rgb(67, 67, 67);
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clearActivity">
+           <property name="text">
+            <string>Clear the activity</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
        <item>
         <widget class="QLabel" name="label">
          <property name="font">

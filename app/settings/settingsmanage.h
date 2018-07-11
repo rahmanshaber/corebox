@@ -104,8 +104,6 @@ public:
     bool setSHowTime(bool showTime);
     bool getShowTime();
 
-    bool setBackupPath(const QString path);
-    const QString getBackupPath();
 
 };
 

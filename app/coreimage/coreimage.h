@@ -61,6 +61,7 @@ public:
     explicit coreimage(QWidget *parent = 0);
     ~coreimage();
     bool loadFile(const QString &);
+    QString currentImagePath;
 
 private slots:
     void on_cOpen_clicked();
@@ -104,7 +105,6 @@ private:
     QSpacerItem *hSpacer;   
     QTimer* slideShowTimer;
     QStringList images;
-    QString currentImagePath;
     QImage image;
     double scaleFactor;
     QLabel *cImageLabel;

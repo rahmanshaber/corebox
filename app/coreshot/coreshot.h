@@ -23,12 +23,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QWidget>
 #include <QPixmap>
 
-
 #include "corepaint/corepaint.h"
-#include "../corebox/corebox.h"
-#include "../settings/settingsmanage.h"
-#include "../corebox/globalfunctions.h"
-
+#include "corebox/corebox.h"
+#include "settings/settingsmanage.h"
 
 namespace Ui {
 class coreshot;

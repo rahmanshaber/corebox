@@ -52,21 +52,20 @@ void search::startsetup()
 
     // Search Activity file Path
     QString sActFile = QDir::homePath() + "/.config/coreBox/SearchActivity";
-    QSettings searchActF(sActFile);
+    QSettings searchActF(sActFile, QSettings::IniFormat);
 
     int count = searchActF.childGroups().count();
     if (isActivityEnabled) {
         ui->activityList->clear();
         QStringList toplevel = searchActF.childGroups();
+        sortDate(toplevel);
         foreach (QString group, toplevel) {
             QTreeWidgetItem *topTree = new QTreeWidgetItem;
             QString groupL = sentDateText(group);
             topTree->setText(0, groupL);
             searchActF.beginGroup(group);
             QStringList keys = searchActF.childKeys();
-            QCollator sort;
-            sort.setNumericMode(1);
-            std::sort(keys.begin(), keys.end(), sort);
+            sortTime(keys);
             foreach (QString key, keys) {
                 QTreeWidgetItem *child = new QTreeWidgetItem;
                 QString value = searchActF.value(key).toString();
@@ -131,6 +130,7 @@ void search::startsetup()
             ui->status->setText("You select cancel for not to search");
         }
 
+        // enable all buttons
         ui->findCMD->setEnabled(1);
         ui->folderPath->setEnabled(1);
         ui->activityList->setEnabled(1);
@@ -140,13 +140,10 @@ void search::startsetup()
         ui->typeFolder->setEnabled(1);
         ui->typeMedia->setEnabled(1);
         ui->typeother->setEnabled(1);
-        //ui->typeframe->setVisible(1);
         ui->more->setEnabled(1);
         ui->setfolder->setEnabled(1);
         ui->title->setEnabled(1);
-
         ui->cancelProc->setVisible(0);
-
         cProcess->close();
     });
 }
@@ -234,20 +231,20 @@ void search::populateItems(const QString &text)
             mType = mime.mimeTypeForFile(sf.at(i));
             //Check is it image, media (audio, video), folder if not then other
             //Append result info to a image, media, folder and other string list by icon name file whole path and the suffix
-            //'$$$$$' used for setting the file info seperately
+            //'\t\t\t' used for setting the file info seperately
             if (mType.name().startsWith("image", Qt::CaseInsensitive)) {
-                image.append(mType.iconName() + "$$$$$" + sf.at(i) + "$$$$$" + mType.preferredSuffix());
+                image.append(mType.iconName() + "\t\t\t" + sf.at(i) + "\t\t\t" + mType.preferredSuffix());
             } else if (mType.name().startsWith("video", Qt::CaseInsensitive)) {
-                media.append(mType.iconName() + "$$$$$" + sf.at(i) + "$$$$$" + mType.preferredSuffix());
+                media.append(mType.iconName() + "\t\t\t" + sf.at(i) + "\t\t\t" + mType.preferredSuffix());
             } else if (mType.name().startsWith("audio", Qt::CaseInsensitive)) {
-                media.append(mType.iconName() + "$$$$$" + sf.at(i) + "$$$$$" + mType.preferredSuffix());
+                media.append(mType.iconName() + "\t\t\t" + sf.at(i) + "\t\t\t" + mType.preferredSuffix());
             } else if (mType.name().startsWith("inode", Qt::CaseInsensitive)) {
-                folder.append(mType.iconName() + "$$$$$" + sf.at(i) + "$$$$$" + mType.preferredSuffix());
+                folder.append(mType.iconName() + "\t\t\t" + sf.at(i) + "\t\t\t" + mType.preferredSuffix());
             } else {
-                other.append(mType.iconName() + "$$$$$" + sf.at(i) + "$$$$$" + mType.preferredSuffix());
+                other.append(mType.iconName() + "\t\t\t" + sf.at(i) + "\t\t\t" + mType.preferredSuffix());
             }
             //Add all file info to a string list
-            all.append(mType.iconName() + "$$$$$" + sf.at(i) + "$$$$$" + mType.preferredSuffix());
+            all.append(mType.iconName() + "\t\t\t" + sf.at(i) + "\t\t\t" + mType.preferredSuffix());
         }
     });
 
@@ -262,7 +259,7 @@ void search::populateItems(const QString &text)
 
         // Search Activity file Path
         QString sActFile = QDir::homePath() + "/.config/coreBox/SearchActivity";
-        QSettings searchActF(sActFile);
+        QSettings searchActF(QDir::homePath() + "/.config/coreBox/SearchActivity", QSettings::IniFormat);
         QDateTime currentDT = QDateTime::currentDateTime();
         QString group = currentDT.toString("dd.MM.yyyy");
         QString key = currentDT.toString("hh.mm.ss");
@@ -271,13 +268,8 @@ void search::populateItems(const QString &text)
         if (QFileInfo(ui->folderPath->text()).isDir()) path = ui->folderPath->text();
         searchActF.setValue(key, ui->searchFF->text() + "\t\t\t" + path);
         searchActF.endGroup();
-//        QFile file(sActFile);
-//        if (file.open(QIODevice::Append | QIODevice::Text | QIODevice::ReadWrite)) {
-//            QString path = "/";
-//            if (QFileInfo(ui->folderPath->text()).isDir()) path = ui->folderPath->text();
-//            file.write(QString(ui->searchFF->text() + "$$$" + path + "$$$" + QString::number(all.count()) + "\n").toLatin1());
-//            file.close();
-//        }
+        searchActF.sync();
+
         ui->typeAll->setChecked(1);
         toTable(populateByType());
     });
@@ -306,7 +298,7 @@ const QStringList& search::populateByType()
 
 /**
  * @brief Arrage items from a specific string list to table
- * @param A specific list which contains file icon, file path and seffix(Seperated with '$$$$$')
+ * @param A specific list which contains file icon, file path and seffix(Seperated with '\t\t\t')
  */
 void search::toTable(const QStringList &list)
 {
@@ -321,9 +313,9 @@ void search::toTable(const QStringList &list)
             ui->results->setRowCount(list.count());//set row count by list item count
 
             for (int i = 0; i < list.count(); ++i) {
-                //get one item from given list and split it by '$$$$$'
+                //get one item from given list and split it by '\t\t\t'
                 //and assign it to another string list
-                temp = list.at(i).split("$$$$$");
+                temp = list.at(i).split("\t\t\t");
                 //the first item at temp string list is theme icon name
                 //second is file path
                 //third is suffix
@@ -469,4 +461,23 @@ void search::on_searchFF_textChanged(const QString &arg1)
 void search::on_setfolder_clicked()
 {
     ui->folderPath->setText(QFileDialog::getExistingDirectory(this, "Select a folder"));
+}
+
+void search::on_activityList_itemClicked(QTreeWidgetItem *item, int column)
+{
+    if (!item->text(column).contains("\t\t\t"))
+        return;
+
+    QStringList sep = item->text(column).split("\t\t\t");
+    ui->searchFF->setText(sep[0]);
+    ui->folderPath->setText(sep[1]);
+}
+
+void search::on_clearActivity_clicked()
+{
+    ui->activityList->clear();
+    QFile(QDir::homePath() + "/.config/coreBox/SearchActivity").remove();
+    ui->infoPage->setCurrentIndex(1);
+    ui->typeframe->setVisible(0);
+    ui->status->setText("Search for Something by file type\nEnter text you want to search.");
 }

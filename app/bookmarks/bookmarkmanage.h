@@ -37,6 +37,7 @@ public:
     bool addSection(QString sectionName);
     bool addBookmark(QString sectionName, QString bookmarkName, QString bookPath);
 
+    QString bookingTime(QString sectionName, QString bookmarkName);
     QString bookmarkPath(QString sectionName, QString bookmarkName);
     QString checkingBookName(QString sectionName, QString bookName);
     QString checkingBookPath(QString section, QString bookPath);
@@ -53,7 +54,6 @@ public:
 
 private:
     void createBook();
-    void checkBookPath();
     void changeSection(QString oldSectionName, QString sectionName, QString bookmarkName, QString bookmarkValue);
     void changeBookmark(QString oldBookmarkName, QString sectionName, QString bookmarkName, QString bookmarkValue);
 

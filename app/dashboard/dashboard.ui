@@ -437,6 +437,23 @@ border: 1px #3F67C0;
       <property name="styleSheet">
        <string notr="true"/>
       </property>
+      <layout class="QVBoxLayout" name="pGeneralLayout">
+       <property name="spacing">
+        <number>3</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
      </widget>
      <widget class="QWidget" name="pageDrives">
       <property name="styleSheet">
@@ -447,7 +464,25 @@ border: 1px #3F67C0;
      <widget class="QWidget" name="pageBattery">
       <layout class="QVBoxLayout" name="pBatteryLayout"/>
      </widget>
-     <widget class="QWidget" name="pageResource"/>
+     <widget class="QWidget" name="pageResource">
+      <layout class="QVBoxLayout" name="pResourceLayout">
+       <property name="spacing">
+        <number>3</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
+     </widget>
      <widget class="QWidget" name="pageDisplay">
       <property name="font">
        <font>

@@ -88,6 +88,8 @@ private slots:
     void on_gAddOldFileName_clicked(bool checked);
     void on_gAddNewFileName_clicked(bool checked);
 
+    void on_doRemoveAddNum_clicked();
+
 private:
     Ui::corerenamer *ui;
     QSortFilterProxyModel *customSortM;

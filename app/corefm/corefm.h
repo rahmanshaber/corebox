@@ -69,15 +69,10 @@ class corefm : public QWidget
 public:
     explicit corefm(QWidget *parent = 0);
     ~corefm();
-    myModel *modelList;
-
-    Ui::corefm *ui;
-
-//    CoreBox& corebox() {
-//        return corebox_;
-//    }
 
     void goTo(const QString path);
+    QString gCurrentPath();
+    myModel *modelList;
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -173,9 +168,10 @@ private slots:
     void sendToPath();
     void on_actionCoreRenamer_triggered();
     void on_showthumb_pressed();
-    void on_viewTree_clicked(bool checked);
 
 private:
+    Ui::corefm *ui;
+
     void writeSettings();
     void shotcuts();
     void startsetup();
@@ -201,12 +197,11 @@ private:
     tabBar *tabs;
     myProgressDialog *progress;
     propertiesw *properties;
-//    CoreBox corebox_;
     UDisks2 *udisks;
     SettingsManage sm;
 
     QFileSystemWatcher *watcher;
-    QTreeView *tree;
+//    QTreeView *tree;
 
     QFileInfo curIndex;
     QModelIndex backIndex;

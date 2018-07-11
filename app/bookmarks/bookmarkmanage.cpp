@@ -15,18 +15,13 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "bookmarkmanage.h"
+#include "corebox/globalfunctions.h"
 
-
-void BookmarkManage::checkBookPath()
-{
-//    if (!QDir(cbookPath).exists()) {
-//        QDir::home().mkdir(".config/coreBox");
-//    }
-}
 
 void BookmarkManage::createBook()
 {
-    checkBookPath();
+    // Function from globalfunctions.cpp setupFolder...
+    setupFolder(FolderSetup::BookmarkFolder);
     QFile file(cbookFullPath);
     file.open(QFile::ReadWrite);
     file.close();
@@ -44,7 +39,7 @@ void BookmarkManage::checkBook()
     if (s.count() == 0) {
         QTextStream out(&file);
         file.open(QFile::WriteOnly);
-        out << QString("[Speed%20Dial]\ncount=0");
+        out << QString("[Speed%20Dial]\n~~~count~=0");
         file.close();
     }
 }
@@ -62,7 +57,7 @@ QStringList BookmarkManage::getBookNames(QString sectionName)
     bkGet.beginGroup(sectionName);
     QStringList list = bkGet.allKeys();
     bkGet.endGroup();
-    list.removeOne("count");
+    list.removeOne("~~~count~");
     return list;
 }
 
@@ -74,7 +69,7 @@ bool BookmarkManage::addSection(QString sectionName)
         bkGet.beginGroup(sectionName);
         for (int i = 0; i < getBookSections().count(); ++i) {
             if (sectionName.contains(getBookSections().at(i), Qt::CaseInsensitive) == false) {
-                bkGet.setValue("count", int(0));
+                bkGet.setValue("~~~count~", "0");
             }
         }
         bkGet.endGroup();
@@ -90,17 +85,16 @@ bool BookmarkManage::addBookmark(QString sectionName, QString bookmarkName, QStr
     if (!getBookNames(sectionName).contains(bookmarkName, Qt::CaseInsensitive)) {
         bkGet.beginGroup(sectionName);
         for (int i = 0; i < getBookNames(sectionName).count(); ++i) {
-            if (bookmarkName.contains("count", Qt::CaseInsensitive) == true) {
+            if (bookmarkName.contains("~~~count~", Qt::CaseInsensitive) == true) {
                 return false;
             } else {
                 if (bookmarkName.contains(getBookNames(sectionName).at(i), Qt::CaseInsensitive) == false) {
-                    int count = bkGet.value("count").toInt();
-                    bkGet.setValue("count", count + 1);
+                    bkGet.setValue("~~~count~", bkGet.childKeys().count());
                 }
             }
         }
 
-        bkGet.setValue(bookmarkName, bookPath);
+        bkGet.setValue(bookmarkName, bookPath + "\t\t\t" + QDateTime::currentDateTime().toString("hh.mm.ss - dd.MM.yyyy"));
         bkGet.endGroup();
         return true;
     }
@@ -123,6 +117,7 @@ void BookmarkManage::delbookmark(QString bookmarkName , QString section)
     QSettings bkGet(cbookFullPath, QSettings::IniFormat);
     bkGet.beginGroup(section);
     bkGet.remove(bookmarkName);
+    bkGet.setValue("~~~count~", bkGet.childKeys().count());
     bkGet.endGroup();
 }
 
@@ -134,15 +129,16 @@ void BookmarkManage::editbookmark(QString sectionName, QString bookmarkName, QSt
 void BookmarkManage::changeAll(QString oldSectionName, QString oldBookmarkName, QString sectionName, QString bookmarkName, QString bookmarkValue)
 {
     QSettings bkGet(cbookFullPath, QSettings::IniFormat);
-    bkGet.beginGroup(oldSectionName);
-    bkGet.remove(oldBookmarkName);
-    bkGet.setValue("count", bkGet.childKeys().count());
-    bkGet.endGroup();
-
-    bkGet.beginGroup(sectionName);
-    bkGet.setValue(bookmarkName, bookmarkValue);
-    bkGet.setValue("count", bkGet.childKeys().count());
-    bkGet.endGroup();
+    delbookmark(oldBookmarkName, oldSectionName);
+//    bkGet.beginGroup(oldSectionName);
+//    bkGet.remove(oldBookmarkName);
+//    bkGet.setValue("~~~count~", bkGet.childKeys().count());
+//    bkGet.endGroup();
+    addBookmark(sectionName, bookmarkName, bookmarkValue);
+//    bkGet.beginGroup(sectionName);
+//    bkGet.setValue(bookmarkName, bookmarkValue);
+//    bkGet.setValue("~~~count~", bkGet.childKeys().count());
+//    bkGet.endGroup();
 }
 
 void BookmarkManage::changeSection(QString oldSectionName, QString sectionName, QString bookmarkName, QString bookmarkValue)
@@ -151,12 +147,12 @@ void BookmarkManage::changeSection(QString oldSectionName, QString sectionName, 
 
     bkGet.beginGroup(oldSectionName);
     bkGet.remove(bookmarkName);
-    bkGet.setValue("count", bkGet.childKeys().count());
+    bkGet.setValue("~~~count~", bkGet.childKeys().count());
     bkGet.endGroup();
 
     bkGet.beginGroup(sectionName);
     bkGet.setValue(bookmarkName, bookmarkValue);
-    bkGet.setValue("count", bkGet.childKeys().count());
+    bkGet.setValue("~~~count~", bkGet.childKeys().count());
     bkGet.endGroup();
 }
 
@@ -180,9 +176,15 @@ QString BookmarkManage::bookmarkValues(QString sectionName, QString bookmarkName
 
 QString BookmarkManage::bookmarkPath(QString sectionName, QString bookmarkName)
 {
-    //QStringList values(bookmarkValues(sectionName, bookmarkName).split("$$$"));
-    //return values.at(0);
-    return bookmarkValues(sectionName, bookmarkName);
+    QStringList values(bookmarkValues(sectionName, bookmarkName).split("\t\t\t"));
+    return values.at(0);
+//    return bookmarkValues(sectionName, bookmarkName);
+}
+
+QString BookmarkManage::bookingTime(QString sectionName, QString bookmarkName)
+{
+    QStringList values(bookmarkValues(sectionName, bookmarkName).split("\t\t\t"));
+    return values.at(1);
 }
 
 QString BookmarkManage::checkingBookName(QString sectionName, QString bookName)
@@ -208,7 +210,7 @@ QStringList BookmarkManage::keys()
         list.append(QString(bkGet.allKeys().at(i)).split("/").at(1));
     }
     list = list.toSet().toList();
-    //list.removeOne("count");
+    list.removeOne("~~~count~");
     return list;
 }
 

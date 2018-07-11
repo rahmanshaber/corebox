@@ -24,6 +24,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QStyle>
 #include <QStorageInfo>
 #include <QDebug>
+#include <QTextStream>
 
 #include <corefm/mimeutils.h>
 #include "corepad/corepad.h"
@@ -42,13 +43,10 @@ bool moveToTrash(const QString &fileName) // moves a file or folder to trash fol
         }
     }
     else {
-        QDir trash = QDir::home();
-        trash.cd(".local/share/");
-        trash.mkdir("Trash");
-        trash.cd("Trash");
-        trash.mkdir("files");
-        trash.mkdir("info");
+        // Check the trash folder for it't existence
+        setupFolder(TrashFolder);
 
+        QDir trash(QDir::homePath() + "/.local/share/Trash");
         QFile directorySizes(trash.path() + "/directorysizes");
         directorySizes.open(QFile::Append);
 
@@ -75,30 +73,41 @@ bool moveToTrash(const QString &fileName) // moves a file or folder to trash fol
     return false;
 }
 
-void setupFolder()
+void setupFolder(FolderSetup fs)
 {
     qDebug() << "setupFolder";
-    // Setup drive mount folder
-    const QString d = QDir::homePath() + "/.coreBox";
-    if(!QDir(d).exists()) {
-        QDir::home().mkdir(".coreBox");
+    switch (fs) {
+    case FolderSetup::BookmarkFolder: {
+        // Setup corebox folder for bookmarks
+        const QString b = QDir::homePath() + ".config/coreBox";
+        if (!QDir(b).exists()) {
+            QDir::home().mkdir(".config/coreBox");
+        }
+        break;
     }
-
-    // Setup corebox folder for bookmarks
-    const QString b = QDir::homePath() + ".config/coreBox";
-    if (!QDir(b).exists()) {
-        QDir::home().mkdir(".config/coreBox");
+    case FolderSetup::DriveMountFolder: {
+        // Setup drive mount folder
+        const QString d = QDir::homePath() + "/.coreBox";
+        if(!QDir(d).exists()) {
+            QDir::home().mkdir(".coreBox");
+        }
+        break;
     }
-
-    // Setup trash folder
-    const QString t = QDir::homePath() + ".local/share/Trash";
-    if (!QDir(t).exists()) {
-        QDir trash = QDir::home();
-        trash.cd(".local/share/");
-        trash.mkdir("Trash");
-        trash.cd("Trash");
-        trash.mkdir("files");
-        trash.mkdir("info");
+    case FolderSetup::TrashFolder: {
+        // Setup trash folder
+        const QString t = QDir::homePath() + ".local/share/Trash";
+        if (!QDir(t).exists()) {
+            QDir trash = QDir::home();
+            trash.cd(".local/share/");
+            trash.mkdir("Trash");
+            trash.cd("Trash");
+            trash.mkdir("files");
+            trash.mkdir("info");
+        }
+        break;
+    }
+    default:
+        break;
     }
 }
 
@@ -106,28 +115,29 @@ void setupFolder()
 QString sentDateText(const QString &dateTime)
 {
     // Can get error if date time format is not like this dd.MM.yyyy (28.06.2018)
-    QDate temp = QDateTime::fromString(dateTime, "dd.MM.yyyy").date();
-    int givenD = temp.day();
-    int currnD = QDateTime::currentDateTime().toString("dd").toInt();
-    int givenM = temp.month();
-    int currnM = QDateTime::currentDateTime().toString("MM").toInt();
-    int givenY = temp.year();
-    int currnY = QDateTime::currentDateTime().toString("yyyy").toInt();
+    qint64 secs = QDateTime::fromString(dateTime, "dd.MM.yyyy").secsTo(QDateTime::currentDateTime());
+    int days = secs / 60 / 60 / 24;
 
-    if (givenY == currnY) {
-        if (givenM == currnM) {
-            if (givenD == currnD)
-                return "Today";
-            else if ((currnD - givenD) < 32)
-                return QString("%1 day(s) ago").arg(currnD - givenD);
-            else
-                return QString("%1.%2.%3").arg(givenD, givenM, givenY);
-        } else if ((currnM - givenM) < 13)
-            return QString("%1 month(s) ago").arg(currnM - givenM);
+    if (days > 30 && days < 365) {
+        int months = days / 30;
+        if (months > 1)
+            return QString("%1 months ago").arg(months);
         else
-            return QString("%1.%2.%3").arg(givenD, givenM, givenY);
-    } else
-        return QString("%1.%2.%3").arg(givenD, givenM, givenY);
+            return QString("%1 month ago").arg(months);
+
+    } else if (days > 365) {
+        int years = days / 365;
+        if (years > 1)
+            return QString("%1 years ago").arg(years);
+        else
+            return QString("%1 year ago").arg(years);
+
+    } else {
+        if (days > 1)
+            return QString("%1 days ago").arg(days);
+        else
+            return QString("Today");
+    }
 
     return NULL;
 }
@@ -484,7 +494,7 @@ QString getMountPathByName(const QString displayName) // get mount path by parti
     return NULL;
 }
 
-qint64 getF(QStringList paths)
+qint64 getF(QStringList paths, int &folders, int &files)
 {
     qint64 totalSize = 0;
     Q_FOREACH( QString path, paths ) {
@@ -503,7 +513,7 @@ qint64 getF(QStringList paths)
                     if ( it.filePath() == path )
                         continue;
 
-                    //folders++;
+                    folders++;
 
                     //if( folders % 32 == 0 ) {
                         //emit updateSignal();
@@ -511,19 +521,18 @@ qint64 getF(QStringList paths)
                 }
 
                 else {
-                    //files++;
+                    files++;
                     totalSize += it.fileInfo().size();
                 }
             }
         }
 
         else {
-            //files++;
+            files++;
             totalSize += getSize( path );
         }
     }
 
-    qDebug() << "SIZE : " << totalSize;
     //emit updateSignal();
     return totalSize;
 }
@@ -589,4 +598,165 @@ qint64 getSize(QString path)
 
     /* Should never come till here */
     return 0;
+}
+
+QStringList sortDate(QStringList &dateList, sortOrder s)
+{
+    QList<QDate> dates;
+
+    foreach (QString str, dateList) {
+        dates.append(QDate::fromString(str, "dd.MM.yyyy"));
+    }
+
+    std::sort(std::begin(dates), std::end(dates));
+
+    if (s == ASCENDING) {
+        for (int i = 0; i < dateList.count(); i++) {
+            dateList.replace(i, dates[i].toString("dd.MM.yyyy"));
+        }
+    } else {
+        int reverse = dateList.count() - 1;
+        for (int i = 0; i < dateList.count(); i++) {
+            dateList.replace(reverse, dates[i].toString("dd.MM.yyyy"));
+            reverse--;
+        }
+    }
+
+    dates.clear();
+    return dateList;
+}
+
+QStringList sortTime(QStringList &timeList, sortOrder s)
+{
+    QList<QTime> times;
+
+    foreach (QString str, timeList) {
+        times.append(QTime::fromString(str, "hh.mm.ss"));
+    }
+
+    std::sort(std::begin(times), std::end(times));
+
+    if (s == ASCENDING) {
+        for (int i = 0; i < timeList.count(); i++) {
+            timeList.replace(i, times[i].toString("hh.mm.ss"));
+        }
+    } else {
+        int reverse = timeList.count() - 1;
+        for (int i = 0; i < timeList.count(); i++) {
+            timeList.replace(reverse, times[i].toString("hh.mm.ss"));
+            reverse--;
+        }
+    }
+
+    times.clear();
+    return timeList;
+}
+
+QStringList sortList(QStringList &list, sortOrder s)
+{
+    QCollator sortNum;
+    sortNum.setNumericMode(true);
+
+    if (s == ASCENDING) {
+        std::sort(list.begin(), list.end(), sortNum);
+    } else {
+        std::sort(list.begin(), list.end(), [&sortNum](const QString &s1, const QString &s2) {
+            return sortNum.compare(s1, s2) > 0;
+        });
+    }
+
+    return list;
+}
+
+QStringList sortDateTime(QStringList &dateTimeList, sortOrder s)
+{
+    QList<QDateTime> dts;
+
+    foreach (QString str, dateTimeList) {
+        dts.append(QDateTime::fromString(str, "hh.mm.ss - dd.MM.yyyy"));
+    }
+
+    std::sort(std::begin(dts), std::end(dts));
+
+    if (s == ASCENDING) {
+        for (int i = 0; i < dateTimeList.count(); i++) {
+            dateTimeList.replace(i, dts[i].toString("hh.mm.ss - dd.MM.yyyy"));
+        }
+    } else {
+        int reverse = dateTimeList.count() - 1;
+        for (int i = 0; i < dateTimeList.count(); i++) {
+            dateTimeList.replace(reverse, dts[i].toString("hh.mm.ss - dd.MM.yyyy"));
+            reverse--;
+        }
+    }
+
+    dts.clear();
+    return dateTimeList;
+}
+
+bool deleteLastLine(const QString &filePath)
+{
+    QFile file(filePath);
+    QTextStream textIn(&file);
+    file.open(QIODevice::Text | QIODevice::ReadWrite);
+    //textIn << file.readAll();
+    //qDebug() << textIn.readAll();
+    QString textOut;
+
+    int lines = 0;
+    while (!textIn.atEnd()) {
+        qDebug() << lines << textIn.readLine();
+        if (textIn.readLine().count()) {
+            if (textIn.readLine().left(0) == "[") {
+                textOut += textIn.readLine() + "\n";
+                qDebug() << "left : " << textOut;
+            } else {
+                if (!(lines > 30)) {
+                    textOut += textIn.readLine() + "\n";
+                    lines++;
+                    qDebug() << "lines : " << textOut;
+                }
+            }
+        } else {
+            textOut += textIn.readLine() + "\n";
+            qDebug() << "NO : " << textOut;
+        }
+    }
+
+
+    //file.write(QString("").toLatin1());
+
+
+    qDebug() << "Text out \n" << textOut;
+    file.write(textOut.toLatin1());
+
+    file.close();
+
+    return true;
+
+}
+
+QString getFolderConts(QString &output, const QString &path)
+{
+    QFileSystemModel *model = new QFileSystemModel();
+    model->setRootPath(path);
+
+
+    QString currentPath;
+    QDirIterator it(path, QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::Hidden, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        it.next();
+        if(it.fileInfo().isDir()) {
+            if (it.filePath() == path)
+                continue;
+
+            currentPath = it.fileInfo().baseName();
+            output += "├── " + it.fileInfo().baseName() + "\n";
+        } else {
+            if (it.fileInfo().baseName() == currentPath)
+                output += "│   ├── " + it.fileName() + "\n";
+        }
+    }
+
+    return output;
 }

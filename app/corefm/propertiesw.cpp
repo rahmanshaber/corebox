@@ -175,28 +175,44 @@ void propertiesw::numericChanged(QString text)
 
 void propertiesw::on_executableB_clicked(bool checked)
 {
-    if(checked){
-        QProcess p1;
-        QString commd = "chmod a+x \"" + pathName + "\"";
-        p1.start(commd.toLatin1());
-        p1.waitForFinished();
-    }
-    else if(!checked){
-        QProcess p1;
-        QString commd = "chmod -x \"" + pathName + "\"";
-        p1.start(commd.toLatin1());
-        p1.waitForFinished();
-    }
-//    QFile::Permissions perms = NULL;
+    ui->ownerExec->setChecked(checked);
+    ui->groupExec->setChecked(checked);
+    ui->otherExec->setChecked(checked);
 
-//    if ( checked)
-//        perms |= ( ( ui->executableB->checkState() == Qt::Checked ) ? QFile::ExeOwner : ( QFile::permissions( pathName ) & QFile::ExeOwner ) );
+    QString path = info.filePath();
+    //Q_FOREACH( QString path, pathsList ) {
+        QFile::Permissions perms = NULL;
 
-//    if ( checked)
-//        perms |= ( ( ui->executableB->checkState() == Qt::Checked ) ? QFile::ExeGroup : ( QFile::permissions( pathName ) & QFile::ExeGroup ) );
+        if ( ui->ownerRead->isChecked() )
+            perms |= ( ( ui->ownerRead->checkState() == Qt::Checked ) ? QFile::ReadOwner : ( QFile::permissions( path ) & QFile::ReadOwner ) );
 
-//    if ( checked)
-//        perms |= ( ( ui->executableB->checkState() == Qt::Checked ) ? QFile::ExeOther : ( QFile::permissions( pathName ) & QFile::ExeOther ) );
+        if ( ui->ownerWrite->isChecked() )
+            perms |= ( ( ui->ownerWrite->checkState() == Qt::Checked ) ? QFile::WriteOwner : ( QFile::permissions( path ) & QFile::WriteOwner ) );
+
+        if ( ui->ownerExec->isChecked() )
+            perms |= ( ( ui->ownerExec->checkState() == Qt::Checked ) ? QFile::ExeOwner : ( QFile::permissions( path ) & QFile::ExeOwner ) );
+
+        if ( ui->groupRead->isChecked() )
+            perms |= ( ( ui->groupRead->checkState() == Qt::Checked ) ? QFile::ReadGroup : ( QFile::permissions( path ) & QFile::ReadGroup ) );
+
+        if ( ui->groupWrite->isChecked() )
+            perms |= ( ( ui->groupWrite->checkState() == Qt::Checked ) ? QFile::WriteGroup : ( QFile::permissions( path ) & QFile::WriteGroup ) );
+
+        if ( ui->groupExec->isChecked() )
+            perms |= ( ( ui->groupExec->checkState() == Qt::Checked ) ? QFile::ExeGroup : ( QFile::permissions( path ) & QFile::ExeGroup ) );
+
+        if ( ui->otherRead->isChecked() )
+            perms |= ( ( ui->otherRead->checkState() == Qt::Checked ) ? QFile::ReadOther : ( QFile::permissions( path ) & QFile::ReadOther ) );
+
+        if ( ui->otherWrite->isChecked() )
+            perms |= ( ( ui->otherWrite->checkState() == Qt::Checked ) ? QFile::WriteOther : ( QFile::permissions( path ) & QFile::WriteOther ) );
+
+        if ( ui->otherExec->isChecked() )
+            perms |= ( ( ui->otherExec->checkState() == Qt::Checked ) ? QFile::ExeOther : ( QFile::permissions( path ) & QFile::ExeOther ) );
+
+        QFile::setPermissions( path, perms );
+
+        checkboxesChanged();
 }
 
 void propertiesw::detailimage(const QString imagepath)
@@ -265,4 +281,3 @@ bool propertiesw::isExecutable( const QString path )
 
     return false;
 }
-

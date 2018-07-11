@@ -61,6 +61,7 @@ void bookmarks::sectionRefresh()
 
     int selectedIndex = ui->section->currentIndex().row();
 
+    qDebug() << bk.getBookSections();
     ui->section->clear();
     ui->section->addItems(bk.getBookSections());
 
@@ -142,13 +143,35 @@ void bookmarks::on_section_itemClicked(QListWidgetItem *item)
     }
     ui->boklist->setColumnCount(2);
     ui->boklist->setRowCount(count);
+
+    QStringList dateTimeList;
+    for (int i = 0; i < count; i++) {
+        dateTimeList.append(bk.bookingTime(ui->section->currentItem()->text(), list.at(i)));
+    }
+
+    sortDateTime(dateTimeList);
+    QStringList mList;
+    mList.clear();
+    int reverse = count - 1;
+    for (int i = 0; i < count; i++) {
+        for (int j = 0; j < count; j++) {
+            QString bTime = bk.bookingTime(ui->section->currentItem()->text(), list.at(j));
+            if (bTime.contains(dateTimeList.at(i))) {
+                mList.insert(reverse, list.at(j));
+                reverse--;
+            }
+        }
+    }
+    dateTimeList.clear();
+    list.clear();
+
     QTableWidgetItem *items;
-    for (int i = 0; i < count; ++i) {
-        items = new QTableWidgetItem(list.at(i));
-        items->setIcon(geticon(bk.bookmarkPath(ui->section->currentItem()->text(), list.at(i))));
+    for (int i = 0; i < count; i++) {
+        items = new QTableWidgetItem(mList.at(i));
+        items->setIcon(geticon(bk.bookmarkPath(ui->section->currentItem()->text(), mList.at(i))));
 
         ui->boklist->setItem(i, 0, items);
-        ui->boklist->setItem(i, 1, new QTableWidgetItem(bk.bookmarkPath(ui->section->currentItem()->text(), list.at(i))));
+        ui->boklist->setItem(i, 1, new QTableWidgetItem(bk.bookmarkPath(ui->section->currentItem()->text(), mList.at(i))));
     }
     ui->bookmarkCount->setText(QString::number(ui->boklist->rowCount()) + " item(s)");
 }

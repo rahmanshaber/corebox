@@ -61,6 +61,9 @@ public:
     explicit dashboard(QWidget *parent = 0);
     ~dashboard();
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private:
     Ui::dashboard *ui;
     void pageClick(QPushButton *btn, int i, QString title);

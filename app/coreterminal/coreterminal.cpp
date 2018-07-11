@@ -195,8 +195,6 @@ coreterminal::coreterminal(const QString &workDir, const QString &command, QWidg
 
     startShellProgram();
 
-    setFocus();
-
     connect(this, &coreterminal::finished, [this]() {
         CoreBox *cBox = static_cast<CoreBox*>(qApp->activeWindow());
         cBox->closeCurrentTab();
@@ -208,6 +206,9 @@ coreterminal::coreterminal(const QString &workDir, const QString &command, QWidg
     connect(shortcut, &QShortcut::activated, this, &coreterminal::copyClipboard);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_V), this);
     connect(shortcut, &QShortcut::activated, this, &coreterminal::pasteClipboard);
+
+    setFocusPolicy(Qt::StrongFocus);
+    setFocus();
 }
 
 QString coreterminal::currentWorkingDirectory()
