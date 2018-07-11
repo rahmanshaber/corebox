@@ -18,20 +18,103 @@
     <normaloff>:/icons/CorePad.svg</normaloff>:/icons/CorePad.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMenu::item{
-background-color: #FFFFFF;
-color: #000000;
-}
+   <string notr="true">/*CorePad*/
 
-QMenu::item:selected{
-background-color: #D3D3D3;
-color: #000000;
-}
+#appTitle{
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
 
-QMenu::separator {
-background:#808080;
-height: 1px; 
-}</string>
+QWidget [accessibleName=&quot;shortcut&quot;]{
+    background-color: #2F323A;
+    color: #ffffff;
+    border: 1px #434343;}
+
+QFrame [accessibleName=&quot;searchBox&quot;]{
+    background-color: #000000;
+    color: #E6E6E6;}
+
+
+QLineEdit{
+    border: 1px solid #434343;}
+
+
+QSpinBox {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;}
+QSpinBox::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    width: 16px;
+    border-image: url(:/icons/up_w.svg) 1;
+    border-width: 1px;}
+QSpinBox::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+    width: 16px;
+    border-image: url(:/icons/down_w.svg) 1;
+    border-width: 1px;
+    border-top-width: 0;}
+
+
+QToolButton{
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #434343;}
+QToolButton:pressed{
+    background-color: #00619D; }
+QToolButton:hover {
+    background-color: #00619D; }
+
+
+QPushButton{
+    background-color: transparent;
+    color: #ffffff;
+    Text-align:left;
+    border: 1px #434343;
+    padding: 5px 5px 5px 5px;}
+QPushButton:pressed{
+    background-color: #00619D;}
+QPushButton:hover {
+    background-color: #00619D;}
+
+
+QComboBox {
+    border: 1px solid #ffffff;
+    padding: 2px 2px 2px 10px;}
+QComboBox QAbstractItemView {
+    background-color: #546070;
+    color: #ffffff;
+    selection-background-color: #F1A873;}
+QComboBox::drop-down {
+    background-color: #3C3C43;}
+
+
+QTabWidget QTabBar{
+    border-color: #2F323A;
+    background-color: #2F323A;
+    height: 25px;}
+QTabWidget QTabBar::tab{
+    background-color: #2F323A;
+    color: #ffffff;
+    border-right:none;
+    height: 25px;
+    width: 130px;
+    padding: 0px 5px 0px 5px;}
+QTabWidget QTabBar::tab:selected{
+    background-color: #2E2F30;
+    color: #ffffff;}
+QTabWidget QTabBar::tab:!selected{
+    background-color:  #2F323A;
+    color:#000000;}
+QTabBar::close-button {
+    image: url(:/icons/close_b.svg);
+    subcontrol-position: right;}
+
+
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -69,39 +152,8 @@ height: 1px;
        <height>16777215</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #2F323A;
-color: #ffffff;
-border: 1px rgb(67, 67, 67);
-}
-
-QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #00619D;
-}
-
-QPushButton:hover {
-background-color: #00619D;
-}
-
-
-QComboBox {
-    border: 1px solid #ffffff;
-    padding: 2px 2px 2px 10px;
-}
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: #ffffff;
-    selection-background-color: #F1A873;
-}
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}</string>
+     <property name="accessibleName">
+      <string>shortcut</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
       <property name="spacing">
@@ -120,7 +172,7 @@ QComboBox::drop-down {
        <number>10</number>
       </property>
       <item>
-       <widget class="QToolButton" name="title">
+       <widget class="QToolButton" name="appTitle">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -475,15 +527,9 @@ QComboBox::drop-down {
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="font">
+       <widget class="QWidget" name="font" native="true">
         <property name="styleSheet">
          <string notr="true"/>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <property name="spacing">
@@ -527,130 +573,13 @@ QComboBox::drop-down {
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="fontSize">
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-            </font>
+          <widget class="QSpinBox" name="fontSize">
+           <property name="minimum">
+            <number>6</number>
            </property>
-           <property name="styleSheet">
-            <string notr="true"/>
+           <property name="maximum">
+            <number>14</number>
            </property>
-           <property name="currentText">
-            <string>10</string>
-           </property>
-           <property name="currentIndex">
-            <number>5</number>
-           </property>
-           <property name="maxVisibleItems">
-            <number>5</number>
-           </property>
-           <property name="maxCount">
-            <number>40</number>
-           </property>
-           <property name="frame">
-            <bool>true</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>5</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>6</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>7</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>8</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>9</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>10</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>11</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>12</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>13</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>14</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>15</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>16</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>17</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>18</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>19</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>20</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>21</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>22</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>23</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>24</string>
-            </property>
-           </item>
           </widget>
          </item>
         </layout>
@@ -700,6 +629,22 @@ QComboBox::drop-down {
      </layout>
     </widget>
    </item>
+   <item row="2" column="1">
+    <widget class="QTabWidget" name="notes">
+     <property name="tabPosition">
+      <enum>QTabWidget::South</enum>
+     </property>
+     <property name="documentMode">
+      <bool>true</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>true</bool>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="1">
     <widget class="QFrame" name="searchbox">
      <property name="minimumSize">
@@ -714,28 +659,11 @@ QComboBox::drop-down {
        <height>30</height>
       </size>
      </property>
+     <property name="accessibleName">
+      <string>searchBox</string>
+     </property>
      <property name="styleSheet">
-      <string notr="true">QFrame{
-background-color: #000000;
-color: #E6E6E6;
-}
-
-QToolButton{
-border: 1px solid #434343;
-}
-QToolButton:pressed{
-background-color: #1268A4; 
-}
-
-QToolButton:hover {
-background-color: #1268A4; 
-}
-
-
-QLineEdit{
-border: 1px solid rgb(67, 67, 67);
-}
-</string>
+      <string notr="true"/>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -872,54 +800,6 @@ border: 1px solid rgb(67, 67, 67);
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QTabWidget" name="notes">
-     <property name="styleSheet">
-      <string notr="true">QTabWidget QTabBar{
-border-color: #2F323A;
-background-color: #2F323A;
-height: 25px;
-}
-
-QTabWidget QTabBar::tab{
-background-color: #2F323A;
-color: #ffffff;
-border-right:none;
-height: 25px;
-width: 130px;
-padding: 0px 5px 0px 5px;
-}
-
-QTabWidget QTabBar::tab:selected{
-background-color: #2E2F30;
-color: #ffffff;
-}
-
-QTabWidget QTabBar::tab:!selected{
-background-color:  #2F323A;
-color:#000000;
-}
-
-QTabBar::close-button {
-    image: url(:/icons/close_b.svg);
-    subcontrol-position: right;
-}
-</string>
-     </property>
-     <property name="tabPosition">
-      <enum>QTabWidget::South</enum>
-     </property>
-     <property name="documentMode">
-      <bool>true</bool>
-     </property>
-     <property name="tabsClosable">
-      <bool>true</bool>
-     </property>
-     <property name="tabBarAutoHide">
-      <bool>true</bool>
-     </property>
     </widget>
    </item>
   </layout>

@@ -20,6 +20,150 @@
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/*Settings */
+
+#appTitle{
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+
+
+QWidget [accessibleName=&quot;shortcut&quot;]{
+    background-color: #34343C;
+    color: #ffffff;
+    border: 1px #45454D;}
+
+QWidget [accessibleName=&quot;nameBar&quot;]{
+   background-color:#363941;
+   color: #000000;
+    border: 1px #45454D;}
+
+QWidget [accessibleName=&quot;applyBar&quot;]{
+    background-color: #45454D;
+    color: #ffffff;
+    border: 1px #45454D;}
+
+QWidget [accessibleName=&quot;pages&quot;]{
+    background-color: #45454D;
+    color: #E6E6E6;
+    border: 1px #45454D;}
+
+
+QLineEdit{
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;}
+
+
+QLabel{
+    background-color: transparent;
+    color:#E6E6E6 ;
+    padding: 5px 5px 5px 5px;}
+
+
+QPushButton{
+    background-color: transparent;
+    color: #000000;
+    Text-align:left;
+    border: 1px #434343;
+    padding: 5px 5px 5px 5px;}
+QPushButton:checked{
+    color: #ffffff;
+    background-color:#45454D ;}
+QPushButton:!checked{
+    color: #57585D ;}
+
+
+QToolButton{
+    background-color: transparent;
+    color: #ffffff;
+    padding: 3px 5px 3px 5px;
+    border: 1px solid #434343;}
+QToolButton:pressed{
+    background-color: #3E4A58;}
+QToolButton:hover {
+    background-color: #3E4A58; }
+
+
+QCheckBox::indicator {
+    width: 30px;
+    height: 30px;}
+QCheckBox::indicator:checked {
+    image: url(:/icons/toggle_on_w.svg);}
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/toggle_off_w.svg);}
+
+
+QGroupBox {
+    font-size: 13px;
+    margin-top: -1ex;
+    background-color: #34343C;
+    color: #E6E6E6;
+    border: 1px  #434343;}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    background-color: #34343C;
+    color:#F3AB79 ;
+    padding: 2px 5px 2px 5px;}
+
+
+QComboBox {
+    background-color: #34343C;
+    color: #E6E6E6;
+    border: 1px solid #434343;
+    padding: 5px 5px 5px 10px;}
+QComboBox QAbstractItemView {
+    background-color: #363941;
+    color: #ffffff;
+    selection-background-color: #C2C2C2;}
+QComboBox::drop-down {
+    background-color: #3C3C43;}
+QComboBox::down-arrow {
+    image: url();}
+QComboBox:focus{
+    border:1px solid #C2C2C2;}
+
+
+QTreeView {
+    background-color:#F2F2F2 ;
+    color:#000000; }
+QTreeView::item:selected {
+    background-color:#1793D1 ;
+    color:#000000; }
+
+
+QListView {
+    background-color:#F2F2F2 ;
+    color:#000000;
+    padding: 5px 5px 0px 5px;}
+QListView::item:selected {
+    background-color:#1793D1 ;
+    color:#000000; }
+
+
+QScrollBar:vertical {
+    background-color: rgba( 0, 0, 0, 72% );
+    max-width: 8px;
+    border-radius: 4px;
+    padding: 1px; }
+QScrollBar::handle:vertical {
+    background-color: silver;
+    max-width: 6px;
+    min-height: 12px;
+    border-radius: 3px; }
+QScrollBar::sub-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    width: 0px; height: 0px; }
+
+</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <property name="leftMargin">
     <number>0</number>
@@ -37,7 +181,7 @@
     <number>0</number>
    </property>
    <item row="0" column="1">
-    <widget class="QFrame" name="namebar">
+    <widget class="QFrame" name="nameBar">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -50,11 +194,8 @@
        <height>30</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#363941;
-color: #FFFFFF;
-}</string>
+     <property name="accessibleName">
+      <string>nameBar</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -122,9 +263,6 @@ color: #FFFFFF;
           <pointsize>14</pointsize>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true">color: white;</string>
-        </property>
         <property name="text">
          <string>CoreBox</string>
         </property>
@@ -166,26 +304,8 @@ color: #FFFFFF;
        <height>16777215</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #34343C;
-color: #ffffff;
-border: 1px #34343C;
-}
-
-QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:checked{
-background-color:#45454D ;
-}
-
-QPushButton:!checked{
-color: #57585D ;
-}
-</string>
+     <property name="accessibleName">
+      <string>shortcut</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="spacing">
@@ -204,7 +324,7 @@ color: #57585D ;
        <number>10</number>
       </property>
       <item>
-       <widget class="QToolButton" name="title">
+       <widget class="QToolButton" name="appTitle">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -396,13 +516,9 @@ color: #57585D ;
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="QFrame" name="frame">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #45454D;
-color: #ffffff;
-border: 1px #45454D;
-}</string>
+    <widget class="QFrame" name="applyBar">
+     <property name="accessibleName">
+      <string>applyBar</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -475,97 +591,13 @@ padding: 3px 10px 3px 10px;
    </item>
    <item row="3" column="1">
     <widget class="QStackedWidget" name="pages">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #45454D;
-color: #E6E6E6;
-border: 1px #45454D;
-}
-
-QLineEdit{
-    background-color: #34343C;
-    color: #E6E6E6;
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}
-
-QLabel{
-background-color: #34343C;
-color:#E6E6E6 ;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton{
-background-color: #34343C;
-}
-
-QGroupBox {
-    font-size: 13px;
-    margin-top: -1ex;
-    background-color: #34343C;
-    color: #E6E6E6;
-    border: 1px  gray;
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    subcontrol-position: top left;
-    background-color: #34343C;
-    color:#F3AB79 ;
-    padding: 2px 5px 2px 5px;
-}
-
-
-QComboBox {
-   background-color: #34343C;
-    color: #E6E6E6;
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}
-
-QComboBox QAbstractItemView {
-    background-color: #363941;
-    color: #ffffff;
-    selection-background-color: #C2C2C2;
-}
-
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}
-
-QComboBox::down-arrow {
-    image: url();
-}
-
-QComboBox:focus{
-    border:1px solid #C2C2C2;
-}
-
-
-
-QScrollBar::groove:vertical {
-    background: red;
-    position: absolute;
-    left: 4px; right: 4px;
-}
-
-QScrollBar::handle:vertical {
-   background: #C0C0C0;
-   height:10px;
-}
-
-QScrollBar::add-page:vertical {
-    background: #363941;
-}
-
-QScrollBar::sub-page:vertical {
-    background: #363941;
-}</string>
-     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
      <widget class="QWidget" name="pcorebox">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -606,10 +638,10 @@ QScrollBar::sub-page:vertical {
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QPushButton" name="isMaximized">
+           <widget class="QCheckBox" name="isMaximized">
             <property name="maximumSize">
              <size>
-              <width>45</width>
+              <width>35</width>
               <height>25</height>
              </size>
             </property>
@@ -627,11 +659,6 @@ QScrollBar::sub-page:vertical {
             <property name="text">
              <string/>
             </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-            </property>
             <property name="iconSize">
              <size>
               <width>40</width>
@@ -647,20 +674,15 @@ QScrollBar::sub-page:vertical {
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QPushButton" name="isRecentDisable">
+           <widget class="QCheckBox" name="isRecentDisable">
             <property name="maximumSize">
              <size>
-              <width>45</width>
+              <width>35</width>
               <height>25</height>
              </size>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -737,44 +759,6 @@ QScrollBar::sub-page:vertical {
            <number>20</number>
           </property>
           <item>
-           <widget class="QPushButton" name="restore">
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-border: 1px solid #ffffff;
-padding: 3px 2px 3px 2px;
-background-color: #45454D;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
-            </property>
-            <property name="text">
-             <string>Restore</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="backUp">
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-border: 1px solid #ffffff;
-padding: 3px 2px 3px 2px;
-background-color: #45454D;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
-            </property>
-            <property name="text">
-             <string>Backup</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <spacer name="horizontalSpacer_6">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -786,6 +770,26 @@ background-color: rgb(48, 140, 198);
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="restore">
+            <property name="text">
+             <string>Restore</string>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextOnly</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="backUp">
+            <property name="text">
+             <string>Backup</string>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextOnly</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -806,6 +810,9 @@ background-color: rgb(48, 140, 198);
       </layout>
      </widget>
      <widget class="QWidget" name="pcoreaction">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
         <widget class="QGroupBox" name="showWB">
@@ -835,78 +842,10 @@ background-color: rgb(48, 140, 198);
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QPushButton" name="isTime">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_16">
             <property name="text">
              <string>Show System Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QPushButton" name="isSystem">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -917,92 +856,10 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QPushButton" name="isCalander">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
           <item row="3" column="0">
            <widget class="QLabel" name="label_19">
             <property name="text">
              <string>Show Calculator Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QPushButton" name="isCalculator">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1013,92 +870,10 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
-           <widget class="QPushButton" name="isBattery">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
           <item row="5" column="0">
            <widget class="QLabel" name="label_17">
             <property name="text">
              <string>Show Network Widget</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QPushButton" name="isNetwork">
-            <property name="maximumSize">
-             <size>
-              <width>45</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1109,35 +884,148 @@ QCheckBox::indicator:unchecked {
             </property>
            </widget>
           </item>
-          <item row="6" column="1">
-           <widget class="QPushButton" name="isNotes">
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="isTime">
             <property name="maximumSize">
              <size>
-              <width>45</width>
+              <width>35</width>
               <height>25</height>
              </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator {
-    width: 45px;
-    height: 25px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/icons/checkbox.svg);
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/icons/checkbox_not.svg);
-}</string>
             </property>
             <property name="text">
              <string/>
             </property>
-            <property name="icon">
-             <iconset resource="../icons.qrc">
-              <normaloff>:/icons/toggle_off_w.svg</normaloff>
-              <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="isSystem">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="isCalander">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="isCalculator">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="isBattery">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="isNetwork">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="isNotes">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
             </property>
             <property name="iconSize">
              <size>
@@ -1169,6 +1057,9 @@ QCheckBox::indicator:unchecked {
       </layout>
      </widget>
      <widget class="QWidget" name="pcorefm">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0">
        <property name="spacing">
         <number>5</number>
@@ -1187,29 +1078,8 @@ QCheckBox::indicator:unchecked {
        </property>
        <item>
         <widget class="QScrollArea" name="scrollArea">
-         <property name="styleSheet">
-          <string notr="true">QScrollBar:vertical {
-background-color: rgba( 0, 0, 0, 72% );
-max-width: 8px;
-border-radius: 4px;
-padding: 1px; }
-
-QScrollBar::handle:vertical {
-background-color: silver;
-max-width: 6px;
-border-radius: 3px; }
-
-QScrollBar::sub-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-line:vertical, 
-QScrollBar::sub-line:vertical {
-width: 0px; height: 0px; }
-
-</string>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="verticalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOn</enum>
@@ -1222,9 +1092,12 @@ width: 0px; height: 0px; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>555</width>
-            <height>731</height>
+            <width>558</width>
+            <height>742</height>
            </rect>
+          </property>
+          <property name="accessibleName">
+           <string>pages</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
            <property name="spacing">
@@ -1272,124 +1145,6 @@ width: 0px; height: 0px; }
                 </property>
                </widget>
               </item>
-              <item row="0" column="4">
-               <widget class="QPushButton" name="checkThumbs">
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/toggle_off_w.svg</normaloff>
-                  <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QPushButton" name="showTool">
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/toggle_off_w.svg</normaloff>
-                  <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="QPushButton" name="showrealmime">
-                <property name="maximumSize">
-                 <size>
-                  <width>45</width>
-                  <height>25</height>
-                 </size>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="../icons.qrc">
-                  <normaloff>:/icons/toggle_off_w.svg</normaloff>
-                  <normalon>:/icons/toggle_on_w.svg</normalon>:/icons/toggle_off_w.svg</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="QPushButton" name="browseF">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>...</string>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
               <item row="5" column="1" colspan="3">
                <widget class="QLineEdit" name="startPath">
                 <property name="sizePolicy">
@@ -1417,6 +1172,106 @@ width: 0px; height: 0px; }
                <widget class="QLabel" name="label_12">
                 <property name="text">
                  <string>Show Previews</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QCheckBox" name="checkThumbs">
+                <property name="maximumSize">
+                 <size>
+                  <width>35</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="showTool">
+                <property name="maximumSize">
+                 <size>
+                  <width>35</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QCheckBox" name="showrealmime">
+                <property name="maximumSize">
+                 <size>
+                  <width>35</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QToolButton" name="browseF">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>...</string>
                 </property>
                </widget>
               </item>
@@ -1552,76 +1407,6 @@ width: 0px; height: 0px; }
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">QListView {
-background-color:#F2F2F2 ;
-color:#000000; 
-padding: 5px 5px 0px 5px;
-}
-
-QListView::item:selected {
-background-color:#1793D1 ;
-color:#000000; 
-}
-</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="QPushButton" name="moveAppAssocDown">
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-border: 1px solid #ffffff;
-padding: 3px 2px 3px 2px;
-background-color: #45454D;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Move Down</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="QPushButton" name="removeAppAssoc">
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-border: 1px solid #ffffff;
-padding: 3px 2px 3px 2px;
-background-color: #45454D;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Remove</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QPushButton" name="btnAdd">
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-border: 1px solid #ffffff;
-padding: 3px 2px 3px 2px;
-background-color: #45454D;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Add..</string>
-                </property>
                </widget>
               </item>
               <item row="2" column="0" colspan="2">
@@ -1634,18 +1419,6 @@ background-color: rgb(48, 140, 198);
                 </property>
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QTreeView {
-background-color:#F2F2F2 ;
-color:#000000; 
-}
-
-QTreeView::item:selected {
-background-color:#1793D1 ;
-color:#000000; 
-}
-</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::Box</enum>
@@ -1674,25 +1447,6 @@ color:#000000;
                 </column>
                </widget>
               </item>
-              <item row="6" column="1">
-               <widget class="QPushButton" name="moveAppAssocUp">
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-border: 1px solid #ffffff;
-padding: 3px 2px 3px 2px;
-background-color: #45454D;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>Move up</string>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="0" colspan="2">
                <widget class="QLabel" name="mimetype">
                 <property name="sizePolicy">
@@ -1713,6 +1467,58 @@ background-color: rgb(48, 140, 198);
                 </property>
                </widget>
               </item>
+              <item row="4" column="1">
+               <widget class="QToolButton" name="btnAdd">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Add..</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QToolButton" name="removeAppAssoc">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Remove</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QToolButton" name="moveAppAssocUp">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Move up</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="QToolButton" name="moveAppAssocDown">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Move Down</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>
@@ -1723,6 +1529,9 @@ background-color: rgb(48, 140, 198);
       </layout>
      </widget>
      <widget class="QWidget" name="pcorescrshot">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QGroupBox" name="groupBox_2">
@@ -1767,7 +1576,7 @@ background-color: rgb(48, 140, 198);
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="browseS">
+           <widget class="QToolButton" name="browseS">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -1776,8 +1585,8 @@ background-color: rgb(48, 140, 198);
             </property>
             <property name="minimumSize">
              <size>
-              <width>30</width>
-              <height>30</height>
+              <width>22</width>
+              <height>22</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -1788,9 +1597,6 @@ background-color: rgb(48, 140, 198);
             </property>
             <property name="text">
              <string>...</string>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
             </property>
            </widget>
           </item>

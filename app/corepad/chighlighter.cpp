@@ -24,7 +24,7 @@ cHighlighter::cHighlighter(QTextDocument *textDocument) : QSyntaxHighlighter(tex
     * struct for every rule we add to our QStringList<Rule> rulesList       *
     ************************************************************************/
     Rule rule;
-    rule.format.setFontWeight(QFont::Bold);
+    rule.format.setFontWeight(QFont::Normal);
     rule.format.setForeground(Qt::darkBlue);
 
     /****************************************************************************
@@ -60,13 +60,13 @@ cHighlighter::cHighlighter(QTextDocument *textDocument) : QSyntaxHighlighter(tex
      * *************************************************************************/
     // C++ Class Rule
     rule.regEx = QRegExp( "\\b[A-Z][_A-Za-z0-9]*\\b" );
-    rule.format.setFontWeight(QFont::Bold);
-    rule.format.setForeground(Qt::green);
+    rule.format.setFontWeight(QFont::Normal);
+    rule.format.setForeground(Qt::gray);
     rulesList.append(rule);
 
     // C++ Quotes Rule
     rule.regEx = QRegExp( "\\b\".*\"\\b" );
-    rule.format.setForeground(Qt::magenta);
+    rule.format.setForeground(Qt::darkCyan);
     rulesList.append(rule);
     rule.regEx = QRegExp( "\\b\'.*\'\\b" );
     rulesList.append( rule );

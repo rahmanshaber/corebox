@@ -15,16 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "textdialog.h"
-#include "../imagearea.h"
-#include "../datasingleton.h"
-
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QFont>
-#include <QFontDialog>
-#include <QDialogButtonBox>
-#include <QMessageBox>
 
 
 TextDialog::TextDialog(QString text, ImageArea *parent) :

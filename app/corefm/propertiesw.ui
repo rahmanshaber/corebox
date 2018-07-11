@@ -24,11 +24,43 @@
     <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget{
-background-color: #333333;
-color:#E6E6E6; 
-border: 1px rgb(67, 67, 67);
-}</string>
+   <string notr="true">/*Properties */
+
+#fileTitle{
+	font: 14pt &quot;Cantarell&quot;;
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+
+
+QWidget{
+    background-color: #333333;
+    color:#E6E6E6;
+    border: 1px #434343;}
+
+
+#close{
+    border: 1px solid #434343;
+    padding: 2px 3px 2px 3px;}
+#close:hover {
+    background-color: #308CC6;}
+
+
+QTabWidget::pane {
+    border-top: 1px solid #454A4D;
+    padding: 5px 0px;}
+QTabWidget::tab-bar {
+    alignment: center; }
+QTabBar::tab {
+    border-style: none;
+    padding-bottom: 5px;
+    min-width: 90px;}
+QTabBar::tab:selected {
+    border-bottom: 2px solid #0f5d90;
+    font-weight: bold;}
+QTabBar::tab:!selected {
+    font-weight: normal;
+    margin-bottom: 1px;}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -53,35 +85,8 @@ border: 1px rgb(67, 67, 67);
        <pointsize>11</pointsize>
       </font>
      </property>
-     <property name="styleSheet">
-      <string notr="true">
-QTabWidget::pane { /* The tab widget frame */
-	border-top: 1px solid #454A4D;
-	padding: 5px 0px;
-}
-
-QTabWidget::tab-bar { 
-alignment: center; 
-}
-
-/* Style the tab using the tab sub-control. Note that
-    it reads QTabBar _not_ QTabWidget */
-QTabBar::tab {
-	border-style: none;
-	padding-bottom: 5px;
-	min-width: 90px;
-}
-QTabBar::tab:selected {
-	border-bottom: 2px solid #0f5d90;
-	font-weight: bold;
-}
-QTabBar::tab:!selected {
-	font-weight: normal;
-	margin-bottom: 1px;
-}</string>
-     </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="generalP">
       <attribute name="title">
@@ -103,7 +108,7 @@ QTabBar::tab:!selected {
        <property name="spacing">
         <number>2</number>
        </property>
-       <item row="1" column="0" colspan="3">
+       <item row="1" column="0" colspan="2">
         <widget class="Line" name="line_2">
          <property name="minimumSize">
           <size>
@@ -128,7 +133,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="10" column="0" colspan="3">
+       <item row="10" column="0" colspan="2">
         <widget class="Line" name="line_4">
          <property name="minimumSize">
           <size>
@@ -204,7 +209,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="3">
+       <item row="6" column="0" colspan="2">
         <widget class="Line" name="line_3">
          <property name="minimumSize">
           <size>
@@ -229,22 +234,6 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="13" column="0">
         <widget class="QLabel" name="labelExecutable">
          <property name="font">
@@ -257,7 +246,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="14" column="0" colspan="3">
+       <item row="14" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -270,35 +259,7 @@ QTabBar::tab:!selected {
          </property>
         </spacer>
        </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="typeIcon">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>60</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>60</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
+       <item row="3" column="1">
         <widget class="QLabel" name="size">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -316,7 +277,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="5" column="2">
+       <item row="5" column="1">
         <widget class="QLabel" name="location">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -337,7 +298,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="4" column="2">
+       <item row="4" column="1">
         <widget class="QLabel" name="type">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -355,7 +316,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="8" column="2">
+       <item row="8" column="1">
         <widget class="QLabel" name="modified">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -373,7 +334,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="9" column="2">
+       <item row="9" column="1">
         <widget class="QLabel" name="created">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -391,7 +352,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="11" column="2">
+       <item row="11" column="1">
         <widget class="QLabel" name="owner">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -409,7 +370,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="12" column="2">
+       <item row="12" column="1">
         <widget class="QLabel" name="group">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -427,7 +388,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="13" column="2">
+       <item row="13" column="1">
         <widget class="QLabel" name="executable">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -445,24 +406,37 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="0" column="2">
-        <widget class="QLabel" name="fileName">
+       <item row="0" column="0" colspan="2">
+        <widget class="QToolButton" name="fileTitle">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="font">
-          <font>
-           <pointsize>14</pointsize>
-          </font>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>60</height>
+          </size>
          </property>
          <property name="text">
-          <string>fileName</string>
+          <string/>
          </property>
-         <property name="wordWrap">
-          <bool>true</bool>
+         <property name="iconSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextBesideIcon</enum>
          </property>
         </widget>
        </item>
@@ -871,21 +845,6 @@ QTabBar::tab:!selected {
          <weight>50</weight>
          <bold>false</bold>
         </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: 1px solid rgb(67, 67, 67);
-padding: 2px 3px 2px 3px;
-}
-
-QPushButton:hover {
-background-color: rgb(48, 140, 198);
-}
-
-QPushButton:checked{
-background-color:rgb(48, 140, 198); 
-}
-</string>
        </property>
        <property name="text">
         <string>Close</string>

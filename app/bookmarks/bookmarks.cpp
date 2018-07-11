@@ -133,7 +133,7 @@ void bookmarks::on_section_itemClicked(QListWidgetItem *item)
     } else {
         ui->deleteSection->setEnabled(true);
     }
-    ui->selectedsection->setText(item->text());
+    ui->selectedSection->setText(item->text());
     QStringList list = bk.getBookNames(item->text());
     int count = list.count();
     if (ui->boklist->selectedItems().count() > 0) {

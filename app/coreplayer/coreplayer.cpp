@@ -54,7 +54,7 @@ void coreplayer::startsetup()
     ui->view->addWidget(Vwidget);
 
     if(isPlayerAvailable()){
-        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+        for (QToolButton *b : ui->toolBar->findChildren<QToolButton*>()){
             b->setEnabled(false);
         }
         ui->playlist->setEnabled(true);
@@ -325,7 +325,7 @@ void coreplayer::openPlayer(const QString path)
     creatPlayList(path);
 
     if(!path.isEmpty()){
-        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+        for (QToolButton *b : ui->toolBar->findChildren<QToolButton*>()){
             b->setEnabled(true);
         }
         ui->seekBar->setEnabled(true);
@@ -359,7 +359,7 @@ void coreplayer::on_open_clicked()
         // Function from globalfunctions.cpp
         messageEngine("Files Collected", MessageType::Info);
 
-        for (QPushButton *b : ui->navigation->findChildren<QPushButton*>()){
+        for (QToolButton *b : ui->toolBar->findChildren<QToolButton*>()){
             b->setEnabled(true);
         }
         ui->seekBar->setEnabled(true);

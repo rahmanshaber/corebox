@@ -72,13 +72,13 @@ private slots:
     void on_cRedo_clicked();
     void on_addDate_clicked();
     void on_bookMarkIt_clicked();
-    void on_fontSize_currentIndexChanged(const QString &arg1);
     void on_search_clicked(bool checked);
     void on_searchHere_textChanged(const QString &arg1);
     void on_nextW_clicked();
     void on_previousW_clicked();
     void quitClicked();
     void on_fontShow_clicked();
+    void on_fontSize_valueChanged(int arg1);
 
 protected:
     void closeEvent(QCloseEvent *event);

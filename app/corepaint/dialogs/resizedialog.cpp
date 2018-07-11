@@ -16,15 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "resizedialog.h"
 
-#include <QLabel>
-#include <QGridLayout>
-#include <QRadioButton>
-#include <QSpinBox>
-#include <QDialogButtonBox>
-#include <QCheckBox>
-#include <QGroupBox>
-#include <QVBoxLayout>
-
 
 ResizeDialog::ResizeDialog(const QSize &size, QWidget *parent) :
     QDialog(parent), mWidth(size.width()), mHeight(size.height()),

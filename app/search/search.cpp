@@ -110,10 +110,8 @@ void search::startsetup()
         ui->typeFolder->setEnabled(0);
         ui->typeMedia->setEnabled(0);
         ui->typeother->setEnabled(0);
-        //ui->typeframe->setVisible(0);
         ui->more->setEnabled(0);
         ui->setfolder->setEnabled(0);
-        ui->title->setEnabled(0);
     });
 
     connect(ui->cancelProc, &QPushButton::clicked, cProcess, &QProcess::kill);
@@ -142,7 +140,6 @@ void search::startsetup()
         ui->typeother->setEnabled(1);
         ui->more->setEnabled(1);
         ui->setfolder->setEnabled(1);
-        ui->title->setEnabled(1);
         ui->cancelProc->setVisible(0);
         cProcess->close();
     });

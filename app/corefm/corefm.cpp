@@ -16,7 +16,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "corefm.h"
 #include "ui_corefm.h"
-#include "renamewindow.h"
+
 
 corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {
@@ -59,13 +59,9 @@ void corefm::startsetup()
 
     tabs = new tabBar(modelList->folderIcons);
     tabs->setTabsClosable(true);
+    tabs->setAutoHide(true);
     ui->mk->addWidget(tabs);
     connect(tabs, SIGNAL(tabCloseRequested(int)), tabs, SLOT(closeTab(int)));
-    tabs->setStyleSheet("QTabBar::tab:!selected{background-color:#353536;color:#B4B4B4;}"
-                        "QTabBar::tab:selected{background-color:#232729;font-weight: bold;color:#E6E6E6;}"
-                        "QTabBar::close-button {image: url(:/icons/close_b.svg);subcontrol-position: right;}"
-                        "QTabBar::tab{text-align:left;background-color: #136ba2;border-style: 1px #B4B4B4;height:25px;color: #136ba2;padding: 0px 5px 0px 5px;}"
-                        "QTabBar{background-color: #353536;height: 25px;}");
 
     modelTree = new mainTreeFilterProxyModel();
     modelTree->setSourceModel(modelList);
@@ -81,6 +77,7 @@ void corefm::startsetup()
     ui->viewDir->hideColumn(4);
     ui->view->sizePolicy().setHorizontalStretch(1);
     ui->viewDir->sizePolicy().setHorizontalStretch(2);
+    ui->viewDir->setVisible(false);
     connect(ui->viewTree, SIGNAL(clicked(bool)), ui->viewDir, SLOT(setVisible(bool)));
 
     modelView = new viewsSortProxyModel();
@@ -88,19 +85,19 @@ void corefm::startsetup()
     modelView->setSortCaseSensitivity(Qt::CaseInsensitive);
 
     // Setup icon view
-    ui->viewlist->setModel(modelView);
-    ui->viewlist->setFocusPolicy(Qt::NoFocus);
-    listSelectionModel = ui->viewlist->selectionModel();
-    ui->viewlist->setContextMenuPolicy(Qt::CustomContextMenu);
+    ui->viewIcon->setModel(modelView);
+    ui->viewIcon->setFocusPolicy(Qt::NoFocus);
+    listSelectionModel = ui->viewIcon->selectionModel();
+    ui->viewIcon->setContextMenuPolicy(Qt::CustomContextMenu);
 
     // Setup list view
-    ui->viewtree->setModel(modelView);
-    ui->viewtree->setSelectionModel(listSelectionModel);
-    ui->viewtree->setFocusPolicy(Qt::NoFocus);
-    ui->viewtree->setSortingEnabled(1);
+    ui->viewDetail->setModel(modelView);
+    ui->viewDetail->setSelectionModel(listSelectionModel);
+    ui->viewDetail->setFocusPolicy(Qt::NoFocus);
+    ui->viewDetail->setSortingEnabled(1);
     int i = ui->navigationBar->sizeHint().width();
-    ui->viewtree->setColumnWidth(0,i);
-    ui->viewtree->setContextMenuPolicy(Qt::CustomContextMenu);
+    ui->viewDetail->setColumnWidth(0,i);
+    ui->viewDetail->setContextMenuPolicy(Qt::CustomContextMenu);
 
     treeSelectionModel = ui->viewDir->selectionModel();
     connect(treeSelectionModel, SIGNAL(currentChanged(QModelIndex,QModelIndex)),
@@ -111,8 +108,6 @@ void corefm::startsetup()
     // Setup buttons and actions
     ui->paste->setVisible(0);
     ui->emptyTrash->setVisible(0);
-    ui->showthumb->setVisible(0);
-    ui->showthumb->setChecked(0);
     ui->actionAscending->setChecked(1);
     ui->STrash->setVisible(1);
     ui->partitions->setFocusPolicy(Qt::NoFocus);
@@ -142,8 +137,8 @@ void corefm::startsetup()
     connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(on_actionRefresh_triggered()));
 
     // Setup left mouse click at both views
-    connect(ui->viewlist, &ClickOutListview::clickedOut, this, &corefm::pressed);
-    connect(ui->viewtree, &ClickOutTreeview::clickedOut, this, &corefm::pressed);
+    connect(ui->viewIcon, &ClickOutListview::clickedOut, this, &corefm::pressed);
+    connect(ui->viewDetail, &ClickOutTreeview::clickedOut, this, &corefm::pressed);
 
     // Set all int values to zero
     selectItemCount = 0;
@@ -186,12 +181,13 @@ void corefm::shotcuts()
 void corefm::lateStart()
 {
     // Configure tree view
+    ui->viewDir->setFocusPolicy(Qt::NoFocus);
     ui->viewDir->setDragDropMode(QAbstractItemView::DragDrop);
     ui->viewDir->setDefaultDropAction(Qt::MoveAction);
     ui->viewDir->setDropIndicatorShown(true);
     ui->viewDir->setEditTriggers(QAbstractItemView::EditKeyPressed | QAbstractItemView::SelectedClicked);
 
-    ui->viewlist->setFocus();
+    ui->viewIcon->setFocus();
 
     // Watch for mounts
     int fd = open("/proc/self/mounts", O_RDONLY, 0);
@@ -214,16 +210,16 @@ void corefm::lateStart()
 
     // Connect mouse clicks in views
 //    if (sett->value("singleClick").toInt() == 1) {
-//      connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(lll()));
+//      connect(ui->viewIcon, SIGNAL(clicked(QModelIndex)),this, SLOT(lll()));
 //      connect(ui->viewtree, SIGNAL(clicked(QModelIndex)),this, SLOT(lll()));
 //    }
 //    if (sett->value("singleClick").toInt() == 2) {
-//      connect(ui->viewlist, SIGNAL(clicked(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
+//      connect(ui->viewIcon, SIGNAL(clicked(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
 //      connect(ui->viewtree, SIGNAL(clicked(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
 //    }
 
-    // Connect ui->viewlist view
-    connect(ui->viewlist, SIGNAL(activated(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
+    // Connect ui->viewIcon view
+    connect(ui->viewIcon, SIGNAL(activated(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
 
     // Connect path edit
     connect(ui->pathEdit, SIGNAL(activated(QString)),this, SLOT(pathEditChanged(QString)));
@@ -232,14 +228,14 @@ void corefm::lateStart()
 
     // Connect selection
     connect(QApplication::clipboard(), SIGNAL(changed(QClipboard::Mode)),this, SLOT(clipboardChanged()));
-    connect(ui->viewtree,SIGNAL(activated(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
+    connect(ui->viewDetail,SIGNAL(activated(QModelIndex)),this, SLOT(listDoubleClicked(QModelIndex)));
     connect(listSelectionModel,SIGNAL(selectionChanged(const QItemSelection, const QItemSelection)),
             this, SLOT(listSelectionChanged(const QItemSelection,const QItemSelection)));
 
     // Connect copy progress
     connect(this, SIGNAL(copyProgressFinished(int,QStringList)),this, SLOT(progressFinished(int,QStringList)));
 
-    // Conect ui->viewlist model
+    // Conect ui->viewIcon model
     connect(modelList,SIGNAL(dragDropPaste(const QMimeData *, QString, myModel::DragMode)),
             this,SLOT(dragLauncher(const QMimeData *, QString, myModel::DragMode)));
 
@@ -247,8 +243,8 @@ void corefm::lateStart()
     connect(tabs, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
     connect(tabs, SIGNAL(dragDropTab(const QMimeData *, QString, QStringList)),
             this, SLOT(pasteLauncher(const QMimeData *, QString, QStringList)));
-    connect(ui->viewlist, SIGNAL(pressed(QModelIndex)),this, SLOT(listItemPressed(QModelIndex)));
-    connect(ui->viewtree, SIGNAL(pressed(QModelIndex)),this, SLOT(listItemPressed(QModelIndex)));
+    connect(ui->viewIcon, SIGNAL(pressed(QModelIndex)),this, SLOT(listItemPressed(QModelIndex)));
+    connect(ui->viewDetail, SIGNAL(pressed(QModelIndex)),this, SLOT(listItemPressed(QModelIndex)));
     connect(modelList, SIGNAL(thumbUpdate(QModelIndex)),this, SLOT(thumbUpdate(QModelIndex)));
 
     // Connect tool buttons to related actions
@@ -289,15 +285,15 @@ void corefm::loadSettings()
     zoomTree = sm.getZoomTreeValue();
     zoomList = sm.getZoomListValue();
     zoomDetail = sm.getZoomDetailValue();
-    ui->viewtree->setIconSize(QSize(zoomDetail, zoomDetail));
+    ui->viewDetail->setIconSize(QSize(zoomDetail, zoomDetail));
     ui->viewDir->setIconSize(QSize(zoomTree, zoomTree));
 
     // Load view settings
-//    ui->showthumb->setChecked(sm.getIsShowThumb());
+    ui->showthumb->setChecked(sm.getIsShowThumb());
     ui->showHidden->setChecked(sm.getShowHidden());
     on_showHidden_clicked(sm.getShowHidden());
     ui->Tools->setChecked(sm.getShowToolbox());
-    ui->tools->setVisible(sm.getShowToolbox());
+    ui->toolsBar->setVisible(sm.getShowToolbox());
 
     // Load view mode
     if (sm.getViewMode() == true) {
@@ -340,10 +336,10 @@ void corefm::writeSettings()
     sm.setZoomTreeValue(zoomTree);
     sm.setZoomListValue(zoomList);
     sm.setZoomDetailValue(zoomDetail);
-//    sm.setIsShowThumb(ui->showthumb->isChecked());
+    sm.setIsShowThumb(ui->showthumb->isChecked());
     sm.setShowHidden(ui->showHidden->isChecked());
     sm.setViewMode(ui->icon->isChecked());
-    sm.setShowToolbox(ui->tools->isVisible());
+    sm.setShowToolbox(ui->toolsBar->isVisible());
     sm.setIsRealMimeType(modelList->isRealMimeTypes());
 }
 
@@ -359,8 +355,8 @@ void corefm::treeSelectionChanged(QModelIndex current, QModelIndex previous)
     {
         listItemPressed(modelView->mapFromSource(modelList->index(name.filePath())));
         tabs->setCurrentIndex(tabs->count() - 1);
-        if(currentView == 2) ui->viewtree->setFocus(Qt::TabFocusReason);
-        else ui->viewlist->setFocus(Qt::TabFocusReason);
+        if(currentView == 2) ui->viewDetail->setFocus(Qt::TabFocusReason);
+        else ui->viewIcon->setFocus(Qt::TabFocusReason);
     }
 
     if(curIndex.filePath() != ui->pathEdit->itemText(0))
@@ -374,8 +370,8 @@ void corefm::treeSelectionChanged(QModelIndex current, QModelIndex previous)
 
     QModelIndex baseIndex = modelView->mapFromSource(modelList->index(name.filePath()));
 
-    if(currentView == 2) ui->viewtree->setRootIndex(baseIndex);
-    else ui->viewlist->setRootIndex(baseIndex);
+    if(currentView == 2) ui->viewDetail->setRootIndex(baseIndex);
+    else ui->viewIcon->setRootIndex(baseIndex);
 
     // Set the tab text for root folder
     if (QFileInfo(curIndex.filePath()).isRoot())
@@ -395,8 +391,8 @@ void corefm::treeSelectionChanged(QModelIndex current, QModelIndex previous)
     if(backIndex.isValid())
     {
         listSelectionModel->setCurrentIndex(modelView->mapFromSource(backIndex),QItemSelectionModel::ClearAndSelect);
-        if(currentView == 2) ui->viewtree->scrollTo(modelView->mapFromSource(backIndex));
-        else ui->viewlist->scrollTo(modelView->mapFromSource(backIndex));
+        if(currentView == 2) ui->viewDetail->scrollTo(modelView->mapFromSource(backIndex));
+        else ui->viewIcon->scrollTo(modelView->mapFromSource(backIndex));
     }
     else
     {
@@ -415,11 +411,22 @@ void corefm::dirLoaded()
         return;
     }
 
+    qint64 bytes = 0;
     QModelIndexList items;
+    bool includeHidden = ui->showHidden->isChecked();
+
 
     for(int x = 0; x < modelList->rowCount(modelList->index(ui->pathEdit->currentText())); ++x)
         items.append(modelList->index(x,0,modelList->index(ui->pathEdit->currentText())));
 
+
+    foreach(QModelIndex theItem,items)
+    {
+        if(includeHidden || !modelList->fileInfo(theItem).isHidden())
+            bytes = bytes + modelList->size(theItem);
+        else
+            items.removeOne(theItem);
+    }
 
     ui->totalitem->setText("Total : " + QString("%1 items").arg(items.count()));
     ui->selecteditem->clear();
@@ -430,8 +437,8 @@ void corefm::dirLoaded()
 
 void corefm::thumbUpdate(QModelIndex index)
 {
-    if(currentView == 2) ui->viewtree->update(modelView->mapFromSource(index));
-    else ui->viewlist->update(modelView->mapFromSource(index));
+    if(currentView == 2) ui->viewDetail->update(modelView->mapFromSource(index));
+    else ui->viewIcon->update(modelView->mapFromSource(index));
 }
 
 void corefm::listSelectionChanged(const QItemSelection selected, const QItemSelection deselected)
@@ -627,7 +634,7 @@ void corefm::dragLauncher(const QMimeData *data, const QString &newPath,
  * @brief Pastes data to the new location
  * @param data data to be pasted
  * @param newPath path of new location
- * @param cutList ui->viewlist of items to remove
+ * @param cutList ui->viewIcon of items to remove
  */
 void corefm::pasteLauncher(const QMimeData *data, const QString &newPath,
                                const QStringList &cutList) {
@@ -637,7 +644,7 @@ void corefm::pasteLauncher(const QMimeData *data, const QString &newPath,
 
 /**
  * @brief Pastes files to the new path
- * @param files ui->viewlist of files
+ * @param files ui->viewIcon of files
  * @param newPath new path
  * @param cutList files to remove from original path
  * @param link true if link should be created (default value = false)
@@ -719,10 +726,10 @@ void corefm::pasteLauncher(const QList<QUrl> &files, const QString &newPath,
 }
 
 /**
- * @brief Pastes ui->viewlist of files/dirs into new path
- * @param files ui->viewlist of files
+ * @brief Pastes ui->viewIcon of files/dirs into new path
+ * @param files ui->viewIcon of files
  * @param newPath new (destination) path
- * @param cutList ui->viewlist of files that are going to be removed from source path
+ * @param cutList ui->viewIcon of files that are going to be removed from source path
  * @return true if operation was successfull
  */
 bool corefm::pasteFiles(const QList<QUrl> &files, const QString &newPath,const QStringList &cutList)
@@ -790,7 +797,7 @@ bool corefm::pasteFiles(const QList<QUrl> &files, const QString &newPath,const Q
       QFileInfo dName(destUrl);
       if (!dName.exists() || dName.isDir()) {
 
-        // Keep a ui->viewlist of new files so we can select them later
+        // Keep a ui->viewIcon of new files so we can select them later
         newFiles.append(destUrl);
 
         // Cut action
@@ -1043,8 +1050,8 @@ void corefm::progressFinished(int ret,QStringList newFiles)
         connect(listSelectionModel,SIGNAL(selectionChanged(const QItemSelection, const QItemSelection)),this,SLOT(listSelectionChanged(const QItemSelection, const QItemSelection)));
         curIndex.setFile(newFiles.first());
 
-        if(currentView == 2) ui->viewtree->scrollTo(modelView->mapFromSource(modelList->index(newFiles.first())),QAbstractItemView::EnsureVisible);
-        else ui->viewlist->scrollTo(modelView->mapFromSource(modelList->index(newFiles.first())),QAbstractItemView::EnsureVisible);
+        if(currentView == 2) ui->viewDetail->scrollTo(modelView->mapFromSource(modelList->index(newFiles.first())),QAbstractItemView::EnsureVisible);
+        else ui->viewIcon->scrollTo(modelView->mapFromSource(modelList->index(newFiles.first())),QAbstractItemView::EnsureVisible);
 
         if(QFile(QDir::tempPath() + "/corefm.temp").exists()) QApplication::clipboard()->clear();
 
@@ -1276,7 +1283,7 @@ void corefm::actionMapper(QString cmd)
     QModelIndexList selList;
     QStringList temp;
 
-    if(focusWidget() == ui->viewlist || focusWidget() == ui->viewtree)
+    if(focusWidget() == ui->viewIcon || focusWidget() == ui->viewDetail)
     {
         QFileInfo file = modelList->fileInfo(modelView->mapToSource(listSelectionModel->currentIndex()));
 
@@ -1333,8 +1340,8 @@ void corefm::clearCutItems()
 
     QModelIndex baseIndex = modelView->mapFromSource(modelList->index(ui->pathEdit->currentText()));
 
-    if(currentView == 2) ui->viewtree->setRootIndex(baseIndex);
-    else ui->viewlist->setRootIndex(baseIndex);
+    if(currentView == 2) ui->viewDetail->setRootIndex(baseIndex);
+    else ui->viewIcon->setRootIndex(baseIndex);
     QTimer::singleShot(50,this,SLOT(dirLoaded()));
     return;
 }
@@ -1419,9 +1426,9 @@ QString myCompleter::pathFromIndex(const QModelIndex& index) const
 //    if(which)
 //    {
 //        if(which->text().contains("address")) ui->pathEdit->setFocus(Qt::TabFocusReason);
-//        else if(which->text().contains("tree")) tree->setFocus(Qt::TabFocusReason);
-//        else if(currentView == 2) ui->viewtree->setFocus(Qt::TabFocusReason);
-//        else ui->viewlist->setFocus(Qt::TabFocusReason);
+//        else if(which->text().contains("tree")) ui->viewDir->setFocus(Qt::TabFocusReason);
+//        else if(currentView == 2) ui->viewDetail->setFocus(Qt::TabFocusReason);
+//        else ui->viewIcon->setFocus(Qt::TabFocusReason);
 //    }
 //    else
 //    {
@@ -1506,7 +1513,7 @@ void corefm::zoomInAction()
         else
         {
             (zoomDetail == 64) ? zoomDetail=64 : zoomDetail+= 8;
-            ui->viewtree->setIconSize(QSize(zoomDetail,zoomDetail));
+            ui->viewDetail->setIconSize(QSize(zoomDetail,zoomDetail));
             zoomLevel = zoomDetail;
         }
     }
@@ -1544,7 +1551,7 @@ void corefm::zoomOutAction()
         else
         {
             (zoomDetail == 16) ? zoomDetail=16 : zoomDetail-= 8;
-            ui->viewtree->setIconSize(QSize(zoomDetail,zoomDetail));
+            ui->viewDetail->setIconSize(QSize(zoomDetail,zoomDetail));
             zoomLevel = zoomDetail;
         }
     }
@@ -1559,14 +1566,15 @@ void corefm::on_actionRename_triggered()
 //      tree->edit(treeSelectionModel->currentIndex());
 //    }
 //    else if(ui->view->currentIndex() == 0) {
-//      ui->viewlist->edit(listSelectionModel->currentIndex());
+//      ui->viewIcon->edit(listSelectionModel->currentIndex());
+
 //    }
 //    else if(ui->view->currentIndex() == 1) {
 //      ui->viewtree->edit(listSelectionModel->currentIndex());
 //    }
 
-    RenameWindow *rw = new RenameWindow(curIndex, geticon(curIndex.filePath()).pixmap(120, 120), this);
-    rw->show();
+    renameDialog *rd = new renameDialog(curIndex, this);
+    rd->show();
 }
 
 void corefm::on_actionOpen_triggered()
@@ -1759,7 +1767,7 @@ void corefm::on_actionPaste_triggered()
     if (curIndex.isDir()) newPath = curIndex.filePath();
     else newPath = ui->pathEdit->itemText(0);
 
-    // Check ui->viewlist of files that are to be cut
+    // Check ui->viewIcon of files that are to be cut
     QFile tempFile(QDir::tempPath() + "/corefm.temp");
     if (tempFile.exists()) {
       tempFile.open(QIODevice::ReadOnly);
@@ -1810,8 +1818,8 @@ void corefm::on_actionNewFolder_triggered()
     listSelectionModel->setCurrentIndex(newDir,QItemSelectionModel::ClearAndSelect);
 
     // Editation of name of new directory
-    if (ui->view->currentIndex() == 0) ui->viewlist->edit(newDir);
-    else ui->viewtree->edit(newDir);
+    if (ui->view->currentIndex() == 0) ui->viewIcon->edit(newDir);
+    else ui->viewDetail->edit(newDir);
 }
 
 void corefm::on_actionNewTextFile_triggered()
@@ -1830,8 +1838,8 @@ void corefm::on_actionNewTextFile_triggered()
     listSelectionModel->setCurrentIndex(fileIndex,QItemSelectionModel::ClearAndSelect);
 
      // Editation of name of new file
-    if (ui->view->currentIndex() == 0) ui->viewlist->edit(fileIndex);
-    else ui->viewtree->edit(fileIndex);
+    if (ui->view->currentIndex() == 0) ui->viewIcon->edit(fileIndex);
+    else ui->viewDetail->edit(fileIndex);
 }
 
 void corefm::on_actionNewPage_triggered()
@@ -1868,19 +1876,12 @@ void corefm::on_actionTerminal_triggered()
     messageEngine(mess, MessageType::Info);
 }
 
-void corefm::on_actionShowThumbnails_triggered()
-{
-    if (currentView != 2) on_icon_clicked(true);
-    else on_detaile_clicked(true);
-    on_actionRefresh_triggered();
-}
-
 void corefm::setSortColumn(QAction *columnAct)
 {
     // Set root index
-    if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
+    if (ui->viewIcon->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
       QModelIndex i = modelList->index(ui->pathEdit->currentText());
-      ui->viewlist->setRootIndex(modelView->mapFromSource(i));
+      ui->viewIcon->setRootIndex(modelView->mapFromSource(i));
     }
 
     columnAct->setChecked(true);
@@ -1904,9 +1905,9 @@ void corefm::toggleSortBy(QAction *action) //Sets sort column
 
 void corefm::on_actionAscending_triggered(bool checked) //Sets sort order
 {
-    if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
+    if (ui->viewIcon->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
       QModelIndex i = modelList->index(ui->pathEdit->currentText());
-      ui->viewlist->setRootIndex(modelView->mapFromSource(i));
+      ui->viewIcon->setRootIndex(modelView->mapFromSource(i));
     }
 
     if(checked){
@@ -1953,35 +1954,35 @@ void corefm::goTo(const QString path)
 void corefm::on_icon_clicked(bool checked)
 {
     // Set root index
-    if (ui->viewlist->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
+    if (ui->viewIcon->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
       QModelIndex i = modelList->index(ui->pathEdit->currentText());
-      ui->viewlist->setRootIndex(modelView->mapFromSource(i));
+      ui->viewIcon->setRootIndex(modelView->mapFromSource(i));
     }
 
     if (checked) {
         ui->detaile->setChecked(false);
         ui->view->setCurrentIndex(0);
-        ui->viewlist->setMouseTracking(true);
-        ui->viewtree->setMouseTracking(false);
+        ui->viewIcon->setMouseTracking(true);
+        ui->viewDetail->setMouseTracking(false);
 
         currentView = 1;
-        ui->viewlist->setViewMode(QListView::IconMode);
-        ui->viewlist->setGridSize(QSize(zoom + 32, zoom + 32));
-        ui->viewlist->setIconSize(QSize(zoom, zoom));
-        ui->viewlist->setFlow(QListView::LeftToRight);
-
-        modelList->setMode(ui->showthumb->isChecked());
+        ui->viewIcon->setWordWrap(true);
+        ui->viewIcon->setUniformItemSizes(true);
+        ui->viewIcon->setViewMode(QListView::IconMode);
+        ui->viewIcon->setGridSize(QSize(zoom + 32, zoom + 32));
+        ui->viewIcon->setIconSize(QSize(zoom, zoom));
+        ui->viewIcon->setFlow(QListView::LeftToRight);
 
         if (tabs->count()) tabs->setType(1);
     } else {
         ui->view->setCurrentIndex(1);
-        ui->viewlist->setMouseTracking(false);
-        ui->viewtree->setMouseTracking(true);
+        ui->viewIcon->setMouseTracking(false);
+        ui->viewDetail->setMouseTracking(true);
         ui->detaile->setChecked(true);
     }
 
-    ui->viewlist->setDragDropMode(QAbstractItemView::DragDrop);
-    ui->viewlist->setDefaultDropAction(Qt::MoveAction);
+    ui->viewIcon->setDragDropMode(QAbstractItemView::DragDrop);
+    ui->viewIcon->setDefaultDropAction(Qt::MoveAction);
     on_actionRefresh_triggered();
 }
 
@@ -1990,23 +1991,22 @@ void corefm::on_detaile_clicked(bool checked)
     if (checked) {
         ui->icon->setChecked(false);
         ui->view->setCurrentIndex(1);
-        ui->viewtree->setMouseTracking(true);
-        ui->viewlist->setMouseTracking(false);
+        ui->viewDetail->setMouseTracking(true);
+        ui->viewIcon->setMouseTracking(false);
 
         currentView = 2;
         QModelIndex i = modelList->index(ui->pathEdit->currentText());
-        if (ui->viewtree->rootIndex() != i) {
-          ui->viewtree->setRootIndex(modelView->mapFromSource(i));
+        if (ui->viewDetail->rootIndex() != i) {
+          ui->viewDetail->setRootIndex(modelView->mapFromSource(i));
         }
 
-        modelList->setMode(ui->showthumb->isChecked());
         if (tabs->count()) {
           tabs->setType(2);
         }
     } else {
         ui->view->setCurrentIndex(0);
-        ui->viewtree->setMouseTracking(false);
-        ui->viewlist->setMouseTracking(true);
+        ui->viewDetail->setMouseTracking(false);
+        ui->viewIcon->setMouseTracking(true);
         ui->icon->setChecked(true);
     }
 
@@ -2026,31 +2026,21 @@ void corefm::on_SDownloads_clicked()
     on_actionRefresh_triggered();
 }
 
-void corefm::on_viewlist_customContextMenuRequested(const QPoint &pos)
-{
-    globalmenu()->exec(ui->viewlist->mapToGlobal(pos));
-}
-
-void corefm::on_viewtree_customContextMenuRequested(const QPoint &pos)
-{
-    globalmenu()->exec(ui->viewtree->mapToGlobal(pos));
-}
-
 void corefm::on_actionSelectAll_triggered()
 {
     if(ui->view->currentIndex() == 0){
-        ui->viewlist->selectAll();
+        ui->viewIcon->selectAll();
     } else {
-        ui->viewtree->selectAll();
+        ui->viewDetail->selectAll();
     }
 }
 
 void corefm::on_Tools_clicked(bool checked)
 {
     if(checked){
-        ui->tools->show();
+        ui->toolsBar->show();
     } else{
-        ui->tools->hide();
+        ui->toolsBar->hide();
     }
 }
 
@@ -2131,13 +2121,6 @@ void corefm::on_showHidden_clicked(bool checked)
     }
     modelView->invalidate();
     dirLoaded();
-}
-
-void corefm::on_showthumb_pressed()
-{
-    if (currentView != 2) on_icon_clicked(true);
-    else on_detaile_clicked(true);
-    on_actionRefresh_triggered();
 }
 
 void corefm::on_SBookMarkIt_clicked()
@@ -2468,8 +2451,8 @@ void corefm::on_actionHome_triggered()
 
 void corefm::pressed()
 {
-    ui->viewlist->setCurrentIndex(QModelIndex());
-    ui->viewtree->setCurrentIndex(QModelIndex());
+    ui->viewIcon->setCurrentIndex(QModelIndex());
+    ui->viewDetail->setCurrentIndex(QModelIndex());
 
     ui->name->setText("");
     ui->size->setText("");
@@ -2529,4 +2512,20 @@ void corefm::on_actionCoreRenamer_triggered()
 
 QString corefm::gCurrentPath() {
     return ui->pathEdit->currentText();
+}
+
+void corefm::on_viewIcon_customContextMenuRequested(const QPoint &pos)
+{
+    globalmenu()->exec(ui->viewIcon->mapToGlobal(pos));
+}
+
+void corefm::on_viewDetail_customContextMenuRequested(const QPoint &pos)
+{
+    globalmenu()->exec(ui->viewDetail->mapToGlobal(pos));
+}
+
+void corefm::on_showthumb_clicked(bool checked)
+{
+    modelList->setMode(checked);
+    on_actionRefresh_triggered();
 }

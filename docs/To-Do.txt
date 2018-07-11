@@ -125,12 +125,10 @@ help
 
 library
 3 - check library and its version before building from our app using qmake.
+- Update the libcterminal.
 
 New app
 -Backup.
-
-Enhasment
-- Update the libcterminal.
 
 
 Packaging
@@ -167,6 +165,8 @@ NO NEED - 0 - checkIsValidDir in const not working
 
 
 
+0 - after corefm opening thumbnails don't show(showthumbs> cheacked)
+0 - add option to make file hidden in properties.
 0 - save all file in a folder to text as a action.
 0 - at start catch all the open tab and add them in separate file and add a treeWidget in start SAVED SESSION.
 Y - 0 - get file count in getfile size.(newbreeze function)
@@ -174,15 +174,18 @@ Y - 0 - fix the sort in start,search (recent to old)
 0 - clearing the search>> close the search window>> crashs the whole app.
 0 - recent activites not collecting corepad,
 0 - 10 windows>> close the corebox>>crashs the whole app.
-
+0 - renamewindow in upper letter
 	delete the last one from list and add new at first
 
-- Add button to delete the recent activity
+- Add button to clear the recent activity
+-rendom crashs
 
-
-Y - BUILD A DEB PACKAGE [5 packages]
-
-add a window for renaming files or folders
+0 - clicking start dose not reload the session list.
+0 - dobulclicking the session time will restore all the windows in seperate corebox.
+0 - message after saveing and finishing of opening the session.
+0 - dose not collect the corepads multipal page path at all.
+0 - multipal corefm opend> only catched the first one.
+0 - ask confrmation to save the session.
 
 
 terminal closes properly???

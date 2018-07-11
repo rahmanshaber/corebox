@@ -24,7 +24,47 @@
     <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMessageBox {
+    background-color: #212f3c;}
+QMessageBox QLabel {
+    background-color: transparent ;
+    color: #fefefe;
+    padding: 5px 5px 5px 10px;}
+QMessageBox QPushButton {
+    padding: 5px 5px 5px 10px;
+    color: #fefefe;
+    border: 1px solid #434343;
+}
+
+
+QFileDialog {
+    background-color: #212f3c;}
+QFileDialog QComboBox{
+    background-color: transparent ;
+    color: #ffffff;}
+QFileDialog QListView{
+    background-color: transparent ;
+    color: #ffffff;}
+QFileDialog QTreeView{
+    background-color: transparent ;
+    color: #ffffff;}
+QFileDialog QLabel {
+ background-color: transparent ;
+    color: #fefefe;}
+QFileDialog QPushButton {
+    background-color: transparent ;
+    color: #ffffff;
+    padding: 5px 5px 5px 10px;
+    border: 1px solid #434343;}
+QFileDialog QToolButton {
+    background-color: transparent ;
+    color: #ffffff;
+    padding: 5px 5px 5px 10px;
+    border: 1px #434343;}
+QFileDialog QLineEdit {
+    background-color: transparent ;
+    color: #ffffff;
+    border: 1px solid #434343;}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">

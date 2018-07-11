@@ -18,12 +18,21 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define RISEZEDIALOG_H
 
 #include <QDialog>
+#include <QLabel>
+#include <QGridLayout>
+#include <QRadioButton>
+#include <QSpinBox>
+#include <QDialogButtonBox>
+#include <QCheckBox>
+#include <QGroupBox>
+#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 class QLabel;
 class QSpinBox;
 class QCheckBox;
 QT_END_NAMESPACE
+
 
 class ResizeDialog : public QDialog
 {

@@ -157,14 +157,12 @@ void Start::loadSession()
     if (topLevel.count())
         (ui->sessionsList->setExpanded(ui->sessionsList->model()->index(0, 0), true));
 
-    qDebug() << topLevel.count();
 }
 
 void Start::loadsettings() // load settings
 {
     // Check is recent disabled or not
     if (sm.getDisableRecent()) {
-        //ui->pages->removeWidget(ui->precents);
         ui->recentActivites->setVisible(0);
         ui->recentActivitesL->clear();
         ui->pages->setCurrentIndex(0);
@@ -207,6 +205,7 @@ void Start::on_savedSession_clicked()
 void Start::reload()
 {
     loadSpeedDial();
+    loadSession();
     loadsettings();
     if (!sm.getDisableRecent())
         loadRecent();

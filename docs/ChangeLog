@@ -110,9 +110,9 @@ Version 2.2
 - fixed coreterminal is not in focused after opening.
 - changed corepad scroll bar stylesheet.
 - make executeable file permission with qt
-
-
-
+- rename in seperate window in corefm.
+- limited the coreshot delay time.
+- font size in spin box in corepad.
 
 
 

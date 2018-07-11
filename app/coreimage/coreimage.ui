@@ -17,6 +17,92 @@
    <iconset resource="../icons.qrc">
     <normaloff>:/icons/CoreImage.svg</normaloff>:/icons/CoreImage.svg</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/*CoreImage*/
+
+#appTitle{
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+
+
+QWidget [accessibleName=&quot;shortcut&quot;]{
+    background-color: #282D31;
+    color: #ffffff;
+    border: 1px #434343;}
+
+QFrame  [accessibleName=&quot;navigationBar&quot;] {
+    background-color: #000000;
+    color: #E6E6E6;
+    border: 1px #434343;}
+
+
+#line{
+    background-color: #C0C0C0 ;
+    color: #C0C0C0;
+    border: 1px  #F2F2F2;
+}
+
+
+QPushButton{
+    background-color: transparent;
+    color: #ffffff;
+    Text-align:left;
+    border: 1px #434343;
+    padding: 5px 5px 5px 5px;}
+QPushButton:pressed{
+    background-color: #1167A3; }
+QPushButton:hover {
+    background-color: #1167A3;}
+
+
+QToolButton{
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+QToolButton:pressed{
+    background-color: #1167A3; }
+QToolButton:hover {
+    background-color: #1167A3; }
+QToolButton:checked{
+    background-color: #1167A3;}
+
+
+QListView{
+    background-color: #000000;
+    padding:5px 5px 5px 5px;}
+
+
+QScrollBar:vertical {
+    background-color: rgba( 0, 0, 0, 72% );
+    max-width: 8px;
+    border-radius: 4px;
+    padding: 1px; }
+QScrollBar:horizontal {
+    background-color: rgba( 0, 0, 0, 72% );
+    max-height: 8px;
+    border-radius: 4px;
+    padding: 1px; }
+QScrollBar::handle:horizontal,
+QScrollBar::handle:vertical {
+    background-color: silver;
+    max-width: 6px;
+    border-radius: 3px; }
+QScrollBar::sub-page:horizontal,
+QScrollBar::sub-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-page:horizontal,
+QScrollBar::add-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    width: 0px; height: 0px; }
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px; height: 0px; }
+
+</string>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
    <property name="spacing">
     <number>0</number>
@@ -53,26 +139,8 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #282D31;
-color: #ffffff;
-border: 1px rgb(67, 67, 67);
-}
-
-QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color: #1D2025; 
-}
-
-QPushButton:hover {
-background-color: #1D2025;
-}
-</string>
+     <property name="accessibleName">
+      <string>shortcut</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
@@ -91,7 +159,7 @@ background-color: #1D2025;
        <number>10</number>
       </property>
       <item>
-       <widget class="QToolButton" name="title">
+       <widget class="QToolButton" name="appTitle">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -517,7 +585,7 @@ background-color: #1D2025;
       </item>
      </layout>
      <zorder>slideShow</zorder>
-     <zorder>title</zorder>
+     <zorder>appTitle</zorder>
      <zorder>cOpen</zorder>
      <zorder>cSave</zorder>
      <zorder>cSaveAs</zorder>
@@ -556,10 +624,10 @@ background-color: #1D2025;
         <number>0</number>
        </property>
        <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
+        <enum>Qt::ScrollBarAsNeeded</enum>
        </property>
        <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
+        <enum>Qt::ScrollBarAsNeeded</enum>
        </property>
        <property name="sizeAdjustPolicy">
         <enum>QAbstractScrollArea::AdjustIgnored</enum>
@@ -574,7 +642,7 @@ background-color: #1D2025;
         <property name="geometry">
          <rect>
           <x>102</x>
-          <y>13</y>
+          <y>12</y>
           <width>553</width>
           <height>446</height>
          </rect>
@@ -583,6 +651,22 @@ background-color: #1D2025;
          <bool>true</bool>
         </property>
        </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>1</height>
+        </size>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
       </widget>
      </item>
      <item>
@@ -603,31 +687,6 @@ background-color: #1D2025;
        </property>
        <property name="toolTip">
         <string>Thumbnail View</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QListView{
-background-color: #232323;
-padding:5px 5px 5px 5px;
-}
-
-QScrollBar::horizontal {
-    background: red;
-    position: absolute;
-}
-
-QScrollBar::handle:horizontal {
-   background: #363941;
-   height:10px;
-}
-
-QScrollBar::add-page:horizontal {
-    background: #232323;
-}
-
-QScrollBar::sub-page:horizontal {
-    background: #232323;
-}
-</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::NoFrame</enum>
@@ -716,28 +775,9 @@ QScrollBar::sub-page:horizontal {
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="navigation">
-       <property name="styleSheet">
-        <string notr="true">QWidget{
-background-color: #232323;
-color: #E6E6E6;
-border: 1px #434343;
-}
-
-QPushButton:pressed{
-background-color: #1D2025; 
-}
-
-QPushButton:hover {
-background-color: #1D2025;
-}
-</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
+      <widget class="QWidget" name="navigation" native="true">
+       <property name="accessibleName">
+        <string>navigationBar</string>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="spacing">
@@ -957,10 +997,6 @@ background-color: #1D2025;
         </item>
         <item>
          <widget class="QLabel" name="name">
-          <property name="styleSheet">
-           <string notr="true">color: white;
-Text-align:left;</string>
-          </property>
           <property name="text">
            <string>Name :</string>
           </property>
@@ -1014,10 +1050,6 @@ Text-align:left;</string>
            </property>
            <item>
             <widget class="QLabel" name="height">
-             <property name="styleSheet">
-              <string notr="true">color: white;
-Text-align:left;</string>
-             </property>
              <property name="text">
               <string>Height :</string>
              </property>
@@ -1025,10 +1057,6 @@ Text-align:left;</string>
            </item>
            <item>
             <widget class="QLabel" name="width">
-             <property name="styleSheet">
-              <string notr="true">color: white;
-Text-align:left;</string>
-             </property>
              <property name="text">
               <string>Width :</string>
              </property>
@@ -1036,10 +1064,6 @@ Text-align:left;</string>
            </item>
            <item>
             <widget class="QLabel" name="type">
-             <property name="styleSheet">
-              <string notr="true">color: white;
-Text-align:left;</string>
-             </property>
              <property name="text">
               <string>Type :</string>
              </property>
@@ -1047,10 +1071,6 @@ Text-align:left;</string>
            </item>
            <item>
             <widget class="QLabel" name="size">
-             <property name="styleSheet">
-              <string notr="true">color: white;
-Text-align:left;</string>
-             </property>
              <property name="text">
               <string>Size :</string>
              </property>

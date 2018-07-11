@@ -101,6 +101,9 @@ color:#ffffff;
           <height>422783</height>
          </size>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QWidget{
 background-color:#1B252F;
@@ -216,6 +219,9 @@ padding: 5px 10px 5px 10px;
       </item>
       <item row="0" column="0" rowspan="2" colspan="4">
        <widget class="QListWidget" name="blocks">
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QWidget{
 background-color:#1B252F;
@@ -336,6 +342,9 @@ color:#ffffff;
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true">QWidget{
 background-color: #1B252F; ;
@@ -404,6 +413,9 @@ color:#ffffff;
           <width>16777215</width>
           <height>40</height>
          </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QWidget{

@@ -66,8 +66,8 @@ void pDisplay::setupDisplayPage()
 
         right << qApp->screens()[i]->name() << size << qApp->screens()[i]->manufacturer()
               << qApp->screens()[i]->model() << qApp->screens()[i]->serialNumber()
-              << QString::number(qApp->screens()[i]->refreshRate()) << AvailableVS << Geometry
-              << QString::number(qApp->screens()[i]->physicalDotsPerInch()) << PhysicalSize
+              << QString::number(qApp->screens()[i]->refreshRate()) + " Hz" << AvailableVS << Geometry
+              << QString::number(qApp->screens()[i]->physicalDotsPerInch()) << PhysicalSize + " mm"
               << QString::number(qApp->screens()[i]->primaryOrientation());
 
 

@@ -25,7 +25,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 class TextInstrument : public AbstractSelection
 {
     Q_OBJECT
-
 public:
     explicit TextInstrument(QObject *parent = 0);
 

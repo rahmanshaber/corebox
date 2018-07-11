@@ -55,7 +55,7 @@ void propertiesw::general()
 
     this->setWindowTitle("Properties - " + info.fileName() );
 
-    ui->typeIcon->setIcon(geticon(info.filePath()));
+    ui->fileTitle->setIcon(geticon(info.filePath()));
 
     if(info.isFile()){
         ui->type->setText(littleinfo + " , " + extrainfo );
@@ -64,7 +64,7 @@ void propertiesw::general()
         ui->type->setText("Directory");
     }
 
-    ui->fileName->setText(info.fileName());
+    ui->fileTitle->setText(info.fileName());
     ui->size->setText(getFileSize(pathName));
     ui->location->setText(info.path());
 

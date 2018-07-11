@@ -203,13 +203,11 @@ void messageEngine(const QString &message, MessageType messageType) // engine sh
     }
 
     mbox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-
     addDropShadow(mbox, 60, 25, stylesheet);
-
     mbox->show();
 
-    int x = screensize().width() - (mbox->width() + 10);
-    int y = screensize().height() - (mbox->height() + 10);
+    int x = screensize().width() - (mbox->width() + 5);
+    int y = screensize().height() - (mbox->height() + 5);
     mbox->move(x,y);
 
     QTimer::singleShot(3000, mbox, SLOT(close()));

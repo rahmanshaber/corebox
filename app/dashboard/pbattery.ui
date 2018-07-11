@@ -262,7 +262,7 @@ color:#ffffff;
         <property name="styleSheet">
          <string notr="true">QDateTimeEdit {
     border: 1px #2CACFE;
-    padding: 5px 5px 5px 10px;
+    padding: 5px 5px 5px 0px;
 }
 </string>
         </property>

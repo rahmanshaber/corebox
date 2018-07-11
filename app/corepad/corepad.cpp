@@ -69,8 +69,8 @@ bool corepad::initializeNewTab(const QString &filePath)
 
         started = true;
 
-        text->setFont(QFont(text->font().family(), ui->fontSize->currentText().toInt()));
-        text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), ui->fontSize->currentText().toInt()));
+        text->setFont(QFont(text->font().family(), ui->fontSize->value()));
+        text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), ui->fontSize->value()));
 
         ui->notes->insertTab(tabsCount, text, tabLabel);
         ui->notes->setCurrentIndex(tabsCount);
@@ -407,12 +407,6 @@ void corepad::on_bookMarkIt_clicked()
     }
 }
 
-void corepad::on_fontSize_currentIndexChanged(const QString &arg1)
-{
-    text->setFont(QFont(text->font().family(), arg1.toInt()));
-    text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), arg1.toInt()));
-}
-
 void corepad::on_search_clicked(bool checked)
 {
     if (checked) {
@@ -485,4 +479,10 @@ void corepad::on_fontShow_clicked()
         ui->fontSize->setVisible(0);
     }
 
+}
+
+void corepad::on_fontSize_valueChanged(int arg1)
+{
+    text->setFont(QFont(text->font().family(), arg1));
+    text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), arg1));
 }

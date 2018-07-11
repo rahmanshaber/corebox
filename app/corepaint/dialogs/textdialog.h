@@ -19,8 +19,17 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "../imagearea.h"
 
+#include "../datasingleton.h"
+
 #include <QDialog>
 #include <QTextEdit>
+#include <QPushButton>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QFont>
+#include <QFontDialog>
+#include <QDialogButtonBox>
+#include <QMessageBox>
 
 
 class TextDialog : public QDialog

@@ -20,6 +20,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "mymodel.h"
 #include "progressdlg.h"
 #include "propertiesw.h"
+#include "renamewindow.h"
 #include "tabbar.h"
 #include "fileutils.h"
 #include "mimeutils.h"
@@ -119,8 +120,6 @@ signals:
 private slots:
     void selectApp();
     void openInApp();
-    void on_viewlist_customContextMenuRequested(const QPoint &pos);
-    void on_viewtree_customContextMenuRequested(const QPoint &pos);
     void on_actionSelectAll_triggered();
     void on_Tools_clicked(bool checked);
     void on_actionCorePlayer_triggered();
@@ -144,7 +143,6 @@ private slots:
     void on_actionNewTextFile_triggered();
     void on_actionNewPage_triggered();
     void on_actionTerminal_triggered();
-    void on_actionShowThumbnails_triggered();
     void on_actionAscending_triggered(bool checked);
     void on_SHome_clicked();
     void on_SDesktop_clicked();
@@ -167,7 +165,9 @@ private slots:
     void on_actionRun_triggered();
     void sendToPath();
     void on_actionCoreRenamer_triggered();
-    void on_showthumb_pressed();
+    void on_viewIcon_customContextMenuRequested(const QPoint &pos);
+    void on_viewDetail_customContextMenuRequested(const QPoint &pos);
+    void on_showthumb_clicked(bool checked);
 
 private:
     Ui::corefm *ui;

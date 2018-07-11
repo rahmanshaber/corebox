@@ -24,11 +24,20 @@
     <normaloff>:/icons/CoreShot.svg</normaloff>:/icons/CoreShot.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget{
-background-color: #2A2A2A;
-color: #ffffff;
-border: 1px #2A2A2A;
-}</string>
+   <string notr="true">/*CoreShot*/
+
+QWidget{
+    background-color: #2A2A2A;
+    color: #ffffff;
+    border: 1px #2A2A2A;}
+
+QPushButton{
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #434343;
+    padding: 3px 5px 3px 5px;}
+QPushButton:hover {
+    background-color: #308CC6;}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -63,16 +72,6 @@ border: 1px #2A2A2A;
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: 1px solid #434343;
-padding: 3px 5px 3px 5px;
-}
-QPushButton:hover {
-background-color: #308CC6;
-}
-</string>
-       </property>
        <property name="text">
         <string>New Screenshot</string>
        </property>
@@ -96,16 +95,6 @@ background-color: #308CC6;
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: 1px solid #434343;
-padding: 3px 5px 3px 5px;
-}
-QPushButton:hover {
-background-color: #308CC6;
-}
-</string>
-       </property>
        <property name="text">
         <string>Open in Corepaint</string>
        </property>
@@ -115,16 +104,6 @@ background-color: #308CC6;
       <widget class="QPushButton" name="save">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: 1px solid #434343;
-padding: 3px 5px 3px 5px;
-}
-QPushButton:hover {
-background-color: #308CC6;
-}
-</string>
        </property>
        <property name="text">
         <string>Save</string>
@@ -136,16 +115,6 @@ background-color: #308CC6;
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: 1px solid #434343;
-padding: 3px 5px 3px 5px;
-}
-QPushButton:hover {
-background-color: #308CC6;
-}
-</string>
-       </property>
        <property name="text">
         <string>Save as</string>
        </property>
@@ -155,16 +124,6 @@ background-color: #308CC6;
       <widget class="QPushButton" name="cancel">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: 1px solid #434343;
-padding: 3px 5px 3px 5px;
-}
-QPushButton:hover {
-background-color: #308CC6;
-}
-</string>
        </property>
        <property name="text">
         <string>Cancel</string>

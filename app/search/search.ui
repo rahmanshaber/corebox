@@ -16,6 +16,109 @@
   <property name="windowTitle">
    <string>Search</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/*Search */
+
+#appTitle{
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+
+
+QWidget [accessibleName=&quot;options&quot;]{
+    background-color:#64697D;
+    color: #ffffff;
+    border: 1px #434343;}
+
+QWidget [accessibleName=&quot;infoPage&quot;]{
+    background-color:#F2F2F2 ;
+    color : #E6E6E6;;
+    border: 1px #434343;}
+
+
+QLabel{
+    background-color: transparent;
+    color: #000000;}
+
+
+QLineEdit {
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #ffffff;
+    padding: 5px 5px 5px 10px;}
+
+
+QToolButton{
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px #434343;
+    padding: 5px 5px 5px 5px;}
+QToolButton:checked{
+    border:none;
+    border-bottom: 2px solid #DCDCDC;
+    color: #DCDCDC; 
+    font-weight: bold;}
+
+
+QPushButton{
+    background-color: transparent;
+    color: #ffffff;
+    Text-align:left;
+    border: 1px #434343;
+    padding: 5px 5px 5px 5px;}
+QPushButton:pressed{
+    background-color:#1793D1; }
+QPushButton:hover {
+    background-color: #1793D1;}
+
+
+QTreeView {
+   background-color: transparent;
+   color : #000000;}
+
+
+QTableView::item{
+    border-bottom-style:solid;
+    border-width:1;
+    border-color: #E6E6E6;
+    padding: 0px 20px 0px 20px;}
+QTableView::item:selected {
+    background-color:#1793D1 ;
+    color:#000000; }
+QTableView {
+    background-color:#F2F2F2 ;
+    padding: 0px 0px 20px 0px;
+    color:#000000; }
+QHeaderView{ 
+    height: 50px;
+    background-color:#E6E6E6 ;
+    color:#000000;}
+QHeaderView::section { 
+    background-color:#E6E6E6;
+    color:#000000;
+    border: 1px #ffffff;
+    padding-top: 4px;
+    font: 12pt &quot;Cantarell&quot;;}
+
+
+QScrollBar:vertical {
+    background-color: rgba( 0, 0, 0, 72% );
+    max-width: 8px;
+    border-radius: 4px;
+    padding: 1px; }
+QScrollBar::handle:vertical {
+    background-color: silver;
+    max-width: 6px;
+    min-height: 12px;
+    border-radius: 3px; }
+QScrollBar::sub-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    width: 0px; height: 0px; }</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
     <number>1</number>
@@ -34,47 +137,11 @@
    </property>
    <item>
     <widget class="QWidget" name="options" native="true">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#64697D;
-color: #E6E6E6;
-border: 1px rgb(67, 67, 67);
-}
-
-QToolButton{
-color : #E6E6E6;
-border: 1px rgb(67, 67, 67);
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-border:none;
-border-bottom: 2px solid #DCDCDC;
-color: #DCDCDC; 
-font-weight: bold;
-}
-
-
-QLineEdit {
-    border: 1px solid #ffffff;
-    padding: 5px 5px 5px 10px;
-}
-
-
-
-QPushButton{
-Text-align:left;
-color:#E6E6E6; 
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:pressed{
-background-color:#1793D1; 
-}
-
-QPushButton:hover {
-background-color: #1793D1;
-}</string>
+     <property name="accessibleName">
+      <string>options</string>
+     </property>
+     <property name="accessibleDescription">
+      <string/>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="bottomMargin">
@@ -99,7 +166,7 @@ background-color: #1793D1;
           <number>10</number>
          </property>
          <item>
-          <widget class="QToolButton" name="title">
+          <widget class="QToolButton" name="appTitle">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -277,7 +344,7 @@ background-color: #1793D1;
          </item>
         </layout>
         <zorder>more</zorder>
-        <zorder>title</zorder>
+        <zorder>appTitle</zorder>
         <zorder>findCMD</zorder>
         <zorder>locateCMD</zorder>
         <zorder>searchFF</zorder>
@@ -293,7 +360,7 @@ background-color: #1793D1;
          </size>
         </property>
         <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+         <enum>QFrame::NoFrame</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
@@ -603,6 +670,9 @@ background-color: #1793D1;
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="accessibleName">
+      <string>infoPage</string>
+     </property>
      <property name="currentIndex">
       <number>2</number>
      </property>
@@ -633,64 +703,6 @@ background-color: #1793D1;
          </property>
          <property name="focusPolicy">
           <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QTableView::item{
-border-bottom-style:solid;
-border-width:1;
-border-color: #E6E6E6;
-padding: 0px 20px 0px 20px;
-}
-
-QTableView::item:selected {
-background-color:#1793D1 ;
-color:#000000; 
-}
-
-QTableView {
-background-color:#F2F2F2 ;
-padding: 0px 0px 20px 0px;
-color:#000000; 
-}
-
-QHeaderView{ 
-height: 50px;
-background-color:#E6E6E6 ;
-color:#000000;
-}
-
-QHeaderView::section { 
-background-color:#E6E6E6;
-color:#000000;
-border: 1px #ffffff;
-padding-top: 4px;
-font: 12pt &quot;Cantarell&quot;;
-}
-
-
-QScrollBar:vertical {
-background-color: rgba( 0, 0, 0, 72% );
-max-width: 8px;
-border-radius: 4px;
-padding: 1px; }
-
-QScrollBar::handle:vertical {
-background-color: silver;
-max-width: 6px;
-min-height: 8px;
-border-radius: 3px; }
-
-QScrollBar::sub-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-line:vertical, 
-QScrollBar::sub-line:vertical {
-width: 0px; height: 0px; }
-
-</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
@@ -760,13 +772,6 @@ width: 0px; height: 0px; }
       </layout>
      </widget>
      <widget class="QWidget" name="notfoundpage">
-      <property name="styleSheet">
-       <string notr="true">QWidget{
-background-color:#F2F2F2 ;
-color:#000000; 
-border: 1px rgb(67, 67, 67);
-}</string>
-      </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <property name="spacing">
         <number>20</number>
@@ -798,13 +803,6 @@ border: 1px rgb(67, 67, 67);
       </layout>
      </widget>
      <widget class="QWidget" name="activity">
-      <property name="styleSheet">
-       <string notr="true">QWidget{
-background-color:#F2F2F2 ;
-color:#000000; 
-border: 1px rgb(67, 67, 67);
-}</string>
-      </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
         <number>15</number>
@@ -864,29 +862,11 @@ border: 1px rgb(67, 67, 67);
          <property name="focusPolicy">
           <enum>Qt::NoFocus</enum>
          </property>
-         <property name="styleSheet">
-          <string notr="true">QScrollBar:vertical {
-background-color: rgba( 0, 0, 0, 72% );
-max-width: 8px;
-border-radius: 4px;
-padding: 1px; }
-
-QScrollBar::handle:vertical {
-background-color: silver;
-max-width: 6px;
-border-radius: 3px; }
-
-QScrollBar::sub-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-line:vertical, 
-QScrollBar::sub-line:vertical {
-width: 0px; height: 0px; }
-
-</string>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="showDropIndicator" stdset="0">
+          <bool>false</bool>
          </property>
          <property name="animated">
           <bool>true</bool>
@@ -924,7 +904,7 @@ width: 0px; height: 0px; }
   <tabstop>folderPath</tabstop>
   <tabstop>setfolder</tabstop>
   <tabstop>locateCMD</tabstop>
-  <tabstop>title</tabstop>
+  <tabstop>appTitle</tabstop>
  </tabstops>
  <resources>
   <include location="../icons.qrc"/>

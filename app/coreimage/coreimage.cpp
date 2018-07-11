@@ -41,6 +41,7 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
 
     ui->shortcut->setVisible(false);
     ui->propbox->setVisible(false);
+    ui->line->setVisible(false);
     ui->thumnailView->setVisible(false);
 
     if(currentImagePath.isNull()){
@@ -53,7 +54,7 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
         }
         ui->cTools->setEnabled(true);
         ui->cOpen->setEnabled(true);
-        ui->title->setEnabled(true);
+        ui->appTitle->setEnabled(true);
     }
     shotcuts();
 }
@@ -480,9 +481,11 @@ void coreimage::on_openThumbview_clicked()
 {
     if (ui->openThumbview->isChecked()) {
         ui->thumnailView->setVisible(true);
+        ui->line->setVisible(true);
     }
     else {
         ui->thumnailView->setVisible(false);
+        ui->line->setVisible(false);
     }
 }
 
