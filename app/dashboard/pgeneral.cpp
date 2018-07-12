@@ -104,9 +104,9 @@ void pgeneral::updateMemoryBar()
 
 void pgeneral::updateNetworkBar()
 {
+    // set the used network type
     QNetworkAccessManager manager;
     const auto config = manager.activeConfiguration();
-//    qDebug() << config.bearerType() << config.bearerTypeName();
     ui->usedN->setText(config.bearerTypeName());
 
 

@@ -33,9 +33,10 @@ void pDisplay::setupDisplayPage()
 {
     QStringList left;
     left << "Name        " << "Size        " << "Manufacturer        " << "Model      "
-         << "Serial Number         " << "Refresh Rate        " << "Actual Resolution     "
+         << "Serial Number         " << "Refresh Rate        " << "Defult Resolution     "
          << "Set Resolution        " << "Physical Dots Per Inch "
-         << "Physical Size        " << "Primary Orientation   ";
+         << "Physical Size        " <<  "Screen Size        " << "Defult Orientation   "
+         << "Set Orientation   "  ;
 
     for (int i = 0; i < qApp->screens().count(); i++) {
 
@@ -43,19 +44,38 @@ void pDisplay::setupDisplayPage()
         QString size(tr("(%1,%2)").arg(s.width()).arg(s.height()));
 
         QSize a = qApp->screens()[i]->availableVirtualSize();
-        QString AvailableVS(tr("(%1,%2)").arg(a.width()).arg(a.height()));
+        QString availableVS(tr("(%1,%2)").arg(a.width()).arg(a.height()));
 
         QRect g = qApp->screens()[i]->geometry();
-        QString Geometry(tr("(%1,%2)").arg(g.width()).arg(g.height()));
+        QString geometry(tr("(%1,%2)").arg(g.width()).arg(g.height()));
 
         QSizeF py = qApp->screens()[i]->physicalSize();
-        QString PhysicalSize(tr("(%1,%2)").arg(py.width()).arg(py.height()));
+        QString physicalSize(tr("(%1,%2)").arg(py.width()).arg(py.height()));
+
+        // screen size in inches
+        int screenSize(qSqrt(qPow (py.width(),2) + qPow (py.height(),2)) * 0.03937008);
+
+        // screen orientation
+        QString defultOrientation = "";
+        if ( qApp->screens()[i]->nativeOrientation() == Qt::LandscapeOrientation ){
+            defultOrientation = "Landscape";
+        }else{
+            defultOrientation = "Portrait";
+        }
+
+        QString setOrientation = "";
+        if ( qApp->screens()[i]->primaryOrientation() == Qt::LandscapeOrientation ){
+            setOrientation = "Landscape";
+        }else{
+            setOrientation = "Portrait";
+        }
 
         QStringList right;
 
         QListView *p = new QListView();
         p->setFocusPolicy(Qt::NoFocus);
         QWidget *w = new QWidget();
+        w->setMinimumHeight(300);
         w->setAttribute(Qt::WA_TransparentForMouseEvents);
         w->setFocusPolicy(Qt::NoFocus);
         QFont fl ("Cantarell", 14, QFont::Normal);
@@ -67,9 +87,10 @@ void pDisplay::setupDisplayPage()
 
         right << qApp->screens()[i]->name() << size << qApp->screens()[i]->manufacturer()
               << qApp->screens()[i]->model() << qApp->screens()[i]->serialNumber()
-              << QString::number(qApp->screens()[i]->refreshRate()) + " Hz" << AvailableVS << Geometry
-              << QString::number(qApp->screens()[i]->physicalDotsPerInch()) << PhysicalSize + " mm"
-              << QString::number(qApp->screens()[i]->primaryOrientation());
+              << QString::number(qApp->screens()[i]->refreshRate()) + " Hz" << availableVS << geometry
+              << QString::number(qApp->screens()[i]->physicalDotsPerInch()) << physicalSize + " millimetre"
+              << QString::number(screenSize) + " inches"
+              << defultOrientation << setOrientation;
 
 
         QStringListModel *displayInfo = new QStringListModel(fStringList(left, right, p->font()));

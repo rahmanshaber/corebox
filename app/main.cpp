@@ -20,6 +20,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFont>
 #include <QStyleFactory>
 
+
 #include "corebox/globalfunctions.h"
 
 int main(int argc, char *argv[])
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
 
     // Get file folder size with file and folder count
 //    int files = 0, folders = 0;
-//    qDebug() << "File Size : " <<formatSize(getF(QStringList() << "/home/abrar", files, folders));
+//    qDebug() << "File Size : " <<formatSize(getF(QStringList() << "/home/shaber", files, folders));
 //    qDebug() << "File count : " << files;
 //    qDebug() << "Folder count : " << folders;
 
