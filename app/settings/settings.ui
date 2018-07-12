@@ -60,7 +60,7 @@ QLineEdit{
 QLabel{
     background-color: transparent;
     color:#E6E6E6 ;
-    padding: 5px 5px 5px 5px;}
+    padding: 1px 5px 1px 5px;}
 
 
 QPushButton{
@@ -127,17 +127,35 @@ QComboBox:focus{
     border:1px solid #C2C2C2;}
 
 
+QHeaderView{ 
+    border-bottom-style:solid;
+    border-width:1;
+    border-color: #2E3335;
+    padding-left: 4px;
+    background-color:transparent;
+    color:#E6E6E6;}
+QHeaderView::section {
+    padding: 1px 3px 1px 3px;
+    background-color:transparent;
+    color:#E6E6E6;
+    border: 1px #ffffff;
+    padding-top: 4px;
+    font: 10pt &quot;Cantarell&quot;;
+    font-style: normal;}
+
 QTreeView {
-    background-color:#F2F2F2 ;
-    color:#000000; }
+    background-color: transparent;
+    color:#E6E6E6; 
+    border: 1px solid #434343;}
 QTreeView::item:selected {
     background-color:#1793D1 ;
     color:#000000; }
 
 
 QListView {
-    background-color:#F2F2F2 ;
-    color:#000000;
+    background-color: transparent;
+    color:#E6E6E6;
+    border: 1px solid #434343;
     padding: 5px 5px 0px 5px;}
 QListView::item:selected {
     background-color:#1793D1 ;
@@ -748,6 +766,12 @@ padding: 3px 10px 3px 10px;
        </item>
        <item>
         <widget class="QGroupBox" name="backup">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="title">
           <string>Backup and Restore settings</string>
          </property>
@@ -758,6 +782,13 @@ padding: 3px 10px 3px 10px;
           <property name="topMargin">
            <number>20</number>
           </property>
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Select a folder to backup or select a zip to restore</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <spacer name="horizontalSpacer_6">
             <property name="orientation">
@@ -1093,7 +1124,7 @@ padding: 3px 10px 3px 10px;
             <x>0</x>
             <y>0</y>
             <width>555</width>
-            <height>742</height>
+            <height>726</height>
            </rect>
           </property>
           <property name="accessibleName">
@@ -1407,6 +1438,9 @@ padding: 3px 10px 3px 10px;
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
                 </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
                </widget>
               </item>
               <item row="2" column="0" colspan="2">
@@ -1421,7 +1455,7 @@ padding: 3px 10px 3px 10px;
                  <enum>Qt::NoFocus</enum>
                 </property>
                 <property name="frameShape">
-                 <enum>QFrame::Box</enum>
+                 <enum>QFrame::StyledPanel</enum>
                 </property>
                 <property name="lineWidth">
                  <number>1</number>

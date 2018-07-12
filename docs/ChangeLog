@@ -55,65 +55,68 @@ Version 2.2
 - added corerenamer integration with corefm.
 - removed duplicate declaration from header file of corefm.
 - fixed same tab close crashed.
-- removed libmagic from corefm depedency.
+- removed libmagic from corefm dependency.
 - tabengine path in const.
-- fixed the reload fuction.
-- fixedrecent activity dose not collecting the data.
+- fixed the reload function.
+- fixed recent activity dose not collecting the data.
 - fixed the recent activity option in settings.
 - fixed all open bkdialog function from bookmark
 - send path in const to bookmarkit.
 - fix the icon size in bookmarkdialog.
-- dashbord lib in separate folder named libcsys.
-- seperate all the pages.
+- dashboard lib in separate folder named libcsys.
+- separate all the pages.
 - add library version of libcsys.
 - fixed search is always stuck at collecting information.
-- added search keyworad saving.
+- added search keyword saving.
 - search activity to treewidget at date wise.
 - send path to search in const.
 - fixed shortcut is not working.
 - qprocess output to text stream in search app.
 - get error message when process not done in search app.
 - backup now archive whole corbox folder in config folder.
-- fixed contex menu open folder action in corefm.
+- fixed context menu open folder action in corefm.
 - fixed after saving a new file , book mark button dose not work.
 - linenumber area space to fit 999 number.
-- added syntex highlighting in corepad.
+- added syntax highlighting in corepad.
 - saving a new page>> saving dialog>name has a * ,fixed it.
 - remove the page whole border in corepad.
-- name box is in focuse in corearchiver.
+- name box is in focus in corearchiver.
 - fixed active window capture is not working.
 - fixed active window and full screen in capturing also the choreshot window.
 - fixed delay is not working.
-- all widgets in separet ui.
+- all widgets in separate ui.
 - notes widget text and recentactivities in separate file.
 - fixed search is not taking path from corefm.
 - fixed two terminal crash both terminal app.
 - fixed add files button dose not work in corerenamer and many ui and bug fixes.
 - round border in messageengine>>messagebox.
 - getfilesize in qconcarent.
-- fixed contex menu open folder action in corefm.
-- fixed focuse policy from the shortcut bar from all app.
-- added one scroolbar stylesheet across the app.
-- moved window buttons to sidebar and fixed the dobule click to window miximize.
+- fixed context menu open folder action in corefm.
+- fixed focus policy from the shortcut bar from all app.
+- added one scrollbar stylesheet across the app.
+- moved window buttons to sidebar and fixed the double click to window maximize.
 - fixed some bugs related to coreplayer playlist.
-- fixed mant ui imperfectionin all the apps.
-- fixed issue releated to executable in properties.
+- fixed mant ui imperfection all the apps.
+- fixed issue related to executable in properties.
 - added sliding effect in start pages.
 - a big code cleanup and ui fixes.
 - added new option delete all text add a text and number at front
 - added option to restore the backup file .
 - delete recent activity when hidden.
-- swicth case in setupfolder function.
+- switch case in setupfolder function.
 - auto fill the folder path and name from search activity.
 - Add button to delete the search activity
 - limit the openable window.
 - fixed coreterminal is not in focused after opening.
 - changed corepad scroll bar stylesheet.
-- make executeable file permission with qt
-- rename in seperate window in corefm.
+- make executable file permission with qt
+- rename in separate window in corefm.
 - limited the coreshot delay time.
 - font size in spin box in corepad.
 - delete recent activity when hidden.
+- fixed screen orientation showing number and added screen size in dashboard.
+- fixed mimetype background of settings app
+
 
 
 

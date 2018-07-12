@@ -143,7 +143,7 @@ in-future
 
 
 
-[MY_TASK]
+[ABRAR_TASK]
 0 - make bookmark count more relevant
 0 - make all deb package at one
 0 - get all files and folders under a path to a text file
@@ -172,6 +172,8 @@ recheack- Settings loaded with defaults everytime when corebox newly started and
 16.A function which check the text is it a valid dir or not if not show a little message below those lineedit????????
 recheack- terminal closes properly???
 recent,serch,save session in qconcarent??
+see the screen size in dashboard.
+bin and lib folder has the coustom icon
 
 
 0 - save all file in a folder to text as a action.
@@ -186,15 +188,15 @@ recent,serch,save session in qconcarent??
 0 - drag a app icon from start is disapear.
 0 - separet folder and file count.( 1 Files, 9 Folder | as return).
 0 - if corebox folder exist in config folder, delete it then extrat (not overwrite).
-0 - add option to make file hidden in properties.(see the permmisson tab.
+0 - add option to make file hidden in properties.(see the permmisson tab).
 0 - at start catch all the open tab and add them in separate file and add a treeWidget in start SAVED SESSION.
 0 - fix the sort in start(speeddial,recentActivitys),search (recent to old)
 0 - clearing the search>> close the search window>> crashs the whole app.
 0 - recent activites not collecting corepad,
 0 - 10 windows>> close the corebox>>crashs the whole app.
-0 - esc shortcut to exit slidshow in coreimage.
+0 - esc key shortcut to exit slidshow in coreimage.
 
-	delete the last one from list and add new at first
+1 - delete the last one from list and add new at first in all list.
 
 - Add button to clear the recent activity
 - add butyon to remeove the selected session...
@@ -207,7 +209,8 @@ recent,serch,save session in qconcarent??
 0 - corepaint needs the corepad page function.sendinf new path will open the path in the opened corepaint.
 0 - multipal corefm opend> only catched the first one.
 0 - ask confrmation to save the session.
-0 - timing to month,date.see photo.
-
+0 - timing to month,date.see photo. and only today in "Today"
+0 - closeing dashbord crashes app.
+0 - save the splitter position of viewDir in coreFM
 
 

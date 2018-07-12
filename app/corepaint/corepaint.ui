@@ -46,7 +46,7 @@ QWidget [accessibleName=&quot;shortcut&quot;]{
 QLabel{
     background-color:transparent;
     color:#E6E6E6 ;
-    padding: 5px 5px 5px 5px;}
+    padding: 1px 5px 1px 5px;}
 
 
 QPushButton{
@@ -286,7 +286,7 @@ QScrollBar::sub-line:horizontal {
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>22</height>
+       <height>24</height>
       </size>
      </property>
      <property name="accessibleName">
@@ -393,13 +393,13 @@ QScrollBar::sub-line:horizontal {
        <widget class="QLabel" name="pColorPreviewLabel">
         <property name="minimumSize">
          <size>
-          <width>30</width>
+          <width>50</width>
           <height>20</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>30</width>
+          <width>100</width>
           <height>20</height>
          </size>
         </property>
@@ -442,7 +442,7 @@ QScrollBar::sub-line:horizontal {
          </size>
         </property>
         <property name="text">
-         <string/>
+         <string>position</string>
         </property>
        </widget>
       </item>
@@ -461,7 +461,7 @@ QScrollBar::sub-line:horizontal {
          </size>
         </property>
         <property name="text">
-         <string/>
+         <string>size</string>
         </property>
        </widget>
       </item>
@@ -1076,7 +1076,7 @@ QScrollBar::sub-line:horizontal {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>220</width>
+               <width>213</width>
                <height>260</height>
               </rect>
              </property>
@@ -1318,8 +1318,8 @@ QScrollBar::sub-line:horizontal {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>216</width>
-               <height>257</height>
+               <width>92</width>
+               <height>234</height>
               </rect>
              </property>
              <property name="accessibleName">
@@ -1676,8 +1676,8 @@ QScrollBar::sub-line:horizontal {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>216</width>
-               <height>257</height>
+               <width>92</width>
+               <height>101</height>
               </rect>
              </property>
              <property name="accessibleName">

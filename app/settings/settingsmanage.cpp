@@ -36,7 +36,7 @@ void SettingsManage::createDefaultSettings()
         cSetting->setValue("Terminal", "CoreTerminal");
         cSetting->setValue("Startup-Path", QDir::homePath());
         cSetting->setValue("Real-Mime-Types", true);
-        cSetting->setValue("Zoom", 80);
+        cSetting->setValue("Zoom", 32);
         cSetting->setValue("Zoom-Tree", 16);
         cSetting->setValue("Zoom-List", 32);
         cSetting->setValue("Zoom-Detail", 24);

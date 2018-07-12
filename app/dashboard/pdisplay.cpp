@@ -79,7 +79,7 @@ void pDisplay::setupDisplayPage()
         w->setAttribute(Qt::WA_TransparentForMouseEvents);
         w->setFocusPolicy(Qt::NoFocus);
         QFont fl ("Cantarell", 14, QFont::Normal);
-        QFont fp ("Ubuntu Mono", 11, QFont::Normal);
+        QFont fp ("Cantarell", 11, QFont::Normal);
         QLabel *l = new QLabel("Screen : " + QString::number(i+1));
         QVBoxLayout *v = new QVBoxLayout();
         QHBoxLayout *h = new QHBoxLayout();
