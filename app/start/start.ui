@@ -196,7 +196,7 @@ QScrollBar::sub-line:vertical {
    <item>
     <widget class="slidingStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="pcoreApps">
       <layout class="QVBoxLayout" name="verticalLayout_2">

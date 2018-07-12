@@ -38,7 +38,7 @@ void SettingsManage::createDefaultSettings()
         cSetting->setValue("Real-Mime-Types", true);
         cSetting->setValue("Zoom", 80);
         cSetting->setValue("Zoom-Tree", 16);
-        cSetting->setValue("Zoom-List", 24);
+        cSetting->setValue("Zoom-List", 32);
         cSetting->setValue("Zoom-Detail", 24);
         cSetting->setValue("Show-Thumb", false);
         cSetting->setValue("Show-Toolbox", false);

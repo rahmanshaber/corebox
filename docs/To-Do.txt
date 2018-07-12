@@ -9,6 +9,7 @@ FIX MUST BE SIMPLE.
 0 - fix the sort in bookmark,start,search (recent to old)
 
 corebox
+0 - same name folder and file not move to trash if same name file exist.
 0 - Mouse left button click is not working for corebox tabwidget beside the tabbar.
 0 - icon and title not changing perfectly.
 0 - remove file watcher for bookmark and speed dial.
@@ -30,14 +31,13 @@ globalfunction
 
 start
 1 - catch all the open tab and add them in separate file and add a listwidget in stackwidget.
-0 - delete recent activity when hidden.
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 1 - recent activities as date wise.
 1 - add reminder option.
 
 bookmarks
-0 - when a bookmark is selected show the delete and edit button otherwise hide them.
+0 - when a bookmark is selected show the delete and edit button on side of the selected bookmark otherwise hide them.
 0 - fix bookmark file check as folder making moved to globalfunctions.
 1 - one click to open all the bookmark in one section(only first 8 of them).
 1 - one button to bookmark all the opened tabs.
@@ -56,13 +56,12 @@ search
 2 - if path is given ,find is not working.but locate is working.
 
 setting
-0 - restore the backup file in same folder.
 0 - changes in app dose not save when corebox is closed.(not app)
 
 corefm
-0 - execut file with qt.
+0 - able to create file/folder shortcuts.
 0 - page text in root folder is showing blank.
-0 - pathedit is always in focus, even outside clicked.
+0 - pathedit to lineEdit.
 1 - rightbuttonMenu>new add a new option. directly make a paint app file.
 3 - set custom icon in home's folder.
 1 - add tree package.
@@ -113,7 +112,6 @@ coreshot
 
 coreterminal
 0 - Add search bar at coreterminal (not needed for now).
-0 - treminal is not in focused.
 2 - Open terminal as root for current directory is not supported.
 
 coreaction
@@ -125,7 +123,7 @@ help
 
 library
 3 - check library and its version before building from our app using qmake.
-- Update the libcterminal.
+1 - Update the libcterminal.
 
 New app
 -Backup.
@@ -162,31 +160,54 @@ NO ITS BLANK - 0 - on first start corepdf cannot show any pdf file. test it agai
 REALLY CAN'T FIX DON'T KNOW HOW IT WORKS - 0 - page text in root folder is showing blank.
 AS DELETE BUTTON ARE HERE - limit the search activity [activity limit 30]
 NO NEED - 0 - checkIsValidDir in const not working
+- why no qconcarent in file folder count.
+- why a add shadow function in globalfunction.h
+- why file/folder count and getF has unnessary vreables .
+- renamewindow in upper letter
+- send me all the apps screen shot withe coreshot.
+- where is settings pic?
+- terminal closes properly??? needs to solve??
+recheack- Settings loaded with defaults everytime when corebox newly started and didn't save a settings
+13.Change the mouse hover background of Tools at bookmark [not like the selected bookmarks background]????????
+16.A function which check the text is it a valid dir or not if not show a little message below those lineedit????????
+recheack- terminal closes properly???
+recent,serch,save session in qconcarent??
 
 
-
-0 - after corefm opening thumbnails don't show(showthumbs> cheacked)
-0 - add option to make file hidden in properties.
 0 - save all file in a folder to text as a action.
+
+0 - clicking enter the rename dose not complete in corefm renameDialog.
+
+0 - after corefm opening thumbnails don't show(showthumbs> cheacked).
+0 - white background of thumbnails need to remove.there is a white image in resource file for those that DOSe NOT Have thumbnails.
+0 - aspect ratio  must be kept same of thumbnails.see photo.
+0 - three clike on both view buttons with thumbnails checked crash the app.
+
+0 - drag a app icon from start is disapear.
+0 - separet folder and file count.( 1 Files, 9 Folder | as return).
+0 - if corebox folder exist in config folder, delete it then extrat (not overwrite).
+0 - add option to make file hidden in properties.(see the permmisson tab.
 0 - at start catch all the open tab and add them in separate file and add a treeWidget in start SAVED SESSION.
-Y - 0 - get file count in getfile size.(newbreeze function)
-Y - 0 - fix the sort in start,search (recent to old)
+0 - fix the sort in start(speeddial,recentActivitys),search (recent to old)
 0 - clearing the search>> close the search window>> crashs the whole app.
 0 - recent activites not collecting corepad,
 0 - 10 windows>> close the corebox>>crashs the whole app.
-0 - renamewindow in upper letter
+0 - esc shortcut to exit slidshow in coreimage.
+
 	delete the last one from list and add new at first
 
 - Add button to clear the recent activity
+- add butyon to remeove the selected session...
 -rendom crashs
 
 0 - clicking start dose not reload the session list.
 0 - dobulclicking the session time will restore all the windows in seperate corebox.
 0 - message after saveing and finishing of opening the session.
 0 - dose not collect the corepads multipal page path at all.
+0 - corepaint needs the corepad page function.sendinf new path will open the path in the opened corepaint.
 0 - multipal corefm opend> only catched the first one.
 0 - ask confrmation to save the session.
+0 - timing to month,date.see photo.
 
 
-terminal closes properly???
 

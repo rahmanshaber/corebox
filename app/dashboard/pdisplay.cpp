@@ -54,6 +54,7 @@ void pDisplay::setupDisplayPage()
         QStringList right;
 
         QListView *p = new QListView();
+        p->setFocusPolicy(Qt::NoFocus);
         QWidget *w = new QWidget();
         w->setAttribute(Qt::WA_TransparentForMouseEvents);
         w->setFocusPolicy(Qt::NoFocus);

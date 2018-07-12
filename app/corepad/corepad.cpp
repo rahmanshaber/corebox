@@ -22,7 +22,7 @@ corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
 {
     ui->setupUi(this);
 
-    ui->searchbox->setVisible(false);
+    ui->searchBar->setVisible(false);
     ui->fontSize->setVisible(0);
 
     shotcuts();
@@ -42,7 +42,7 @@ void corepad::openText(const QString &filePath)
 bool corepad::initializeNewTab(const QString &filePath)
 {
     int tabsCount = ui->notes->count();
-    if (tabsCount < 10) {
+    if (tabsCount < 4) {
         text = new coreedit();
         QString tabLabel;
         bool isUpdate = 0, isSave = 0;
@@ -410,9 +410,9 @@ void corepad::on_bookMarkIt_clicked()
 void corepad::on_search_clicked(bool checked)
 {
     if (checked) {
-        ui->searchbox->setVisible(true);
+        ui->searchBar->setVisible(true);
     } else {
-        ui->searchbox->setVisible(false);
+        ui->searchBar->setVisible(false);
     }
 }
 
@@ -478,7 +478,6 @@ void corepad::on_fontShow_clicked()
     }else{
         ui->fontSize->setVisible(0);
     }
-
 }
 
 void corepad::on_fontSize_valueChanged(int arg1)

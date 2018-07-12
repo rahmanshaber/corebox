@@ -602,12 +602,12 @@ QScrollBar::sub-line:horizontal {
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <layout class="QVBoxLayout" name="contens">
      <property name="spacing">
       <number>0</number>
      </property>
      <item>
-      <widget class="QScrollArea" name="scrollArea">
+      <widget class="QScrollArea" name="imageArea">
        <property name="mouseTracking">
         <bool>false</bool>
        </property>
@@ -638,7 +638,7 @@ QScrollBar::sub-line:horizontal {
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
+       <widget class="QWidget" name="images">
         <property name="geometry">
          <rect>
           <x>102</x>
@@ -770,12 +770,12 @@ QScrollBar::sub-line:horizontal {
         <bool>true</bool>
        </property>
        <property name="sortingEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="navigation" native="true">
+      <widget class="QWidget" name="navigationBar" native="true">
        <property name="accessibleName">
         <string>navigationBar</string>
        </property>

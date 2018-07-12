@@ -89,3 +89,16 @@ void coreshot::on_newShot_clicked()
     shotD->show();
     this->close();
 }
+
+void coreshot::on_openInCoreImage_clicked()
+{
+    QString fileName = sm.getSCSaveLocation() + "/Screenshot_" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss") + ".png";
+    QFile file(fileName);
+    ui->shotPreview->originalPixmap().save(&file, "PNG");
+    file.close();
+    files = fileName;
+    CoreBox *cBox = new CoreBox();
+    cBox->tabEngine(CoreImage, files);
+    this->close();
+    cBox->show();
+}

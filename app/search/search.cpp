@@ -39,12 +39,12 @@ search::~search()
 void search::startsetup()
 {
     ui->results->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
-    ui->pathfream->setVisible(0);
+    ui->pathBar->setVisible(0);
 
     ui->findCMD->setEnabled(0);
     ui->locateCMD->setEnabled(0);
 
-    ui->typeframe->setVisible(0);
+    ui->typeBar->setVisible(0);
     ui->cancelProc->setVisible(0);
 
     // Add setting for deleting the search activity.
@@ -87,7 +87,7 @@ void search::startsetup()
         ui->infoPage->setCurrentIndex(2);
     } else {
         ui->infoPage->setCurrentIndex(1);
-        ui->typeframe->setVisible(0);
+        ui->typeBar->setVisible(0);
         ui->status->setText("Search for Something by file type\nEnter text you want to search.");
     }
 
@@ -250,7 +250,7 @@ void search::populateItems(const QString &text)
     connect(r, &QFutureWatcher<void>::finished, [&](){
         //ui->status->setText("NO ITEM FOUND.");
         ui->infoPage->setCurrentIndex(0);
-        ui->typeframe->setVisible(1);
+        ui->typeBar->setVisible(1);
 
         // Check is search activity enabled or not
 
@@ -305,7 +305,7 @@ void search::toTable(const QStringList &list)
         // Collect Information and add it to tablewidget
         if (list.count() > 0) {
             ui->infoPage->setCurrentIndex(0);
-            ui->typeframe->setVisible(1);
+            ui->typeBar->setVisible(1);
             ui->results->clearContents();//Clear the rows from the table
             ui->results->setRowCount(list.count());//set row count by list item count
 
@@ -362,7 +362,7 @@ void search::on_findCMD_clicked()
         return;
     } else {
         ui->infoPage->setCurrentIndex(1);
-        ui->typeframe->setVisible(0);
+        ui->typeBar->setVisible(0);
         ui->results->clearContents();
         ui->typeAll->setChecked(0);
         ui->typeMedia->setChecked(0);
@@ -379,7 +379,7 @@ void search::on_locateCMD_clicked()
         return;
     } else {
         ui->infoPage->setCurrentIndex(1);
-        ui->typeframe->setVisible(0);
+        ui->typeBar->setVisible(0);
         ui->results->clearContents();
         ui->typeAll->setChecked(0);
         ui->typeMedia->setChecked(0);
@@ -430,10 +430,10 @@ void search::on_results_itemDoubleClicked(QTableWidgetItem *item)
 void search::on_more_clicked(bool checked)
 {
     if(checked){
-        ui->pathfream->setVisible(1);
+        ui->pathBar->setVisible(1);
         ui->folderPath->setFocus();
     }else{
-        ui->pathfream->setVisible(0);
+        ui->pathBar->setVisible(0);
         ui->searchFF->setFocus();
     }
 }
@@ -443,15 +443,15 @@ void search::on_searchFF_textChanged(const QString &arg1)
     if(arg1.isEmpty()){
         ui->findCMD->setEnabled(0);
         ui->locateCMD->setEnabled(0);
-        ui->typeframe->setEnabled(false);
-        ui->typeframe->setVisible(false);
+        ui->typeBar->setEnabled(false);
+        ui->typeBar->setVisible(false);
         ui->infoPage->setCurrentIndex(2);
     }
     else{
         ui->findCMD->setEnabled(1);
         ui->locateCMD->setEnabled(1);
-        ui->typeframe->setEnabled(true); ;
-        ui->typeframe->setVisible(false);
+        ui->typeBar->setEnabled(true); ;
+        ui->typeBar->setVisible(false);
     }
 }
 
@@ -475,6 +475,6 @@ void search::on_clearActivity_clicked()
     ui->activityList->clear();
     QFile(QDir::homePath() + "/.config/coreBox/SearchActivity").remove();
     ui->infoPage->setCurrentIndex(1);
-    ui->typeframe->setVisible(0);
+    ui->typeBar->setVisible(0);
     ui->status->setText("Search for Something by file type\nEnter text you want to search.");
 }

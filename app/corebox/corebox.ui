@@ -105,18 +105,16 @@ QFileDialog QLineEdit {
       </property>
       <property name="styleSheet">
        <string notr="true">QWidget {
-background-color: #111111;
-color: #111111;
-border: 1px #111111;
+    background-color: #111111;
+    color: #111111;
+    border: 1px #111111;
 }
 
 QPushButton{
-border: 1px #2A2A2A;
-background-color: #111111; 
-}
-
+    border: 1px #2A2A2A;
+    background-color: #111111; }
 QPushButton:hover  {
-background-color: #1268A4;
+    background-color: #1268A4;
 }
 </string>
       </property>

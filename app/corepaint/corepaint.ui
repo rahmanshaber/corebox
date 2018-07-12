@@ -17,6 +17,131 @@
    <iconset resource="../icons.qrc">
     <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/*CorePaint*/
+
+#appTitle{
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+
+
+QWidget [accessibleName=&quot;nameBar&quot;]{
+   background-color:#363941;
+   color: #000000;
+    border: 1px #45454D;}
+
+QWidget [accessibleName=&quot;statusBar&quot;]{
+    padding: 1px 5px 1px 2px;
+    background-color: #2B2A32 ;
+    color: #ffffff;
+    border: 1px  #2B2A32;}
+
+QWidget [accessibleName=&quot;shortcut&quot;]{
+    background-color: #3A4953;
+    color: #ffffff;
+    border: 1px #3A4953;}
+
+
+QLabel{
+    background-color:transparent;
+    color:#E6E6E6 ;
+    padding: 5px 5px 5px 5px;}
+
+
+QPushButton{
+    background-color: transparent;
+    color: #E6E6E6;
+    border: 1px #434343;
+    Text-align:left;
+    padding: 5px 5px 5px 5px;}
+QPushButton:pressed{
+    background-color:#1167A3; }
+QPushButton:hover {
+    background-color: #1167A3;}
+
+
+QToolButton{
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px #434343;
+    Text-align:left;
+    padding: 5px 5px 5px 5px;}
+QToolButton:checked{
+    background-color: #212F39; }
+QToolButton:hover {
+    background-color: #212F39; }
+
+
+QToolBox {
+    background-color: #3A4953;
+    color: #ffffff;
+    border: 1px #434343;}
+QToolBox::tab {
+    border: 1px #434343;}
+QToolBox::tab:selected {
+    background: #9F9F9F;
+    color: white;}
+QToolBox::tab:!selected {
+    background: #333333;
+    color: white;}
+
+
+QTabWidget{
+    background-color: transparent;
+    border-style: none;}
+QTabWidget QTabBar{
+    background-color: #333333;
+    height: 30px;}
+QTabWidget QTabBar::tab{
+    text-align: left;
+    background-color: #136ba2;
+    border-style: none;
+    height: 30px;
+    width: 63px;
+    color: #ffffff;
+    padding: 0px 5px 0px 5px;}
+QTabWidget QTabBar::tab:selected{
+    background-color: #0f5d90;}
+QTabWidget QTabBar::tab:!selected{
+    background-color:  #333333;}
+QTabWidget QTabBar::tab:hover{
+    background-color:  #3D3D3D;}
+
+
+QScrollBar:vertical {
+    background-color: rgba( 0, 0, 0, 72% );
+    max-width: 8px;
+    border-radius: 4px;
+    padding: 1px; }
+QScrollBar::handle:vertical {
+    background-color: silver;
+    max-width: 6px;
+    min-height: 12px;
+    border-radius: 3px; }
+QScrollBar:horizontal {
+    background-color: rgba( 0, 0, 0, 72% );
+    max-height: 8px;
+    border-radius: 4px;
+    padding: 1px; }
+QScrollBar::handle:horizontal {
+    background-color: silver;
+    max-height: 6px;
+    min-width: 12px;
+    border-radius: 3px; }
+QScrollBar::sub-page:horizontal,
+QScrollBar::sub-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-page:horizontal,
+QScrollBar::add-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    width: 0px; height: 0px; }
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px; height: 0px; }</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -34,7 +159,7 @@
     <number>0</number>
    </property>
    <item row="0" column="1">
-    <widget class="QFrame" name="namebar">
+    <widget class="QFrame" name="nameBar">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -47,11 +172,8 @@
        <height>30</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#363941;
-color: #FFFFFF;
-}</string>
+     <property name="accessibleName">
+      <string>nameBar</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -107,9 +229,6 @@ color: #FFFFFF;
           <pointsize>14</pointsize>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true">color: white;</string>
-        </property>
         <property name="text">
          <string>Working on :</string>
         </property>
@@ -127,9 +246,6 @@ color: #FFFFFF;
          <font>
           <pointsize>14</pointsize>
          </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: white;</string>
         </property>
         <property name="text">
          <string/>
@@ -154,35 +270,6 @@ color: #FFFFFF;
    </item>
    <item row="1" column="1">
     <widget class="QTabWidget" name="paintTabs">
-     <property name="styleSheet">
-      <string notr="true">QTabWidget {
-border:none;
-}
-
-QTabWidget QTabBar{
-background-color: #2B2A32;
-border:none;
-height: 25px;
-}
-
-QTabWidget QTabBar::tab{
-background-color: #2B2A32;
-color: #2B2A32;
-border-style: none;
-height: 25px;
-width: 130px;
-padding: 0px 5px 0px 5px;
-}
-
-QTabWidget QTabBar::tab:selected{
-background-color: #464652;
-color: #000000;
-}
-QTabWidget QTabBar::tab:!selected{
-background-color:  #2B2A32;
-color:#B4B4B4;
-}</string>
-     </property>
      <property name="tabPosition">
       <enum>QTabWidget::South</enum>
      </property>
@@ -195,19 +282,15 @@ color:#B4B4B4;
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QFrame" name="statusbar">
+    <widget class="QFrame" name="statusBar">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
        <height>22</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #2B2A32;
-color: #ffffff;
-border: 1px #2B2A32;
-}</string>
+     <property name="accessibleName">
+      <string>statusBar</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -230,19 +313,6 @@ border: 1px #2B2A32;
       </property>
       <item>
        <widget class="QToolButton" name="undo">
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-Text-align:left;
-border: 1px rgb(67, 67, 67);
-}
-QToolButton:checked{
-background-color:#1792D0; 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
-        </property>
         <property name="text">
          <string>Undo</string>
         </property>
@@ -260,19 +330,6 @@ background-color: rgb(48, 140, 198);
       </item>
       <item>
        <widget class="QToolButton" name="redo">
-        <property name="styleSheet">
-         <string notr="true">QToolButton{
-Text-align:left;
-border: 1px rgb(67, 67, 67);
-}
-QToolButton:checked{
-background-color:#1792D0; 
-}
-
-QToolButton:hover {
-background-color: rgb(48, 140, 198);
-}</string>
-        </property>
         <property name="text">
          <string>Redo</string>
         </property>
@@ -431,32 +488,8 @@ background-color: rgb(48, 140, 198);
        <height>16777215</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #3A4953;
-color: #ffffff;
-border: 1px #3A4953;
-}
-
-QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-
-QToolButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QToolButton:checked{
-background-color: #212F39; 
-}
-
-QToolButton:hover {
-background-color: #212F39; 
-}
-</string>
+     <property name="accessibleName">
+      <string>shortcut</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
@@ -475,7 +508,13 @@ background-color: #212F39;
        <number>10</number>
       </property>
       <item>
-       <widget class="QPushButton" name="title">
+       <widget class="QToolButton" name="appTitle">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <pointsize>16</pointsize>
@@ -483,9 +522,6 @@ background-color: #212F39;
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">Text-align:left</string>
         </property>
         <property name="text">
          <string>CorePaint</string>
@@ -499,6 +535,9 @@ background-color: #212F39;
           <width>24</width>
           <height>24</height>
          </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>
@@ -527,32 +566,6 @@ background-color: #212F39;
           <bold>false</bold>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QTabWidget QTabBar{
-background-color: #333333;
-height: 30px;
-}
-
-QTabWidget QTabBar::tab{
-text-align: left;
-background-color: #136ba2;
-border-style: none;
-height: 30px;
-width: 63px;
-color: #ffffff;
-padding: 0px 5px 0px 5px;
-}
-
-QTabWidget QTabBar::tab:selected{
-background-color: #0f5d90;
-}
-QTabWidget QTabBar::tab:!selected{
-background-color:  #333333;
-}
-QTabWidget QTabBar::tab:hover{
-background-color:  #3D3D3D;
-}</string>
-        </property>
         <property name="tabPosition">
          <enum>QTabWidget::South</enum>
         </property>
@@ -560,6 +573,9 @@ background-color:  #3D3D3D;
          <number>0</number>
         </property>
         <widget class="QWidget" name="filePage">
+         <property name="accessibleName">
+          <string>shortcut</string>
+         </property>
          <attribute name="title">
           <string>File</string>
          </attribute>
@@ -722,6 +738,9 @@ background-color:  #3D3D3D;
          </layout>
         </widget>
         <widget class="QWidget" name="canvaspage">
+         <property name="accessibleName">
+          <string>shortcut</string>
+         </property>
          <attribute name="title">
           <string>Canvas</string>
          </attribute>
@@ -1015,6 +1034,9 @@ background-color:  #3D3D3D;
          </layout>
         </widget>
         <widget class="QWidget" name="toolpage">
+         <property name="accessibleName">
+          <string>shortcut</string>
+         </property>
          <attribute name="title">
           <string>Tools</string>
          </attribute>
@@ -1043,22 +1065,6 @@ background-color:  #3D3D3D;
               <bold>false</bold>
              </font>
             </property>
-            <property name="styleSheet">
-             <string notr="true">QToolBox::tab {
-background: #434343;
-border: 1px rgb(67, 67, 67);
-color: #ffffff;
-}
-
-QToolBox::tab:selected { 
-background: #9F9F9F;
-color: white;
-}
-QToolBox::tab:!selected { 
-background: #333333;
-color: white;
-}</string>
-            </property>
             <property name="currentIndex">
              <number>0</number>
             </property>
@@ -1071,8 +1077,11 @@ color: white;
                <x>0</x>
                <y>0</y>
                <width>220</width>
-               <height>263</height>
+               <height>260</height>
               </rect>
+             </property>
+             <property name="accessibleName">
+              <string>shortcut</string>
              </property>
              <attribute name="label">
               <string>Selection Tools</string>
@@ -1309,9 +1318,12 @@ color: white;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>88</width>
-               <height>234</height>
+               <width>216</width>
+               <height>257</height>
               </rect>
+             </property>
+             <property name="accessibleName">
+              <string>shortcut</string>
              </property>
              <attribute name="label">
               <string>Art Tools</string>
@@ -1664,9 +1676,12 @@ color: white;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>88</width>
-               <height>101</height>
+               <width>216</width>
+               <height>257</height>
               </rect>
+             </property>
+             <property name="accessibleName">
+              <string>shortcut</string>
              </property>
              <attribute name="label">
               <string>Color</string>

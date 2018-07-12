@@ -201,6 +201,9 @@ QScrollBar::sub-line:horizontal {
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>
         </property>
+        <property name="tabKeyNavigation">
+         <bool>false</bool>
+        </property>
         <property name="showDropIndicator" stdset="0">
          <bool>false</bool>
         </property>
@@ -240,7 +243,7 @@ QScrollBar::sub-line:horizontal {
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="tools">
+       <widget class="QFrame" name="toolsBar">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -282,6 +285,12 @@ QScrollBar::sub-line:horizontal {
          </item>
          <item>
           <widget class="QPushButton" name="bUndo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -292,6 +301,12 @@ QScrollBar::sub-line:horizontal {
          </item>
          <item>
           <widget class="QPushButton" name="bRedo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>

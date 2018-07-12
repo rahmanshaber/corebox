@@ -113,7 +113,7 @@ Version 2.2
 - rename in seperate window in corefm.
 - limited the coreshot delay time.
 - font size in spin box in corepad.
-
+- delete recent activity when hidden.
 
 
 

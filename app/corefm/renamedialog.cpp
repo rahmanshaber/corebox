@@ -14,11 +14,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
-#include "renamewindow.h"
-#include "ui_renamewindow.h"
+#include "renamedialog.h"
+#include "ui_renamedialog.h"
 
-
-RenameWindow::RenameWindow(QFileInfo iFile, QWidget *parent) :QWidget(parent),ui(new Ui::RenameWindow)
+renameDialog::renameDialog(QFileInfo iFile,QWidget *parent):QDialog(parent),ui(new Ui::renameDialog)
 {
     ui->setupUi(this);
 
@@ -29,15 +28,25 @@ RenameWindow::RenameWindow(QFileInfo iFile, QWidget *parent) :QWidget(parent),ui
     setWindowTitle("Rename \"" + m_iFile.fileName() + "\"");
     ui->newName->setText(m_iFile.fileName());
     ui->pic->setPixmap(geticon(iFile.filePath()).pixmap(120, 120));
-    connect(ui->cancel, &QPushButton::clicked, this, &RenameWindow::close);
+    connect(ui->cancel, &QPushButton::clicked, this, &renameDialog::close);
+
+    shotcuts();
 }
 
-RenameWindow::~RenameWindow()
+renameDialog::~renameDialog()
 {
     delete ui;
 }
 
-void RenameWindow::on_ok_clicked()
+void renameDialog::shotcuts()
+{
+    QShortcut* shortcut;
+
+    shortcut = new QShortcut(QKeySequence(Qt::Key_Enter), this);
+    connect(shortcut, &QShortcut::activated, this, &renameDialog::on_done_clicked);
+}
+
+void renameDialog::on_done_clicked()
 {
     if (ui->newName->text().count()) {
         if (QFile::rename(m_iFile.filePath(), m_iFile.path() + "/" + ui->newName->text())) {

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>740</width>
-    <height>753</height>
+    <width>773</width>
+    <height>648</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -225,7 +225,7 @@ QPushButton{
          <item row="2" column="0">
           <widget class="QLabel" name="label_10">
            <property name="text">
-            <string>Build with Qt 5.11 (GCC 8.1., 64 bit)</string>
+            <string>Build with Qt 5.11 ,C++ 11 (GCC 8.1., 64 bit)</string>
            </property>
            <property name="indent">
             <number>10</number>
@@ -297,7 +297,7 @@ QPushButton{
          <item row="1" column="0">
           <widget class="QLabel" name="label_19">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Check out the GitHub page &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Check out this project's GitHub page &lt;a href=&quot;https://github.com/rahmanshaber/corebox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="indent">
             <number>10</number>
@@ -362,7 +362,7 @@ QPushButton{
          <item row="1" column="0">
           <widget class="QLabel" name="label_9">
            <property name="text">
-            <string>Big Thanks to Qt for there free and Open Source Freamwork.</string>
+            <string>Big Thanks to Qt for there free and Open Source Toolkit.</string>
            </property>
            <property name="indent">
             <number>10</number>

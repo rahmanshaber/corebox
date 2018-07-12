@@ -57,7 +57,7 @@ FORMS += \
     dashboard/pdrives.ui \
     dashboard/pgeneral.ui \
     dashboard/presources.ui \
-    corefm/renamewindow.ui
+    corefm/renamedialog.ui
 
 
 HEADERS += \
@@ -156,7 +156,7 @@ HEADERS += \
     dashboard/upower.h \
     dashboard/utilities.h \
     start/slidingstackedwidget.h \
-    corefm/renamewindow.h
+    corefm/renamedialog.h
 
 
 SOURCES += \
@@ -252,7 +252,7 @@ SOURCES += \
     dashboard/signal_mapper.cpp \
     dashboard/upower.cpp \
     start/slidingstackedwidget.cpp \
-    corefm/renamewindow.cpp
+    corefm/renamedialog.cpp
 
 
 RESOURCES += \

@@ -22,12 +22,6 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {
     ui->setupUi(this);
 
-//    // Setup drive mount folder
-//    QString p = QDir::homePath() + "/.coreBox";
-//    if(!QDir(p).exists()){
-//        QDir::home().mkdir(".coreBox");
-//    }
-
     startsetup();
     loadSettings();
     lateStart();
@@ -41,33 +35,36 @@ corefm::~corefm()
 
 void corefm::startsetup()
 {
-    // Create mime utils
+    // create mime utils
     mimeUtils = new MimeUtils(this);
     QString name = "/.config/coreBox/mimeapps.list";
     mimeUtils->setDefaultsFileName(name);
 
-    // Setup startup path
+    // setup startup path
     if (sm.getStartupPath() == "") {
         startPath = QDir::homePath();
     } else {
         startPath = sm.getStartupPath();
     }
 
-    // Create filesystem model
+    // create filesystem model
     bool realMime = sm.getIsRealMimeType();
     modelList = new myModel(realMime, mimeUtils);
 
+    // create the page tabs
     tabs = new tabBar(modelList->folderIcons);
+    tabs->setDrawBase(0);
+    tabs->setExpanding(0);
     tabs->setTabsClosable(true);
     tabs->setAutoHide(true);
-    ui->mk->addWidget(tabs);
+    ui->pagesBar->addWidget(tabs);
     connect(tabs, SIGNAL(tabCloseRequested(int)), tabs, SLOT(closeTab(int)));
 
     modelTree = new mainTreeFilterProxyModel();
     modelTree->setSourceModel(modelList);
     modelTree->setSortCaseSensitivity(Qt::CaseInsensitive);
 
-    // Setup shortcut folder view
+    // setup shortcut folder view
     ui->viewDir->setHeaderHidden(true);
     ui->viewDir->setUniformRowHeights(true);
     ui->viewDir->setModel(modelTree);
@@ -84,13 +81,13 @@ void corefm::startsetup()
     modelView->setSourceModel(modelList);
     modelView->setSortCaseSensitivity(Qt::CaseInsensitive);
 
-    // Setup icon view
+    // setup icon view
     ui->viewIcon->setModel(modelView);
     ui->viewIcon->setFocusPolicy(Qt::NoFocus);
     listSelectionModel = ui->viewIcon->selectionModel();
     ui->viewIcon->setContextMenuPolicy(Qt::CustomContextMenu);
 
-    // Setup list view
+    // setup list view
     ui->viewDetail->setModel(modelView);
     ui->viewDetail->setSelectionModel(listSelectionModel);
     ui->viewDetail->setFocusPolicy(Qt::NoFocus);
@@ -105,14 +102,12 @@ void corefm::startsetup()
     ui->viewDir->setCurrentIndex(modelTree->mapFromSource(modelList->index(startPath)));
     ui->viewDir->scrollTo(ui->viewDir->currentIndex());
 
-    // Setup buttons and actions
+    // setup buttons and actions
     ui->paste->setVisible(0);
     ui->emptyTrash->setVisible(0);
     ui->actionAscending->setChecked(1);
-    ui->STrash->setVisible(1);
-    ui->partitions->setFocusPolicy(Qt::NoFocus);
 
-    // Setup all the tool buttons to related actions
+    // setup all the tool buttons to related actions
     ui->newPage->setDefaultAction(ui->actionNewPage);
     ui->copy->setDefaultAction(ui->actionCopy);
     ui->cut->setDefaultAction(ui->actionCut);
@@ -124,7 +119,7 @@ void corefm::startsetup()
     ui->newfolder->setDefaultAction(ui->actionNewFolder);
     ui->newtext->setDefaultAction(ui->actionNewTextFile);
 
-    // Setup system partition list
+    // setup system partition list
     udisks = new UDisks2(this);
     connect(udisks, SIGNAL(blockDeviceAdded(QString)), this, SLOT(blockDevicesChanged()));
     connect(udisks, SIGNAL(blockDeviceChanged(QString)), this, SLOT(blockDevicesChanged()));
@@ -132,15 +127,15 @@ void corefm::startsetup()
     connect(udisks, SIGNAL(filesystemAdded(QString)), this, SLOT(blockDevicesChanged()));
     blockDevicesChanged();
 
-    // Reload files if there is some changes
+    // reload files if there is some changes
     watcher = new QFileSystemWatcher(this);
     connect(watcher, SIGNAL(directoryChanged(QString)), this, SLOT(on_actionRefresh_triggered()));
 
-    // Setup left mouse click at both views
+    // setup left mouse click at both views
     connect(ui->viewIcon, &ClickOutListview::clickedOut, this, &corefm::pressed);
     connect(ui->viewDetail, &ClickOutTreeview::clickedOut, this, &corefm::pressed);
 
-    // Set all int values to zero
+    // set all int values to zero
     selectItemCount = 0;
 }
 
@@ -180,15 +175,6 @@ void corefm::shotcuts()
 
 void corefm::lateStart()
 {
-    // Configure tree view
-    ui->viewDir->setFocusPolicy(Qt::NoFocus);
-    ui->viewDir->setDragDropMode(QAbstractItemView::DragDrop);
-    ui->viewDir->setDefaultDropAction(Qt::MoveAction);
-    ui->viewDir->setDropIndicatorShown(true);
-    ui->viewDir->setEditTriggers(QAbstractItemView::EditKeyPressed | QAbstractItemView::SelectedClicked);
-
-    ui->viewIcon->setFocus();
-
     // Watch for mounts
     int fd = open("/proc/self/mounts", O_RDONLY, 0);
     notify = new QSocketNotifier(fd, QSocketNotifier::Write);
@@ -203,10 +189,6 @@ void corefm::lateStart()
     customComplete->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
     customComplete->setMaxVisibleItems(10);
     ui->pathEdit->setCompleter(customComplete);
-
-    // Tabs configuration
-    tabs->setDrawBase(0);
-    tabs->setExpanding(0);
 
     // Connect mouse clicks in views
 //    if (sett->value("singleClick").toInt() == 1) {
@@ -1562,17 +1544,6 @@ void corefm::zoomOutAction()
 
 void corefm::on_actionRename_triggered()
 {
-    //    if (focusWidget() == tree) {
-//      tree->edit(treeSelectionModel->currentIndex());
-//    }
-//    else if(ui->view->currentIndex() == 0) {
-//      ui->viewIcon->edit(listSelectionModel->currentIndex());
-
-//    }
-//    else if(ui->view->currentIndex() == 1) {
-//      ui->viewtree->edit(listSelectionModel->currentIndex());
-//    }
-
     renameDialog *rd = new renameDialog(curIndex, this);
     rd->show();
 }

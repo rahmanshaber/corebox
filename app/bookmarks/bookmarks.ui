@@ -92,15 +92,16 @@ QComboBox::drop-down {
     background-color: #3C3C43;}
 
 
-QTableView::item{
-    border-bottom-style:solid;
-    border-width:1;
-    border-color: #323232;}
 QTableView {
     background-color: #171717 ;
     color: #ffffff;
     selection-background-color:#323232 ;
-    selection-color:#1CB853; }
+    selection-color:#1CB853; 
+    padding: 0px 0px 0px 15px;}
+QTableView::item{
+    border-bottom-style:solid;
+    border-width:1;
+    border-color: #323232;}
 
 
 QListView{
@@ -710,6 +711,9 @@ QScrollBar::sub-line:vertical {
          </size>
         </property>
         <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <property name="cornerButtonEnabled">
          <bool>false</bool>
         </property>
         <attribute name="horizontalHeaderVisible">

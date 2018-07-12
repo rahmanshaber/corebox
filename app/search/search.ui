@@ -148,7 +148,7 @@ QScrollBar::sub-line:vertical {
        <number>0</number>
       </property>
       <item>
-       <widget class="QFrame" name="searchbar">
+       <widget class="QWidget" name="searchBar" native="true">
         <property name="styleSheet">
          <string notr="true"/>
         </property>
@@ -352,18 +352,12 @@ QScrollBar::sub-line:vertical {
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="pathfream">
+       <widget class="QWidget" name="pathBar" native="true">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
           <height>48</height>
          </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
@@ -389,6 +383,12 @@ QScrollBar::sub-line:vertical {
          </item>
          <item>
           <widget class="QPushButton" name="setfolder">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -411,15 +411,9 @@ QScrollBar::sub-line:vertical {
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="typeframe">
+       <widget class="QWidget" name="typeBar" native="true">
         <property name="styleSheet">
          <string notr="true"/>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <property name="topMargin">
@@ -822,6 +816,20 @@ QScrollBar::sub-line:vertical {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Search Activity</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -842,20 +850,6 @@ QScrollBar::sub-line:vertical {
           </widget>
          </item>
         </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Search Activity</string>
-         </property>
-        </widget>
        </item>
        <item>
         <widget class="QTreeWidget" name="activityList">

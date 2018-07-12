@@ -20,7 +20,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "mymodel.h"
 #include "progressdlg.h"
 #include "propertiesw.h"
-#include "renamewindow.h"
+#include "renamedialog.h"
 #include "tabbar.h"
 #include "fileutils.h"
 #include "mimeutils.h"

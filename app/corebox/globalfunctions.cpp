@@ -598,6 +598,31 @@ qint64 getSize(QString path)
     return 0;
 }
 
+QString getFolderConts(QString &output, const QString &path)
+{
+    QFileSystemModel *model = new QFileSystemModel();
+    model->setRootPath(path);
+
+
+    QString currentPath;
+    QDirIterator it(path, QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::Hidden, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        it.next();
+        if(it.fileInfo().isDir()) {
+            if (it.filePath() == path)
+                continue;
+
+            currentPath = it.fileInfo().baseName();
+            output += "├── " + it.fileInfo().baseName() + "\n";
+        } else {
+            if (it.fileInfo().baseName() == currentPath)
+                output += "│   ├── " + it.fileName() + "\n";
+        }
+    }
+
+    return output;
+}
+
 QStringList sortDate(QStringList &dateList, sortOrder s)
 {
     QList<QDate> dates;
@@ -734,27 +759,3 @@ bool deleteLastLine(const QString &filePath)
 
 }
 
-QString getFolderConts(QString &output, const QString &path)
-{
-    QFileSystemModel *model = new QFileSystemModel();
-    model->setRootPath(path);
-
-
-    QString currentPath;
-    QDirIterator it(path, QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::Hidden, QDirIterator::Subdirectories);
-    while (it.hasNext()) {
-        it.next();
-        if(it.fileInfo().isDir()) {
-            if (it.filePath() == path)
-                continue;
-
-            currentPath = it.fileInfo().baseName();
-            output += "├── " + it.fileInfo().baseName() + "\n";
-        } else {
-            if (it.fileInfo().baseName() == currentPath)
-                output += "│   ├── " + it.fileName() + "\n";
-        }
-    }
-
-    return output;
-}

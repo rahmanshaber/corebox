@@ -259,7 +259,7 @@ background-color:#45454D ;
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QFrame" name="namebar">
+    <widget class="QFrame" name="nameBar">
      <property name="minimumSize">
       <size>
        <width>0</width>

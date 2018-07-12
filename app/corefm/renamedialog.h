@@ -14,34 +14,37 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
-#ifndef RENAMEWINDOW_H
-#define RENAMEWINDOW_H
+#ifndef RENAMEDIALOG_H
+#define RENAMEDIALOG_H
 
+#include <QDialog>
 #include <QPixmap>
-#include <QWidget>
 #include <QFileInfo>
+#include <QShortcut>
 
 #include "corebox/globalfunctions.h"
 
 
 namespace Ui {
-class RenameWindow;
+class renameDialog;
 }
 
-class RenameWindow : public QWidget
+class renameDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit RenameWindow(QFileInfo iFile, QWidget *parent = 0);
-    ~RenameWindow();
+    explicit renameDialog(QFileInfo iFile, QWidget *parent = 0);
+    ~renameDialog();
 
 private slots:
-    void on_ok_clicked();
+    void on_done_clicked();
 
 private:
-    Ui::RenameWindow *ui;
+    Ui::renameDialog *ui;
     QFileInfo m_iFile;
+
+    void shotcuts();
 };
 
-#endif // RENAMEWINDOW_H
+#endif // RENAMEDIALOG_H

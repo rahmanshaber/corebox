@@ -105,10 +105,13 @@ QTabBar::tab:!selected {
        <property name="bottomMargin">
         <number>2</number>
        </property>
-       <property name="spacing">
+       <property name="horizontalSpacing">
+        <number>10</number>
+       </property>
+       <property name="verticalSpacing">
         <number>2</number>
        </property>
-       <item row="1" column="0" colspan="2">
+       <item row="1" column="1" colspan="2">
         <widget class="Line" name="line_2">
          <property name="minimumSize">
           <size>
@@ -121,7 +124,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="11" column="1">
         <widget class="QLabel" name="labelCreated">
          <property name="font">
           <font>
@@ -133,7 +136,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="10" column="0" colspan="2">
+       <item row="12" column="1" colspan="2">
         <widget class="Line" name="line_4">
          <property name="minimumSize">
           <size>
@@ -146,7 +149,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="11" column="0">
+       <item row="13" column="1">
         <widget class="QLabel" name="labelOwner">
          <property name="font">
           <font>
@@ -158,7 +161,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="3" column="1">
         <widget class="QLabel" name="labelSize">
          <property name="font">
           <font>
@@ -173,7 +176,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="4" column="1">
         <widget class="QLabel" name="labelType">
          <property name="font">
           <font>
@@ -185,7 +188,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="12" column="0">
+       <item row="14" column="1">
         <widget class="QLabel" name="labelGroup">
          <property name="font">
           <font>
@@ -197,7 +200,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="6" column="1">
         <widget class="QLabel" name="lableLocation">
          <property name="font">
           <font>
@@ -209,7 +212,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
+       <item row="8" column="1" colspan="2">
         <widget class="Line" name="line_3">
          <property name="minimumSize">
           <size>
@@ -222,7 +225,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="10" column="1">
         <widget class="QLabel" name="labelModified">
          <property name="font">
           <font>
@@ -234,7 +237,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="13" column="0">
+       <item row="15" column="1">
         <widget class="QLabel" name="labelExecutable">
          <property name="font">
           <font>
@@ -246,7 +249,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="14" column="0" colspan="2">
+       <item row="16" column="1" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -259,7 +262,7 @@ QTabBar::tab:!selected {
          </property>
         </spacer>
        </item>
-       <item row="3" column="1">
+       <item row="3" column="2">
         <widget class="QLabel" name="size">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -277,7 +280,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="2">
         <widget class="QLabel" name="location">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -298,7 +301,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="4" column="2">
         <widget class="QLabel" name="type">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -316,7 +319,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="10" column="2">
         <widget class="QLabel" name="modified">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -334,7 +337,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="11" column="2">
         <widget class="QLabel" name="created">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -352,7 +355,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="13" column="2">
         <widget class="QLabel" name="owner">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -370,7 +373,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="14" column="2">
         <widget class="QLabel" name="group">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -388,7 +391,7 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="13" column="1">
+       <item row="15" column="2">
         <widget class="QLabel" name="executable">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -406,7 +409,23 @@ QTabBar::tab:!selected {
          </property>
         </widget>
        </item>
-       <item row="0" column="0" colspan="2">
+       <item row="1" column="0" rowspan="15">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0" colspan="3">
         <widget class="QToolButton" name="fileTitle">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -454,7 +473,7 @@ QTabBar::tab:!selected {
         <number>20</number>
        </property>
        <property name="topMargin">
-        <number>20</number>
+        <number>30</number>
        </property>
        <property name="rightMargin">
         <number>10</number>
@@ -507,7 +526,7 @@ QTabBar::tab:!selected {
         <number>20</number>
        </property>
        <property name="topMargin">
-        <number>20</number>
+        <number>30</number>
        </property>
        <property name="rightMargin">
         <number>10</number>
@@ -703,6 +722,13 @@ QTabBar::tab:!selected {
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="hiddenB">
+         <property name="text">
+          <string>Hidden</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_4">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -726,7 +752,7 @@ QTabBar::tab:!selected {
         <number>20</number>
        </property>
        <property name="topMargin">
-        <number>20</number>
+        <number>30</number>
        </property>
        <property name="rightMargin">
         <number>10</number>
@@ -740,7 +766,7 @@ QTabBar::tab:!selected {
        <property name="verticalSpacing">
         <number>10</number>
        </property>
-       <item row="5" column="0" colspan="3">
+       <item row="6" column="0" colspan="3">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -753,7 +779,41 @@ QTabBar::tab:!selected {
          </property>
         </spacer>
        </item>
-       <item row="1" column="0" rowspan="4">
+       <item row="2" column="1" rowspan="2" colspan="2">
+        <widget class="QLabel" name="sizefree">
+         <property name="text">
+          <string>Free</string>
+         </property>
+         <property name="indent">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" rowspan="2" colspan="2">
+        <widget class="QLabel" name="sizetotal">
+         <property name="text">
+          <string>Total</string>
+         </property>
+         <property name="indent">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>This partition</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" rowspan="5">
         <widget class="QPushButton" name="pushButton_3">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -788,30 +848,6 @@ QTabBar::tab:!selected {
          </property>
          <property name="flat">
           <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" rowspan="2" colspan="2">
-        <widget class="QLabel" name="sizefree">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Free</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1" rowspan="2" colspan="2">
-        <widget class="QLabel" name="sizetotal">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Total</string>
          </property>
         </widget>
        </item>

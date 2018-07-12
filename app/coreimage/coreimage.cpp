@@ -25,7 +25,7 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
 
     scaleFactor = 1.0;
 
-    cImageLabel = new QLabel(ui->scrollArea);
+    cImageLabel = new QLabel(ui->imageArea);
     cImageLabel->setFrameShape(QLabel::NoFrame);
     cImageLabel->setFrameShadow(QLabel::Plain);
     cImageLabel->setText("");
@@ -36,8 +36,8 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
     cImageLabel->setBackgroundRole(QPalette::Base);
     cImageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
-    ui->scrollArea->setBackgroundRole(QPalette::Dark);
-    ui->scrollArea->setStyleSheet("background-color:rgb(0,0,0);");
+    ui->imageArea->setBackgroundRole(QPalette::Dark);
+    ui->imageArea->setStyleSheet("background-color:rgb(0,0,0);");
 
     ui->shortcut->setVisible(false);
     ui->propbox->setVisible(false);
@@ -49,7 +49,7 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
             b->setEnabled(false);
         }
 
-        for (QToolButton *b : ui->navigation->findChildren<QToolButton*>()){
+        for (QToolButton *b : ui->navigationBar->findChildren<QToolButton*>()){
             b->setEnabled(false);
         }
         ui->cTools->setEnabled(true);
@@ -106,8 +106,8 @@ void coreimage::closeEvent(QCloseEvent *event)
 void coreimage::wheelEvent(QWheelEvent *event)
 {
     int delta = event->delta();
-    ui->scrollArea->verticalScrollBar()->setEnabled(false);
-    ui->scrollArea->horizontalScrollBar()->setEnabled(false);
+    ui->imageArea->verticalScrollBar()->setEnabled(false);
+    ui->imageArea->horizontalScrollBar()->setEnabled(false);
     if(Qt::RightButton & event->buttons()) {
       if(delta > 0) { // forward
         on_cZoomIn_clicked();
@@ -187,7 +187,7 @@ bool coreimage::loadFile(const QString &fileName)
             b->setEnabled(true);
         }
 
-        for (QToolButton *b : ui->navigation->findChildren<QToolButton*>()){
+        for (QToolButton *b : ui->navigationBar->findChildren<QToolButton*>()){
             b->setEnabled(true);
         }
         return true;
@@ -207,14 +207,14 @@ void coreimage::setImage(const QImage &newImage)
     scaleFactor = 1.0;
 
     ui->horizontalLayout_3->removeItem(hSpacer);
-    ui->scrollArea->setWidget(cImageLabel);
+    ui->imageArea->setWidget(cImageLabel);
 
     int iw = image.width();
     int ih = image.height();
-    int cw = ui->scrollArea->width();
-    int ch = ui->scrollArea->height();
+    int cw = ui->imageArea->width();
+    int ch = ui->imageArea->height();
 
-    if (image.height() < ui->scrollArea->height() && image.width() < ui->scrollArea->width()){
+    if (image.height() < ui->imageArea->height() && image.width() < ui->imageArea->width()){
         cImageLabel->setPixmap(QPixmap::fromImage(image));
         cImageLabel->adjustSize();
     } else {
@@ -254,10 +254,10 @@ void coreimage::resizeEvent(QResizeEvent *event)
     Q_UNUSED(event);
     int iw = image.width();
     int ih = image.height();
-    int cw = ui->scrollArea->width();
-    int ch = ui->scrollArea->height();
+    int cw = ui->imageArea->width();
+    int ch = ui->imageArea->height();
 
-    if (image.height() < ui->scrollArea->height() && image.width() < ui->scrollArea->width()){
+    if (image.height() < ui->imageArea->height() && image.width() < ui->imageArea->width()){
         cImageLabel->setPixmap((QPixmap::fromImage(image)));
         cImageLabel->adjustSize();
     }
@@ -299,8 +299,8 @@ void coreimage::scaleImage(double factor)
     scaleFactor *= factor;
     cImageLabel->resize(scaleFactor * cImageLabel->pixmap()->size());
 
-    adjustScrollBar(ui->scrollArea->horizontalScrollBar(), factor);
-    adjustScrollBar(ui->scrollArea->verticalScrollBar(), factor);
+    adjustScrollBar(ui->imageArea->horizontalScrollBar(), factor);
+    adjustScrollBar(ui->imageArea->verticalScrollBar(), factor);
 }
 
 void coreimage::on_cOpen_clicked()
@@ -444,7 +444,7 @@ void coreimage::on_slideShow_clicked(bool checked)
         // switch to the next image when timeout
         connect(slideShowTimer, &QTimer::timeout, this, &coreimage::on_cNext_clicked);
       }
-      ui->scrollArea->showFullScreen();
+      ui->imageArea->showFullScreen();
       slideShowTimer->start(3000);
       ui->shortcut->setVisible(false);
     }

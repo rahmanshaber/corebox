@@ -48,6 +48,9 @@ private slots:
     void on_cancel_clicked();
     void on_newShot_clicked();
 
+
+    void on_openInCoreImage_clicked();
+
 private:
     Ui::coreshot *ui;
 

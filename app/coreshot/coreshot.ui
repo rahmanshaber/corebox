@@ -91,6 +91,13 @@ QPushButton:hover {
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="openInCoreImage">
+       <property name="text">
+        <string>Open in CoreImage</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="openInCorePaint">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>

@@ -25,52 +25,44 @@
   </property>
   <property name="styleSheet">
    <string notr="true">/*CoreArchiver */
+
 QWidget{
-background-color: #2A2A2A;
-color: #E6E6E6;
-border: 1px #2A2A2A;
-}
+    background-color: #2A2A2A;
+    color: #E6E6E6;
+    border: 1px #2A2A2A;}
 
-/*ToolButton */
-QToolButton{
-border: 1px solid #434343 ;
-padding: 3px 2px 3px 2px;
-}
 
-QToolButton:pressed{
-background-color: #308CC6; 
-}
-
-QToolButton:hover {
-background-color:  #308CC6; 
-}
-
-/*ComboBox */
-QComboBox {
-    border: 1px solid #434343 ;
-    padding: 5px 5px 5px 10px;
-}
-QComboBox QAbstractItemView {
-    background-color: #333333;
-    color: #ffffff;
-    selection-background-color: #C2C2C2;
-}
-QComboBox::drop-down {
-    background-color: #3C3C43;
-}
-QComboBox::down-arrow {
-    image: url(:/icons/down_w.svg);
-}
-QComboBox:focus{
-    border:1px solid #C2C2C2;
-}
-
-/*LineBox */
 QLineEdit{
+    background-color: transparent;
+    color: #E6E6E6;
     border: 1px solid #434343;
-    padding: 5px 5px 5px 10px;
-}
-</string>
+    padding: 5px 5px 5px 10px;}
+
+
+QToolButton{
+    background-color: transparent;
+    color: #E6E6E6;
+    border: 1px solid #434343 ;
+    padding: 3px 2px 3px 2px;}
+QToolButton:pressed{
+    background-color: #1167A3; }
+QToolButton:hover {
+    background-color:  #1167A3; }
+
+
+QComboBox {
+    background-color: transparent;
+    color: #E6E6E6;
+    border: 1px solid #434343 ;
+    padding: 5px 5px 5px 10px;}
+QComboBox QAbstractItemView {
+    background-color: #3C3C43;
+    color: #ffffff;
+    selection-background-color: #FD2732;}
+QComboBox::drop-down {
+    background-color: #3C3C43;}
+QComboBox::down-arrow {
+    image: url(:/icons/down_w.svg);}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="topMargin">
