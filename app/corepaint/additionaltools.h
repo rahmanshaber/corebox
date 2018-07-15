@@ -27,9 +27,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QClipboard>
 #include <QApplication>
 
-#include "imagearea.h"
-#include "dialogs/resizedialog.h"
-
 
 QT_BEGIN_NAMESPACE
 class ImageArea;
