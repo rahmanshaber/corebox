@@ -21,8 +21,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QStyleFactory>
 
 
-#include "corebox/globalfunctions.h"
-
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -38,9 +36,6 @@ int main(int argc, char *argv[])
 
     coreaction a;
     a.show();
-
-    // Example of how to get the size and text
-    qDebug() << getFileSize("/home/shaber/Desktop/corebox/") << getCountText("/home/shaber/Desktop/corebox/");
 
     return app.exec();
 }

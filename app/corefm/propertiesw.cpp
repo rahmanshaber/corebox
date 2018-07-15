@@ -59,9 +59,12 @@ void propertiesw::general()
 
     if(info.isFile()){
         ui->type->setText(littleinfo + " , " + extrainfo );
+        ui->labelContains->setVisible(false);
+        ui->contains->setVisible(false);
     }
     if(info.isDir()){
         ui->type->setText("Directory");
+        ui->contains->setText(getCountText(pathName));
     }
 
     ui->fileTitle->setText(info.fileName());
@@ -69,7 +72,7 @@ void propertiesw::general()
     ui->location->setText(info.path());
 
     ui->modified->setText(info.lastModified().toString());
-    //ui->created->setText(info.birthTime().toString());
+    ui->created->setText(info.birthTime().toString());
 
     ui->owner->setText(info.owner());
     ui->group->setText(info.group());

@@ -65,6 +65,7 @@ private:
     void toTable(const QStringList &list);
     void shotcuts();
     void startsetup();
+    void loadSearchActivity();
     const QStringList &populateByType();
 
 private slots:

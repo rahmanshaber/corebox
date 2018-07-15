@@ -15,6 +15,7 @@ These are the some big changes in CoreBox 2.2.
 => Start
    - New look.
    - Redisinged RecentActivites.
+   - Added new feture called save session.
 
 => BookMarks
     - BookmarkIt Dialog in dark ui.
@@ -31,6 +32,8 @@ These are the some big changes in CoreBox 2.2.
 => Search
    - Search is now faster and have better UI.
    - Keybord "Enter" shortcut is now working.
+   - Added search activity to save the search words.
+   - Auto fill the folder path and name from search activity.
    -
 
 => Settings
@@ -42,9 +45,11 @@ These are the some big changes in CoreBox 2.2.
 => CoreAction
    - All the widgets rebuild, now those are faster and ram efficent.
    - Widgets list is now customizeable.
-   -
+   - Redesinged.
 
 => CoreFM
+   - Added drive list.
+   - Added full trash support.
    - Added CoreArchiver and CoreTerminal support.
    - Dark ui in corefm.
    - Removed libmagic from depedency.

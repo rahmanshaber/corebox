@@ -124,6 +124,10 @@ Version 2.2
 - fixed clicking start dose not reload the session list.
 - message after saveing and finishing of opening the session.
 - corepaint now support multipal page support.
+- properties now shows folder and file count of a folder.
+- limit the openable window to 10.
+- swicth case in setupfolder function.
+
 
 
 

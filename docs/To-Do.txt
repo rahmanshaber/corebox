@@ -6,25 +6,18 @@ FIX MUST BE SIMPLE.
 3-impossible for us now.
 
 
-0 - fix the sort in bookmark,start,search (recent to old)
-
 corebox
 0 - same name folder and file not move to trash if same name file exist.
 0 - Mouse left button click is not working for corebox tabwidget beside the tabbar.
 0 - icon and title not changing perfectly.
-0 - remove file watcher for bookmark and speed dial.
 0 - closing the corebox needs to inform the app.
 1 - need two theme (dark and light).
 1 - add display scale support.
 1 - add option for using default window manager.
 3 - separate process for per app.
-1 - limit the openable window.
 1 - tab text align left.
 
 globalfunction
-0 - swicth case in setupfolder function.
-0 - get file count in getfile size.
-0 - remove the trash path checking.
 1 - file moved message.
 1 - finished copying message.
 1 - file deleted & delete failed message.
@@ -33,12 +26,10 @@ start
 1 - catch all the open tab and add them in separate file and add a listwidget in stackwidget.
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
-1 - recent activities as date wise.
 1 - add reminder option.
 
 bookmarks
 0 - when a bookmark is selected show the delete and edit button on side of the selected bookmark otherwise hide them.
-0 - fix bookmark file check as folder making moved to globalfunctions.
 1 - one click to open all the bookmark in one section(only first 8 of them).
 1 - one button to bookmark all the opened tabs.
 
@@ -50,7 +41,6 @@ dashboard
 1 - add drive frame in drive view.
 
 search
-0 - auto fill the folder path and name from search activity.
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
 2 - if path is given ,find is not working.but locate is working.
@@ -155,10 +145,7 @@ update the size function at corefm
 
 [TALKING]
 We have to open resource page at startup of dashboard because its a big thing to load it
-REALLY CAN'T FIX DON'T KNOW HOW IT WORKS - 0 - page text in root folder is showing blank.
-AS DELETE BUTTON ARE HERE - limit the search activity [activity limit 30]
 - why no qconcarent in file folder count.
-- why a add shadow function in globalfunction.h
 recent,serch,save session in qconcarent??
 
 
@@ -168,7 +155,6 @@ recent,serch,save session in qconcarent??
 Y - 0 - separet folder and file count.( 1 Files, 9 Folder | as return).
 NOT NEED - 0 - if corebox folder exist in config folder, delete it then extrat (not overwrite).
 
-0 - at start catch all the open tab and add them in separate file and add a treeWidget in start SAVED SESSION.
 Y - 0 - fix the sort in start(speeddial,recentActivitys),search (recent to old)
 TEST NEEDED FOR YOU - 0 - clearing the search>> close the search window>> crashs the whole app.
 TEST NEEDED FOR YOU - 0 - 10 windows>> close the corebox>>crashs the whole app.
@@ -176,10 +162,7 @@ TEST NEEDED FOR YOU - 0 - 10 windows>> close the corebox>>crashs the whole app.
 1 - delete the last one from list and add new at first in all list.
 
 - add button to remove the selected session...
-- random crashs
-
 
 0 - ask confrmation to save the session.
 
 
-Y - create two function one for folder and file count and another for size

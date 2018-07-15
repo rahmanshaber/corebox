@@ -47,52 +47,9 @@ void search::startsetup()
     ui->typeBar->setVisible(0);
     ui->cancelProc->setVisible(0);
 
-    // Add setting for deleting the search activity.
-    bool isActivityEnabled = true;
-
-    // Search Activity file Path
-    QString sActFile = QDir::homePath() + "/.config/coreBox/SearchActivity";
-    QSettings searchActF(sActFile, QSettings::IniFormat);
-
-    int count = searchActF.childGroups().count();
-    if (isActivityEnabled) {
-        ui->activityList->clear();
-        QStringList toplevel = searchActF.childGroups();
-        sortDate(toplevel);
-        foreach (QString group, toplevel) {
-            QTreeWidgetItem *topTree = new QTreeWidgetItem;
-            QString groupL = sentDateText(group);
-            topTree->setText(0, groupL);
-            searchActF.beginGroup(group);
-            QStringList keys = searchActF.childKeys();
-            sortTime(keys);
-            foreach (QString key, keys) {
-                QTreeWidgetItem *child = new QTreeWidgetItem;
-                QString value = searchActF.value(key).toString();
-                child->setText(0, value);
-                topTree->addChild(child);
-            }
-            searchActF.endGroup();
-            ui->activityList->insertTopLevelItem(0, topTree);
-        }
-
-        if (toplevel.count())
-            ui->activityList->setExpanded(ui->activityList->model()->index(0, 0), true);
-    }
-
-    bool isSearchActivityAvailable = true;
-    if (!count) isSearchActivityAvailable = 0;
-
-    if (isSearchActivityAvailable) {
-        ui->infoPage->setCurrentIndex(2);
-    } else {
-        ui->infoPage->setCurrentIndex(1);
-        ui->typeBar->setVisible(0);
-        ui->status->setText("Search for Something by file type\nEnter text you want to search.");
-    }
-
     ui->searchFF->setFocus();
 
+    loadSearchActivity();
     shotcuts();
 
     cProcess = new QProcess(this);
@@ -143,6 +100,53 @@ void search::startsetup()
         ui->cancelProc->setVisible(0);
         cProcess->close();
     });
+}
+
+void search::loadSearchActivity()
+{
+    // Add setting for deleting the search activity.
+    bool isActivityEnabled = true;
+
+    // Search Activity file Path
+    QString sActFile = QDir::homePath() + "/.config/coreBox/SearchActivity";
+    QSettings searchActF(sActFile, QSettings::IniFormat);
+
+    int count = searchActF.childGroups().count();
+    if (isActivityEnabled) {
+        ui->activityList->clear();
+        QStringList toplevel = searchActF.childGroups();
+        sortDate(toplevel);
+        foreach (QString group, toplevel) {
+            QTreeWidgetItem *topTree = new QTreeWidgetItem;
+            QString groupL = sentDateText(group);
+            topTree->setText(0, groupL);
+            searchActF.beginGroup(group);
+            QStringList keys = searchActF.childKeys();
+            sortTime(keys);
+            foreach (QString key, keys) {
+                QTreeWidgetItem *child = new QTreeWidgetItem;
+                QString value = searchActF.value(key).toString();
+                child->setText(0, value);
+                topTree->addChild(child);
+            }
+            searchActF.endGroup();
+            ui->activityList->insertTopLevelItem(0, topTree);
+        }
+
+        if (toplevel.count())
+            ui->activityList->setExpanded(ui->activityList->model()->index(0, 0), true);
+    }
+
+    bool isSearchActivityAvailable = true;
+    if (!count) isSearchActivityAvailable = 0;
+
+    if (isSearchActivityAvailable) {
+        ui->infoPage->setCurrentIndex(2);
+    } else {
+        ui->infoPage->setCurrentIndex(1);
+        ui->typeBar->setVisible(0);
+        ui->status->setText("Search for Something by file type\nEnter text you want to search.");
+    }
 }
 
 /**
@@ -451,6 +455,7 @@ void search::on_searchFF_textChanged(const QString &arg1)
         ui->typeBar->setEnabled(false);
         ui->typeBar->setVisible(false);
         ui->infoPage->setCurrentIndex(2);
+        loadSearchActivity();
     }
     else{
         ui->findCMD->setEnabled(1);
