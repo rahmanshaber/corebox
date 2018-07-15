@@ -163,6 +163,5 @@ TEST NEEDED FOR YOU - 0 - 10 windows>> close the corebox>>crashs the whole app.
 
 - add button to remove the selected session...
 
-0 - ask confrmation to save the session.
 
 

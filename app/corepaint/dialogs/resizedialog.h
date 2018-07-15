@@ -46,11 +46,9 @@ private:
     void initializeGui();
 
     QLabel *mNewSizeLabel; /**< Label for showing new size */
-    QSpinBox *mPixelWButton, *mPixelHButton,
-             *mPercentWButton, *mPercentHButton;
+    QSpinBox *mPixelWButton, *mPixelHButton,*mPercentWButton, *mPercentHButton;
     QCheckBox *mPreserveAspectBox;
-    int mWidth, mHeight,
-        mOrigWidth, mOrigHeight;
+    int mWidth, mHeight,mOrigWidth, mOrigHeight;
 
 private slots:
     void pixelsButtonClicked(bool flag);

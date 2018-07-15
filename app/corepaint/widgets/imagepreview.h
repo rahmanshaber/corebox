@@ -18,6 +18,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define IMAGEPREVIEW_H
 
 #include <QWidget>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QImage>
 
 
 class ImagePreview : public QWidget

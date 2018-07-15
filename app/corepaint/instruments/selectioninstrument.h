@@ -18,6 +18,15 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define SELECTIONINSTRUMENT_H
 
 #include "abstractselection.h"
+#include "../imagearea.h"
+#include "../undocommand.h"
+
+#include <QPainter>
+#include <QApplication>
+#include <QClipboard>
+#include <QDebug>
+#include "math.h"
+
 
 QT_BEGIN_NAMESPACE
 class QUndoStack;

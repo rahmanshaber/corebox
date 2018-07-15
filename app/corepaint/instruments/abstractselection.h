@@ -19,11 +19,14 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "abstractinstrument.h"
 
+#include "math.h"
+#include <QPainter>
 
 QT_BEGIN_NAMESPACE
 class QUndoStack;
 class ImageArea;
 QT_END_NAMESPACE
+
 
 class AbstractSelection : public AbstractInstrument
 {
@@ -60,6 +63,7 @@ protected:
          mIsMouseMoved, mIsSelectionAdjusting;
     int mHeight, mWidth;
     Qt::MouseButton mButton;
+
 };
 
 #endif // ABSTRACTSELECTION_H

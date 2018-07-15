@@ -17,7 +17,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #ifndef ABSTRACTINSTRUMENT_H
 #define ABSTRACTINSTRUMENT_H
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <QMouseEvent>
 #include <QImage>
 

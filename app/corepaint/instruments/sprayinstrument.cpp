@@ -15,12 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "sprayinstrument.h"
-#include "../imagearea.h"
-#include "../datasingleton.h"
-
-#include <QPen>
-#include <QPainter>
-#include <math.h>
 
 
 SprayInstrument::SprayInstrument(QObject *parent):AbstractInstrument(parent)

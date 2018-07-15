@@ -17,9 +17,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "abstractselection.h"
 #include "../imagearea.h"
 #include "../undocommand.h"
-#include "math.h"
-
-#include <QPainter>
 
 
 AbstractSelection::AbstractSelection(QObject *parent):AbstractInstrument(parent)

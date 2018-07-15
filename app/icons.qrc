@@ -173,5 +173,7 @@
         <file>icons/toggle_on_b.svg</file>
         <file>icons/toggle_on_w.svg</file>
         <file>icons/expand_w.svg</file>
+        <file>icons/view_dir_w.svg</file>
+        <file>icons/view_dir_b.svg</file>
     </qresource>
 </RCC>

@@ -15,8 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "colorpickerinstrument.h"
-#include "../imagearea.h"
-#include "../datasingleton.h"
 
 
 ColorpickerInstrument::ColorpickerInstrument(QObject *parent) :AbstractInstrument(parent)

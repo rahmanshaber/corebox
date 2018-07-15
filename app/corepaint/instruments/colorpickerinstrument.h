@@ -18,8 +18,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define COLORPICKERINSTRUMENT_H
 
 #include "abstractinstrument.h"
+#include "../imagearea.h"
+#include "../datasingleton.h"
 
-#include <QtCore/QObject>
+#include <QObject>
 
 
 class ColorpickerInstrument : public AbstractInstrument

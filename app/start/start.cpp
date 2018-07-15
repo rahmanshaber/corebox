@@ -178,41 +178,45 @@ void Start::loadSession()
 
         session.beginGroup(group);
 
-        QStringList midLevel = session.childGroups();
+        QStringList nameList = session.childGroups();
+        sortList(nameList);
 
-        foreach (QString gKey, midLevel) {
-            session.beginGroup(gKey);
+        foreach (QString name, nameList) {
+            QTreeWidgetItem *nameTree = new QTreeWidgetItem;
+            nameTree->setText(0, name);
 
-            if (session.childKeys().count() >= 1) {
-                QTreeWidgetItem *midChildT = new QTreeWidgetItem;
-                midChildT->setText(0, gKey);
-                midChildT->setIcon(0, appsIcon(gKey));
+            session.beginGroup(name);
 
-                QStringList keys = session.childKeys();
-                sortTime(keys, sortOrder::ASCENDING, "hh.mm.ss.zzz");
+            QStringList midLevel = session.childGroups();
 
-                foreach (QString key, keys) {
-                    QString value = session.value(key).toString();
-                    QTreeWidgetItem *child = new QTreeWidgetItem;
-                    child->setText(0, value);
-                    child->setIcon(0, value.count() ? geticon(value) : appsIcon(gKey));
-                    midChildT->addChild(child);
+            foreach (QString gKey, midLevel) {
+                session.beginGroup(gKey);
+
+                if (session.childKeys().count() >= 1) {
+                    QTreeWidgetItem *midChildT = new QTreeWidgetItem;
+                    midChildT->setText(0, gKey);
+                    midChildT->setIcon(0, appsIcon(gKey));
+
+                    QStringList keys = session.childKeys();
+                    sortTime(keys, sortOrder::ASCENDING, "hh.mm.ss.zzz");
+
+                    foreach (QString key, keys) {
+                        QString value = session.value(key).toString();
+                        if (value.count()) {
+                            QTreeWidgetItem *child = new QTreeWidgetItem;
+                            child->setText(0, value);
+                            child->setIcon(0, value.count() ? geticon(value) : appsIcon(gKey));
+                            midChildT->addChild(child);
+                        }
+                    }
+
+                    nameTree->addChild(midChildT);
                 }
 
-                topTree->addChild(midChildT);
-//
-// Don't Delete
-//
-//            } else if (session.childKeys().count() == 1){
-//                QString value = session.value(session.childKeys().at(0)).toString();
-//                QTreeWidgetItem *midChild = new QTreeWidgetItem();
-//                midChild->setText(0, gKey);
-
-//                // Passing the app icon when the value of an app is empty
-//                midChild->setIcon(0, value.count() ? geticon(value) : appsIcon(gKey));
-//                topTree->addChild(midChild);
+                session.endGroup();
             }
 
+            topTree->addChild(nameTree);
             session.endGroup();
         }
 
@@ -227,13 +231,21 @@ void Start::loadSession()
 
 void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
-    QStringList appList;
-    appList << "CoreFM" << "CorePad" << "CoreImage" << "CorePaint" << "CorePlayer" << "CoreRenamer" << "CoreTerminal"
-            << "Help" << "About" << "Settings" << "Dashboard" << "Bookmark" << "CoreTime" << "CorePDF";
+    QStringList nameList;
+    QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
+    QStringList group = session.childGroups();
+    foreach (QString s, group) {
+        session.beginGroup(s);
+        QStringList gl = session.childGroups();
+        foreach (QString s, gl) {
+            nameList.append(s);
+        }
+        session.endGroup();
+    }
 
     QString selected = item->text(column);
 
-    if (!appList.contains(selected)) {
+    if (nameList.contains(selected)) {
         CoreBox *cBox = new CoreBox;
         for (int i = 0; i < item->childCount(); i++) {
 
@@ -248,7 +260,7 @@ void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
         }
         cBox->show();
 
-        messageEngine("Session restored successfully", MessageType::Info);
+        messageEngine("Apps restored successfully", MessageType::Info);
     }
 }
 

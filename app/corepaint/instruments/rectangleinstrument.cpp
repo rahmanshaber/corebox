@@ -15,11 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "rectangleinstrument.h"
-#include "../imagearea.h"
-#include "../datasingleton.h"
-
-#include <QPen>
-#include <QPainter>
 
 
 RectangleInstrument::RectangleInstrument(QObject *parent):AbstractInstrument(parent)

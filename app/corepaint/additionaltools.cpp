@@ -15,8 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "additionaltools.h"
-#include "imagearea.h"
-#include "dialogs/resizedialog.h"
 
 
 AdditionalTools::AdditionalTools(ImageArea *pImageArea, QObject *parent) :QObject(parent)

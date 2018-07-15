@@ -18,6 +18,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define COLORCHOOSER_H
 
 #include <QLabel>
+#include <QColor>
+#include <QPixmap>
+#include <QPainter>
+#include <QMouseEvent>
+#include <QColorDialog>
+
 
 QT_BEGIN_NAMESPACE
 class QColor;

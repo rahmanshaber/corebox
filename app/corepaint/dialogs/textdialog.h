@@ -18,7 +18,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define TEXTDIALOG_H
 
 #include "../imagearea.h"
-
 #include "../datasingleton.h"
 
 #include <QDialog>

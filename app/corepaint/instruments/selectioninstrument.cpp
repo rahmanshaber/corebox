@@ -15,14 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "selectioninstrument.h"
-#include "../imagearea.h"
-#include "../undocommand.h"
-#include "math.h"
-
-#include <QPainter>
-#include <QApplication>
-#include <QClipboard>
-#include <QDebug>
 
 
 SelectionInstrument::SelectionInstrument(QObject *parent):AbstractSelection(parent)

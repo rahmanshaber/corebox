@@ -32,6 +32,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corepdf/corepdf.h"
 #include "coreterminal/coreterminal.h"
 #include "corerenamer/corerenamer.h"
+#include "start/sessionsavedialog.h"
 
 
 CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
@@ -677,6 +678,19 @@ void CoreBox::on_box_clicked()
 
 void CoreBox::on_saveSession_clicked()
 {
+    QString sName = "";
+    sessionSaveDialog *ssd = new sessionSaveDialog(this);
+    connect(ssd, &sessionSaveDialog::nameOk, [this, ssd, &sName]() {
+        sName = ssd->sName;
+        ssd->close();
+    });
+    ssd->exec();
+
+    if (!sName.count()) {
+        messageEngine("Session Name empty\nNot Saved", MessageType::Info);
+        return;
+    }
+
     QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
 
     if (session.childGroups().count() > 15) {
@@ -685,6 +699,7 @@ void CoreBox::on_saveSession_clicked()
     }
 
     session.beginGroup(QDate::currentDate().toString("dd.MM.yyyy"));
+    session.beginGroup(sName);
     for (int i = 0; i < ui->windows->count(); i++) {
         QThread::currentThread()->msleep(1);
         QString key = QTime::currentTime().toString("hh.mm.ss.zzz");
@@ -783,6 +798,8 @@ void CoreBox::on_saveSession_clicked()
         }
     }
     session.endGroup();
+    session.endGroup();
 
     messageEngine("Session Saved Successfully", MessageType::Info);
 }
+

@@ -18,8 +18,13 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define TEXTINSTRUMENT_H
 
 #include "abstractselection.h"
+#include "../imagearea.h"
+#include "../datasingleton.h"
+#include "../undocommand.h"
+#include "../dialogs/textdialog.h"
 
-#include <QtCore/QObject>
+#include <QObject>
+#include <QPainter>
 
 
 class TextInstrument : public AbstractSelection

@@ -17,8 +17,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "resizedialog.h"
 
 
-ResizeDialog::ResizeDialog(const QSize &size, QWidget *parent) :
-    QDialog(parent), mWidth(size.width()), mHeight(size.height()),
+ResizeDialog::ResizeDialog(const QSize &size, QWidget *parent) :QDialog(parent),
+    mWidth(size.width()), mHeight(size.height()),
     mOrigWidth(size.width()), mOrigHeight(size.height())
 {
     initializeGui();

@@ -18,9 +18,14 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define CURVELINEINSTRUMENT_H
 
 #include "abstractinstrument.h"
+#include "../imagearea.h"
+#include "../datasingleton.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QPoint>
+#include <QObject>
+#include <QPoint>
+#include <QPen>
+#include <QPainter>
+#include <QImage>
 
 
 class CurveLineInstrument : public AbstractInstrument
@@ -39,6 +44,7 @@ protected:
 private:
     QPoint mFirstControlPoint, mSecondControlPoint;
     unsigned int mPointsCount : 2; /**< Chaneges from 0 to 2, so 2 bits is enough. */
+
 };
 
 #endif // CURVELINEINSTRUMENT_H

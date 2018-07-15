@@ -18,8 +18,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define MAGNIFIERINSTRUMENT_H
 
 #include "abstractinstrument.h"
+#include "../imagearea.h"
 
-#include <QtCore/QObject>
+#include <QObject>
 
 
 class MagnifierInstrument : public AbstractInstrument

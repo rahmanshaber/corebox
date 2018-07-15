@@ -57,7 +57,8 @@ FORMS += \
     dashboard/pdrives.ui \
     dashboard/pgeneral.ui \
     dashboard/presources.ui \
-    corefm/renamedialog.ui
+    corefm/renamedialog.ui \
+    start/sessionsavedialog.ui
 
 
 HEADERS += \
@@ -156,7 +157,8 @@ HEADERS += \
     dashboard/upower.h \
     dashboard/utilities.h \
     start/slidingstackedwidget.h \
-    corefm/renamedialog.h
+    corefm/renamedialog.h \
+    start/sessionsavedialog.h
 
 
 SOURCES += \
@@ -252,7 +254,8 @@ SOURCES += \
     dashboard/signal_mapper.cpp \
     dashboard/upower.cpp \
     start/slidingstackedwidget.cpp \
-    corefm/renamedialog.cpp
+    corefm/renamedialog.cpp \
+    start/sessionsavedialog.cpp
 
 
 RESOURCES += \

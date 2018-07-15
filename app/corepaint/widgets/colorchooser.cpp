@@ -16,12 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "colorchooser.h"
 
-#include <QColor>
-#include <QPixmap>
-#include <QPainter>
-#include <QMouseEvent>
-#include <QColorDialog>
-
 
 ColorChooser::ColorChooser(const int &r, const int &g, const int &b, QWidget *parent) :
     QLabel(parent)

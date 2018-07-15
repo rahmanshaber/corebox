@@ -15,12 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "textinstrument.h"
-#include "../imagearea.h"
-#include "../datasingleton.h"
-#include "../undocommand.h"
-#include "../dialogs/textdialog.h"
-
-#include <QPainter>
 
 
 TextInstrument::TextInstrument(QObject *parent):AbstractSelection(parent)
