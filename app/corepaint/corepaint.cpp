@@ -29,8 +29,6 @@ corepaint::corepaint( QWidget *parent):QWidget(parent),ui(new Ui::corepaint),
     DataSingleton::Instance()->setIsInitialized();
 
     if(filepath.isEmpty()){
-        ui->page->setTabEnabled(1,false);
-        ui->page->setTabEnabled(2,false);
         ui->save->setEnabled(false);
         ui->saveas->setEnabled(false);
         ui->bookMarkIt->setEnabled(false);
@@ -127,8 +125,6 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
         currentFile = fileName;
         filepath = filePath;
         if (ui->paintTabs->count() >= 1) {
-            ui->page->setTabEnabled(1, true);
-            ui->page->setTabEnabled(2,true);
             ui->save->setEnabled(true);
             ui->saveas->setEnabled(true);
             ui->bookMarkIt->setEnabled(true);
@@ -479,8 +475,6 @@ void corepaint::on_paintTabs_tabCloseRequested(int index)
     ui->paintTabs->removeTab(index);
     delete wid;
     if(ui->paintTabs->count() == 0){
-        ui->page->setTabEnabled(1,false);
-        ui->page->setTabEnabled(2,false);
         ui->save->setEnabled(false);
         ui->saveas->setEnabled(false);
         ui->bookMarkIt->setEnabled(false);
@@ -608,4 +602,38 @@ void corepaint::on_delet_clicked()
 {
     if (ImageArea *imageArea = getCurrentImageArea())
        imageArea->clearBackground();
+}
+
+void corepaint::pageClick(QToolButton *btn, int i)
+{
+    // all button checked false
+    for (QToolButton *b : ui->shortcut->findChildren<QToolButton*>())
+        b->setChecked(false);
+    btn->setChecked(true);
+    ui->pages->setCurrentIndex(i);
+}
+
+void corepaint::on_menuB_clicked()
+{
+    pageClick(ui->menuB,0);
+}
+
+void corepaint::on_canvasB_clicked()
+{
+    pageClick(ui->canvasB,1);
+}
+
+void corepaint::on_selectionB_clicked()
+{
+    pageClick(ui->selectionB,2);
+}
+
+void corepaint::on_toolsB_clicked()
+{
+    pageClick(ui->toolsB,3);
+}
+
+void corepaint::on_colorB_clicked()
+{
+    pageClick(ui->colorB,4);
 }

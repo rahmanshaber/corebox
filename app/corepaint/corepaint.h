@@ -79,6 +79,7 @@ public:
     // Only for save session purpose it is at public
     ImageArea* getImageAreaByIndex(int index);
 
+    void pageClick(QToolButton *btn, int i);
 protected:
     void closeEvent(QCloseEvent *event);
 
@@ -136,6 +137,16 @@ private slots:
     void undo();
     void redo();
     void on_delet_clicked();
+
+    void on_menuB_clicked();
+
+    void on_canvasB_clicked();
+
+    void on_selectionB_clicked();
+
+    void on_toolsB_clicked();
+
+    void on_colorB_clicked();
 
 signals:
     void sendInstrumentChecked(InstrumentsEnum);
