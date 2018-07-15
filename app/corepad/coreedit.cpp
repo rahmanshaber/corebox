@@ -17,8 +17,11 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "coreedit.h"
 
 
-coreedit::coreedit(QWidget *parent) : QPlainTextEdit(parent)
+coreedit::coreedit(QString fPath, QWidget *parent) : QPlainTextEdit(parent)
 {
+    // It will need in future
+    filePath = fPath;
+
     cHighlighter *highlighter = new cHighlighter(document());
     setStyleSheet("QWidget{background-color: #2E2F30; border: none;}"
                   "QMenu::item{background-color: rgb(0, 0, 0);color: rgb(255, 255, 255);}"

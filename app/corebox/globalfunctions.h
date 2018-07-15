@@ -38,6 +38,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "../settings/settingsmanage.h"
 
+struct SizeAndCountText
+{
+    QString sizeText;
+    QString countText;
+};
+
 enum sortOrder {
     ASCENDING = 0,
     DESCENDING = 1
@@ -77,7 +83,7 @@ enum FolderSetup {
 };
 
  QStringList sortDate(QStringList &dateList, sortOrder s = ASCENDING);
- QStringList sortTime(QStringList &timeList, sortOrder s = ASCENDING);
+ QStringList sortTime(QStringList &timeList, sortOrder s = ASCENDING, QString format = "hh.mm.ss");
  QStringList sortList(QStringList &list, sortOrder s = ASCENDING);
  QStringList sortDateTime(QStringList &dateTimeList, sortOrder s = ASCENDING);
 
@@ -99,13 +105,13 @@ enum FolderSetup {
 
  QString formatSize(qint64 num);
 
- QString getFileSize(const QString path);
- QString getMultipleFileSize(QStringList paths);
+ QString getCountText(const QString path);
+ QString getMultipleCountText(const QStringList &paths);
+ QString getMultipleFileSize(const QStringList &paths);
+ QString getFileSize(const QString &path);
 
- qint64 getfilesize(QString path);
-
- qint64 getF(QStringList paths, int &folders, int &files);
- qint64 getSize(QString path);
+ SizeAndCountText getF(const QStringList &paths);
+ qint64 getSize(const QString &path);
 
  QString checkIsValidDir(const QString str);
  QString checkIsValidFile(const QString str);
@@ -115,7 +121,7 @@ enum FolderSetup {
 
  QString getMountPathByName(const QString displayName);
 
- QString getFolderConts(QString &output, const QString &path);
+ void getDirText(const QString &path);
 
  static void addDropShadow(QWidget *widget, const int alpha, const int blur = 25, const QString stylesheet = "") {
      QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect(widget);

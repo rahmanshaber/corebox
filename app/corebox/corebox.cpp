@@ -141,20 +141,28 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         break;
     }
     case CorePaint: {
-        // Limit the openable tab to 10
-        if (n > 10){
-            messageEngine("Reached Window limite", MessageType::Warning);
-            return;
+        int nn = filterEngine("CorePaint");
+
+        if (nn != 404) {
+            ui->windows->setCurrentIndex(nn);
+            corepaint *cPaint = static_cast<corepaint*>(ui->windows->currentWidget());
+            cPaint->initializeNewTab(true, arg);
+        } else {
+            // Limit the openable tab to 10
+            if (n > 10){
+                messageEngine("Reached Window limite", MessageType::Warning);
+                return;
+            }
+
+            corepaint *cPAINT = new corepaint();
+
+            const QString str = checkIsValidFile(arg);
+            if (!str.isEmpty() || !str.isNull()) cPAINT->initializeNewTab(true, str);
+            else cPAINT->initializeNewTab();
+
+            ui->windows->insertTab(n, cPAINT, QIcon(":/icons/CorePaint.svg"), "CorePaint");
+            ui->windows->setCurrentIndex(n);
         }
-
-        corepaint *cPAINT = new corepaint();
-
-        const QString str = checkIsValidFile(arg);
-        if (!str.isEmpty() || !str.isNull()) cPAINT->initializeNewTab(true, str);
-        else cPAINT->initializeNewTab();
-
-        ui->windows->insertTab(n, cPAINT, QIcon(":/icons/CorePaint.svg"), "CorePaint");
-        ui->windows->setCurrentIndex(n);
         break;
     }
     case CorePlayer: {
@@ -484,9 +492,11 @@ int CoreBox::filterEngine(QString name) // engine for find if a app is opened
 void CoreBox::on_windows_currentChanged(int index) // set window title related to current selected app
 {
     QString title = ui->windows->tabText(index);
-    ui->windows->currentWidget()->setFocus();
     this->setWindowTitle(title);
     this->setWindowIcon(appsIcon(title));
+
+    if (ui->windows->currentWidget())
+        ui->windows->currentWidget()->setFocus();
 }
 
 void CoreBox::on_windows_tabBarClicked(int index) // reload the apps if related app is clicked
@@ -619,29 +629,6 @@ void CoreBox::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
-void CoreBox::paintEvent(QPaintEvent *event)
-{
-//    QRgb _blend(qRgba(0,0,0,0xff));
-//    QColor color(_blend);
-//    color.setAlphaF(0.75);
-//    _blend = color.rgba();
-
-//    QPainter paint(this);
-//    paint.setOpacity(0.8);
-
-//    const auto rects = (event->region() & contentsRect()).rects();
-//    //qDebug() << rects;
-//    for (const QRect &rect : rects)
-//    {
-//        QColor col(QColor::fromRgb(255,255,255));
-//        col.setAlpha(qAlpha(_blend));
-//        paint.save();
-//        paint.setCompositionMode(QPainter::CompositionMode_Source);
-//        paint.fillRect(rect, col);
-//        paint.restore();
-//    }
-}
-
 void CoreBox::on_bookmarks_clicked()
 {
     tabEngine(Bookmarks);
@@ -691,32 +678,111 @@ void CoreBox::on_box_clicked()
 void CoreBox::on_saveSession_clicked()
 {
     QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
-    session.beginGroup(QDateTime::currentDateTime().toString("hh.mm.ss - dd.MM.yyyy"));
+
+    if (session.childGroups().count() > 15) {
+        messageEngine("Session save limit reached", MessageType::Warning);
+        return;
+    }
+
+    session.beginGroup(QDate::currentDate().toString("dd.MM.yyyy"));
     for (int i = 0; i < ui->windows->count(); i++) {
+        QThread::currentThread()->msleep(1);
+        QString key = QTime::currentTime().toString("hh.mm.ss.zzz");
         QString value = "";
         switch (nameToInt(ui->windows->tabText(i))) {
-        case CoreFM:
-            value = static_cast<corefm*>(ui->windows->widget(i))->gCurrentPath();
-            break;
-        case CoreImage:
+        case CoreImage: {
+            session.beginGroup("CoreImage");
             value = static_cast<coreimage*>(ui->windows->widget(i))->currentImagePath;
+            session.setValue(key, value);
+            session.endGroup();
             break;
-        case CorePad: {
-            corepad *cpad = static_cast<corepad*>(ui->windows->widget(i));
-            QString v = "";
-            for (int j = 0; j < cpad->tabsCount(); j++) {
-//                if (j == cpad->tabsCount() - 1)
-//                    v += cpad->currentFilePath(j);
-//                else
-                    v += cpad->currentFilePath(j) + "\t\t\t";
+        }
+        case CorePDF: {
+            session.beginGroup("CorePDF");
+            value = static_cast<corepdf*>(ui->windows->widget(i))->workFilePath;
+            session.setValue(key, value);
+            session.endGroup();
+            break;
+        }
+        case CorePlayer: {
+            session.beginGroup("CorePlayer");
+            value = static_cast<coreplayer*>(ui->windows->widget(i))->workFilePath();
+            session.setValue(key, value);
+            session.endGroup();
+            break;
+        }
+        case CoreRenamer: {
+            session.beginGroup("CoreRenamer");
+            value = static_cast<corerenamer*>(ui->windows->widget(i))->workFilePath;
+            session.setValue(key, value);
+            session.endGroup();
+            break;
+        }
+        case CoreTerminal: {
+            session.beginGroup("CoreTerminal");
+            value = static_cast<coreterminal*>(ui->windows->widget(i))->currentWorkingDirectory();
+            session.setValue(key, value);
+            session.endGroup();
+            break;
+        }
+        case Search: {
+            session.beginGroup("Search");
+            value = static_cast<search*>(ui->windows->widget(i))->workFilePath();
+            session.setValue(key, value);
+            session.endGroup();
+            break;
+        }
+        case CoreFM: {
+            session.beginGroup("CoreFM");
+            corefm *cfm = static_cast<corefm*>(ui->windows->widget(i));
+            for (int j = 0; j < cfm->tabsCount(); j++){
+                QThread::currentThread()->msleep(1);
+                // Created the key again for the time for every single page
+                key = QTime::currentTime().toString("hh.mm.ss.zzz");
+
+                // As corefm has so many current path variable (don't know but guess)
+                // Just added a function to get the current page path
+                value = cfm->gCurrentPath(j);
+                session.setValue(key, value);
             }
-            value = v;
+            session.endGroup();
+            break;
+        }
+        case CorePad: {
+            session.beginGroup("CorePad");
+            corepad *cpad = static_cast<corepad*>(ui->windows->widget(i));
+            for (int j = 0; j < cpad->tabsCount(); j++) {
+                QThread::currentThread()->msleep(1);
+                // Created the key again for the time for every single page
+                key = QTime::currentTime().toString("hh.mm.ss.zzz");
+                value = cpad->currentFilePath(j);
+                session.setValue(key, value);
+            }
+            session.endGroup();
+            break;
+        }
+        case CorePaint: {
+            session.beginGroup("CorePaint");
+            corepaint *cpaint = static_cast<corepaint*>(ui->windows->widget(i));
+            for (int j = 0; j < cpaint->tabsCount(); j++) {
+                QThread::currentThread()->msleep(1);
+                // Created the key again for the time for every single page
+                key = QTime::currentTime().toString("hh.mm.ss.zzz");
+                value = cpaint->getImageAreaByIndex(j)->mFilePath;
+                session.setValue(key, value);
+            }
+            session.endGroup();
+            break;
         }
         default:
+            session.beginGroup(ui->windows->tabText(i));
             value = "";
+            session.setValue(key, value);
+            session.endGroup();
             break;
         }
-        session.setValue(ui->windows->tabText(i), value);
     }
     session.endGroup();
+
+    messageEngine("Session Saved Successfully", MessageType::Info);
 }

@@ -116,7 +116,14 @@ Version 2.2
 - delete recent activity when hidden.
 - fixed screen orientation showing number and added screen size in dashboard.
 - fixed mimetype background of settings app
-
+- fixed clicking enter the rename dose not complete in corefm renameDialog.
+- fixed drag a app icon from start is disapear.
+- added option to make file hidden in properties.
+- added esc key shortcut to exit slidshow in coreimage.
+- three clike on both view buttons with thumbnails checked crash the app.
+- fixed clicking start dose not reload the session list.
+- message after saveing and finishing of opening the session.
+- corepaint now support multipal page support.
 
 
 

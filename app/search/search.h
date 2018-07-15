@@ -48,6 +48,7 @@ public:
     ~search();
 
     void setPath(const QString &path);
+    QString workFilePath() const;
 
 private:
     Ui::search *ui;

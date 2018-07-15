@@ -35,8 +35,9 @@ void dashboard::closeEvent(QCloseEvent *event)
 {
     event->ignore();
     for (int i = 0; i < ui->pages->count(); i++) {
-        if (ui->pages->widget(i)->children().at(1))
-            ui->pages->widget(i)->children().at(1)->deleteLater();
+        if (ui->pages->widget(i)->children().count() == 2)
+            if (ui->pages->widget(i)->children().at(1))
+                ui->pages->widget(i)->children().at(1)->deleteLater();
     }
     event->accept();
 }

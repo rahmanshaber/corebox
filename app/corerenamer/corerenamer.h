@@ -66,6 +66,8 @@ public:
     void addFiles(const QStringList &list);
     void addPath(const QString &path);
 
+    QString workFilePath;
+
 private slots:
     void on_bAddFiles_clicked();
     void on_addTextbtn_clicked();

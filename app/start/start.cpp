@@ -75,13 +75,38 @@ void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item) // open Speed
 void Start::loadSpeedDial() // populate SpeedDial list
 {
     ui->speedDialB->clear();
+
     BookmarkManage bk;
     QStringList list = bk.getBookNames("Speed Dial");
-    for (int i = 0; i < list.count(); ++i) {
+    QStringList mList;
+    mList.clear();
+
+    QStringList dateTimeList;
+    dateTimeList.clear();
+
+    foreach (QString s, list) {
+        dateTimeList.append(bk.bookingTime("Speed Dial", s));
+    }
+    sortDateTime(dateTimeList);
+
+    int count = list.count();
+    int reverse = count - 1;
+
+    for (int i = 0; i < count; i++) {
+        QString bTime = bk.bookingTime("Speed Dial", list.at(i));
+        if (std::binary_search(dateTimeList.begin(), dateTimeList.end(), bTime)) {
+            mList.insert(reverse, list.at(i));
+            reverse--;
+        }
+    }
+    dateTimeList.clear();
+    list.clear();
+
+    for (int i = 0; i < mList.count(); ++i) {
         if (i == 15) {
             return;
         } else {
-            ui->speedDialB->addItem(new QListWidgetItem(geticon(bk.bookmarkPath("Speed Dial", list.at(i))), list.at(i)));
+            ui->speedDialB->addItem(new QListWidgetItem(geticon(bk.bookmarkPath("Speed Dial", mList.at(i))), mList.at(i)));
         }
     }
 }
@@ -89,7 +114,6 @@ void Start::loadSpeedDial() // populate SpeedDial list
 
 
 // ========== Recent activity ===========
-
 void Start::on_recentActivitesL_itemDoubleClicked(QTreeWidgetItem *item, int column) // Open Recent activity on double click
 {
     if (!item->text(column).contains("\t\t\t"))
@@ -128,28 +152,70 @@ void Start::loadRecent() // populate RecentActivity list
         (ui->recentActivitesL->setExpanded(ui->recentActivitesL->model()->index(0, 0), true));
 }
 
+void Start::on_rClearActivity_clicked()
+{
+    ui->recentActivitesL->clear();
+    QFile(QDir::homePath() + "/.config/coreBox/RecentActivity").remove();
+}
+
 // =================================
 
+// ================= Session Activity =============
 void Start::loadSession()
 {
     ui->sessionsList->clear();
     QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
+
+    // Date list
     QStringList topLevel = session.childGroups();
-    sortDateTime(topLevel);
+    sortDate(topLevel);
+
     foreach (QString group, topLevel) {
-        QTreeWidgetItem *topTree = new QTreeWidgetItem();
-        QString groupL = sentDateText(group.split(" - ").at(1));
+        QTreeWidgetItem *topTree = new QTreeWidgetItem(ui->sessionsList);
+        QString groupL = sentDateText(group);
+
         topTree->setText(0, groupL);
+
         session.beginGroup(group);
-        QStringList keys = session.childKeys();
-        sortList(keys);
-        foreach (QString key, keys) {
-            QTreeWidgetItem *child = new QTreeWidgetItem();
-            QString value = session.value(key).toString();
-            child->setText(0, key + "\t\t\t" + value);
-            child->setIcon(0, geticon(value));
-            topTree->addChild(child);
+
+        QStringList midLevel = session.childGroups();
+
+        foreach (QString gKey, midLevel) {
+            session.beginGroup(gKey);
+
+            if (session.childKeys().count() >= 1) {
+                QTreeWidgetItem *midChildT = new QTreeWidgetItem;
+                midChildT->setText(0, gKey);
+                midChildT->setIcon(0, appsIcon(gKey));
+
+                QStringList keys = session.childKeys();
+                sortTime(keys, sortOrder::ASCENDING, "hh.mm.ss.zzz");
+
+                foreach (QString key, keys) {
+                    QString value = session.value(key).toString();
+                    QTreeWidgetItem *child = new QTreeWidgetItem;
+                    child->setText(0, value);
+                    child->setIcon(0, value.count() ? geticon(value) : appsIcon(gKey));
+                    midChildT->addChild(child);
+                }
+
+                topTree->addChild(midChildT);
+//
+// Don't Delete
+//
+//            } else if (session.childKeys().count() == 1){
+//                QString value = session.value(session.childKeys().at(0)).toString();
+//                QTreeWidgetItem *midChild = new QTreeWidgetItem();
+//                midChild->setText(0, gKey);
+
+//                // Passing the app icon when the value of an app is empty
+//                midChild->setIcon(0, value.count() ? geticon(value) : appsIcon(gKey));
+//                topTree->addChild(midChild);
+            }
+
+            session.endGroup();
         }
+
         session.endGroup();
         ui->sessionsList->insertTopLevelItem(0, topTree);
     }
@@ -158,6 +224,40 @@ void Start::loadSession()
         (ui->sessionsList->setExpanded(ui->sessionsList->model()->index(0, 0), true));
 
 }
+
+void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    QStringList appList;
+    appList << "CoreFM" << "CorePad" << "CoreImage" << "CorePaint" << "CorePlayer" << "CoreRenamer" << "CoreTerminal"
+            << "Help" << "About" << "Settings" << "Dashboard" << "Bookmark" << "CoreTime" << "CorePDF";
+
+    QString selected = item->text(column);
+
+    if (!appList.contains(selected)) {
+        CoreBox *cBox = new CoreBox;
+        for (int i = 0; i < item->childCount(); i++) {
+
+            QTreeWidgetItem *midChildT = item->child(i);
+            if (midChildT->childCount()) {
+                for (int j = 0; j < midChildT->childCount(); j++) {
+                    cBox->tabEngine(nameToInt(midChildT->text(0)), midChildT->child(j)->text(0));
+                }
+            } else {
+                cBox->tabEngine(nameToInt(midChildT->text(0)));
+            }
+        }
+        cBox->show();
+
+        messageEngine("Apps restored successfully", MessageType::Info);
+    }
+}
+
+void Start::on_rDeleteSession_clicked()
+{
+    ui->sessionsList->clear();
+    QFile(QDir::homePath() + "/.config/coreBox/Sessions").remove();
+}
+// ======================
 
 void Start::loadsettings() // load settings
 {
@@ -211,5 +311,4 @@ void Start::reload()
         loadRecent();
     else on_coreApps_clicked();
 }
-
 

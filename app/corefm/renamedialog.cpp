@@ -58,3 +58,8 @@ void renameDialog::on_done_clicked()
         }
     }
 }
+
+void renameDialog::on_newName_returnPressed()
+{
+    on_done_clicked();
+}

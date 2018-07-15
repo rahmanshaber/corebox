@@ -413,8 +413,11 @@ void corefm::dirLoaded()
     ui->totalitem->setText("Total : " + QString("%1 items").arg(items.count()));
     ui->selecteditem->clear();
 
-    if(items.count()==0){messageEngine("Folder is empty", MessageType::Info);}
-    if(ui->showthumb->isChecked()) QtConcurrent::run(modelList,&myModel::loadThumbs,items);
+    if(items.count() == 0){messageEngine("Folder is empty", MessageType::Info);}
+    if(ui->showthumb->isChecked()) {
+        modelList->setMode(true);
+        QtConcurrent::run(modelList,&myModel::loadThumbs,items);
+    }
 }
 
 void corefm::thumbUpdate(QModelIndex index)
@@ -1495,7 +1498,7 @@ void corefm::zoomInAction()
         else
         {
             (zoomDetail == 64) ? zoomDetail=64 : zoomDetail+= 8;
-            ui->viewDetail->setIconSize(QSize(zoomDetail,zoomDetail));
+            ui->viewDetail->setIconSize(QSize(zoomDetail, zoomDetail));
             zoomLevel = zoomDetail;
         }
     }
@@ -1931,11 +1934,6 @@ void corefm::on_icon_clicked(bool checked)
     }
 
     if (checked) {
-        ui->detaile->setChecked(false);
-        ui->view->setCurrentIndex(0);
-        ui->viewIcon->setMouseTracking(true);
-        ui->viewDetail->setMouseTracking(false);
-
         currentView = 1;
         ui->viewIcon->setWordWrap(true);
         ui->viewIcon->setUniformItemSizes(true);
@@ -1944,44 +1942,55 @@ void corefm::on_icon_clicked(bool checked)
         ui->viewIcon->setIconSize(QSize(zoom, zoom));
         ui->viewIcon->setFlow(QListView::LeftToRight);
 
+        modelList->setMode(ui->showthumb->isChecked());
+        ui->view->setCurrentIndex(0);
+
+        ui->detaile->setChecked(false);
+        ui->viewDetail->setMouseTracking(false);
+        ui->viewIcon->setMouseTracking(true);
+
         if (tabs->count()) tabs->setType(1);
     } else {
+        currentView = 0;
         ui->view->setCurrentIndex(1);
         ui->viewIcon->setMouseTracking(false);
         ui->viewDetail->setMouseTracking(true);
         ui->detaile->setChecked(true);
+
+        modelList->setMode(ui->showthumb->isChecked());
+        ui->viewIcon->setMouseTracking(false);
+
+        if (tabs->count()) tabs->setType(0);
     }
 
     ui->viewIcon->setDragDropMode(QAbstractItemView::DragDrop);
     ui->viewIcon->setDefaultDropAction(Qt::MoveAction);
-    on_actionRefresh_triggered();
+    //on_actionRefresh_triggered();
 }
 
 void corefm::on_detaile_clicked(bool checked)
 {
     if (checked) {
-        ui->icon->setChecked(false);
-        ui->view->setCurrentIndex(1);
-        ui->viewDetail->setMouseTracking(true);
-        ui->viewIcon->setMouseTracking(false);
-
         currentView = 2;
         QModelIndex i = modelList->index(ui->pathEdit->currentText());
         if (ui->viewDetail->rootIndex() != i) {
           ui->viewDetail->setRootIndex(modelView->mapFromSource(i));
         }
+        ui->viewDetail->setMouseTracking(true);
+        ui->view->setCurrentIndex(1);
+        modelList->setMode(ui->showthumb->isChecked());
+        ui->icon->setChecked(false);
 
         if (tabs->count()) {
           tabs->setType(2);
         }
     } else {
+        ui->icon->setChecked(true);
         ui->view->setCurrentIndex(0);
         ui->viewDetail->setMouseTracking(false);
-        ui->viewIcon->setMouseTracking(true);
-        ui->icon->setChecked(true);
     }
 
-    on_actionRefresh_triggered();
+    //on_actionRefresh_triggered();
 }
 
 void corefm::on_SDesktop_clicked()
@@ -2481,8 +2490,18 @@ void corefm::on_actionCoreRenamer_triggered()
     cBox->tabEngine(CoreRenamer, path);
 }
 
-QString corefm::gCurrentPath() {
+QString corefm::gCurrentPath(int index) {
+    tabs->setCurrentIndex(index);
     return ui->pathEdit->currentText();
+}
+
+int corefm::tabsCount()
+{
+    int count = 1;
+    if (tabs->count())
+        count = tabs->count();
+
+    return count;
 }
 
 void corefm::on_viewIcon_customContextMenuRequested(const QPoint &pos)

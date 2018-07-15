@@ -72,7 +72,9 @@ public:
     ~corefm();
 
     void goTo(const QString path);
-    QString gCurrentPath();
+    QString gCurrentPath(int index);
+    int tabsCount();
+
     myModel *modelList;
 
 protected:

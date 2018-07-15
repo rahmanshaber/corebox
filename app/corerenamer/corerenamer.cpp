@@ -30,11 +30,6 @@ corerenamer::corerenamer(QWidget *parent) :QWidget(parent),ui(new Ui::corerename
 
     ui->FLists->setColumnWidth(1,500);
 
-//    QUndoView *view = new QUndoView(uStack, this);
-//    view->show();
-//    view->resize(200, 200);
-//    view->move(this->pos().x() + 250, this->pos().y() + 25);
-
     connect(uStack, &QUndoStack::canUndoChanged, [this](bool canUndo) {
         ui->bUndo->setEnabled(canUndo);
     });
@@ -109,6 +104,8 @@ QString corerenamer::CapitalizeEachWord(const QString &str)
 
 void corerenamer::addFiles(const QStringList &list)
 {
+    workFilePath = list.count() ? QFileInfo(list.at(0)).path() : QString();
+
     m_Model->clear();
     uStack->clear();
 

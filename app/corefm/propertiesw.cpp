@@ -133,6 +133,14 @@ void propertiesw::permission()
     if(isExecutable(info.filePath()) == false){
         ui->executableB->setVisible(0);
     }
+
+    if (info.fileName().count()) {
+        if (info.fileName().at(0) == '.') {
+            ui->hiddenB->setChecked(true);
+        } else {
+            ui->hiddenB->setChecked(false);
+        }
+    }
 }
 
 void propertiesw::partition(const QString path)
@@ -280,4 +288,24 @@ bool propertiesw::isExecutable( const QString path )
 
 
     return false;
+}
+
+void propertiesw::on_hiddenB_clicked(bool checked)
+{
+    if (checked) {
+        QString path = info.path() + "/." + info.fileName();
+        QFile(info.filePath()).rename(path);
+        pathName = path;
+        info = QFileInfo(path);
+    } else {
+        if (info.fileName().at(0) == '.') {
+            QString path = info.path() + "/" + info.fileName().remove(0, 1);
+            QFile(info.filePath()).rename(path);
+            pathName = path;
+            info = QFileInfo(path);
+        }
+    }
+
+    general();
+    ui->propertiestab->setCurrentIndex(1);
 }

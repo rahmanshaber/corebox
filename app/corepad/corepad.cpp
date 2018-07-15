@@ -43,7 +43,7 @@ bool corepad::initializeNewTab(const QString &filePath)
 {
     int tabsCount = ui->notes->count();
     if (tabsCount < 4) {
-        text = new coreedit();
+        text = new coreedit(filePath);
         QString tabLabel;
         bool isUpdate = 0, isSave = 0;
 
@@ -145,6 +145,8 @@ bool corepad::closeTab(int index)
             return false;
         }
     } else if ((!checkIsUpdate && checkIsSaved) || (!checkIsUpdate && !checkIsSaved)) {
+        // Function from globalfunctions.cpp
+        saveToRecent("CorePad", currentFilePath(index));
         CLOSE_THE_TAB:
         ui->notes->widget(index)->deleteLater();
         ui->notes->removeTab(index);
@@ -274,7 +276,9 @@ void corepad::on_notes_currentChanged(int index)
 void corepad::on_notes_tabCloseRequested(int index)
 {
     ui->notes->setCurrentIndex(index);
+    reIndex();
     closeTab(index);
+    reIndex();
 }
 
 void corepad::on_cOpen_clicked()

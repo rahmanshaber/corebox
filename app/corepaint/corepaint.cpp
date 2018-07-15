@@ -148,6 +148,11 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
     }
 }
 
+int corepaint::tabsCount()
+{
+    return ui->paintTabs->count();
+}
+
 void corepaint::initializeMainMenu()
 {
     ui->actioniundo = mUndoStackGroup->createUndoAction(this);

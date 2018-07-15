@@ -33,9 +33,9 @@ void pDisplay::setupDisplayPage()
 {
     QStringList left;
     left << "Name        " << "Size        " << "Manufacturer        " << "Model      "
-         << "Serial Number         " << "Refresh Rate        " << "Defult Resolution     "
+         << "Serial Number         " << "Refresh Rate        " << "Default Resolution     "
          << "Set Resolution        " << "Physical Dots Per Inch "
-         << "Physical Size        " <<  "Screen Size        " << "Defult Orientation   "
+         << "Physical Size        " <<  "Screen Size        " << "Default Orientation   "
          << "Set Orientation   "  ;
 
     for (int i = 0; i < qApp->screens().count(); i++) {

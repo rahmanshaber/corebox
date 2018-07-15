@@ -32,7 +32,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 bool moveToTrash(const QString &fileName) // moves a file or folder to trash folder
 {
-    if (getfilesize(fileName) >= 1073741824) {
+    if (getSize(fileName) >= 1073741824) {
         QMessageBox::StandardButton replyC;
         replyC = QMessageBox::warning(qApp->activeWindow(), "Warning!", "File size is about 1 GB or larger.\nPlease delete it instead of moveing to trash.\nDo you want to delete it?", QMessageBox::Yes | QMessageBox::No);
         if (replyC == QMessageBox::No) {
@@ -114,29 +114,11 @@ void setupFolder(FolderSetup fs)
 // ======================== Recent Activity =============================
 QString sentDateText(const QString &dateTime)
 {
-    // Can get error if date time format is not like this dd.MM.yyyy (28.06.2018)
-    qint64 secs = QDateTime::fromString(dateTime, "dd.MM.yyyy").secsTo(QDateTime::currentDateTime());
-    int days = secs / 60 / 60 / 24;
-
-    if (days > 30 && days < 365) {
-        int months = days / 30;
-        if (months > 1)
-            return QString("%1 months ago").arg(months);
-        else
-            return QString("%1 month ago").arg(months);
-
-    } else if (days > 365) {
-        int years = days / 365;
-        if (years > 1)
-            return QString("%1 years ago").arg(years);
-        else
-            return QString("%1 year ago").arg(years);
-
+    QDateTime given = QDateTime::fromString(dateTime, "dd.MM.yyyy");
+    if (QDate::currentDate().toString("dd.MM.yyyy") == dateTime) {
+        return QString("Today");
     } else {
-        if (days > 1)
-            return QString("%1 days ago").arg(days);
-        else
-            return QString("Today");
+        return QString(given.toString("MMMM dd"));
     }
 
     return NULL;
@@ -316,35 +298,119 @@ QString formatSize(qint64 num) // separete size in universal size format
     return total;
 }
 
-qint64 getfilesize(QString path) //get size of single file in int
+QString getFileSize(const QString &path) //get size of single file in int
 {
-    QProcess p;
-    QString commd = "du -sb --total \"" + path + "\"";
-    p.start(commd.toLatin1());
-    p.waitForFinished();
-    QString output(p.readAllStandardOutput());
-    return output.split("\n").at(1).split("	").at(0).toLongLong();
+    return getF(QStringList() << path).sizeText;
 }
 
-QString getFileSize(const QString path) //get size of single file in string
+QString getMultipleFileSize(const QStringList &paths) // get file size of multiple files
 {
-    return formatSize(getfilesize(path));
+    return getF(paths).sizeText;
 }
 
-QString getMultipleFileSize(const QStringList paths) // get file size of multiple files
+QString getMultipleCountText(const QStringList &paths)
 {
-    QString pathNames;
-    for (int i = 0; i < paths.count(); i++) {
-        pathNames = pathNames + " \"" + paths.at(i) + "\"";
+    return getF(paths).countText;
+}
+
+QString getCountText(const QString path) //get size of single file in string
+{
+    return getF(QStringList() << path).countText;
+}
+
+SizeAndCountText getF(const QStringList &paths)
+{
+    qint64 totalSize = 0;
+    int files = 0;
+    int folders = 0;
+    Q_FOREACH( QString path, paths ) {
+        if ( QFileInfo( path ).isDir() ) {
+            QDirIterator it( path, QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::Hidden, QDirIterator::Subdirectories );
+            while ( it.hasNext() ) {
+                it.next();
+                if( it.fileInfo().isDir() ) {
+                    if ( it.filePath() == path )
+                        continue;
+
+                    folders++;
+                } else {
+                    files++;
+                    totalSize += it.fileInfo().size();
+                }
+            }
+        } else {
+            files++;
+            totalSize += getSize( path );
+        }
     }
-    QProcess p;
-    QString commd = "du -sb --total " + pathNames;
-    p.start(commd.toLatin1());
-    p.waitForFinished();
-    QString output(p.readAllStandardOutput());
-    QStringList l = output.split("\n");
 
-    return formatSize(l.at(l.count() - 2).split("\t").at(0).toLongLong());
+    SizeAndCountText sc;
+    sc.countText = QString("%1 Files, %2 Folders").arg(files).arg(folders);
+    sc.sizeText = formatSize(totalSize);
+    return sc;
+}
+
+qint64 getSize(const QString &path)
+{
+
+    struct stat statbuf;
+    if ( stat( path.toLocal8Bit().constData(), &statbuf ) != 0 )
+        return 0;
+
+    switch( statbuf.st_mode & S_IFMT ) {
+        case S_IFREG: {
+
+            return statbuf.st_size;
+        }
+
+        case S_IFDIR: {
+            DIR* d_fh;
+            struct dirent* entry;
+            QString longest_name;
+
+            while ( ( d_fh = opendir( path.toLocal8Bit().constData() ) ) == NULL ) {
+                qWarning() << "Couldn't open directory:" << path;
+                return statbuf.st_size;
+            }
+
+            quint64 size = statbuf.st_size;
+
+            longest_name = QString( path );
+            if ( not longest_name.endsWith( "/" ) )
+                longest_name += "/";
+
+            while( ( entry = readdir( d_fh ) ) != NULL ) {
+
+                /* Don't descend up the tree or include the current directory */
+                if ( strcmp( entry->d_name, ".." ) != 0 && strcmp( entry->d_name, "." ) != 0 ) {
+
+                    if ( entry->d_type == DT_DIR ) {
+
+                        /* Recurse into that folder */
+                        size += getSize( longest_name + entry->d_name );
+                    }
+
+                    else {
+
+                        /* Get the size of the current file */
+                        size += getSize( longest_name + entry->d_name );
+                    }
+                }
+            }
+
+            closedir( d_fh );
+            return size;
+        }
+
+        default: {
+
+            /* Return 0 for all other nodes: chr, blk, lnk, symlink etc */
+            return 0;
+        }
+    }
+
+    /* Should never come till here */
+    return 0;
 }
 
 void openAppEngine(const QString &path) // engine send right file to coreapps or system
@@ -492,135 +558,69 @@ QString getMountPathByName(const QString displayName) // get mount path by parti
     return NULL;
 }
 
-qint64 getF(QStringList paths, int &folders, int &files)
+void getDirText(const QString &path)
 {
-    qint64 totalSize = 0;
-    Q_FOREACH( QString path, paths ) {
-//        if ( *terminate )
-//            return;
+    // Check whether hidden file or folder collected or not
+    bool isHidden = 0;
 
-        if ( QFileInfo( path ).isDir() ) {
-            //recurseProperties( path );
-            QDirIterator it( path, QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::Hidden, QDirIterator::Subdirectories );
-            while ( it.hasNext() ) {
-//                if ( *terminate )
-//                    return;
+    // Store the directories
+    QStringList dirs;
+    // Store the files
+    QStringList files;
 
-                it.next();
-                if( it.fileInfo().isDir() ) {
-                    if ( it.filePath() == path )
-                        continue;
+    // Set the filltering modes
+    QDir::Filters filters = QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks;
 
-                    folders++;
-
-                    //if( folders % 32 == 0 ) {
-                        //emit updateSignal();
-                    //}
-                }
-
-                else {
-                    files++;
-                    totalSize += it.fileInfo().size();
-                }
-            }
-        }
-
-        else {
-            files++;
-            totalSize += getSize( path );
-        }
-    }
-
-    //emit updateSignal();
-    return totalSize;
-}
-
-qint64 getSize(QString path)
-{
-
-    struct stat statbuf;
-    if ( stat( path.toLocal8Bit().constData(), &statbuf ) != 0 )
-        return 0;
-
-    switch( statbuf.st_mode & S_IFMT ) {
-        case S_IFREG: {
-
-            return statbuf.st_size;
-        }
-
-        case S_IFDIR: {
-            DIR* d_fh;
-            struct dirent* entry;
-            QString longest_name;
-
-            while ( ( d_fh = opendir( path.toLocal8Bit().constData() ) ) == NULL ) {
-                qWarning() << "Couldn't open directory:" << path;
-                return statbuf.st_size;
-            }
-
-            quint64 size = statbuf.st_size;
-
-            longest_name = QString( path );
-            if ( not longest_name.endsWith( "/" ) )
-                longest_name += "/";
-
-            while( ( entry = readdir( d_fh ) ) != NULL ) {
-
-                /* Don't descend up the tree or include the current directory */
-                if ( strcmp( entry->d_name, ".." ) != 0 && strcmp( entry->d_name, "." ) != 0 ) {
-
-                    if ( entry->d_type == DT_DIR ) {
-
-                        /* Recurse into that folder */
-                        size += getSize( longest_name + entry->d_name );
-                    }
-
-                    else {
-
-                        /* Get the size of the current file */
-                        size += getSize( longest_name + entry->d_name );
-                    }
-                }
-            }
-
-            closedir( d_fh );
-            return size;
-        }
-
-        default: {
-
-            /* Return 0 for all other nodes: chr, blk, lnk, symlink etc */
-            return 0;
-        }
-    }
-
-    /* Should never come till here */
-    return 0;
-}
-
-QString getFolderConts(QString &output, const QString &path)
-{
-    QFileSystemModel *model = new QFileSystemModel();
-    model->setRootPath(path);
+    // Get hidden file or folder if true
+    if (isHidden)
+        filters |= QDir::Hidden;
 
 
-    QString currentPath;
-    QDirIterator it(path, QDir::AllEntries | QDir::System | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::Hidden, QDirIterator::Subdirectories);
+    QDirIterator it(path, filters);
+
     while (it.hasNext()) {
         it.next();
+
         if(it.fileInfo().isDir()) {
-            if (it.filePath() == path)
+            // Skip the given path
+            if (it.fileInfo().completeBaseName() == QFileInfo(path).completeBaseName())
                 continue;
 
-            currentPath = it.fileInfo().baseName();
-            output += "├── " + it.fileInfo().baseName() + "\n";
+            dirs.append(it.fileInfo().fileName());
         } else {
-            if (it.fileInfo().baseName() == currentPath)
-                output += "│   ├── " + it.fileName() + "\n";
+            files.append(it.fileInfo().fileName());
         }
     }
 
-    return output;
+    // Make a natural sort for both file and dir lists
+    QCollator col;
+    col.setNumericMode(true);
+
+    // Sort for directories
+    std::sort(dirs.begin(), dirs.end(), col);
+
+    // Sort for files
+    std::sort(files.begin(), files.end(), col);
+
+    // Store the sorted data to a string for saving it to file
+    QString output;
+
+    foreach (QString s, dirs) {
+        output.append(s + "\n");
+    }
+
+    foreach (QString s, files) {
+        output.append(s + "\n");
+    }
+
+    // Save path for the collected file folder list
+    QString filePath = QDir::homePath() + "/" + QFileInfo(path).baseName() + ".txt";
+
+    QFile file(filePath);
+    file.open(QIODevice::ReadWrite | QIODevice::Text | QIODevice::Truncate);
+    QTextStream text(&file);
+    text << output;
+    file.close();
 }
 
 QStringList sortDate(QStringList &dateList, sortOrder s)
@@ -649,24 +649,24 @@ QStringList sortDate(QStringList &dateList, sortOrder s)
     return dateList;
 }
 
-QStringList sortTime(QStringList &timeList, sortOrder s)
+QStringList sortTime(QStringList &timeList, sortOrder s, QString format)
 {
     QList<QTime> times;
 
     foreach (QString str, timeList) {
-        times.append(QTime::fromString(str, "hh.mm.ss"));
+        times.append(QTime::fromString(str, format));
     }
 
     std::sort(std::begin(times), std::end(times));
 
     if (s == ASCENDING) {
         for (int i = 0; i < timeList.count(); i++) {
-            timeList.replace(i, times[i].toString("hh.mm.ss"));
+            timeList.replace(i, times[i].toString(format));
         }
     } else {
         int reverse = timeList.count() - 1;
         for (int i = 0; i < timeList.count(); i++) {
-            timeList.replace(reverse, times[i].toString("hh.mm.ss"));
+            timeList.replace(reverse, times[i].toString(format));
             reverse--;
         }
     }
@@ -716,46 +716,3 @@ QStringList sortDateTime(QStringList &dateTimeList, sortOrder s)
     dts.clear();
     return dateTimeList;
 }
-
-bool deleteLastLine(const QString &filePath)
-{
-    QFile file(filePath);
-    QTextStream textIn(&file);
-    file.open(QIODevice::Text | QIODevice::ReadWrite);
-    //textIn << file.readAll();
-    //qDebug() << textIn.readAll();
-    QString textOut;
-
-    int lines = 0;
-    while (!textIn.atEnd()) {
-        qDebug() << lines << textIn.readLine();
-        if (textIn.readLine().count()) {
-            if (textIn.readLine().left(0) == "[") {
-                textOut += textIn.readLine() + "\n";
-                qDebug() << "left : " << textOut;
-            } else {
-                if (!(lines > 30)) {
-                    textOut += textIn.readLine() + "\n";
-                    lines++;
-                    qDebug() << "lines : " << textOut;
-                }
-            }
-        } else {
-            textOut += textIn.readLine() + "\n";
-            qDebug() << "NO : " << textOut;
-        }
-    }
-
-
-    //file.write(QString("").toLatin1());
-
-
-    qDebug() << "Text out \n" << textOut;
-    file.write(textOut.toLatin1());
-
-    file.close();
-
-    return true;
-
-}
-

@@ -73,7 +73,11 @@ public:
     ~corepaint();
     void initializeNewTab(const bool &isOpen = false, const QString &filePath = "");
 
+    int tabsCount();
     QString saveLocation;
+
+    // Only for save session purpose it is at public
+    ImageArea* getImageAreaByIndex(int index);
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -86,7 +90,6 @@ private:
     void shotcuts();
 
     ImageArea* getCurrentImageArea();
-    ImageArea* getImageAreaByIndex(int index);
     bool closeAllTabs();
     bool isSomethingModified();
 

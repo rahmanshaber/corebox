@@ -106,7 +106,7 @@ public:
     void clearSelection();
     void pushUndoCommand(UndoCommand *command);
 
-    QString mFilePath; /**< Path where located image. */
+    QString mFilePath; /** Path where located image. */
 
 private:
     void initializeImage();

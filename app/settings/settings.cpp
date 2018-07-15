@@ -432,7 +432,7 @@ void settings::on_backUp_clicked()
     arc->compress(QStringList() << backupFilePath , cPath);
 
     // Function from globalfunctions.cpp
-    messageEngine("Backup for settings seccessfully done.", MessageType::Info);
+    messageEngine("Backup for settings successfully done.", MessageType::Info);
 }
 
 void settings::on_restore_clicked()
@@ -450,6 +450,7 @@ void settings::on_restore_clicked()
                 if (it.fileInfo().isFile())
                     files++;
             }
+
             if (files) {
                 long reply = QMessageBox::warning(this, "File Exists", "There are old settings file\nDo you want to overwrite them?", QMessageBox::Yes, QMessageBox::No);
                 if (reply == QMessageBox::No)
@@ -458,7 +459,7 @@ void settings::on_restore_clicked()
                     corearchiver *arc = new corearchiver;
                     arc->extract(path, QDir(QDir::homePath() + "/.config/"));
                     // Function from globalfunctions.cpp
-                    messageEngine("Backup for settings seccessfully done.", MessageType::Info);
+                    messageEngine("Backup for settings successfully done.", MessageType::Info);
                 }
             }
         } else {

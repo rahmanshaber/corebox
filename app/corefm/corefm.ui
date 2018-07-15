@@ -1754,7 +1754,7 @@ QScrollBar::sub-line:horizontal {
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pagelist">
        <layout class="QVBoxLayout" name="verticalLayout">

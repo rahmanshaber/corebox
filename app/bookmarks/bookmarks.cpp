@@ -61,7 +61,6 @@ void bookmarks::sectionRefresh()
 
     int selectedIndex = ui->section->currentIndex().row();
 
-    qDebug() << bk.getBookSections();
     ui->section->clear();
     ui->section->addItems(bk.getBookSections());
 

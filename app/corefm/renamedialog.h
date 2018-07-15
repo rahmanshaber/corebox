@@ -40,6 +40,8 @@ public:
 private slots:
     void on_done_clicked();
 
+    void on_newName_returnPressed();
+
 private:
     Ui::renameDialog *ui;
     QFileInfo m_iFile;

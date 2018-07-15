@@ -52,7 +52,6 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *event);
-    void paintEvent(QPaintEvent *event);
 
     bool isMouseDown = false;
     bool isLeftDown = false;

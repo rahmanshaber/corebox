@@ -59,6 +59,7 @@ setting
 0 - changes in app dose not save when corebox is closed.(not app)
 
 corefm
+1 - save the splitter position of viewDir in coreFM
 0 - able to create file/folder shortcuts.
 0 - page text in root folder is showing blank.
 0 - pathedit to lineEdit.
@@ -111,6 +112,7 @@ coreshot
 1 - take fullscreen shot using x11.
 
 coreterminal
+2 - terminal needs to closes properly.
 0 - Add search bar at coreterminal (not needed for now).
 2 - Open terminal as root for current directory is not supported.
 
@@ -147,70 +149,37 @@ in-future
 0 - make bookmark count more relevant
 0 - make all deb package at one
 0 - get all files and folders under a path to a text file
-0 - add currentfilepath at corepdf, corepaint, coreplayer, ...
 
 [Instructions]
-before start the corebox delete the bookmark file
-fix the ui for settings at corebox
+update the size function at corefm
 
 [TALKING]
-set minimum height for scroll bar handle
 We have to open resource page at startup of dashboard because its a big thing to load it
-NO ITS BLANK - 0 - on first start corepdf cannot show any pdf file. test it again.
 REALLY CAN'T FIX DON'T KNOW HOW IT WORKS - 0 - page text in root folder is showing blank.
 AS DELETE BUTTON ARE HERE - limit the search activity [activity limit 30]
-NO NEED - 0 - checkIsValidDir in const not working
 - why no qconcarent in file folder count.
 - why a add shadow function in globalfunction.h
-- why file/folder count and getF has unnessary vreables .
-- renamewindow in upper letter
-- send me all the apps screen shot withe coreshot.
-- where is settings pic?
-- terminal closes properly??? needs to solve??
-recheack- Settings loaded with defaults everytime when corebox newly started and didn't save a settings
-13.Change the mouse hover background of Tools at bookmark [not like the selected bookmarks background]????????
-16.A function which check the text is it a valid dir or not if not show a little message below those lineedit????????
-recheack- terminal closes properly???
 recent,serch,save session in qconcarent??
-see the screen size in dashboard.
-bin and lib folder has the coustom icon
 
 
 0 - save all file in a folder to text as a action.
 
-0 - clicking enter the rename dose not complete in corefm renameDialog.
 
-0 - after corefm opening thumbnails don't show(showthumbs> cheacked).
-0 - white background of thumbnails need to remove.there is a white image in resource file for those that DOSe NOT Have thumbnails.
-0 - aspect ratio  must be kept same of thumbnails.see photo.
-0 - three clike on both view buttons with thumbnails checked crash the app.
+Y - 0 - separet folder and file count.( 1 Files, 9 Folder | as return).
+NOT NEED - 0 - if corebox folder exist in config folder, delete it then extrat (not overwrite).
 
-0 - drag a app icon from start is disapear.
-0 - separet folder and file count.( 1 Files, 9 Folder | as return).
-0 - if corebox folder exist in config folder, delete it then extrat (not overwrite).
-0 - add option to make file hidden in properties.(see the permmisson tab).
 0 - at start catch all the open tab and add them in separate file and add a treeWidget in start SAVED SESSION.
-0 - fix the sort in start(speeddial,recentActivitys),search (recent to old)
-0 - clearing the search>> close the search window>> crashs the whole app.
-0 - recent activites not collecting corepad,
-0 - 10 windows>> close the corebox>>crashs the whole app.
-0 - esc key shortcut to exit slidshow in coreimage.
+Y - 0 - fix the sort in start(speeddial,recentActivitys),search (recent to old)
+TEST NEEDED FOR YOU - 0 - clearing the search>> close the search window>> crashs the whole app.
+TEST NEEDED FOR YOU - 0 - 10 windows>> close the corebox>>crashs the whole app.
 
 1 - delete the last one from list and add new at first in all list.
 
-- Add button to clear the recent activity
-- add butyon to remeove the selected session...
--rendom crashs
+- add button to remove the selected session...
+- random crashs
 
-0 - clicking start dose not reload the session list.
-0 - dobulclicking the session time will restore all the windows in seperate corebox.
-0 - message after saveing and finishing of opening the session.
-0 - dose not collect the corepads multipal page path at all.
-0 - corepaint needs the corepad page function.sendinf new path will open the path in the opened corepaint.
-0 - multipal corefm opend> only catched the first one.
+
 0 - ask confrmation to save the session.
-0 - timing to month,date.see photo. and only today in "Today"
-0 - closeing dashbord crashes app.
-0 - save the splitter position of viewDir in coreFM
 
 
+Y - create two function one for folder and file count and another for size

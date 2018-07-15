@@ -74,22 +74,26 @@ void coreimage::shotcuts()
     connect(shortcut, SIGNAL(activated()), this, SLOT(on_cPrevious_clicked()));
     shortcut = new QShortcut(QKeySequence(Qt::Key_Right), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cNext_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this);
+    shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::Key_O), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cOpen_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_S), this);
+    shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::Key_S), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cSave_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), this);
+    shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::SHIFT + Qt::Key_S), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cSaveAs_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_T), this);
-    connect(shortcut, SIGNAL(activated()), this, SLOT(on_openThumbview_clicked()));
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_D), this);
+    shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::Key_T), this);
+    connect(shortcut, &QShortcut::activated, this, &coreimage::on_openThumbview_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::Key_D), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cTrashIt_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Plus), this);
+    shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::Key_Plus), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cZoomIn_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Minus), this);
+    shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::Key_Minus), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_cZoomOut_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_B), this);
+    shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::Key_B), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_bookMarkIt_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::Key_Escape), this);
+    connect(shortcut, &QShortcut::activated, [this]() {
+        on_slideShow_clicked(false);
+    });
 //    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Space), this);
 //    connect(shortcut, &QShortcut::activated, this, &coreimage::on_slideShow_clicked);
 
@@ -468,13 +472,8 @@ void coreimage::on_cProperties_clicked(bool checked)
 
 void coreimage::on_openincorepaint_clicked()
 {
-    QTabWidget *boxTab = this->parent()->parent()->parent()->parent()->findChild<QTabWidget*>("windows");
-    corepaint *ima = new corepaint;
-    QString path = currentImagePath;
-
-    ima->initializeNewTab(true,path);
-    boxTab->insertTab(boxTab->count(), ima, QIcon(":/icons/CorePaint.svg"), "CorePaint");
-    boxTab->setCurrentIndex(boxTab->count());
+    CoreBox *cbox = static_cast<CoreBox*>(qApp->activeWindow());
+    cbox->tabEngine(AppsName::CorePaint, currentImagePath);
 }
 
 void coreimage::on_openThumbview_clicked()

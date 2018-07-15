@@ -375,6 +375,11 @@ QMediaPlayer::State coreplayer::state() const
     return playerState;
 }
 
+QString coreplayer::workFilePath() const
+{
+    return player->media().canonicalUrl().toString();
+}
+
 void coreplayer::setState(QMediaPlayer::State state)
 {
     if (state != playerState) {

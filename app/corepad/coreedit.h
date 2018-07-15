@@ -30,7 +30,12 @@ class coreedit : public QPlainTextEdit
     Q_OBJECT
 
 public:
-    coreedit(QWidget *parent = 0);
+    coreedit(QString fPath, QWidget *parent = 0);
+
+    QString workFilePath() const {
+        return filePath;
+    }
+
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
 
@@ -47,6 +52,7 @@ private slots:
     void updateLineNumberArea(const QRect &, int);
 
 private:
+    QString filePath;
     QWidget *lineNumberArea;
 };
 

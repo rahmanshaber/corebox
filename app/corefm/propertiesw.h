@@ -50,6 +50,8 @@ private slots:
     void on_executableB_clicked(bool checked);
     void detailmedia(QMediaPlayer::MediaStatus status);
 
+    void on_hiddenB_clicked(bool checked);
+
 private:
     Ui::propertiesw *ui;
     QString pathName;

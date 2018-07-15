@@ -60,6 +60,8 @@ public:
     bool isPlayerAvailable() const;
     QMediaPlayer::State state() const;
 
+    QString workFilePath() const;
+
 protected:
     void closeEvent(QCloseEvent *event);
 

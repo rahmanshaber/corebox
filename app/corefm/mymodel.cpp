@@ -52,6 +52,13 @@ myModel::myModel(bool realMime, MimeUtils *mimeUtils)
   out >> *folderIcons;
   fileIcons.close();
 
+  // Loads folder cache
+  fileIcons.setFileName(QDir::homePath() + "/.config/coreBox/thumbs.cache");
+  fileIcons.open(QIODevice::ReadOnly);
+  out.setDevice(&fileIcons);
+  out >> *thumbs;
+  fileIcons.close();
+
   // Create root item
   rootItem = new myModelItem(QFileInfo("/"), new myModelItem(QFileInfo(), 0));
   currentRootPath = "/";
@@ -96,6 +103,7 @@ void myModel::clearIconCache()
   mimeIcons->clear();
   QFile(QDir::homePath() + "/.config/coreBox/folder.cache").remove();
   QFile(QDir::homePath() + "/.config/coreBox/file.cache").remove();
+
 }
 
 /**
@@ -604,10 +612,10 @@ void myModel::loadThumbs(QModelIndexList indexes) {
 
   // Remember files with valid suffix
   foreach (QModelIndex item, indexes) {
-    QString suffix = QFileInfo(fileName(item)).suffix();
-    if (types.contains(suffix, Qt::CaseInsensitive)) {
-      files.append(filePath(item));
-    }
+      QString suffix = QFileInfo(fileName(item)).suffix();
+      if (types.contains(suffix, Qt::CaseInsensitive)) {
+        files.append(filePath(item));
+      }
   }
 
   // Loads thumbnails from cache
@@ -641,29 +649,43 @@ QByteArray myModel::getThumb(QString item) {
   int h = pic.size().height();
 
   // Background
-  background = QImage(128, 128, QImage::Format_RGB32);
-  background.fill(QApplication::palette().color(QPalette::Base).rgb());
+  background = QImage(512, 512, QImage::Format_ARGB32).scaled(128, 128, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+  background.fill(Qt::transparent);//QApplication::palette().color(QPalette::Base).rgba());
+    int sw = 128, sh = 98;
+    if (w >= 128 && h >= 98 && h < 128) {
+        sw = 128;
+        sh = 98;
+    } else if (w >= 64 && w < 128 && h < 98 && h >= 64) {
+        sw = w;
+        sh = h;
+    } else if (w < 64 && h < 64) {
+        sw = 64;
+        sh = 64;
+    }
 
   // Scale image and create its shadow template (background.png)
-  if (w > 128 || h > 128) {
-    pic.setScaledSize(QSize(123, 93));
-    QImage temp = pic.read();
-    theThumb.load(":/other/other/background.png");
-    QPainter painter(&theThumb);
-    painter.drawImage(QPoint(0, 0), temp);
-  } else {
-    pic.setScaledSize(QSize(64, 64));
-    theThumb = pic.read();
-  }
+//  if (w > 128 && h > 98) {
+//    pic.setScaledSize(QSize(128, 98));
+//    QImage temp = pic.read();
+//    theThumb.load(":/other/other/background.png");
+//    QPainter painter(&theThumb);
+//    painter.drawImage(QPoint(0, 0), temp);
+//  } else if (w < 64 && h < 64) {
+//    pic.setScaledSize(QSize(64, 64));
+//    theThumb = pic.read();
+//  }
 
+  theThumb = pic.read();
+  theThumb = theThumb.scaled(sw, sh, Qt::KeepAspectRatio, Qt::SmoothTransformation);
   // Draw thumbnail picture
   QPainter painter(&background);
-  painter.drawImage(QPoint((123 - theThumb.width()) / 2,
-                           (115 - theThumb.height()) / 2), theThumb);
+  painter.drawImage(QPoint((128 - theThumb.width()) / 2,
+                           (128 - theThumb.height()) / 2), theThumb);
 
   // Write it to buffer
   QBuffer buffer;
-  QImageWriter writer(&buffer, "jpg");
+  QImageWriter writer(&buffer, "PNG");
   writer.setQuality(50);
   writer.write(background);
   return buffer.buffer();

@@ -155,6 +155,11 @@ void search::setPath(const QString &path)
     if(path.isEmpty()){ui->folderPath->setText("/");}
 }
 
+QString search::workFilePath() const
+{
+    return ui->folderPath->text();
+}
+
 /**
  * @brief search::callProcess Call a find or locate for searching.
  * @brief Create a process based on that. And the process will collect the info.
