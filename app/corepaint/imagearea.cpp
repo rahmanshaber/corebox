@@ -67,7 +67,6 @@ ImageArea::ImageArea(const bool &isOpen, const QString &filePath, QWidget *paren
     mInstrumentsHandlers[ELLIPSE] = new EllipseInstrument(this);
     mInstrumentsHandlers[FILL] = new FillInstrument(this);
     mInstrumentsHandlers[SPRAY] = new SprayInstrument(this);
-    mInstrumentsHandlers[MAGNIFIER] = new MagnifierInstrument(this);
     mInstrumentsHandlers[COLORPICKER] = new ColorpickerInstrument(this);
     mInstrumentsHandlers[CURVELINE] = new CurveLineInstrument(this);
     mInstrumentsHandlers[TEXT] = new TextInstrument(this);
@@ -338,11 +337,6 @@ void ImageArea::restoreCursor()
     {
     case INSTRUMENTS_COUNT:
         break;
-    case MAGNIFIER:
-        mPixmap = new QPixmap(":/icons/search_b.svg");
-        mCurrentCursor = new QCursor(*mPixmap);
-        setCursor(*mCurrentCursor);
-        break;
     case NONE_INSTRUMENT:
         mCurrentCursor = new QCursor(Qt::ArrowCursor);
         setCursor(*mCurrentCursor);
@@ -385,7 +379,7 @@ void ImageArea::drawCursor()
     QPoint center(13, 13);
     switch(DataSingleton::Instance()->getInstrument())
     {
-    case NONE_INSTRUMENT: case LINE: case COLORPICKER: case MAGNIFIER: case  SPRAY:
+    case NONE_INSTRUMENT: case LINE: case COLORPICKER: case  SPRAY:
     case FILL: case RECTANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
     case CURVELINE: case TEXT:
         break;
@@ -396,7 +390,7 @@ void ImageArea::drawCursor()
     painter.begin(mPixmap);
     switch(DataSingleton::Instance()->getInstrument())
     {
-    case NONE_INSTRUMENT: case LINE: case COLORPICKER: case MAGNIFIER: case  SPRAY:
+    case NONE_INSTRUMENT: case LINE: case COLORPICKER: case  SPRAY:
     case FILL: case RECTANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
     case CURVELINE: case TEXT:
         break;

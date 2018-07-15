@@ -175,5 +175,11 @@
         <file>icons/expand_w.svg</file>
         <file>icons/view_dir_w.svg</file>
         <file>icons/view_dir_b.svg</file>
+        <file>icons/canvas_w.svg</file>
+        <file>icons/canvas_b.svg</file>
+        <file>icons/menu_w.svg</file>
+        <file>icons/menu_b.svg</file>
+        <file>icons/color_w.svg</file>
+        <file>icons/color_b.svg</file>
     </qresource>
 </RCC>

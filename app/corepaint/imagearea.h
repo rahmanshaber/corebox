@@ -29,7 +29,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "instruments/ellipseinstrument.h"
 #include "instruments/fillinstrument.h"
 #include "instruments/sprayinstrument.h"
-#include "instruments/magnifierinstrument.h"
 #include "instruments/colorpickerinstrument.h"
 #include "instruments/selectioninstrument.h"
 #include "instruments/curvelineinstrument.h"

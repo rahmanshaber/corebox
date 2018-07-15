@@ -168,10 +168,6 @@ void corepaint::initializeMainMenu()
     mInstrumentsActMap.insert(COLORPICKER, ui->actionColorpicker);
     ui->colorpicker->setDefaultAction(ui->actionColorpicker);
 
-    connect(ui->actionMagnifier, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
-    mInstrumentsActMap.insert(MAGNIFIER, ui->actionMagnifier);
-    ui->magnifier->setDefaultAction(ui->actionMagnifier);
-
     connect(ui->actionPen, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
     mInstrumentsActMap.insert(PEN, ui->actionPen);
     ui->pen->setDefaultAction(ui->actionPen);

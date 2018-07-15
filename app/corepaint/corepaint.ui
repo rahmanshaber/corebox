@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>876</width>
+    <width>918</width>
     <height>504</height>
    </rect>
   </property>
@@ -18,7 +18,104 @@
     <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">/*CorePaint*/
+
+#appTitle{
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+
+
+QWidget [accessibleName=&quot;nameBar&quot;]{
+   background-color:#363941;
+   color: #000000;
+    border: 1px #45454D;}
+
+QWidget [accessibleName=&quot;statusBar&quot;]{
+    padding: 1px 5px 1px 2px;
+    background-color: #2B2A32 ;
+    color: #ffffff;
+    border: 1px  #2B2A32;}
+
+QWidget [accessibleName=&quot;shortcut&quot;]{
+    background-color: #3A4953;
+    color: #ffffff;
+    border: 1px #3A4953;}
+
+
+QLabel{
+    background-color:transparent;
+    color:#E6E6E6 ;
+    padding: 1px 5px 1px 5px;}
+
+
+QToolButton{
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px #434343;
+    Text-align:left;
+    padding: 3px 3px 3px 3px;}
+QToolButton:checked{
+    background-color: #212F39; }
+QToolButton:hover {
+    background-color: #212F39; }
+
+
+QTabWidget{
+    background-color: transparent;
+    border-style: none;}
+QTabWidget QTabBar{
+    background-color: #333333;
+    height: 30px;}
+QTabWidget QTabBar::tab{
+    text-align: left;
+    background-color: #136ba2;
+    border-style: none;
+    height: 30px;
+    width: 63px;
+    color: #ffffff;
+    padding: 0px 5px 0px 5px;}
+QTabWidget QTabBar::tab:selected{
+    background-color: #0f5d90;}
+QTabWidget QTabBar::tab:!selected{
+    background-color:  #333333;}
+QTabWidget QTabBar::tab:hover{
+    background-color:  #3D3D3D;}
+
+
+QScrollBar:vertical {
+    background-color: rgba( 0, 0, 0, 72% );
+    max-width: 8px;
+    border-radius: 4px;
+    padding: 1px; }
+QScrollBar::handle:vertical {
+    background-color: silver;
+    max-width: 6px;
+    min-height: 12px;
+    border-radius: 3px; }
+QScrollBar:horizontal {
+    background-color: rgba( 0, 0, 0, 72% );
+    max-height: 8px;
+    border-radius: 4px;
+    padding: 1px; }
+QScrollBar::handle:horizontal {
+    background-color: silver;
+    max-height: 6px;
+    min-width: 12px;
+    border-radius: 3px; }
+QScrollBar::sub-page:horizontal,
+QScrollBar::sub-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-page:horizontal,
+QScrollBar::add-page:vertical {
+    background-color: rgba( 0, 0, 0, 72% ); }
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    width: 0px; height: 0px; }
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px; height: 0px; }
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -138,6 +235,9 @@
          <number>0</number>
         </property>
         <widget class="QWidget" name="menuPage">
+         <property name="accessibleName">
+          <string>shortcut</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
            <number>0</number>
@@ -155,7 +255,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="newtab">
+           <widget class="QToolButton" name="newtab">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -186,10 +286,13 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="open">
+           <widget class="QToolButton" name="open">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -217,10 +320,13 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="saveas">
+           <widget class="QToolButton" name="saveas">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -248,10 +354,13 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="save">
+           <widget class="QToolButton" name="save">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -279,6 +388,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
@@ -297,6 +409,9 @@
          </layout>
         </widget>
         <widget class="QWidget" name="canvasPage">
+         <property name="accessibleName">
+          <string>shortcut</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <property name="spacing">
            <number>0</number>
@@ -314,7 +429,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="resizeimage">
+           <widget class="QToolButton" name="resizeimage">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -354,10 +469,13 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="resizecanvas">
+           <widget class="QToolButton" name="resizecanvas">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -397,10 +515,13 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="rotateright">
+           <widget class="QToolButton" name="rotateright">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -440,10 +561,13 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="rotateleft">
+           <widget class="QToolButton" name="rotateleft">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -483,10 +607,13 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="zoomin">
+           <widget class="QToolButton" name="zoomin">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -526,10 +653,13 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="zoomout">
+           <widget class="QToolButton" name="zoomout">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -569,6 +699,9 @@
               <height>22</height>
              </size>
             </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
            </widget>
           </item>
           <item>
@@ -587,6 +720,9 @@
          </layout>
         </widget>
         <widget class="QWidget" name="selectionPage">
+         <property name="accessibleName">
+          <string>shortcut</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="QToolButton" name="select">
@@ -803,6 +939,9 @@
          </layout>
         </widget>
         <widget class="QWidget" name="toolsPage">
+         <property name="accessibleName">
+          <string>shortcut</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
            <widget class="QToolButton" name="line">
@@ -1084,39 +1223,6 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="magnifier">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>magnifire</string>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>22</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextBesideIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
            <spacer name="verticalSpacer_5">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -1132,6 +1238,9 @@
          </layout>
         </widget>
         <widget class="QWidget" name="colorPage">
+         <property name="accessibleName">
+          <string>shortcut</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
            <widget class="QFrame" name="frame_3">
@@ -1535,41 +1644,106 @@
       </property>
       <item>
        <widget class="QToolButton" name="menuB">
+        <property name="toolTip">
+         <string>Menu</string>
+        </property>
         <property name="text">
          <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/menu_w.svg</normaloff>:/icons/menu_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QToolButton" name="canvasB">
-        <property name="text">
-         <string>...</string>
+        <property name="toolTip">
+         <string>Canvas</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/canvas_w.svg</normaloff>:/icons/canvas_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QToolButton" name="selectionB">
+        <property name="toolTip">
+         <string>Selection</string>
+        </property>
         <property name="text">
          <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/instruments-icons/select_w.svg</normaloff>:/icons/instruments-icons/select_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QToolButton" name="toolsB">
+        <property name="toolTip">
+         <string>Tools</string>
+        </property>
         <property name="text">
          <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/edit_w.svg</normaloff>:/icons/edit_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QToolButton" name="colorB">
+        <property name="toolTip">
+         <string>Color</string>
+        </property>
         <property name="text">
          <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/color_w.svg</normaloff>:/icons/color_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QToolButton" name="undo">
+        <property name="toolTip">
+         <string>Undo</string>
+        </property>
         <property name="text">
          <string>Undo</string>
         </property>
@@ -1587,6 +1761,9 @@
       </item>
       <item>
        <widget class="QToolButton" name="redo">
+        <property name="toolTip">
+         <string>Redo</string>
+        </property>
         <property name="text">
          <string>Redo</string>
         </property>

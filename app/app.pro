@@ -93,7 +93,6 @@ HEADERS += \
     corepaint/instruments/eraserinstrument.h \
     corepaint/instruments/fillinstrument.h \
     corepaint/instruments/lineinstrument.h \
-    corepaint/instruments/magnifierinstrument.h \
     corepaint/instruments/pencilinstrument.h \
     corepaint/instruments/rectangleinstrument.h \
     corepaint/instruments/selectioninstrument.h \
@@ -193,7 +192,6 @@ SOURCES += \
     corepaint/instruments/eraserinstrument.cpp \
     corepaint/instruments/fillinstrument.cpp \
     corepaint/instruments/lineinstrument.cpp \
-    corepaint/instruments/magnifierinstrument.cpp \
     corepaint/instruments/pencilinstrument.cpp \
     corepaint/instruments/rectangleinstrument.cpp \
     corepaint/instruments/selectioninstrument.cpp \
