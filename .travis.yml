@@ -13,7 +13,6 @@ install:
   - sudo apt-get -y -qq install qt59multimedia libmagic-dev libpulse-dev libqt5svg5
   - sudo apt-get -y -qq install qt59webengine qt59webchannel 
   - sudo apt-get -y -qq install libz-dev zlib1g-dev liblz-dev libbz2-dev libarchive-dev 
-  - source /opt/qt*/bin/qt*-env.sh
 
 script:
   ...
