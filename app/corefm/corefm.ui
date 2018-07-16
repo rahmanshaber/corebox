@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1052</width>
+    <width>1059</width>
     <height>514</height>
    </rect>
   </property>
@@ -2116,6 +2116,11 @@
    </property>
    <property name="text">
     <string>CoreRenamer</string>
+   </property>
+  </action>
+  <action name="actionItemsToText">
+   <property name="text">
+    <string>ItemsToText</string>
    </property>
   </action>
  </widget>

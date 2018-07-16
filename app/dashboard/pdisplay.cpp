@@ -79,9 +79,10 @@ void pDisplay::setupDisplayPage()
         w->setMinimumHeight(300);
         w->setAttribute(Qt::WA_TransparentForMouseEvents);
         w->setFocusPolicy(Qt::NoFocus);
-        QFont fl ("Cantarell", 14, QFont::Normal);
-        QFont fp ("Cantarell", 11, QFont::Normal);
-        QLabel *l = new QLabel("Screen : " + QString::number(i+1));
+        QString title = ("Screen : " + QString::number(i+1));
+        QGroupBox *b = new QGroupBox(tr("title"));
+
+
         QVBoxLayout *v = new QVBoxLayout();
         QHBoxLayout *h = new QHBoxLayout();
 
@@ -98,19 +99,13 @@ void pDisplay::setupDisplayPage()
 
         p->setModel(displayInfo);
 
-        l->setFont(fl);
-        p->setFont(fp);
-
         h->addWidget(p);
-        h->setContentsMargins(1, 1, 1, 5);
+        b->setTitle(title);
+        b->setContentsMargins(20, 8, 8, 10);
+        b->setLayout(h);
 
-        v->addWidget(l);
-        v->addLayout(h);
-
+        v->addWidget(b);
         w->setLayout(v);
-
-        p->setStyleSheet("QWidget{background-color: #1B252F; ;color: #ffffff;padding: 5px 5px 5px 5px;}");
-        w->setStyleSheet("QWidget{background-color:#1F2B38;color:#ffffff;}");
 
         ui->list->addWidget(w);
 

@@ -18,6 +18,8 @@
         <file>style/Start.qss</file>
         <file>style/Help.qss</file>
         <file>style/CoreFM.qss</file>
+        <file>style/DashBoard.qss</file>
+        <file>style/SessionSaveDialog.qss</file>
     </qresource>
     <qresource prefix="/defultColor">
         <file>style/values.ini</file>

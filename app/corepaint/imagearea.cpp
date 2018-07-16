@@ -32,6 +32,8 @@ ImageArea::ImageArea(const bool &isOpen, const QString &filePath, QWidget *paren
     mUndoStack = new QUndoStack(this);
     mUndoStack->setUndoLimit(60);
 
+    setStyleSheet("QWidget { border: none; }");
+
     if(isOpen && filePath.isEmpty())
     {
         open();

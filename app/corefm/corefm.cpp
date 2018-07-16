@@ -1232,6 +1232,7 @@ QMenu* corefm::globalmenu(){
         }
         popup->addSeparator();
         popup->addMenu(subnew);
+        popup->addAction(ui->actionItemsToText);
         popup->addAction(ui->actionTerminal);
         popup->addSeparator();
         popup->addAction(ui->actionProperties);
@@ -2521,4 +2522,10 @@ void corefm::on_showthumb_clicked(bool checked)
 {
     modelList->setMode(checked);
     on_actionRefresh_triggered();
+}
+
+void corefm::on_actionItemsToText_triggered()
+{
+    qDebug()<< curIndex.filePath();
+    getDirText(curIndex.filePath());
 }

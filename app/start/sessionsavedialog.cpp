@@ -22,6 +22,9 @@ sessionSaveDialog::sessionSaveDialog(QWidget *parent) :QDialog(parent),ui(new Ui
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/SessionSaveDialog.qss"));
+
     sName = "";
 
     QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);

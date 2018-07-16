@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="accessibleName">
+   <string>pages</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
@@ -31,29 +34,11 @@
    </property>
    <item>
     <widget class="QScrollArea" name="scrollAreaResource">
-     <property name="styleSheet">
-      <string notr="true">QScrollBar:vertical {
-background-color: rgba( 0, 0, 0, 72% );
-max-width: 8px;
-border-radius: 4px;
-padding: 1px; }
-
-QScrollBar::handle:vertical {
-background-color: silver;
-max-width: 6px;
-border-radius: 3px; }
-
-QScrollBar::sub-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-line:vertical, 
-QScrollBar::sub-line:vertical {
-width: 0px; height: 0px; }
-
-</string>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="widgetResizable">
       <bool>true</bool>
@@ -63,8 +48,8 @@ width: 0px; height: 0px; }
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>584</width>
-        <height>436</height>
+        <width>586</width>
+        <height>438</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -72,6 +57,9 @@ width: 0px; height: 0px; }
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="accessibleName">
+       <string>pages</string>
       </property>
       <layout class="QVBoxLayout" name="chartsLayout">
        <property name="spacing">

@@ -170,6 +170,7 @@ private slots:
     void on_viewIcon_customContextMenuRequested(const QPoint &pos);
     void on_viewDetail_customContextMenuRequested(const QPoint &pos);
     void on_showthumb_clicked(bool checked);
+    void on_actionItemsToText_triggered();
 
 private:
     Ui::corefm *ui;

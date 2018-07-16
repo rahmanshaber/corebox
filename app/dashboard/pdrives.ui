@@ -13,28 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QGroupBox {
-    font-size: 13px;
-    margin-top: -1ex;
-    background-color: #34343C;
-    color: #E6E6E6;
-    border: 1px  gray;
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    subcontrol-position: top left;
-    background-color: #1F2B38;
-    color: #E6E6E6;
-    padding: 2px 5px 2px 5px;
-}
-
-QListWidget{
-background-color:#1B252F;
-color: #E6E6E6;
-}</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
     <number>5</number>
@@ -64,12 +42,6 @@ color: #E6E6E6;
        <width>0</width>
        <height>140</height>
       </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#1F2B38;
-color:#ffffff;
-}</string>
      </property>
      <property name="title">
       <string>All Drives</string>
@@ -104,34 +76,8 @@ color:#ffffff;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QWidget{
-background-color:#1B252F;
-color:#ffffff;
-}
-
-QScrollBar:vertical {
-background-color: rgba( 0, 0, 0, 72% );
-max-width: 8px;
-border-radius: 4px;
-padding: 1px; }
-
-QScrollBar::handle:vertical {
-background-color: silver;
-max-width: 6px;
-border-radius: 3px; }
-
-QScrollBar::sub-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-line:vertical, 
-QScrollBar::sub-line:vertical {
-width: 0px; height: 0px; }
-
-</string>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
         </property>
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -170,12 +116,6 @@ width: 0px; height: 0px; }
    </item>
    <item>
     <widget class="QGroupBox" name="partiton">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#1F2B38;
-color:#ffffff;
-}</string>
-     </property>
      <property name="title">
       <string>Partition</string>
      </property>
@@ -203,15 +143,6 @@ color:#ffffff;
         <property name="toolTip">
          <string>Mount the Pertition</string>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-background-color:#546070 ;
-color:#ffffff ;
-border: 1px #3F67C0;
-padding: 5px 10px 5px 10px;
-}
-</string>
-        </property>
         <property name="text">
          <string>Mount</string>
         </property>
@@ -222,14 +153,8 @@ padding: 5px 10px 5px 10px;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QWidget{
-background-color:#1B252F;
-color:#ffffff;
-}</string>
-        </property>
         <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+         <enum>QFrame::NoFrame</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Sunken</enum>
@@ -284,15 +209,6 @@ color:#ffffff;
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mount the Pertition&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-background-color:#546070 ;
-color:#ffffff ;
-border: 1px #3F67C0;
-padding: 5px 10px 5px 10px;
-}
-</string>
-        </property>
         <property name="text">
          <string>Unmount</string>
         </property>
@@ -315,12 +231,6 @@ padding: 5px 10px 5px 10px;
    </item>
    <item>
     <widget class="QGroupBox" name="properties">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#1F2B38;
-color:#ffffff;
-}</string>
-     </property>
      <property name="title">
       <string>Properties</string>
      </property>
@@ -345,35 +255,6 @@ color:#ffffff;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QWidget{
-background-color: #1B252F; ;
-color: #ffffff;
-}
-
-QScrollBar:vertical {
-background-color: rgba( 0, 0, 0, 72% );
-max-width: 8px;
-border-radius: 4px;
-padding: 1px; }
-
-QScrollBar::handle:vertical {
-background-color: silver;
-max-width: 6px;
-border-radius: 3px; }
-
-QScrollBar::sub-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-page:vertical {
-background-color: rgba( 0, 0, 0, 72% ); }
-
-QScrollBar::add-line:vertical, 
-QScrollBar::sub-line:vertical {
-width: 0px; height: 0px; }
-
-</string>
-        </property>
        </widget>
       </item>
      </layout>
@@ -381,12 +262,6 @@ width: 0px; height: 0px; }
    </item>
    <item>
     <widget class="QGroupBox" name="logs">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#1F2B38;
-color:#ffffff;
-}</string>
-     </property>
      <property name="title">
       <string>Logs</string>
      </property>
@@ -417,11 +292,8 @@ color:#ffffff;
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QWidget{
-background-color:#1B252F;
-color:#ffffff;
-}</string>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
         </property>
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>

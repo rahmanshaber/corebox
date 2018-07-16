@@ -21,6 +21,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 dashboard::dashboard(QWidget *parent) :QWidget(parent),ui(new Ui::dashboard)
 {
     ui->setupUi(this);
+
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/DashBoard.qss"));
+
     on_Bgeneral_clicked();
 }
 

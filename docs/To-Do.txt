@@ -23,7 +23,7 @@ globalfunction
 1 - file deleted & delete failed message.
 
 start
-1 - catch all the open tab and add them in separate file and add a listwidget in stackwidget.
+1 - delete the last one from list and add new at first in all list.
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 1 - add reminder option.
@@ -145,23 +145,22 @@ update the size function at corefm
 
 [TALKING]
 We have to open resource page at startup of dashboard because its a big thing to load it
-- why no qconcarent in file folder count.
+- why no qconcarent in file folder count / size.
 recent,serch,save session in qconcarent??
 
 
 0 - save all file in a folder to text as a action.
 
-
-Y - 0 - separet folder and file count.( 1 Files, 9 Folder | as return).
-NOT NEED - 0 - if corebox folder exist in config folder, delete it then extrat (not overwrite).
+- if corebox folder exist in config folder, delete it then extrat (not overwrite).
 
 Y - 0 - fix the sort in start(speeddial,recentActivitys),search (recent to old)
-TEST NEEDED FOR YOU - 0 - clearing the search>> close the search window>> crashs the whole app.
 TEST NEEDED FOR YOU - 0 - 10 windows>> close the corebox>>crashs the whole app.
 
-1 - delete the last one from list and add new at first in all list.
 
-- add button to remove the selected session...
-
+- deleteing session delete the whole date section.
+- dobulclick function doesnot work in coreFM.line 1568
+- itemtotext not working in under folder of home.
+- set setContentsMargins of display widget in dashboard
+- dashbor page layout
 
 

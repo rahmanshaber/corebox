@@ -22,7 +22,7 @@ renameDialog::renameDialog(QFileInfo iFile,QWidget *parent):QDialog(parent),ui(n
     ui->setupUi(this);
 
     // set stylesheet from style.qrc
-    setStyleSheet(getStylesheetFileContent(":/appStyle/style/Bookmarks.qss"));
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/RenameDialog.qss"));
 
     m_iFile = iFile;
     setWindowFlags(Qt::Dialog | Qt::Popup);

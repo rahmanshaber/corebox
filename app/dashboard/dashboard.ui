@@ -17,6 +17,9 @@
    <iconset resource="../icons.qrc">
     <normaloff>:/icons/DashBoard.svg</normaloff>:/icons/DashBoard.svg</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <property name="leftMargin">
     <number>0</number>
@@ -47,11 +50,8 @@
        <height>30</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#363941;
-color: #FFFFFF;
-}</string>
+     <property name="accessibleName">
+      <string>nameBar</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -119,9 +119,6 @@ color: #FFFFFF;
           <pointsize>14</pointsize>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true">color: white;</string>
-        </property>
         <property name="text">
          <string>General</string>
         </property>
@@ -163,23 +160,8 @@ color: #FFFFFF;
        <height>16777215</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #004275;
-color: #ffffff;
-border: 1px #3F67C0;
-}
-
-
-QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:checked{
-background-color:#1B252F; 
-}
-</string>
+     <property name="accessibleName">
+      <string>shortcut</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="leftMargin">
@@ -423,17 +405,13 @@ background-color:#1B252F;
    </item>
    <item row="1" column="1">
     <widget class="QStackedWidget" name="pages">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #1B252F; ;
-color: #ffffff;
-border: 1px #3F67C0;
-}</string>
-     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="pageGeneral">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -456,15 +434,24 @@ border: 1px #3F67C0;
       </layout>
      </widget>
      <widget class="QWidget" name="pageDrives">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
       <layout class="QVBoxLayout" name="pDriveLayout"/>
      </widget>
      <widget class="QWidget" name="pageBattery">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <layout class="QVBoxLayout" name="pBatteryLayout"/>
      </widget>
      <widget class="QWidget" name="pageResource">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <layout class="QVBoxLayout" name="pResourceLayout">
        <property name="spacing">
         <number>3</number>
@@ -490,6 +477,9 @@ border: 1px #3F67C0;
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="accessibleName">
+       <string>pages</string>
       </property>
       <layout class="QVBoxLayout" name="pDisplayLayout"/>
      </widget>
