@@ -22,6 +22,9 @@ search::search(QWidget *parent) :QWidget(parent),ui(new Ui::search)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/Search.qss"));
+
     startsetup();
 }
 

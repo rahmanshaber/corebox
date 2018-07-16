@@ -11,31 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>RenameDialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*RenameDialog */
-
-QWidget{
-    background-color: #2A2A2A;
-    color: #ffffff;
-    border: 1px #2A2A2A;}
-
-
-QPushButton{
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid #434343;
-    padding: 3px 5px 3px 5px;}
-QPushButton:hover {
-    background-color: #308CC6;}
-
-
-QLineEdit{
-    background-color: transparent;
-    color: #E6E6E6;
-    border: 1px solid #434343;
-    padding: 5px 5px 5px 10px;}</string>
+   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="spacing">

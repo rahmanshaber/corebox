@@ -21,6 +21,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 help::help(QWidget *parent) :QWidget(parent),ui(new Ui::help)
 {
     ui->setupUi(this);
+
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/Help.qss"));
+
     on_helpus_clicked();
 }
 

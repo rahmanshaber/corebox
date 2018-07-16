@@ -23,6 +23,9 @@ coreshotdialog::coreshotdialog(QWidget *parent) :QWidget(parent),ui(new Ui::core
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreShotDialog.qss"));
+
     startsetup();
 
     // Set window as a framless

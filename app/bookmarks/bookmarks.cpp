@@ -29,6 +29,9 @@ bookmarks::bookmarks(QWidget *parent) :QWidget(parent),ui(new Ui::bookmarks)
     ui->cTools->setChecked(false);
     ui->boklist->setFocusPolicy(Qt::NoFocus);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/Bookmarks.qss"));
+
     bk.checkBook();
     sectionRefresh();
 }

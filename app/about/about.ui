@@ -18,34 +18,7 @@
     <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*About*/
-
-#appTitle{
-    border: 1px #232323;
-    background-color: transparent;
-    color: #ffffff;}
-
-QWidget [accessibleName=&quot;content&quot;]{
-    background-color: #767676;
-    color: #ffffff;
-    border: 1px #0C2C45;}
-
-QWidget [accessibleName=&quot;shortcut&quot;]{
-    background-color: #0C2C45;
-    color: #ffffff;
-    border: 1px #0C2C45;}
-
-QFrame{
-    background-color: #27527F;
-    color: #ffffff;
-    border-radius: 5px;}
-
-QPushButton{
-    background-color: transparent;
-    color: #ffffff;
-    Text-align:left;
-    padding: 0px 0px 0px 8px;}
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">

@@ -24,20 +24,7 @@
     <normaloff>:/icons/CoreShot.svg</normaloff>:/icons/CoreShot.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*CoreShot*/
-
-QWidget{
-    background-color: #2A2A2A;
-    color: #ffffff;
-    border: 1px #2A2A2A;}
-
-QPushButton{
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid #434343;
-    padding: 3px 5px 3px 5px;}
-QPushButton:hover {
-    background-color: #308CC6;}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">

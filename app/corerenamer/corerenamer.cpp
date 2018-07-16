@@ -20,6 +20,9 @@ corerenamer::corerenamer(QWidget *parent) :QWidget(parent),ui(new Ui::corerename
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreRenamer.qss"));
+
     uStack = new QUndoStack(this);
     ui->addTextCPos->setValidator(new QIntValidator());
     ui->removeTextCPos->setValidator(new QIntValidator());

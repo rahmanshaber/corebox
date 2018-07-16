@@ -23,6 +23,9 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreImage.qss"));
+
     scaleFactor = 1.0;
 
     cImageLabel = new QLabel(ui->imageArea);

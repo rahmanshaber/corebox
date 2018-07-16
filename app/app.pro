@@ -257,6 +257,7 @@ RESOURCES += \
     icons.qrc \
     other.qrc \
     ../docs/docs.qrc \
+    style.qrc
 
 # C99/C++11 Support for Qt5
 isEqual( QT_MAJOR_VERSION, 5 ) {

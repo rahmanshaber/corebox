@@ -22,6 +22,9 @@ corefm::corefm(QWidget *parent) :QWidget(parent),ui(new Ui::corefm)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreFM.qss"));
+
     startsetup();
     loadSettings();
     lateStart();

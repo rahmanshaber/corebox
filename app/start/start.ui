@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>887</width>
+    <width>951</width>
     <height>626</height>
    </rect>
   </property>
@@ -18,57 +18,7 @@
     <normaloff>:/icons/Start.svg</normaloff>:/icons/Start.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*Start */
-
-QWidget{
-    background-color: #172027;
-    color:#E6E6E6;
-    border: 1px #434343;}
-
-
-QPushButton{
-    background-color: transparent;
-    border: 1px #434343;
-    padding: 5px 5px 5px 5px;
-    font-size: 22px;}
-QPushButton:checked{
-    color: #DCDCDC;
-    font-weight: bold;}
-QPushButton:!checked{
-    color: #57585D ;}
-
-
-QListView{
-    padding: 50px 5px 20px 20px;}
-QListView::item:selected {
-    border: 1px solid #232730;
-    background-color: #232730;}
-QListView::item:hover {
-    background-color: #232730;}
-QListView::item {
-    background-color: #303942;
-    border: 1px #323232;
-    padding: 5px 20px 5px 20px;
-    border-radius: 2px;}
-
-
-QScrollBar:vertical {
-    background-color: rgba( 0, 0, 0, 72% );
-    max-width: 8px;
-    border-radius: 4px;
-    padding: 1px; }
-QScrollBar::handle:vertical {
-    background-color: silver;
-    max-width: 6px;
-    min-height: 12px;
-    border-radius: 3px; }
-QScrollBar::sub-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
-QScrollBar::add-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    width: 0px; height: 0px; }</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <property name="spacing">
@@ -113,9 +63,7 @@ QScrollBar::sub-line:vertical {
          </size>
         </property>
         <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-         </font>
+         <font/>
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
@@ -140,9 +88,7 @@ QScrollBar::sub-line:vertical {
          </size>
         </property>
         <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-         </font>
+         <font/>
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
@@ -167,9 +113,7 @@ QScrollBar::sub-line:vertical {
          </size>
         </property>
         <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-         </font>
+         <font/>
         </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
@@ -234,9 +178,7 @@ QScrollBar::sub-line:vertical {
       <item>
        <widget class="QPushButton" name="rDeleteSession">
         <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-         </font>
+         <font/>
         </property>
         <property name="text">
          <string/>

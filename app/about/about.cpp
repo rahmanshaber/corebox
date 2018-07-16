@@ -22,6 +22,7 @@ about::about(QWidget *parent) : QWidget(parent), ui(new Ui::about)
 {
     ui->setupUi(this);
     connect(ui->aboutqt, SIGNAL(clicked()), qApp, SLOT(aboutQt()));
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/About.qss"));
 }
 
 about::~about()

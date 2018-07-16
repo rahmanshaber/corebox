@@ -707,3 +707,38 @@ QStringList sortDateTime(QStringList &dateTimeList, sortOrder s)
     dts.clear();
     return dateTimeList;
 }
+
+
+QString readStringFromFile(const QString &path, const QIODevice::OpenMode &mode)
+{
+    QSharedPointer<QFile> file(new QFile(path));
+
+    QString data;
+
+    if(file->open(mode)) {
+
+      data = file->readAll();
+
+      file->close();
+    }
+
+    return data;
+}
+
+QString getStylesheetFileContent(const QString &path)
+{
+    QSettings *mStyleValues;
+    QString mStylesheetFileContent;
+    QString appThemePath = QString(":/defultColor/style");
+    mStyleValues = new QSettings(QString("%1/values.ini").arg(appThemePath), QSettings::IniFormat);
+
+    mStylesheetFileContent = readStringFromFile(QString(path),QIODevice::ReadOnly);
+
+    // set values example: @color01 => #fff
+    for (const QString &key : mStyleValues->allKeys()) {
+        mStylesheetFileContent.replace(key, mStyleValues->value(key).toString());
+    }
+
+    return mStylesheetFileContent;
+}
+

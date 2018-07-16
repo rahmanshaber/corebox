@@ -22,6 +22,9 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/Settings.qss"));
+
     setupCoreBoxPage();
     setupCoreFMPage();
     setupCoreActionPage();

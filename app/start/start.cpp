@@ -22,6 +22,9 @@ Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/Start.qss"));
+
     // Get recent activity enabled or not
     isRecentEnable = !sm.getDisableRecent();
 

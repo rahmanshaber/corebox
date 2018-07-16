@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/appStyle">
+        <file>style/About.qss</file>
+        <file>style/BookmarkIt.qss</file>
+        <file>style/Bookmarks.qss</file>
+        <file>style/CoreArchiver.qss</file>
+        <file>style/CoreImage.qss</file>
+        <file>style/CorePad.qss</file>
+        <file>style/CorePaint.qss</file>
+        <file>style/CorePlayer.qss</file>
+        <file>style/CoreRenamer.qss</file>
+        <file>style/CoreShot.qss</file>
+        <file>style/CoreShotDialog.qss</file>
+        <file>style/Properties.qss</file>
+        <file>style/RenameDialog.qss</file>
+        <file>style/Search.qss</file>
+        <file>style/Settings.qss</file>
+        <file>style/Start.qss</file>
+        <file>style/Help.qss</file>
+        <file>style/CoreFM.qss</file>
+    </qresource>
+    <qresource prefix="/defultColor">
+        <file>style/values.ini</file>
+    </qresource>
+</RCC>

@@ -22,6 +22,9 @@ corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CorePad.qss"));
+
     ui->searchBar->setVisible(false);
     ui->fontSize->setVisible(0);
 

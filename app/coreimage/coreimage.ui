@@ -18,90 +18,7 @@
     <normaloff>:/icons/CoreImage.svg</normaloff>:/icons/CoreImage.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*CoreImage*/
-
-#appTitle{
-    border: 1px #232323;
-    background-color: transparent;
-    color: #ffffff;}
-
-
-QWidget [accessibleName=&quot;shortcut&quot;]{
-    background-color: #282D31;
-    color: #ffffff;
-    border: 1px #434343;}
-
-QFrame  [accessibleName=&quot;navigationBar&quot;] {
-    background-color: #000000;
-    color: #E6E6E6;
-    border: 1px #434343;}
-
-
-#line{
-    background-color: #C0C0C0 ;
-    color: #C0C0C0;
-    border: 1px  #F2F2F2;
-}
-
-
-QPushButton{
-    background-color: transparent;
-    color: #ffffff;
-    Text-align:left;
-    border: 1px #434343;
-    padding: 5px 5px 5px 5px;}
-QPushButton:pressed{
-    background-color: #1167A3; }
-QPushButton:hover {
-    background-color: #1167A3;}
-
-
-QToolButton{
-    border: 1px #232323;
-    background-color: transparent;
-    color: #ffffff;}
-QToolButton:pressed{
-    background-color: #1167A3; }
-QToolButton:hover {
-    background-color: #1167A3; }
-QToolButton:checked{
-    background-color: #1167A3;}
-
-
-QListView{
-    background-color: #000000;
-    padding:5px 5px 5px 5px;}
-
-
-QScrollBar:vertical {
-    background-color: rgba( 0, 0, 0, 72% );
-    max-width: 8px;
-    border-radius: 4px;
-    padding: 1px; }
-QScrollBar:horizontal {
-    background-color: rgba( 0, 0, 0, 72% );
-    max-height: 8px;
-    border-radius: 4px;
-    padding: 1px; }
-QScrollBar::handle:horizontal,
-QScrollBar::handle:vertical {
-    background-color: silver;
-    max-width: 6px;
-    border-radius: 3px; }
-QScrollBar::sub-page:horizontal,
-QScrollBar::sub-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
-QScrollBar::add-page:horizontal,
-QScrollBar::add-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    width: 0px; height: 0px; }
-QScrollBar::add-line:horizontal,
-QScrollBar::sub-line:horizontal {
-    width: 0px; height: 0px; }
-
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
    <property name="spacing">
@@ -642,7 +559,7 @@ QScrollBar::sub-line:horizontal {
         <property name="geometry">
          <rect>
           <x>102</x>
-          <y>12</y>
+          <y>10</y>
           <width>553</width>
           <height>446</height>
          </rect>

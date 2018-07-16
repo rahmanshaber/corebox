@@ -22,6 +22,9 @@ coreshot::coreshot(QWidget *parent) :QWidget(parent),ui(new Ui::coreshot)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreShot.qss"));
+
     int x = screensize().width()  * .55;
     int y = screensize().height() * .6;
     this->resize(x, y);

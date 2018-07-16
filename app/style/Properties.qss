@@ -1,0 +1,37 @@
+/*Properties */
+
+#fileTitle{
+	font: 14pt "Cantarell";
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+
+
+QWidget{
+    background-color: #333333;
+    color:#E6E6E6;
+    border: 1px #434343;}
+
+
+#close{
+    border: 1px solid #434343;
+    padding: 2px 3px 2px 3px;}
+#close:hover {
+    background-color: #308CC6;}
+
+
+QTabWidget::pane {
+    border-top: 1px solid #454A4D;
+    padding: 5px 0px;}
+QTabWidget::tab-bar {
+    alignment: center; }
+QTabBar::tab {
+    border-style: none;
+    padding-bottom: 5px;
+    min-width: 90px;}
+QTabBar::tab:selected {
+    border-bottom: 2px solid #0f5d90;
+    font-weight: bold;}
+QTabBar::tab:!selected {
+    font-weight: normal;
+    margin-bottom: 1px;}

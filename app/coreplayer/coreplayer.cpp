@@ -23,6 +23,9 @@ coreplayer::coreplayer(QWidget *parent):QWidget(parent),ui(new Ui::coreplayer)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CorePlayer.qss"));
+
     startsetup();
     audioMimes();
     videoMimes();

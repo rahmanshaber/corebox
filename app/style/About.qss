@@ -1,0 +1,27 @@
+/*About*/
+
+#appTitle{
+    border: 1px #232323;
+    background-color: transparent;
+    color: #ffffff;}
+
+QWidget [accessibleName="content"]{
+    background-color: #767676;
+    color: #ffffff;
+    border: 1px #0C2C45;}
+
+QWidget [accessibleName="shortcut"]{
+    background-color: #0C2C45;
+    color: #ffffff;
+    border: 1px #0C2C45;}
+
+QFrame{
+    background-color: #27527F;
+    color: #ffffff;
+    border-radius: 5px;}
+
+QPushButton{
+    background-color: transparent;
+    color: #ffffff;
+    Text-align:left;
+    padding: 0px 0px 0px 8px;}

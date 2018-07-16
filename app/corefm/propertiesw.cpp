@@ -24,6 +24,9 @@ propertiesw::propertiesw(const QString paths,QWidget *parent) :QWidget(parent),u
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/Properties.qss"));
+
     pathName = paths;
     info = QFileInfo(pathName);
 

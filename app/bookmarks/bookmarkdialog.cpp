@@ -22,6 +22,9 @@ bookmarkDialog::bookmarkDialog(QWidget *parent) : QDialog(parent),ui(new Ui::boo
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/BookmarkIt.qss"));
+
     connect(ui->cancel, &QPushButton::clicked, this, &bookmarkDialog::close);
 
     ui->bkSection->clear();

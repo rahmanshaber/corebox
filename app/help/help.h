@@ -22,6 +22,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTextStream>
 #include <QFile>
 
+#include "corebox/globalfunctions.h"
+
 
 namespace Ui {
 class help;
