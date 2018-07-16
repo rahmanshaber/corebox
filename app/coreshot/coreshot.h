@@ -27,6 +27,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corebox/corebox.h"
 #include "settings/settingsmanage.h"
 
+
 namespace Ui {
 class coreshot;
 }
@@ -47,8 +48,6 @@ private slots:
     void on_saveAs_clicked();
     void on_cancel_clicked();
     void on_newShot_clicked();
-
-
     void on_openInCoreImage_clicked();
 
 private:

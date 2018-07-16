@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>858</width>
+    <width>887</width>
     <height>626</height>
    </rect>
   </property>
@@ -214,13 +214,52 @@ QScrollBar::sub-line:vertical {
         </property>
        </spacer>
       </item>
+      <item>
+       <widget class="QPushButton" name="rClearActivity">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/trash_w.svg</normaloff>:/icons/trash_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="rDeleteSession">
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/trash_w.svg</normaloff>:/icons/trash_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
    <item>
     <widget class="slidingStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>3</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="pcoreApps">
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -583,30 +622,6 @@ QScrollBar::sub-line:vertical {
         <number>45</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="rClearActivity">
-           <property name="text">
-            <string>Clear Activity</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
         <widget class="QTreeWidget" name="recentActivitesL">
          <property name="focusPolicy">
           <enum>Qt::NoFocus</enum>
@@ -655,35 +670,9 @@ QScrollBar::sub-line:vertical {
        <property name="leftMargin">
         <number>45</number>
        </property>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="rDeleteSession">
-           <property name="font">
-            <font>
-             <pointsize>-1</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Delete Sessions</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
        <item>
         <widget class="QTreeWidget" name="sessionsList">
          <property name="focusPolicy">

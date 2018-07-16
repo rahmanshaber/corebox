@@ -104,7 +104,6 @@ public:
     bool setSHowTime(bool showTime);
     bool getShowTime();
 
-
 };
 
 #endif // SETTINGSMANAGE_H

@@ -38,12 +38,11 @@ public:
 
     void compress(const QStringList &filePathList, const QDir &currentDir);
     void extract(const QString &archiveFilePath, const QDir &dest);
+    void setFilename(const QString &fileName);
+    void setFolderPath(const QString &path);
 
     QString archiveName, location, format, workingDir;
     QStringList filePathList;
-
-    void setFilename(const QString &fileName);
-    void setFolderPath(const QString &path);
 
 private Q_SLOTS:
     void updateFileName(const QString & );
@@ -52,7 +51,6 @@ private Q_SLOTS:
 
 private:
     Ui::corearchiver *ui;
-
     void startsetup();
 
 };

@@ -53,12 +53,7 @@ public:
 private:
     Ui::search *ui;
     QProcess *cProcess;
-
-    QStringList all;
-    QStringList media;
-    QStringList image;
-    QStringList other;
-    QStringList folder;
+    QStringList all,media,image,other,folder;
 
     void callProcess(bool find);
     void populateItems(const QString &text);
@@ -81,9 +76,9 @@ private slots:
     void on_more_clicked(bool checked);
     void on_searchFF_textChanged(const QString &arg1);
     void on_setfolder_clicked();
-
     void on_activityList_itemClicked(QTreeWidgetItem *item, int column);
     void on_clearActivity_clicked();
+
 };
 
 #endif // SEARCH_H

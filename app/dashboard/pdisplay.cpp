@@ -32,11 +32,11 @@ pDisplay::~pDisplay()
 void pDisplay::setupDisplayPage()
 {
     QStringList left;
-    left << "Name        " << "Size        " << "Manufacturer        " << "Model      "
-         << "Serial Number         " << "Refresh Rate        " << "Default Resolution     "
-         << "Set Resolution        " << "Physical Dots Per Inch "
-         << "Physical Size        " <<  "Screen Size        " << "Default Orientation   "
-         << "Set Orientation   "  ;
+    left << "Name :" << "Size " << "Manufacturer :" << "Model :"
+         << "Serial Number :" << "Refresh Rate :" << "Default Resolution :"
+         << "Set Resolution :" << "Physical Dots Per Inch "
+         << "Physical Size :" <<  "Screen Size :" << "Default Orientation :"
+         << "Set Orientation :"  ;
 
     for (int i = 0; i < qApp->screens().count(); i++) {
 
@@ -50,10 +50,11 @@ void pDisplay::setupDisplayPage()
         QString geometry(tr("(%1,%2)").arg(g.width()).arg(g.height()));
 
         QSizeF py = qApp->screens()[i]->physicalSize();
-        QString physicalSize(tr("(%1,%2)").arg(py.width()).arg(py.height()));
+        QString physicalSize(tr("(%1,%2,%3)").arg(py.width()).arg(py.height()).arg(" millimetre"));
 
         // screen size in inches
         int screenSize(qSqrt(qPow (py.width(),2) + qPow (py.height(),2)) * 0.03937008);
+
 
         // screen orientation
         QString defultOrientation = "";
@@ -88,7 +89,7 @@ void pDisplay::setupDisplayPage()
         right << qApp->screens()[i]->name() << size << qApp->screens()[i]->manufacturer()
               << qApp->screens()[i]->model() << qApp->screens()[i]->serialNumber()
               << QString::number(qApp->screens()[i]->refreshRate()) + " Hz" << availableVS << geometry
-              << QString::number(qApp->screens()[i]->physicalDotsPerInch()) << physicalSize + " millimetre"
+              << QString::number(qApp->screens()[i]->physicalDotsPerInch()) << physicalSize
               << QString::number(screenSize) + " inches"
               << defultOrientation << setOrientation;
 

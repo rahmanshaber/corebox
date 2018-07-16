@@ -18,7 +18,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #define SLIDINGSTACKEDWIDGET_H
 
 #include <QWidget>
-#include <QDebug>
 #include <QEasingCurve>
 #include <QStackedWidget>
 #include <QPropertyAnimation>
@@ -48,7 +47,6 @@ public slots:
     void setSpeed(int speed); // animation duration in milliseconds
     void setAnimation(const QEasingCurve::Type animationtype); // check out the QEasingCurve documentation for different styles
     void setVerticalMode(bool vertical = true);
-
     void slideInNext();
     void slideInPrev();
     void slideInIdx(int idx, t_direction direction = AUTOMATIC);
@@ -61,14 +59,10 @@ private slots:
 
 private:
     void slideInWgt(QWidget *widget, t_direction direction = AUTOMATIC);
-
     enum QEasingCurve::Type animationtype;
-    int speed;
-    bool vertical;
-    int now;
-    int next;
+    bool vertical,active;
+    int next,now,speed;
     QPoint pnow;
-    bool active;
 };
 
 #endif // SLIDINGSTACKEDWIDGET_H

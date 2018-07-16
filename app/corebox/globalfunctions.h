@@ -35,13 +35,20 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <fcntl.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <QProcess>
+#include <QScreen>
+#include <QMimeDatabase>
+#include <QMimeType>
+#include <QStyle>
+#include <QStorageInfo>
+#include <QDebug>
+#include <QTextStream>
 
 #include "../settings/settingsmanage.h"
 
 struct SizeAndCountText
 {
-    QString sizeText;
-    QString countText;
+    QString sizeText ,countText;
 };
 
 enum sortOrder {

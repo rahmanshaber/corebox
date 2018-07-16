@@ -52,13 +52,10 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *event);
-
-    bool isMouseDown = false;
-    bool isLeftDown = false;
-    bool isRightDown = false;
-    QPoint mousePos;
-    QPoint wndPos;
     void changeEvent(QEvent *event);
+
+    bool isMouseDown = false ,isLeftDown = false ,isRightDown = false;
+    QPoint mousePos, wndPos;
 
 private slots:
     void on_windows_currentChanged(int index);
@@ -69,7 +66,6 @@ private slots:
     void on_minimizeButton_clicked();
     void on_closeButton_clicked();
     void doubleClicked();
-
     void on_bookmarks_clicked();
     void on_dashboard_clicked();
     void on_corepaint_clicked();

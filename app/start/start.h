@@ -50,16 +50,12 @@ private slots:
     void on_recentActivitesL_itemDoubleClicked(QTreeWidgetItem *item, int column);
     void on_appCollect_itemDoubleClicked(QListWidgetItem *item);
     void on_speedDialB_itemDoubleClicked(QListWidgetItem *item);
-
     void on_coreApps_clicked();
     void on_speedDial_clicked();
     void on_recentActivites_clicked();
     void on_savedSession_clicked();
-
     void on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column);
-
     void on_rClearActivity_clicked();
-
     void on_rDeleteSession_clicked();
 
 private:
@@ -70,7 +66,6 @@ private:
     void loadSpeedDial();
     void loadRecent();
     void loadSession();
-
     bool isRecentEnable;
     void pageClick(QPushButton *btn, int i);
 };

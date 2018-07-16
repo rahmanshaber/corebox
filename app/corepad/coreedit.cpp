@@ -23,14 +23,7 @@ coreedit::coreedit(QString fPath, QWidget *parent) : QPlainTextEdit(parent)
     filePath = fPath;
 
     cHighlighter *highlighter = new cHighlighter(document());
-    setStyleSheet("QWidget{background-color: #2E2F30; border: none;}"
-                  "QMenu::item{background-color: rgb(0, 0, 0);color: rgb(255, 255, 255);}"
-                  "QMenu::item::selected{background-color: rgb(p0, 85, 127);color: rgb(255,255,255);}"
-                  "QScrollBar:vertical {background-color: rgba( 0, 0, 0, 72% ); max-width: 8px;border-radius: 4px; padding: 1px; }"
-                  "QScrollBar::handle:vertical {background-color: silver; max-width: 6px; min-height: 12px; border-radius: 3px; }"
-                  "QScrollBar::sub-page:vertical {background-color: rgba( 0, 0, 0, 72% ); }"
-                  "QScrollBar::add-page:vertical {background-color: rgba( 0, 0, 0, 72% ); }"
-                  "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { width: 0px; height: 0px; }");
+    setStyleSheet("QWidget{background-color: #2E2F30; border: none;}");
 
     lineNumberArea = new LineNumberArea(this);
     this->lineNumberArea->setContentsMargins(0, 0, 0, 0);

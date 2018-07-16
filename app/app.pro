@@ -51,7 +51,6 @@ FORMS += \
     dashboard/circlebar.ui \
     dashboard/dashboard.ui \
     dashboard/history_chart.ui \
-    dashboard/linebar.ui \
     dashboard/pbattery.ui \
     dashboard/pdisplay.ui \
     dashboard/pdrives.ui \
@@ -146,7 +145,6 @@ HEADERS += \
     dashboard/dashboard.h \
     dashboard/history_chart.h \
     dashboard/info_manager.h \
-    dashboard/linebar.h \
     dashboard/pbattery.h \
     dashboard/pdisplay.h \
     dashboard/pdrives.h \
@@ -243,7 +241,6 @@ SOURCES += \
     dashboard/dashboard.cpp \
     dashboard/history_chart.cpp \
     dashboard/info_manager.cpp \
-    dashboard/linebar.cpp \
     dashboard/pbattery.cpp \
     dashboard/pdisplay.cpp \
     dashboard/pdrives.cpp \

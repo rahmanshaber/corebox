@@ -49,7 +49,6 @@ public:
 
     void saveBookMark(QString section, QString bookmarkName, QString bookmarkPath, QString bookmarkIcon);
     void callBookMarkDialog(QWidget *parent, const QString &currentPath);
-
     void reload();
 
 private slots:

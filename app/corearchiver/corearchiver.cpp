@@ -18,9 +18,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_corearchiver.h"
 
 
-corearchiver::corearchiver(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::corearchiver)
+corearchiver::corearchiver(QWidget *parent) :QWidget(parent),ui(new Ui::corearchiver)
 {
     ui->setupUi(this);
 

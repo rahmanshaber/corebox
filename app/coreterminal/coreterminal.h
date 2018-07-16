@@ -18,9 +18,9 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #pragma once
 
 #include "qtermwidget.h"
+
 #include <iostream>
 #include <fstream>
-
 #include <QFileSystemWatcher>
 #include <QFileInfo>
 #include <QProcessEnvironment>

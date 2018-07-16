@@ -57,10 +57,8 @@ private slots:
     void textUndoAvailable(bool b);
     void textRedoAvailable(bool b);
     void textTextChanged();
-
     void on_notes_currentChanged(int index);
     void on_notes_tabCloseRequested(int index);
-
     void on_cOpen_clicked();
     void on_cNew_clicked();
     bool on_cSave_clicked();
@@ -94,7 +92,6 @@ private:
     bool closeTab(int index);
 
     //Accessing information through tab information
-
     QString isCurrentSaved(int index);
     QString isCurrentUpdated(int index);
 

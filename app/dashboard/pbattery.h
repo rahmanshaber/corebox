@@ -43,7 +43,6 @@ public:
 
 private slots:
     void on_batteriesList_currentIndexChanged(int index);
-
     void on_refresh_clicked();
 
 private:

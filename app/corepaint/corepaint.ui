@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>918</width>
+    <width>946</width>
     <height>504</height>
    </rect>
   </property>
@@ -27,8 +27,8 @@
 
 
 QWidget [accessibleName=&quot;nameBar&quot;]{
-   background-color:#363941;
-   color: #000000;
+    background-color:#363941;
+    color: #000000;
     border: 1px #45454D;}
 
 QWidget [accessibleName=&quot;statusBar&quot;]{
@@ -61,26 +61,42 @@ QToolButton:hover {
     background-color: #212F39; }
 
 
-QTabWidget{
-    background-color: transparent;
-    border-style: none;}
 QTabWidget QTabBar{
-    background-color: #333333;
-    height: 30px;}
+background-color: #373737;
+border:none;
+height: 30px;
+}
+
 QTabWidget QTabBar::tab{
-    text-align: left;
-    background-color: #136ba2;
-    border-style: none;
-    height: 30px;
-    width: 63px;
-    color: #ffffff;
-    padding: 0px 5px 0px 5px;}
+text-align: left;
+background-color: #136ba2;
+border-style: 1px rgb(67, 67, 67);
+height: 30px;
+width: 130px;
+color: #136ba2;
+padding: 0px 5px 0px 5px;
+}
+
 QTabWidget QTabBar::tab:selected{
-    background-color: #0f5d90;}
+background-color: #5A5B5C;
+font-weight: bold;
+color: #ffffff;
+}
+
 QTabWidget QTabBar::tab:!selected{
-    background-color:  #333333;}
+background-color:#353536;
+color:  #B4B4B4;
+}
+
 QTabWidget QTabBar::tab:hover{
-    background-color:  #3D3D3D;}
+background-color:  #5A5B5C;
+color:  #ffffff;
+}
+
+QTabBar::close-button {
+    image: url(:/icons/close_w.svg);
+    subcontrol-position: right;
+}
 
 
 QScrollBar:vertical {
@@ -1617,7 +1633,7 @@ QScrollBar::sub-line:horizontal {
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>24</height>
+       <height>30</height>
       </size>
      </property>
      <property name="accessibleName">

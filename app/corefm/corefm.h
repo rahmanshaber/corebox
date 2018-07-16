@@ -191,9 +191,6 @@ private:
     int currentView;        // 0=list, 1=icons, 2=details
     int currentSortColumn;  // 0=name, 1=size, 3=date
     int selectItemCount;
-    Qt::SortOrder currentSortOrder;
-
-    QCompleter *customComplete;
 
     MimeUtils *mimeUtils;
     tabBar *tabs;
@@ -202,33 +199,23 @@ private:
     UDisks2 *udisks;
     SettingsManage sm;
 
+    Qt::SortOrder currentSortOrder;
+    QCompleter *customComplete;
     QFileSystemWatcher *watcher;
-//    QTreeView *tree;
-
     QFileInfo curIndex;
     QModelIndex backIndex;
-
     QSortFilterProxyModel *modelTree;
     QSortFilterProxyModel *modelView;
-
     QItemSelectionModel *treeSelectionModel;
     QItemSelectionModel *listSelectionModel;
     QSocketNotifier *notify;
-
     QStringList mounts;
     QString startPath;
-
     QList<QIcon> *actionIcons;
     QList<QAction*> *actionList;
-
     QActionGroup *sortByActGrp;
-    QAction *sortNameAct;
-    QAction *sortDateAct;
-    QAction *sortSizeAct;
-    QAction *sortAscAct;
-    QAction *focusAddressAct;
-    QAction *focusTreeAct;
-    QAction *focusListAct;
+    QAction *sortNameAct,*sortDateAct,*sortSizeAct,*sortAscAct;
+
 };
 
 //---------------------------------------------------------------------------------

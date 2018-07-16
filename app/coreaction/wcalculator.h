@@ -38,8 +38,6 @@ private:
     Ui::wCalculator *ui;
 
 private slots:
-    //void on_percentage_clicked();
-
     void on_one_clicked();
     void on_two_clicked();
     void on_three_clicked();

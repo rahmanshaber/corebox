@@ -39,7 +39,6 @@ private:
     QChartView *mChartView;
     QChart *mChart;
     QVector<QSplineSeries *> mSeriesList;
-
     QCategoryAxis *mAxisY;
 
     void init();

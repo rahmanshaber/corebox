@@ -34,6 +34,7 @@ public:
 
 private:
     Ui::wCalender *ui;
+
 };
 
 #endif // WCALENDER_H

@@ -30,6 +30,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <X11/Xatom.h>
 #include <QMimeDatabase>
 
+
 namespace Ui {
 class coreshotdialog;
 }
@@ -45,10 +46,8 @@ public:
 private:
     Ui::coreshotdialog *ui;
     QPixmap m_pixmap;
-
     WId getActiveWindowId();
     QRect getWindowFrame(WId wid);
-
     void passToShotPreview();
     void startsetup();
     ModeSelectArea *selcArea;

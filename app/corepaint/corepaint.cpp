@@ -97,7 +97,7 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
             QScrollArea *scrollArea = new QScrollArea();
             scrollArea->setAttribute(Qt::WA_DeleteOnClose);
             //color for core paint
-            scrollArea->setStyleSheet("QScrollArea { background-color: #464652; }");
+            scrollArea->setStyleSheet("QScrollArea { background-color: #464652;border-style: none; }");
 
             //scrollArea->setBackgroundRole(QPalette::Shadow);
 

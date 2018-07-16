@@ -72,7 +72,6 @@ private slots:
     void on_backUp_clicked();
     void on_restore_clicked();
 
-
 private:
     Ui::settings *ui;
     SettingsManage sm;

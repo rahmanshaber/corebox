@@ -292,6 +292,17 @@ void Start::pageClick(QPushButton *btn, int i)
         b->setChecked(false);
     btn->setChecked(true);
     ui->pages->slideInIdx(i);
+
+    if(btn == ui->recentActivites){
+        ui->rClearActivity->setVisible(1);
+        ui->rDeleteSession->setVisible(0);
+    }else if(btn == ui->savedSession){
+        ui->rClearActivity->setVisible(0);
+        ui->rDeleteSession->setVisible(1);
+    }else{
+        ui->rClearActivity->setVisible(0);
+        ui->rDeleteSession->setVisible(0);
+    }
 }
 
 void Start::on_coreApps_clicked()

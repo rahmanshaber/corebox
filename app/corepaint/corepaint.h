@@ -79,7 +79,7 @@ public:
     // Only for save session purpose it is at public
     ImageArea* getImageAreaByIndex(int index);
 
-    void pageClick(QToolButton *btn, int i);
+
 protected:
     void closeEvent(QCloseEvent *event);
 
@@ -89,6 +89,7 @@ private:
     void initializeMainMenu();
     void loadSettings();
     void shotcuts();
+    void pageClick(QToolButton *btn, int i);
 
     ImageArea* getCurrentImageArea();
     bool closeAllTabs();
@@ -99,8 +100,7 @@ private:
     bool mPrevInstrumentSetted;
 
     ColorChooser *mPColorChooser, *mSColorChooser;
-    QString filepath;
-    QString currentFile;
+    QString filepath,currentFile;
 
 private slots:
     void setNewSizeToSizeLabel(const QSize &size);
@@ -137,15 +137,10 @@ private slots:
     void undo();
     void redo();
     void on_delet_clicked();
-
     void on_menuB_clicked();
-
     void on_canvasB_clicked();
-
     void on_selectionB_clicked();
-
     void on_toolsB_clicked();
-
     void on_colorB_clicked();
 
 signals:

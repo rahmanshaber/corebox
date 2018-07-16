@@ -56,10 +56,8 @@ public:
     ~coreplayer();
 
     void openPlayer(const QString path);
-
     bool isPlayerAvailable() const;
     QMediaPlayer::State state() const;
-
     QString workFilePath() const;
 
 protected:
@@ -74,8 +72,7 @@ private:
     QStringList getList(const QString &path);
     QStringList getAudios(const QString path);
     QStringList getVideos(const QString path);
-    QStringList videomimes;
-    QStringList audiomimes;
+    QStringList videomimes,audiomimes;
 
     void audioMimes();
     void videoMimes();
@@ -97,22 +94,19 @@ private:
     QAbstractItemView *medialist;
     qint64 duration;
     QStandardItemModel *mModel;
-    QString folderpath;
-    QString filepath;
+    QString folderpath,filepath;
 
 private slots:
     void seekLeft();
     void seekRight();
     void volumnUP();
     void volumnDown();
-
     void durationChanged(qint64 duration);
     void positionChanged(qint64 progress);
     void seek(int seconds);
     void statusChanged(QMediaPlayer::MediaStatus status);
     void bufferingProgress(int progress);
     void displayErrorMessage();
-
     void on_open_clicked();
     void on_previous_clicked();
     void on_play_clicked(bool checked);

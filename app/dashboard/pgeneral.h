@@ -59,10 +59,7 @@ private:
     QTimer *timer;
     InfoManager *im;
 
-    QString cpuCore;
-    QString cpuModel;
-    QString cpuSpeed;
-    QString username;
+    QString cpuCore,cpuModel,cpuSpeed,username;
 
 };
 
