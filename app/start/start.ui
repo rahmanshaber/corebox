@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>951</width>
-    <height>626</height>
+    <width>881</width>
+    <height>533</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -201,7 +201,7 @@
    <item>
     <widget class="slidingStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="pcoreApps">
       <layout class="QVBoxLayout" name="verticalLayout_2">

@@ -1,15 +1,15 @@
 /*Search */
 
 #appTitle{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 
 
 QWidget [accessibleName="options"]{
     background-color:#64697D;
     color: #ffffff;
-    border: 1px #434343;}
+    border: none;}
 
 QWidget [accessibleName="infoPage"]{
     background-color:#F2F2F2 ;
@@ -32,7 +32,7 @@ QLineEdit {
 QToolButton{
     background-color: transparent;
     color: #ffffff;
-    border: 1px #434343;
+    border: none;
     padding: 5px 5px 5px 5px;}
 QToolButton:checked{
     border:none;
@@ -44,8 +44,8 @@ QToolButton:checked{
 QPushButton{
     background-color: transparent;
     color: #ffffff;
+    border: none;
     Text-align:left;
-    border: 1px #434343;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
     background-color:#1793D1; }
@@ -58,6 +58,10 @@ QTreeView {
    color : #000000;}
 
 
+QTableView {
+    background-color: transparent;
+    color : #000000;
+    padding: 0px 0px 20px 0px;}
 QTableView::item{
     border-bottom-style:solid;
     border-width:1;
@@ -65,10 +69,6 @@ QTableView::item{
     padding: 0px 20px 0px 20px;}
 QTableView::item:selected {
     background-color:#1793D1 ;
-    color:#000000; }
-QTableView {
-    background-color:#F2F2F2 ;
-    padding: 0px 0px 20px 0px;
     color:#000000; }
 QHeaderView{ 
     height: 50px;

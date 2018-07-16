@@ -3,7 +3,7 @@
 QWidget{
     background-color: #2A2A2A;
     color: #ffffff;
-    border: 1px #2A2A2A;}
+    border: none;}
 
 
 QSpinBox {
@@ -35,6 +35,8 @@ QPushButton:hover {
     background-color: #308CC6;}
 
 QToolButton{
+    background-color: transparent;
+    color: #ffffff;
     border: 1px solid #434343;
     padding: 3px 5px 3px 5px;}
 QToolButton:hover { 

@@ -125,7 +125,7 @@ void search::loadSearchActivity()
             topTree->setText(0, groupL);
             searchActF.beginGroup(group);
             QStringList keys = searchActF.childKeys();
-            sortTime(keys);
+            sortTime(keys,DESCENDING,"hh.mm.ss");
             foreach (QString key, keys) {
                 QTreeWidgetItem *child = new QTreeWidgetItem;
                 QString value = searchActF.value(key).toString();

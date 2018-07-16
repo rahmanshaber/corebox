@@ -32,7 +32,6 @@ pgeneral::pgeneral(QWidget *parent) :QWidget(parent),ui(new Ui::pgeneral),
 
 pgeneral::~pgeneral()
 {
-    qDebug() << "Deleting general page...";
     delete ui;
 }
 

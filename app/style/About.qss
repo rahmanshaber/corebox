@@ -1,19 +1,19 @@
 /*About*/
 
 #appTitle{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 
 QWidget [accessibleName="content"]{
     background-color: #767676;
     color: #ffffff;
-    border: 1px #0C2C45;}
+    border: none;}
 
 QWidget [accessibleName="shortcut"]{
     background-color: #0C2C45;
     color: #ffffff;
-    border: 1px #0C2C45;}
+    border: none;}
 
 QFrame{
     background-color: #27527F;

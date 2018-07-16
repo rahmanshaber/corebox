@@ -35,6 +35,10 @@ corepaint::corepaint( QWidget *parent):QWidget(parent),ui(new Ui::corepaint),
         ui->save->setEnabled(false);
         ui->saveas->setEnabled(false);
         ui->bookMarkIt->setEnabled(false);
+        ui->canvasB->setEnabled(false);
+        ui->selectionB->setEnabled(false);
+        ui->toolsB->setEnabled(false);
+        ui->colorB->setEnabled(false);
     }
 
     loadSettings();
@@ -131,6 +135,10 @@ void corepaint::initializeNewTab(const bool &isOpen, const QString &filePath)
             ui->save->setEnabled(true);
             ui->saveas->setEnabled(true);
             ui->bookMarkIt->setEnabled(true);
+            ui->canvasB->setEnabled(true);
+            ui->selectionB->setEnabled(true);
+            ui->toolsB->setEnabled(true);
+            ui->colorB->setEnabled(true);
         }
 
         if (!fileName.isEmpty()) {
@@ -477,6 +485,10 @@ void corepaint::on_paintTabs_tabCloseRequested(int index)
         ui->save->setEnabled(false);
         ui->saveas->setEnabled(false);
         ui->bookMarkIt->setEnabled(false);
+        ui->canvasB->setEnabled(false);
+        ui->selectionB->setEnabled(false);
+        ui->toolsB->setEnabled(false);
+        ui->colorB->setEnabled(false);
         ui->selectedsection->setText("");
     }
 }

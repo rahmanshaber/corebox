@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string notr="true"/>
   </property>
+  <property name="accessibleName">
+   <string>pages</string>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>

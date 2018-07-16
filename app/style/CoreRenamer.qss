@@ -2,18 +2,20 @@
 
 QWidget{
     background-color: #1E1E1E;
-    border: 1px #1E1E1E;
-    color: #9E9E9F;}
+    color: #9E9E9F;
+    border: none;}
 
 
 QWidget [accessibleName="renameTools"]{
     background-color: #353536;
-    border: 1px #353536;}
+    color: #FFFFFF;
+    border: none;}
 
 
 QLineEdit{
     background-color: transparent;
     border: 1px solid #434343;
+    border: none;
     padding: 5px 5px 5px 10px;}
 
 
@@ -23,21 +25,22 @@ QLabel{
 
 
 QCheckBox {
-    border: 1px #434343;
+    background-color: #353536;
     color: #ffffff;
-    background-color: #353536;}
+    border: none;}
 
 
 QRadioButton{
     color: #ffffff;
-    background-color: #353536;}
+    background-color: #353536;
+    border: none;}
 
 
 QToolButton{
     background-color: transparent;
     color: #ffffff;
-    padding: 2px 3px 2px 3px;
-    border: 1px solid #434343;}
+    border: 1px solid #434343;
+    padding: 2px 3px 2px 3px;}
 QToolButton:pressed{
     background-color: #3E4A58;}
 QToolButton:hover {
@@ -82,7 +85,7 @@ QComboBox::drop-down {
 
 QTabWidget QTabBar{
     background-color: #373737;
-    border:none;
+    border: none;
     height: 22px;}
 QTabWidget QTabBar::tab{
     text-align: left;
@@ -105,13 +108,13 @@ QTabWidget QTabBar::tab:hover{
 
 
 QHeaderView{
+    background-color: #1E1E1E;
     padding-left: 4px;
-    background-color:#1E1E1E ;
-    color:#606364;}
+    color: #606364;}
 QHeaderView::section {
-    background-color:#1E1E1E;
-    color:#606364;
-    border: 1px #ffffff;}
+    background-color: #1E1E1E;
+    color: #606364;
+    border: none;}
 
 
 QTableView {

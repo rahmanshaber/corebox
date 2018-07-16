@@ -1,33 +1,34 @@
 /*Help */
 
 #appTitle{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 
 
 QFrame [accessibleName="nameBar"]{
     background-color:#363941;
-    color: #FFFFFF;}
+    color: #FFFFFF;
+    border: none;}
 
 
 QWidget [accessibleName="shortcut"]{
     background-color: #2A2A2A;
     color: #ffffff;
-    border: 1px #161616;}
+    border: none;}
 
 
 QTextEdit{
     padding: 5px 5px 5px 5px;
     background-color: #3A4055;
     color: #ffffff;
-    border: 1px #161616;}
+    border: none;}
 
 
 QPushButton{
     background-color: transparent;
     color: #ffffff;
-    border: 1px #2A2A2A;
+    border: none;;
     Text-align:left;
     padding: 5px 5px 5px 15px;}
 QPushButton:checked{

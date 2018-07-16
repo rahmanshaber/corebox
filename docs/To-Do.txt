@@ -18,17 +18,20 @@ corebox
 1 - tab text align left.
 
 globalfunction
+1 - why no qconcarent in file folder count / size.
 1 - file moved message.
 1 - finished copying message.
 1 - file deleted & delete failed message.
 
 start
+1 - load recent,save session in qconcarent.
 1 - delete the last one from list and add new at first in all list.
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
 1 - add reminder option.
 
 bookmarks
+1 - make bookmark count more relevant
 0 - when a bookmark is selected show the delete and edit button on side of the selected bookmark otherwise hide them.
 1 - one click to open all the bookmark in one section(only first 8 of them).
 1 - one button to bookmark all the opened tabs.
@@ -41,6 +44,7 @@ dashboard
 1 - add drive frame in drive view.
 
 search
+1 - serch in qconcarent.
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
 2 - if path is given ,find is not working.but locate is working.
@@ -123,6 +127,7 @@ New app
 
 Packaging
 0 - fix the fonts in appimage.
+0 - make all deb package at one
 
 in-future
 1 - make manjaro iso with lxqt desktop as base.
@@ -134,22 +139,6 @@ in-future
 
 
 
-
-[ABRAR_TASK]
-0 - make bookmark count more relevant
-0 - make all deb package at one
-0 - get all files and folders under a path to a text file
-
-[Instructions]
-update the size function at corefm
-
-[TALKING]
-We have to open resource page at startup of dashboard because its a big thing to load it
-- why no qconcarent in file folder count / size.
-recent,serch,save session in qconcarent??
-
-
-0 - save all file in a folder to text as a action.
 
 - if corebox folder exist in config folder, delete it then extrat (not overwrite).
 

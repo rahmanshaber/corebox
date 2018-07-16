@@ -3,7 +3,7 @@
 QWidget{
     background-color: #2A2A2A;
     color: #E6E6E6;
-    border: 1px #2A2A2A;}
+    border: none;}
 
 
 QLineEdit{

@@ -1,24 +1,24 @@
 /*CoreFM */
 
 #appTitle{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 
 QWidget [accessibleName="shortcut"]{
     background-color: #2C3133;
     color: #E6E6E6;
-    border: 1px #434343;}
+    border: none;}
 
 QWidget [accessibleName="navigationBar"]{
     background-color:#363941;
-    color: #E6E6E6;}
+    color: #E6E6E6;
+    border: none;}
 
 QWidget [accessibleName="statusBar"]{
-    padding: 1px 5px 1px 2px;
     background-color: #232729 ;
     color: #E6E6E6;
-    border: 1px  #F2F2F2;}
+    border: none;}
 
 
 QLabel{
@@ -30,7 +30,7 @@ QLabel{
 QPushButton{
     background-color: transparent;
     color: #E6E6E6;
-    border: 1px #434343;
+    border: none;
     Text-align:left;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
@@ -72,7 +72,7 @@ QComboBox:focus{
 QListView{
     background-color: #232729;
     color: #E6E6E6;
-    border: 1px #434343;}
+    border: none;}
 QListView::item {
     padding: 5px 5px 5px 0px;
     color:#E6E6E6;
@@ -84,7 +84,7 @@ QListView::item:selected {
 QTreeView{
     background-color: #232729;
     color: #E6E6E6;
-    border: 1px #434343;}
+    border: none;}
 QTreeView::item{
     padding: 0px 0px 0px 5px;
     background-color:transparent;
@@ -98,14 +98,14 @@ QTreeView::item:selected {
 
 
 QHeaderView{
-    padding-left: 4px;
     background-color:#232729 ;
-    color:#606364;}
+    color:#606364;
+    padding-left: 4px;}
 QHeaderView::section {
     padding: 1px 3px 1px 3px;
     background-color:#232729;
     color:#606364;
-    border: 1px #ffffff;
+    border: none;
     padding-top: 4px;
     font: 12pt "Cantarell";
     font-style: normal;}

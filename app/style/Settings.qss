@@ -1,30 +1,30 @@
 /*Settings */
 
 #appTitle{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: 1px #232323;}
 
 
 QWidget [accessibleName="shortcut"]{
     background-color: #34343C;
     color: #ffffff;
-    border: 1px #45454D;}
+    border: none;}
 
 QWidget [accessibleName="nameBar"]{
-   background-color:#363941;
-   color: #000000;
-    border: 1px #45454D;}
+    background-color:#363941;
+    color: #000000;
+    border: none;}
 
 QWidget [accessibleName="applyBar"]{
     background-color: #45454D;
     color: #ffffff;
-    border: 1px #45454D;}
+    border: none;}
 
 QWidget [accessibleName="pages"]{
     background-color: #45454D;
     color: #E6E6E6;
-    border: 1px #45454D;}
+    border: none;}
 
 
 QLineEdit{
@@ -43,8 +43,8 @@ QLabel{
 QPushButton{
     background-color: transparent;
     color: #000000;
+    border: none;
     Text-align:left;
-    border: 1px #434343;
     padding: 5px 5px 5px 5px;}
 QPushButton:checked{
     color: #ffffff;
@@ -78,7 +78,7 @@ QGroupBox {
     margin-top: -1ex;
     background-color: #34343C;
     color: #E6E6E6;
-    border: 1px  #434343;}
+    border: none;}
 QGroupBox::title {
     subcontrol-origin: margin;
     subcontrol-position: top left;
@@ -88,8 +88,9 @@ QGroupBox::title {
 
 
 QComboBox {
-    background-color: #34343C;
+    background-color: transparent;
     color: #E6E6E6;
+    height: 22px;
     border: 1px solid #434343;
     padding: 5px 5px 5px 10px;}
 QComboBox QAbstractItemView {
@@ -105,16 +106,16 @@ QComboBox:focus{
 
 
 QHeaderView{ 
+    background-color:transparent;
+    color:#E6E6E6;
     border-bottom-style:solid;
     border-width:1;
     border-color: #2E3335;
-    padding-left: 4px;
-    background-color:transparent;
-    color:#E6E6E6;}
+    padding-left: 4px;}
 QHeaderView::section {
-    padding: 1px 3px 1px 3px;
     background-color:transparent;
     color:#E6E6E6;
+    padding: 1px 3px 1px 3px;
     border: 1px #ffffff;
     padding-top: 4px;
     font: 10pt "Cantarell";
@@ -156,4 +157,3 @@ QScrollBar::add-page:vertical {
 QScrollBar::add-line:vertical,
 QScrollBar::sub-line:vertical {
     width: 0px; height: 0px; }
-

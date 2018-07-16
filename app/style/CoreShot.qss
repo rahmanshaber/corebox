@@ -3,7 +3,7 @@
 QWidget{
     background-color: #2A2A2A;
     color: #ffffff;
-    border: 1px #2A2A2A;}
+    border: none;}
 
 QPushButton{
     background-color: transparent;

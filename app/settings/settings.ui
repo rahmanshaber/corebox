@@ -269,6 +269,9 @@
         <property name="checked">
          <bool>true</bool>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -301,6 +304,9 @@
         </property>
         <property name="checked">
          <bool>false</bool>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -592,10 +598,16 @@ padding: 3px 10px 3px 10px;
           <item>
            <widget class="QComboBox" name="cmbIconTheme">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
             </property>
             <property name="styleSheet">
              <string notr="true"/>
@@ -1020,7 +1032,7 @@ padding: 3px 10px 3px 10px;
               <item row="5" column="1" colspan="3">
                <widget class="QLineEdit" name="startPath">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -1038,7 +1050,14 @@ padding: 3px 10px 3px 10px;
                </widget>
               </item>
               <item row="8" column="1" colspan="3">
-               <widget class="QComboBox" name="view"/>
+               <widget class="QComboBox" name="view">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
               </item>
               <item row="0" column="0" colspan="2">
                <widget class="QLabel" name="label_12">
@@ -1191,7 +1210,7 @@ padding: 3px 10px 3px 10px;
               <item>
                <widget class="QComboBox" name="terminals">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -1444,11 +1463,7 @@ padding: 3px 10px 3px 10px;
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="ssLocation">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="ssLocation"/>
           </item>
           <item>
            <widget class="QToolButton" name="browseS">

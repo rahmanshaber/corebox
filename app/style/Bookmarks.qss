@@ -1,27 +1,31 @@
 /*Bookmarks*/
 
 #appTitle{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 
 #selectedSection{
-	font: 14pt "Cantarell";
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;
+    font: 14pt "Cantarell";}
 
 QWidget [accessibleName="toolWidgets"]{
     background-color: #363941 ;
-    color: #FFFFFF;}
+    color: #FFFFFF;
+    border: none;}
 
 QWidget [accessibleName="shortcut"]{
     background-color: #2E3C54;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 
 QWidget [accessibleName="contentList"]{
     background-color: #171717;
-    color: #FFFFFF;}
+    color: #FFFFFF;
+    border: none;}
+
 
 QLabel{
    background-color: transparent;
@@ -38,7 +42,7 @@ QLineEdit{
 QPushButton {
     background-color: transparent;
     color: #ffffff;
-    border: 1px #434343;
+    border: none;
     Text-align:left;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed {
@@ -49,10 +53,10 @@ QPushButton:hover{
 
 
 QToolButton{
-    border: 1px solid #494949;
-    padding: 3px 3px 3px 3px;
     background-color:transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: 1px solid #494949;
+    padding: 3px 3px 3px 3px;}
 QToolButton:pressed {
     background-color: #171717; }
 QToolButton:hover{

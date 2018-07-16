@@ -1,34 +1,33 @@
 /*CoreImage*/
 
 #appTitle{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 
 
 QWidget [accessibleName="shortcut"]{
     background-color: #282D31;
     color: #ffffff;
-    border: 1px #434343;}
+    border: none;}
 
 QFrame  [accessibleName="navigationBar"] {
     background-color: #000000;
     color: #E6E6E6;
-    border: 1px #434343;}
+    border: none;}
 
 
 #line{
     background-color: #C0C0C0 ;
     color: #C0C0C0;
-    border: 1px  #F2F2F2;
-}
+    border: none;}
 
 
 QPushButton{
     background-color: transparent;
     color: #ffffff;
     Text-align:left;
-    border: 1px #434343;
+    border: none;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
     background-color: #1167A3; }
@@ -37,9 +36,9 @@ QPushButton:hover {
 
 
 QToolButton{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 QToolButton:pressed{
     background-color: #1167A3; }
 QToolButton:hover {

@@ -1,18 +1,19 @@
 /*CorePad*/
 
 #appTitle{
-    border: 1px #232323;
     background-color: transparent;
-    color: #ffffff;}
+    color: #ffffff;
+    border: none;}
 
 QWidget [accessibleName="shortcut"]{
     background-color: #2F323A;
     color: #ffffff;
-    border: 1px #434343;}
+    border: none;}
 
 QFrame [accessibleName="searchBox"]{
     background-color: #000000;
-    color: #E6E6E6;}
+    color: #E6E6E6;
+    border: none;}
 
 
 QLineEdit{
@@ -53,7 +54,7 @@ QPushButton{
     background-color: transparent;
     color: #ffffff;
     Text-align:left;
-    border: 1px #434343;
+    border: none;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
     background-color: #00619D;}

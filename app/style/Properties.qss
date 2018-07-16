@@ -1,8 +1,8 @@
 /*Properties */
 
 #fileTitle{
-	font: 14pt "Cantarell";
-    border: 1px #232323;
+    font: 14pt "Cantarell";
+    border: none;
     background-color: transparent;
     color: #ffffff;}
 
@@ -10,7 +10,7 @@
 QWidget{
     background-color: #333333;
     color:#E6E6E6;
-    border: 1px #434343;}
+    border: none;}
 
 
 #close{
