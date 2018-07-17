@@ -7,17 +7,17 @@
 
 
 QWidget [accessibleName="nameBar"]{
-    background-color:#363941;
+    background-color: @color03;
     color: #000000;
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
     background-color: #004275;
     color: #ffffff;
-    border: 1px #3A4953;}
+    border: none;}
 
 QWidget [accessibleName="pages"]{
-    background-color: #1B252F;
+    background-color: @color01;
     color: #ffffff;
     border: none;}
 
@@ -25,7 +25,7 @@ QWidget [accessibleName="pages"]{
 QLabel{
     background-color:transparent;
     color:#E6E6E6 ;
-    padding: 1px 5px 1px 5px;}
+    padding: 1px 5px 1px 0px;}
 
 
 QPushButton{
@@ -35,9 +35,9 @@ QPushButton{
     Text-align:left;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
-    background-color:#1167A3; }
+    background-color: @color04;}
 QPushButton:hover {
-    background-color: #1167A3;}
+    background-color: @color04;}
 
 
 QToolButton{
@@ -47,28 +47,28 @@ QToolButton{
     Text-align:left;
     padding: 5px 5px 5px 5px;}
 QToolButton:checked{
-    background-color: #212F39; }
+    background-color: @color04;}
 QToolButton:hover {
-    background-color: #212F39; }
+    background-color: @color04;}
 
 
 QListView{
     background-color: transparent;
     color: #FFFFFF;
-    border: 1px solid #434343;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 5px;}
 
 
 QGroupBox {
     font-size: 13px;
     margin-top: -1ex;
-    background-color: #1E2A37;
+    background-color: @color03;
     color: #E6E6E6;
     border: none;}
 QGroupBox::title {
     subcontrol-origin: margin;
     subcontrol-position: top left;
-    background-color: #1E2A37;
+    background-color: @color03;
     color:#F3AB79 ;
     padding: 2px 5px 2px 5px;}
 
@@ -83,17 +83,17 @@ QDateTimeEdit {
 QLineEdit{
     background-color: transparent;
     color: #E6E6E6;
-    border: 1px solid #ffffff;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 
 
 QComboBox {
     background-color: transparent;
     color: #E6E6E6;
-    border: 1px solid #ffffff;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QComboBox QAbstractItemView {
-    background-color: #363941;
+    background-color: #2B2A32;
     color: #ffffff;
     selection-background-color: #C2C2C2;}
 QComboBox::drop-down {
@@ -101,7 +101,7 @@ QComboBox::drop-down {
 QComboBox::down-arrow {
     image: url();}
 QComboBox:focus{
-    border:1px solid #C2C2C2;}
+    border: 1px solid #C2C2C2;}
 
 
 QCheckBox {

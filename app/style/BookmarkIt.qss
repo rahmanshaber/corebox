@@ -7,20 +7,24 @@ QWidget{
 
 
 QPushButton{
-    border: 1px solid #434343;
-    padding: 5px 5px 5px 5px;
-    border: none;}
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid @color05;
+    padding: 5px 5px 5px 5px;}
 QPushButton:hover {
-    background-color: #308CC6;}
+    background-color: @color04;}
 
 
 QLineEdit{
-    border: 1px solid #434343;
+    background-color: transparent;
+    color: #ffffff;
+    height: 22px;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 
 
 QComboBox {
-    border: 1px solid #434343;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QComboBox QAbstractItemView {
     background-color: #546070;

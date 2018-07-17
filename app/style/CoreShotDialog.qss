@@ -1,7 +1,7 @@
 /*CoreShotDialog */
 
 QWidget{
-    background-color: #2A2A2A;
+    background-color: @color02;
     color: #ffffff;
     border: none;}
 
@@ -9,7 +9,7 @@ QWidget{
 QSpinBox {
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid #434343;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QSpinBox::up-button {
     subcontrol-origin: border;
@@ -26,19 +26,14 @@ QSpinBox::down-button {
     border-top-width: 0;}
 
 
-QPushButton{
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid #434343;
-    padding: 3px 5px 3px 5px;}
-QPushButton:hover {
-    background-color: #308CC6;}
-
 QToolButton{
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid #434343;
-    padding: 3px 5px 3px 5px;}
-QToolButton:hover { 
-    background-color: red; 
-}
+    border: 1px solid @color05;}
+QToolButton:pressed{
+    background-color: @color04;}
+QToolButton:hover {
+    background-color: @color04;}
+QToolButton:checked{
+    background-color: @color04;}
+

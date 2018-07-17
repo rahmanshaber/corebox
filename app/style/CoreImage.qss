@@ -30,9 +30,9 @@ QPushButton{
     border: none;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
-    background-color: #1167A3; }
+    background-color: @color04;}
 QPushButton:hover {
-    background-color: #1167A3;}
+    background-color: @color04;}
 
 
 QToolButton{
@@ -40,11 +40,11 @@ QToolButton{
     color: #ffffff;
     border: none;}
 QToolButton:pressed{
-    background-color: #1167A3; }
+    background-color: @color04;}
 QToolButton:hover {
-    background-color: #1167A3; }
+    background-color: @color04;}
 QToolButton:checked{
-    background-color: #1167A3;}
+    background-color: @color04;}
 
 
 QListView{

@@ -54,6 +54,10 @@ void settings::setupCoreBoxPage()
     ui->cmbIconTheme->addItems(iconThemes);
     ui->cmbIconTheme->setCurrentText(currentTheme);
 
+    ui->cmbStyleTheme->addItem("Dark");
+    ui->cmbStyleTheme->addItem("Light");
+    ui->cmbStyleTheme->setCurrentIndex(sm.getStyleMode());
+
 }
 
 void settings::setupCoreActionPage()
@@ -335,6 +339,7 @@ void settings::on_ok_clicked()
     }
     sm.setThemeName(ui->cmbIconTheme->currentText());
     if(ui->isRecentDisable->isChecked() == false){sm.cSetting->remove("Recent");};
+    sm.setStyleMode(ui->cmbStyleTheme->currentIndex() ? true :false );
 
     //corefm
     MimeUtils *mimeUtils = new MimeUtils(this);
@@ -362,7 +367,7 @@ void settings::on_ok_clicked()
     sm.setIsRealMimeType(ui->showrealmime->isChecked());
     sm.setIsShowThumb(ui->checkThumbs->isChecked());
     sm.setShowToolbox(ui->showTool->isChecked());
-    sm.setViewMode(ui->view->currentIndex() == 0 ? "Detail" : "Icon");
+    sm.setViewMode(ui->view->currentIndex() ? true :false );
 
     //corescreenshot
     sm.setSCSaveLocation(ui->ssLocation->text());
@@ -455,14 +460,17 @@ void settings::on_restore_clicked()
             }
 
             if (files) {
-                long reply = QMessageBox::warning(this, "File Exists", "There are old settings file\nDo you want to overwrite them?", QMessageBox::Yes, QMessageBox::No);
+                long reply = QMessageBox::warning(this, "File Exists", "There are old settings file\nDo you want to delete them?", QMessageBox::Yes, QMessageBox::No);
                 if (reply == QMessageBox::No)
                     return;
                 else {
-                    corearchiver *arc = new corearchiver;
-                    arc->extract(path, QDir(QDir::homePath() + "/.config/"));
-                    // Function from globalfunctions.cpp
-                    messageEngine("Backup for settings successfully done.", MessageType::Info);
+                    QDir ds(QDir::homePath() + "/.config/coreBox");
+                    if (ds.removeRecursively()) {
+                        corearchiver *arc = new corearchiver;
+                        arc->extract(path, QDir(QDir::homePath() + "/.config/"));
+                        // Function from globalfunctions.cpp
+                        messageEngine("Backup for settings successfully done.", MessageType::Info);
+                    }
                 }
             }
         } else {

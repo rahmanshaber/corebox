@@ -62,10 +62,10 @@ void HistoryChart::init()
     ui->layoutHistoryChart->addWidget(mChartView, 1, 0, 1, 3);
 
     // theme changed
-    connect(SignalMapper::ins(), &SignalMapper::sigChangedAppTheme, [=] {
+//    connect(SignalMapper::ins(), &SignalMapper::sigChangedAppTheme, [=] {
         QString chartLabelColor = "#7d8ea0";
         QString chartGridColor = "#7d8ea0";
-        QString historyChartBackground = "#212f3c";
+        QString historyChartBackground = "#2B2A32";
 
         mChart->axisX()->setLabelsColor(chartLabelColor);
         mChart->axisX()->setGridLineColor(chartGridColor);
@@ -75,7 +75,7 @@ void HistoryChart::init()
 
         mChart->setBackgroundBrush(QColor(historyChartBackground));
         mChart->legend()->setLabelColor(chartLabelColor);
-    });
+//    });
 }
 
 void HistoryChart::setYMax(const int &value)

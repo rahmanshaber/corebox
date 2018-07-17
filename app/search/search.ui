@@ -215,9 +215,21 @@
          </item>
          <item>
           <widget class="QPushButton" name="more">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
              <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
              <height>30</height>
             </size>
            </property>
@@ -276,6 +288,9 @@
            <property name="text">
             <string/>
            </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
            <property name="placeholderText">
             <string>Add folder path (default is root)...</string>
            </property>
@@ -288,6 +303,18 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
            </property>
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
@@ -568,7 +595,7 @@
       <string/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="fonudpage">
       <property name="accessibleName">
@@ -588,7 +615,7 @@
         <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>0</number>
+        <number>8</number>
        </property>
        <item>
         <widget class="QTableWidget" name="results">
@@ -726,7 +753,7 @@
         <number>10</number>
        </property>
        <property name="bottomMargin">
-        <number>0</number>
+        <number>8</number>
        </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -770,6 +797,9 @@
         <widget class="QTreeWidget" name="activityList">
          <property name="focusPolicy">
           <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="editTriggers">
           <set>QAbstractItemView::NoEditTriggers</set>

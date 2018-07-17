@@ -7,25 +7,25 @@
 
 
 QWidget [accessibleName="options"]{
-    background-color:#64697D;
+    background-color: @color03;
     color: #ffffff;
     border: none;}
 
 QWidget [accessibleName="infoPage"]{
-    background-color:#F2F2F2 ;
-    color : #E6E6E6;;
-    border: 1px #434343;}
+    background-color: @color01;
+    color : #E6E6E6;
+    border: none;}
 
 
 QLabel{
     background-color: transparent;
-    color: #000000;}
+    color: #ffffff;}
 
 
 QLineEdit {
     background-color: transparent;
-    color: #000000;
-    border: 1px solid #ffffff;
+    color: #ffffff;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 
 
@@ -35,9 +35,8 @@ QToolButton{
     border: none;
     padding: 5px 5px 5px 5px;}
 QToolButton:checked{
-    border:none;
-    border-bottom: 2px solid #DCDCDC;
-    color: #DCDCDC; 
+    border-bottom: 2px solid #0f5d90;
+    color: #0f5d90;
     font-weight: bold;}
 
 
@@ -45,41 +44,38 @@ QPushButton{
     background-color: transparent;
     color: #ffffff;
     border: none;
-    Text-align:left;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
-    background-color:#1793D1; }
+    background-color: @color04;}
 QPushButton:hover {
-    background-color: #1793D1;}
+    background-color: @color04;}
 
 
 QTreeView {
    background-color: transparent;
-   color : #000000;}
+   color : #ffffff;}
+
+QHeaderView{
+    background-color: @color01;
+    padding-left: 4px;
+    color: #606364;}
+QHeaderView::section {
+    background-color: @color01;
+    color: #606364;
+    border: none;}
 
 
 QTableView {
     background-color: transparent;
-    color : #000000;
-    padding: 0px 0px 20px 0px;}
+    color: #ffffff;
+    selection-background-color:#323232 ;
+    selection-color:#1CB853;
+    padding: 0px 0px 0px 15px;}
 QTableView::item{
     border-bottom-style:solid;
     border-width:1;
-    border-color: #E6E6E6;
-    padding: 0px 20px 0px 20px;}
-QTableView::item:selected {
-    background-color:#1793D1 ;
-    color:#000000; }
-QHeaderView{ 
-    height: 50px;
-    background-color:#E6E6E6 ;
-    color:#000000;}
-QHeaderView::section { 
-    background-color:#E6E6E6;
-    color:#000000;
-    border: 1px #ffffff;
-    padding-top: 4px;
-    font: 12pt "Cantarell";}
+    border-color: #323232;}
+
 
 
 QScrollBar:vertical {

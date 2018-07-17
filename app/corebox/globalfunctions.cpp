@@ -605,7 +605,7 @@ void getDirText(const QString &path)
     }
 
     // Save path for the collected file folder list
-    QString filePath = QDir::homePath() + "/" + QFileInfo(path).baseName() + ".txt";
+    QString filePath = path + "/" + QFileInfo(path).baseName() + ".txt";
 
     QFile file(filePath);
     file.open(QIODevice::ReadWrite | QIODevice::Text | QIODevice::Truncate);
@@ -712,13 +712,10 @@ QStringList sortDateTime(QStringList &dateTimeList, sortOrder s)
 QString readStringFromFile(const QString &path, const QIODevice::OpenMode &mode)
 {
     QSharedPointer<QFile> file(new QFile(path));
-
     QString data;
 
     if(file->open(mode)) {
-
       data = file->readAll();
-
       file->close();
     }
 
@@ -727,10 +724,19 @@ QString readStringFromFile(const QString &path, const QIODevice::OpenMode &mode)
 
 QString getStylesheetFileContent(const QString &path)
 {
+    SettingsManage sm;
+    QString appThemePath;
+
+    // Load view mode
+    if (sm.getStyleMode()) {
+        appThemePath = ":/theme/style/modeLight.ini";
+    }else {
+        appThemePath = ":/theme/style/modeDark.ini";
+    }
+
     QSettings *mStyleValues;
     QString mStylesheetFileContent;
-    QString appThemePath = QString(":/defultColor/style");
-    mStyleValues = new QSettings(QString("%1/values.ini").arg(appThemePath), QSettings::IniFormat);
+    mStyleValues = new QSettings(appThemePath, QSettings::IniFormat);
 
     mStylesheetFileContent = readStringFromFile(QString(path),QIODevice::ReadOnly);
 

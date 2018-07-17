@@ -37,6 +37,34 @@ corepad::~corepad()
     delete ui;
 }
 
+void corepad::shotcuts()
+{
+    QShortcut* shortcut;
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_N), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cNew_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cOpen_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_S), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cSave_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cSaveAs_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cUndo_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cRedo_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_C), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cCopy_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_X), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cCut_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_V), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_cPaste_clicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::quitClicked);
+    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_F), this);
+    connect(shortcut, &QShortcut::activated, this, &corepad::on_search_clicked);
+}
+
+
 void corepad::openText(const QString &filePath)
 {
     initializeNewTab(filePath);
@@ -197,31 +225,6 @@ bool corepad::setCurrent(int index, int isSaved, int isUpdated, const QString &f
     return true;
 }
 //===============================================
-
-void corepad::shotcuts()
-{
-    QShortcut* shortcut;
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_N), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cNew_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cOpen_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_S), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cSave_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cSaveAs_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cUndo_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cRedo_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_C), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cCopy_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_X), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cCut_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_V), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::on_cPaste_clicked);
-    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this);
-    connect(shortcut, &QShortcut::activated, this, &corepad::quitClicked);
-}
 
 void corepad::reIndex() {
     int count = tabInfo.count();
@@ -414,15 +417,6 @@ void corepad::on_bookMarkIt_clicked()
     }
 }
 
-void corepad::on_search_clicked(bool checked)
-{
-    if (checked) {
-        ui->searchBar->setVisible(true);
-    } else {
-        ui->searchBar->setVisible(false);
-    }
-}
-
 void corepad::on_searchHere_textChanged(const QString &arg1)
 {
     findS(arg1, false);
@@ -491,4 +485,15 @@ void corepad::on_fontSize_valueChanged(int arg1)
 {
     text->setFont(QFont(text->font().family(), arg1));
     text->lineNumberArea_()->setFont(QFont(text->lineNumberArea_()->font().family(), arg1));
+}
+
+void corepad::on_search_clicked()
+{
+    if (ui->searchBar->isVisible()) {
+        ui->searchBar->setVisible(false);
+        ui->searchHere->clear();
+    } else {
+        ui->searchBar->setVisible(true);
+        ui->searchHere->setFocus();
+    }
 }

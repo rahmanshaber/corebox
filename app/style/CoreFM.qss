@@ -11,12 +11,12 @@ QWidget [accessibleName="shortcut"]{
     border: none;}
 
 QWidget [accessibleName="navigationBar"]{
-    background-color:#363941;
+    background-color: @color03;
     color: #E6E6E6;
     border: none;}
 
 QWidget [accessibleName="statusBar"]{
-    background-color: #232729 ;
+    background-color: @color01;
     color: #E6E6E6;
     border: none;}
 
@@ -34,27 +34,27 @@ QPushButton{
     Text-align:left;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
-    background-color:#1167A3; }
+    background-color: @color04;}
 QPushButton:hover {
-    background-color: #1167A3;}
+    background-color: @color04;}
 
 
 QToolButton{
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid #434343;}
+    border: 1px solid @color05;}
 QToolButton:pressed{
-    background-color: #1167A3; }
+    background-color: @color04;}
 QToolButton:hover {
-    background-color: #1167A3; }
+    background-color: @color04;}
 QToolButton:checked{
-    background-color: #1167A3;}
+    background-color: @color04;}
 
 
 QComboBox {
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid #434343;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QComboBox QAbstractItemView {
     background-color: #363941;
@@ -70,7 +70,7 @@ QComboBox:focus{
 
 
 QListView{
-    background-color: #232729;
+    background-color: @color01;
     color: #E6E6E6;
     border: none;}
 QListView::item {
@@ -78,11 +78,11 @@ QListView::item {
     color:#E6E6E6;
     background-color:transparent;}
 QListView::item:selected {
-    background-color:#1167A3 ;
+    background-color: @color04;
     color:#E6E6E6; }
 
 QTreeView{
-    background-color: #232729;
+    background-color: @color01;
     color: #E6E6E6;
     border: none;}
 QTreeView::item{
@@ -93,17 +93,17 @@ QTreeView::item{
     border-width:1;
     border-color: #2E3335;}
 QTreeView::item:selected {
-    background-color:#1167A3 ;
+    background-color: @color04; ;
     color:#E6E6E6; }
 
 
 QHeaderView{
-    background-color:#232729 ;
+    background-color: @color01;
     color:#606364;
     padding-left: 4px;}
 QHeaderView::section {
     padding: 1px 3px 1px 3px;
-    background-color:#232729;
+    background-color: @color01;
     color:#606364;
     border: none;
     padding-top: 4px;
@@ -112,10 +112,10 @@ QHeaderView::section {
 
 
 QTabBar::tab:!selected{
-    background-color:#232729;
+    background-color: @color01;
     color:#B4B4B4;}
 QTabBar::tab:selected{
-    background-color:#232729;
+    background-color: @color01;
     font-weight: bold;
     color:#0f5d90;
     border-bottom: 2px solid #0f5d90;}
@@ -130,7 +130,7 @@ QTabBar::tab{
     color: #136ba2;
     padding: 0px 5px 0px 5px;}
 QTabBar{
-    background-color: #232729;
+    background-color: @color01;
     height: 25px;}
 
 

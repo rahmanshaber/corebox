@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>439</width>
-    <height>40</height>
+    <height>41</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,19 +55,19 @@
        <number>5</number>
       </property>
       <property name="leftMargin">
-       <number>5</number>
+       <number>3</number>
       </property>
       <property name="topMargin">
-       <number>5</number>
+       <number>3</number>
       </property>
       <property name="rightMargin">
-       <number>5</number>
+       <number>3</number>
       </property>
       <property name="bottomMargin">
-       <number>5</number>
+       <number>3</number>
       </property>
       <item>
-       <widget class="QPushButton" name="captureScreen">
+       <widget class="QToolButton" name="captureScreen">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -86,7 +86,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="captureWindow">
+       <widget class="QToolButton" name="captureWindow">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -105,7 +105,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="captureSelection">
+       <widget class="QToolButton" name="captureSelection">
         <property name="minimumSize">
          <size>
           <width>0</width>

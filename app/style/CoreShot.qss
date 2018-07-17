@@ -1,14 +1,18 @@
 /*CoreShot*/
 
 QWidget{
-    background-color: #2A2A2A;
+    background-color: @color02;
     color: #ffffff;
     border: none;}
 
-QPushButton{
+QToolButton{
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid #434343;
-    padding: 3px 5px 3px 5px;}
-QPushButton:hover {
-    background-color: #308CC6;}
+    border: 1px solid @color05;
+    padding: 2px 2px 2px 2px;}
+QToolButton:pressed{
+    background-color: @color04;}
+QToolButton:hover {
+    background-color: @color04;}
+QToolButton:checked{
+    background-color: @color04;}

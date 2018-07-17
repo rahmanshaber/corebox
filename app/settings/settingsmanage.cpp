@@ -30,6 +30,7 @@ void SettingsManage::createDefaultSettings()
         cSetting->setValue("Maximized", false);
         cSetting->setValue("Recent-Disable", false);
         cSetting->setValue("Force-Theme", QIcon::themeName());
+        cSetting->setValue("Style-Mode", true);
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreFM");
@@ -98,6 +99,14 @@ bool SettingsManage::setDisableRecent(bool showRecent) {
 
 bool SettingsManage::getDisableRecent() {
     return getSpecificValue("CoreBox", "Recent-Disable").toBool();
+}
+
+bool SettingsManage::setStyleMode(bool mode) {
+    return setSpecificValue("CoreBox", "Style-Mode", mode);
+}
+
+bool SettingsManage::getStyleMode() {
+    return getSpecificValue("CoreBox", "Style-Mode").toBool();
 }
 
 

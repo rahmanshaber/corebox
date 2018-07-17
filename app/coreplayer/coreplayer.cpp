@@ -60,8 +60,9 @@ void coreplayer::startsetup()
         for (QToolButton *b : ui->toolBar->findChildren<QToolButton*>()){
             b->setEnabled(false);
         }
-        ui->playlist->setEnabled(true);
+        ui->open->setEnabled(true);
         ui->seekBar->setEnabled(false);
+        ui->playingL->setVisible(false);
         ui->volume->setEnabled(false);
     }
 
@@ -336,9 +337,9 @@ void coreplayer::openPlayer(const QString path)
         player->setMedia(QUrl::fromLocalFile(path));
         player->play();
         ui->play->setChecked(true);
-        ui->workingOn->setText(QFileInfo(path).fileName());
+        ui->playingL->setVisible(true);
+        ui->playing->setText(QFileInfo(path).fileName());
         folderpath = QFileInfo(path).path();
-        qDebug()<< folderpath << QFileInfo(path).path();
         // Function from globalfunctions.cpp
         messageEngine("Playing", MessageType::Info);
     }
@@ -444,7 +445,8 @@ void coreplayer::on_stop_clicked()
     player->setPosition(0);
     player->setMedia(NULL);
     ui->duration->setText("00:00 / 00:00");
-    ui->workingOn->setText("");
+    ui->playing->setText("");
+    ui->playingL->setVisible(false);
 }
 
 void coreplayer::on_next_clicked()
@@ -502,7 +504,8 @@ void coreplayer::play(int index)
     player->play();
     ui->medialist->setCurrentIndex(mModel->index(index, 0));
     ui->medialist->currentIndex().data().toInt();
-    ui->workingOn->setText(mModel->index(index, 0).data().toString());
+    ui->playing->setText(mModel->index(index, 0).data().toString());
+    ui->playingL->setVisible(true);
 }
 
 void coreplayer::on_medialist_doubleClicked(const QModelIndex &index)

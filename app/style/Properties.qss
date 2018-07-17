@@ -14,10 +14,10 @@ QWidget{
 
 
 #close{
-    border: 1px solid #434343;
+    border: 1px solid @color05;
     padding: 2px 3px 2px 3px;}
 #close:hover {
-    background-color: #308CC6;}
+    background-color: @color04;}
 
 
 QTabWidget::pane {

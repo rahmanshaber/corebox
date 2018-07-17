@@ -59,7 +59,7 @@
      <property name="accessibleName">
       <string>shortcut</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -126,34 +126,6 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="open">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Open</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QListView" name="medialist">
         <property name="maximumSize">
          <size>
@@ -189,124 +161,7 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QFrame" name="nameBar">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="accessibleName">
-      <string>nameBar</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="lineWidth">
-      <number>0</number>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>4</number>
-      </property>
-      <property name="leftMargin">
-       <number>2</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>2</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="playing">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Playing :</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="workingOn">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="2">
-    <layout class="QHBoxLayout" name="view">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-    </layout>
-   </item>
-   <item row="2" column="2">
+   <item row="2" column="1">
     <widget class="QFrame" name="toolBar">
      <property name="minimumSize">
       <size>
@@ -345,7 +200,7 @@
       <property name="spacing">
        <number>3</number>
       </property>
-      <item row="0" column="0" colspan="8">
+      <item row="0" column="0" colspan="12">
        <widget class="QSlider" name="seekBar">
         <property name="styleSheet">
          <string notr="true"/>
@@ -361,14 +216,14 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="8">
+      <item row="0" column="12">
        <widget class="QLabel" name="duration">
         <property name="text">
          <string>00:00 / 00:00</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="8">
+      <item row="1" column="12">
        <widget class="QSlider" name="volume">
         <property name="minimumSize">
          <size>
@@ -390,14 +245,17 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="5">
+      <item row="1" column="6">
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>253</width>
+          <width>40</width>
           <height>20</height>
          </size>
         </property>
@@ -405,6 +263,18 @@
       </item>
       <item row="1" column="4">
        <widget class="QToolButton" name="playlist">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
@@ -420,8 +290,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>30</width>
-          <height>30</height>
+          <width>26</width>
+          <height>26</height>
          </size>
         </property>
         <property name="checkable">
@@ -576,7 +446,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="6">
+      <item row="1" column="10">
        <widget class="QToolButton" name="mute">
         <property name="minimumSize">
          <size>
@@ -603,8 +473,8 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>30</width>
-          <height>30</height>
+          <width>26</width>
+          <height>26</height>
          </size>
         </property>
         <property name="checkable">
@@ -612,8 +482,107 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="9">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="7">
+       <widget class="QLabel" name="playingL">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Playing :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="8">
+       <widget class="QLabel" name="playing">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QToolButton" name="open">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
+   </item>
+   <item row="0" column="1" rowspan="2">
+    <layout class="QHBoxLayout" name="view">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+    </layout>
    </item>
   </layout>
  </widget>

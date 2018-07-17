@@ -7,13 +7,13 @@
 
 
 QWidget [accessibleName="nameBar"]{
-    background-color:#363941;
+    background-color: @color03;
     color: #000000;
     border: none;}
 
 QWidget [accessibleName="statusBar"]{
     padding: 1px 5px 1px 2px;
-    background-color: #2B2A32 ;
+    background-color: @color03;
     color: #ffffff;
     border: none;}
 
@@ -36,19 +36,19 @@ QToolButton{
     Text-align:left;
     padding: 3px 3px 3px 3px;}
 QToolButton:checked{
-    background-color: #212F39; }
+    background-color: @color04;}
 QToolButton:hover {
-    background-color: #212F39; }
+    background-color: @color04;}
 
 
 
 QTabWidget {
     border-style: none;}
 QTabBar::tab:!selected{
-    background-color:#232729;
+    background-color: @color01;
     color:#B4B4B4;}
 QTabBar::tab:selected{
-    background-color:#232729;
+    background-color: @color01;
     font-weight: bold;
     color:#0f5d90;
     border-bottom: 2px solid #0f5d90;}
@@ -63,7 +63,7 @@ QTabBar::tab{
     color: #136ba2;
     padding: 0px 5px 0px 5px;}
 QTabBar{
-    background-color: #232729;
+    background-color: @color01;
     height: 25px;}
 
 

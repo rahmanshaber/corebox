@@ -21,7 +21,8 @@
         <file>style/DashBoard.qss</file>
         <file>style/SessionSaveDialog.qss</file>
     </qresource>
-    <qresource prefix="/defultColor">
-        <file>style/values.ini</file>
+    <qresource prefix="/theme">
+        <file>style/modeLight.ini</file>
+        <file>style/modeDark.ini</file>
     </qresource>
 </RCC>

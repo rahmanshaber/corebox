@@ -99,7 +99,7 @@ void pDisplay::setupDisplayPage()
 
         h->addWidget(p);
         b->setTitle(title);
-        b->setContentsMargins(20, 8, 8, 10);
+        h->setContentsMargins(8, 25, 8, 10);
         b->setLayout(h);
 
         v->addWidget(b);

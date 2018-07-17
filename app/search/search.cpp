@@ -58,9 +58,10 @@ void search::startsetup()
     cProcess = new QProcess(this);
 
     connect(cProcess, &QProcess::started, [&]() {
-        ui->status->setText("Collecting Information...\nPlease wait for a moment...");
+        ui->status->setText("Step : 1\nCollecting Information...\nPlease wait for a moment...");
 
         ui->cancelProc->setVisible(1);
+        ui->searchFF->setEnabled(0);
         ui->findCMD->setEnabled(0);
         ui->folderPath->setEnabled(0);
         ui->activityList->setEnabled(0);
@@ -86,21 +87,10 @@ void search::startsetup()
         } else {
             ui->infoPage->setCurrentIndex(1);
             ui->status->setText("You select cancel for not to search");
+
+            enableAllButtons();
         }
 
-        // enable all buttons
-        ui->findCMD->setEnabled(1);
-        ui->folderPath->setEnabled(1);
-        ui->activityList->setEnabled(1);
-        ui->locateCMD->setEnabled(1);
-        ui->typePicture->setEnabled(1);
-        ui->typeAll->setEnabled(1);
-        ui->typeFolder->setEnabled(1);
-        ui->typeMedia->setEnabled(1);
-        ui->typeother->setEnabled(1);
-        ui->more->setEnabled(1);
-        ui->setfolder->setEnabled(1);
-        ui->cancelProc->setVisible(0);
         cProcess->close();
     });
 }
@@ -119,13 +109,18 @@ void search::loadSearchActivity()
         ui->activityList->clear();
         QStringList toplevel = searchActF.childGroups();
         sortDate(toplevel);
+
         foreach (QString group, toplevel) {
             QTreeWidgetItem *topTree = new QTreeWidgetItem;
+
             QString groupL = sentDateText(group);
             topTree->setText(0, groupL);
+
             searchActF.beginGroup(group);
+
             QStringList keys = searchActF.childKeys();
-            sortTime(keys,DESCENDING,"hh.mm.ss");
+            sortTime(keys, DESCENDING, "hh.mm.ss");
+
             foreach (QString key, keys) {
                 QTreeWidgetItem *child = new QTreeWidgetItem;
                 QString value = searchActF.value(key).toString();
@@ -206,7 +201,12 @@ void search::callProcess(bool find)
  */
 void search::populateItems(const QString &text)
 {
+    // this process of search is distructive for memory allocation
+    // so no interuption can be done within it
+    ui->cancelProc->setEnabled(false);
+
     QFuture<void> future = QtConcurrent::run([this, text]() {
+        ui->status->setText("Step : 2\nCollecting Information...\nPlease wait for a moment...");
         //----------Declaration--------------------------------------
         QMimeDatabase mime;
         QMimeType mType;
@@ -259,7 +259,25 @@ void search::populateItems(const QString &text)
 
     QFutureWatcher<void>* r = new QFutureWatcher<void>();
     r->setFuture(future);
+
+    connect(ui->cancelProc, &QPushButton::clicked, r, &QFutureWatcher<void>::cancel);
+    connect(r, &QFutureWatcher<void>::canceled, [this, r]() {
+        r->deleteLater();
+        ui->infoPage->setCurrentIndex(1);
+        ui->status->setText("You select cancel for not to search");
+
+        all.clear();
+        image.clear();
+        media.clear();
+        folder.clear();
+        other.clear();
+
+        enableAllButtons();
+    });
+
     connect(r, &QFutureWatcher<void>::finished, [&](){
+        ui->cancelProc->setEnabled(true);
+
         //ui->status->setText("NO ITEM FOUND.");
         ui->infoPage->setCurrentIndex(0);
         ui->typeBar->setVisible(1);
@@ -312,6 +330,7 @@ const QStringList& search::populateByType()
 void search::toTable(const QStringList &list)
 {
     QFuture<void> f = QtConcurrent::run([this, list](){
+        ui->status->setText("Step : 3\nCollecting Information...\nPlease wait for a moment...");
         QStringList temp;
 
         // Collect Information and add it to tablewidget
@@ -342,12 +361,21 @@ void search::toTable(const QStringList &list)
 
     QFutureWatcher<void> *w = new QFutureWatcher<void>();
     w->setFuture(f);
+    connect(ui->cancelProc, &QPushButton::clicked, w, &QFutureWatcher<void>::cancel);
+    connect(w, &QFutureWatcher<void>::canceled, [this, w]() {
+        w->deleteLater();
+        ui->infoPage->setCurrentIndex(1);
+        ui->status->setText("You select cancel for not to search");
+        enableAllButtons();
+    });
     connect(w, &QFutureWatcher<void>::finished, [&](){
         ui->itemCount->setText("All : " + QString::number(all.count()) + " ;  " +
                                "Media : " + QString::number(media.count()) + " ;  " +
                                "Image : " + QString::number(image.count()) + " ;  " +
                                "Other : " + QString::number(other.count()) + " ;  " +
                                "Folder : " + QString::number(folder.count()));
+
+        enableAllButtons();
     });
 }
 
@@ -490,4 +518,22 @@ void search::on_clearActivity_clicked()
     ui->infoPage->setCurrentIndex(1);
     ui->typeBar->setVisible(0);
     ui->status->setText("Search for Something by file type\nEnter text you want to search.");
+}
+
+void search::enableAllButtons()
+{
+    // enable all buttons
+    ui->findCMD->setEnabled(1);
+    ui->searchFF->setEnabled(1);
+    ui->folderPath->setEnabled(1);
+    ui->activityList->setEnabled(1);
+    ui->locateCMD->setEnabled(1);
+    ui->typePicture->setEnabled(1);
+    ui->typeAll->setEnabled(1);
+    ui->typeFolder->setEnabled(1);
+    ui->typeMedia->setEnabled(1);
+    ui->typeother->setEnabled(1);
+    ui->more->setEnabled(1);
+    ui->setfolder->setEnabled(1);
+    ui->cancelProc->setVisible(0);
 }

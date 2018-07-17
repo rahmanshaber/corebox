@@ -6,7 +6,7 @@
     border: none;}
 
 QWidget [accessibleName="content"]{
-    background-color: #767676;
+    background-color: @color01;
     color: #ffffff;
     border: none;}
 
@@ -16,7 +16,7 @@ QWidget [accessibleName="shortcut"]{
     border: none;}
 
 QFrame{
-    background-color: #27527F;
+    background-color: @color06;
     color: #ffffff;
     border-radius: 5px;}
 

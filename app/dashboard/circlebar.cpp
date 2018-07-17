@@ -43,7 +43,7 @@ void CircleBar::init()
     mSeries->slices().first()->setBrush(gradient);
 
     // chart settings
-//    mChart->setBackgroundco(QBrush(transparent));
+    mChart->setBackgroundBrush(QBrush(transparent));
     mChart->setContentsMargins(-20, -20, -20, -65);
     mChart->addSeries(mSeries);
     mChart->legend()->hide();
@@ -53,10 +53,10 @@ void CircleBar::init()
 
     ui->layoutCircleBar->insertWidget(1, mChartView);
 
-    connect(SignalMapper::ins(), &SignalMapper::sigChangedAppTheme, [=] {
-        mChartView->setBackgroundBrush(QColor("#212f3c"));
+//    connect(SignalMapper::ins(), &SignalMapper::sigChangedAppTheme, [=] {
+        mChartView->setBackgroundBrush(QColor("#232729"));
         mSeries->slices().last()->setColor("#1b252f"); // trail color
-    });
+//    });
 }
 
 void CircleBar::setValue(const int &value, const QString &valueText)

@@ -1,7 +1,7 @@
 /*CoreArchiver */
 
 QWidget{
-    background-color: #2A2A2A;
+    background-color: @color02;
     color: #E6E6E6;
     border: none;}
 
@@ -9,25 +9,25 @@ QWidget{
 QLineEdit{
     background-color: transparent;
     color: #E6E6E6;
-    border: 1px solid #434343;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 
 
 QToolButton{
     background-color: transparent;
     color: #E6E6E6;
-    border: 1px solid #434343 ;
+    border: 1px solid @color05;
     padding: 3px 2px 3px 2px;}
 QToolButton:pressed{
-    background-color: #1167A3; }
+    background-color: @color04;}
 QToolButton:hover {
-    background-color:  #1167A3; }
+    background-color: @color04;}
 
 
 QComboBox {
     background-color: transparent;
     color: #E6E6E6;
-    border: 1px solid #434343 ;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QComboBox QAbstractItemView {
     background-color: #3C3C43;

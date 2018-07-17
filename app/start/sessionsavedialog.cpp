@@ -46,7 +46,7 @@ sessionSaveDialog::sessionSaveDialog(QWidget *parent) :QDialog(parent),ui(new Ui
     ui->ok->setText("Yes");
     ui->cancel->setText("No");
 
-    connect(ui->cancel, &QPushButton::clicked, this, &sessionSaveDialog::close);
+    connect(ui->cancel, &QToolButton::clicked, this, &sessionSaveDialog::close);
 }
 
 sessionSaveDialog::~sessionSaveDialog()

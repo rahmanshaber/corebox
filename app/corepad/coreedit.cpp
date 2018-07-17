@@ -23,23 +23,24 @@ coreedit::coreedit(QString fPath, QWidget *parent) : QPlainTextEdit(parent)
     filePath = fPath;
 
     cHighlighter *highlighter = new cHighlighter(document());
-    setStyleSheet("QWidget{background-color: #2E2F30; border: none;}");
+    setStyleSheet("QWidget{background-color: #232729; border: none;}");
 
     lineNumberArea = new LineNumberArea(this);
     this->lineNumberArea->setContentsMargins(0, 0, 0, 0);
     //this->lineNumberArea->setMinimumWidth(20);
-//---------------------------- Setting the CoreEdit background -----------------------------------------
+
+    // Setting the CoreEdit background
     QPalette p = palette();
     p.setColor(QPalette::Text, "#B9A388");  //Text color set to white.
-    p.setColor(QPalette::Active, QPalette::Base, "#2E2F30");  //Active base color black.
-    p.setColor(QPalette::Inactive, QPalette::Base,"#2E2F30"); //Inactive base color black.
+    p.setColor(QPalette::Active, QPalette::Base, "#232729");  //Active base color black.
+    p.setColor(QPalette::Inactive, QPalette::Base,"#232729"); //Inactive base color black.
     setPalette(p);
-//------------------------------------------------------------------------------------------------------
-//---------------------------- Connecting to slots and signals -----------------------------------------
+
+    //Connecting to slots and signals
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
-//------------------------------------------------------------------------------------------------------
+
     updateLineNumberAreaWidth(0);   //Set the line number area.
     //highlightCurrentLine();         //Highlight the current line.
 }

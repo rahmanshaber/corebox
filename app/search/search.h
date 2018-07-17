@@ -62,6 +62,7 @@ private:
     void startsetup();
     void loadSearchActivity();
     const QStringList &populateByType();
+    void enableAllButtons();
 
 private slots:
     void checkChange(QToolButton *a, QToolButton *b, QToolButton *c, QToolButton *d, QToolButton *e);

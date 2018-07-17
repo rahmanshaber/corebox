@@ -440,7 +440,7 @@ void coretime::start()
 
 void coretime::resume()
 {
-    forStopWatch->start();;
+    forStopWatch->start();
 }
 
 void coretime::pause()

@@ -509,7 +509,7 @@ QList<QAction*> UrlFilter::HotSpot::actions()
     const UrlType kind = urlType();
 
     QAction* openAction = new QAction(_urlObject);
-    QAction* copyAction = new QAction(_urlObject);;
+    QAction* copyAction = new QAction(_urlObject);
 
     Q_ASSERT( kind == StandardUrl || kind == Email );
 

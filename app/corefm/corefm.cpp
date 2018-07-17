@@ -1112,7 +1112,7 @@ QMenu* corefm::sendto()
     sendto->addAction(ui->actionDesktop);
     sendto->addAction(ui->actionHome);
 
-    const auto allMounted = QStorageInfo::mountedVolumes();;
+    const auto allMounted = QStorageInfo::mountedVolumes();
     for(auto& singleMounted : allMounted){
         if(singleMounted.device() != "tmpfs" && singleMounted.rootPath() != "/") {
             QAction *action = new QAction(singleMounted.displayName(),sendto);
@@ -1162,6 +1162,9 @@ QMenu* corefm::globalmenu(){
         popup->addSection("Nothing");
         return popup;
     }
+
+    // Check the selection count...
+    selectItemCount = listSelectionModel->selectedIndexes().count();
 
     if (selectItemCount > 1) { // multipal file
         popup->addSeparator();
@@ -2181,11 +2184,11 @@ void corefm::blockDevicesChanged()
                                     if (parse[1] == "") {
                                         // Function from globalfunctions.cpp
                                         item = new QListWidgetItem("Drive (" +formatSize(device->size)+ ")");
-                                        icon = QIcon(":/icons/drive_w.svg");;
+                                        icon = QIcon(":/icons/drive_w.svg");
                                     } else {
                                         if (parse.count() > 2) {
                                             if (parse[2] == "0") {
-                                                icon = QIcon(":/icons/drive_w.svg");;
+                                                icon = QIcon(":/icons/drive_w.svg");
                                             } else {
                                                 icon = QIcon(":/icons/drive_usb_w.svg");
                                             }

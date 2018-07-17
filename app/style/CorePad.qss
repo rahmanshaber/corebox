@@ -11,19 +11,23 @@ QWidget [accessibleName="shortcut"]{
     border: none;}
 
 QFrame [accessibleName="searchBox"]{
-    background-color: #000000;
+    background-color: @color03;
     color: #E6E6E6;
     border: none;}
 
 
 QLineEdit{
-    border: 1px solid #434343;}
+    background-color: transparent;
+    color: #ffffff;
+    height: 22px;
+    border: 1px solid @color05;
+    padding: 5px 5px 5px 10px;}
 
 
 QSpinBox {
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid #434343;
+    border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QSpinBox::up-button {
     subcontrol-origin: border;
@@ -43,11 +47,11 @@ QSpinBox::down-button {
 QToolButton{
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid #434343;}
+    border: 1px solid @color05;}
 QToolButton:pressed{
-    background-color: #00619D; }
+    background-color: @color04;}
 QToolButton:hover {
-    background-color: #00619D; }
+    background-color: @color04;}
 
 
 QPushButton{
@@ -57,13 +61,13 @@ QPushButton{
     border: none;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
-    background-color: #00619D;}
+    background-color: @color04;}
 QPushButton:hover {
-    background-color: #00619D;}
+    background-color: @color04;}
 
 
 QComboBox {
-    border: 1px solid #ffffff;
+    border: 1px solid @color05;
     padding: 2px 2px 2px 10px;}
 QComboBox QAbstractItemView {
     background-color: #546070;
@@ -74,10 +78,10 @@ QComboBox::drop-down {
 
 
 QTabBar::tab:!selected{
-    background-color:#2E2F30;
+    background-color: @color01;
     color:#B4B4B4;}
 QTabBar::tab:selected{
-    background-color:#2E2F30;
+    background-color: @color01;
     font-weight: bold;
     color:#0f5d90;
     border-bottom: 2px solid #0f5d90;}
@@ -86,13 +90,13 @@ QTabBar::close-button {
     subcontrol-position: right;}
 QTabBar::tab{
     text-align:left;
-    background-color: #2E2F30;
+    background-color: @color01;
     border-style: 1px #B4B4B4;
     height:25px;
     color: #136ba2;
     padding: 0px 5px 0px 5px;}
 QTabBar{
-    background-color: #2E2F30;
+    background-color: @color01;
     height: 25px;}
 
 

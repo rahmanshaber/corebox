@@ -139,17 +139,6 @@ in-future
 
 
 
-
-- if corebox folder exist in config folder, delete it then extrat (not overwrite).
-
 Y - 0 - fix the sort in start(speeddial,recentActivitys),search (recent to old)
 TEST NEEDED FOR YOU - 0 - 10 windows>> close the corebox>>crashs the whole app.
-
-
-- deleteing session delete the whole date section.
-- dobulclick function doesnot work in coreFM.line 1568
-- itemtotext not working in under folder of home.
-- set setContentsMargins of display widget in dashboard
-- dashbor page layout
-
 

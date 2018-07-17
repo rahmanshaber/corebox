@@ -79,7 +79,7 @@ cHighlighter::cHighlighter(QTextDocument *textDocument) : QSyntaxHighlighter(tex
     // C++ Comments Rule
     rule.regEx = QRegExp( "//[^\n]*" );
     rule.format.setFontWeight(QFont::Normal);
-    rule.format.setForeground(Qt::lightGray);;
+    rule.format.setForeground(Qt::lightGray);
     rulesList.append(rule);
 }
 

@@ -140,6 +140,8 @@ void Start::loadRecent() // populate RecentActivity list
         recentActivity.beginGroup(group);
         QStringList keys = recentActivity.childKeys();
         sortTime(keys);
+        sortTime(keys, sortOrder::DESCENDING);
+
         foreach (QString key, keys) {
             QTreeWidgetItem *child = new QTreeWidgetItem();
             QString value = recentActivity.value(key).toString();
@@ -167,11 +169,12 @@ void Start::on_rClearActivity_clicked()
 void Start::loadSession()
 {
     ui->sessionsList->clear();
+    QFuture<void> f = QtConcurrent::run([this]() {
     QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
 
     // Date list
     QStringList topLevel = session.childGroups();
-    sortDate(topLevel);
+    sortDate(topLevel,sortOrder::DESCENDING);
 
     foreach (QString group, topLevel) {
         QTreeWidgetItem *topTree = new QTreeWidgetItem(ui->sessionsList);
@@ -201,7 +204,7 @@ void Start::loadSession()
                     midChildT->setIcon(0, appsIcon(gKey));
 
                     QStringList keys = session.childKeys();
-                    sortTime(keys, sortOrder::ASCENDING, "hh.mm.ss.zzz");
+                    sortTime(keys, sortOrder::DESCENDING, "hh.mm.ss.zzz");
 
                     foreach (QString key, keys) {
                         QString value = session.value(key).toString();
@@ -226,10 +229,16 @@ void Start::loadSession()
         session.endGroup();
         ui->sessionsList->insertTopLevelItem(0, topTree);
     }
+    });
 
-    if (topLevel.count())
-        (ui->sessionsList->setExpanded(ui->sessionsList->model()->index(0, 0), true));
+    qRegisterMetaType<QVector<int>>("QVector<int>");
 
+    QFutureWatcher<void>* r = new QFutureWatcher<void>();
+    r->setFuture(f);
+    connect(r, &QFutureWatcher<void>::finished, [this]() {
+        if (ui->sessionsList->model()->hasIndex(0, 0))
+            ui->sessionsList->setExpanded(ui->sessionsList->model()->index(0, 0), true);
+    });
 }
 
 void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
@@ -269,8 +278,36 @@ void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
 
 void Start::on_rDeleteSession_clicked()
 {
-    ui->sessionsList->clear();
-    QFile(QDir::homePath() + "/.config/coreBox/Sessions").remove();
+    if (ui->sessionsList->currentItem()) {
+        QStringList nameList;
+        QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
+        QStringList group = session.childGroups();
+        foreach (QString s, group) {
+            session.beginGroup(s);
+            QStringList gl = session.childGroups();
+            foreach (QString s, gl) {
+                nameList.append(s);
+            }
+            gl.clear();
+            session.endGroup();
+        }
+        group.clear();
+
+        QString selected = ui->sessionsList->currentItem()->text(0);
+
+        if (nameList.contains(selected)) {
+            QStringList g = session.childGroups();
+
+            foreach (QString s, g) {
+                session.beginGroup(s);
+                if (session.childGroups().contains(selected)) {
+                    session.remove(selected);
+                }
+                session.endGroup();
+            }
+            ui->sessionsList->currentItem()->parent()->removeChild(ui->sessionsList->currentItem());
+        }
+    }
 }
 // ======================
 

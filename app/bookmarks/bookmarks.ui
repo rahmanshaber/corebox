@@ -264,7 +264,7 @@
       </size>
      </property>
      <property name="accessibleName">
-      <string>toolWidgets</string>
+      <string>bottomWidget</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <property name="leftMargin">
@@ -277,13 +277,16 @@
        <number>2</number>
       </property>
       <property name="bottomMargin">
-       <number>2</number>
+       <number>5</number>
       </property>
       <property name="spacing">
        <number>2</number>
       </property>
       <item row="5" column="0" colspan="3">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="spacing">
+         <number>10</number>
+        </property>
         <item>
          <widget class="QToolButton" name="editDone">
           <property name="text">
@@ -502,6 +505,9 @@
            <property name="toolButtonStyle">
             <enum>Qt::ToolButtonTextBesideIcon</enum>
            </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -648,7 +654,7 @@
       </size>
      </property>
      <property name="accessibleName">
-      <string>toolWidgets</string>
+      <string>bottomWidget</string>
      </property>
      <property name="styleSheet">
       <string notr="true">toolWidgets</string>
@@ -664,7 +670,7 @@
        <number>2</number>
       </property>
       <property name="bottomMargin">
-       <number>2</number>
+       <number>5</number>
       </property>
       <property name="horizontalSpacing">
        <number>2</number>
@@ -745,6 +751,9 @@
       </item>
       <item row="4" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <property name="spacing">
+         <number>10</number>
+        </property>
         <item>
          <widget class="QToolButton" name="sectionDone">
           <property name="text">
@@ -792,7 +801,7 @@
       </size>
      </property>
      <property name="accessibleName">
-      <string>toolWidgets</string>
+      <string>upWidget</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
