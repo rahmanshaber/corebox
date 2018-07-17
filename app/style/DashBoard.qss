@@ -8,41 +8,43 @@
 
 QWidget [accessibleName="nameBar"]{
     background-color: @color03;
-    color: #000000;
+    color: @color07;
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
     background-color: #004275;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 QWidget [accessibleName="pages"]{
     background-color: @color01;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
 QLabel{
     background-color:transparent;
-    color:#E6E6E6 ;
+    color: @color07;
     padding: 1px 5px 1px 0px;}
 
 
 QPushButton{
     background-color: transparent;
-    color: #E6E6E6;
+    color: @color07;
     border: none;
     Text-align:left;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
     background-color: @color04;}
+QPushButton:checked{
+    ackground-color: @color04;}
 QPushButton:hover {
     background-color: @color04;}
 
 
 QToolButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;
     Text-align:left;
     padding: 5px 5px 5px 5px;}
@@ -54,7 +56,7 @@ QToolButton:hover {
 
 QListView{
     background-color: transparent;
-    color: #FFFFFF;
+    color: @color07;
     border: 1px solid @color05;
     padding: 5px 5px 5px 5px;}
 
@@ -62,39 +64,39 @@ QListView{
 QGroupBox {
     font-size: 13px;
     margin-top: -1ex;
-    background-color: @color03;
-    color: #E6E6E6;
+    background-color: @color06;
+    color: @color07;
     border: none;}
 QGroupBox::title {
     subcontrol-origin: margin;
     subcontrol-position: top left;
-    background-color: @color03;
+    background-color: @color06;
     color:#F3AB79 ;
     padding: 2px 5px 2px 5px;}
 
 
 QDateTimeEdit {
     background-color: transparent;
-    color: #E6E6E6;
+    color: @color07;
     border: none;
     padding: 5px 5px 5px 0px;}
 
 
 QLineEdit{
     background-color: transparent;
-    color: #E6E6E6;
+    color: @color07;
     border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 
 
 QComboBox {
     background-color: transparent;
-    color: #E6E6E6;
+    color: @color07;
     border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QComboBox QAbstractItemView {
     background-color: #2B2A32;
-    color: #ffffff;
+    color: @color07;
     selection-background-color: #C2C2C2;}
 QComboBox::drop-down {
     background-color: #3C3C43;}
@@ -111,7 +113,7 @@ QCheckBox {
 
 
 QScrollBar:vertical {
-    background-color: rgba( 0, 0, 0, 72% );
+    background-color: transparent;
     max-width: 8px;
     border-radius: 4px;
     padding: 1px; }
@@ -121,7 +123,7 @@ QScrollBar::handle:vertical {
     min-height: 12px;
     border-radius: 3px; }
 QScrollBar:horizontal {
-    background-color: rgba( 0, 0, 0, 72% );
+    background-color: transparent;
     max-height: 8px;
     border-radius: 4px;
     padding: 1px; }
@@ -132,10 +134,10 @@ QScrollBar::handle:horizontal {
     border-radius: 3px; }
 QScrollBar::sub-page:horizontal,
 QScrollBar::sub-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-page:horizontal,
 QScrollBar::add-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-line:vertical,
 QScrollBar::sub-line:vertical {
     width: 0px; height: 0px; }

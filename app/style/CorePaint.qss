@@ -2,36 +2,36 @@
 
 #appTitle{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
 QWidget [accessibleName="nameBar"]{
     background-color: @color03;
-    color: #000000;
+    color: @color07;
     border: none;}
 
 QWidget [accessibleName="statusBar"]{
     padding: 1px 5px 1px 2px;
     background-color: @color03;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
     background-color: #3A4953;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
 QLabel{
     background-color:transparent;
-    color:#E6E6E6 ;
+    color: @color07;
     padding: 1px 5px 1px 5px;}
 
 
 QToolButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;
     Text-align:left;
     padding: 3px 3px 3px 3px;}
@@ -69,7 +69,7 @@ QTabBar{
 
 
 QScrollBar:vertical {
-    background-color: rgba( 0, 0, 0, 72% );
+    background-color: transparent;
     max-width: 8px;
     border-radius: 4px;
     padding: 1px; }
@@ -79,7 +79,7 @@ QScrollBar::handle:vertical {
     min-height: 12px;
     border-radius: 3px; }
 QScrollBar:horizontal {
-    background-color: rgba( 0, 0, 0, 72% );
+    background-color: transparent;
     max-height: 8px;
     border-radius: 4px;
     padding: 1px; }
@@ -90,13 +90,14 @@ QScrollBar::handle:horizontal {
     border-radius: 3px; }
 QScrollBar::sub-page:horizontal,
 QScrollBar::sub-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-page:horizontal,
 QScrollBar::add-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-line:vertical,
 QScrollBar::sub-line:vertical {
     width: 0px; height: 0px; }
 QScrollBar::add-line:horizontal,
 QScrollBar::sub-line:horizontal {
     width: 0px; height: 0px; }
+

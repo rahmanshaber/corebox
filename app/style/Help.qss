@@ -2,32 +2,32 @@
 
 #appTitle{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
 QFrame [accessibleName="nameBar"]{
     background-color: @color03;
-    color: #FFFFFF;
+    color: @color07;
     border: none;}
 
 
 QWidget [accessibleName="shortcut"]{
     background-color: #2A2A2A;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
 QTextEdit{
     padding: 5px 5px 5px 5px;
     background-color: @color01;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
 QPushButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;
     Text-align:left;
     padding: 5px 5px 5px 15px;}
@@ -38,7 +38,7 @@ QPushButton:hover {
 
 
 QScrollBar:vertical {
-    background-color: rgba( 0, 0, 0, 72% );
+    background-color: transparent;
     max-width: 8px;
     border-radius: 4px;
     padding: 1px; }
@@ -48,10 +48,11 @@ QScrollBar::handle:vertical {
     min-height: 12px;
     border-radius: 3px; }
 QScrollBar::sub-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-line:vertical,
 QScrollBar::sub-line:vertical {
     width: 0px; height: 0px; }
+
 

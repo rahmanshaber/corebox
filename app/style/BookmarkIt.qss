@@ -2,13 +2,13 @@
 
 QWidget{
     background-color: #2A2A2A;
-    color: #E6E6E6;
+    color: @color07;
     border: none;}
 
 
 QPushButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: 1px solid @color05;
     padding: 5px 5px 5px 5px;}
 QPushButton:hover {
@@ -17,7 +17,7 @@ QPushButton:hover {
 
 QLineEdit{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     height: 22px;
     border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
@@ -28,7 +28,7 @@ QComboBox {
     padding: 5px 5px 5px 10px;}
 QComboBox QAbstractItemView {
     background-color: #546070;
-    color: #ffffff;
+    color: @color07;
     selection-background-color: #F1A873;}
 QComboBox::drop-down {
     background-color: #3C3C43;}

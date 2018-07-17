@@ -2,7 +2,7 @@
 
 QWidget{
     background-color: #172027;
-    color:#E6E6E6;
+    color: @color07;
     border: none;}
 
 
@@ -34,7 +34,7 @@ QListView::item {
 
 
 QScrollBar:vertical {
-    background-color: rgba( 0, 0, 0, 72% );
+    background-color: transparent;
     max-width: 8px;
     border-radius: 4px;
     padding: 1px; }
@@ -44,9 +44,10 @@ QScrollBar::handle:vertical {
     min-height: 12px;
     border-radius: 3px; }
 QScrollBar::sub-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-line:vertical,
 QScrollBar::sub-line:vertical {
     width: 0px; height: 0px; }
+

@@ -2,26 +2,26 @@
 
 #appTitle{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 QWidget [accessibleName="content"]{
     background-color: @color01;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
     background-color: #0C2C45;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 QFrame{
     background-color: @color06;
-    color: #ffffff;
+    color: @color07;
     border-radius: 5px;}
 
 QPushButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     Text-align:left;
     padding: 0px 0px 0px 8px;}

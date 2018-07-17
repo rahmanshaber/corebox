@@ -2,12 +2,12 @@
 
 QWidget{
     background-color: @color02;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 QToolButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: 1px solid @color05;
     padding: 2px 2px 2px 2px;}
 QToolButton:pressed{

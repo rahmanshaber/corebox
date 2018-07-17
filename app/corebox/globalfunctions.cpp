@@ -725,6 +725,8 @@ QString readStringFromFile(const QString &path, const QIODevice::OpenMode &mode)
 QString getStylesheetFileContent(const QString &path)
 {
     SettingsManage sm;
+    QSettings *mStyleValues;
+    QString mStylesheetFileContent;
     QString appThemePath;
 
     // Load view mode
@@ -734,10 +736,7 @@ QString getStylesheetFileContent(const QString &path)
         appThemePath = ":/theme/style/modeDark.ini";
     }
 
-    QSettings *mStyleValues;
-    QString mStylesheetFileContent;
     mStyleValues = new QSettings(appThemePath, QSettings::IniFormat);
-
     mStylesheetFileContent = readStringFromFile(QString(path),QIODevice::ReadOnly);
 
     // set values example: @color01 => #fff
@@ -746,5 +745,13 @@ QString getStylesheetFileContent(const QString &path)
     }
 
     return mStylesheetFileContent;
+
+//    @color01=apps mainWidget Color
+//    @color02=dialogBox Color
+//    @color03=apps topBar Color
+//    @color04=highLight Color
+//    @color05=border Color
+//    @color06=apps seconderyWidget Color
+//    @color07=apps text Color
 }
 

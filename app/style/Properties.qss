@@ -4,12 +4,12 @@
     font: 14pt "Cantarell";
     border: none;
     background-color: transparent;
-    color: #ffffff;}
+    color: @color07;}
 
 
 QWidget{
-    background-color: #333333;
-    color:#E6E6E6;
+    background-color: @color01;
+    color: @color07;
     border: none;}
 
 

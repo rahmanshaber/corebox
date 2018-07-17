@@ -2,13 +2,13 @@
 
 QWidget{
     background-color: @color02;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
 QSpinBox {
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QSpinBox::up-button {
@@ -28,7 +28,7 @@ QSpinBox::down-button {
 
 QToolButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: 1px solid @color05;}
 QToolButton:pressed{
     background-color: @color04;}

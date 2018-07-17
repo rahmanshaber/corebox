@@ -2,36 +2,36 @@
 
 #appTitle{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
 QWidget [accessibleName="options"]{
     background-color: @color03;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 QWidget [accessibleName="infoPage"]{
     background-color: @color01;
-    color : #E6E6E6;
+    color : @color07;
     border: none;}
 
 
 QLabel{
     background-color: transparent;
-    color: #ffffff;}
+    color: @color07;}
 
 
 QLineEdit {
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 
 
 QToolButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;
     padding: 5px 5px 5px 5px;}
 QToolButton:checked{
@@ -42,7 +42,7 @@ QToolButton:checked{
 
 QPushButton{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
@@ -53,7 +53,7 @@ QPushButton:hover {
 
 QTreeView {
    background-color: transparent;
-   color : #ffffff;}
+   color : @color07;}
 
 QHeaderView{
     background-color: @color01;
@@ -67,19 +67,19 @@ QHeaderView::section {
 
 QTableView {
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     selection-background-color:#323232 ;
     selection-color:#1CB853;
     padding: 0px 0px 0px 15px;}
 QTableView::item{
     border-bottom-style:solid;
     border-width:1;
-    border-color: #323232;}
+    border-color: @color05}
 
 
 
 QScrollBar:vertical {
-    background-color: rgba( 0, 0, 0, 72% );
+    background-color: transparent;
     max-width: 8px;
     border-radius: 4px;
     padding: 1px; }
@@ -89,9 +89,10 @@ QScrollBar::handle:vertical {
     min-height: 12px;
     border-radius: 3px; }
 QScrollBar::sub-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-page:vertical {
-    background-color: rgba( 0, 0, 0, 72% ); }
+    background-color: transparent; }
 QScrollBar::add-line:vertical,
 QScrollBar::sub-line:vertical {
     width: 0px; height: 0px; }
+
