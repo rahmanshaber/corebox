@@ -1117,7 +1117,7 @@ QMenu* corefm::sendto()
         if(singleMounted.device() != "tmpfs" && singleMounted.rootPath() != "/") {
             QAction *action = new QAction(singleMounted.displayName(),sendto);
             action->setData(singleMounted.displayName());
-            action->setIcon(QIcon(":/icons/drive_b.svg"));
+            action->setIcon(QIcon(":/icons/drive.svg"));
             sendto->addAction(action);
             connect(action,SIGNAL(triggered()),SLOT(sendToPath()));
         }
@@ -2082,7 +2082,7 @@ void corefm::on_actionCoreBox_triggered()
     const QString path(curIndex.filePath());
     corefm *cfm = new corefm();
     cfm->goTo(path);
-    cTab->insertTab(n, cfm,QIcon(":/icons/CoreFM.svg"),"CoreFM");
+    cTab->insertTab(n, cfm,QIcon(":/app/icons/app-icons/CoreFM.svg"),"CoreFM");
 }
 
 void corefm::on_actionTrash_it_triggered()
@@ -2184,13 +2184,13 @@ void corefm::blockDevicesChanged()
                                     if (parse[1] == "") {
                                         // Function from globalfunctions.cpp
                                         item = new QListWidgetItem("Drive (" +formatSize(device->size)+ ")");
-                                        icon = QIcon(":/icons/drive_w.svg");
+                                        icon = QIcon(":/icons/drive.svg");
                                     } else {
                                         if (parse.count() > 2) {
                                             if (parse[2] == "0") {
-                                                icon = QIcon(":/icons/drive_w.svg");
+                                                icon = QIcon(":/icons/drive.svg");
                                             } else {
-                                                icon = QIcon(":/icons/drive_usb_w.svg");
+                                                icon = QIcon(":/icons/drive_usb.svg");
                                             }
                                         }
                                         QString itemText(parse[1].replace("\\x20", " "));  // + " (" + device->fileSystem()->name + ")"
@@ -2204,7 +2204,7 @@ void corefm::blockDevicesChanged()
                     if (!(item)) {
                         // Function from globalfunctions.cpp
                         item = new QListWidgetItem(formatSize(device->size) + " Hard Drive (" + device->fileSystem()->name + ")");
-                        icon = QIcon(":/icons/partition.svg");
+                        icon = QIcon(":/icons/drive.svg");
                     }
 
                     if (device->fileSystem()->mountPoints().count() == 0) {
@@ -2253,7 +2253,7 @@ void corefm::blockDevicesChanged()
                         text += " (MTP)";
                     }
                     item->setText(parse.at(5) + " " + parse.at(4));
-                    item->setIcon(QIcon(":/icons/drive_media_w.svg"));
+                    item->setIcon(QIcon(":/icons/drive_media.svg"));
                     item->setData(Qt::UserRole, "mtp");
                     item->setData(Qt::UserRole + 1, parse.at(0));
                     item->setData(Qt::UserRole + 2, parse.at(1));
@@ -2296,7 +2296,7 @@ void corefm::blockDevicesChanged()
                         item->setText(name + " (iOS)");
                     }
 
-                    item->setIcon(QIcon(":/icons/drive_media_w.svg"));
+                    item->setIcon(QIcon(":/icons/drive_media.svg"));
                     item->setData(Qt::UserRole, "ios");
                     item->setData(Qt::UserRole + 1, line);
                     ui->partitions->addItem(item);

@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CorePaint.svg</normaloff>:/app/icons/app-icons/CorePaint.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -36,7 +36,455 @@
    <property name="spacing">
     <number>0</number>
    </property>
-   <item row="0" column="0" rowspan="3">
+   <item row="0" column="1" rowspan="4" colspan="2">
+    <widget class="Line" name="lines">
+     <property name="minimumSize">
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="2">
+    <widget class="QFrame" name="nameBar">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="accessibleName">
+      <string>nameBar</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>4</number>
+      </property>
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="selectedsection">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Working on :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="workingOn">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QTabWidget" name="paintTabs">
+     <property name="tabPosition">
+      <enum>QTabWidget::South</enum>
+     </property>
+     <property name="documentMode">
+      <bool>true</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>true</bool>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" colspan="2">
+    <widget class="QFrame" name="statusBar">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="accessibleName">
+      <string>statusBar</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>5</number>
+      </property>
+      <property name="topMargin">
+       <number>1</number>
+      </property>
+      <property name="rightMargin">
+       <number>5</number>
+      </property>
+      <property name="bottomMargin">
+       <number>1</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="menuB">
+        <property name="toolTip">
+         <string>Menu</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/menu.svg</normaloff>:/icons/menu.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="canvasB">
+        <property name="toolTip">
+         <string>Canvas</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/canvas.svg</normaloff>:/icons/canvas.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="selectionB">
+        <property name="toolTip">
+         <string>Selection</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/fullscreen.svg</normaloff>:/icons/fullscreen.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolsB">
+        <property name="toolTip">
+         <string>Tools</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/edit.svg</normaloff>:/icons/edit.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="colorB">
+        <property name="toolTip">
+         <string>Color</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../icons.qrc">
+          <normaloff>:/icons/color.svg</normaloff>:/icons/color.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="undo">
+        <property name="toolTip">
+         <string>Undo</string>
+        </property>
+        <property name="text">
+         <string>Undo</string>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="redo">
+        <property name="toolTip">
+         <string>Redo</string>
+        </property>
+        <property name="text">
+         <string>Redo</string>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="toolSize">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Tool Size</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="value">
+         <number>4</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="pColorPreviewLabel">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="pColorRGBLabel">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="mPosLabel">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>position</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="mSizeLabel">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>size</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" rowspan="3">
     <widget class="QWidget" name="shortcut" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -96,7 +544,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
+          <normaloff>:/app/icons/app-icons/CorePaint.svg</normaloff>:/app/icons/app-icons/CorePaint.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -143,7 +591,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="leftMargin">
            <number>0</number>
@@ -181,7 +629,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/new_tab_w.svg</normaloff>:/icons/new_tab_w.svg</iconset>
+              <normaloff>:/icons/new_tab.svg</normaloff>:/icons/new_tab.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -215,7 +663,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
+              <normaloff>:/icons/folder.svg</normaloff>:/icons/folder.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -249,7 +697,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/save_w.svg</normaloff>:/icons/save_w.svg</iconset>
+              <normaloff>:/icons/save.svg</normaloff>:/icons/save.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -283,7 +731,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/save_w.svg</normaloff>:/icons/save_w.svg</iconset>
+              <normaloff>:/icons/save.svg</normaloff>:/icons/save.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -317,7 +765,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <property name="spacing">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="leftMargin">
            <number>0</number>
@@ -364,7 +812,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/fullscreen_w.svg</normaloff>:/icons/fullscreen_w.svg</iconset>
+              <normaloff>:/icons/fullexit.svg</normaloff>:/icons/fullexit.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -410,7 +858,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/fullscreen_w.svg</normaloff>:/icons/fullscreen_w.svg</iconset>
+              <normaloff>:/icons/fullscreen.svg</normaloff>:/icons/fullscreen.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -456,7 +904,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/rotate_right_w.svg</normaloff>:/icons/rotate_right_w.svg</iconset>
+              <normaloff>:/icons/rotate_right.svg</normaloff>:/icons/rotate_right.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -502,7 +950,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/rotate_left_w.svg</normaloff>:/icons/rotate_left_w.svg</iconset>
+              <normaloff>:/icons/rotate_left.svg</normaloff>:/icons/rotate_left.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -548,7 +996,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/zoom_in_w.svg</normaloff>:/icons/zoom_in_w.svg</iconset>
+              <normaloff>:/icons/zoom_in.svg</normaloff>:/icons/zoom_in.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -594,7 +1042,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/zoom_out_w.svg</normaloff>:/icons/zoom_out_w.svg</iconset>
+              <normaloff>:/icons/zoom_out.svg</normaloff>:/icons/zoom_out.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -708,7 +1156,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/cut_w.svg</normaloff>:/icons/cut_w.svg</iconset>
+              <normaloff>:/icons/cut.svg</normaloff>:/icons/cut.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -751,7 +1199,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/copy_w.svg</normaloff>:/icons/copy_w.svg</iconset>
+              <normaloff>:/icons/copy.svg</normaloff>:/icons/copy.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -791,7 +1239,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/paste_w.svg</normaloff>:/icons/paste_w.svg</iconset>
+              <normaloff>:/icons/paste.svg</normaloff>:/icons/paste.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -825,7 +1273,7 @@
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/delete_w.svg</normaloff>:/icons/delete_w.svg</iconset>
+              <normaloff>:/icons/delete.svg</normaloff>:/icons/delete.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1409,7 +1857,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/bookit_w.svg</normaloff>:/icons/bookit_w.svg</iconset>
+          <normaloff>:/icons/bookit.svg</normaloff>:/icons/bookit.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1431,429 +1879,21 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QFrame" name="nameBar">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="accessibleName">
-      <string>nameBar</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="lineWidth">
-      <number>0</number>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <property name="spacing">
-       <number>4</number>
-      </property>
-      <property name="leftMargin">
-       <number>2</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>2</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="selectedsection">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Working on :</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="workingOn">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QTabWidget" name="paintTabs">
-     <property name="tabPosition">
-      <enum>QTabWidget::South</enum>
-     </property>
-     <property name="documentMode">
-      <bool>true</bool>
-     </property>
-     <property name="tabsClosable">
-      <bool>true</bool>
-     </property>
-     <property name="tabBarAutoHide">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QFrame" name="statusBar">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="accessibleName">
-      <string>statusBar</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="leftMargin">
-       <number>5</number>
-      </property>
-      <property name="topMargin">
-       <number>1</number>
-      </property>
-      <property name="rightMargin">
-       <number>5</number>
-      </property>
-      <property name="bottomMargin">
-       <number>1</number>
-      </property>
-      <item>
-       <widget class="QToolButton" name="menuB">
-        <property name="toolTip">
-         <string>Menu</string>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/menu_w.svg</normaloff>:/icons/menu_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="canvasB">
-        <property name="toolTip">
-         <string>Canvas</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/canvas_w.svg</normaloff>:/icons/canvas_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="selectionB">
-        <property name="toolTip">
-         <string>Selection</string>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/instruments-icons/select_w.svg</normaloff>:/icons/instruments-icons/select_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="toolsB">
-        <property name="toolTip">
-         <string>Tools</string>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/edit_w.svg</normaloff>:/icons/edit_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="colorB">
-        <property name="toolTip">
-         <string>Color</string>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/color_w.svg</normaloff>:/icons/color_w.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="undo">
-        <property name="toolTip">
-         <string>Undo</string>
-        </property>
-        <property name="text">
-         <string>Undo</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/undo_w.svg</normaloff>:/icons/undo_w.svg</iconset>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextBesideIcon</enum>
-        </property>
-        <property name="autoRaise">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="redo">
-        <property name="toolTip">
-         <string>Redo</string>
-        </property>
-        <property name="text">
-         <string>Redo</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/redo_w.svg</normaloff>:/icons/redo_w.svg</iconset>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextBesideIcon</enum>
-        </property>
-        <property name="autoRaise">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSlider" name="toolSize">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>Tool Size</string>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>20</number>
-        </property>
-        <property name="value">
-         <number>4</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="pColorPreviewLabel">
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="pColorRGBLabel">
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="mPosLabel">
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>position</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="mSizeLabel">
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>size</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
   </layout>
   <action name="actioniundo">
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/undo.svg</normaloff>:/icons/undo.svg</iconset>
+   </property>
    <property name="text">
     <string>iundo</string>
    </property>
   </action>
   <action name="actioniredo">
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/redo.svg</normaloff>:/icons/redo.svg</iconset>
+   </property>
    <property name="text">
     <string>iredo</string>
    </property>
@@ -1864,7 +1904,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/text_w.svg</normaloff>:/icons/instruments-icons/text_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/text_w.svg</normaloff>:/instruments/icons/instruments-icons/text_w.svg</iconset>
    </property>
    <property name="text">
     <string>Text</string>
@@ -1876,7 +1916,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/curve_w.svg</normaloff>:/icons/instruments-icons/curve_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/curve_w.svg</normaloff>:/instruments/icons/instruments-icons/curve_w.svg</iconset>
    </property>
    <property name="text">
     <string>Curve</string>
@@ -1888,7 +1928,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/ellipse_w.svg</normaloff>:/icons/instruments-icons/ellipse_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/ellipse_w.svg</normaloff>:/instruments/icons/instruments-icons/ellipse_w.svg</iconset>
    </property>
    <property name="text">
     <string>Ellipse</string>
@@ -1900,7 +1940,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/rectangle_w.svg</normaloff>:/icons/instruments-icons/rectangle_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/ellipse_w.svg</normaloff>:/instruments/icons/instruments-icons/ellipse_w.svg</iconset>
    </property>
    <property name="text">
     <string>Rectangle</string>
@@ -1912,7 +1952,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/fill_w.svg</normaloff>:/icons/instruments-icons/fill_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/fill_w.svg</normaloff>:/instruments/icons/instruments-icons/fill_w.svg</iconset>
    </property>
    <property name="text">
     <string>Fill</string>
@@ -1924,7 +1964,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/spray_w.svg</normaloff>:/icons/instruments-icons/spray_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/spray_w.svg</normaloff>:/instruments/icons/instruments-icons/spray_w.svg</iconset>
    </property>
    <property name="text">
     <string>Spray</string>
@@ -1936,7 +1976,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/line_w.svg</normaloff>:/icons/instruments-icons/line_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/line_w.svg</normaloff>:/instruments/icons/instruments-icons/line_w.svg</iconset>
    </property>
    <property name="text">
     <string>Line</string>
@@ -1948,22 +1988,10 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/pen_w.svg</normaloff>:/icons/instruments-icons/pen_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/pen_w.svg</normaloff>:/instruments/icons/instruments-icons/pen_w.svg</iconset>
    </property>
    <property name="text">
     <string>Pen</string>
-   </property>
-  </action>
-  <action name="actionMagnifier">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset resource="../icons.qrc">
-     <normaloff>:/icons/search_w.svg</normaloff>:/icons/search_w.svg</iconset>
-   </property>
-   <property name="text">
-    <string>Magnifier</string>
    </property>
   </action>
   <action name="actionColorpicker">
@@ -1972,7 +2000,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/colorpicker_w.svg</normaloff>:/icons/instruments-icons/colorpicker_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/colorpicker_w.svg</normaloff>:/instruments/icons/instruments-icons/colorpicker_w.svg</iconset>
    </property>
    <property name="text">
     <string>Colorpicker</string>
@@ -1984,7 +2012,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/eraser_w.svg</normaloff>:/icons/instruments-icons/eraser_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/eraser_w.svg</normaloff>:/instruments/icons/instruments-icons/eraser_w.svg</iconset>
    </property>
    <property name="text">
     <string>Eraser</string>
@@ -1996,7 +2024,7 @@
    </property>
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/instruments-icons/select_w.svg</normaloff>:/icons/instruments-icons/select_w.svg</iconset>
+     <normaloff>:/instruments/icons/instruments-icons/select_w.svg</normaloff>:/instruments/icons/instruments-icons/select_w.svg</iconset>
    </property>
    <property name="text">
     <string>Select</string>

@@ -12,7 +12,7 @@
    viewBox="0 0 24 24"
    version="1.1"
    id="svg6"
-   sodipodi:docname="eraser_ww.svg"
+   sodipodi:docname="eraser_w.svg"
    inkscape:version="0.92.2 2405546, 2018-03-11">
   <metadata
      id="metadata12">
@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -42,7 +42,7 @@
      id="namedview8"
      showgrid="false"
      inkscape:zoom="9.8333333"
-     inkscape:cx="-21.050848"
+     inkscape:cx="31.187817"
      inkscape:cy="12"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -55,16 +55,16 @@
      style="fill:none" />
   <g
      id="g826"
-     style="fill:#ffffff">
+     style="fill:#aaacad;fill-opacity:1">
     <path
        inkscape:connector-curvature="0"
        id="path822"
        d="m 21.41,12.21661 -9,9 c -0.36,0.36 -0.86,0.58 -1.41,0.58 H 4 c -1.1,0 -2,-0.9 -2,-2 v -7 c 0,-0.55 0.22,-1.05 0.59,-1.42 l 9,-8.9999998 c 0.36,-0.36 0.86,-0.58 1.41,-0.58 0.55,0 1.05,0.22 1.41,0.59 l 7,7 c 0.37,0.36 0.59,0.8599998 0.59,1.4099998 0,0.55 -0.23,1.06 -0.59,1.42 z"
-       style="fill:#ffffff" />
+       style="fill:#aaacad;fill-opacity:1" />
     <path
        inkscape:connector-curvature="0"
        id="path4"
        d="m 5.5,16.79661 c -0.83,0 -1.5,0.67 -1.5,1.5 0,0.83 0.67,1.5 1.5,1.5 0.83,0 1.5,-0.67 1.5,-1.5 0,-0.83 -0.67,-1.5 -1.5,-1.5 z"
-       style="fill:#ffffff" />
+       style="fill:#aaacad;fill-opacity:1" />
   </g>
 </svg>

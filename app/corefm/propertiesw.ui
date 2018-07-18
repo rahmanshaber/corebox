@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -820,7 +820,7 @@
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/drive_w.svg</normaloff>:/icons/drive_w.svg</iconset>
+           <normaloff>:/icons/drive.svg</normaloff>:/icons/drive.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -856,7 +856,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="close">
+      <widget class="QToolButton" name="close">
        <property name="font">
         <font>
          <pointsize>12</pointsize>

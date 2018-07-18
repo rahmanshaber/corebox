@@ -2,7 +2,7 @@
 
 #appTitle{
     background-color: transparent;
-    color: #ffffff;
+    color: @color07;
     border: none;}
 
 
@@ -12,13 +12,18 @@ QWidget [accessibleName="nameBar"]{
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
-    background-color: #004275;
+    background-color: @dashboard;
     color: @color07;
     border: none;}
 
 QWidget [accessibleName="pages"]{
     background-color: @color01;
     color: @color07;
+    border: none;}
+
+#line{
+    background-color: @color05;
+    color: #C0C0C0;
     border: none;}
 
 
@@ -45,13 +50,14 @@ QPushButton:hover {
 QToolButton{
     background-color: transparent;
     color: @color07;
-    border: none;
-    Text-align:left;
-    padding: 5px 5px 5px 5px;}
-QToolButton:checked{
-    background-color: @color04;}
+    padding: 3px 5px 3px 5px;
+    border: 1px solid @color05;}
+QToolButton:pressed{
+    background-color: @color04;
+    color: @color08;}
 QToolButton:hover {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 
 
 QListView{
@@ -95,15 +101,12 @@ QComboBox {
     border: 1px solid @color05;
     padding: 5px 5px 5px 10px;}
 QComboBox QAbstractItemView {
-    background-color: #2B2A32;
+    background-color: @color06;
+    border: 1px solid @color05;
     color: @color07;
-    selection-background-color: #C2C2C2;}
+    selection-background-color: @color04;}
 QComboBox::drop-down {
-    background-color: #3C3C43;}
-QComboBox::down-arrow {
-    image: url();}
-QComboBox:focus{
-    border: 1px solid #C2C2C2;}
+    background-color: @color05;}
 
 
 QCheckBox {

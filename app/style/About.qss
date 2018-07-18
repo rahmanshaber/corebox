@@ -11,7 +11,7 @@ QWidget [accessibleName="content"]{
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
-    background-color: #0C2C45;
+    background-color: @about;
     color: @color07;
     border: none;}
 
@@ -19,6 +19,13 @@ QFrame{
     background-color: @color06;
     color: @color07;
     border-radius: 5px;}
+
+
+#line{
+    background-color: @color05;
+    color: #C0C0C0;
+    border: none;}
+
 
 QPushButton{
     background-color: transparent;

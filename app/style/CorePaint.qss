@@ -18,8 +18,14 @@ QWidget [accessibleName="statusBar"]{
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
-    background-color: #3A4953;
+    background-color: @corepaint;
     color: @color07;
+    border: none;}
+
+
+#lines{
+    background-color: @color05;
+    color: #C0C0C0;
     border: none;}
 
 
@@ -36,9 +42,11 @@ QToolButton{
     Text-align:left;
     padding: 3px 3px 3px 3px;}
 QToolButton:checked{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QToolButton:hover {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 
 
 
@@ -53,7 +61,7 @@ QTabBar::tab:selected{
     color:#0f5d90;
     border-bottom: 2px solid #0f5d90;}
 QTabBar::close-button {
-    image: url(:/icons/close_w.svg);
+    image: url(:/icons/close.svg);
     subcontrol-position: right;}
 QTabBar::tab{
     text-align:left;

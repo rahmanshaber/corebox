@@ -15,13 +15,13 @@ QSpinBox::up-button {
     subcontrol-origin: border;
     subcontrol-position: top right;
     width: 16px;
-    border-image: url(:/icons/up_w.svg);
+    border-image: url(:/icons/up.svg);
     border-width: 1px;}
 QSpinBox::down-button {
     subcontrol-origin: border;
     subcontrol-position: bottom right;
     width: 16px;
-    border-image: url(:/icons/down_w.svg);
+    border-image: url(:/icons/down.svg);
     border-width: 1px;
     border-top-width: 0;}
 
@@ -29,11 +29,12 @@ QSpinBox::down-button {
 QToolButton{
     background-color: transparent;
     color: @color07;
+    padding: 3px 5px 3px 5px;
     border: 1px solid @color05;}
 QToolButton:pressed{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QToolButton:hover {
-    background-color: @color04;}
-QToolButton:checked{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 

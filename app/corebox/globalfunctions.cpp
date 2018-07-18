@@ -230,7 +230,7 @@ AppsName nameToInt(QString appName)
 
 QIcon appsIcon(QString appName)
 {
-    QString str = ":/icons/";
+    QString str = ":/app/icons/app-icons/";
 
     if (appName == "DashBoard" || appName == "dashboard") {
         return QIcon(str + "DashBoard.svg");
@@ -753,5 +753,7 @@ QString getStylesheetFileContent(const QString &path)
 //    @color05=border Color
 //    @color06=apps seconderyWidget Color
 //    @color07=apps text Color
+//    @color08=apps HightlightText color
+//    @color09=apps DisableText color
 }
 

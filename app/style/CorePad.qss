@@ -6,7 +6,7 @@
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
-    background-color: #2F323A;
+    background-color: @corepad;
     color: @color07;
     border: none;}
 
@@ -33,13 +33,13 @@ QSpinBox::up-button {
     subcontrol-origin: border;
     subcontrol-position: top right;
     width: 16px;
-    border-image: url(:/icons/up_w.svg) 1;
+    border-image: url(:/icons/up.svg) 1;
     border-width: 1px;}
 QSpinBox::down-button {
     subcontrol-origin: border;
     subcontrol-position: bottom right;
     width: 16px;
-    border-image: url(:/icons/down_w.svg) 1;
+    border-image: url(:/icons/down.svg) 1;
     border-width: 1px;
     border-top-width: 0;}
 
@@ -47,11 +47,14 @@ QSpinBox::down-button {
 QToolButton{
     background-color: transparent;
     color: @color07;
+    padding: 3px 5px 3px 5px;
     border: 1px solid @color05;}
 QToolButton:pressed{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QToolButton:hover {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 
 
 QPushButton{
@@ -61,20 +64,11 @@ QPushButton{
     border: none;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QPushButton:hover {
-    background-color: @color04;}
-
-
-QComboBox {
-    border: 1px solid @color05;
-    padding: 2px 2px 2px 10px;}
-QComboBox QAbstractItemView {
-    background-color: #546070;
-    color: @color07;
-    selection-background-color: #F1A873;}
-QComboBox::drop-down {
-    background-color: #3C3C43;}
+    background-color: @color04;
+    color: @color08;}
 
 
 QTabBar::tab:!selected{
@@ -86,7 +80,7 @@ QTabBar::tab:selected{
     color:#0f5d90;
     border-bottom: 2px solid #0f5d90;}
 QTabBar::close-button {
-    image: url(:/icons/close_w.svg);
+    image: url(:/icons/close.svg);
     subcontrol-position: right;}
 QTabBar::tab{
     text-align:left;

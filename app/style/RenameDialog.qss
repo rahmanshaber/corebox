@@ -6,13 +6,17 @@ QWidget{
     border: none;}
 
 
-QPushButton{
+QToolButton{
     background-color: transparent;
     color: @color07;
-    border: 1px solid @color05;
-    padding: 3px 5px 3px 5px;}
-QPushButton:hover {
-    background-color: @color04;}
+    padding: 3px 5px 3px 5px;
+    border: 1px solid @color05;}
+QToolButton:pressed{
+    background-color: @color04;
+    color: @color08;}
+QToolButton:hover {
+    background-color: @color04;
+    color: @color08;}
 
 
 QLineEdit{

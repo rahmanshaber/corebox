@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -96,7 +96,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
+          <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -143,7 +143,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/home_w.svg</normaloff>:/icons/home_w.svg</iconset>
+          <normaloff>:/icons/home.svg</normaloff>:/icons/home.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -183,7 +183,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/desktop_w.svg</normaloff>:/icons/desktop_w.svg</iconset>
+          <normaloff>:/icons/desktop.svg</normaloff>:/icons/desktop.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -208,7 +208,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/download_w..svg</normaloff>:/icons/download_w..svg</iconset>
+          <normaloff>:/icons/download..svg</normaloff>:/icons/download..svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -233,7 +233,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/trash_w.svg</normaloff>:/icons/trash_w.svg</iconset>
+          <normaloff>:/icons/trash.svg</normaloff>:/icons/trash.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -343,7 +343,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/bookit_w.svg</normaloff>:/icons/bookit_w.svg</iconset>
+          <normaloff>:/icons/bookit.svg</normaloff>:/icons/bookit.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -371,7 +371,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/tools_w.svg</normaloff>:/icons/tools_w.svg</iconset>
+          <normaloff>:/icons/tools.svg</normaloff>:/icons/tools.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -387,7 +387,29 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
+   <item row="0" column="1" rowspan="5">
+    <widget class="Line" name="line">
+     <property name="minimumSize">
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="2">
     <widget class="QFrame" name="navigationBar">
      <property name="minimumSize">
       <size>
@@ -449,10 +471,6 @@
         <property name="text">
          <string>back</string>
         </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/left_w.svg</normaloff>:/icons/left_w.svg</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>24</width>
@@ -477,10 +495,6 @@
         </property>
         <property name="text">
          <string>up</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/up_w.svg</normaloff>:/icons/up_w.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -509,7 +523,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/refresh_w.svg</normaloff>:/icons/refresh_w.svg</iconset>
+          <normaloff>:/icons/refresh.svg</normaloff>:/icons/refresh.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -578,7 +592,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/search_w.svg</normaloff>:/icons/search_w.svg</iconset>
+          <normaloff>:/icons/search.svg</normaloff>:/icons/search.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -610,7 +624,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/view_icon_w.svg</normaloff>:/icons/view_icon_w.svg</iconset>
+          <normaloff>:/icons/view_icon.svg</normaloff>:/icons/view_icon.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -648,7 +662,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/view_list_w.svg</normaloff>:/icons/view_list_w.svg</iconset>
+          <normaloff>:/icons/view_list.svg</normaloff>:/icons/view_list.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -690,10 +704,6 @@
         <property name="text">
          <string>Empty Trash</string>
         </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/trash_w.svg</normaloff>:/icons/trash_w.svg</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>22</width>
@@ -725,10 +735,6 @@
         <property name="text">
          <string>Paste</string>
         </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/paste_w.svg</normaloff>:/icons/paste_w.svg</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>22</width>
@@ -743,7 +749,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
+   <item row="1" column="2" colspan="2">
     <widget class="QFrame" name="toolsBar">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -1231,7 +1237,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="2">
+   <item row="2" column="3">
     <widget class="QSplitter" name="splitter">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -1247,7 +1253,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pagelist">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -1268,11 +1274,6 @@
         </property>
         <item>
          <widget class="ClickOutListview" name="viewIcon">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
           <property name="mouseTracking">
            <bool>true</bool>
           </property>
@@ -1329,11 +1330,6 @@
         </property>
         <item>
          <widget class="ClickOutTreeview" name="viewDetail">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-           </font>
-          </property>
           <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
@@ -1400,7 +1396,7 @@
      </widget>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
+   <item row="3" column="2" colspan="2">
     <widget class="QFrame" name="statusBar">
      <property name="minimumSize">
       <size>
@@ -1483,7 +1479,7 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2">
+   <item row="4" column="2">
     <layout class="QVBoxLayout" name="pagesBar">
      <property name="spacing">
       <number>0</number>
@@ -1518,7 +1514,7 @@
   </action>
   <action name="actionPaste">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/paste_b.svg</normaloff>:/icons/paste_b.svg</iconset>
    </property>
    <property name="text">
@@ -1527,7 +1523,7 @@
   </action>
   <action name="actionCopy">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/copy_b.svg</normaloff>:/icons/copy_b.svg</iconset>
    </property>
    <property name="text">
@@ -1536,7 +1532,7 @@
   </action>
   <action name="actionCut">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/cut_b.svg</normaloff>:/icons/cut_b.svg</iconset>
    </property>
    <property name="text">
@@ -1555,7 +1551,7 @@
   <action name="actionBack">
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/left_w.svg</normaloff>:/icons/left_w.svg</iconset>
+     <normaloff>:/icons/left.svg</normaloff>:/icons/left.svg</iconset>
    </property>
    <property name="text">
     <string>Back</string>
@@ -1567,7 +1563,7 @@
   <action name="actionUp">
    <property name="icon">
     <iconset resource="../icons.qrc">
-     <normaloff>:/icons/up_w.svg</normaloff>:/icons/up_w.svg</iconset>
+     <normaloff>:/icons/up.svg</normaloff>:/icons/up.svg</iconset>
    </property>
    <property name="text">
     <string>Up</string>
@@ -1578,7 +1574,7 @@
   </action>
   <action name="actionProperties">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/properties_b.svg</normaloff>:/icons/properties_b.svg</iconset>
    </property>
    <property name="text">
@@ -1587,7 +1583,7 @@
   </action>
   <action name="actionRefresh">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/refresh_b.svg</normaloff>:/icons/refresh_b.svg</iconset>
    </property>
    <property name="text">
@@ -1614,7 +1610,7 @@
   </action>
   <action name="actionNewPage">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/new_tab_b.svg</normaloff>:/icons/new_tab_b.svg</iconset>
    </property>
    <property name="text">
@@ -1663,7 +1659,7 @@
   </action>
   <action name="actionCorePlayer">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/CorePlayer.svg</normaloff>:/icons/CorePlayer.svg</iconset>
    </property>
    <property name="text">
@@ -1672,7 +1668,7 @@
   </action>
   <action name="actionCorePad">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/CorePad.svg</normaloff>:/icons/CorePad.svg</iconset>
    </property>
    <property name="text">
@@ -1681,7 +1677,7 @@
   </action>
   <action name="actionCoreFM">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
    </property>
    <property name="text">
@@ -1690,7 +1686,7 @@
   </action>
   <action name="actionCoreImage">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/CoreImage.svg</normaloff>:/icons/CoreImage.svg</iconset>
    </property>
    <property name="text">
@@ -1699,7 +1695,7 @@
   </action>
   <action name="actionCorePaint">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
    </property>
    <property name="text">
@@ -1708,7 +1704,7 @@
   </action>
   <action name="actionCoreBox">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
    </property>
    <property name="text">
@@ -1736,7 +1732,7 @@
   </action>
   <action name="actionDesktop">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/desktop_b.svg</normaloff>:/icons/desktop_b.svg</iconset>
    </property>
    <property name="text">
@@ -1745,7 +1741,7 @@
   </action>
   <action name="actionHome">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/home_b.svg</normaloff>:/icons/home_b.svg</iconset>
    </property>
    <property name="text">
@@ -1759,7 +1755,7 @@
   </action>
   <action name="actionCorePDF">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/CorePDF.svg</normaloff>:/icons/CorePDF.svg</iconset>
    </property>
    <property name="text">
@@ -1773,7 +1769,7 @@
   </action>
   <action name="actionCoreRenamer">
    <property name="icon">
-    <iconset resource="../icons.qrc">
+    <iconset>
      <normaloff>:/icons/CoreRenemer.svg</normaloff>:/icons/CoreRenemer.svg</iconset>
    </property>
    <property name="text">

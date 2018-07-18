@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CoreTime.svg</normaloff>:/icons/CoreTime.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CoreTime.svg</normaloff>:/app/icons/app-icons/CoreTime.svg</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <property name="leftMargin">
@@ -111,7 +111,7 @@ background-color:#45454D ;
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/CoreTime.svg</normaloff>:/icons/CoreTime.svg</iconset>
+          <normaloff>:/app/icons/app-icons/CoreTime.svg</normaloff>:/app/icons/app-icons/CoreTime.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -164,7 +164,7 @@ background-color:#45454D ;
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/alarm_b.svg</normaloff>:/icons/alarm_b.svg</iconset>
+          <normaloff>:/icons/alarm.svg</normaloff>:/icons/alarm.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -195,7 +195,7 @@ background-color:#45454D ;
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/stopwatch_b.svg</normaloff>:/icons/stopwatch_b.svg</iconset>
+          <normaloff>:/icons/stopwatch.svg</normaloff>:/icons/stopwatch.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -226,7 +226,7 @@ background-color:#45454D ;
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/timer_b.svg</normaloff>:/icons/timer_b.svg</iconset>
+          <normaloff>:/icons/timer.svg</normaloff>:/icons/timer.svg</iconset>
         </property>
         <property name="iconSize">
          <size>

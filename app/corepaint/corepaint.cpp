@@ -618,7 +618,7 @@ void corepaint::on_delet_clicked()
 void corepaint::pageClick(QToolButton *btn, int i)
 {
     // all button checked false
-    for (QToolButton *b : ui->shortcut->findChildren<QToolButton*>())
+    for (QToolButton *b : ui->statusBar->findChildren<QToolButton*>())
         b->setChecked(false);
     btn->setChecked(true);
     ui->pages->setCurrentIndex(i);

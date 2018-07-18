@@ -54,7 +54,7 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
 
     //make the resizeable window button
     QSizeGrip *sizeGrip = new QSizeGrip(this);
-    sizeGrip->setStyleSheet("QWidget{background-color: #111111 ; width: 16px;height: 16px; background-image: url(:/icons/expand_w.svg); background-repeat: no-repeat ;background-position: center center ;}");
+    sizeGrip->setStyleSheet("QWidget{background-color: #111111 ; width: 16px;height: 16px; background-image: url(:/icons/expand.svg); background-repeat: no-repeat ;background-position: center center ;}");
     ui->res->addWidget(sizeGrip);
 
     //setup window size and state
@@ -99,7 +99,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         QString str = checkIsValidDir(arg);
         if (!str.isEmpty() || !str.isNull()) cFM->goTo(str);
 
-        ui->windows->insertTab(n, cFM, QIcon(":/icons/CoreFM.svg"), "CoreFM");
+        ui->windows->insertTab(n, cFM, QIcon(":/app/icons/app-icons/CoreFM.svg"), "CoreFM");
         ui->windows->setCurrentIndex(n);
         break;
     }
@@ -115,7 +115,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         QString str = checkIsValidFile(arg);
         if (!str.isEmpty() || !str.isNull()) cIMG->loadFile(str);
 
-        ui->windows->insertTab(n, cIMG, QIcon(":/icons/CoreImage.svg"), "CoreImage");
+        ui->windows->insertTab(n, cIMG, QIcon(":/app/icons/app-icons/CoreImage.svg"), "CoreImage");
         ui->windows->setCurrentIndex(n);
         break;
     }
@@ -136,7 +136,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
             corepad *cPAD = new corepad();
             cPAD->openText(checkIsValidFile(arg));
 
-            ui->windows->insertTab(n, cPAD, QIcon(":/icons/CorePad.svg"), "CorePad");
+            ui->windows->insertTab(n, cPAD, QIcon(":/app/icons/app-icons/CorePad.svg"), "CorePad");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -161,7 +161,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
             if (!str.isEmpty() || !str.isNull()) cPAINT->initializeNewTab(true, str);
             else cPAINT->initializeNewTab();
 
-            ui->windows->insertTab(n, cPAINT, QIcon(":/icons/CorePaint.svg"), "CorePaint");
+            ui->windows->insertTab(n, cPAINT, QIcon(":/app/icons/app-icons/CorePaint.svg"), "CorePaint");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -178,7 +178,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         const QString str = checkIsValidFile(arg);
         if (!str.isEmpty() || !str.isNull()) cPLAYER->openPlayer(str);
 
-        ui->windows->insertTab(n, cPLAYER, QIcon(":/icons/CorePlayer.svg"), "CorePlayer");
+        ui->windows->insertTab(n, cPLAYER, QIcon(":/app/icons/app-icons/CorePlayer.svg"), "CorePlayer");
         ui->windows->setCurrentIndex(n);
         break;
     }
@@ -193,7 +193,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
                 return;
             }
 
-            ui->windows->insertTab(n, new dashboard(), QIcon(":/icons/DashBoard.svg"), "DashBoard");
+            ui->windows->insertTab(n, new dashboard(), QIcon(":/app/icons/app-icons/DashBoard.svg"), "DashBoard");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -209,7 +209,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
                 return;
             }
 
-            ui->windows->insertTab(n, new bookmarks(), QIcon(":/icons/Bookmarks.svg"), "Bookmarks");
+            ui->windows->insertTab(n, new bookmarks(), QIcon(":/app/icons/app-icons/Bookmarks.svg"), "Bookmarks");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -224,7 +224,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
-            ui->windows->insertTab(n, new about(), QIcon(":/icons/About.svg"), "About");
+            ui->windows->insertTab(n, new about(), QIcon(":/app/icons/app-icons/About.svg"), "About");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -240,7 +240,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
                 return;
             }
 
-            ui->windows->insertTab(n, new Start(), QIcon(":/icons/Start.svg"), "Start");
+            ui->windows->insertTab(n, new Start(), QIcon(":/app/icons/app-icons/Start.svg"), "Start");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -256,7 +256,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
                 return;
             }
 
-            ui->windows->insertTab(n, new help(), QIcon(":/icons/Help.svg"), "Help");
+            ui->windows->insertTab(n, new help(), QIcon(":/app/icons/app-icons/Help.svg"), "Help");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -272,7 +272,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
                 return;
             }
 
-            ui->windows->insertTab(n, new settings(), QIcon(":/icons/Settings.svg"), "Settings");
+            ui->windows->insertTab(n, new settings(), QIcon(":/app/icons/app-icons/Settings.svg"), "Settings");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -289,7 +289,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         const QString str = checkIsValidDir(arg);
         if (!str.isEmpty() || !str.isNull()) ser->setPath(str);
 
-        ui->windows->insertTab(n, ser, QIcon(":/icons/Search.svg"), "Search");
+        ui->windows->insertTab(n, ser, QIcon(":/app/icons/app-icons/Search.svg"), "Search");
         ui->windows->setCurrentIndex(n);
         break;
     }
@@ -304,7 +304,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
                 return;
             }
 
-            ui->windows->insertTab(n, new coretime, QIcon(":/icons/CoreTime.svg"), "CoreTime");
+            ui->windows->insertTab(n, new coretime, QIcon(":/app/icons/app-icons/CoreTime.svg"), "CoreTime");
             ui->windows->setCurrentIndex(n);
         }
         break;
@@ -327,7 +327,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         const QString str = checkIsValidFile(arg);
         if (!str.isEmpty() || !str.isNull()) cPDF->openPdfFile(str);
 
-        ui->windows->insertTab(n, cPDF, QIcon(":/icons/CorePDF.svg"), "CorePDF");
+        ui->windows->insertTab(n, cPDF, QIcon(":/app/icons/app-icons/CorePDF.svg"), "CorePDF");
         ui->windows->setCurrentIndex(n);
         break;
     }
@@ -346,7 +346,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
             workDir = QFileInfo(arg).path();
 
         coreterminal *trm = new coreterminal(workDir, "", this);
-        ui->windows->insertTab(n, trm, QIcon(":/icons/CoreTerminal.svg"), "CoreTerminal");
+        ui->windows->insertTab(n, trm, QIcon(":/app/icons/app-icons/CoreTerminal.svg"), "CoreTerminal");
         ui->windows->setCurrentIndex(n);
         break;
     }
@@ -362,7 +362,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         const QString str = checkIsValidDir(arg);
         if (!str.isEmpty() || !str.isNull()) cFM->addPath(str);
 
-        ui->windows->insertTab(n, cFM, QIcon(":/icons/CoreRenemer.svg"), "CoreRenamer");
+        ui->windows->insertTab(n, cFM, QIcon(":/app/icons/app-icons/CoreRenemer.svg"), "CoreRenamer");
         ui->windows->setCurrentIndex(n);
 
         break;

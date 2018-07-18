@@ -421,7 +421,7 @@ QProgressBar::chunk {
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/refresh_w.svg</normaloff>:/icons/refresh_w.svg</iconset>
+          <normaloff>:/icons/refresh.svg</normaloff>:/icons/refresh.svg</iconset>
         </property>
         <property name="iconSize">
          <size>

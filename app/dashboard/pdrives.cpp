@@ -67,7 +67,7 @@ void pDrives::setupDisksPage()
 
 //        ui->drives->addItem(p);
 //        ui->drives->setItemWidget(p, ui->widget);
-        ui->drives->item(i)->setIcon(QIcon(":/icons/drive_hdd_w.svg"));
+        ui->drives->item(i)->setIcon(QIcon(":/icons/drive_hdd.svg"));
     }
 
 //    QStringList s = disks->blockDevices();
@@ -76,7 +76,7 @@ void pDrives::setupDisksPage()
 
     ui->blocks->addItems(disks->blockDevices());
     for (int i = 0; i < ui->blocks->count(); ++i) {
-           ui->blocks->item(i)->setIcon(QIcon(":/icons/drive_w.svg"));
+           ui->blocks->item(i)->setIcon(QIcon(":/icons/drive.svg"));
     }
 
 //    disks = new UDisks2(this);

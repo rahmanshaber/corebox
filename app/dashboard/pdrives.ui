@@ -138,16 +138,6 @@
       <property name="verticalSpacing">
        <number>5</number>
       </property>
-      <item row="2" column="2" rowspan="2">
-       <widget class="QPushButton" name="mount_2">
-        <property name="toolTip">
-         <string>Mount the Pertition</string>
-        </property>
-        <property name="text">
-         <string>Mount</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0" rowspan="2" colspan="4">
        <widget class="QListWidget" name="blocks">
         <property name="focusPolicy">
@@ -204,16 +194,6 @@
         </property>
        </spacer>
       </item>
-      <item row="2" column="3" rowspan="2">
-       <widget class="QPushButton" name="unmount_2">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mount the Pertition&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>Unmount</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="0" rowspan="2">
        <widget class="QLabel" name="mm">
         <property name="font">
@@ -223,6 +203,26 @@
         </property>
         <property name="text">
          <string>Select a partition to</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" rowspan="2">
+       <widget class="QToolButton" name="mount_2">
+        <property name="toolTip">
+         <string>Mount the Pertition</string>
+        </property>
+        <property name="text">
+         <string>Mount</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3" rowspan="2">
+       <widget class="QToolButton" name="unmount_2">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mount the Pertition&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Unmount</string>
         </property>
        </widget>
       </item>

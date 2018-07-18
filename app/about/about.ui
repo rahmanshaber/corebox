@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>773</width>
-    <height>648</height>
+    <height>665</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
+    <normaloff>:/app/icons/app-icons/About.svg</normaloff>:/app/icons/app-icons/About.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -99,7 +99,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
+          <normaloff>:/app/icons/app-icons/About.svg</normaloff>:/app/icons/app-icons/About.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -126,6 +126,28 @@
        </spacer>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="minimumSize">
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
     </widget>
    </item>
    <item>

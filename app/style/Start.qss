@@ -1,7 +1,7 @@
 /*Start */
 
 QWidget{
-    background-color: #172027;
+    background-color: @color01;
     color: @color07;
     border: none;}
 
@@ -12,25 +12,39 @@ QPushButton{
     padding: 5px 5px 5px 5px;
     font-size: 22px;}
 QPushButton:checked{
-    color: #DCDCDC;
+    color: @color07;
     font-weight: bold;}
 QPushButton:!checked{
-    color: #57585D ;}
+    color: #AAACAD;}
 
 
 QListView{
     background-color: transparent;
     padding: 50px 5px 20px 20px;}
 QListView::item:selected {
-    border: 1px solid #232730;
-    background-color: #232730;}
+    border: 1px solid @color04;
+    background-color: @color04;
+    color: @color08;}
 QListView::item:hover {
-    background-color: #232730;}
+    background-color: @color04;}
 QListView::item {
-    background-color: #303942;
+    background-color: @color06;
     border: none;
     padding: 5px 20px 5px 20px;
     border-radius: 2px;}
+
+
+QTreeView{
+    background-color: @color01;
+    color: @color07;
+    border: none;}
+QTreeView::item{
+    padding: 0px 0px 0px 5px;
+    background-color:transparent;
+    color: @color07;}
+QTreeView::item:selected {
+    background-color: @color04;
+    color: @color08;}
 
 
 QScrollBar:vertical {

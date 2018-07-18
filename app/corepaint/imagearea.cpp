@@ -353,7 +353,7 @@ void ImageArea::restoreCursor()
         setCursor(*mCurrentCursor);
         break;
     case COLORPICKER:
-        mPixmap = new QPixmap(":/icons/instruments-icons/colorpicker_b.svg");
+        mPixmap = new QPixmap(":/instruments/icons/instruments-icons/colorpicker_b.svg");
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;
@@ -362,12 +362,12 @@ void ImageArea::restoreCursor()
         setCursor(*mCurrentCursor);
         break;
     case SPRAY:
-        mPixmap = new QPixmap(":/icons/instruments-icons/spray_b.svg");
+        mPixmap = new QPixmap(":/instruments/icons/instruments-icons/spray_b.svg");
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;
     case FILL:
-        mPixmap = new QPixmap(":/icons/instruments-icons/fill_b.svg");
+        mPixmap = new QPixmap(":/instruments/icons/instruments-icons/fill_b.svg");
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;

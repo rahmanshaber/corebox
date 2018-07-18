@@ -7,12 +7,12 @@
 
 
 QWidget [accessibleName="options"]{
-    background-color: @color03;
+    background-color: @search;
     color: @color07;
     border: none;}
 
 QWidget [accessibleName="infoPage"]{
-    background-color: @color01;
+    background-color: @color03;
     color : @color07;
     border: none;}
 
@@ -46,35 +46,48 @@ QPushButton{
     border: none;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QPushButton:hover {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 
 
-QTreeView {
-   background-color: transparent;
-   color : @color07;}
+QTreeView{
+    background-color:  transparent;
+    color: @color07;
+    border: none;}
+QTreeView::item{
+    padding: 0px 0px 0px 5px;
+    background-color:transparent;
+    color: @color07;}
+QTreeView::item:selected {
+    background-color: @color04;
+    color: @color08;}
+
 
 QHeaderView{
-    background-color: @color01;
-    padding-left: 4px;
-    color: #606364;}
+    background-color:  transparent;
+    color: @color07;
+    padding-left: 4px;}
 QHeaderView::section {
+    padding: 1px 3px 1px 3px;
     background-color: @color01;
-    color: #606364;
-    border: none;}
+    color: @color07;
+    border: none;
+    padding-top: 4px;}
 
 
 QTableView {
     background-color: transparent;
     color: @color07;
-    selection-background-color:#323232 ;
-    selection-color:#1CB853;
+    selection-background-color: @color04;
+    selection-color: @color08;
     padding: 0px 0px 0px 15px;}
 QTableView::item{
     border-bottom-style:solid;
     border-width:1;
-    border-color: @color05}
+    border-color: @color05;}
 
 
 

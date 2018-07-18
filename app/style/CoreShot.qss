@@ -5,14 +5,15 @@ QWidget{
     color: @color07;
     border: none;}
 
+
 QToolButton{
     background-color: transparent;
     color: @color07;
-    border: 1px solid @color05;
-    padding: 2px 2px 2px 2px;}
+    padding: 3px 5px 3px 5px;
+    border: 1px solid @color05;}
 QToolButton:pressed{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QToolButton:hover {
-    background-color: @color04;}
-QToolButton:checked{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}

@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>RenameDialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../icons.qrc">
+    <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
@@ -62,14 +66,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="cancel">
+      <widget class="QToolButton" name="cancel">
        <property name="text">
         <string>Cancel</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="done">
+      <widget class="QToolButton" name="done">
        <property name="text">
         <string>Done</string>
        </property>
@@ -95,6 +99,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

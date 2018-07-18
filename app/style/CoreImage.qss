@@ -7,20 +7,25 @@
 
 
 QWidget [accessibleName="shortcut"]{
-    background-color: #282D31;
+    background-color: @coreimage;
     color: @color07;
     border: none;}
 
-QFrame  [accessibleName="navigationBar"] {
+QFrame [accessibleName="navigationBar"] {
     background-color: #000000;
     color: @color07;
     border: none;}
 
 
 #line{
-    background-color: #C0C0C0 ;
+    background-color: @color05;
     color: #C0C0C0;
     border: none;}
+
+QLabel{
+    background-color:transparent;
+    color: @color07;
+    padding: 1px 1px 1px 1px;}
 
 
 QPushButton{
@@ -30,9 +35,11 @@ QPushButton{
     border: none;
     padding: 5px 5px 5px 5px;}
 QPushButton:pressed{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QPushButton:hover {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 
 
 QToolButton{
@@ -50,6 +57,7 @@ QToolButton:checked{
 QListView{
     background-color: #000000;
     padding:5px 5px 5px 5px;}
+
 
 
 QScrollBar:vertical {

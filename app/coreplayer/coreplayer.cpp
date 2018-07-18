@@ -41,6 +41,7 @@ void coreplayer::startsetup()
 {
     mModel = new QStandardItemModel(this);
     ui->shortcut->setVisible(0);
+    ui->line->setVisible(0);
     ui->medialist->setModel(mModel);
 
     player = new QMediaPlayer(this);
@@ -543,7 +544,9 @@ void coreplayer::on_playlist_clicked(bool checked)
 {
     if(checked){
         ui->shortcut->setVisible(1);
+        ui->line->setVisible(1);
     }else{
         ui->shortcut->setVisible(0);
+        ui->line->setVisible(0);
     }
 }

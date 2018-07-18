@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CorePad.svg</normaloff>:/icons/CorePad.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CorePad.svg</normaloff>:/app/icons/app-icons/CorePad.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -96,7 +96,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/CorePad.svg</normaloff>:/icons/CorePad.svg</iconset>
+          <normaloff>:/app/icons/app-icons/CorePad.svg</normaloff>:/app/icons/app-icons/CorePad.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -143,7 +143,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
+          <normaloff>:/icons/folder.svg</normaloff>:/icons/folder.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -168,7 +168,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/new_tab_w.svg</normaloff>:/icons/new_tab_w.svg</iconset>
+          <normaloff>:/icons/new_tab.svg</normaloff>:/icons/new_tab.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -193,7 +193,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/save_w.svg</normaloff>:/icons/save_w.svg</iconset>
+          <normaloff>:/icons/save.svg</normaloff>:/icons/save.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -218,7 +218,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/save_w.svg</normaloff>:/icons/save_w.svg</iconset>
+          <normaloff>:/icons/save.svg</normaloff>:/icons/save.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -246,7 +246,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/cut_w.svg</normaloff>:/icons/cut_w.svg</iconset>
+          <normaloff>:/icons/cut.svg</normaloff>:/icons/cut.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -274,7 +274,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/copy_w.svg</normaloff>:/icons/copy_w.svg</iconset>
+          <normaloff>:/icons/copy.svg</normaloff>:/icons/copy.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -299,7 +299,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/paste_w.svg</normaloff>:/icons/paste_w.svg</iconset>
+          <normaloff>:/icons/paste.svg</normaloff>:/icons/paste.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -327,7 +327,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/undo_w.svg</normaloff>:/icons/undo_w.svg</iconset>
+          <normaloff>:/icons/undo.svg</normaloff>:/icons/undo.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -352,7 +352,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/redo_w.svg</normaloff>:/icons/redo_w.svg</iconset>
+          <normaloff>:/icons/redo.svg</normaloff>:/icons/redo.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -377,7 +377,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/search_w.svg</normaloff>:/icons/search_w.svg</iconset>
+          <normaloff>:/icons/search.svg</normaloff>:/icons/search.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -417,7 +417,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/date_w.svg</normaloff>:/icons/date_w.svg</iconset>
+          <normaloff>:/icons/date.svg</normaloff>:/icons/date.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -426,7 +426,7 @@
          </size>
         </property>
         <property name="flat">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -466,7 +466,7 @@
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/font_w.svg</normaloff>:/icons/font_w.svg</iconset>
+             <normaloff>:/icons/font.svg</normaloff>:/icons/font.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -517,7 +517,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/bookit_w.svg</normaloff>:/icons/bookit_w.svg</iconset>
+          <normaloff>:/icons/bookit.svg</normaloff>:/icons/bookit.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -613,7 +613,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/refresh_w.svg</normaloff>:/icons/refresh_w.svg</iconset>
+          <normaloff>:/icons/refresh.svg</normaloff>:/icons/refresh.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -664,7 +664,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/left_w.svg</normaloff>:/icons/left_w.svg</iconset>
+          <normaloff>:/icons/left.svg</normaloff>:/icons/left.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -693,7 +693,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/right_w.svg</normaloff>:/icons/right_w.svg</iconset>
+          <normaloff>:/icons/right.svg</normaloff>:/icons/right.svg</iconset>
         </property>
         <property name="iconSize">
          <size>

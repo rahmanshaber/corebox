@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CorePlayer.svg</normaloff>:/icons/CorePlayer.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CorePlayer.svg</normaloff>:/app/icons/app-icons/CorePlayer.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -36,7 +36,7 @@
    <property name="spacing">
     <number>0</number>
    </property>
-   <item row="0" column="0" rowspan="3">
+   <item row="0" column="0" rowspan="2">
     <widget class="QWidget" name="shortcut" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -96,7 +96,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/CorePlayer.svg</normaloff>:/icons/CorePlayer.svg</iconset>
+          <normaloff>:/app/icons/app-icons/CorePlayer.svg</normaloff>:/app/icons/app-icons/CorePlayer.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -161,7 +161,36 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="0" column="1" rowspan="2">
+    <widget class="Line" name="line">
+     <property name="minimumSize">
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <layout class="QHBoxLayout" name="view">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+    </layout>
+   </item>
+   <item row="1" column="2">
     <widget class="QFrame" name="toolBar">
      <property name="minimumSize">
       <size>
@@ -286,7 +315,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/view_list_w.svg</normaloff>:/icons/view_list_w.svg</iconset>
+          <normaloff>:/icons/view_list.svg</normaloff>:/icons/view_list.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -324,7 +353,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/next_b.svg</normaloff>:/icons/next_b.svg</iconset>
+          <normaloff>:/icons/right.svg</normaloff>:/icons/right.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -362,7 +391,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/previous_b.svg</normaloff>:/icons/previous_b.svg</iconset>
+          <normaloff>:/icons/left.svg</normaloff>:/icons/left.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -397,7 +426,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/stop_w.svg</normaloff>:/icons/stop_w.svg</iconset>
+          <normaloff>:/icons/stop.svg</normaloff>:/icons/stop.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -468,8 +497,8 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/volume_w.svg</normaloff>
-          <normalon>:/icons/mute_w.svg</normalon>:/icons/volume_w.svg</iconset>
+          <normaloff>:/icons/volume.svg</normaloff>
+          <normalon>:/icons/mute.svg</normalon>:/icons/volume.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -564,7 +593,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
+          <normaloff>:/icons/folder.svg</normaloff>:/icons/folder.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -576,13 +605,6 @@
       </item>
      </layout>
     </widget>
-   </item>
-   <item row="0" column="1" rowspan="2">
-    <layout class="QHBoxLayout" name="view">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-    </layout>
    </item>
   </layout>
  </widget>

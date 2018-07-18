@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>Search</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../icons.qrc">
+    <normaloff>:/app/icons/app-icons/Search.svg</normaloff>:/app/icons/app-icons/Search.svg</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
@@ -86,7 +90,7 @@
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/Search.svg</normaloff>:/icons/Search.svg</iconset>
+             <normaloff>:/app/icons/app-icons/Search.svg</normaloff>:/app/icons/app-icons/Search.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -241,7 +245,7 @@
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/down_w.svg</normaloff>:/icons/down_w.svg</iconset>
+             <normaloff>:/icons/down.svg</normaloff>:/icons/down.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -324,7 +328,7 @@
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
+             <normaloff>:/icons/folder.svg</normaloff>:/icons/folder.svg</iconset>
            </property>
            <property name="iconSize">
             <size>

@@ -13,9 +13,21 @@ QFrame [accessibleName="nameBar"]{
 
 
 QWidget [accessibleName="shortcut"]{
-    background-color: #2A2A2A;
+    background-color: @help;
     color: @color07;
     border: none;}
+
+
+#line{
+    background-color: @color05;
+    color: #C0C0C0;
+    border: none;}
+
+
+QLabel{
+    background-color: transparent;
+    color: @color07;
+    padding: 1px 5px 1px 5px;}
 
 
 QTextEdit{

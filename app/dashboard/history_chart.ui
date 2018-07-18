@@ -81,11 +81,11 @@
 }
 
 QCheckBox::indicator:checked {
-    image:url(:/icons/fullexit_w.svg);
+    image:url(:/icons/fullexit.svg);
 }
 
 QCheckBox::indicator:unchecked {
-    image: url(:/icons/fullscreen_w.svg);
+    image: url(:/icons/fullscreen.svg);
 }</string>
      </property>
      <property name="text">

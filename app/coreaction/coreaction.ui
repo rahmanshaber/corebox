@@ -18,7 +18,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CoreAction.svg</normaloff>:/icons/CoreAction.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CoreAction.svg</normaloff>:/app/icons/app-icons/CoreAction.svg</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -248,7 +248,7 @@ background-color:#323232 ;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/Start.svg</normaloff>:/icons/Start.svg</iconset>
+             <normaloff>:/app/icons/app-icons/Start.svg</normaloff>:/app/icons/app-icons/Start.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -284,7 +284,7 @@ background-color:#323232 ;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
+             <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -320,7 +320,7 @@ background-color:#323232 ;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
+             <normaloff>:/app/icons/app-icons/CorePaint.svg</normaloff>:/app/icons/app-icons/CorePaint.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -356,7 +356,7 @@ background-color:#323232 ;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/CoreShot.svg</normaloff>:/icons/CoreShot.svg</iconset>
+             <normaloff>:/app/icons/app-icons/CoreShot.svg</normaloff>:/app/icons/app-icons/CoreShot.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -392,7 +392,7 @@ background-color:#323232 ;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/CorePad.svg</normaloff>:/icons/CorePad.svg</iconset>
+             <normaloff>:/app/icons/app-icons/CorePad.svg</normaloff>:/app/icons/app-icons/CorePad.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -428,7 +428,7 @@ background-color:#323232 ;
            </property>
            <property name="icon">
             <iconset resource="../icons.qrc">
-             <normaloff>:/icons/Search.svg</normaloff>:/icons/Search.svg</iconset>
+             <normaloff>:/app/icons/app-icons/Search.svg</normaloff>:/app/icons/app-icons/Search.svg</iconset>
            </property>
            <property name="iconSize">
             <size>

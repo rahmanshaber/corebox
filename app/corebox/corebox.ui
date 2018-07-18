@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
+    <normaloff>:/app/icons/app-icons/Box.svg</normaloff>:/app/icons/app-icons/Box.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QMessageBox {
@@ -159,7 +159,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
+           <normaloff>:/app/icons/app-icons/Box.svg</normaloff>:/app/icons/app-icons/Box.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -210,7 +210,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/Start.svg</normaloff>:/icons/Start.svg</iconset>
+           <normaloff>:/app/icons/app-icons/Start.svg</normaloff>:/app/icons/app-icons/Start.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -248,7 +248,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/DashBoard.svg</normaloff>:/icons/DashBoard.svg</iconset>
+           <normaloff>:/app/icons/app-icons/DashBoard.svg</normaloff>:/app/icons/app-icons/DashBoard.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -286,7 +286,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/Bookmarks.svg</normaloff>:/icons/Bookmarks.svg</iconset>
+           <normaloff>:/app/icons/app-icons/Bookmarks.svg</normaloff>:/app/icons/app-icons/Bookmarks.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -321,7 +321,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/Search.svg</normaloff>:/icons/Search.svg</iconset>
+           <normaloff>:/app/icons/app-icons/Search.svg</normaloff>:/app/icons/app-icons/Search.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -359,7 +359,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
+           <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -397,7 +397,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/CorePad.svg</normaloff>:/icons/CorePad.svg</iconset>
+           <normaloff>:/app/icons/app-icons/CorePad.svg</normaloff>:/app/icons/app-icons/CorePad.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -435,7 +435,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
+           <normaloff>:/app/icons/app-icons/CorePaint.svg</normaloff>:/app/icons/app-icons/CorePaint.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -476,7 +476,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/Settings.svg</normaloff>:/icons/Settings.svg</iconset>
+           <normaloff>:/app/icons/app-icons/Settings.svg</normaloff>:/app/icons/app-icons/Settings.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -524,7 +524,7 @@ QPushButton:hover  {
          </property>
          <property name="icon">
           <iconset resource="../icons.qrc">
-           <normaloff>:/icons/copy_w.svg</normaloff>:/icons/copy_w.svg</iconset>
+           <normaloff>:/icons/copy.svg</normaloff>:/icons/copy.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -580,7 +580,7 @@ QPushButton:hover  {
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/close_w.svg</normaloff>:/icons/close_w.svg</iconset>
+              <normaloff>:/icons/close.svg</normaloff>:/icons/close.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -615,7 +615,7 @@ QPushButton:hover  {
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/minimize_w.svg</normaloff>:/icons/minimize_w.svg</iconset>
+              <normaloff>:/icons/minimize.svg</normaloff>:/icons/minimize.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -644,7 +644,7 @@ QPushButton:hover  {
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/fullscreen_w.svg</normaloff>:/icons/fullscreen_w.svg</iconset>
+              <normaloff>:/icons/fullscreen.svg</normaloff>:/icons/fullscreen.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -673,7 +673,7 @@ QPushButton:hover  {
             </property>
             <property name="icon">
              <iconset resource="../icons.qrc">
-              <normaloff>:/icons/fullexit_w.svg</normaloff>:/icons/fullexit_w.svg</iconset>
+              <normaloff>:/icons/fullexit.svg</normaloff>:/icons/fullexit.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -748,7 +748,7 @@ color:  #ffffff;
 }
 
 QTabBar::close-button {
-    image: url(:/icons/close_w.svg);
+    image: url(:/icons/close.svg);
     subcontrol-position: right;
 }</string>
       </property>

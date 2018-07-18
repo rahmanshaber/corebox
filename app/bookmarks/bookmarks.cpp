@@ -68,7 +68,7 @@ void bookmarks::sectionRefresh()
     ui->section->addItems(bk.getBookSections());
 
     for (int i = 0; i < ui->section->count(); ++i) {
-        ui->section->item(i)->setIcon((QIcon(":/icons/bookit_w.svg")));
+        ui->section->item(i)->setIcon((QIcon(":/icons/bookit.svg")));
     }
 
     ui->section->setCurrentRow(selectedIndex);
@@ -203,7 +203,7 @@ void bookmarks::on_sectionDone_clicked()
 {
     bk.addSection(ui->sectionName->text());
     ui->section->addItem(ui->sectionName->text());
-    ui->section->item(ui->section->count() - 1)->setIcon(QIcon(":/icons/bookit_w.svg"));
+    ui->section->item(ui->section->count() - 1)->setIcon(QIcon(":/icons/bookit.svg"));
     ui->sectionName->setText("");
     ui->sectionStatus->setText("");
     ui->addSectionBox->setVisible(false);

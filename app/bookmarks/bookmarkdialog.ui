@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/Bookmarks.svg</normaloff>:/icons/Bookmarks.svg</iconset>
+    <normaloff>:/app/icons/app-icons/Bookmarks.svg</normaloff>:/app/icons/app-icons/Bookmarks.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -84,14 +84,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="cancel">
+      <widget class="QToolButton" name="cancel">
        <property name="text">
         <string>Cancel</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="done">
+      <widget class="QToolButton" name="done">
        <property name="text">
         <string>Done</string>
        </property>

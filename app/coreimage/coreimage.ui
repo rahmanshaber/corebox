@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CoreImage.svg</normaloff>:/icons/CoreImage.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CoreImage.svg</normaloff>:/app/icons/app-icons/CoreImage.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -96,7 +96,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/CoreImage.svg</normaloff>:/icons/CoreImage.svg</iconset>
+          <normaloff>:/app/icons/app-icons/CoreImage.svg</normaloff>:/app/icons/app-icons/CoreImage.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -142,7 +142,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
+          <normaloff>:/icons/folder.svg</normaloff>:/icons/folder.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -169,7 +169,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/save_w.svg</normaloff>:/icons/save_w.svg</iconset>
+          <normaloff>:/icons/save.svg</normaloff>:/icons/save.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -194,7 +194,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/save_w.svg</normaloff>:/icons/save_w.svg</iconset>
+          <normaloff>:/icons/save.svg</normaloff>:/icons/save.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -219,7 +219,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/rotate_left_w.svg</normaloff>:/icons/rotate_left_w.svg</iconset>
+          <normaloff>:/icons/rotate_left.svg</normaloff>:/icons/rotate_left.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -244,7 +244,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/rotate_right_w.svg</normaloff>:/icons/rotate_right_w.svg</iconset>
+          <normaloff>:/icons/rotate_right.svg</normaloff>:/icons/rotate_right.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -269,7 +269,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/flip_w.svg</normaloff>:/icons/flip_w.svg</iconset>
+          <normaloff>:/icons/flip.svg</normaloff>:/icons/flip.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -294,7 +294,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/flip_w.svg</normaloff>:/icons/flip_w.svg</iconset>
+          <normaloff>:/icons/flip.svg</normaloff>:/icons/flip.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -319,7 +319,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/zoom_in_w.svg</normaloff>:/icons/zoom_in_w.svg</iconset>
+          <normaloff>:/icons/zoom_in.svg</normaloff>:/icons/zoom_in.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -344,7 +344,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/zoom_out_w.svg</normaloff>:/icons/zoom_out_w.svg</iconset>
+          <normaloff>:/icons/zoom_out.svg</normaloff>:/icons/zoom_out.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -369,7 +369,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/fullscreen_w.svg</normaloff>:/icons/fullscreen_w.svg</iconset>
+          <normaloff>:/icons/fullscreen.svg</normaloff>:/icons/fullscreen.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -394,7 +394,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/slideshow_w.svg</normaloff>:/icons/slideshow_w.svg</iconset>
+          <normaloff>:/icons/slideshow.svg</normaloff>:/icons/slideshow.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -424,7 +424,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/folder_w.svg</normaloff>:/icons/folder_w.svg</iconset>
+          <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -449,7 +449,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
+          <normaloff>:/app/icons/app-icons/CorePaint.svg</normaloff>:/app/icons/app-icons/CorePaint.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -484,7 +484,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/bookit_w.svg</normaloff>:/icons/bookit_w.svg</iconset>
+          <normaloff>:/icons/bookit.svg</normaloff>:/icons/bookit.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -516,6 +516,28 @@
      <zorder>bookMarkIt</zorder>
      <zorder>openincorepaint</zorder>
      <zorder>containingfolder</zorder>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="minimumSize">
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
     </widget>
    </item>
    <item>
@@ -559,7 +581,7 @@
         <property name="geometry">
          <rect>
           <x>102</x>
-          <y>10</y>
+          <y>11</y>
           <width>553</width>
           <height>446</height>
          </rect>
@@ -568,22 +590,6 @@
          <bool>true</bool>
         </property>
        </widget>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>1</height>
-        </size>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
       </widget>
      </item>
      <item>
@@ -725,7 +731,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/left_w.svg</normaloff>:/icons/left_w.svg</iconset>
+            <normaloff>:/icons/left.svg</normaloff>:/icons/left.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -751,7 +757,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/right_w.svg</normaloff>:/icons/right_w.svg</iconset>
+            <normaloff>:/icons/right.svg</normaloff>:/icons/right.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -779,7 +785,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/tools_w.svg</normaloff>:/icons/tools_w.svg</iconset>
+            <normaloff>:/icons/tools.svg</normaloff>:/icons/tools.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -808,7 +814,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/trash_w.svg</normaloff>:/icons/trash_w.svg</iconset>
+            <normaloff>:/icons/trash.svg</normaloff>:/icons/trash.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -831,7 +837,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/fullscreen_w.svg</normaloff>:/icons/fullscreen_w.svg</iconset>
+            <normaloff>:/icons/fullscreen.svg</normaloff>:/icons/fullscreen.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -857,7 +863,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/thumbnail_w.svg</normaloff>:/icons/thumbnail_w.svg</iconset>
+            <normaloff>:/icons/thumbnail.svg</normaloff>:/icons/thumbnail.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -886,7 +892,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/properties_w.svg</normaloff>:/icons/properties_w.svg</iconset>
+            <normaloff>:/icons/properties.svg</normaloff>:/icons/properties.svg</iconset>
           </property>
           <property name="iconSize">
            <size>

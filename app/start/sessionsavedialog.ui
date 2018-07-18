@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>SaveSession</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../icons.qrc">
+    <normaloff>:/app/icons/app-icons/Box.svg</normaloff>:/app/icons/app-icons/Box.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -142,6 +146,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

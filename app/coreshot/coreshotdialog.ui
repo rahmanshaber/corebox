@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/CoreShot.svg</normaloff>:/icons/CoreShot.svg</iconset>
+    <normaloff>:/app/icons/app-icons/CoreShot.svg</normaloff>:/app/icons/app-icons/CoreShot.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -55,16 +55,16 @@
        <number>5</number>
       </property>
       <property name="leftMargin">
-       <number>3</number>
+       <number>5</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>5</number>
       </property>
       <property name="rightMargin">
-       <number>3</number>
+       <number>5</number>
       </property>
       <property name="bottomMargin">
-       <number>3</number>
+       <number>5</number>
       </property>
       <item>
        <widget class="QToolButton" name="captureScreen">
@@ -170,7 +170,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/close_w.svg</normaloff>:/icons/close_w.svg</iconset>
+          <normaloff>:/icons/close.svg</normaloff>:/icons/close.svg</iconset>
         </property>
         <property name="iconSize">
          <size>

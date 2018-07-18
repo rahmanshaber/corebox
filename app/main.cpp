@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     // Set application info
     app.setOrganizationName("coreaction");
     app.setApplicationName("coreaction");
-    app.setWindowIcon(QIcon(":/icons/CoreAction.svg"));
+    app.setWindowIcon(QIcon(":/app/icons/app-icons/CoreAction.svg"));
 
     coreaction a;
     a.show();

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>881</width>
+    <width>893</width>
     <height>533</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../icons.qrc">
-    <normaloff>:/icons/Start.svg</normaloff>:/icons/Start.svg</iconset>
+    <normaloff>:/app/icons/app-icons/Start.svg</normaloff>:/app/icons/app-icons/Start.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -165,7 +165,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/trash_w.svg</normaloff>:/icons/trash_w.svg</iconset>
+          <normaloff>:/icons/trash.svg</normaloff>:/icons/trash.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -185,7 +185,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/trash_w.svg</normaloff>:/icons/trash_w.svg</iconset>
+          <normaloff>:/icons/trash.svg</normaloff>:/icons/trash.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -311,11 +311,20 @@
          </property>
          <item>
           <property name="text">
+           <string>Bookmarks</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../icons.qrc">
+            <normaloff>:/app/icons/app-icons/Bookmarks.svg</normaloff>:/app/icons/app-icons/Bookmarks.svg</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>CoreBox</string>
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
+            <normaloff>:/app/icons/app-icons/Box.svg</normaloff>:/app/icons/app-icons/Box.svg</iconset>
           </property>
          </item>
          <item>
@@ -324,7 +333,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CoreTerminal.svg</normaloff>:/icons/CoreTerminal.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CoreTerminal.svg</normaloff>:/app/icons/app-icons/CoreTerminal.svg</iconset>
           </property>
          </item>
          <item>
@@ -333,7 +342,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CorePDF.svg</normaloff>:/icons/CorePDF.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CorePDF.svg</normaloff>:/app/icons/app-icons/CorePDF.svg</iconset>
           </property>
          </item>
          <item>
@@ -342,7 +351,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
           </property>
          </item>
          <item>
@@ -351,7 +360,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CorePad.svg</normaloff>:/icons/CorePad.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CorePad.svg</normaloff>:/app/icons/app-icons/CorePad.svg</iconset>
           </property>
          </item>
          <item>
@@ -360,7 +369,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CorePaint.svg</normaloff>:/app/icons/app-icons/CorePaint.svg</iconset>
           </property>
          </item>
          <item>
@@ -369,7 +378,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CorePlayer.svg</normaloff>:/icons/CorePlayer.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CorePlayer.svg</normaloff>:/app/icons/app-icons/CorePlayer.svg</iconset>
           </property>
          </item>
          <item>
@@ -378,7 +387,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CoreImage.svg</normaloff>:/icons/CoreImage.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CoreImage.svg</normaloff>:/app/icons/app-icons/CoreImage.svg</iconset>
           </property>
          </item>
          <item>
@@ -387,7 +396,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/Search.svg</normaloff>:/icons/Search.svg</iconset>
+            <normaloff>:/app/icons/app-icons/Search.svg</normaloff>:/app/icons/app-icons/Search.svg</iconset>
           </property>
          </item>
          <item>
@@ -396,16 +405,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/DashBoard.svg</normaloff>:/icons/DashBoard.svg</iconset>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Bookmarks</string>
-          </property>
-          <property name="icon">
-           <iconset resource="../icons.qrc">
-            <normaloff>:/icons/Bookmarks.svg</normaloff>:/icons/Bookmarks.svg</iconset>
+            <normaloff>:/app/icons/app-icons/DashBoard.svg</normaloff>:/app/icons/app-icons/DashBoard.svg</iconset>
           </property>
          </item>
          <item>
@@ -414,7 +414,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/Settings.svg</normaloff>:/icons/Settings.svg</iconset>
+            <normaloff>:/app/icons/app-icons/Settings.svg</normaloff>:/app/icons/app-icons/Settings.svg</iconset>
           </property>
          </item>
          <item>
@@ -423,7 +423,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/About.svg</normaloff>:/icons/About.svg</iconset>
+            <normaloff>:/app/icons/app-icons/About.svg</normaloff>:/app/icons/app-icons/About.svg</iconset>
           </property>
          </item>
          <item>
@@ -432,7 +432,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/Help.svg</normaloff>:/icons/Help.svg</iconset>
+            <normaloff>:/app/icons/app-icons/Help.svg</normaloff>:/app/icons/app-icons/Help.svg</iconset>
           </property>
          </item>
          <item>
@@ -441,7 +441,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CoreTime.svg</normaloff>:/icons/CoreTime.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CoreTime.svg</normaloff>:/app/icons/app-icons/CoreTime.svg</iconset>
           </property>
          </item>
          <item>
@@ -450,7 +450,7 @@
           </property>
           <property name="icon">
            <iconset resource="../icons.qrc">
-            <normaloff>:/icons/CoreRenemer.svg</normaloff>:/icons/CoreRenemer.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CoreRenemer.svg</normaloff>:/app/icons/app-icons/CoreRenemer.svg</iconset>
           </property>
          </item>
         </widget>

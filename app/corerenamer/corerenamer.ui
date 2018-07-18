@@ -14,7 +14,7 @@
    <string>CoreRenamer</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../icons.qrc">
+   <iconset>
     <normaloff>:/icons/CoreRenemer.svg</normaloff>:/icons/CoreRenemer.svg</iconset>
   </property>
   <property name="styleSheet">
@@ -110,7 +110,7 @@
           <number>5</number>
          </property>
          <item>
-          <widget class="QPushButton" name="bRefreshList">
+          <widget class="QToolButton" name="bRefreshList">
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -120,7 +120,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="clearItem">
+          <widget class="QToolButton" name="clearItem">
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -130,7 +130,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="bUndo">
+          <widget class="QToolButton" name="bUndo">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -146,7 +146,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="bRedo">
+          <widget class="QToolButton" name="bRedo">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -175,7 +175,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="bAddFiles">
+          <widget class="QToolButton" name="bAddFiles">
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -185,7 +185,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="rename">
+          <widget class="QToolButton" name="rename">
            <property name="focusPolicy">
             <enum>Qt::NoFocus</enum>
            </property>
@@ -255,22 +255,6 @@
                </property>
               </widget>
              </item>
-             <item row="4" column="3">
-              <widget class="QPushButton" name="addTextbtn">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="focusPolicy">
-                <enum>Qt::NoFocus</enum>
-               </property>
-               <property name="text">
-                <string>Add Text</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="2" colspan="2">
               <widget class="QLineEdit" name="addTextCPos"/>
              </item>
@@ -291,6 +275,22 @@
               <widget class="QCheckBox" name="addFromR">
                <property name="text">
                 <string>From Right</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="3">
+              <widget class="QToolButton" name="addTextbtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="text">
+                <string>Add Text</string>
                </property>
               </widget>
              </item>
@@ -322,19 +322,6 @@
              <item row="0" column="1" colspan="2">
               <widget class="QLineEdit" name="tDoRemoveAddNum"/>
              </item>
-             <item row="2" column="2">
-              <widget class="QPushButton" name="doRemoveAddNum">
-               <property name="focusPolicy">
-                <enum>Qt::NoFocus</enum>
-               </property>
-               <property name="layoutDirection">
-                <enum>Qt::LeftToRight</enum>
-               </property>
-               <property name="text">
-                <string>Add Text</string>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0" colspan="3">
               <spacer name="verticalSpacer_7">
                <property name="orientation">
@@ -347,6 +334,25 @@
                 </size>
                </property>
               </spacer>
+             </item>
+             <item row="2" column="2">
+              <widget class="QToolButton" name="doRemoveAddNum">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="text">
+                <string>Add Text</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -415,8 +421,21 @@
             </property>
            </spacer>
           </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lrptrt">
+            <property name="text">
+             <string>Replace Text : </string>
+            </property>
+           </widget>
+          </item>
           <item row="4" column="1">
-           <widget class="QPushButton" name="replaceTextbtn">
+           <widget class="QToolButton" name="replaceTextbtn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
@@ -426,19 +445,18 @@
            </widget>
           </item>
           <item row="4" column="2">
-           <widget class="QPushButton" name="replaceTextAllbtn">
+           <widget class="QToolButton" name="replaceTextAllbtn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>Replace for all</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="lrptrt">
-            <property name="text">
-             <string>Replace Text : </string>
             </property>
            </widget>
           </item>
@@ -553,39 +571,6 @@
                </property>
               </spacer>
              </item>
-             <item row="2" column="0">
-              <widget class="QPushButton" name="upperCase">
-               <property name="focusPolicy">
-                <enum>Qt::NoFocus</enum>
-               </property>
-               <property name="layoutDirection">
-                <enum>Qt::LeftToRight</enum>
-               </property>
-               <property name="text">
-                <string>All to UPPER CASE</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QPushButton" name="capitalEach">
-               <property name="focusPolicy">
-                <enum>Qt::NoFocus</enum>
-               </property>
-               <property name="text">
-                <string>Capitalize Each Word</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QPushButton" name="lowerCase">
-               <property name="focusPolicy">
-                <enum>Qt::NoFocus</enum>
-               </property>
-               <property name="text">
-                <string>All to lower case</string>
-               </property>
-              </widget>
-             </item>
              <item row="3" column="0">
               <spacer name="verticalSpacer_2">
                <property name="orientation">
@@ -598,6 +583,57 @@
                 </size>
                </property>
               </spacer>
+             </item>
+             <item row="0" column="0">
+              <widget class="QToolButton" name="lowerCase">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="text">
+                <string>All to lower case</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QToolButton" name="capitalEach">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="text">
+                <string>Capitalize Each Word</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QToolButton" name="upperCase">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="text">
+                <string>All to UPPER CASE</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -627,13 +663,6 @@
           <property name="verticalSpacing">
            <number>10</number>
           </property>
-          <item row="5" column="2">
-           <widget class="QPushButton" name="removeTextAllbtn">
-            <property name="text">
-             <string>Remove for all</string>
-            </property>
-           </widget>
-          </item>
           <item row="4" column="1" colspan="2">
            <spacer name="verticalSpacer_3">
             <property name="orientation">
@@ -651,13 +680,6 @@
            <widget class="QLabel" name="lrmtccount">
             <property name="text">
              <string>To : </string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QPushButton" name="removeTextTextbtn">
-            <property name="text">
-             <string>Remove Text</string>
             </property>
            </widget>
           </item>
@@ -691,6 +713,32 @@
            <widget class="QCheckBox" name="remFromR">
             <property name="text">
              <string>From Right</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QToolButton" name="removeTextAllbtn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Remove for all</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QToolButton" name="removeTextTextbtn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Remove Text</string>
             </property>
            </widget>
           </item>
@@ -821,8 +869,11 @@
               </property>
              </widget>
             </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="savePath"/>
+            </item>
             <item row="1" column="2">
-             <widget class="QPushButton" name="browseSave">
+             <widget class="QToolButton" name="browseSave">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -846,9 +897,6 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="savePath"/>
-            </item>
            </layout>
           </item>
           <item row="2" column="0" colspan="2">
@@ -865,7 +913,7 @@
            </spacer>
           </item>
           <item row="2" column="2">
-           <widget class="QPushButton" name="saveRenamed">
+           <widget class="QToolButton" name="saveRenamed">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>

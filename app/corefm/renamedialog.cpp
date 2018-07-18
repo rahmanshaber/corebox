@@ -31,7 +31,7 @@ renameDialog::renameDialog(QFileInfo iFile,QWidget *parent):QDialog(parent),ui(n
     setWindowTitle("Rename \"" + m_iFile.fileName() + "\"");
     ui->newName->setText(m_iFile.fileName());
     ui->pic->setPixmap(geticon(iFile.filePath()).pixmap(120, 120));
-    connect(ui->cancel, &QPushButton::clicked, this, &renameDialog::close);
+    connect(ui->cancel, &QToolButton::clicked, this, &renameDialog::close);
 
     shotcuts();
 }
