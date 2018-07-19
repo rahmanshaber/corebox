@@ -9,16 +9,16 @@
 <img src="docs/screenshots/a4.png" width="500">
 
 ### Download
-* Version 2.1 released Friday, June 1, 2018.
+* Version 2.2 released Friday, July 19, 2018.
 * Here is the app download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
 * See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Changes in latest release
-* Total 80 fixes in this release.
-* full trash support.
-* redesinged coreaction.
-* added drive list in corefm.
-* added a pdf viewer and more in [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
+* Total 130 fixes in this release.
+* New Dark and Light mode.
+* Redesinged Start.
+* Added two new app CoreRenamer and CoreTerminal.
+* Improvements in Search and more in [Release Notes](https://github.com/rahmanshaber/corebox/blob/master/docs/ReleaseNotes "Title") .
 
 ### Build
 * To build see the buidinfo.txt in doc folder [here](https://github.com/rahmanshaber/corebox/blob/master/docs/buildinfo.txt "Title") 
@@ -30,7 +30,6 @@
 * qt5-multimedia
 * qt5-x11extras
 * qt5-webengine
-* file
 
 
 ### Known Bugs

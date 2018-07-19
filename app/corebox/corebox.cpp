@@ -57,7 +57,7 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
 
     //make the resizeable window button
     QSizeGrip *sizeGrip = new QSizeGrip(this);
-    sizeGrip->setStyleSheet("QWidget{background-color: #111111 ; width: 16px;height: 16px; background-image: url(:/icons/expand.svg); background-repeat: no-repeat ;background-position: center center ;}");
+    sizeGrip->setStyleSheet("QWidget{background-color: #111111 ; width: 16px;height: 30px; background-image: url(:/icons/expand.svg); background-repeat: no-repeat ;background-position: center center ;}");
     ui->res->addWidget(sizeGrip);
 
     //setup window size and state

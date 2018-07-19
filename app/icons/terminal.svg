@@ -42,8 +42,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="713"
-     inkscape:window-height="480"
+     inkscape:window-width="1366"
+     inkscape:window-height="714"
      id="namedview8"
      showgrid="false"
      inkscape:zoom="9.8333333"
@@ -51,17 +51,17 @@
      inkscape:cy="12"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:current-layer="svg6" />
   <polyline
      points="4 17 10 11 4 5"
      id="polyline2"
-     style="fill:#808080;fill-opacity:1" />
+     style="stroke:#aaacad;stroke-opacity:1" />
   <line
      x1="12"
      y1="19"
      x2="20"
      y2="19"
      id="line4"
-     style="fill:#808080;fill-opacity:1" />
+     style="stroke:#aaacad;stroke-opacity:1" />
 </svg>
