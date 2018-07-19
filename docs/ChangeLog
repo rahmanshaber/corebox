@@ -128,7 +128,8 @@ Version 2.2
 - limit the openable window to 10.
 - swicth case in setupfolder function.
 - moved to universal theme managment
-
+- added new Dark and light mode.
+- redesinged all the ui and sidebar color.
 
 
 

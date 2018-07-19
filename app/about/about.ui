@@ -129,28 +129,6 @@
     </widget>
    </item>
    <item>
-    <widget class="Line" name="line">
-     <property name="minimumSize">
-      <size>
-       <width>1</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>1</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QWidget" name="widget" native="true">
      <property name="accessibleName">
       <string>content</string>

@@ -1,0 +1,82 @@
+/*CoreBox */
+
+QMessageBox {
+    background-color: @color02}
+QMessageBox QLabel {
+    background-color: transparent ;
+    color: @color07;
+    padding: 5px 5px 5px 10px;}
+QMessageBox QPushButton {
+    padding: 5px 5px 5px 10px;
+    color: @color07;
+    border: 1px solid @color05;}
+
+
+QFileDialog {
+    background-color: @color02;}
+QFileDialog QComboBox{
+    background-color: transparent ;
+    color: #ffffff;}
+QFileDialog QListView{
+    background-color: transparent ;
+    color: #ffffff;}
+QFileDialog QTreeView{
+    background-color: transparent ;
+    color: #ffffff;}
+QFileDialog QLabel {
+    background-color: transparent ;
+    color: #fefefe;}
+QFileDialog QPushButton {
+    background-color: transparent ;
+    color: #ffffff;
+    padding: 5px 5px 5px 10px;
+    border: 1px solid @color05;}
+QFileDialog QToolButton {
+    background-color: transparent ;
+    color: #ffffff;
+    padding: 5px 5px 5px 10px;
+    border: 1px solid @color05;}
+QFileDialog QLineEdit {
+    background-color: transparent ;
+    color: #ffffff;
+    border: 1px solid @color05;}
+
+
+
+QTabWidget QTabBar{
+    background-color: @corebox;
+    border:none;
+    height: 30px;}
+QTabWidget QTabBar::tab{
+    text-align: left;
+    background-color: #136ba2;
+    border-style: none;
+    height: 30px;
+    width: 130px;
+    color: #136ba2;
+    padding: 0px 5px 0px 5px;}
+QTabWidget QTabBar::tab:selected{
+    background-color: @color04;
+    font-weight: bold;
+    color: @color08;}
+QTabWidget QTabBar::tab:!selected{
+    background-color: @corebox;
+    color: @color07;}
+QTabWidget QTabBar::tab:hover{
+    background-color: @color04;;
+    color:  @color08;}
+QTabBar::close-button {
+    image: url(:/icons/close.svg);
+    subcontrol-position: right;}
+
+
+#sideBar{
+    background-color: #111111;
+    color: #111111;
+    border: 1px #111111;}
+
+QPushButton{
+    border: 1px #2A2A2A;
+    background-color: transparent ;}
+QPushButton:hover  {
+    background-color: @color04;}

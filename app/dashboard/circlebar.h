@@ -6,6 +6,8 @@
 #include <QWidget>
 #include <QtCharts>
 
+#include "corebox/globalfunctions.h"
+
 
 namespace Ui {
     class CircleBar;

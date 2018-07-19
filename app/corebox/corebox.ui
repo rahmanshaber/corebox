@@ -24,47 +24,7 @@
     <normaloff>:/app/icons/app-icons/Box.svg</normaloff>:/app/icons/app-icons/Box.svg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMessageBox {
-    background-color: #212f3c;}
-QMessageBox QLabel {
-    background-color: transparent ;
-    color: #fefefe;
-    padding: 5px 5px 5px 10px;}
-QMessageBox QPushButton {
-    padding: 5px 5px 5px 10px;
-    color: #fefefe;
-    border: 1px solid #434343;
-}
-
-
-QFileDialog {
-    background-color: #212f3c;}
-QFileDialog QComboBox{
-    background-color: transparent ;
-    color: #ffffff;}
-QFileDialog QListView{
-    background-color: transparent ;
-    color: #ffffff;}
-QFileDialog QTreeView{
-    background-color: transparent ;
-    color: #ffffff;}
-QFileDialog QLabel {
- background-color: transparent ;
-    color: #fefefe;}
-QFileDialog QPushButton {
-    background-color: transparent ;
-    color: #ffffff;
-    padding: 5px 5px 5px 10px;
-    border: 1px solid #434343;}
-QFileDialog QToolButton {
-    background-color: transparent ;
-    color: #ffffff;
-    padding: 5px 5px 5px 10px;
-    border: 1px #434343;}
-QFileDialog QLineEdit {
-    background-color: transparent ;
-    color: #ffffff;
-    border: 1px solid #434343;}</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
@@ -96,27 +56,12 @@ QFileDialog QLineEdit {
      <number>0</number>
     </property>
     <item>
-     <widget class="QWidget" name="sidebar" native="true">
+     <widget class="QWidget" name="sideBar" native="true">
       <property name="minimumSize">
        <size>
         <width>40</width>
         <height>0</height>
        </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QWidget {
-    background-color: #111111;
-    color: #111111;
-    border: 1px #111111;
-}
-
-QPushButton{
-    border: 1px #2A2A2A;
-    background-color: #111111; }
-QPushButton:hover  {
-    background-color: #1268A4;
-}
-</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <property name="spacing">
@@ -540,7 +485,7 @@ QPushButton:hover  {
        <item>
         <widget class="QFrame" name="frame">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -714,43 +659,7 @@ QPushButton:hover  {
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-QTabWidget QTabBar{
-background-color: #373737;
-border:none;
-height: 30px;
-}
-
-QTabWidget QTabBar::tab{
-text-align: left;
-background-color: #136ba2;
-border-style: 1px rgb(67, 67, 67);
-height: 30px;
-width: 130px;
-color: #136ba2;
-padding: 0px 5px 0px 5px;
-}
-
-QTabWidget QTabBar::tab:selected{
-background-color: #5A5B5C;
-font-weight: bold;
-color: #ffffff;
-}
-
-QTabWidget QTabBar::tab:!selected{
-background-color:#353536;
-color:  #B4B4B4;
-}
-
-QTabWidget QTabBar::tab:hover{
-background-color:  #5A5B5C;
-color:  #ffffff;
-}
-
-QTabBar::close-button {
-    image: url(:/icons/close.svg);
-    subcontrol-position: right;
-}</string>
+       <string notr="true"/>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>

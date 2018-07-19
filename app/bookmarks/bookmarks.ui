@@ -36,29 +36,7 @@
    <property name="spacing">
     <number>0</number>
    </property>
-   <item row="0" column="1" rowspan="4" colspan="2">
-    <widget class="Line" name="line">
-     <property name="minimumSize">
-      <size>
-       <width>1</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>1</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" rowspan="3">
+   <item row="0" column="0" rowspan="3">
     <widget class="QWidget" name="shortcut" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -265,7 +243,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="2" column="2">
     <widget class="QWidget" name="bookmarkEditBox" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -449,7 +427,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="3">
+   <item row="2" column="3">
     <widget class="QWidget" name="addSectionBox" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -602,7 +580,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="2" colspan="2">
+   <item row="1" column="1" colspan="3">
     <widget class="QWidget" name="widget" native="true">
      <property name="accessibleName">
       <string>contentList</string>
@@ -780,7 +758,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="2" colspan="2">
+   <item row="0" column="1" colspan="3">
     <widget class="QWidget" name="nevegationbar" native="true">
      <property name="minimumSize">
       <size>

@@ -22,6 +22,9 @@ coretime::coretime(QWidget *parent) :QWidget(parent),ui(new Ui::coretime)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreTime.qss"));
+
     //Create / load Schedule
     _Schedules=new ScheduleCollection(this);
     _Schedules->LoadSchedules();

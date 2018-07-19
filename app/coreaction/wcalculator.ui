@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>336</width>
+    <width>408</width>
     <height>226</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="accessibleName">
+   <string>widgets</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -33,13 +36,9 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="Widgets">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-border: 1px #494949;
-background-color: #1C2836;
-color: #ffffff;
-}</string>
+    <widget class="QWidget" name="Widgets" native="true">
+     <property name="accessibleName">
+      <string>widgets</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="leftMargin">
@@ -565,6 +564,9 @@ QPushButton:pressed
         </property>
         <property name="cursor">
          <cursorShape>IBeamCursor</cursorShape>
+        </property>
+        <property name="accessibleName">
+         <string>widgets</string>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>

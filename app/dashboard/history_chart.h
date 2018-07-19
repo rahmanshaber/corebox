@@ -8,6 +8,7 @@
 
 #include "Utils/format_util.h"
 #include "dashboard/signal_mapper.h"
+#include "corebox/globalfunctions.h"
 
 
 namespace Ui {

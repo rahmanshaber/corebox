@@ -23,8 +23,22 @@ QWidget [accessibleName="statusBar"]{
 
 #line{
     background-color: @color05;
-    color: #C0C0C0;
+    color: @color05;
     border: none;}
+
+
+QMenu {
+    background-color: @color01;
+    border: 1px solid @color05;}
+QMenu::item {
+    background-color: transparent;}
+QMenu::item:selected {
+    background-color: @color04;}
+QMenu::separator {
+    height: 1px;
+    background: @color05;
+    margin-left: 10px;
+    margin-right: 5px;}
 
 
 QLabel{

@@ -2,7 +2,7 @@
 
 #appTitle{
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 #selectedSection{
@@ -31,10 +31,7 @@ QWidget [accessibleName="contentList"]{
     color: @color07;
     border: none;}
 
-#line{
-    background-color: @color05;
-    color: #C0C0C0;
-    border: none;}
+
 
 
 QLabel{
@@ -104,7 +101,7 @@ QListView{
     background-color: transparent;}
 QListView::item {
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     Text-align:left;
     padding: 5px 5px 5px 0px;}
 QListView::item:selected {

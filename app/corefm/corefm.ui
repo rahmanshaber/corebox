@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1096</width>
+    <width>1097</width>
     <height>514</height>
    </rect>
   </property>
@@ -387,29 +387,7 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1" rowspan="5">
-    <widget class="Line" name="line">
-     <property name="minimumSize">
-      <size>
-       <width>1</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>1</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2" colspan="2">
+   <item row="0" column="2">
     <widget class="QFrame" name="navigationBar">
      <property name="minimumSize">
       <size>
@@ -749,7 +727,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="2" colspan="2">
+   <item row="1" column="2">
     <widget class="QFrame" name="toolsBar">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -1237,7 +1215,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="3">
+   <item row="2" column="2">
     <widget class="QSplitter" name="splitter">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -1396,7 +1374,20 @@
      </widget>
     </widget>
    </item>
-   <item row="3" column="2" colspan="2">
+   <item row="4" column="2">
+    <layout class="QVBoxLayout" name="pagesBar">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+    </layout>
+   </item>
+   <item row="3" column="2">
     <widget class="QFrame" name="statusBar">
      <property name="minimumSize">
       <size>
@@ -1479,18 +1470,27 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="2">
-    <layout class="QVBoxLayout" name="pagesBar">
-     <property name="spacing">
-      <number>0</number>
+   <item row="0" column="1" rowspan="5">
+    <widget class="Line" name="line">
+     <property name="minimumSize">
+      <size>
+       <width>1</width>
+       <height>0</height>
+      </size>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
+     <property name="maximumSize">
+      <size>
+       <width>1</width>
+       <height>16777215</height>
+      </size>
      </property>
-     <property name="topMargin">
-      <number>0</number>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
      </property>
-    </layout>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
    </item>
   </layout>
   <action name="actionOpen">
@@ -1513,28 +1513,16 @@
    </property>
   </action>
   <action name="actionPaste">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/icons/paste_b.svg</normaloff>:/icons/paste_b.svg</iconset>
-   </property>
    <property name="text">
     <string>Paste</string>
    </property>
   </action>
   <action name="actionCopy">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/icons/copy_b.svg</normaloff>:/icons/copy_b.svg</iconset>
-   </property>
    <property name="text">
     <string>Copy</string>
    </property>
   </action>
   <action name="actionCut">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/icons/cut_b.svg</normaloff>:/icons/cut_b.svg</iconset>
-   </property>
    <property name="text">
     <string>Cut</string>
    </property>

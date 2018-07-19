@@ -20,6 +20,9 @@
         <file>style/CoreFM.qss</file>
         <file>style/DashBoard.qss</file>
         <file>style/SessionSaveDialog.qss</file>
+        <file>style/CoreBox.qss</file>
+        <file>style/CoreAction.qss</file>
+        <file>style/CoreTime.qss</file>
     </qresource>
     <qresource prefix="/theme">
         <file>style/modeLight.ini</file>

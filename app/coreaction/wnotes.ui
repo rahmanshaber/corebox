@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="accessibleName">
+   <string>widgets</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
@@ -30,118 +33,41 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QTabWidget" name="notesW">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
      </property>
+     <property name="accessibleName">
+      <string>widgets</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+padding: 5px 5px 3px 5px;
+}</string>
+     </property>
+     <property name="text">
+      <string>NOTE</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="plainTextEdit">
      <property name="minimumSize">
       <size>
        <width>0</width>
        <height>200</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QTabWidget QTabBar::tab{
-min-width: 152px;
-background-color: #3C3C3C;
-color: #ffffff;
-height: 30px;
-padding: 0px 5px 0px 5px;
-}
-
-QTabWidget QTabBar::tab:selected{
-background-color: #0f5d90;
-}
-QTabWidget QTabBar::tab:!selected{
-background-color:  #333333;
-}
-
-</string>
+     <property name="accessibleName">
+      <string>widgets</string>
      </property>
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <property name="usesScrollButtons">
-      <bool>false</bool>
-     </property>
-     <widget class="QWidget" name="note1">
-      <attribute name="title">
-       <string>Notes 1</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QPlainTextEdit" name="plainTextEdit">
-         <property name="styleSheet">
-          <string notr="true">QWidget{
-background-color: #848282;
-border: 1px #3C3C3C;
-color: #000000;
-padding: 3px 5px 2px 5px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="documentTitle">
-          <string notr="true"/>
-         </property>
-         <property name="lineWrapMode">
-          <enum>QPlainTextEdit::WidgetWidth</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="note2">
-      <attribute name="title">
-       <string>Notes 2</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QPlainTextEdit" name="plainTextEdit_2">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
   </layout>

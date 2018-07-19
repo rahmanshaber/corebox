@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="accessibleName">
+   <string>widgets</string>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
@@ -33,12 +36,9 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="Widget">
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #1F2B38; ;
-color: #FFFFFF; 
-}</string>
+    <widget class="QWidget" name="Widget" native="true">
+     <property name="accessibleName">
+      <string>widgets</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="leftMargin">

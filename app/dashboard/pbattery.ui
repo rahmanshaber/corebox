@@ -396,8 +396,24 @@ QProgressBar::chunk {
         </property>
        </widget>
       </item>
+      <item row="0" column="4" rowspan="5">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::MinimumExpanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="0" column="3">
-       <widget class="QPushButton" name="refresh">
+       <widget class="QToolButton" name="refresh">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
@@ -429,26 +445,7 @@ QProgressBar::chunk {
           <height>20</height>
          </size>
         </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
        </widget>
-      </item>
-      <item row="0" column="4" rowspan="5">
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::MinimumExpanding</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </widget>

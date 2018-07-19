@@ -39,12 +39,15 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreBox.qss"));
+
     //set a icon set for the whole app
     QIcon::setThemeName(sm.getThemeName());
 
     //setup framless window
     ui->windows->tabBar()->installEventFilter(this);
-    ui->sidebar->installEventFilter(this);
+    ui->sideBar->installEventFilter(this);
 
     setWindowFlags(Qt::FramelessWindowHint |
       Qt::WindowSystemMenuHint | Qt::SubWindow);
@@ -567,7 +570,7 @@ void CoreBox::changeEvent(QEvent *event)
 
 void CoreBox::mousePressEvent(QMouseEvent *event)
 {
-    if(ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse() && event->buttons()== Qt::LeftButton){
+    if(ui->windows->tabBar()->underMouse() || ui->sideBar->underMouse() && event->buttons()== Qt::LeftButton){
         isMouseDown = true;
         isLeftDown = true;
         mousePos = event->globalPos();
@@ -589,7 +592,7 @@ void CoreBox::mouseMoveEvent(QMouseEvent *event)
 //        int mousePointx = wndPos.x() + (event->globalX() - mousePos.x());
 //        int mousePointy = wndPos.y() + (event->globalY() - mousePos.y());
 
-        if ((ui->windows->tabBar()->underMouse() || ui->sidebar->underMouse()) && isLeftDown == true){
+        if ((ui->windows->tabBar()->underMouse() || ui->sideBar->underMouse()) && isLeftDown == true){
             move(wndPos + (event->globalPos() - mousePos));
 //            qDebug() << "Left mouse clicked";
         }
@@ -610,7 +613,7 @@ void CoreBox::mouseReleaseEvent(QMouseEvent *event)
 
 bool CoreBox::eventFilter(QObject *obj, QEvent *evt)
 {
-    if (obj == ui->sidebar && evt->type() == QEvent::MouseButtonDblClick){
+    if (obj == ui->sideBar && evt->type() == QEvent::MouseButtonDblClick){
         doubleClicked();
     }
 

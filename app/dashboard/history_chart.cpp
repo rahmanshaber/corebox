@@ -63,9 +63,12 @@ void HistoryChart::init()
 
     // theme changed
 //    connect(SignalMapper::ins(), &SignalMapper::sigChangedAppTheme, [=] {
-        QString chartLabelColor = "#7d8ea0";
-        QString chartGridColor = "#7d8ea0";
-        QString historyChartBackground = "#2B2A32";
+//        QString chartLabelColor = "#7d8ea0";
+//        QString chartGridColor = "#7d8ea0";
+//        QString historyChartBackground = "#2B2A32";
+    QString chartLabelColor = getStylesheetValue()->value("@color07").toString();
+    QString chartGridColor = getStylesheetValue()->value("@color05").toString();
+    QString historyChartBackground = getStylesheetValue()->value("@color06").toString();
 
         mChart->axisX()->setLabelsColor(chartLabelColor);
         mChart->axisX()->setGridLineColor(chartGridColor);

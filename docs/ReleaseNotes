@@ -10,6 +10,8 @@ These are the some big changes in CoreBox 2.2.
    - Fixed tab close crash of same app.
    - Full trash support for CoreFM and CoreImage.
    - Moved window buttons to sidebar and fixed the DobuleClick to window miximize.
+   - Added new Dark and light mode.
+   - Redesinged all the ui and sidebar color.
 
 => Start
    - New look.

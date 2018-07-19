@@ -28,6 +28,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="accessibleName">
+   <string>widgets</string>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
@@ -52,11 +55,8 @@
    </property>
    <item>
     <widget class="QFrame" name="Widget">
-     <property name="styleSheet">
-      <string notr="true">QWidget {
-background-color: #1C2836;
-color: #ffffff;
-}</string>
+     <property name="accessibleName">
+      <string>widgets</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="leftMargin">

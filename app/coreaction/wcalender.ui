@@ -13,11 +13,8 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget{
-background-color: #1F2B38; ;
-color: #FFFFFF; 
-}</string>
+  <property name="accessibleName">
+   <string>widgets</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -36,20 +33,24 @@ color: #FFFFFF;
     <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="label_6">
+    <widget class="QLabel" name="label">
      <property name="font">
       <font>
        <pointsize>11</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
+     <property name="accessibleName">
+      <string>widgets</string>
+     </property>
      <property name="styleSheet">
-      <string notr="true">
-QLabel{
-padding: 5px 5px 5px 5px;
+      <string notr="true">QLabel{
+padding: 5px 5px 3px 5px;
 }</string>
      </property>
      <property name="text">
-      <string>CALENDER</string>
+      <string>CALENDAR</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -71,26 +72,7 @@ padding: 5px 5px 5px 5px;
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">QCalendarWidget QWidget { 
-alternate-background-color: #808080; 
-}
-QDateEdit { 
-padding-right: 15px; 
-border-width: 1;
-height : 30;
-font-size:20pt;
-color:#fff;
-}
-QCalendarWidget QToolButton {
-padding-bottom: 5px;
-height: 30px;
-width: 70px;
-color: white;
-font-size: 14px;
-icon-size: 20px, 20px;
-}
-
-</string>
+      <string notr="true"/>
      </property>
      <property name="gridVisible">
       <bool>false</bool>

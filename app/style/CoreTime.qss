@@ -1,4 +1,4 @@
-/*CorePlayer*/
+/*s*/
 
 #appTitle{
     background-color: transparent;
@@ -6,52 +6,46 @@
     border: none;}
 
 
-QWidget [accessibleName="shortcut"]{
-    background-color: @coreplayer;
+QFrame [accessibleName="nameBar"]{
+    background-color: @color03;
     color: @color07;
     border: none;}
 
 
-QWidget [accessibleName="toolBar"]{
-    background-color: @color03;
+QWidget [accessibleName="shortcut"]{
+    background-color: @coretime;
+    color: @color07;
+    border: none;}
+
+QWidget [accessibleName="pages"]{
+    background-color: @color01;
     color: @color07;
     border: none;}
 
 
 QLabel{
     background-color: transparent;
-    color: @color07;}
+    color: @color07;
+    padding: 1px 5px 1px 5px;}
 
 
-QToolButton{
-    background-color: transparent;
+QTextEdit{
+    padding: 5px 5px 5px 5px;
+    background-color: @color01;
     color: @color07;
     border: none;}
 
 
-QToolButton{
-    background-color: transparent;
-    color: @color07;
-    border: none;}
-QToolButton:pressed{
-    background-color: @color04;}
-QToolButton:hover {
-    background-color: @color04;}
-
-
-QListView{
-    background-color: transparent;}
-QListView::item {
+QPushButton{
     background-color: transparent;
     color: @color09;
+    border: none;
     Text-align:left;
-    padding: 5px 5px 5px 0px;}
-QListView::item:selected {
-    background-color: @color04;
-    color: @color08;}
-QListView::item:hover{
-    background-color: @color04;
-    color: @color08;}
+    padding: 5px 5px 5px 15px;}
+QPushButton:checked{
+    background-color: @color04;}
+QPushButton:hover {
+    background-color: @color04;}
 
 
 QScrollBar:vertical {
@@ -71,4 +65,3 @@ QScrollBar::add-page:vertical {
 QScrollBar::add-line:vertical,
 QScrollBar::sub-line:vertical {
     width: 0px; height: 0px; }
-

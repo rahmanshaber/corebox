@@ -553,6 +553,9 @@
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
+       <property name="accessibleName">
+        <string>imageArea</string>
+       </property>
        <property name="frameShape">
         <enum>QFrame::NoFrame</enum>
        </property>
@@ -585,6 +588,9 @@
           <width>553</width>
           <height>446</height>
          </rect>
+        </property>
+        <property name="accessibleName">
+         <string>imageArea</string>
         </property>
         <property name="autoFillBackground">
          <bool>true</bool>

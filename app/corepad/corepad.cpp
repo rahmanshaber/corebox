@@ -33,7 +33,6 @@ corepad::corepad(QWidget *parent) : QWidget(parent), ui(new Ui::corepad)
 
 corepad::~corepad()
 {
-    qDebug() << "CorePad closing";
     delete ui;
 }
 

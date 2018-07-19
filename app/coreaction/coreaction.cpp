@@ -23,6 +23,9 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),ui(new Ui:
 {
     ui->setupUi(this);
 
+    // set stylesheet from style.qrc
+    setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreAction.qss"));
+
     widget();
     loadsettings();
     widgetList();

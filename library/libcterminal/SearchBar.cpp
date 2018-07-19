@@ -23,6 +23,7 @@
 
 #include "SearchBar.h"
 
+
 SearchBar::SearchBar(QWidget *parent) : QWidget(parent)
 {
     widget.setupUi(this);

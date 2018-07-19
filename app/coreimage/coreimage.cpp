@@ -39,8 +39,8 @@ coreimage::coreimage(QWidget *parent) :QWidget(parent), ui(new Ui::coreimage)
     cImageLabel->setBackgroundRole(QPalette::Base);
     cImageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
-    ui->imageArea->setBackgroundRole(QPalette::Dark);
-    ui->imageArea->setStyleSheet("background-color:rgb(0,0,0);");
+//    ui->imageArea->setBackgroundRole(QPalette::Dark);
+//    ui->imageArea->setStyleSheet("background-color:rgb(0,0,0);");
 
     ui->shortcut->setVisible(false);
     ui->propbox->setVisible(false);

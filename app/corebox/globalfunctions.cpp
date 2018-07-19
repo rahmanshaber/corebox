@@ -754,6 +754,25 @@ QString getStylesheetFileContent(const QString &path)
 //    @color06=apps seconderyWidget Color
 //    @color07=apps text Color
 //    @color08=apps HightlightText color
-//    @color09=apps DisableText color
+//    @color09=apps sidebarText color
 }
+
+QSettings *getStylesheetValue()
+{
+    SettingsManage sm;
+    QSettings *mStyleValues;
+    QString appThemePath;
+
+    // Load view mode
+    if (sm.getStyleMode()) {
+        appThemePath = ":/theme/style/modeLight.ini";
+    }else {
+        appThemePath = ":/theme/style/modeDark.ini";
+    }
+
+    mStyleValues = new QSettings(appThemePath, QSettings::IniFormat);
+
+    return mStyleValues;
+}
+
 

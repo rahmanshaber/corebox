@@ -272,7 +272,7 @@ void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
         }
         cBox->show();
 
-        messageEngine("Apps restored successfully", MessageType::Info);
+        messageEngine("Session restored successfully", MessageType::Info);
     }
 }
 

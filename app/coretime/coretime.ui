@@ -53,23 +53,11 @@
        <height>16777215</height>
       </size>
      </property>
+     <property name="accessibleName">
+      <string>shortcut</string>
+     </property>
      <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #666B71;
-color: #000000;
-border: 1px #34343C;
-}
-
-
-QPushButton{
-Text-align:left;
-padding: 5px 5px 5px 5px;
-}
-
-QPushButton:checked{
-background-color:#45454D ;
-}
-</string>
+      <string notr="true"/>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0">
       <property name="spacing">
@@ -88,7 +76,7 @@ background-color:#45454D ;
        <number>10</number>
       </property>
       <item>
-       <widget class="QToolButton" name="title">
+       <widget class="QToolButton" name="appTitle">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -272,11 +260,8 @@ background-color:#45454D ;
        <height>30</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color:#363941;
-color: #FFFFFF;
-}</string>
+     <property name="accessibleName">
+      <string>nameBar</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -292,7 +277,7 @@ color: #FFFFFF;
        <number>4</number>
       </property>
       <property name="leftMargin">
-       <number>2</number>
+       <number>5</number>
       </property>
       <property name="topMargin">
        <number>0</number>
@@ -303,22 +288,6 @@ color: #FFFFFF;
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item>
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item>
        <widget class="QLabel" name="selectedsection">
         <property name="sizePolicy">
@@ -343,9 +312,6 @@ color: #FFFFFF;
          <font>
           <pointsize>14</pointsize>
          </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: white;</string>
         </property>
         <property name="text">
          <string>Alarm</string>
@@ -377,16 +343,15 @@ color: #FFFFFF;
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">QWidget{
-background-color: #45454D;
-color: #000000;
-border: 1px #34343C;
-}</string>
+      <string notr="true"/>
      </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
      <widget class="QWidget" name="palarm">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
         <widget class="QFrame" name="clanandclock">
@@ -395,13 +360,6 @@ border: 1px #34343C;
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QWidget{
-background-color: #373737;
-color: #000000;
-border: 1px #34343C;
-}</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
@@ -980,6 +938,9 @@ background-color:#FF9A00;
       </layout>
      </widget>
      <widget class="QWidget" name="pstopwatch">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
@@ -1184,6 +1145,9 @@ padding: 10px 5px 10px 5px;
       </layout>
      </widget>
      <widget class="QWidget" name="ptimer">
+      <property name="accessibleName">
+       <string>pages</string>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QFrame" name="timerSet">

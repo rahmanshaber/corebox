@@ -1,0 +1,56 @@
+/*CoreAction */
+
+QWidget{
+    background-color: @coreaction;
+    border: 1px #494949;
+    color: @color07;}
+
+QWidget [accessibleName="widgets"]{
+    background-color: @color02;
+    color: @color07;}
+
+QToolButton{
+    background-color: transparent;
+    color: @color07;
+    border: none;}
+QToolButton:pressed{
+    background-color: @color04;
+    color: @color08;}
+QToolButton:hover {
+    background-color: @color04;
+    color: @color08;}
+
+QLabel{
+    background-color: transparent;
+    color: @color07;}
+
+
+QMenu {
+    background-color: @color01;
+    border: 1px solid @color05;}
+QMenu::item {
+    background-color: transparent;}
+QMenu::item:selected {
+    background-color: @color04;}
+QMenu::separator {
+    height: 1px;
+    background: @color05;
+    margin-left: 10px;
+    margin-right: 5px;}
+
+
+QCalendarWidget QWidget {
+    alternate-background-color: @color02;
+    background-color: @color02;
+    color: @color07;}
+QDateEdit {
+    border-width: 1;
+    color:@color07;}
+QCalendarWidget QToolButton {
+    color: @color07;}
+
+
+QPlainTextEdit{
+    background-color: transparent;
+    color: @color07;}
+

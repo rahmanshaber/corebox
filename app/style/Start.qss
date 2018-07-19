@@ -1,7 +1,7 @@
 /*Start */
 
 QWidget{
-    background-color: @color01;
+    background-color: @start;
     color: @color07;
     border: none;}
 
@@ -35,7 +35,7 @@ QListView::item {
 
 
 QTreeView{
-    background-color: @color01;
+    background-color:  transparent;
     color: @color07;
     border: none;}
 QTreeView::item{

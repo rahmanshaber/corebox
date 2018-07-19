@@ -2,7 +2,7 @@
 
 #appTitle{
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 QWidget [accessibleName="shortcut"]{
@@ -44,6 +44,20 @@ QSpinBox::down-button {
     border-top-width: 0;}
 
 
+QMenu {
+    background-color: @color01;
+    border: 1px solid @color05;}
+QMenu::item {
+    background-color: transparent;}
+QMenu::item:selected {
+    background-color: @color04;}
+QMenu::separator {
+    height: 1px;
+    background: @color05;
+    margin-left: 10px;
+    margin-right: 5px;}
+
+
 QToolButton{
     background-color: transparent;
     color: @color07;
@@ -59,7 +73,7 @@ QToolButton:hover {
 
 QPushButton{
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     Text-align:left;
     border: none;
     padding: 5px 5px 5px 5px;}

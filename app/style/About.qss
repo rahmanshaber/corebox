@@ -21,12 +21,6 @@ QFrame{
     border-radius: 5px;}
 
 
-#line{
-    background-color: @color05;
-    color: #C0C0C0;
-    border: none;}
-
-
 QPushButton{
     background-color: transparent;
     color: @color07;

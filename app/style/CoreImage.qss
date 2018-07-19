@@ -2,7 +2,7 @@
 
 #appTitle{
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 
@@ -12,15 +12,16 @@ QWidget [accessibleName="shortcut"]{
     border: none;}
 
 QFrame [accessibleName="navigationBar"] {
-    background-color: #000000;
+    background-color: @color03;
+    color: @color07;
+    border: none;}
+
+QWidget [accessibleName="imageArea"]{
+    background-color: @color01;
     color: @color07;
     border: none;}
 
 
-#line{
-    background-color: @color05;
-    color: #C0C0C0;
-    border: none;}
 
 QLabel{
     background-color:transparent;
@@ -30,7 +31,7 @@ QLabel{
 
 QPushButton{
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     Text-align:left;
     border: none;
     padding: 5px 5px 5px 5px;}
@@ -55,7 +56,7 @@ QToolButton:checked{
 
 
 QListView{
-    background-color: #000000;
+    background-color: @color03;
     padding:5px 5px 5px 5px;}
 
 
