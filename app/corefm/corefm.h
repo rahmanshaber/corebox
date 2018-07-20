@@ -119,6 +119,8 @@ signals:
     void updateCopyProgress(qint64, qint64, QString);
     void copyProgressFinished(int,QStringList);
 
+protected slots:
+    void viewMode(bool mode);
 private slots:
     void selectApp();
     void openInApp();
@@ -149,8 +151,6 @@ private slots:
     void on_SHome_clicked();
     void on_SDesktop_clicked();
     void on_SDownloads_clicked();
-    void on_icon_clicked(bool checked);
-    void on_detaile_clicked(bool checked);
     void on_actionTrash_it_triggered();
     void on_showHidden_clicked(bool checked);
     void on_SBookMarkIt_clicked();
@@ -172,6 +172,9 @@ private slots:
     void on_showthumb_clicked(bool checked);
     void on_actionItemsToText_triggered();
 
+
+    void on_viewMode_clicked();
+
 private:
     Ui::corefm *ui;
 
@@ -191,7 +194,7 @@ private:
     int zoomDetail;
     int currentView;        // 0=list, 1=icons, 2=details
     int currentSortColumn;  // 0=name, 1=size, 3=date
-    int selectItemCount;
+    int selectItemCount = 0;
 
     MimeUtils *mimeUtils;
     tabBar *tabs;

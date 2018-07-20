@@ -65,7 +65,7 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
         on_maximizeButton_clicked();
     } else {
         int x = screensize().width()  * .8;
-        int y = screensize().height() * .8;
+        int y = screensize().height() * .7;
         this->resize(x, y);
     }
 
@@ -643,11 +643,6 @@ void CoreBox::on_dashboard_clicked()
     tabEngine(Dashboard);
 }
 
-void CoreBox::on_settings_clicked()
-{
-    tabEngine(Settings);
-}
-
 void CoreBox::on_start_clicked()
 {
     tabEngine(StartView);
@@ -656,11 +651,6 @@ void CoreBox::on_start_clicked()
 void CoreBox::on_search_clicked()
 {
     tabEngine(Search);
-}
-
-void CoreBox::on_corepaint_clicked()
-{
-    tabEngine(CorePaint);
 }
 
 void CoreBox::on_corefm_clicked()

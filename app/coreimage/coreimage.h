@@ -70,8 +70,6 @@ private slots:
     void on_cNormalSize_clicked();
     void on_cRotateLeft_clicked();
     void on_cRotateRight_clicked();
-    void on_cFlipVertical_clicked();
-    void on_cFlipHorizontal_clicked();
     void on_cSave_clicked();
     void on_cSaveAs_clicked();
     void on_cTools_clicked(bool checked);

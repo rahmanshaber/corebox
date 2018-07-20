@@ -349,24 +349,6 @@ void coreimage::on_cRotateRight_clicked()
     cImageLabel->setPixmap(QPixmap::fromImage(image));
 }
 
-void coreimage::on_cFlipVertical_clicked()
-{
-    QTransform tran;
-    tran.scale(1, -1);
-    tran.translate(0, -image.rect().height());
-    image = image.transformed(tran);
-    cImageLabel->setPixmap(QPixmap::fromImage(image));
-}
-
-void coreimage::on_cFlipHorizontal_clicked()
-{
-    QTransform tran;
-    tran.scale(-1, 1);
-    tran.translate(-image.rect().width(), 0);
-    image = image.transformed(tran);
-    cImageLabel->setPixmap(QPixmap::fromImage(image));
-}
-
 bool coreimage::saveFile(const QString &fileName)
 {
     QImageWriter writer(fileName);

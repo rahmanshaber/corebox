@@ -26,6 +26,11 @@ QWidget [accessibleName="statusBar"]{
     color: @color05;
     border: none;}
 
+#viewMode{
+    background-color: transparent;
+    color: @color07;
+    border: 1px solid @color05;}
+
 
 QMenu {
     background-color: @color01;

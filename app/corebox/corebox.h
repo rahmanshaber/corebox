@@ -68,8 +68,6 @@ private slots:
     void doubleClicked();
     void on_bookmarks_clicked();
     void on_dashboard_clicked();
-    void on_corepaint_clicked();
-    void on_settings_clicked();
     void on_start_clicked();
     void on_search_clicked();
     void on_corefm_clicked();

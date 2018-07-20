@@ -72,7 +72,7 @@ QHeaderView{
     padding-left: 4px;}
 QHeaderView::section {
     padding: 1px 3px 1px 3px;
-    background-color: @color01;
+    background-color: @color03;
     color: @color07;
     border: none;
     padding-top: 4px;}

@@ -581,66 +581,29 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="icon">
+       <widget class="QToolButton" name="viewMode">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>30</width>
           <height>26</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>16777215</width>
+          <width>30</width>
           <height>26</height>
          </size>
         </property>
         <property name="toolTip">
-         <string>Icon View</string>
+         <string>View Mode</string>
         </property>
         <property name="text">
          <string/>
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/icons/view_icon.svg</normaloff>:/icons/view_icon.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="detaile">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>26</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>Detailed List</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../icons.qrc">
-          <normaloff>:/icons/view_list.svg</normaloff>:/icons/view_list.svg</iconset>
+          <normaloff>:/icons/view_icon.svg</normaloff>
+          <normalon>:/icons/view_list.svg</normalon>:/icons/view_icon.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1231,7 +1194,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pagelist">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -1562,18 +1525,14 @@
   </action>
   <action name="actionProperties">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/properties_b.svg</normaloff>:/icons/properties_b.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/properties.svg</normaloff>:/icons/properties.svg</iconset>
    </property>
    <property name="text">
     <string>Properties</string>
    </property>
   </action>
   <action name="actionRefresh">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/icons/refresh_b.svg</normaloff>:/icons/refresh_b.svg</iconset>
-   </property>
    <property name="text">
     <string>Refresh</string>
    </property>
@@ -1598,8 +1557,8 @@
   </action>
   <action name="actionNewPage">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/new_tab_b.svg</normaloff>:/icons/new_tab_b.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/new_tab.svg</normaloff>:/icons/new_tab.svg</iconset>
    </property>
    <property name="text">
     <string>NewPage</string>
@@ -1647,8 +1606,8 @@
   </action>
   <action name="actionCorePlayer">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/CorePlayer.svg</normaloff>:/icons/CorePlayer.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/app/icons/app-icons/CorePlayer.svg</normaloff>:/app/icons/app-icons/CorePlayer.svg</iconset>
    </property>
    <property name="text">
     <string>CorePlayer</string>
@@ -1656,8 +1615,8 @@
   </action>
   <action name="actionCorePad">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/CorePad.svg</normaloff>:/icons/CorePad.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/app/icons/app-icons/CorePad.svg</normaloff>:/app/icons/app-icons/CorePad.svg</iconset>
    </property>
    <property name="text">
     <string>CorePad</string>
@@ -1665,8 +1624,8 @@
   </action>
   <action name="actionCoreFM">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/CoreFM.svg</normaloff>:/icons/CoreFM.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
    </property>
    <property name="text">
     <string>CoreFM</string>
@@ -1674,8 +1633,8 @@
   </action>
   <action name="actionCoreImage">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/CoreImage.svg</normaloff>:/icons/CoreImage.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/app/icons/app-icons/CoreImage.svg</normaloff>:/app/icons/app-icons/CoreImage.svg</iconset>
    </property>
    <property name="text">
     <string>CoreImage</string>
@@ -1683,8 +1642,8 @@
   </action>
   <action name="actionCorePaint">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/CorePaint.svg</normaloff>:/icons/CorePaint.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/app/icons/app-icons/CorePaint.svg</normaloff>:/app/icons/app-icons/CorePaint.svg</iconset>
    </property>
    <property name="text">
     <string>CorePaint</string>
@@ -1692,8 +1651,8 @@
   </action>
   <action name="actionCoreBox">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/Box.svg</normaloff>:/icons/Box.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/app/icons/app-icons/Box.svg</normaloff>:/app/icons/app-icons/Box.svg</iconset>
    </property>
    <property name="text">
     <string>CoreBox</string>
@@ -1720,8 +1679,8 @@
   </action>
   <action name="actionDesktop">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/desktop_b.svg</normaloff>:/icons/desktop_b.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/desktop.svg</normaloff>:/icons/desktop.svg</iconset>
    </property>
    <property name="text">
     <string>Desktop</string>
@@ -1729,8 +1688,8 @@
   </action>
   <action name="actionHome">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/home_b.svg</normaloff>:/icons/home_b.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/home.svg</normaloff>:/icons/home.svg</iconset>
    </property>
    <property name="text">
     <string>Home</string>
@@ -1743,8 +1702,8 @@
   </action>
   <action name="actionCorePDF">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/CorePDF.svg</normaloff>:/icons/CorePDF.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/app/icons/app-icons/CorePDF.svg</normaloff>:/app/icons/app-icons/CorePDF.svg</iconset>
    </property>
    <property name="text">
     <string>CorePDF</string>
@@ -1757,8 +1716,8 @@
   </action>
   <action name="actionCoreRenamer">
    <property name="icon">
-    <iconset>
-     <normaloff>:/icons/CoreRenemer.svg</normaloff>:/icons/CoreRenemer.svg</iconset>
+    <iconset resource="../icons.qrc">
+     <normaloff>:/app/icons/app-icons/CoreRenemer.svg</normaloff>:/app/icons/app-icons/CoreRenemer.svg</iconset>
    </property>
    <property name="text">
     <string>CoreRenamer</string>

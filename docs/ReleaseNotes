@@ -47,6 +47,7 @@ These are the some big changes in CoreBox 2.2.
    - Added full trash support.
    - Added CoreArchiver and CoreTerminal support.
    - Dark ui in corefm.
+   - Added Send To option.
    - Removed libmagic from depedency.
    - Added full interigation with CoreTerminal, CoreRenamer, CorePDF and CoreArchiver.
    - Getting file size is faster now.

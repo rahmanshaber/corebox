@@ -137,17 +137,21 @@ in-future
 *code merge
 
 changing the theme ,sometime crashes the app
-remove extra icons.
 disable all the buid warnings from librarys
-rightbutton menu showing the multipalItem menu in corefm.
 corepad rightbutton menu border not showing
 disable dobulclick in dashboard lists.
 set the appicon size same in mime apps
-icon view notsaving
 
 Y - 0 - fix the sort in start(speeddial,recentActivitys),search (recent to old)
 TEST NEEDED FOR YOU - 0 - 10 windows>> close the corebox>>crashs the whole app.
 
 fix the zoom issue in coreimage
-disable text coloro
+disable text color
 shadow effect fix the code
+
+
+testing
+corefm views saves?
+test the theme mode saves?
+see all the app for light sidebar color,ok?
+cheack for missing stylesheet.

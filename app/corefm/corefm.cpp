@@ -86,7 +86,12 @@ void corefm::startsetup()
 
     // setup icon view
     ui->viewIcon->setModel(modelView);
+    ui->viewIcon->setWordWrap(true);
+    ui->viewIcon->setUniformItemSizes(true);
+    ui->viewIcon->setFlow(QListView::LeftToRight);
     ui->viewIcon->setFocusPolicy(Qt::NoFocus);
+    ui->viewIcon->setDragDropMode(QAbstractItemView::DragDrop);
+    ui->viewIcon->setDefaultDropAction(Qt::MoveAction);
     listSelectionModel = ui->viewIcon->selectionModel();
     ui->viewIcon->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -235,8 +240,6 @@ void corefm::lateStart()
     // Connect tool buttons to related actions
     connect(ui->zoomin,SIGNAL(pressed()),this,SLOT(zoomInAction()));
     connect(ui->zoomout,SIGNAL(pressed()),this,SLOT(zoomOutAction()));
-    connect(ui->detaile, SIGNAL(clicked(bool)), this, SLOT(on_detaile_clicked(bool)));
-    connect(ui->icon, SIGNAL(clicked(bool)), this, SLOT(on_icon_clicked(bool)));
     connect(ui->paste,SIGNAL(pressed()), this, SLOT(on_actionPaste_triggered()));
     connect(ui->refresh,SIGNAL(pressed()), this, SLOT(on_actionRefresh_triggered()));
 
@@ -282,11 +285,11 @@ void corefm::loadSettings()
 
     // Load view mode
     if (sm.getViewMode() == true) {
-        on_icon_clicked(1);
-        ui->icon->setChecked(1);
+        viewMode(1);
+        ui->viewMode->setChecked(1);
     }else if (sm.getViewMode() == false) {
-        on_detaile_clicked(1);
-        ui->detaile->setChecked(1);
+        viewMode(0);
+        ui->viewMode->setChecked(0);
     }
 
 }
@@ -323,7 +326,7 @@ void corefm::writeSettings()
     sm.setZoomDetailValue(zoomDetail);
     sm.setIsShowThumb(ui->showthumb->isChecked());
     sm.setShowHidden(ui->showHidden->isChecked());
-    sm.setViewMode(ui->icon->isChecked());
+    sm.setViewMode(ui->viewMode->isChecked());
     sm.setShowToolbox(ui->toolsBar->isVisible());
     sm.setIsRealMimeType(modelList->isRealMimeTypes());
 }
@@ -415,6 +418,7 @@ void corefm::dirLoaded()
 
     ui->totalitem->setText("Total : " + QString("%1 items").arg(items.count()));
     ui->selecteditem->clear();
+    selectItemCount = 0;
 
     if(items.count() == 0){messageEngine("Folder is empty", MessageType::Info);}
     if(ui->showthumb->isChecked()) {
@@ -438,6 +442,7 @@ void corefm::listSelectionChanged(const QItemSelection selected, const QItemSele
     if(listSelectionModel->selectedRows(0).count()) items = listSelectionModel->selectedRows(0);
     else items = listSelectionModel->selectedIndexes();
 
+    selectItemCount = 0 ;
     selectItemCount = items.count();
 
     ui->selecteditem->clear();
@@ -478,9 +483,6 @@ void corefm::listItemClicked(QModelIndex current)
 
 void corefm::listItemPressed(QModelIndex current)
 {
-    //middle-click -> open new tab
-    //ctrl+middle-click -> open new instance
-
     if(QApplication::mouseButtons() == Qt::MidButton){
         if(modelList->isDir(modelView->mapToSource(current)))
         {
@@ -513,17 +515,17 @@ void corefm::tabChanged(int index)
     ui->pathEdit->clear();
     ui->pathEdit->addItems(*tabs->getHistory(index));
 
-    int type = tabs->getType(index);
-    if(currentView != type)
-    {
-        if(type == 2) ui->detaile->setChecked(1);
-        else ui->detaile->setChecked(0);
+//    int type = tabs->getType(index);
+//    if(currentView != type)
+//    {
+//        if(type == 2) ui->viewMode->setChecked(0);
+//        else ui->viewMode->setChecked(1);
 
-        if(type == 1) ui->icon->setChecked(1);
-        else ui->icon->setChecked(0);
+//        if(type == 1) ui->viewMode->setChecked(1);
+//        else ui->viewMode->setChecked(0);
 
-        on_detaile_clicked(true);
-    }
+//        viewMode(true);
+//    }
 
     if(!tabs->tabData(index).toString().isEmpty())
         ui->viewDir->setCurrentIndex(modelTree->mapFromSource(modelList->index(tabs->tabData(index).toString())));
@@ -1163,16 +1165,12 @@ QMenu* corefm::globalmenu(){
         return popup;
     }
 
-    // Check the selection count...
-    selectItemCount = listSelectionModel->selectedIndexes().count();
-
     if (selectItemCount > 1) { // multipal file
         popup->addSeparator();
         popup->addMenu(sendto());
         popup->addSeparator();
         popup->addAction(ui->actionCut);
         popup->addAction(ui->actionCopy);
-//        popup->addAction(ui->action_Rename);
         popup->addSeparator();
         popup->addAction(ui->actionTrash_it);
         popup->addSeparator();
@@ -1490,7 +1488,7 @@ void corefm::zoomInAction()
     {
         if(ui->view->currentIndex() == 0)
         {
-            if(ui->icon->isChecked())
+            if(ui->viewMode->isChecked())
             {
                 (zoom == 128) ? zoom=128 : zoom+= 8;
                 zoomLevel = zoom;
@@ -1500,7 +1498,8 @@ void corefm::zoomInAction()
                 (zoomList == 128) ? zoomList=128 : zoomList+= 8;
                 zoomLevel = zoomList;
             }
-            on_icon_clicked(true);
+            viewMode(true);
+//            on_icon_clicked(true);
         }
         else
         {
@@ -1528,7 +1527,7 @@ void corefm::zoomOutAction()
     {
         if(ui->view->currentIndex() == 0)
         {
-            if(ui->icon->isChecked())
+            if(ui->viewMode->isChecked())
             {
                 (zoom == 16) ? zoom=16 : zoom-= 8;
                 zoomLevel = zoom;
@@ -1538,7 +1537,8 @@ void corefm::zoomOutAction()
                 (zoomList == 16) ? zoomList=16 : zoomList-= 8;
                 zoomLevel = zoomList;
             }
-            on_icon_clicked(true);
+            viewMode(true);
+//            on_icon_clicked(true);
         }
         else
         {
@@ -1930,74 +1930,6 @@ void corefm::goTo(const QString path)
         ui->viewDir->setCurrentIndex(i);
         on_actionRefresh_triggered();
     }
-}
-
-void corefm::on_icon_clicked(bool checked)
-{
-    // Set root index
-    if (ui->viewIcon->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
-      QModelIndex i = modelList->index(ui->pathEdit->currentText());
-      ui->viewIcon->setRootIndex(modelView->mapFromSource(i));
-    }
-
-    if (checked) {
-        currentView = 1;
-        ui->viewIcon->setWordWrap(true);
-        ui->viewIcon->setUniformItemSizes(true);
-        ui->viewIcon->setViewMode(QListView::IconMode);
-        ui->viewIcon->setGridSize(QSize(zoom + 32, zoom + 32));
-        ui->viewIcon->setIconSize(QSize(zoom, zoom));
-        ui->viewIcon->setFlow(QListView::LeftToRight);
-
-        modelList->setMode(ui->showthumb->isChecked());
-        ui->view->setCurrentIndex(0);
-
-        ui->detaile->setChecked(false);
-        ui->viewDetail->setMouseTracking(false);
-        ui->viewIcon->setMouseTracking(true);
-
-        if (tabs->count()) tabs->setType(1);
-    } else {
-        currentView = 0;
-        ui->view->setCurrentIndex(1);
-        ui->viewIcon->setMouseTracking(false);
-        ui->viewDetail->setMouseTracking(true);
-        ui->detaile->setChecked(true);
-
-        modelList->setMode(ui->showthumb->isChecked());
-        ui->viewIcon->setMouseTracking(false);
-
-        if (tabs->count()) tabs->setType(0);
-    }
-
-    ui->viewIcon->setDragDropMode(QAbstractItemView::DragDrop);
-    ui->viewIcon->setDefaultDropAction(Qt::MoveAction);
-    //on_actionRefresh_triggered();
-}
-
-void corefm::on_detaile_clicked(bool checked)
-{
-    if (checked) {
-        currentView = 2;
-        QModelIndex i = modelList->index(ui->pathEdit->currentText());
-        if (ui->viewDetail->rootIndex() != i) {
-          ui->viewDetail->setRootIndex(modelView->mapFromSource(i));
-        }
-        ui->viewDetail->setMouseTracking(true);
-        ui->view->setCurrentIndex(1);
-        modelList->setMode(ui->showthumb->isChecked());
-        ui->icon->setChecked(false);
-
-        if (tabs->count()) {
-          tabs->setType(2);
-        }
-    } else {
-        ui->icon->setChecked(true);
-        ui->view->setCurrentIndex(0);
-        ui->viewDetail->setMouseTracking(false);
-    }
-
-    //on_actionRefresh_triggered();
 }
 
 void corefm::on_SDesktop_clicked()
@@ -2529,6 +2461,56 @@ void corefm::on_showthumb_clicked(bool checked)
 
 void corefm::on_actionItemsToText_triggered()
 {
-    qDebug()<< curIndex.filePath();
     getDirText(curIndex.filePath());
+}
+
+void corefm::viewMode(bool mode)
+{
+    if(mode){
+        // Set root index
+        if (ui->viewIcon->rootIndex() != modelList->index(ui->pathEdit->currentText())) {
+          QModelIndex i = modelList->index(ui->pathEdit->currentText());
+          ui->viewIcon->setRootIndex(modelView->mapFromSource(i));
+        }
+
+        currentView = 1;
+
+        ui->viewIcon->setViewMode(QListView::IconMode);
+        ui->viewIcon->setGridSize(QSize(zoom + 32, zoom + 32));
+        ui->viewIcon->setIconSize(QSize(zoom, zoom));
+        modelList->setMode(ui->showthumb->isChecked());
+        ui->view->setCurrentIndex(0);
+
+        ui->viewDetail->setMouseTracking(false);
+        ui->viewIcon->setMouseTracking(true);
+
+        if (tabs->count()) tabs->setType(1);
+    }
+
+    else {
+        // set root index
+        QModelIndex i = modelList->index(ui->pathEdit->currentText());
+        if (ui->viewDetail->rootIndex() != i) {
+          ui->viewDetail->setRootIndex(modelView->mapFromSource(i));
+        }
+
+        currentView = 2;
+
+        modelList->setMode(ui->showthumb->isChecked());
+        ui->view->setCurrentIndex(1);
+        ui->viewDetail->setMouseTracking(true);
+        ui->viewIcon->setMouseTracking(false);
+
+        if (tabs->count()) tabs->setType(2);
+    }
+}
+
+
+void corefm::on_viewMode_clicked()
+{
+    if(ui->view->currentIndex() == 1){
+        viewMode(true);
+    }else{
+        viewMode(false);
+    }
 }
