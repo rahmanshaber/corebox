@@ -81,16 +81,16 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 public slots:
-    void treeSelectionChanged(QModelIndex,QModelIndex);
-    void listSelectionChanged(const QItemSelection, const QItemSelection);
-    void listDoubleClicked(QModelIndex);
-    void lateStart();
 
     bool cutCopyFile(const QString &source, QString dest, qint64 totalSize, bool cut);
     bool pasteFiles(const QList<QUrl> &files, const QString &newPath, const QStringList &cutList);
     bool linkFiles(const QList<QUrl> &files, const QString &newPath);
     bool copyFolder(const QString &srcFolder, const QString &dstFolder, qint64, bool);
 
+    void treeSelectionChanged(QModelIndex,QModelIndex);
+    void listSelectionChanged(const QItemSelection, const QItemSelection);
+    void listDoubleClicked(QModelIndex);
+    void lateStart();
     void pathEditChanged(QString);
     void executeFile(QModelIndex, bool);
     void clipboardChanged();
@@ -121,6 +121,7 @@ signals:
 
 protected slots:
     void viewMode(bool mode);
+
 private slots:
     void selectApp();
     void openInApp();
@@ -171,8 +172,6 @@ private slots:
     void on_viewDetail_customContextMenuRequested(const QPoint &pos);
     void on_showthumb_clicked(bool checked);
     void on_actionItemsToText_triggered();
-
-
     void on_viewMode_clicked();
 
 private:
@@ -181,7 +180,6 @@ private:
     void writeSettings();
     void shotcuts();
     void startsetup();
-
     void recurseFolder(const QString path, QString parent, QStringList *);//delete
     int showReplaceMsgBox(const QFileInfo &f1, const QFileInfo &f2);
     QMenu* createOpenWithMenu();

@@ -6,6 +6,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET   = coreBox
 
+DEFINES += QT_DEPRECATED_WARNINGS
+
 DEPENDPATH  += .
 
 INCLUDEPATH += ../library/libcpdf/
@@ -22,32 +24,29 @@ LIBS += -L../library/libcsys/ -lcsys
 
 FORMS += \
     about/about.ui \
+    bookmarks/bookmarkdialog.ui \
     bookmarks/bookmarks.ui \
     coreaction/coreaction.ui \
+    coreaction/wbattery.ui \
+    coreaction/wcalculator.ui \
+    coreaction/wcalender.ui \
+    coreaction/wnetwork.ui \
+    coreaction/wnotes.ui \
+    coreaction/wsystem.ui \
+    corearchiver/corearchiver.ui \
     corebox/corebox.ui \
     corefm/corefm.ui \
     corefm/propertiesw.ui \
+    corefm/renamedialog.ui \
     coreimage/coreimage.ui \
     corepad/corepad.ui \
     corepaint/corepaint.ui \
     coreplayer/coreplayer.ui \
+    corerenamer/corerenamer.ui \
+    coreshot/coreshot.ui \
+    coreshot/coreshotdialog.ui \
     coretime/coretime.ui \
     coretime/snooze.ui \
-    help/help.ui \
-    search/search.ui \
-    settings/settings.ui \
-    start/start.ui \
-    corearchiver/corearchiver.ui \
-    coreshot/coreshot.ui \
-    bookmarks/bookmarkdialog.ui \
-    coreshot/coreshotdialog.ui \
-    corerenamer/corerenamer.ui \
-    coreaction/wsystem.ui \
-    coreaction/wcalender.ui \
-    coreaction/wnetwork.ui \
-    coreaction/wcalculator.ui \
-    coreaction/wbattery.ui \
-    coreaction/wnotes.ui \
     dashboard/circlebar.ui \
     dashboard/dashboard.ui \
     dashboard/history_chart.ui \
@@ -56,18 +55,29 @@ FORMS += \
     dashboard/pdrives.ui \
     dashboard/pgeneral.ui \
     dashboard/presources.ui \
-    corefm/renamedialog.ui \
-    start/sessionsavedialog.ui
-
+    help/help.ui \
+    search/search.ui \
+    settings/settings.ui \
+    start/sessionsavedialog.ui \
+    start/start.ui
 
 HEADERS += \
     about/about.h \
+    bookmarks/bookmarkdialog.h \
     bookmarks/bookmarkmanage.h \
     bookmarks/bookmarks.h \
     coreaction/coreaction.h \
+    coreaction/wbattery.h \
+    coreaction/wcalculator.h \
+    coreaction/wcalender.h \
+    coreaction/wnetwork.h \
+    coreaction/wnotes.h \
+    coreaction/wsystem.h \
+    corearchiver/corearchiver.h \
     corebox/corebox.h \
     corebox/globalfunctions.h \
     corefm/applicationdialog.h \
+    corefm/clickoutlistview.h \
     corefm/corefm.h \
     corefm/desktopfile.h \
     corefm/fileutils.h \
@@ -78,9 +88,12 @@ HEADERS += \
     corefm/progressdlg.h \
     corefm/properties.h \
     corefm/propertiesw.h \
+    corefm/renamedialog.h \
     corefm/tabbar.h \
     corefm/udisks2.h \
     coreimage/coreimage.h \
+    corepad/chighlighter.h \
+    corepad/coreedit.h \
     corepad/corepad.h \
     corepaint/dialogs/resizedialog.h \
     corepaint/dialogs/textdialog.h \
@@ -105,7 +118,18 @@ HEADERS += \
     corepaint/easypaintenums.h \
     corepaint/imagearea.h \
     corepaint/undocommand.h \
+    corepdf/corepdf.h \
     coreplayer/coreplayer.h \
+    corerenamer/corerenamer.h \
+    corerenamer/undocommands.h \
+    coreshot/coreshot.h \
+    coreshot/coreshotdialog.h \
+    coreshot/modefullscreen.h \
+    coreshot/modeselectarea.h \
+    coreshot/previewwidget.h \
+    coreshot/rectarea.h \
+    coreshot/screenwidget.h \
+    coreterminal/coreterminal.h \
     coretime/alarm.h \
     coretime/coretime.h \
     coretime/fileio.h \
@@ -113,33 +137,6 @@ HEADERS += \
     coretime/schedulecollection.h \
     coretime/snooze.h \
     coretime/timer.h \
-    help/help.h \
-    search/search.h \
-    settings/settings.h \
-    settings/settingsmanage.h \
-    start/start.h \
-    corepad/coreedit.h \
-    corefm/clickoutlistview.h \
-    corepdf/corepdf.h \
-    coreterminal/coreterminal.h \
-    corearchiver/corearchiver.h \
-    coreshot/coreshot.h \
-    coreshot/modefullscreen.h \
-    coreshot/modeselectarea.h \
-    coreshot/previewwidget.h \
-    coreshot/rectarea.h \
-    coreshot/screenwidget.h \
-    coreshot/coreshotdialog.h \
-    bookmarks/bookmarkdialog.h \
-    corerenamer/corerenamer.h \
-    corerenamer/undocommands.h \
-    coreaction/wsystem.h \
-    coreaction/wcalender.h \
-    coreaction/wnetwork.h \
-    coreaction/wcalculator.h \
-    coreaction/wbattery.h \
-    coreaction/wnotes.h \
-    corepad/chighlighter.h \
     dashboard/battery.h \
     dashboard/circlebar.h \
     dashboard/dashboard.h \
@@ -153,16 +150,27 @@ HEADERS += \
     dashboard/signal_mapper.h \
     dashboard/upower.h \
     dashboard/utilities.h \
+    help/help.h \
+    search/search.h \
+    settings/settings.h \
+    settings/settingsmanage.h \
+    start/sessionsavedialog.h \
     start/slidingstackedwidget.h \
-    corefm/renamedialog.h \
-    start/sessionsavedialog.h
-
+    start/start.h
 
 SOURCES += \
     about/about.cpp \
+    bookmarks/bookmarkdialog.cpp \
     bookmarks/bookmarkmanage.cpp \
     bookmarks/bookmarks.cpp \
     coreaction/coreaction.cpp \
+    coreaction/wbattery.cpp \
+    coreaction/wcalculator.cpp \
+    coreaction/wcalender.cpp \
+    coreaction/wnetwork.cpp \
+    coreaction/wnotes.cpp \
+    coreaction/wsystem.cpp \
+    corearchiver/corearchiver.cpp \
     corebox/corebox.cpp \
     corebox/globalfunctions.cpp \
     corefm/applicationdialog.cpp \
@@ -176,9 +184,12 @@ SOURCES += \
     corefm/progressdlg.cpp \
     corefm/properties.cpp \
     corefm/propertiesw.cpp \
+    corefm/renamedialog.cpp \
     corefm/tabbar.cpp \
     corefm/udisks2.cpp \
     coreimage/coreimage.cpp \
+    corepad/chighlighter.cpp \
+    corepad/coreedit.cpp \
     corepad/corepad.cpp \
     corepaint/dialogs/resizedialog.cpp \
     corepaint/dialogs/textdialog.cpp \
@@ -202,7 +213,17 @@ SOURCES += \
     corepaint/datasingleton.cpp \
     corepaint/imagearea.cpp \
     corepaint/undocommand.cpp \
+    corepdf/corepdf.cpp \
     coreplayer/coreplayer.cpp \
+    corerenamer/corerenamer.cpp \
+    coreshot/coreshot.cpp \
+    coreshot/coreshotdialog.cpp \
+    coreshot/modefullscreen.cpp \
+    coreshot/modeselectarea.cpp \
+    coreshot/previewwidget.cpp \
+    coreshot/rectarea.cpp \
+    coreshot/screenwidget.cpp \
+    coreterminal/coreterminal.cpp \
     coretime/alarm.cpp \
     coretime/coretime.cpp \
     coretime/fileio.cpp \
@@ -210,32 +231,6 @@ SOURCES += \
     coretime/schedulecollection.cpp \
     coretime/snooze.cpp \
     coretime/timer.cpp \
-    help/help.cpp \
-    search/search.cpp \
-    settings/settings.cpp \
-    settings/settingsmanage.cpp \
-    start/start.cpp \
-    corepad/coreedit.cpp \
-    main.cpp \
-    corepdf/corepdf.cpp \
-    coreterminal/coreterminal.cpp \
-    corearchiver/corearchiver.cpp \
-    coreshot/coreshot.cpp \
-    coreshot/modefullscreen.cpp \
-    coreshot/modeselectarea.cpp \
-    coreshot/previewwidget.cpp \
-    coreshot/rectarea.cpp \
-    coreshot/screenwidget.cpp \
-    coreshot/coreshotdialog.cpp \
-    bookmarks/bookmarkdialog.cpp \
-    corerenamer/corerenamer.cpp \
-    coreaction/wsystem.cpp \
-    coreaction/wcalender.cpp \
-    coreaction/wnetwork.cpp \
-    coreaction/wcalculator.cpp \
-    coreaction/wbattery.cpp \
-    coreaction/wnotes.cpp \
-    corepad/chighlighter.cpp \
     dashboard/battery.cpp \
     dashboard/circlebar.cpp \
     dashboard/dashboard.cpp \
@@ -248,10 +243,14 @@ SOURCES += \
     dashboard/presources.cpp \
     dashboard/signal_mapper.cpp \
     dashboard/upower.cpp \
+    help/help.cpp \
+    search/search.cpp \
+    settings/settings.cpp \
+    settings/settingsmanage.cpp \
+    start/sessionsavedialog.cpp \
     start/slidingstackedwidget.cpp \
-    corefm/renamedialog.cpp \
-    start/sessionsavedialog.cpp
-
+    start/start.cpp \
+    main.cpp
 
 RESOURCES += \
     icons.qrc \
@@ -306,4 +305,4 @@ unix {
         INSTALLS += target icons data desktop #mime templates
 }
 
-DEFINES += QT_DEPRECATED_WARNINGS
+

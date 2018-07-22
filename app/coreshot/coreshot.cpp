@@ -16,7 +16,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreshot.h"
 #include "ui_coreshot.h"
-#include "corebox/globalfunctions.h"
+
 
 coreshot::coreshot(QWidget *parent) :QWidget(parent),ui(new Ui::coreshot)
 {

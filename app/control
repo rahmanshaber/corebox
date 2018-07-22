@@ -5,4 +5,4 @@ Section: utils
 Architecture: all
 Priority: optional
 Depends: libqt5charts5 (>=5.9.5-0ubuntu1), libqt5svg5 (>=5.9.5-0ubuntu1), libqt5multimedia5 (>=5.9.5-0ubuntu1), libqt5x11extras5 (>=5.9.5-0ubuntu1), libqt5webengine5 (>=5.9.5+dfsg-0ubuntu2), file (>=1:5.32-2ubuntu0.1), libmagic1 (>=1:5.32-2ubuntu0.1)
-Description: CoreBox is a combination of some apps
+Description: CorereBox is combination of some common desktop apps

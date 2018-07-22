@@ -21,31 +21,31 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
  * @brief Loads desktop file
  * @param fileName
  */
-DesktopFile::DesktopFile(const QString &fileName) {
+DesktopFile::DesktopFile(const QString &fileName)
+{
+    // Store file name
+    this->fileName = fileName;
 
-  // Store file name
-  this->fileName = fileName;
+    // File validity
+    if (!QFile::exists(fileName)) {
+      return;
+    }
 
-  // File validity
-  if (!QFile::exists(fileName)) {
-    return;
-  }
+    // Loads .desktop file (read from 'Desktop Entry' group)
+    Properties desktop(fileName, "Desktop Entry");
+    name = desktop.value("Name", "").toString();
+    exec = desktop.value("Exec", "").toString();
+    icon = desktop.value("Icon", "").toString();
+    type = desktop.value("Type", "Application").toString();
+    categories = desktop.value("Categories").toString().remove(" ").split(";");
+    mimeType = desktop.value("MimeType").toString().remove(" ").split(";");
 
-  // Loads .desktop file (read from 'Desktop Entry' group)
-  Properties desktop(fileName, "Desktop Entry");
-  name = desktop.value("Name", "").toString();
-  exec = desktop.value("Exec", "").toString();
-  icon = desktop.value("Icon", "").toString();
-  type = desktop.value("Type", "Application").toString();
-  categories = desktop.value("Categories").toString().remove(" ").split(";");
-  mimeType = desktop.value("MimeType").toString().remove(" ").split(";");
+    // Fix categories
+    if (categories.first().compare("") == 0) {
+      categories.removeFirst();
+    }
 
-  // Fix categories
-  if (categories.first().compare("") == 0) {
-    categories.removeFirst();
-  }
-
-  if(fileName.endsWith("vlc.desktop")){exec = "vlc";};
+    if(fileName.endsWith("vlc.desktop")){exec = "vlc";};
 }
 
 QString DesktopFile::getFileName() const {

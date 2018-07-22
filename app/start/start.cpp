@@ -166,6 +166,41 @@ void Start::on_rClearActivity_clicked()
 // =================================
 
 // ================= Session Activity =============
+void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    QStringList nameList;
+    QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
+    QStringList group = session.childGroups();
+    foreach (QString s, group) {
+        session.beginGroup(s);
+        QStringList gl = session.childGroups();
+        foreach (QString s, gl) {
+            nameList.append(s);
+        }
+        session.endGroup();
+    }
+
+    QString selected = item->text(column);
+
+    if (nameList.contains(selected)) {
+        CoreBox *cBox = new CoreBox;
+        for (int i = 0; i < item->childCount(); i++) {
+
+            QTreeWidgetItem *midChildT = item->child(i);
+            if (midChildT->childCount()) {
+                for (int j = 0; j < midChildT->childCount(); j++) {
+                    cBox->tabEngine(nameToInt(midChildT->text(0)), midChildT->child(j)->text(0));
+                }
+            } else {
+                cBox->tabEngine(nameToInt(midChildT->text(0)));
+            }
+        }
+        cBox->show();
+
+        messageEngine("Session restored successfully", MessageType::Info);
+    }
+}
+
 void Start::loadSession()
 {
     ui->sessionsList->clear();
@@ -241,41 +276,6 @@ void Start::loadSession()
     });
 }
 
-void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
-{
-    QStringList nameList;
-    QSettings session(QDir::homePath() + "/.config/coreBox/Sessions", QSettings::IniFormat);
-    QStringList group = session.childGroups();
-    foreach (QString s, group) {
-        session.beginGroup(s);
-        QStringList gl = session.childGroups();
-        foreach (QString s, gl) {
-            nameList.append(s);
-        }
-        session.endGroup();
-    }
-
-    QString selected = item->text(column);
-
-    if (nameList.contains(selected)) {
-        CoreBox *cBox = new CoreBox;
-        for (int i = 0; i < item->childCount(); i++) {
-
-            QTreeWidgetItem *midChildT = item->child(i);
-            if (midChildT->childCount()) {
-                for (int j = 0; j < midChildT->childCount(); j++) {
-                    cBox->tabEngine(nameToInt(midChildT->text(0)), midChildT->child(j)->text(0));
-                }
-            } else {
-                cBox->tabEngine(nameToInt(midChildT->text(0)));
-            }
-        }
-        cBox->show();
-
-        messageEngine("Session restored successfully", MessageType::Info);
-    }
-}
-
 void Start::on_rDeleteSession_clicked()
 {
     if (ui->sessionsList->currentItem()) {
@@ -336,10 +336,10 @@ void Start::pageClick(QPushButton *btn, int i)
     if(btn == ui->recentActivites){
         ui->rClearActivity->setVisible(1);
         ui->rDeleteSession->setVisible(0);
-    }else if(btn == ui->savedSession){
+    } else if(btn == ui->savedSession){
         ui->rClearActivity->setVisible(0);
         ui->rDeleteSession->setVisible(1);
-    }else{
+    } else{
         ui->rClearActivity->setVisible(0);
         ui->rDeleteSession->setVisible(0);
     }

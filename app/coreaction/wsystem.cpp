@@ -34,7 +34,8 @@ wSystem::~wSystem()
     delete ui;
 }
 
-void wSystem::checkSystem() {
+void wSystem::checkSystem()
+{
     //set cpu value
     int cpuPercent = 0;
     QList<int> percentL = info->getCpuPercents();

@@ -3,7 +3,7 @@
 pkgname=corebox-git
 pkgver=2.2
 pkgrel=1
-pkgdesc="Combination of some common desktop apps"
+pkgdesc="CorereBox is combination of some common desktop apps"
 arch=('x86_64')
 url="https://github.com/rahmanshaber/corebox"
 license=('GPL2')

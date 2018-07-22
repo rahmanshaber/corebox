@@ -23,7 +23,7 @@ QWidget [accessibleName="bottomWidget"]{
 
 QWidget [accessibleName="shortcut"]{
     background-color: @bookmarks;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 QWidget [accessibleName="contentList"]{
@@ -48,7 +48,7 @@ QLineEdit{
 
 QPushButton {
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     border: none;
     Text-align:left;
     padding: 5px 5px 5px 5px;}

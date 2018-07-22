@@ -25,6 +25,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "corepaint/corepaint.h"
 #include "corebox/corebox.h"
+#include "corebox/globalfunctions.h"
 #include "settings/settingsmanage.h"
 
 

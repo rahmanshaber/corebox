@@ -33,6 +33,7 @@ class cHighlighter : public QSyntaxHighlighter
 public:
     explicit cHighlighter(QTextDocument *textDocument = 0);
     //~cHighlighter();
+
     void highlightBlock(const QString& text);
 
 private:

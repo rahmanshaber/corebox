@@ -1,7 +1,6 @@
 # CoreBox
 
-## CoreBox is combination of some common desktop apps in same window.
-## For Linux Only.
+## CoreBox is combination of some common desktop apps .For Linux Only.Licensed under GPL2
 
 <img src="docs/screenshots/a1.png" width="500">
 <img src="docs/screenshots/a2.png" width="500">
@@ -31,6 +30,10 @@
 * qt5-x11extras
 * qt5-webengine
 
+## Tested In
+* Manjaro xfce (Arch).
+* Ubuntu 18.04 LTS.
+* Qt toolkit vrsion 5.9 lts and 5.11.1 .
 
 ### Known Bugs
 * Opening two dashboard ,crash the whole app.

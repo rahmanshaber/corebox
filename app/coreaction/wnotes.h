@@ -41,6 +41,7 @@ private:
 
 protected:
     void closeEvent(QCloseEvent *event);
+
 };
 
 #endif // WNOTES_H

@@ -8,7 +8,7 @@
 
 QWidget [accessibleName="shortcut"]{
     background-color: @coreplayer;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 

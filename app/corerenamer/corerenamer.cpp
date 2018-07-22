@@ -43,6 +43,8 @@ corerenamer::corerenamer(QWidget *parent) :QWidget(parent),ui(new Ui::corerename
     customSortM = new customSortProxyM();
     m_Model = new QStandardItemModel(0,3);
 
+    addDropShadow(ui->renameTools,40);
+
     shotcuts();
     startsetup(false);
 }
@@ -151,14 +153,10 @@ QString corerenamer::addText(tPosition tpos, int pos, const QString &newText, co
     int initialPos = 0;
     int addPos = pos;
 
-//    qDebug() << "BEFORE : " << selcText;
-
     if (tpos == FROMRIGHT) {
         initialPos = selcText.length();
         addPos = initialPos - pos;
     }
-
-//    qDebug() << "AFTER : " << QString(selcText).insert(addPos, newText);
 
     return  QString(selcText).insert(addPos, newText);
 }
@@ -168,14 +166,10 @@ QString corerenamer::remText(tPosition tpos, int pos, int count, const QString &
     int initialPos = 0;
     int remPos = pos;
 
-//    qDebug() << "BEFORE " << selcText;
-
     if (tpos == FROMRIGHT) {
         initialPos = selcText.length();
         remPos = initialPos - pos - count;
     }
-
-//    qDebug() << "AFTER " << QString(selcText).remove(remPos, count);
 
     return  QString(selcText).remove(remPos, count);
 }

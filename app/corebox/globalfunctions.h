@@ -32,9 +32,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QSettings>
 #include <QGraphicsDropShadowEffect>
 #include <QDirIterator>
-#include <fcntl.h>
-#include <dirent.h>
-#include <sys/stat.h>
 #include <QProcess>
 #include <QScreen>
 #include <QMimeDatabase>
@@ -43,8 +40,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QStorageInfo>
 #include <QDebug>
 #include <QTextStream>
+#include <fcntl.h>
+#include <dirent.h>
+#include <sys/stat.h>
 
 #include "../settings/settingsmanage.h"
+
 
 struct SizeAndCountText
 {

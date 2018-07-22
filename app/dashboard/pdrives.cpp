@@ -23,6 +23,10 @@ pDrives::pDrives(QWidget *parent) :QWidget(parent),ui(new Ui::pDrives)
     ui->setupUi(this);
     setupDisksPage();
     ui->mm->setText("Select a Partition to");
+    addDropShadow(ui->alldrives,40);
+    addDropShadow(ui->logs,40);
+    addDropShadow(ui->partiton,40);
+    addDropShadow(ui->properties,40);
 }
 
 pDrives::~pDrives()

@@ -207,6 +207,7 @@ void bookmarks::on_sectionDone_clicked()
     ui->sectionName->setText("");
     ui->sectionStatus->setText("");
     ui->addSectionBox->setVisible(false);
+
     // Function from globalfunctions.cpp
     messageEngine("Section Added", MessageType::Info);
     on_cTools_clicked();

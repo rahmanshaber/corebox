@@ -35,8 +35,8 @@ class corepdf : public QWidget
 public:
     corepdf(QWidget *parent = 0);
     ~corepdf();
-    void openPdfFile(const QString path);
 
+    void openPdfFile(const QString path);
     QString workFilePath;
 
 protected:

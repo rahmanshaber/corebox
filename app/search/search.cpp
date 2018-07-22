@@ -391,9 +391,7 @@ void search::checkChange(QToolButton *a, QToolButton *b, QToolButton *c, QToolBu
         c->setChecked(false);
         d->setChecked(false);
         e->setChecked(false);
-    } /*else {
-        b->setChecked(true);
-    }*/
+    }
 }
 
 void search::on_findCMD_clicked()

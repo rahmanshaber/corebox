@@ -18,6 +18,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "ui_corebox.h"
 
 #include "start/start.h"
+#include "start/sessionsavedialog.h"
 #include "about/about.h"
 #include "help/help.h"
 #include "search/search.h"
@@ -32,7 +33,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "corepdf/corepdf.h"
 #include "coreterminal/coreterminal.h"
 #include "corerenamer/corerenamer.h"
-#include "start/sessionsavedialog.h"
 
 
 CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
@@ -42,25 +42,28 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
     // set stylesheet from style.qrc
     setStyleSheet(getStylesheetFileContent(":/appStyle/style/CoreBox.qss"));
 
-    //set a icon set for the whole app
+    // set a icon set for the whole app
     QIcon::setThemeName(sm.getThemeName());
 
-    //setup framless window
+    // set one font style across all the apps
+    QFont fl (sm.getFontStyle(), 10, QFont::Normal);
+    QApplication::setFont(fl);
+
     ui->windows->tabBar()->installEventFilter(this);
     ui->sideBar->installEventFilter(this);
 
+    // setup framless window
     setWindowFlags(Qt::FramelessWindowHint |
       Qt::WindowSystemMenuHint | Qt::SubWindow);
 
     ui->restoreButton->setVisible(false);
-//    ui->windows->setCornerWidget(ui->winbutn, Qt::BottomRightCorner);
 
-    //make the resizeable window button
+    // make the resizeable window button
     QSizeGrip *sizeGrip = new QSizeGrip(this);
     sizeGrip->setStyleSheet("QWidget{background-color: #111111 ; width: 16px;height: 30px; background-image: url(:/icons/expand.svg); background-repeat: no-repeat ;background-position: center center ;}");
     ui->res->addWidget(sizeGrip);
 
-    //setup window size and state
+    // setup window size and state
     if (sm.getBoxIsMaximize()) {
         on_maximizeButton_clicked();
     } else {
@@ -92,7 +95,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
     switch (i) {
     case CoreFM: {
         // Limit the openable tab to 10
-        if (n > 10){
+        if (n > 9){
             messageEngine("Reached Window limite", MessageType::Warning);
             return;
         }
@@ -108,7 +111,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
     }
     case CoreImage: {
         // Limit the openable tab to 10
-        if (n > 10){
+        if (n > 9){
             messageEngine("Reached Window limite", MessageType::Warning);
             return;
         }
@@ -131,7 +134,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
             cPad->initializeNewTab(checkIsValidFile(arg));
         } else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -153,7 +156,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
             cPaint->initializeNewTab(true, arg);
         } else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -171,7 +174,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
     }
     case CorePlayer: {
         // Limit the openable tab to 10
-        if (n > 10){
+        if (n > 9){
             messageEngine("Reached Window limite", MessageType::Warning);
             return;
         }
@@ -191,7 +194,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -207,7 +210,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -223,7 +226,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -238,7 +241,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -254,7 +257,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -270,7 +273,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -282,7 +285,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
     }
     case Search: {
         // Limit the openable tab to 10
-        if (n > 10){
+        if (n > 9){
             messageEngine("Reached Window limite", MessageType::Warning);
             return;
         }
@@ -302,7 +305,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
         if (nn != 404) ui->windows->setCurrentIndex(nn);
         else {
             // Limit the openable tab to 10
-            if (n > 10){
+            if (n > 9){
                 messageEngine("Reached Window limite", MessageType::Warning);
                 return;
             }
@@ -320,7 +323,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
     }
     case CorePDF: {
         // Limit the openable tab to 10
-        if (n > 10){
+        if (n > 9){
             messageEngine("Reached Window limite", MessageType::Warning);
             return;
         }
@@ -336,7 +339,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
     }
     case CoreTerminal: {
         // Limit the openable tab to 10
-        if (n > 10){
+        if (n > 9){
             messageEngine("Reached Window limite", MessageType::Warning);
             return;
         }
@@ -355,7 +358,7 @@ void CoreBox::tabEngine(AppsName i,const QString arg) // engine to open app in w
     }
     case CoreRenamer: {
         // Limit the openable tab to 10
-        if (n > 10){
+        if (n > 9){
             messageEngine("Reached Window limite", MessageType::Warning);
             return;
         }
@@ -547,25 +550,25 @@ void CoreBox::on_closeButton_clicked()
 
 void CoreBox::doubleClicked()
 {
-  if (windowState().testFlag(Qt::WindowNoState)) {
-    on_maximizeButton_clicked();
-  } else if (windowState().testFlag(Qt::WindowMaximized)) {
-    on_restoreButton_clicked();
-  }
+    if (windowState().testFlag(Qt::WindowNoState)) {
+      on_maximizeButton_clicked();
+    } else if (windowState().testFlag(Qt::WindowMaximized)) {
+      on_restoreButton_clicked();
+    }
 }
 
 void CoreBox::changeEvent(QEvent *event)
 {
-  if (event->type() == QEvent::WindowStateChange) {
-    if (windowState().testFlag(Qt::WindowNoState)) {
-      on_restoreButton_clicked();
-      event->ignore();
-    } else if (windowState().testFlag(Qt::WindowMaximized)) {
-      on_maximizeButton_clicked();
-      event->ignore();
+    if (event->type() == QEvent::WindowStateChange) {
+      if (windowState().testFlag(Qt::WindowNoState)) {
+        on_restoreButton_clicked();
+        event->ignore();
+      } else if (windowState().testFlag(Qt::WindowMaximized)) {
+        on_maximizeButton_clicked();
+        event->ignore();
+      }
     }
-  }
-  event->accept();
+    event->accept();
 }
 
 void CoreBox::mousePressEvent(QMouseEvent *event)

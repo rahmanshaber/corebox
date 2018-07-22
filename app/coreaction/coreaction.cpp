@@ -41,7 +41,6 @@ void coreaction::widget()  //setup coreaction widget
 {
     int x = screensize().width()* .23;
     int y = screensize().height();
-
     int sw = screensize().width() - x;
 
     ui->widgetsL->setFixedWidth(x);
@@ -251,11 +250,6 @@ void coreaction::ShowWindow(QSystemTrayIcon::ActivationReason Reason)
     }
 }
 
-void coreaction::on_hide_clicked()
-{
-    this->hide();
-}
-
 void coreaction::on_corepad_clicked()
 {
     CoreBox *cBox = new CoreBox();
@@ -308,7 +302,3 @@ void coreaction::closeEvent(QCloseEvent *event)
     Q_UNUSED(event);
     QTimer::singleShot(100, qApp, SLOT(quit()));
 }
-
-
-
-

@@ -107,6 +107,9 @@ public:
     bool setStyleMode(bool mode);
     bool getStyleMode();
 
+    bool setFontStyle(QString fontStyle);
+    QString getFontStyle();
+
 };
 
 #endif // SETTINGSMANAGE_H

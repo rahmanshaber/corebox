@@ -57,6 +57,7 @@ void settings::setupCoreBoxPage()
     ui->cmbStyleTheme->addItem("Dark");
     ui->cmbStyleTheme->addItem("Light");
     ui->cmbStyleTheme->setCurrentIndex(sm.getStyleMode());
+    ui->cmbFontStyle->setCurrentText(sm.getFontStyle());
 
 }
 
@@ -340,6 +341,7 @@ void settings::on_ok_clicked()
     sm.setThemeName(ui->cmbIconTheme->currentText());
     if(ui->isRecentDisable->isChecked() == false){sm.cSetting->remove("Recent");};
     sm.setStyleMode(ui->cmbStyleTheme->currentIndex() ? true :false );
+    sm.setFontStyle(ui->cmbFontStyle->currentText());
 
     //corefm
     MimeUtils *mimeUtils = new MimeUtils(this);
@@ -479,4 +481,5 @@ void settings::on_restore_clicked()
         }
     }
 }
+
 

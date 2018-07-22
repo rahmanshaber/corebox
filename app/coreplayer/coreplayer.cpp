@@ -48,7 +48,7 @@ void coreplayer::startsetup()
     connect(player, SIGNAL(positionChanged(qint64)), SLOT(positionChanged(qint64)));
     connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)),this, SLOT(statusChanged(QMediaPlayer::MediaStatus)));
     connect(player, SIGNAL(bufferStatusChanged(int)), this, SLOT(bufferingProgress(int)));
-    connect(player, SIGNAL(videoAvailableChanged(bool)), this, SLOT(videoAvailableChanged(bool)));
+//    connect(player, SIGNAL(videoAvailableChanged(bool)), this, SLOT(videoAvailableChanged(bool)));
     connect(player, SIGNAL(error(QMediaPlayer::Error)), this, SLOT(displayErrorMessage()));
 //    connect(player, &QMediaPlayer::stateChanged, this, &coreplayer::stateChanged);
 
@@ -517,23 +517,27 @@ void coreplayer::on_medialist_doubleClicked(const QModelIndex &index)
     messageEngine("Playing", MessageType::Info);
 }
 
-void coreplayer::seekLeft() {
+void coreplayer::seekLeft()
+{
     if (!(ui->seekBar->value() == 0))
     {seek(ui->seekBar->value() - 4);}
 }
 
-void coreplayer::seekRight() {
+void coreplayer::seekRight()
+{
     if (!(ui->seekBar->value() == ui->seekBar->maximum()))
     {seek(ui->seekBar->value() + 4);}
 }
 
-void coreplayer::volumnDown() {
+void coreplayer::volumnDown()
+{
     int x = ui->volume->value() - 5;
     if (!(ui->volume->value() == 0))
     {on_volume_valueChanged(x);}
 }
 
-void coreplayer::volumnUP() {
+void coreplayer::volumnUP()
+{
     int x = ui->volume->value() + 5;
     if (!(x == ui->volume->maximum()))
     { on_volume_valueChanged(x); }
@@ -543,7 +547,7 @@ void coreplayer::on_playlist_clicked(bool checked)
 {
     if(checked){
         ui->shortcut->setVisible(1);
-    }else{
+    } else{
         ui->shortcut->setVisible(0);
     }
 }

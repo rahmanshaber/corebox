@@ -105,6 +105,8 @@ void pDisplay::setupDisplayPage()
         v->addWidget(b);
         w->setLayout(v);
 
+        addDropShadow(w, 40);
+
         ui->list->addWidget(w);
 
         right.clear();

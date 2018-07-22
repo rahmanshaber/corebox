@@ -12,7 +12,7 @@ QWidget [accessibleName="content"]{
 
 QWidget [accessibleName="shortcut"]{
     background-color: @about;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 QFrame{

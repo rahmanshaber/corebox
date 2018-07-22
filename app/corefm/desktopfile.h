@@ -32,24 +32,24 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 class DesktopFile {
 
 public:
-  explicit DesktopFile(const QString &fileName = "");
-  QString getFileName() const;
-  QString getPureFileName() const;
-  QString getName() const;
-  QString getExec() const;
-  QString getIcon() const;
-  QString getType() const;
-  QStringList getCategories() const;
-  QStringList getMimeType() const;
+    explicit DesktopFile(const QString &fileName = "");
+    QString getFileName() const;
+    QString getPureFileName() const;
+    QString getName() const;
+    QString getExec() const;
+    QString getIcon() const;
+    QString getType() const;
+    QStringList getCategories() const;
+    QStringList getMimeType() const;
 
 private:
-  QString fileName;
-  QString name;
-  QString exec;
-  QString icon;
-  QString type;
-  QStringList categories;
-  QStringList mimeType;
+    QString fileName;
+    QString name;
+    QString exec;
+    QString icon;
+    QString type;
+    QStringList categories;
+    QStringList mimeType;
 
 };
 

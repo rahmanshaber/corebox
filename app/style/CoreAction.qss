@@ -27,6 +27,7 @@ QLabel{
 
 QMenu {
     background-color: @color01;
+    color: @color07;
     border: 1px solid @color05;}
 QMenu::item {
     background-color: transparent;}

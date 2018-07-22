@@ -19,7 +19,7 @@ QWidget [accessibleName="statusBar"]{
 
 QWidget [accessibleName="shortcut"]{
     background-color: @corepaint;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 

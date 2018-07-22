@@ -7,7 +7,7 @@
 
 QWidget [accessibleName="shortcut"]{
     background-color: @corefm;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 QWidget [accessibleName="navigationBar"]{
@@ -34,6 +34,7 @@ QWidget [accessibleName="statusBar"]{
 
 QMenu {
     background-color: @color01;
+    color: @color07;
     border: 1px solid @color05;}
 QMenu::item {
     background-color: transparent;}
@@ -52,16 +53,16 @@ QLabel{
     padding: 1px 1px 1px 1px;}
 
 
-QPushButton{
+QPushButton {
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     border: none;
     Text-align:left;
     padding: 5px 5px 5px 5px;}
-QPushButton:pressed{
+QPushButton:pressed {
     background-color: @color04;
     color: @color08;}
-QPushButton:hover {
+QPushButton:hover{
     background-color: @color04;
     color: @color08;}
 

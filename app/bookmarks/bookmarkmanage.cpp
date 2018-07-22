@@ -22,6 +22,7 @@ void BookmarkManage::createBook()
 {
     // Function from globalfunctions.cpp setupFolder...
     setupFolder(FolderSetup::BookmarkFolder);
+
     QFile file(cbookFullPath);
     file.open(QFile::ReadWrite);
     file.close();
@@ -130,15 +131,7 @@ void BookmarkManage::changeAll(QString oldSectionName, QString oldBookmarkName, 
 {
     QSettings bkGet(cbookFullPath, QSettings::IniFormat);
     delbookmark(oldBookmarkName, oldSectionName);
-//    bkGet.beginGroup(oldSectionName);
-//    bkGet.remove(oldBookmarkName);
-//    bkGet.setValue("~~~count~", bkGet.childKeys().count());
-//    bkGet.endGroup();
     addBookmark(sectionName, bookmarkName, bookmarkValue);
-//    bkGet.beginGroup(sectionName);
-//    bkGet.setValue(bookmarkName, bookmarkValue);
-//    bkGet.setValue("~~~count~", bkGet.childKeys().count());
-//    bkGet.endGroup();
 }
 
 void BookmarkManage::changeSection(QString oldSectionName, QString sectionName, QString bookmarkName, QString bookmarkValue)
@@ -178,7 +171,6 @@ QString BookmarkManage::bookmarkPath(QString sectionName, QString bookmarkName)
 {
     QStringList values(bookmarkValues(sectionName, bookmarkName).split("\t\t\t"));
     return values.at(0);
-//    return bookmarkValues(sectionName, bookmarkName);
 }
 
 QString BookmarkManage::bookingTime(QString sectionName, QString bookmarkName)

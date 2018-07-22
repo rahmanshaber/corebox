@@ -415,7 +415,7 @@
    <item row="1" column="2">
     <widget class="QStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="pageGeneral">
       <property name="accessibleName">
@@ -426,7 +426,7 @@
       </property>
       <layout class="QVBoxLayout" name="pGeneralLayout">
        <property name="spacing">
-        <number>3</number>
+        <number>0</number>
        </property>
        <property name="leftMargin">
         <number>0</number>
@@ -449,13 +449,45 @@
       <property name="styleSheet">
        <string notr="true"/>
       </property>
-      <layout class="QVBoxLayout" name="pDriveLayout"/>
+      <layout class="QVBoxLayout" name="pDriveLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
      </widget>
      <widget class="QWidget" name="pageBattery">
       <property name="accessibleName">
        <string>pages</string>
       </property>
-      <layout class="QVBoxLayout" name="pBatteryLayout"/>
+      <layout class="QVBoxLayout" name="pBatteryLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
      </widget>
      <widget class="QWidget" name="pageResource">
       <property name="accessibleName">
@@ -463,7 +495,7 @@
       </property>
       <layout class="QVBoxLayout" name="pResourceLayout">
        <property name="spacing">
-        <number>3</number>
+        <number>0</number>
        </property>
        <property name="leftMargin">
         <number>0</number>
@@ -490,7 +522,23 @@
       <property name="accessibleName">
        <string>pages</string>
       </property>
-      <layout class="QVBoxLayout" name="pDisplayLayout"/>
+      <layout class="QVBoxLayout" name="pDisplayLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
      </widget>
     </widget>
    </item>

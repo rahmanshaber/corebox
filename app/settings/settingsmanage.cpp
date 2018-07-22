@@ -30,7 +30,8 @@ void SettingsManage::createDefaultSettings()
         cSetting->setValue("Maximized", false);
         cSetting->setValue("Recent-Disable", false);
         cSetting->setValue("Force-Theme", QIcon::themeName());
-        cSetting->setValue("Style-Mode", true);
+        cSetting->setValue("Style-Mode", false);
+        cSetting->setValue("Font-Style", "Cantarell");
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreFM");
@@ -109,8 +110,15 @@ bool SettingsManage::getStyleMode() {
     return getSpecificValue("CoreBox", "Style-Mode").toBool();
 }
 
+bool SettingsManage::setFontStyle(QString fontStyle) {
+    return setSpecificValue("CoreBox", "Font-Style", fontStyle);
+}
 
+QString SettingsManage::getFontStyle() {
+    return getSpecificValue("CoreBox", "Font-Style").toString();
+}
 //-------------------------CoreBox--------------------------------------
+
 
 //-------------------------CoreFM--------------------------------------
 

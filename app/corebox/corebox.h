@@ -53,7 +53,6 @@ public:
 protected:
     void closeEvent(QCloseEvent *event);
     void changeEvent(QEvent *event);
-
     bool isMouseDown = false ,isLeftDown = false ,isRightDown = false;
     QPoint mousePos, wndPos;
 

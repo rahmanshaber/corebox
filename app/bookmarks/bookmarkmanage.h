@@ -31,12 +31,11 @@ class BookmarkManage
 {
 
 public:
-    void checkBook();
-    QStringList getBookSections();
-    QStringList getBookNames(QString sectionName);
     bool addSection(QString sectionName);
     bool addBookmark(QString sectionName, QString bookmarkName, QString bookPath);
 
+    QStringList getBookSections();
+    QStringList getBookNames(QString sectionName);
     QString bookingTime(QString sectionName, QString bookmarkName);
     QString bookmarkPath(QString sectionName, QString bookmarkName);
     QString checkingBookName(QString sectionName, QString bookName);
@@ -46,6 +45,7 @@ public:
     QString cbookPath = QDir::homePath() + "/.config/coreBox";
     QString cbookFullPath = cbookPath + "/" + cbookName;
 
+    void checkBook();
     void delSection(QString sectionName);
     void delBookmark(QString bookmarkName);
     void changeAll(QString oldSectionName, QString oldBookmarkName, QString sectionName, QString bookmarkName, QString bookmarkValue);

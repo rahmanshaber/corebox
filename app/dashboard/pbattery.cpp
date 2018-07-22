@@ -22,6 +22,8 @@ pBattery::pBattery(QWidget *parent) :QWidget(parent),ui(new Ui::pBattery)
 {
     ui->setupUi(this);
     setupBatteryPage();
+    addDropShadow(ui->overviewF,40);
+    addDropShadow(ui->morinfoF,40);
 }
 
 pBattery::~pBattery()

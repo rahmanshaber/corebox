@@ -26,6 +26,8 @@ pgeneral::pgeneral(QWidget *parent) :QWidget(parent),ui(new Ui::pgeneral),
 {
     ui->setupUi(this);
 
+    addDropShadow(ui->sysInfo,40);
+
     init();
     systemInformationInit();
 }
@@ -107,7 +109,6 @@ void pgeneral::updateNetworkBar()
     QNetworkAccessManager manager;
     const auto config = manager.activeConfiguration();
     ui->usedN->setText(config.bearerTypeName());
-
 
     static quint64 l_RXbytes = im->getRXbytes();
     static quint64 l_TXbytes = im->getTXbytes();

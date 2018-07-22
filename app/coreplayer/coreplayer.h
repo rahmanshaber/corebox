@@ -69,11 +69,6 @@ public slots:
 private:
     Ui::coreplayer *ui;
 
-    QStringList getList(const QString &path);
-    QStringList getAudios(const QString path);
-    QStringList getVideos(const QString path);
-    QStringList videomimes,audiomimes;
-
     void audioMimes();
     void videoMimes();
     void setTrackInfo(const QString &info);
@@ -86,6 +81,11 @@ private:
     void shotcuts();
     void creatPlayList(const QString &path);
     void startsetup();
+
+    QStringList getList(const QString &path);
+    QStringList getAudios(const QString path);
+    QStringList getVideos(const QString path);
+    QStringList videomimes,audiomimes;
 
     QMediaPlayer::State playerState;
     QMediaPlayer *player;

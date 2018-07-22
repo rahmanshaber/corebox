@@ -63,6 +63,7 @@ private:
     bool vertical,active;
     int next,now,speed;
     QPoint pnow;
+
 };
 
 #endif // SLIDINGSTACKEDWIDGET_H

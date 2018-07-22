@@ -60,6 +60,7 @@ class coreimage : public QWidget
 public:
     explicit coreimage(QWidget *parent = 0);
     ~coreimage();
+
     bool loadFile(const QString &);
     QString currentImagePath;
 
@@ -88,7 +89,6 @@ protected:
     virtual void wheelEvent(QWheelEvent *event);
     void closeEvent(QCloseEvent *event);
     void resizeEvent(QResizeEvent *event);  
-
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
@@ -99,7 +99,6 @@ protected:
 
 private:
     Ui::coreimage *ui;
-
     QSpacerItem *hSpacer;   
     QTimer* slideShowTimer;
     QStringList images;

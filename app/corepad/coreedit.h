@@ -35,15 +35,13 @@ public:
     coreedit(QString fPath, QWidget *parent = 0);
 
     QString workFilePath() const {
-        return filePath;
-    }
+        return filePath;}
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
 
     QWidget* lineNumberArea_() const {
-        return lineNumberArea;
-    }
+        return lineNumberArea;}
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
@@ -56,6 +54,7 @@ private slots:
 private:
     QString filePath;
     QWidget *lineNumberArea;
+
 };
 
 
@@ -63,17 +62,14 @@ class LineNumberArea : public QWidget
 {
 public:
     LineNumberArea(coreedit *editor) : QWidget(editor) {
-        coreedit_ = editor;
-    }
+        coreedit_ = editor;}
 
     QSize sizeHint() const override {
-        return QSize(coreedit_->lineNumberAreaWidth(), 0);
-    }
+        return QSize(coreedit_->lineNumberAreaWidth(), 0);}
 
 protected:
     void paintEvent(QPaintEvent *event) override {
-        coreedit_->lineNumberAreaPaintEvent(event);
-    }
+        coreedit_->lineNumberAreaPaintEvent(event);}
 
 private:
     coreedit *coreedit_;

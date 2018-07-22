@@ -143,6 +143,7 @@ private:
     bool setRepText();
     void startsetup(bool set);
     void shotcuts();
+
 };
 
 class customSortProxyM : public QSortFilterProxyModel

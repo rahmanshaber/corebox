@@ -38,13 +38,11 @@ public:
     ~bookmarkDialog();
 
     void checkPath();
-
     void setBookIcon(QPixmap pix);
     void setBookPath(const QString &path);
     void setBookName(const QString &bName);
     QString getBookName();
     QString getSectionName();
-
     bool accepted = false;
 
 private slots:
@@ -57,6 +55,7 @@ private slots:
 private:
     Ui::bookmarkDialog *ui;
     BookmarkManage bk;
+
 };
 
 #endif // BOOKMARKDIALOG_H

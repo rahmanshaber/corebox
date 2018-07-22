@@ -94,9 +94,7 @@ void coreimage::shotcuts()
     shortcut = new QShortcut(QKeySequence(Qt::ControlModifier + Qt::Key_B), this);
     connect(shortcut, &QShortcut::activated, this, &coreimage::on_bookMarkIt_clicked);
     shortcut = new QShortcut(QKeySequence(Qt::Key_Escape), this);
-    connect(shortcut, &QShortcut::activated, [this]() {
-        on_slideShow_clicked(false);
-    });
+    connect(shortcut, &QShortcut::activated, [this]() {on_slideShow_clicked(false);});
 //    shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Space), this);
 //    connect(shortcut, &QShortcut::activated, this, &coreimage::on_slideShow_clicked);
 
@@ -242,7 +240,6 @@ void coreimage::setImage(const QImage &newImage)
     }
 
     QFileInfo info (currentImagePath);
-    //QString typ = info.fileName().split(".").at(info.fileName().split(".").count() - 1);
     QString typ = info.suffix();
     QString nam = info.fileName();
     QString h = QString::number(image.height()) ;
@@ -253,7 +250,6 @@ void coreimage::setImage(const QImage &newImage)
     ui->width->setText("Width : " + w + " px ; ");
     ui->size->setText("Size : " + formatSize(info.size()) + " ; "); // Function from globalfunctions.cpp
     ui->type->setText("Type : " + typ + " ; ");
-    //ui->thumnailView->item(images.indexOf(currentImagePath))->setSelected(true);
 }
 
 void coreimage::resizeEvent(QResizeEvent *event)
@@ -436,6 +432,7 @@ void coreimage::on_slideShow_clicked(bool checked)
       ui->imageArea->showFullScreen();
       slideShowTimer->start(3000);
       ui->shortcut->setVisible(false);
+      if(ui->cTools->isChecked()){ui->cTools->setChecked(false);}
     }
     else {
       if(slideShowTimer) {
@@ -449,8 +446,7 @@ void coreimage::on_cProperties_clicked(bool checked)
 {
     if(checked){
         ui->propbox->setVisible(true);
-    }
-    else{
+    } else{
         ui->propbox->setVisible(false);
     }
 }
@@ -466,8 +462,7 @@ void coreimage::on_openThumbview_clicked()
     if (ui->openThumbview->isChecked()) {
         ui->thumnailView->setVisible(true);
         ui->line->setVisible(true);
-    }
-    else {
+    } else {
         ui->thumnailView->setVisible(false);
         ui->line->setVisible(false);
     }

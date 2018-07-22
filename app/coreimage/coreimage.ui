@@ -374,7 +374,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/app/icons/app-icons/CoreFM.svg</normaloff>:/app/icons/app-icons/CoreFM.svg</iconset>
+          <normaloff>:/icons/folder.svg</normaloff>:/icons/folder.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -399,7 +399,7 @@
         </property>
         <property name="icon">
          <iconset resource="../icons.qrc">
-          <normaloff>:/app/icons/app-icons/CorePaint.svg</normaloff>:/app/icons/app-icons/CorePaint.svg</iconset>
+          <normaloff>:/icons/color.svg</normaloff>:/icons/color.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -775,32 +775,6 @@
             <width>22</width>
             <height>22</height>
            </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="cFullScreen">
-          <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
-          </property>
-          <property name="toolTip">
-           <string>Fullscreen</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../icons.qrc">
-            <normaloff>:/icons/fullscreen.svg</normaloff>:/icons/fullscreen.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
           </property>
          </widget>
         </item>

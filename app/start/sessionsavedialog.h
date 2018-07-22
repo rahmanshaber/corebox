@@ -36,6 +36,7 @@ class sessionSaveDialog : public QDialog
 public:
     explicit sessionSaveDialog(QWidget *parent = 0);
     ~sessionSaveDialog();
+
     QString sName;
 
 signals:
@@ -48,6 +49,7 @@ private slots:
 private:
     Ui::sessionSaveDialog *ui;
     QStringList nameList;
+
 };
 
 #endif // SESSIONSAVEDIALOG_H

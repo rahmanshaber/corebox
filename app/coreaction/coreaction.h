@@ -38,10 +38,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDoubleValidator>
 
 #include "settings/settingsmanage.h"
-#include "dashboard/info_manager.h"
 #include "corebox/globalfunctions.h"
 #include "corebox/corebox.h"
 #include "about/about.h"
+#include "dashboard/info_manager.h"
 #include "dashboard/upower.h"
 #include "dashboard/battery.h"
 #include "coreshot/coreshotdialog.h"
@@ -69,7 +69,6 @@ protected:
 private:
     Ui::coreaction *ui;
     SettingsManage sm;
-
     QMenu *trayIconMenu;
     QDir currentDir;
     QTimer *timer;
@@ -78,7 +77,6 @@ private:
     void widget();
     void tryicon();
     void widgetList();
-
     bool checkWTime();
     bool checkWCalendar();
     bool checkWSystem();
@@ -92,10 +90,8 @@ public slots:
 
 private slots:
     void showTime();
-    void on_hide_clicked();
     void coreBoxAbout();
     void actionshow();
-
     void on_corepad_clicked();
     void on_screenshot_clicked();
     void on_corepaint_clicked();

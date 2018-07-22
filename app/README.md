@@ -8,5 +8,5 @@
 * Start,Dashboard,About,Help,Settings,Bookmark,Search.
 
 ### CoreApps 
-* CoreFM,CoreImage,CorePaint,CorePlayer,CorePad,CoreTime,CorePDF.
+* CoreFM,CoreImage,CorePaint,CorePlayer,CorePad,CoreTime,CorePDF,CoreRenamer.
 

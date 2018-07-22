@@ -110,7 +110,7 @@ void corefm::startsetup()
     ui->viewDir->setCurrentIndex(modelTree->mapFromSource(modelList->index(startPath)));
     ui->viewDir->scrollTo(ui->viewDir->currentIndex());
 
-    // setup buttons and actions
+    // setup buttons
     ui->paste->setVisible(0);
     ui->emptyTrash->setVisible(0);
     ui->actionAscending->setChecked(1);

@@ -8,7 +8,7 @@
 
 QFrame [accessibleName="nameBar"]{
     background-color: @color03;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 
@@ -43,9 +43,11 @@ QPushButton{
     Text-align:left;
     padding: 5px 5px 5px 15px;}
 QPushButton:checked{
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QPushButton:hover {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 
 
 QScrollBar:vertical {

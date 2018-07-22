@@ -12,6 +12,7 @@ These are the some big changes in CoreBox 2.2.
    - Moved window buttons to sidebar and fixed the DobuleClick to window miximize.
    - Added new Dark and light mode.
    - Redesinged all the ui and sidebar color.
+   - Set font style across all the apps.
 
 => Start
    - New look.
@@ -89,3 +90,8 @@ These are the some big changes in CoreBox 2.2.
 
 => CoreRenamer
     - New app.
+
+=> Tested
+    - Manjaro xfce.
+    - Ubuntu 18.04 LTS.
+    - Qt toolkit vrsion 5.9 lts and 5.11.1

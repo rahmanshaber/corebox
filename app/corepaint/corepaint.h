@@ -71,14 +71,13 @@ class corepaint : public QWidget
 public:
     explicit corepaint(QWidget *parent = 0);
     ~corepaint();
-    void initializeNewTab(const bool &isOpen = false, const QString &filePath = "");
 
+    void initializeNewTab(const bool &isOpen = false, const QString &filePath = "");
     int tabsCount();
     QString saveLocation;
 
     // Only for save session purpose it is at public
     ImageArea* getImageAreaByIndex(int index);
-
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -90,15 +89,12 @@ private:
     void loadSettings();
     void shotcuts();
     void pageClick(QToolButton *btn, int i);
-
     ImageArea* getCurrentImageArea();
     bool closeAllTabs();
     bool isSomethingModified();
-
     QMap<InstrumentsEnum, QAction*> mInstrumentsActMap;
     QUndoGroup *mUndoStackGroup;
     bool mPrevInstrumentSetted;
-
     ColorChooser *mPColorChooser, *mSColorChooser;
     QString filepath,currentFile;
 
