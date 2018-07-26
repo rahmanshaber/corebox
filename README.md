@@ -45,3 +45,8 @@
 * Also add the app in AUR.
 * Some of the apps has old code,so they have some issue in them.Please review the code and help us fix them.
 * See the "HelpUs" page in Help app for more problems.
+
+###Feedback
+* We need your feedback to improve the CoreBox.Send us your feedback through email or github 
+* rahmanshaber@gmail.com
+* s96mini.cube@yahoo.com

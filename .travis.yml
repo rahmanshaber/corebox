@@ -9,10 +9,9 @@ before_install:
 
 install:
   - sudo apt-get -y install qt59base
-  - sudo apt-get -y -qq install qt59imageformats qt59svg qt59charts-no-lgpl qt59tools qt59x11extras
-  - sudo apt-get -y -qq install qt59multimedia libmagic-dev libpulse-dev libqt5svg5
-  - sudo apt-get -y -qq install qt59webengine qt59webchannel 
-  - sudo apt-get -y -qq install libz-dev zlib1g-dev liblz-dev libbz2-dev libarchive-dev 
+  - sudo apt-get -y -qq install qt59imageformats qt59svg qt59charts-no-lgpl qt59tools
+  - sudo apt-get -y -qq install qt59multimedia libmagic-dev libpulse-dev
+  - source /opt/qt*/bin/qt*-env.sh
 
 script:
   - qmake CONFIG+=release PREFIX=/usr
@@ -26,12 +25,12 @@ script:
   - ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage
 
 after_success:
-  - ls -lh out/* # Assuming you have some files in out/ that you would like to upload
+  - find appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
+  - # curl --upload-file CoreBox*.AppImage https://transfer.sh/APPNAME-git.$(git rev-parse --short HEAD)-x86_64.AppImage
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-  - bash upload.sh out/*
-
+  - bash upload.sh CoreBox*.AppImage*
+  
 branches:
   except:
     - # Do not build tags that we create when we upload to GitHub Releases
-    - /^(?i:continuous)$/
-
+    - /^(?i:continuous)/
