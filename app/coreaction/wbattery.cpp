@@ -16,7 +16,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "wbattery.h"
 #include "ui_wbattery.h"
-
+#include "corebox/globalfunctions.h"
 
 wBattery::wBattery(QWidget *parent) :QWidget(parent),ui(new Ui::wBattery)
 {
@@ -28,6 +28,8 @@ wBattery::wBattery(QWidget *parent) :QWidget(parent),ui(new Ui::wBattery)
 
     QTimer *timer = new QTimer();
     timer->start(1000);
+
+    addDropShadow(this, 60, 50);
 
     connect(timer, &QTimer::timeout, this, &wBattery::batteryCheck);
 }

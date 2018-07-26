@@ -110,6 +110,8 @@ public:
     bool setFontStyle(QString fontStyle);
     QString getFontStyle();
 
+    bool setAddShadow(bool addShadow);
+    bool getAddShadow();
 };
 
 #endif // SETTINGSMANAGE_H

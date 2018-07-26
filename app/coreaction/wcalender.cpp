@@ -16,11 +16,13 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "wcalender.h"
 #include "ui_wcalender.h"
+#include "corebox/globalfunctions.h"
 
 
 wCalender::wCalender(QWidget *parent) :QWidget(parent),ui(new Ui::wCalender)
 {
     ui->setupUi(this);
+    addDropShadow(this, 60, 50);
 }
 
 wCalender::~wCalender()

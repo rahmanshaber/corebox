@@ -48,8 +48,6 @@ public:
     explicit settings(QWidget *parent = 0);
     ~settings();
 
-    QString selectedTerminal;
-
 protected slots:
     void onMimeSelected(QTreeWidgetItem* current, QTreeWidgetItem* previous);
     void updateMimeAssoc(QTreeWidgetItem* item);
@@ -61,7 +59,6 @@ protected slots:
 private slots:
     void on_cancel_clicked();
     void on_ok_clicked();
-    void on_terminals_currentIndexChanged(const QString &arg1);
     void on_browseF_clicked();
     void on_browseS_clicked();
     void pageClick(QPushButton *btn, int i, QString title);
@@ -72,6 +69,8 @@ private slots:
     void on_backUp_clicked();
     void on_restore_clicked();
 
+    void on_setDefaultApp_toggled(bool checked);
+
 private:
     Ui::settings *ui;
     SettingsManage sm;
@@ -81,6 +80,7 @@ private:
     void setupCoreFMPage();
     void setupCoreShotPage();
 
+    void setupMime();
 };
 
 #endif // SETTINGS_H

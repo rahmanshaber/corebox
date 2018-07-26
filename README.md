@@ -8,7 +8,7 @@
 <img src="docs/screenshots/a4.png" width="500">
 
 ### Download
-* Version 2.2 released Friday, July 19, 2018.
+* Version 2.2 released Thursday, July 26, 2018.
 * Here is the app download [link](https://github.com/rahmanshaber/corebox/releases "Title") .
 * See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 

@@ -108,7 +108,7 @@ QComboBox::drop-down {
 
 
 QHeaderView{
-    background-color: @transparent;
+    background-color: transparent;
     color:@color07;
     padding-left: 4px;}
 QHeaderView::section {

@@ -48,13 +48,9 @@
         <file>icons/instruments-icons/triangle_w.svg</file>
     </qresource>
     <qresource prefix="/">
-        <file>icons/aemptytrash.svg</file>
         <file>icons/alarm.svg</file>
-        <file>icons/anewcorebox.svg</file>
         <file>icons/anewfolder.svg</file>
-        <file>icons/anewtab.svg</file>
         <file>icons/anewtext.svg</file>
-        <file>icons/arestore.svg</file>
         <file>icons/atrashit.svg</file>
         <file>icons/battery.svg</file>
         <file>icons/bookit.svg</file>

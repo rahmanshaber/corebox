@@ -16,7 +16,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "coreaction.h"
 #include "ui_coreaction.h"
-
+#include "corebox/globalfunctions.h"
 
 coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),ui(new Ui::coreaction),
     timer(new QTimer(this))
@@ -30,6 +30,8 @@ coreaction::coreaction(QWidget *parent) : QWidget(parent, Qt::Dialog),ui(new Ui:
     loadsettings();
     widgetList();
     tryicon();
+
+    addDropShadow(ui->appsW, 60, 50);
 }
 
 coreaction::~coreaction()

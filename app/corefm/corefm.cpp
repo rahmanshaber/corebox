@@ -1109,7 +1109,7 @@ QMenu* corefm::createOpenWithMenu()
 
 QMenu* corefm::sendto()
 {
-    QMenu *sendto = new QMenu(tr("Send to.."));
+    QMenu *sendto = new QMenu(tr("Send to.."), this);
 
     sendto->addAction(ui->actionDesktop);
     sendto->addAction(ui->actionHome);
@@ -1130,9 +1130,9 @@ QMenu* corefm::sendto()
 QMenu* corefm::globalmenu(){
 
     QMenu *popup = new QMenu(this);
-    QMenu *subnew = new QMenu(tr("New.."));
-    QMenu *innew = new QMenu(tr("Open in.."));
-    QMenu *arrageItems = new QMenu(tr("Arrage Items"));
+    QMenu *subnew = new QMenu(tr("New.."), this);
+    QMenu *innew = new QMenu(tr("Open in.."), this);
+    QMenu *arrageItems = new QMenu(tr("Arrage Items"), this);
 
     QFile file(curIndex.filePath());
     QMimeDatabase db;

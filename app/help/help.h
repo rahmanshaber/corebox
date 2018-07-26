@@ -39,7 +39,6 @@ public:
 
 private slots:
     void pageClick(QPushButton *btn, int i, QString title);
-    void on_helpus_clicked();
     void on_search_clicked();
     void on_start_clicked();
     void on_dashboard_clicked();
@@ -52,7 +51,6 @@ private slots:
     void on_corepad_clicked();
     void on_corefm_clicked();
     void on_corebox_clicked();
-    void on_relesenotes_clicked();
 
 private:
     Ui::help *ui;

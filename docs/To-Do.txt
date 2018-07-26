@@ -23,6 +23,10 @@ globalfunction
 1 - finished copying message.
 1 - file deleted & delete failed message.
 
+style
+1 - disable text color
+2 - changing the theme ,sometime crashes the app(change imeditlyis needed?)
+
 start
 1 - load recent,save session in qconcarent.
 1 - delete the last one from list and add new at first in all list.
@@ -120,6 +124,7 @@ help
 library
 3 - check library and its version before building from our app using qmake.
 1 - Update the libcterminal.
+1 - disable all the build warnings from librarys
 
 New app
 -Backup.
@@ -135,26 +140,3 @@ in-future
 
 *remove unwanted function from all cpp files.
 *code merge
-
-fix the zoom issue in coreimage
-disable text color
-
-changing the theme ,sometime crashes the app(change imeditlyis needed?)
-disable all the buid warnings from librarys
-corepad rightbutton menu border not showing
-disable dobulclick in dashboard lists.
-set the appicon size same in mime apps
-fix the sort in start(speeddial)(it is now old recent)
-shadow effect fix the code
-corefm views saves?
-test the theme mode saves?
-selectedTerminal in settings . saw no use
-why call bk.cheackBook as setup folder is calling it
-bool button in cretation of mime list
-session list in not reloading when clicked in start window.
-add a bool to enable the shadow effect in function?
-remove the removed package from deb file(control)
-
-testing
-see all the app for light sidebar color,ok?
-cheack for missing stylesheet.

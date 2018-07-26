@@ -34,9 +34,15 @@ public:
     explicit about(QWidget *parent = 0);
     ~about();
 
+private slots:
+    void on_corebox_clicked();
+    void on_releaseNotes_clicked();
+    void on_helpUs_clicked();
+
 private:
     Ui::about *ui;
 
+    void pageClick(QPushButton *btn, int i, QString title);
 };
 
 #endif // ABOUT_H

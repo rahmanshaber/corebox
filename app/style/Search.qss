@@ -2,7 +2,7 @@
 
 #appTitle{
     background-color: transparent;
-    color: @color07;
+    color: @color09;
     border: none;}
 
 

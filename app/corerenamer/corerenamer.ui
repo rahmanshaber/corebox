@@ -14,8 +14,8 @@
    <string>CoreRenamer</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/icons/CoreRenemer.svg</normaloff>:/icons/CoreRenemer.svg</iconset>
+   <iconset resource="../icons.qrc">
+    <normaloff>:/app/icons/app-icons/CoreRenemer.svg</normaloff>:/app/icons/app-icons/CoreRenemer.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>

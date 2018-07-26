@@ -66,7 +66,8 @@ But in some cases (apple bundle) there can be more locations).
 const QStringList get_color_schemes_dirs()
 {
 #ifdef BUNDLE_COLORSCHEMES
-    return QLatin1String(":/");
+    return QStringList(":/");
+    //return QLatin1String(":/");
 #else
 //    qDebug() << __FILE__ << __FUNCTION__;
 

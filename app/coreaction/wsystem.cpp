@@ -16,6 +16,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "wsystem.h"
 #include "ui_wsystem.h"
+#include "corebox/globalfunctions.h"
 
 
 wSystem::wSystem(QWidget *parent) :QWidget(parent),ui(new Ui::wSystem),
@@ -25,6 +26,8 @@ wSystem::wSystem(QWidget *parent) :QWidget(parent),ui(new Ui::wSystem),
     checkSystem();
     QTimer *timer = new QTimer();
     timer->start(1000);
+
+    addDropShadow(this, 60, 50);
 
     connect(timer, &QTimer::timeout, this, &wSystem::checkSystem);
 }

@@ -25,11 +25,12 @@ settings::settings(QWidget *parent) :QWidget(parent),ui(new Ui::settings)
     // set stylesheet from style.qrc
     setStyleSheet(getStylesheetFileContent(":/appStyle/style/Settings.qss"));
 
+    on_setDefaultApp_toggled(false);
+
     setupCoreBoxPage();
     setupCoreFMPage();
     setupCoreActionPage();
-    setupCoreShotPage();
-
+    setupCoreShotPage();    
 }
 
 settings::~settings()
@@ -58,7 +59,7 @@ void settings::setupCoreBoxPage()
     ui->cmbStyleTheme->addItem("Light");
     ui->cmbStyleTheme->setCurrentIndex(sm.getStyleMode());
     ui->cmbFontStyle->setCurrentText(sm.getFontStyle());
-
+    ui->addShadow->setChecked(sm.getAddShadow());
 }
 
 void settings::setupCoreActionPage()
@@ -86,106 +87,111 @@ void settings::setupCoreFMPage()
     ui->view->setCurrentIndex(sm.getViewMode());
 
     //terminal
-    selectedTerminal = ui->terminals->currentText();
     ui->terminals->setCurrentText(sm.getTerminal());
 
     //setup mimes
-    QtConcurrent::run([this]() {
-        MimeUtils *mimeUtils = new MimeUtils(this);
-        const QString tmp = "/.config/coreBox/mimeapps.list";
-        mimeUtils->setDefaultsFileName(tmp);
-        QStringList mimes = mimeUtils->getMimeTypes();
-
-        QIcon defaultIcon = QIcon::fromTheme("unknown");
-
-        QMap<QString, QTreeWidgetItem*> categories;
-        QMap<QTreeWidgetItem*, QIcon> genericIcons;
-
-        foreach (QString mime, mimes) {
-
-          // Skip all 'inode' nodes including 'inode/directory'
-          if (mime.startsWith("inode")) {
-            continue;
-          }
-
-          // Skip all 'x-content' and 'message' nodes
-          if (mime.startsWith("x-content") || mime.startsWith("message")) {
-            continue;
-          }
-
-          // Parse mime
-          QStringList splitMime = mime.split("/");
-
-          // Retrieve cathegory
-          QIcon icon;
-          QString categoryName = splitMime.first();
-          QTreeWidgetItem* category = categories.value(categoryName, NULL);
-          if (!category) {
-            category = new QTreeWidgetItem(ui->mimesWidget);
-            category->setText(0, categoryName);
-            category->setFlags(Qt::ItemIsEnabled);
-            categories.insert(categoryName, category);
-            icon = FileUtils::searchGenericIcon(categoryName, defaultIcon);
-            genericIcons.insert(category, icon);
-          } else {
-            icon = genericIcons.value(category);
-          }
-
-          // Load icon and default application for current mime
-          // NOTE: if icon is not found generic icon is used
-          icon = FileUtils::searchMimeIcon(mime, icon);
-          QString appNames = mimeUtils->getDefault(mime).join(";");
-
-          // Create item from current mime
-          QTreeWidgetItem *item = new QTreeWidgetItem(category);
-          item->setIcon(0, icon);
-          item->setText(0, splitMime.at(1));
-          item->setText(1, appNames.remove(".desktop"));
-          item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-        }
-
-        // Load application list
-        QStringList apps = FileUtils::getApplicationNames();
-        apps.replaceInStrings(".desktop", "");
-        apps.sort();
-
-        // Prepare source of icons
-        QDir appIcons("/usr/share/pixmaps","", 0, QDir::Files | QDir::NoDotAndDotDot);
-        QStringList iconFiles = appIcons.entryList();
-        QIcon defaulticon = QIcon::fromTheme("application-x-executable");
-
-        // Loads icon list
-        QList<QIcon> icons;
-        foreach (QString app, apps) {
-          QPixmap temp = QIcon::fromTheme(app).pixmap(16, 16);
-          if (!temp.isNull()) {
-            icons.append(temp);
-          } else {
-            QStringList searchIcons = iconFiles.filter(app);
-            if (searchIcons.count() > 0) {
-              icons.append(QIcon("/usr/share/pixmaps/" + searchIcons.at(0)));
-            } else {
-              icons.append(defaulticon);
-            }
-          }
-        }
-    });
-
-    // Connect
-    connect(ui->mimesWidget,
-            SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-            SLOT(onMimeSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
-    connect(ui->btnAdd, SIGNAL(clicked()), SLOT(showAppDialog()));
-    connect(ui->removeAppAssoc, SIGNAL(clicked()), SLOT(removeAppAssoc()));
-    connect(ui->moveAppAssocUp, SIGNAL(clicked()), SLOT(moveAppAssocUp()));
-    connect(ui->moveAppAssocDown, SIGNAL(clicked()), SLOT(moveAppAssocDown()));
-
+    setupMime();
 }
 
 void settings::setupCoreShotPage()
 {
     //general
     ui->ssLocation->setText(sm.getSCSaveLocation());
+}
+
+void settings::setupMime()
+{
+    if (ui->setDefaultApp->isChecked()) {
+        QtConcurrent::run([&]() {
+            MimeUtils *mimeUtils = new MimeUtils;
+            const QString tmp = "/.config/coreBox/mimeapps.list";
+            mimeUtils->setDefaultsFileName(tmp);
+            QStringList mimes = mimeUtils->getMimeTypes();
+
+            QIcon defaultIcon = QIcon::fromTheme("unknown");
+
+            QMap<QString, QTreeWidgetItem*> categories;
+            QMap<QTreeWidgetItem*, QIcon> genericIcons;
+
+            foreach (QString mime, mimes) {
+
+              // Skip all 'inode' nodes including 'inode/directory'
+              if (mime.startsWith("inode")) {
+                continue;
+              }
+
+              // Skip all 'x-content' and 'message' nodes
+              if (mime.startsWith("x-content") || mime.startsWith("message")) {
+                continue;
+              }
+
+              // Parse mime
+              QStringList splitMime = mime.split("/");
+
+              // Retrieve cathegory
+              QIcon icon;
+              QString categoryName = splitMime.first();
+              QTreeWidgetItem* category = categories.value(categoryName, NULL);
+              if (!category) {
+                category = new QTreeWidgetItem(ui->mimesWidget);
+                category->setText(0, categoryName);
+                category->setFlags(Qt::ItemIsEnabled);
+                categories.insert(categoryName, category);
+                icon = FileUtils::searchGenericIcon(categoryName, defaultIcon);
+                genericIcons.insert(category, icon);
+              } else {
+                icon = genericIcons.value(category);
+              }
+
+              // Load icon and default application for current mime
+              // NOTE: if icon is not found generic icon is used
+              icon = FileUtils::searchMimeIcon(mime, icon);
+              QString appNames = mimeUtils->getDefault(mime).join(";");
+
+              // Create item from current mime
+              QTreeWidgetItem *item = new QTreeWidgetItem(category);
+              item->setIcon(0, icon);
+              item->setText(0, splitMime.at(1));
+              item->setText(1, appNames.remove(".desktop"));
+              item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+            }
+
+            // Load application list
+            QStringList apps = FileUtils::getApplicationNames();
+            apps.replaceInStrings(".desktop", "");
+            apps.sort();
+
+            // Prepare source of icons
+            QDir appIcons("/usr/share/pixmaps","", 0, QDir::Files | QDir::NoDotAndDotDot);
+            QStringList iconFiles = appIcons.entryList();
+            QIcon defaulticon = QIcon::fromTheme("application-x-executable");
+
+            // Loads icon list
+            QList<QIcon> icons;
+            foreach (QString app, apps) {
+              QPixmap temp = QIcon::fromTheme(app).pixmap(16, 16);
+              if (!temp.isNull()) {
+                icons.append(temp);
+              } else {
+                QStringList searchIcons = iconFiles.filter(app);
+                if (searchIcons.count() > 0) {
+                  icons.append(QIcon("/usr/share/pixmaps/" + searchIcons.at(0)));
+                } else {
+                  icons.append(defaulticon);
+                }
+              }
+            }
+        });
+
+        // Connect
+        connect(ui->mimesWidget,
+                SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+                SLOT(onMimeSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
+        connect(ui->btnAdd, SIGNAL(clicked()), SLOT(showAppDialog()));
+        connect(ui->removeAppAssoc, SIGNAL(clicked()), SLOT(removeAppAssoc()));
+        connect(ui->moveAppAssocUp, SIGNAL(clicked()), SLOT(moveAppAssocUp()));
+        connect(ui->moveAppAssocDown, SIGNAL(clicked()), SLOT(moveAppAssocDown()));
+    }
 }
 
 void settings::onMimeSelected(QTreeWidgetItem *current,QTreeWidgetItem *previous)
@@ -316,11 +322,6 @@ void settings::moveAppAssocDown()
     updateMimeAssoc(ui->mimesWidget->currentItem());
 }
 
-void settings::on_terminals_currentIndexChanged(const QString &arg1)
-{
-    selectedTerminal = arg1;
-}
-
 void settings::on_cancel_clicked()
 {
     CoreBox *cBox = qobject_cast<CoreBox*>(qApp->activeWindow());
@@ -342,27 +343,30 @@ void settings::on_ok_clicked()
     if(ui->isRecentDisable->isChecked() == false){sm.cSetting->remove("Recent");};
     sm.setStyleMode(ui->cmbStyleTheme->currentIndex() ? true :false );
     sm.setFontStyle(ui->cmbFontStyle->currentText());
+    sm.setAddShadow(ui->addShadow->isChecked());
 
     //corefm
-    MimeUtils *mimeUtils = new MimeUtils(this);
-    const QString tmp = "/.config/coreBox/mimeapps.list";
-    mimeUtils->setDefaultsFileName(tmp);
-    for (int i = 0; i < ui->mimesWidget->topLevelItemCount(); ++i) {
-      QTreeWidgetItem* cathegory = ui->mimesWidget->topLevelItem(i);
-      QString cathegoryName = cathegory->text(0) + "/";
-      for (int j = 0; j < cathegory->childCount(); j++) {
-        QString mime = cathegoryName + cathegory->child(j)->text(0);
-        QString appNames = cathegory->child(j)->text(1);
-        if (!appNames.isEmpty()) {
-          QStringList temps = appNames.split(";");
-          for (int i = 0; i < temps.size(); i++) {
-            temps[i] = temps[i] + ".desktop";
+    if (ui->setDefaultApp->isChecked()) {
+        MimeUtils *mimeUtils = new MimeUtils(this);
+        const QString tmp = "/.config/coreBox/mimeapps.list";
+        mimeUtils->setDefaultsFileName(tmp);
+        for (int i = 0; i < ui->mimesWidget->topLevelItemCount(); ++i) {
+          QTreeWidgetItem* cathegory = ui->mimesWidget->topLevelItem(i);
+          QString cathegoryName = cathegory->text(0) + "/";
+          for (int j = 0; j < cathegory->childCount(); j++) {
+            QString mime = cathegoryName + cathegory->child(j)->text(0);
+            QString appNames = cathegory->child(j)->text(1);
+            if (!appNames.isEmpty()) {
+              QStringList temps = appNames.split(";");
+              for (int i = 0; i < temps.size(); i++) {
+                temps[i] = temps[i] + ".desktop";
+              }
+              mimeUtils->setDefault(mime, temps);
+            }
           }
-          mimeUtils->setDefault(mime, temps);
         }
-      }
+        mimeUtils->saveDefaults();
     }
-    mimeUtils->saveDefaults();
 
     sm.setTerminal(ui->terminals->currentText());
     sm.setStartupPath(ui->startPath->text());
@@ -482,4 +486,15 @@ void settings::on_restore_clicked()
     }
 }
 
+void settings::on_setDefaultApp_toggled(bool checked)
+{
+    ui->mimeInfoBox->setVisible(checked);
+    if (checked) {
+        setupMime();
+    } else {
+        disconnect(ui->mimesWidget, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)), 0, 0);
+        ui->listAssoc->clear();
+        ui->mimesWidget->clear();
+    }
 
+}

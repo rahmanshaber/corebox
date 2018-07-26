@@ -131,6 +131,8 @@ Version 2.2
 - added new Dark and light mode.
 - redesinged all the ui and sidebar color.
 - able to set the font famaliy.
+- fixed submenu in contex menu is not colored.
+- fixed the libterminal typo.
 
 
 

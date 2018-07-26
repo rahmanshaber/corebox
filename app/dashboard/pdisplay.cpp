@@ -44,13 +44,13 @@ void pDisplay::setupDisplayPage()
         QString size(tr("(%1,%2)").arg(s.width()).arg(s.height()));
 
         QSize a = qApp->screens()[i]->availableVirtualSize();
-        QString availableVS(tr("(%1,%2)").arg(a.width()).arg(a.height()));
+        QString availableVS(tr("(%1,%2)%3").arg(a.width()).arg(a.height()).arg(" px"));
 
         QRect g = qApp->screens()[i]->geometry();
-        QString geometry(tr("(%1,%2)").arg(g.width()).arg(g.height()));
+        QString geometry(tr("(%1,%2)%3").arg(g.width()).arg(g.height()).arg(" px"));
 
         QSizeF py = qApp->screens()[i]->physicalSize();
-        QString physicalSize(tr("(%1,%2,%3)").arg(py.width()).arg(py.height()).arg(" millimetre"));
+        QString physicalSize(tr("(%1,%2)%3").arg(py.width()).arg(py.height()).arg(" millimetre"));
 
         // screen size in inches
         int screenSize(qSqrt(qPow (py.width(),2) + qPow (py.height(),2)) * 0.03937008);

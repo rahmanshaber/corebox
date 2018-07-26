@@ -16,6 +16,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "wnetwork.h"
 #include "ui_wnetwork.h"
+#include "corebox/globalfunctions.h"
 
 
 wNetwork::wNetwork(QWidget *parent) :QWidget(parent),ui(new Ui::wNetwork),
@@ -25,6 +26,9 @@ wNetwork::wNetwork(QWidget *parent) :QWidget(parent),ui(new Ui::wNetwork),
     checkNetwork();
     QTimer *timer = new QTimer();
     timer->start(1000);
+
+    addDropShadow(this, 60, 50);
+
     connect(timer, &QTimer::timeout, this, &wNetwork::checkNetwork);
 }
 

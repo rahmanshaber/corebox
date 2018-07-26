@@ -16,12 +16,14 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "wnotes.h"
 #include "ui_wnotes.h"
+#include "corebox/globalfunctions.h"
 
 
 wNotes::wNotes(QWidget *parent) :QWidget(parent),ui(new Ui::wNotes)
 {
     ui->setupUi(this);
     collectNotes();
+    addDropShadow(this, 60, 50);
 }
 
 wNotes::~wNotes()

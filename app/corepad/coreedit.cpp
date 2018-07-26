@@ -24,7 +24,7 @@ coreedit::coreedit(QString fPath, QWidget *parent) : QPlainTextEdit(parent)
 
     cHighlighter *highlighter = new cHighlighter(document());
     QString bcolor(getStylesheetValue()->value("@color01").toString());
-    setStyleSheet("QWidget{background-color: " + bcolor+ "; border: none;}");
+    setStyleSheet("QWidget{background-color: " + bcolor + "; border: none;} QMenu{border: 1px solid gray;}");
 
     lineNumberArea = new LineNumberArea(this);
     this->lineNumberArea->setContentsMargins(0, 0, 0, 0);

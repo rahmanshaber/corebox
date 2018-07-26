@@ -24,8 +24,6 @@ help::help(QWidget *parent) :QWidget(parent),ui(new Ui::help)
 
     // set stylesheet from style.qrc
     setStyleSheet(getStylesheetFileContent(":/appStyle/style/Help.qss"));
-
-    on_helpus_clicked();
 }
 
 help::~help()
@@ -41,11 +39,6 @@ void help::pageClick(QPushButton *btn, int i, QString title)
     btn->setChecked(true);
     ui->selectedsection->setText(title);
     ui->pages->setCurrentIndex(i);
-}
-
-void help::on_helpus_clicked()
-{
-    pageClick(ui->helpus,12, tr("HelpUs"));
 }
 
 void help::on_search_clicked()
@@ -106,13 +99,4 @@ void help::on_corefm_clicked()
 void help::on_corebox_clicked()
 {
     pageClick(ui->corebox,0, tr("CoreBox"));
-}
-
-void help::on_relesenotes_clicked()
-{
-    pageClick(ui->relesenotes,13, tr("Relese Notes"));
-    QFile p(":/docs/ReleaseNotes");
-    p.open(QFile::ReadOnly | QFile::Text );
-    QTextStream o(&p);
-    ui->pgreleasenotes->setText(o.readAll());
 }

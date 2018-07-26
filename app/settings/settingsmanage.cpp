@@ -32,6 +32,7 @@ void SettingsManage::createDefaultSettings()
         cSetting->setValue("Force-Theme", QIcon::themeName());
         cSetting->setValue("Style-Mode", false);
         cSetting->setValue("Font-Style", "Cantarell");
+        cSetting->setValue("Add-Shadow", true);
         cSetting->endGroup();
 
         cSetting->beginGroup("CoreFM");
@@ -116,6 +117,14 @@ bool SettingsManage::setFontStyle(QString fontStyle) {
 
 QString SettingsManage::getFontStyle() {
     return getSpecificValue("CoreBox", "Font-Style").toString();
+}
+
+bool SettingsManage::setAddShadow(bool addShadow) {
+    return setSpecificValue("CoreBox", "Add-Shadow", addShadow);
+}
+
+bool SettingsManage::getAddShadow() {
+    return getSpecificValue("CoreBox", "Add-Shadow").toBool();
 }
 //-------------------------CoreBox--------------------------------------
 

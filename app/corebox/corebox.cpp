@@ -72,9 +72,6 @@ CoreBox::CoreBox(QWidget *parent) : QMainWindow(parent), ui(new Ui::CoreBox)
         this->resize(x, y);
     }
 
-    BookmarkManage bk;
-    bk.checkBook();
-
     setupFolder(FolderSetup::BookmarkFolder);
     setupFolder(FolderSetup::DriveMountFolder);
     setupFolder(FolderSetup::TrashFolder);

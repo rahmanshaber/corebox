@@ -160,6 +160,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="rClearActivity">
+        <property name="toolTip">
+         <string>Clear Recent Activites</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -179,6 +182,9 @@
        <widget class="QPushButton" name="rDeleteSession">
         <property name="font">
          <font/>
+        </property>
+        <property name="toolTip">
+         <string>Delete Selected Session</string>
         </property>
         <property name="text">
          <string/>

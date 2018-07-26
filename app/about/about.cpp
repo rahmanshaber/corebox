@@ -21,11 +21,43 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 about::about(QWidget *parent) : QWidget(parent), ui(new Ui::about)
 {
     ui->setupUi(this);
-    connect(ui->aboutqt, SIGNAL(clicked()), qApp, SLOT(aboutQt()));
+
+    // set stylesheet from style.qrc
     setStyleSheet(getStylesheetFileContent(":/appStyle/style/About.qss"));
+
+    on_corebox_clicked();
 }
 
 about::~about()
 {
     delete ui;
+}
+
+void about::pageClick(QPushButton *btn, int i, QString title)
+{
+    // all button checked false
+    for (QPushButton *b : ui->shortcut->findChildren<QPushButton*>())
+        b->setChecked(false);
+    btn->setChecked(true);
+    ui->selectedsection->setText(title);
+    ui->pages->setCurrentIndex(i);
+}
+
+void about::on_corebox_clicked()
+{
+    pageClick(ui->corebox,0, tr("CoreBox"));
+}
+
+void about::on_releaseNotes_clicked()
+{
+    pageClick(ui->releaseNotes,1, tr("Relese Notes"));
+    QFile p(":/docs/ReleaseNotes");
+    p.open(QFile::ReadOnly | QFile::Text );
+    QTextStream o(&p);
+    ui->pgrelesenotes->setText(o.readAll());
+}
+
+void about::on_helpUs_clicked()
+{
+    pageClick(ui->helpUs,2, tr("Help Us"));
 }

@@ -94,12 +94,13 @@ void Start::loadSpeedDial() // populate SpeedDial list
 
     int count = list.count();
     int reverse = count - 1;
-
     for (int i = 0; i < count; i++) {
-        QString bTime = bk.bookingTime("Speed Dial", list.at(i));
-        if (std::binary_search(dateTimeList.begin(), dateTimeList.end(), bTime)) {
-            mList.insert(reverse, list.at(i));
-            reverse--;
+        for (int j = 0; j < count; j++) {
+            QString bTime = bk.bookingTime("Speed Dial", list.at(j));
+            if (bTime.contains(dateTimeList.at(i))) {
+                mList.insert(reverse, list.at(j));
+                reverse--;
+            }
         }
     }
     dateTimeList.clear();
