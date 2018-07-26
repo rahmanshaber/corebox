@@ -11,14 +11,12 @@ corebox
 0 - Mouse left button click is not working for corebox tabwidget beside the tabbar.
 0 - icon and title not changing perfectly.
 0 - closing the corebox needs to inform the app.
-1 - need two theme (dark and light).
 1 - add display scale support.
 1 - add option for using default window manager.
 3 - separate process for per app.
 1 - tab text align left.
 
 globalfunction
-1 - why no qconcarent in file folder count / size.
 1 - file moved message.
 1 - finished copying message.
 1 - file deleted & delete failed message.
@@ -30,7 +28,6 @@ style
 
 start
 0 - after changing the font >>start >> coreapps grid size not incising
-1 - load recent,save session in qconcarent.
 1 - delete the last one from list and add new at first in all list.
 1 - start button in side of tab(+).
 1 - option to sidebar or tab button(+).
@@ -50,15 +47,16 @@ dashboard
 1 - add drive frame in drive view.
 
 search
-1 - serch in qconcarent.
 1 - if search opened from FM hide locate option.
 1 - show the file/folder in coerFM with selecting the file/folder.
 2 - if path is given ,find is not working.but locate is working.
 
 setting
-0 - changes in app dose not save when corebox is closed.(not app)
+0 - changes in app dose not save, when corebox is closed directly.(not app)
 
 corefm
+1 - move mime-related code from FileUtils to MimeUtils.
+1 - combine the properties, fileUtils and desktopfile code to one file named utilities.
 1 - save the splitter position of viewDir in coreFM
 0 - able to create file/folder shortcuts.
 0 - page text in root folder is showing blank.
@@ -67,8 +65,6 @@ corefm
 3 - set custom icon in home's folder.
 1 - add tree package.
 1 - Can't open other terminal using QProcess.
-0 - preview is not working.
-3 - Finish movement of mime-related code from FileUtils to MimeUtils.
 3 - Implement clearDeadDefaults() method in MimeUtils.
 3 - Some *.desktop file has more groups(sections) and each group can contain.
     exec command, but only first is read, this must be fixed.
@@ -88,17 +84,15 @@ coretime
 1 - set reminder option.
 
 coreimage
-0 - Flip vertical and flip horizontal icon are same.
 1 - ctrl + wheel = zoom shortcut.
-1 - add zoom from mouse pointer at coreimage
+1 - zoom from mouse pointer.
 
 coreplayer
-0 - fix the path problem.
 1 - video thumbnails of play-list.
-1 - move to qtAV engine.
 0 - after stop clicked player widget turns white color.
 
 corepdf
+1 - move to poppler base.
 0 - fix the space in path issue.
 0 - on first start corepdf cannot show any pdf file.
 
@@ -112,7 +106,6 @@ coreshot
 1 - take fullscreen shot using x11.
 
 coreterminal
-2 - terminal needs to closes properly.
 0 - Add search bar at coreterminal (not needed for now).
 2 - Open terminal as root for current directory is not supported.
 
