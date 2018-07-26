@@ -1,6 +1,6 @@
 # CoreBox
 
-## CoreBox is combination of some common desktop apps .For Linux Only.Licensed under GPL2
+## CoreBox is combination of some common desktop apps .For Linux Only.Licensed under GPL2 .
 
 <img src="docs/screenshots/a1.png" width="500">
 <img src="docs/screenshots/a2.png" width="500">
@@ -13,7 +13,7 @@
 * See the fixed bug and new features [here](https://github.com/rahmanshaber/corebox/blob/master/docs/ChangeLog "Title") .
 
 ### Changes in latest release
-* Total 130 fixes in this release.
+* Total 130+ fixes in this release.
 * New Dark and Light mode.
 * Redesinged Start.
 * Added two new app CoreRenamer and CoreTerminal.
@@ -46,7 +46,7 @@
 * Some of the apps has old code,so they have some issue in them.Please review the code and help us fix them.
 * See the "HelpUs" page in Help app for more problems.
 
-###Feedback
-* We need your feedback to improve the CoreBox.Send us your feedback through email or github 
+### Feedback
+* We need your feedback to improve the CoreBox.Send us your feedback through email or github [issues](https://github.com/rahmanshaber/corebox/issues "Title") .
 * rahmanshaber@gmail.com
 * s96mini.cube@yahoo.com
