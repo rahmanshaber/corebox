@@ -51,7 +51,8 @@ QMenu {
 QMenu::item {
     background-color: transparent;}
 QMenu::item:selected {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QMenu::separator {
     height: 1px;
     background: @color05;

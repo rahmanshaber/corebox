@@ -16,7 +16,6 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
 #include "wcalculator.h"
 #include "ui_wcalculator.h"
-#include "corebox/globalfunctions.h"
 
 float varA, varB, result;
 int z = 0, varC, varD;
@@ -25,8 +24,9 @@ int z = 0, varC, varD;
 wCalculator::wCalculator(QWidget *parent) :QWidget(parent),ui(new Ui::wCalculator)
 {
     ui->setupUi(this);
+    addDropShadow(this, 40);
+
     ui->calcview->setValidator(new QDoubleValidator(0,99999999,99999999,this));
-    addDropShadow(this, 60, 50);
 }
 
 wCalculator::~wCalculator()

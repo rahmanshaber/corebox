@@ -17,9 +17,9 @@
         <file>icons/app-icons/CoreTime.svg</file>
         <file>icons/app-icons/DashBoard.svg</file>
         <file>icons/app-icons/Help.svg</file>
-        <file>icons/app-icons/Search.svg</file>
         <file>icons/app-icons/Settings.svg</file>
         <file>icons/app-icons/Start.svg</file>
+        <file>icons/app-icons/Search.svg</file>
     </qresource>
     <qresource prefix="/instruments">
         <file>icons/instruments-icons/colorpicker_b.svg</file>

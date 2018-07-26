@@ -96,7 +96,7 @@ Version 2.2
 - added one scrollbar stylesheet across the app.
 - moved window buttons to sidebar and fixed the double click to window maximize.
 - fixed some bugs related to coreplayer playlist.
-- fixed mant ui imperfection all the apps.
+- fixed many ui imperfection all the apps.
 - fixed issue related to executable in properties.
 - added sliding effect in start pages.
 - a big code cleanup and ui fixes.
@@ -117,23 +117,24 @@ Version 2.2
 - fixed screen orientation showing number and added screen size in dashboard.
 - fixed mimetype background of settings app
 - fixed clicking enter the rename dose not complete in corefm renameDialog.
-- fixed drag a app icon from start is disapear.
+- fixed drag a app icon from start is disappear.
 - added option to make file hidden in properties.
 - added esc key shortcut to exit slidshow in coreimage.
-- three clike on both view buttons with thumbnails checked crash the app.
+- three click on both view buttons with thumbnails checked crash the app.
 - fixed clicking start dose not reload the session list.
-- message after saveing and finishing of opening the session.
-- corepaint now support multipal page support.
+- message after saving and finishing of opening the session.
+- corepaint now support multiple page support.
 - properties now shows folder and file count of a folder.
 - limit the openable window to 10.
-- swicth case in setupfolder function.
-- moved to universal theme managment
+- switch case in setupfolder function.
+- moved to universal theme management
 - added new Dark and light mode.
-- redesinged all the ui and sidebar color.
-- able to set the font famaliy.
-- fixed submenu in contex menu is not colored.
+- redesigned all the ui and sidebar color.
+- able to set the font family.
+- fixed submenu in context menu is not colored.
 - fixed the libterminal typo.
-
+- fixed image rotation size in coreimage.
+- fixed corefm lightmode sidecolor.
 
 
 Version 2.1,Released date Friday, June 1, 2018.

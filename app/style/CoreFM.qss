@@ -2,8 +2,26 @@
 
 #appTitle{
     background-color: transparent;
-    color:@color07;
+    color:@color09;
     border: none;}
+
+#partitions{
+    background-color: transparent;
+    color: @color09;
+    border: none;}
+#partitions::item {
+    padding: 5px 5px 5px 0px;
+    color: @color09;
+    background-color:transparent;}
+#partitions::item:hover {
+    background-color: @color04;
+    color: @color08;}
+
+#viewMode{
+    background-color: transparent;
+    color: @color07;
+    border: 1px solid @color05;}
+
 
 QWidget [accessibleName="shortcut"]{
     background-color: @corefm;
@@ -21,17 +39,6 @@ QWidget [accessibleName="statusBar"]{
     border: none;}
 
 
-#line{
-    background-color: @color05;
-    color: @color05;
-    border: none;}
-
-#viewMode{
-    background-color: transparent;
-    color: @color07;
-    border: 1px solid @color05;}
-
-
 QMenu {
     background-color: @color01;
     color: @color07;
@@ -39,7 +46,8 @@ QMenu {
 QMenu::item {
     background-color: transparent;}
 QMenu::item:selected {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QMenu::separator {
     height: 1px;
     background: @color05;

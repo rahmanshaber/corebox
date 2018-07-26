@@ -3,6 +3,9 @@ QT       += widgets core network gui charts concurrent
 TARGET = csys
 TEMPLATE = lib
 
+# disable all build warnings
+CONFIG += warn_off
+
 VERSION = 1.0.9
 DEFINES += LIBCSYS_LIBRARY
 

@@ -16,29 +16,29 @@ QFileDialog {
     background-color: @color02;}
 QFileDialog QComboBox{
     background-color: transparent ;
-    color: #ffffff;}
+    color: @color07;}
 QFileDialog QListView{
     background-color: transparent ;
-    color: #ffffff;}
+    color: @color07;}
 QFileDialog QTreeView{
     background-color: transparent ;
-    color: #ffffff;}
+    color: @color07;}
 QFileDialog QLabel {
     background-color: transparent ;
-    color: #fefefe;}
+    color: @color07;}
 QFileDialog QPushButton {
     background-color: transparent ;
-    color: #ffffff;
+    color: @color07;
     padding: 5px 5px 5px 10px;
     border: 1px solid @color05;}
 QFileDialog QToolButton {
     background-color: transparent ;
-    color: #ffffff;
+    color: @color07;
     padding: 5px 5px 5px 10px;
     border: 1px solid @color05;}
 QFileDialog QLineEdit {
     background-color: transparent ;
-    color: #ffffff;
+    color: @color07;
     border: 1px solid @color05;}
 
 
@@ -76,7 +76,8 @@ QTabBar::close-button {
     border: 1px #111111;}
 
 QPushButton{
-    border: 1px #2A2A2A;
-    background-color: transparent ;}
+    border: none;
+    background-color: transparent ;
+    color: @color07;}
 QPushButton:hover  {
     background-color: @color04;}

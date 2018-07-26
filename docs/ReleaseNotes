@@ -9,29 +9,29 @@ These are the some big changes in CoreBox 2.2.
    - Reduced font size in all app's sidebar.
    - Fixed tab close crash of same app.
    - Full trash support for CoreFM and CoreImage.
-   - Moved window buttons to sidebar and fixed the DobuleClick to window miximize.
+   - Moved window buttons to sidebar and fixed the DobuleClick to window maximize.
    - Added new Dark and light mode.
-   - Redesinged all the ui and sidebar color.
+   - Redesigned all the ui and sidebar color.
    - Set font style across all the apps.
 
 => Start
    - New look.
-   - Redisinged RecentActivites.
-   - Added new feture called save session.
+   - Redesigned RecentActivites.
+   - Added new feature called save session.
 
 => BookMarks
     - BookmarkIt Dialog in dark ui.
 
 => DashBoard
     - Updated the battery info functions.
-    - Moved all core code to separete library.
+    - Moved all core code to separate library.
     - Battery charging and discharging time is showing now.
     - Updated the libcsys library.
     - General page's network bar now show used network.
 
 => Search
    - Search is now faster and have better UI.
-   - Keybord "Enter" shortcut is now working.
+   - Keyboard "Enter" shortcut is now working.
    - Added search activity to save the search words.
    - Auto fill the folder path and name from search activity.
 
@@ -39,9 +39,9 @@ These are the some big changes in CoreBox 2.2.
    - Now it is possible to backup settings and bookmarks as an archive.
 
 => CoreAction
-   - All the widgets rebuild, now those are faster and ram efficent.
-   - Widgets list is now customizeable.
-   - Redesinged.
+   - All the widgets rebuild, now those are faster and ram efficient.
+   - Widgets list is now customizable.
+   - Redesigned.
 
 => CoreFM
    - Added drive list.
@@ -49,8 +49,8 @@ These are the some big changes in CoreBox 2.2.
    - Added CoreArchiver and CoreTerminal support.
    - Dark ui in corefm.
    - Added Send To option.
-   - Removed libmagic from depedency.
-   - Added full interigation with CoreTerminal, CoreRenamer, CorePDF and CoreArchiver.
+   - Removed libmagic from dependency.
+   - Added full integration with CoreTerminal, CoreRenamer, CorePDF and CoreArchiver.
    - Getting file size is faster now.
 
 => CorePaint
@@ -74,7 +74,7 @@ These are the some big changes in CoreBox 2.2.
 => CorePad
    - Fixed linenumberwidth.
    - Fixed all bug related to saving.
-   - Added syntex highlighting.
+   - Added syntax highlighting.
 
 => CoreTerminal
    - New app
@@ -94,4 +94,4 @@ These are the some big changes in CoreBox 2.2.
 => Tested
     - Manjaro xfce.
     - Ubuntu 18.04 LTS.
-    - Qt toolkit vrsion 5.9 lts and 5.11.1
+    - Qt toolkit version 5.9 lts and 5.11.1

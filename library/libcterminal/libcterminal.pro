@@ -3,6 +3,9 @@ QT      += widgets
 TARGET   = cterminal
 TEMPLATE = lib
 
+# disable all build warnings
+CONFIG += warn_off
+
 DEFINES += CTERMINAL_LIBRARY
 
 DEFINES += KB_LAYOUT_DIR=\\\"/usr/share/cterminal/kb-layouts\\\"

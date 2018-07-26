@@ -21,6 +21,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTimer>
 
 #include "dashboard/info_manager.h"
+#include "corebox/globalfunctions.h"
 
 
 namespace Ui {

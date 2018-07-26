@@ -583,23 +583,21 @@ padding: 3px 10px 3px 10px;
           <property name="topMargin">
            <number>20</number>
           </property>
-          <item row="0" column="1">
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="3" column="0">
+           <widget class="QLabel" name="selectFont_3">
+            <property name="text">
+             <string>Enable Shadow Effect </string>
             </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Expanding</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>80</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
+           </widget>
           </item>
-          <item row="1" column="1">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Appearance </string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
            <spacer name="horizontalSpacer_8">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -626,7 +624,62 @@ padding: 3px 10px 3px 10px;
             </property>
            </widget>
           </item>
-          <item row="1" column="2">
+          <item row="0" column="2">
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>80</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="4">
+           <widget class="QCheckBox" name="addShadow">
+            <property name="maximumSize">
+             <size>
+              <width>35</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" colspan="3">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="3" colspan="2">
+           <widget class="QFontComboBox" name="cmbFontStyle">
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="frame">
+             <bool>true</bool>
+            </property>
+            <property name="fontFilters">
+             <set>QFontComboBox::AllFonts</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" colspan="2">
            <widget class="QComboBox" name="cmbStyleTheme">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -645,14 +698,7 @@ padding: 3px 10px 3px 10px;
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>Appearance </string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
+          <item row="0" column="3" colspan="2">
            <widget class="QComboBox" name="cmbIconTheme">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -668,33 +714,6 @@ padding: 3px 10px 3px 10px;
             </property>
             <property name="styleSheet">
              <string notr="true"/>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QFontComboBox" name="cmbFontStyle">
-            <property name="editable">
-             <bool>false</bool>
-            </property>
-            <property name="frame">
-             <bool>true</bool>
-            </property>
-            <property name="fontFilters">
-             <set>QFontComboBox::AllFonts</set>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QCheckBox" name="addShadow">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="selectFont_3">
-            <property name="text">
-             <string>Enable Shadow Effect </string>
             </property>
            </widget>
           </item>

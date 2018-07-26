@@ -26,7 +26,8 @@ QListView::item:selected {
     background-color: @color04;
     color: @color08;}
 QListView::item:hover {
-    background-color: @color04;}
+    background-color: @color04;
+    color: @color08;}
 QListView::item {
     background-color: @color06;
     border: none;

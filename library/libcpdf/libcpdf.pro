@@ -4,6 +4,9 @@ TARGET = cpdf
 CONFIG += dll
 CONFIG += c++11
 
+# disable all build warnings
+CONFIG += warn_off
+
 QT += widgets\
       webengine\
       webenginecore\

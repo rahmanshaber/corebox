@@ -21,6 +21,8 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDebug>
 #include <QDoubleValidator>
 
+#include "corebox/globalfunctions.h"
+
 
 namespace Ui {
 class wCalculator;

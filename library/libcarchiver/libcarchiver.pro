@@ -1,6 +1,9 @@
 TEMPLATE	= lib
 TARGET		= carchiver
 
+# disable all build warnings
+CONFIG += warn_off
+
 greaterThan( QT_MAJOR_VERSION, 4 ) {
 	TARGET = carchiver
 }

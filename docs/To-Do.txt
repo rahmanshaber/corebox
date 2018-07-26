@@ -24,10 +24,12 @@ globalfunction
 1 - file deleted & delete failed message.
 
 style
+0 - save change dialog button >> light mode >> qmessagebox.
 1 - disable text color
-2 - changing the theme ,sometime crashes the app(change imeditlyis needed?)
+2 - changing the theme ,sometime crashes the app(change immediately needed?)
 
 start
+0 - after changing the font >>start >> coreapps grid size not incising
 1 - load recent,save session in qconcarent.
 1 - delete the last one from list and add new at first in all list.
 1 - start button in side of tab(+).

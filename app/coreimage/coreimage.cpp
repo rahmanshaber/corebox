@@ -335,6 +335,8 @@ void coreimage::on_cRotateLeft_clicked()
     tran.rotate(-90);
     image = image.transformed(tran);
     cImageLabel->setPixmap(QPixmap::fromImage(image));
+    cImageLabel->adjustSize();
+    scaleFactor = 1.0;
 }
 
 void coreimage::on_cRotateRight_clicked()
@@ -343,6 +345,8 @@ void coreimage::on_cRotateRight_clicked()
     tran.rotate(90);
     image = image.transformed(tran);
     cImageLabel->setPixmap(QPixmap::fromImage(image));
+    cImageLabel->adjustSize();
+    scaleFactor = 1.0;
 }
 
 bool coreimage::saveFile(const QString &fileName)

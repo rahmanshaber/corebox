@@ -10,10 +10,10 @@
    viewBox="0 0 500 500"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.5 r10040"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
    width="100%"
    height="100%"
-   sodipodi:docname="utilities-find.svg">
+   sodipodi:docname="Search.svg">
   <metadata
      id="metadata73">
     <rdf:RDF>
@@ -35,11 +35,11 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="716"
+     inkscape:window-height="714"
      id="namedview71"
      showgrid="false"
      inkscape:zoom="0.35355339"
-     inkscape:cx="-11.386133"
+     inkscape:cx="604.50079"
      inkscape:cy="211.41614"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -95,7 +95,7 @@
      transform="translate(0,452)" />
   <path
      sodipodi:type="arc"
-     style="fill:#ececec;stroke:#4b4b4b;stroke-width:25.83436966;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     style="fill:#ffffff;stroke:#111111;stroke-width:25.83436966;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1"
      id="path2996"
      sodipodi:cx="211.70058"
      sodipodi:cy="184.75023"
@@ -107,7 +107,7 @@
      transform="matrix(0.7159585,0.71893767,-0.70734187,0.70441075,159.58075,-103.17426)"
      sodipodi:open="true" />
   <path
-     style="fill:none;stroke:#4b4b4b;stroke-width:38;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     style="fill:none;stroke:#111111;stroke-width:38;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
      d="m 282.1356,282.21111 93.3381,92.63099"
      id="path3766"
      inkscape:connector-curvature="0" />

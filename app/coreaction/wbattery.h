@@ -22,6 +22,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QTime>
 
 #include "dashboard/upower.h"
+#include "corebox/globalfunctions.h"
 
 
 namespace Ui {
