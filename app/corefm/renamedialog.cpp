@@ -17,6 +17,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include "renamedialog.h"
 #include "ui_renamedialog.h"
 
+
 renameDialog::renameDialog(QFileInfo iFile,QWidget *parent):QDialog(parent),ui(new Ui::renameDialog)
 {
     ui->setupUi(this);
@@ -30,7 +31,6 @@ renameDialog::renameDialog(QFileInfo iFile,QWidget *parent):QDialog(parent),ui(n
     setWindowIcon(geticon(m_iFile.filePath()));
     setWindowTitle("Rename \"" + m_iFile.fileName() + "\"");
     ui->newName->setText(m_iFile.fileName());
-    ui->pic->setPixmap(geticon(iFile.filePath()).pixmap(120, 120));
     connect(ui->cancel, &QToolButton::clicked, this, &renameDialog::close);
 
     shotcuts();

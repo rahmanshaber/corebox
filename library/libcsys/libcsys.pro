@@ -6,6 +6,9 @@ TEMPLATE = lib
 # disable all build warnings
 CONFIG += warn_off
 
+# Disable Debug on Release
+CONFIG(release):DEFINES += QT_NO_DEBUG_OUTPUT
+
 VERSION = 1.0.9
 DEFINES += LIBCSYS_LIBRARY
 

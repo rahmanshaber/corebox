@@ -40,7 +40,7 @@ void corepdf::openPdfFile(const QString path)
     connect(PdfWidget, &QPdfWidget::initialized, [this,path]() {
 //        PdfWidget->setToolbarVisible(false);
         QFile f(path);
-        qDebug() << "CorePDF" << path;
+//        qDebug() << "CorePDF" << path;
         if (f.open(QIODevice::ReadOnly)) {
             QByteArray data = f.readAll();
             PdfWidget->loadData(data);

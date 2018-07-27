@@ -87,7 +87,7 @@ void corearchiver::compress(const QStringList &archiveList , const QDir &current
 
     QDir::setCurrent(currentDir.path());
 
-    qDebug() << "Current Dir : " << QDir::currentPath() << "\nGiven Dir : " << currentDir.path();
+//    qDebug() << "Current Dir : " << QDir::currentPath() << "\nGiven Dir : " << currentDir.path();
 
     if (archiveName.isEmpty()) return;
 
@@ -100,11 +100,11 @@ void corearchiver::compress(const QStringList &archiveList , const QDir &current
     if ( arc == NULL )
         return;
 
-    qDebug() << "Info " << QDir(location).filePath(name);
-    qDebug() << "Format : " << format;
-    qDebug() << "Archive Name : " << name;
-    qDebug() << "Working Dir : " << currentDir.path();
-    qDebug() << "List Files : " << archiveList;
+//    qDebug() << "Info " << QDir(location).filePath(name);
+//    qDebug() << "Format : " << format;
+//    qDebug() << "Archive Name : " << name;
+//    qDebug() << "Working Dir : " << currentDir.path();
+//    qDebug() << "List Files : " << archiveList;
     arc->setWorkingDir(currentDir.path());
     arc->updateInputFiles( archiveList );
     QFuture<void> f = QtConcurrent::run( arc, &LibArchive::create );

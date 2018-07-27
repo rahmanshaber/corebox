@@ -101,11 +101,10 @@ void bookmarks::callBookMarkDialog(QWidget *parent, const QString &currentPath)
     if (str.isEmpty() || str.isNull()) {
         bookmarkDialog *bkdlg = new bookmarkDialog(parent);
         QIcon ico = geticon(currentPath);
-        QPixmap pix = ico.pixmap(QSize(120, 120));
+        QPixmap pix = ico.pixmap(QSize(100, 80));
         bkdlg->setBookPath(currentPath);
         bkdlg->setBookName(info.fileName() + "");
         bkdlg->checkPath();
-        bkdlg->setBookIcon(pix);
 
         if (bkdlg->exec() == 0) {
             if (bkdlg->accepted) {

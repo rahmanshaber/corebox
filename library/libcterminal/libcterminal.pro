@@ -6,6 +6,9 @@ TEMPLATE = lib
 # disable all build warnings
 CONFIG += warn_off
 
+# Disable Debug on Release
+CONFIG(release):DEFINES += QT_NO_DEBUG_OUTPUT
+
 DEFINES += CTERMINAL_LIBRARY
 
 DEFINES += KB_LAYOUT_DIR=\\\"/usr/share/cterminal/kb-layouts\\\"

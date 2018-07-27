@@ -50,7 +50,7 @@ These are the some big changes in CoreBox 2.2.
    - Dark ui in corefm.
    - Added Send To option.
    - Removed libmagic from dependency.
-   - Added full integration with CoreTerminal, CoreRenamer, CorePDF and CoreArchiver.
+   - Added full integration with new apps.
    - Getting file size is faster now.
 
 => CorePaint

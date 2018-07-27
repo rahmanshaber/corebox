@@ -83,10 +83,6 @@ void bookmarkDialog::checkPath()
     }
 }
 
-void bookmarkDialog::setBookIcon(QPixmap pix) {
-    ui->bkIcon->setPixmap(pix);
-}
-
 void bookmarkDialog::setBookPath(const QString &path) {
     ui->path->setText(path);
 }

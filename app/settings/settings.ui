@@ -1091,7 +1091,7 @@ padding: 3px 10px 3px 10px;
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>546</width>
+            <width>575</width>
             <height>799</height>
            </rect>
           </property>
@@ -1322,7 +1322,7 @@ padding: 3px 10px 3px 10px;
               <item>
                <widget class="QLabel" name="label">
                 <property name="text">
-                 <string>Terminal List : </string>
+                 <string>Set Defult Terminal </string>
                 </property>
                </widget>
               </item>

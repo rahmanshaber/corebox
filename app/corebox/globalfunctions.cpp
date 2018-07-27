@@ -66,7 +66,6 @@ bool moveToTrash(const QString &fileName) // moves a file or folder to trash fol
 
 void setupFolder(FolderSetup fs)
 {
-    qDebug() << "setupFolder";
     switch (fs) {
     case FolderSetup::BookmarkFolder: {
         // Setup corebox folder for bookmarks

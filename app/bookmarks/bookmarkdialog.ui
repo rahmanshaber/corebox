@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>551</width>
+    <width>482</width>
     <height>165</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
    <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="2">
+   <item row="2" column="1">
     <widget class="QLabel" name="path">
      <property name="text">
       <string>TextLabel</string>
@@ -31,34 +31,34 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
+   <item row="1" column="1">
     <widget class="QLineEdit" name="bkName"/>
    </item>
-   <item row="2" column="1">
+   <item row="2" column="0">
     <widget class="QLabel" name="Lpath">
      <property name="text">
       <string>Path :</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="0" column="0">
     <widget class="QLabel" name="LbkSection">
      <property name="text">
       <string>Section</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="2">
+   <item row="0" column="1">
     <widget class="QComboBox" name="bkSection"/>
    </item>
-   <item row="1" column="1">
+   <item row="1" column="0">
     <widget class="QLabel" name="LbkName">
      <property name="text">
       <string>Bookmark Name :</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
+   <item row="3" column="0" colspan="2">
     <widget class="QLabel" name="bkStatus">
      <property name="styleSheet">
       <string notr="true">color: rgb(239, 41, 41);</string>
@@ -68,7 +68,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2">
+   <item row="4" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -98,22 +98,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="0" rowspan="5">
-    <widget class="QLabel" name="bkIcon">
-     <property name="minimumSize">
-      <size>
-       <width>120</width>
-       <height>120</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>443</width>
-    <height>138</height>
+    <width>361</width>
+    <height>110</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,33 +24,17 @@
    <property name="spacing">
     <number>10</number>
    </property>
-   <item row="0" column="0" rowspan="4">
-    <widget class="QLabel" name="pic">
-     <property name="minimumSize">
-      <size>
-       <width>120</width>
-       <height>120</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
+   <item row="0" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Enter the new name : </string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="1" column="0">
     <widget class="QLineEdit" name="newName"/>
    </item>
-   <item row="3" column="1">
+   <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <spacer name="horizontalSpacer">
@@ -81,7 +65,7 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="1">
+   <item row="2" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>

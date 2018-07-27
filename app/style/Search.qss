@@ -35,9 +35,11 @@ QToolButton{
     border: none;
     padding: 5px 5px 5px 5px;}
 QToolButton:checked{
-    border-bottom: 2px solid #0f5d90;
-    color: #0f5d90;
+    border-bottom: 2px solid @color08;
+    color: @color08;
     font-weight: bold;}
+QToolButton:!checked{
+    color: #AAACAD;}
 
 
 QPushButton{

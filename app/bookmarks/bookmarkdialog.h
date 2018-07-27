@@ -38,7 +38,6 @@ public:
     ~bookmarkDialog();
 
     void checkPath();
-    void setBookIcon(QPixmap pix);
     void setBookPath(const QString &path);
     void setBookName(const QString &bName);
     QString getBookName();
