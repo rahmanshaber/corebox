@@ -33,5 +33,6 @@ class NBLzma {
 
 	private:
 		FILE *fdin, *fdout;
-		int NBLzmaError;
+        // Abrar
+        //int NBLzmaError;
 };

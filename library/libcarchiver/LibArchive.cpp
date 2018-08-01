@@ -483,7 +483,11 @@ int LibArchive::extractMember( QString memberName ) {
 
 	qDebug() << "[Error]" << "File not found in the archive:" << memberName;
 
-	return 0;
+    return 0;
+}
+
+QString LibArchive::getBaseName( QString path ) {
+    return baseName(path);
 };
 
 ArchiveEntries LibArchive::list() {

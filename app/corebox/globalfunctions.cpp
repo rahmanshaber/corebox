@@ -774,3 +774,21 @@ QSettings *getStylesheetValue()
 
     return mStyleValues;
 }
+
+inline static void dropShadow(QWidget *widget, const int alpha, const int blur = 25, const QString stylesheet = "") {
+    SettingsManage sm;
+    if (sm.getAddShadow()) {
+         QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect(widget);
+         effect->setBlurRadius(blur);
+         effect->setColor(QColor(0, 0, 0, alpha));
+         effect->setOffset(0);
+         widget->setGraphicsEffect(effect);
+         if (!stylesheet.isNull())
+             widget->setStyleSheet(stylesheet);
+    }
+}
+
+void addDropShadow(QWidget *widget, const int alpha, const int blur, const QString stylesheet)
+{
+    dropShadow(widget, alpha, blur, stylesheet);
+}

@@ -4,7 +4,7 @@ TARGET = csys
 TEMPLATE = lib
 
 # disable all build warnings
-CONFIG += warn_off
+#CONFIG += warn_off
 
 # Disable Debug on Release
 CONFIG(release):DEFINES += QT_NO_DEBUG_OUTPUT
@@ -48,4 +48,12 @@ UI_DIR			= ../build/uic
 unix {
     target.path = /usr/lib
     INSTALLS += target
+
+        QMAKE_PKGCONFIG_NAME = libcsys
+        QMAKE_PKGCONFIG_DESCRIPTION = A Qt based system information viewer
+        QMAKE_PKGCONFIG_PREFIX  = $$INSTALL_PREFIX
+        QMAKE_PKGCONFIG_LIBDIR  = $$target.path
+        #QMAKE_PKGCONFIG_INCDIR  = $$includes.path
+        QMAKE_PKGCONFIG_VERSION = $$VERSION
+        QMAKE_PKGCONFIG_DESTDIR = pkgconfig
 }

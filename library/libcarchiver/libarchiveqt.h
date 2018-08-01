@@ -73,6 +73,10 @@ class LibArchive {
 		/* Extract a named member of the archive */
 		int extractMember( QString );
 
+        //Abrar
+        /* Get the base name */
+        QString getBaseName( QString );
+
 		ArchiveEntries list();
 
 	private:

@@ -287,7 +287,7 @@ bool propertiesw::isExecutable( const QString path )
     type << "so" << "o" << "sh" << "deb" << "rpm" << "tar.gz"
              << "tar" << "gz" << "ko" << "AppImage";
 
-    QString suffix = info.suffix();
+    QString suffix = QFileInfo(path).suffix();
 
     if (type.contains(suffix, Qt::CaseInsensitive))
         return true;

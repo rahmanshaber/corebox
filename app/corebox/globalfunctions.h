@@ -134,17 +134,6 @@ enum FolderSetup {
  QString readStringFromFile(const QString &path, const QIODevice::OpenMode &mode);
  QSettings *getStylesheetValue();
 
- static void addDropShadow(QWidget *widget, const int alpha, const int blur = 25, const QString stylesheet = "") {
-     SettingsManage sm;
-     if (sm.getAddShadow()) {
-          QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect(widget);
-          effect->setBlurRadius(blur);
-          effect->setColor(QColor(0, 0, 0, alpha));
-          effect->setOffset(0);
-          widget->setGraphicsEffect(effect);
-          if (!stylesheet.isNull())
-              widget->setStyleSheet(stylesheet);
-     }
- }
+ void addDropShadow(QWidget *widget, const int alpha, const int blur = 25, const QString stylesheet = "");
 
 #endif // GLOBALFUNCTIONS_H

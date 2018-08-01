@@ -484,7 +484,7 @@ void coreplayer::setFolder(const QString &foldername)
         mModel->appendRow((new QStandardItem(QFileInfo(list2.at(i)).fileName())));
     }
 
-    folderpath == foldername;
+    folderpath = foldername;
 }
 
 void coreplayer::play(int index)

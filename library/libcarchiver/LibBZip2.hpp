@@ -34,5 +34,6 @@ class NBBZip2 {
 	private:
 		BZFILE *bz2;
 		FILE *bzFile;
-		int NBBZip2Error;
+        // Abrar
+        //int NBBZip2Error;
 };

@@ -265,10 +265,10 @@ isEqual( QT_MAJOR_VERSION, 5 ) {
 }
 
 # Enable warnings and threading support
-CONFIG += thread silent warn_off build_all
+CONFIG += thread silent build_all #warn_off
 
 # Disable Debug on Release
- CONFIG(release):DEFINES += QT_NO_DEBUG_OUTPUT
+#CONFIG(release):DEFINES += QT_NO_DEBUG_OUTPUT
 
 # Build location
 

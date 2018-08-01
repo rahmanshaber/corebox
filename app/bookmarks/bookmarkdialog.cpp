@@ -108,12 +108,14 @@ void bookmarkDialog::item_Changed()
 
 void bookmarkDialog::on_bkSection_currentIndexChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     checkPath();
     bookMarkName_Changed();
 }
 
 void bookmarkDialog::on_bkName_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     if (ui->bkName->text().count() > 0) {
         QString str = bk.checkingBookName(ui->bkSection->currentText(), ui->bkName->text());
         if (str.count() > 0) {

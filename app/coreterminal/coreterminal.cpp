@@ -195,7 +195,7 @@ coreterminal::coreterminal(const QString &workDir, const QString &command, QWidg
 
     startShellProgram();
 
-    connect(this, &coreterminal::finished, [this]() {
+    connect(this, &coreterminal::finished, [&]() {
         CoreBox *cBox = static_cast<CoreBox*>(qApp->activeWindow());
         cBox->closeCurrentTab();
     });

@@ -33,5 +33,6 @@ class NBXz {
 
 	private:
 		FILE *fdin, *fdout;
-		int NBXzError;
+        // Abrar
+        //int NBXzError;
 };

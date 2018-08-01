@@ -570,7 +570,7 @@ void CoreBox::changeEvent(QEvent *event)
 
 void CoreBox::mousePressEvent(QMouseEvent *event)
 {
-    if(ui->windows->tabBar()->underMouse() || ui->sideBar->underMouse() && event->buttons()== Qt::LeftButton){
+    if(ui->windows->tabBar()->underMouse() || (ui->sideBar->underMouse() && (event->buttons() == Qt::LeftButton))){
         isMouseDown = true;
         isLeftDown = true;
         mousePos = event->globalPos();
@@ -673,7 +673,7 @@ void CoreBox::on_saveSession_clicked()
 {
     QString sName = "";
     sessionSaveDialog *ssd = new sessionSaveDialog(this);
-    connect(ssd, &sessionSaveDialog::nameOk, [this, ssd, &sName]() {
+    connect(ssd, &sessionSaveDialog::nameOk, [ssd, &sName]() {
         sName = ssd->sName;
         ssd->close();
     });

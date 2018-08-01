@@ -33,5 +33,6 @@ class NBGZip {
 
 	private:
 		gzFile gzip;
-		int NBGZipError;
+        // Abrar
+        //int NBGZipError;
 };

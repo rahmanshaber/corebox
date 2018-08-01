@@ -23,6 +23,7 @@ coreedit::coreedit(QString fPath, QWidget *parent) : QPlainTextEdit(parent)
     filePath = fPath;
 
     cHighlighter *highlighter = new cHighlighter(document());
+    highlighter->setObjectName("cHighlighter");
     QString bcolor(getStylesheetValue()->value("@color01").toString());
     setStyleSheet("QWidget{background-color: " + bcolor + "; border: none;} QMenu{border: 1px solid gray;}");
 
