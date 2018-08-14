@@ -483,11 +483,7 @@ int LibArchive::extractMember( QString memberName ) {
 
 	qDebug() << "[Error]" << "File not found in the archive:" << memberName;
 
-    return 0;
-}
-
-QString LibArchive::getBaseName( QString path ) {
-    return baseName(path);
+	return 0;
 };
 
 ArchiveEntries LibArchive::list() {
@@ -539,7 +535,12 @@ int LibArchive::copyData( struct archive *ar, struct archive *aw ) {
 	int r;
 	const void *buff;
 	size_t size;
-	off_t offset;
+
+        #ifdef __LP64__
+                off_t offset;
+        #else
+                la_int64_t offset;
+        #endif
 
 	while ( true ) {
 		r = archive_read_data_block( ar, &buff, &size, &offset );
