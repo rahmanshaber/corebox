@@ -10,7 +10,7 @@ before_install:
 install:
   - sudo apt-get -y install qt59base
   - sudo apt-get -y -qq install qt59imageformats qt59svg qt59charts-no-lgpl qt59tools
-  - sudo apt-get -y -qq install qt59multimedia libmagic-dev libpulse-dev
+  - sudo apt-get -y -qq install qt59multimedia libmagic-dev libpulse-dev liblzma-dev libbz2-dev zlibc liblz-dev lzop
   - source /opt/qt*/bin/qt*-env.sh
 
 script:
