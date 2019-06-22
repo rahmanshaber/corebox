@@ -1,5 +1,5 @@
 # CoreBox
-
+# We move to Gitlab [CuboCore](https://gitlab.com/cubocore)
 ## CoreBox is combination of some common desktop apps .For Linux Only.Licensed under GPL2 .
 
 <img src="docs/screenshots/a1.png" width="500">
